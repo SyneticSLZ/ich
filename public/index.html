@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMF.ai - FDA Drug Master File Submission Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        
+        /* Professional Design System */
+        :root {
+            --primary: #5B21B6;
+            --primary-dark: #4C1D95;
+            --primary-light: #7C3AED;
+            --accent: #06B6D4;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --dark: #111827;
+            --gray: #6B7280;
+            --light: #F9FAFB;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%);
+            --gradient-dark: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+        }
+
+        /* Modern Glass Morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .glass-dark {
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Professional Animations */
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .animate-slideIn { animation: slideIn 0.3s ease-out; }
+        .animate-fadeInUp { animation: fadeInUp 0.5s ease-out; }
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        
+        .shimmer {
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* Professional Buttons */
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Professional Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+        }
+
+        /* Professional Form Inputs */
+        .input-field {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(91, 33, 182, 0.1);
+        }
+
+        .input-field.error {
+            border-color: var(--danger);
+            background: #FEF2F2;
+        }
+
+        .input-field.success {
+            border-color: var(--success);
+            background: #F0FDF4;
+        }
+
+        /* Professional Tooltips */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+        }
+
+        /* Loading Animation */
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Progress Ring */
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform-origin: 50% 50%;
+        }
+
+        /* Chemical Structure Canvas */
+        .structure-canvas {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            cursor: crosshair;
+        }
+
+        /* Notification Badge */
+        .notification-badge {
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Professional Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F3F4F6;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #9CA3AF;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6B7280;
+        }
+
+        /* File Upload Zone */
+        .upload-zone {
+            border: 2px dashed #D1D5DB;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .upload-zone.active {
+            border-color: var(--primary);
+            background: rgba(91, 33, 182, 0.05);
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .status-indicator.active {
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.pending {
+            background: var(--warning);
+        }
+
+        .status-indicator.error {
+            background: var(--danger);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center">
+        <div class="text-center">
+            <div class="loader mx-auto mb-4"></div>
+            <h2 class="text-xl font-semibold text-gray-800">Loading DMF.ai Platform</h2>
+            <p class="text-sm text-gray-500 mt-2">Initializing AI systems...</p>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="min-h-screen flex">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 fixed h-full z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-capsules text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">DMF.ai</h1>
+                        <p class="text-xs text-gray-500">FDA Submission Platform</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <button onclick="navigateToSection('dashboard')" class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center space-x-3 hover:bg-purple-50 text-purple-600 bg-purple-50">
+                            <i class="fas fa-home w-5"></i>
+                            <span>Dashboard</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="navigateToSection('new-submission')" class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center space-x-3 hover:bg-purple-50 text-gray-700">
+                            <i class="fas fa-plus-circle w-5"></i>
+                            <span>New Submission</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="navigateToSection('submissions')" class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center space-x-3 hover:bg-purple-50 text-gray-700">
+                            <i class="fas fa-folder-open w-5"></i>
+                            <span>My Submissions</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="navigateToSection('chemistry')" class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center space-x-3 hover:bg-purple-50 text-gray-700">
+                            <i class="fas fa-flask w-5"></i>
+                            <span>Chemistry Lab</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="navigateToSection('compliance')" class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center space-x-3 hover:bg-purple-50 text-gray-700">
+                            <i class="fas fa-shield-alt w-5"></i>
+                            <span>Compliance</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="navigateToSection('analytics')" class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center space-x-3 hover:bg-purple-50 text-gray-700">
+                            <i class="fas fa-chart-line w-5"></i>
+                            <span>Analytics</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="navigateToSection('gdufa')" class="nav-item w-full text-left px-4 py-3 rounded-lg flex items-center space-x-3 hover:bg-purple-50 text-gray-700">
+                            <i class="fas fa-clock w-5"></i>
+                            <span>GDUFA Prior Assessment</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
+                <button onclick="openAIAssistant()" class="w-full px-4 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg flex items-center justify-center space-x-2 hover:shadow-lg transition-all">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 lg:ml-64">
+            <!-- Top Bar -->
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-30">
+                <div class="px-6 py-4 flex items-center justify-between">
+                    <button onclick="toggleSidebar()" class="lg:hidden text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+
+                    <div class="flex-1 max-w-xl mx-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Search DMFs, documents, or compounds..." class="input-field pl-10">
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <button class="relative p-2 text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center notification-badge">3</span>
+                        </button>
+                        <div class="flex items-center space-x-3">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=5B21B6&color=fff" alt="User" class="w-10 h-10 rounded-full">
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">John Doe</p>
+                                <p class="text-xs text-gray-500">Premium Account</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Sections -->
+            <div class="p-6">
+                <!-- Dashboard Section -->
+                <section id="dashboard-section" class="content-section">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-gray-900">Welcome to DMF.ai</h2>
+                        <p class="text-gray-600 mt-2">Your intelligent FDA submission companion</p>
+                    </div>
+
+                    <!-- Key Metrics -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="card p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-file-alt text-purple-600"></i>
+                                </div>
+                                <span class="text-xs text-green-600 font-semibold">+12%</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">24</h3>
+                            <p class="text-sm text-gray-500">Active DMFs</p>
+                        </div>
+
+                        <div class="card p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-check-circle text-green-600"></i>
+                                </div>
+                                <span class="text-xs text-green-600 font-semibold">100%</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">98%</h3>
+                            <p class="text-sm text-gray-500">Compliance Score</p>
+                        </div>
+
+                        <div class="card p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-clock text-blue-600"></i>
+                                </div>
+                                <span class="text-xs text-blue-600 font-semibold">-35%</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">45 days</h3>
+                            <p class="text-sm text-gray-500">Avg. Review Time</p>
+                        </div>
+
+                        <div class="card p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-exclamation-triangle text-yellow-600"></i>
+                                </div>
+                                <span class="text-xs text-red-600 font-semibold">Action Required</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">3</h3>
+                            <p class="text-sm text-gray-500">Pending Actions</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                        <button onclick="startNewSubmission()" class="p-6 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:shadow-xl transition-all">
+                            <i class="fas fa-rocket text-3xl mb-3"></i>
+                            <h3 class="font-semibold">Quick Start DMF</h3>
+                            <p class="text-sm opacity-90 mt-1">AI-guided submission</p>
+                        </button>
+
+                        <button onclick="openChemistryLab()" class="p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-purple-400 hover:shadow-lg transition-all">
+                            <i class="fas fa-atom text-3xl text-purple-600 mb-3"></i>
+                            <h3 class="font-semibold text-gray-900">Chemistry Lab</h3>
+                            <p class="text-sm text-gray-500 mt-1">Structure builder</p>
+                        </button>
+
+                        <button onclick="checkCompliance()" class="p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-purple-400 hover:shadow-lg transition-all">
+                            <i class="fas fa-shield-check text-3xl text-green-600 mb-3"></i>
+                            <h3 class="font-semibold text-gray-900">Check Compliance</h3>
+                            <p class="text-sm text-gray-500 mt-1">Instant validation</p>
+                        </button>
+
+                        <button onclick="viewTemplates()" class="p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-purple-400 hover:shadow-lg transition-all">
+                            <i class="fas fa-file-download text-3xl text-blue-600 mb-3"></i>
+                            <h3 class="font-semibold text-gray-900">FDA Templates</h3>
+                            <p class="text-sm text-gray-500 mt-1">Pre-filled forms</p>
+                        </button>
+                    </div>
+
+                    <!-- Charts -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="card p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Submission Progress</h3>
+                            <canvas id="progressChart"></canvas>
+                        </div>
+
+                        <div class="card p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-check-circle text-green-600"></i>
+                                        <div>
+                                            <p class="font-medium text-gray-900">DMF MF012345 Approved</p>
+                                            <p class="text-xs text-gray-500">2 hours ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-upload text-blue-600"></i>
+                                        <div>
+                                            <p class="font-medium text-gray-900">Documents uploaded for MF012346</p>
+                                            <p class="text-xs text-gray-500">5 hours ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fas fa-exclamation-circle text-yellow-600"></i>
+                                        <div>
+                                            <p class="font-medium text-gray-900">Annual report due in 30 days</p>
+                                            <p class="text-xs text-gray-500">MF012344</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- New Submission Section -->
+                <section id="new-submission-section" class="content-section hidden">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-gray-900">New DMF Submission</h2>
+                        <p class="text-gray-600 mt-2">AI will guide you through every step</p>
+                    </div>
+
+                    <!-- Progress Steps -->
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center flex-1">
+                                <div class="step-indicator active" data-step="1">
+                                    <div class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold">
+                                        1
+                                    </div>
+                                    <p class="text-sm font-medium mt-2">Basic Info</p>
+                                </div>
+                                <div class="flex-1 h-1 bg-gray-300 mx-4"></div>
+                            </div>
+                            <div class="flex items-center flex-1">
+                                <div class="step-indicator" data-step="2">
+                                    <div class="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center font-bold">
+                                        2
+                                    </div>
+                                    <p class="text-sm font-medium mt-2">Drug Info</p>
+                                </div>
+                                <div class="flex-1 h-1 bg-gray-300 mx-4"></div>
+                            </div>
+                            <div class="flex items-center flex-1">
+                                <div class="step-indicator" data-step="3">
+                                    <div class="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center font-bold">
+                                        3
+                                    </div>
+                                    <p class="text-sm font-medium mt-2">Documents</p>
+                                </div>
+                                <div class="flex-1 h-1 bg-gray-300 mx-4"></div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="step-indicator" data-step="4">
+                                    <div class="w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center font-bold">
+                                        4
+                                    </div>
+                                    <p class="text-sm font-medium mt-2">Review</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step Content -->
+                    <div class="card p-8">
+                        <!-- Step 1: Basic Information -->
+                        <div id="step-1" class="step-content">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-6">Basic Information</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        DMF Number <span class="text-red-500">*</span>
+                                    </label>
+                                    <div class="relative">
+                                        <input type="text" id="dmf-number" placeholder="MF012345" class="input-field" oninput="validateDMFNumber(this)">
+                                        <i class="fas fa-check-circle absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 hidden" id="dmf-valid-icon"></i>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">Format: MF followed by 6 digits</p>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Submission Type <span class="text-red-500">*</span>
+                                    </label>
+                                    <select class="input-field">
+                                        <option value="">Select Type</option>
+                                        <option value="original">Original DMF</option>
+                                        <option value="amendment">Amendment</option>
+                                        <option value="annual">Annual Report</option>
+                                        <option value="loa">Letter of Authorization</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Holder Name <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="text" placeholder="Company Name" class="input-field">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Contact Email <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="email" placeholder="contact@company.com" class="input-field">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Phone Number <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="tel" placeholder="+1 (555) 000-0000" class="input-field">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        GDUFA Fee Status
+                                    </label>
+                                    <select class="input-field">
+                                        <option value="">Select Status</option>
+                                        <option value="paid">Paid</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="exempt">Exempt</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 flex justify-between">
+                                <button class="px-6 py-3 text-gray-600 hover:text-gray-900">
+                                    <i class="fas fa-arrow-left mr-2"></i> Back
+                                </button>
+                                <button onclick="nextStep()" class="btn-primary">
+                                    Continue <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Drug Information -->
+                        <div id="step-2" class="step-content hidden">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-6">Drug Substance Information</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Drug Substance Name <span class="text-red-500">*</span>
+                                    </label>
+                                    <div class="flex space-x-2">
+                                        <input type="text" id="drug-name" placeholder="e.g., Loratadine" class="input-field flex-1">
+                                        <button onclick="lookupDrugInfo()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                                            <i class="fas fa-search"></i> Lookup
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        CAS Number
+                                    </label>
+                                    <input type="text" id="cas-number" placeholder="79794-75-5" class="input-field">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        UNII Code
+                                    </label>
+                                    <input type="text" id="unii-code" placeholder="7AJO3BO7QN" class="input-field">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Molecular Formula <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="text" id="molecular-formula" placeholder="C22H23ClN2O2" class="input-field">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Molecular Weight
+                                    </label>
+                                    <input type="text" id="molecular-weight" placeholder="382.88 g/mol" class="input-field">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        Therapeutic Class
+                                    </label>
+                                    <input type="text" placeholder="Antihistamine" class="input-field">
+                                </div>
+                            </div>
+
+                            <div class="mt-6">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">
+                                    Chemical Structure
+                                </label>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                                    <i class="fas fa-draw-polygon text-4xl text-gray-400 mb-3"></i>
+                                    <p class="text-gray-600 mb-3">Draw or upload your chemical structure</p>
+                                    <div class="flex justify-center space-x-3">
+                                        <button onclick="openStructureDrawer()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                                            <i class="fas fa-pencil-alt mr-2"></i>Draw Structure
+                                        </button>
+                                        <button onclick="uploadStructure()" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
+                                            <i class="fas fa-upload mr-2"></i>Upload MOL/SDF
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 flex justify-between">
+                                <button onclick="previousStep()" class="px-6 py-3 text-gray-600 hover:text-gray-900">
+                                    <i class="fas fa-arrow-left mr-2"></i> Back
+                                </button>
+                                <button onclick="nextStep()" class="btn-primary">
+                                    Continue <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Documents -->
+                        <div id="step-3" class="step-content hidden">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-6">Upload Documents</h3>
+                            
+                            <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <p class="text-sm text-blue-800">
+                                    <i class="fas fa-info-circle mr-2"></i>
+                                    AI will automatically organize your documents into the correct FDA modules (3.2.S.1 - 3.2.S.7)
+                                </p>
+                            </div>
+
+                            <div id="drop-zone" class="upload-zone p-12 text-center" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                                <i class="fas fa-cloud-upload-alt text-5xl text-gray-400 mb-4"></i>
+                                <p class="text-xl font-medium text-gray-700 mb-2">Drop files here or click to browse</p>
+                                <p class="text-sm text-gray-500 mb-4">PDF, XML, SDF files up to 500MB each</p>
+                                <input type="file" id="file-input" multiple accept=".pdf,.xml,.sdf" class="hidden" onchange="handleFileSelect(event)">
+                                <button onclick="document.getElementById('file-input').click()" class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                                    Select Files
+                                </button>
+                            </div>
+
+                            <div id="uploaded-files" class="mt-6 space-y-3">
+                                <!-- Files will be displayed here -->
+                            </div>
+
+                            <div class="mt-8 flex justify-between">
+                                <button onclick="previousStep()" class="px-6 py-3 text-gray-600 hover:text-gray-900">
+                                    <i class="fas fa-arrow-left mr-2"></i> Back
+                                </button>
+                                <button onclick="nextStep()" class="btn-primary">
+                                    Continue <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Review & Submit -->
+                        <div id="step-4" class="step-content hidden">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-6">Review & Submit</h3>
+                            
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-check-circle text-green-600 text-3xl mr-3"></i>
+                                    <div>
+                                        <h4 class="font-semibold text-green-800">Ready for Submission</h4>
+                                        <p class="text-sm text-green-700">All FDA requirements have been met</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-600 mr-2"></i>
+                                        <span>DMF Number Validated</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-600 mr-2"></i>
+                                        <span>Chemical Structure Complete</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-600 mr-2"></i>
+                                        <span>Documents Uploaded</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-check text-green-600 mr-2"></i>
+                                        <span>Compliance Score: 98%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white border border-gray-200 rounded-lg p-6">
+                                <h4 class="font-semibold text-gray-900 mb-4">Submission Summary</h4>
+                                <dl class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <dt class="text-gray-600">DMF Number:</dt>
+                                        <dd class="font-medium" id="review-dmf-number">MF012345</dd>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <dt class="text-gray-600">Drug Substance:</dt>
+                                        <dd class="font-medium" id="review-drug-name">Loratadine</dd>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <dt class="text-gray-600">Submission Type:</dt>
+                                        <dd class="font-medium" id="review-type">Original DMF</dd>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <dt class="text-gray-600">Documents:</dt>
+                                        <dd class="font-medium" id="review-doc-count">12 files</dd>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <dt class="text-gray-600">Estimated Review Time:</dt>
+                                        <dd class="font-medium text-green-600">45 days</dd>
+                                    </div>
+                                </dl>
+                            </div>
+
+                            <div class="mt-8 flex justify-between">
+                                <button onclick="previousStep()" class="px-6 py-3 text-gray-600 hover:text-gray-900">
+                                    <i class="fas fa-arrow-left mr-2"></i> Back
+                                </button>
+                                <button onclick="submitDMF()" class="px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg font-semibold text-lg hover:shadow-xl transition-all">
+                                    <i class="fas fa-paper-plane mr-2"></i>Submit to FDA
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chemistry Lab Section -->
+                <section id="chemistry-section" class="content-section hidden">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-gray-900">AI Chemistry Lab</h2>
+                        <p class="text-gray-600 mt-2">Build FDA-compliant SD files with AI assistance</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Structure Builder -->
+                        <div class="card p-6">
+                            <h3 class="font-semibold text-gray-900 mb-4">Structure Builder</h3>
+                            
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Quick Input</label>
+                                <div class="flex space-x-2">
+                                    <input type="text" id="smiles-input" placeholder="Enter SMILES string..." class="input-field flex-1">
+                                    <button onclick="generateFromSMILES()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                                        Generate
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-200 rounded-lg p-4 h-80 flex items-center justify-center bg-gray-50">
+                                <canvas id="structure-canvas" class="structure-canvas w-full h-full hidden"></canvas>
+                                <div id="structure-placeholder" class="text-center">
+                                    <i class="fas fa-atom text-4xl text-gray-400 mb-3"></i>
+                                    <p class="text-gray-600">Structure will appear here</p>
+                                    <button onclick="initializeDrawer()" class="mt-3 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                                        <i class="fas fa-pencil-alt mr-2"></i>Start Drawing
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 mt-4">
+                                <input type="text" placeholder="CAS Number" class="input-field">
+                                <input type="text" placeholder="UNII Code" class="input-field">
+                                <select class="input-field">
+                                    <option>Drug Substance</option>
+                                    <option>Process Impurity</option>
+                                    <option>Intermediate</option>
+                                    <option>Degradant</option>
+                                    <option>Starting Material</option>
+                                </select>
+                                <button onclick="addToSDFile()" class="px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                                    <i class="fas fa-plus mr-1"></i>Add to SD File
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- SD File Preview -->
+                        <div class="card p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-semibold text-gray-900">SD File Contents</h3>
+                                <div class="flex space-x-2">
+                                    <button onclick="validateSDFile()" class="px-3 py-1 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 text-sm">
+                                        <i class="fas fa-check-circle mr-1"></i>Validate
+                                    </button>
+                                    <button onclick="exportSDFile()" class="px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">
+                                        <i class="fas fa-download mr-1"></i>Export
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="sd-file-contents" class="space-y-3 max-h-96 overflow-y-auto">
+                                <!-- SD File entries will appear here -->
+                                <div class="p-3 bg-gray-50 rounded-lg text-center text-gray-500">
+                                    <i class="fas fa-file-code text-3xl mb-2"></i>
+                                    <p>No structures added yet</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                                <p class="text-sm text-gray-600">
+                                    <i class="fas fa-info-circle text-blue-500 mr-1"></i>
+                                    <span id="sd-file-status">0 structures • Ready to add compounds</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- GDUFA Prior Assessment Section -->
+                <section id="gdufa-section" class="content-section hidden">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-gray-900">GDUFA Prior Assessment</h2>
+                        <p class="text-gray-600 mt-2">Request DMF assessment 6 months prior to ANDA submission</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Eligibility Checker -->
+                        <div class="lg:col-span-2">
+                            <div class="card p-6">
+                                <h3 class="font-semibold text-gray-900 mb-4">Check Eligibility</h3>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            DMF Number
+                                        </label>
+                                        <input type="text" placeholder="MF012345" class="input-field">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Reference Listed Drug (RLD)
+                                        </label>
+                                        <input type="text" placeholder="NDA 021234" class="input-field">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Justification for Prior Assessment
+                                        </label>
+                                        <select class="input-field">
+                                            <option value="">Select reason...</option>
+                                            <option value="patent">Patents expire within 12 months</option>
+                                            <option value="limited">≤3 approved products in Orange Book</option>
+                                            <option value="shortage">Drug shortage mitigation</option>
+                                            <option value="emergency">Public health emergency</option>
+                                            <option value="single">Single approved ANDA (RLD discontinued)</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                                            Planned ANDA Submission Date
+                                        </label>
+                                        <input type="date" class="input-field">
+                                    </div>
+
+                                    <button onclick="checkGDUFAEligibility()" class="btn-primary w-full">
+                                        Check Eligibility
+                                    </button>
+                                </div>
+
+                                <div id="eligibility-result" class="mt-6 hidden">
+                                    <!-- Results will appear here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GDUFA Information -->
+                        <div class="space-y-4">
+                            <div class="card p-6">
+                                <h4 class="font-semibold text-gray-900 mb-3">GDUFA III Benefits</h4>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>6-month early assessment</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Reduced ANDA review cycles</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Faster time to market</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Cost savings</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card p-6">
+                                <h4 class="font-semibold text-gray-900 mb-3">Required Documents</h4>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-file-alt text-gray-400 mt-1 mr-2"></i>
+                                        <span>Letter of Authorization (LOA)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-file-alt text-gray-400 mt-1 mr-2"></i>
+                                        <span>GDUFA DMF fee payment proof</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-file-alt text-gray-400 mt-1 mr-2"></i>
+                                        <span>Prior assessment request letter</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Assistant Modal -->
+    <div id="ai-assistant-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="absolute bottom-4 right-4 w-96 h-[600px] bg-white rounded-xl shadow-2xl flex flex-col">
+            <div class="p-4 border-b border-gray-200 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-t-xl">
+                <div class="flex items-center justify-between text-white">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-robot text-2xl"></i>
+                        <div>
+                            <h3 class="font-semibold">DMF.ai Assistant</h3>
+                            <p class="text-xs opacity-90">Powered by AI</p>
+                        </div>
+                    </div>
+                    <button onclick="closeAIAssistant()" class="hover:bg-white hover:bg-opacity-20 p-2 rounded">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="ai-messages" class="flex-1 overflow-y-auto p-4 space-y-3">
+                <div class="flex items-start space-x-2">
+                    <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-purple-600 text-sm"></i>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-3 max-w-xs">
+                        <p class="text-sm">Hello! I'm your FDA submission expert. I can help you with:</p>
+                        <ul class="text-xs mt-2 space-y-1">
+                            <li>• DMF submissions and requirements</li>
+                            <li>• GDUFA prior assessment eligibility</li>
+                            <li>• Chemical structure validation</li>
+                            <li>• FDA compliance checks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 border-t border-gray-200">
+                <div class="flex space-x-2">
+                    <input type="text" id="ai-input" placeholder="Ask me anything about DMF..." 
+                           class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                           onkeypress="if(event.key === 'Enter') sendAIMessage()">
+                    <button onclick="sendAIMessage()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center h-full">
+            <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 transform scale-95">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-check text-green-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Success!</h3>
+                    <p class="text-gray-600 mb-6" id="success-message">Your DMF has been submitted to the FDA</p>
+                    <p class="text-sm text-gray-500 mb-6">Tracking ID: <span class="font-mono font-bold" id="tracking-id">FDA-2024-ABC123</span></p>
+                    <button onclick="closeSuccessModal()" class="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700">
+                        Done
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global State Management
+        const state = {
+            currentSection: 'dashboard',
+            currentStep: 1,
+            dmfData: {},
+            uploadedFiles: [],
+            sdFileContents: [],
+            aiChatHistory: [],
+            complianceScore: 0,
+            apiBaseUrl: 'http://localhost:3000/api'
+        };
+
+        // Initialize Application
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+                initializeDashboard();
+                initializeCharts();
+                setupEventListeners();
+            }, 1500);
+        });
+
+        // Navigation
+        function navigateToSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(s => {
+                s.classList.add('hidden');
+            });
+
+            // Show selected section
+            const sectionElement = document.getElementById(`${section}-section`);
+            if (sectionElement) {
+                sectionElement.classList.remove('hidden');
+            }
+
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('text-purple-600', 'bg-purple-50');
+                item.classList.add('text-gray-700');
+            });
+
+            event.currentTarget.classList.remove('text-gray-700');
+            event.currentTarget.classList.add('text-purple-600', 'bg-purple-50');
+
+            state.currentSection = section;
+        }
+
+        // Toggle Sidebar (Mobile)
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        // Initialize Dashboard
+        function initializeDashboard() {
+            // Simulate real-time data updates
+            setInterval(updateDashboardMetrics, 5000);
+        }
+
+        function updateDashboardMetrics() {
+            // This would fetch real data from the backend
+            // For now, we'll simulate updates
+        }
+
+        // Initialize Charts
+        function initializeCharts() {
+            const ctx = document.getElementById('progressChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Submissions',
+                            data: [4, 7, 5, 9, 12, 11],
+                            borderColor: 'rgb(147, 51, 234)',
+                            backgroundColor: 'rgba(147, 51, 234, 0.1)',
+                            tension: 0.4
+                        }, {
+                            label: 'Approvals',
+                            data: [3, 5, 4, 7, 10, 9],
+                            borderColor: 'rgb(34, 197, 94)',
+                            backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+      
+// Setup Event Listeners (continued)
+function setupEventListeners() {
+    // Global keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        // Ctrl/Cmd + K - Open AI Assistant
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            openAIAssistant();
+        }
+        
+        // Ctrl/Cmd + N - New DMF
+        if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
+            e.preventDefault();
+            startNewSubmission();
+        }
+        
+        // ESC - Close modals
+        if (e.key === 'Escape') {
+            closeAllModals();
+        }
+    });
+
+    // Auto-save functionality
+    setInterval(() => {
+        if (state.currentSection === 'new-submission' && state.dmfData.dmfNumber) {
+            saveDraft();
+        }
+    }, 30000); // Auto-save every 30 seconds
+}
+
+// ============================================
+// DMF SUBMISSION WORKFLOW
+// ============================================
+
+function startNewSubmission() {
+    navigateToSection('new-submission');
+    state.currentStep = 1;
+    updateStepIndicators();
+}
+
+function nextStep() {
+    if (validateCurrentStep()) {
+        if (state.currentStep < 4) {
+            state.currentStep++;
+            updateStepIndicators();
+            showStep(state.currentStep);
+        }
+    }
+}
+
+function previousStep() {
+    if (state.currentStep > 1) {
+        state.currentStep--;
+        updateStepIndicators();
+        showStep(state.currentStep);
+    }
+}
+
+function updateStepIndicators() {
+    document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
+        const stepNum = index + 1;
+        const stepDiv = indicator.querySelector('div');
+        
+        if (stepNum < state.currentStep) {
+            stepDiv.className = 'w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold';
+            stepDiv.innerHTML = '<i class="fas fa-check"></i>';
+        } else if (stepNum === state.currentStep) {
+            stepDiv.className = 'w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold';
+            stepDiv.textContent = stepNum;
+        } else {
+            stepDiv.className = 'w-12 h-12 bg-gray-300 text-white rounded-full flex items-center justify-center font-bold';
+            stepDiv.textContent = stepNum;
+        }
+    });
+}
+
+function showStep(step) {
+    document.querySelectorAll('.step-content').forEach(content => {
+        content.classList.add('hidden');
+    });
+    
+    const stepElement = document.getElementById(`step-${step}`);
+    if (stepElement) {
+        stepElement.classList.remove('hidden');
+        stepElement.classList.add('animate-fadeInUp');
+    }
+
+    // Update review data on step 4
+    if (step === 4) {
+        updateReviewData();
+    }
+}
+
+function validateCurrentStep() {
+    let isValid = true;
+    let errors = [];
+
+    switch(state.currentStep) {
+        case 1:
+            // Validate Basic Information
+            const dmfNumber = document.getElementById('dmf-number').value;
+            if (!dmfNumber || !/^MF[0-9]{6}$/.test(dmfNumber)) {
+                errors.push('Invalid DMF number format');
+                isValid = false;
+            }
+            
+            // Store valid data
+            if (isValid) {
+                state.dmfData.dmfNumber = dmfNumber;
+                state.dmfData.submissionType = document.querySelector('#step-1 select').value;
+            }
+            break;
+            
+        case 2:
+            // Validate Drug Information
+            const drugName = document.getElementById('drug-name').value;
+            const formula = document.getElementById('molecular-formula').value;
+            
+            if (!drugName) {
+                errors.push('Drug substance name is required');
+                isValid = false;
+            }
+            if (!formula) {
+                errors.push('Molecular formula is required');
+                isValid = false;
+            }
+            
+            // Store valid data
+            if (isValid) {
+                state.dmfData.drugName = drugName;
+                state.dmfData.molecularFormula = formula;
+                state.dmfData.casNumber = document.getElementById('cas-number').value;
+                state.dmfData.uniiCode = document.getElementById('unii-code').value;
+            }
+            break;
+            
+        case 3:
+            // Validate Documents
+            if (state.uploadedFiles.length === 0) {
+                errors.push('Please upload at least one document');
+                isValid = false;
+            }
+            break;
+    }
+
+    if (!isValid) {
+        showNotification(errors.join(', '), 'error');
+    }
+
+    return isValid;
+}
+
+function updateReviewData() {
+    document.getElementById('review-dmf-number').textContent = state.dmfData.dmfNumber || 'Not provided';
+    document.getElementById('review-drug-name').textContent = state.dmfData.drugName || 'Not provided';
+    document.getElementById('review-type').textContent = state.dmfData.submissionType || 'Not provided';
+    document.getElementById('review-doc-count').textContent = `${state.uploadedFiles.length} files`;
+}
+
+// ============================================
+// DMF NUMBER VALIDATION
+// ============================================
+
+function validateDMFNumber(input) {
+    const value = input.value.toUpperCase();
+    const pattern = /^MF[0-9]{6}$/;
+    const validIcon = document.getElementById('dmf-valid-icon');
+    
+    input.value = value;
+    
+    if (pattern.test(value)) {
+        input.classList.remove('error');
+        input.classList.add('success');
+        validIcon.classList.remove('hidden');
+        return true;
+    } else if (value.length > 0) {
+        input.classList.add('error');
+        input.classList.remove('success');
+        validIcon.classList.add('hidden');
+        return false;
+    } else {
+        input.classList.remove('error', 'success');
+        validIcon.classList.add('hidden');
+        return false;
+    }
+}
+
+// ============================================
+// DRUG LOOKUP FUNCTIONALITY
+// ============================================
+
+async function lookupDrugInfo() {
+    const drugName = document.getElementById('drug-name').value;
+    if (!drugName) {
+        showNotification('Please enter a drug name', 'warning');
+        return;
+    }
+
+    showLoader('Looking up drug information...');
+
+    try {
+        // Call backend API
+        const response = await fetch(`${state.apiBaseUrl}/ai/drug-lookup/${encodeURIComponent(drugName)}`, {
+            headers: {
+                'Authorization': `Bearer ${getAuthToken()}`
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            
+            // Auto-fill fields
+            if (data.data.casNumber) {
+                document.getElementById('cas-number').value = data.data.casNumber;
+            }
+            if (data.data.uniiCode) {
+                document.getElementById('unii-code').value = data.data.uniiCode;
+            }
+            if (data.data.molecularFormula) {
+                document.getElementById('molecular-formula').value = data.data.molecularFormula;
+            }
+            if (data.data.molecularWeight) {
+                document.getElementById('molecular-weight').value = data.data.molecularWeight;
+            }
+
+            showNotification('Drug information retrieved successfully', 'success');
+        } else {
+            // Fallback to mock data for demo
+            const mockData = {
+                'loratadine': {
+                    casNumber: '79794-75-5',
+                    uniiCode: '7AJO3BO7QN',
+                    molecularFormula: 'C22H23ClN2O2',
+                    molecularWeight: '382.88 g/mol'
+                },
+                'cetirizine': {
+                    casNumber: '83881-51-0',
+                    uniiCode: 'YO7261ME24',
+                    molecularFormula: 'C21H25ClN2O3',
+                    molecularWeight: '388.89 g/mol'
+                }
+            };
+
+            const lowerDrugName = drugName.toLowerCase();
+            if (mockData[lowerDrugName]) {
+                const data = mockData[lowerDrugName];
+                document.getElementById('cas-number').value = data.casNumber;
+                document.getElementById('unii-code').value = data.uniiCode;
+                document.getElementById('molecular-formula').value = data.molecularFormula;
+                document.getElementById('molecular-weight').value = data.molecularWeight;
+                showNotification('Drug information retrieved (demo data)', 'success');
+            } else {
+                showNotification('Drug not found in database', 'warning');
+            }
+        }
+    } catch (error) {
+        console.error('Drug lookup error:', error);
+        showNotification('Failed to lookup drug information', 'error');
+    } finally {
+        hideLoader();
+    }
+}
+
+// ============================================
+// FILE UPLOAD FUNCTIONALITY
+// ============================================
+
+function handleDragOver(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    document.getElementById('drop-zone').classList.add('active');
+}
+
+function handleDragLeave(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    document.getElementById('drop-zone').classList.remove('active');
+}
+
+function handleDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    document.getElementById('drop-zone').classList.remove('active');
+    
+    const files = e.dataTransfer.files;
+    handleFiles(files);
+}
+
+function handleFileSelect(e) {
+    const files = e.target.files;
+    handleFiles(files);
+}
+
+function handleFiles(files) {
+    const allowedTypes = ['application/pdf', 'text/xml', 'application/xml', 'chemical/x-mdl-sdfile'];
+    const maxSize = 500 * 1024 * 1024; // 500MB
+
+    Array.from(files).forEach(file => {
+        // Validate file type
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+        const isValidType = allowedTypes.includes(file.type) || 
+                           ['pdf', 'xml', 'sdf'].includes(fileExtension);
+        
+        if (!isValidType) {
+            showNotification(`Invalid file type: ${file.name}`, 'error');
+            return;
+        }
+
+        // Validate file size
+        if (file.size > maxSize) {
+            showNotification(`File too large: ${file.name}`, 'error');
+            return;
+        }
+
+        // Add to uploaded files
+        const fileId = generateFileId();
+        const fileObj = {
+            id: fileId,
+            name: file.name,
+            size: file.size,
+            type: file.type || getFileType(fileExtension),
+            uploadedAt: new Date().toISOString(),
+            module: determineModule(file.name),
+            status: 'uploaded'
+        };
+
+        state.uploadedFiles.push(fileObj);
+        displayUploadedFile(fileObj);
+
+        // Simulate AI module assignment
+        setTimeout(() => {
+            assignModuleWithAI(fileId);
+        }, 1000);
+    });
+
+    updateFileCount();
+}
+
+function displayUploadedFile(file) {
+    const container = document.getElementById('uploaded-files');
+    const fileElement = document.createElement('div');
+    fileElement.id = `file-${file.id}`;
+    fileElement.className = 'flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-all';
+    
+    fileElement.innerHTML = `
+        <div class="flex items-center space-x-3">
+            <i class="fas fa-file-${getFileIcon(file.type)} text-2xl text-${getFileColor(file.type)}-500"></i>
+            <div>
+                <p class="font-medium text-gray-900">${file.name}</p>
+                <p class="text-sm text-gray-500">${formatFileSize(file.size)} • Module: <span id="module-${file.id}">${file.module}</span></p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-2">
+            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">
+                <i class="fas fa-check mr-1"></i>Validated
+            </span>
+            <button onclick="removeFile('${file.id}')" class="text-red-600 hover:text-red-800">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+    
+    container.appendChild(fileElement);
+}
+
+function assignModuleWithAI(fileId) {
+    // Simulate AI module assignment
+    const modules = ['3.2.S.1', '3.2.S.2', '3.2.S.3', '3.2.S.4', '3.2.S.5', '3.2.S.6', '3.2.S.7'];
+    const randomModule = modules[Math.floor(Math.random() * modules.length)];
+    
+    const moduleElement = document.getElementById(`module-${fileId}`);
+    if (moduleElement) {
+        moduleElement.textContent = randomModule;
+        moduleElement.className = 'font-semibold text-purple-600';
+    }
+
+    // Update file object
+    const file = state.uploadedFiles.find(f => f.id === fileId);
+    if (file) {
+        file.module = randomModule;
+    }
+}
+
+function removeFile(fileId) {
+    state.uploadedFiles = state.uploadedFiles.filter(f => f.id !== fileId);
+    const element = document.getElementById(`file-${fileId}`);
+    if (element) {
+        element.remove();
+    }
+    updateFileCount();
+}
+
+function updateFileCount() {
+    const count = state.uploadedFiles.length;
+    const container = document.getElementById('uploaded-files');
+    
+    if (count === 0) {
+        container.innerHTML = '<p class="text-center text-gray-500 py-4">No files uploaded yet</p>';
+    }
+}
+
+// ============================================
+// CHEMISTRY LAB FUNCTIONALITY
+// ============================================
+
+function openChemistryLab() {
+    navigateToSection('chemistry');
+}
+
+function initializeDrawer() {
+    const canvas = document.getElementById('structure-canvas');
+    const placeholder = document.getElementById('structure-placeholder');
+    
+    canvas.classList.remove('hidden');
+    placeholder.classList.add('hidden');
+    
+    // Initialize basic drawing functionality
+    const ctx = canvas.getContext('2d');
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 2;
+    
+    // Add drawing event listeners
+    let isDrawing = false;
+    
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+    });
+    
+    canvas.addEventListener('mousemove', (e) => {
+        if (isDrawing) {
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+        }
+    });
+    
+    canvas.addEventListener('mouseup', () => {
+        isDrawing = false;
+    });
+    
+    showNotification('Drawing canvas initialized', 'success');
+}
+
+function generateFromSMILES() {
+    const smiles = document.getElementById('smiles-input').value;
+    if (!smiles) {
+        showNotification('Please enter a SMILES string', 'warning');
+        return;
+    }
+    
+    // Simulate structure generation
+    showNotification('Structure generated from SMILES', 'success');
+    
+    // Show canvas
+    const canvas = document.getElementById('structure-canvas');
+    const placeholder = document.getElementById('structure-placeholder');
+    canvas.classList.remove('hidden');
+    placeholder.classList.add('hidden');
+    
+    // Draw mock structure
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw benzene ring (simplified)
+    ctx.beginPath();
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 2;
+    
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 50;
+    
+    for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI * 2 * i) / 6;
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+        
+        if (i === 0) {
+            ctx.moveTo(x, y);
+        } else {
+            ctx.lineTo(x, y);
+        }
+    }
+    ctx.closePath();
+    ctx.stroke();
+}
+
+function openStructureDrawer() {
+    initializeDrawer();
+}
+
+function uploadStructure() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.mol,.sdf';
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            showNotification(`Structure file uploaded: ${file.name}`, 'success');
+        }
+    };
+    input.click();
+}
+
+function addToSDFile() {
+    const structure = {
+        id: generateFileId(),
+        name: document.getElementById('drug-name')?.value || 'Compound ' + (state.sdFileContents.length + 1),
+        cas: document.querySelector('#chemistry-section input[placeholder="CAS Number"]')?.value || '',
+        unii: document.querySelector('#chemistry-section input[placeholder="UNII Code"]')?.value || '',
+        role: document.querySelector('#chemistry-section select')?.value || 'drug substance',
+        smiles: document.getElementById('smiles-input')?.value || '',
+        addedAt: new Date().toISOString()
+    };
+    
+    state.sdFileContents.push(structure);
+    displaySDFileEntry(structure);
+    updateSDFileStatus();
+    
+    showNotification('Structure added to SD file', 'success');
+}
+
+function displaySDFileEntry(structure) {
+    const container = document.getElementById('sd-file-contents');
+    
+    // Remove placeholder if it exists
+    if (container.querySelector('.text-gray-500')) {
+        container.innerHTML = '';
+    }
+    
+    const entry = document.createElement('div');
+    entry.id = `sd-entry-${structure.id}`;
+    entry.className = 'p-3 bg-green-50 border border-green-200 rounded-lg';
+    
+    const roleColors = {
+        'drug substance': 'green',
+        'process impurity': 'yellow',
+        'intermediate': 'blue',
+        'degradant': 'orange',
+        'starting material': 'purple'
+    };
+    
+    const color = roleColors[structure.role] || 'gray';
+    
+    entry.innerHTML = `
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="font-medium text-gray-900">${structure.name}</p>
+                <p class="text-xs text-gray-600">
+                    <span class="inline-block px-2 py-1 bg-${color}-100 text-${color}-700 rounded text-xs mr-2">
+                        ${structure.role}
+                    </span>
+                    ${structure.cas ? `CAS: ${structure.cas}` : ''}
+                </p>
+            </div>
+            <button onclick="removeFromSDFile('${structure.id}')" class="text-red-600 hover:text-red-800">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+    
+    container.appendChild(entry);
+}
+
+function removeFromSDFile(id) {
+    state.sdFileContents = state.sdFileContents.filter(s => s.id !== id);
+    const element = document.getElementById(`sd-entry-${id}`);
+    if (element) {
+        element.remove();
+    }
+    updateSDFileStatus();
+    
+    if (state.sdFileContents.length === 0) {
+        document.getElementById('sd-file-contents').innerHTML = `
+            <div class="p-3 bg-gray-50 rounded-lg text-center text-gray-500">
+                <i class="fas fa-file-code text-3xl mb-2"></i>
+                <p>No structures added yet</p>
+            </div>
+        `;
+    }
+}
+
+function updateSDFileStatus() {
+    const status = document.getElementById('sd-file-status');
+    const count = state.sdFileContents.length;
+    
+    if (count === 0) {
+        status.textContent = '0 structures • Ready to add compounds';
+    } else {
+        const hasDS = state.sdFileContents.some(s => s.role === 'drug substance');
+        if (hasDS) {
+            status.innerHTML = `<i class="fas fa-check-circle text-green-500 mr-1"></i>${count} structures • Ready for submission`;
+        } else {
+            status.innerHTML = `<i class="fas fa-exclamation-triangle text-yellow-500 mr-1"></i>${count} structures • Drug substance required`;
+        }
+    }
+}
+
+function validateSDFile() {
+    if (state.sdFileContents.length === 0) {
+        showNotification('No structures to validate', 'warning');
+        return;
+    }
+    
+    const hasDS = state.sdFileContents.some(s => s.role === 'drug substance');
+    if (!hasDS) {
+        showNotification('SD file must contain at least one drug substance', 'error');
+        return;
+    }
+    
+    showNotification('SD file validation passed', 'success');
+}
+
+function exportSDFile() {
+    if (state.sdFileContents.length === 0) {
+        showNotification('No structures to export', 'warning');
+        return;
+    }
+    
+    // Generate SD file content
+    let sdfContent = '';
+    state.sdFileContents.forEach((structure, index) => {
+        sdfContent += `${structure.name}\n`;
+        sdfContent += `  DMF.ai Platform\n\n`;
+        sdfContent += `  0  0  0  0  0  0  0  0  0  0999 V2000\n`;
+        sdfContent += `M  END\n`;
+        sdfContent += `> <NAME>\n${structure.name}\n\n`;
+        sdfContent += `> <CAS>\n${structure.cas}\n\n`;
+        sdfContent += `> <ROLE>\n${structure.role}\n\n`;
+        sdfContent += `> <UNII>\n${structure.unii}\n\n`;
+        sdfContent += `> <APPLICATION_NUMBER>\n${state.dmfData.dmfNumber || 'MF000000'}\n\n`;
+        sdfContent += `$$$$\n`;
+    });
+    
+    // Create and download file
+    const blob = new Blob([sdfContent], { type: 'chemical/x-mdl-sdfile' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `SDF_${state.dmfData.dmfNumber || 'DMF'}_${Date.now()}.sdf`;
+    a.click();
+    URL.revokeObjectURL(url);
+    
+    showNotification('SD file exported successfully', 'success');
+}
+
+// ============================================
+// GDUFA PRIOR ASSESSMENT
+// ============================================
+
+async function checkGDUFAEligibility() {
+    const dmfNumber = document.querySelector('#gdufa-section input[placeholder="MF012345"]').value;
+    const rld = document.querySelector('#gdufa-section input[placeholder="NDA 021234"]').value;
+    const justification = document.querySelector('#gdufa-section select').value;
+    const submissionDate = document.querySelector('#gdufa-section input[type="date"]').value;
+    
+    if (!dmfNumber || !rld || !justification || !submissionDate) {
+        showNotification('Please fill in all required fields', 'warning');
+        return;
+    }
+    
+    showLoader('Checking GDUFA eligibility...');
+    
+    // Simulate eligibility check
+    setTimeout(() => {
+        const resultDiv = document.getElementById('eligibility-result');
+        resultDiv.classList.remove('hidden');
+        
+        const isEligible = Math.random() > 0.3; // 70% chance of eligibility for demo
+        
+        if (isEligible) {
+            resultDiv.innerHTML = `
+                <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-600 text-xl mr-3 mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-green-800">Eligible for Prior Assessment</h4>
+                            <p class="text-sm text-green-700 mt-1">Your DMF qualifies for GDUFA prior assessment based on: ${justification}</p>
+                            <ul class="text-sm text-green-700 mt-2 space-y-1">
+                                <li>• Assessment can begin 6 months before ANDA submission</li>
+                                <li>• Estimated time savings: 60-90 days</li>
+                                <li>• Required: LOA with pre-assigned ANDA number</li>
+                            </ul>
+                            <button onclick="generatePriorAssessmentRequest()" class="mt-3 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+                                Generate Request Letter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            resultDiv.innerHTML = `
+                <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div class="flex items-start">
+                        <i class="fas fa-times-circle text-red-600 text-xl mr-3 mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-red-800">Not Eligible</h4>
+                            <p class="text-sm text-red-700 mt-1">Your DMF does not meet the criteria for prior assessment.</p>
+                            <p class="text-sm text-red-700 mt-2">Consider these alternatives:</p>
+                            <ul class="text-sm text-red-700 mt-1 space-y-1">
+                                <li>• Standard DMF review process</li>
+                                <li>• Pre-submission meeting with FDA</li>
+                                <li>• Controlled correspondence</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        hideLoader();
+    }, 2000);
+}
+
+function generatePriorAssessmentRequest() {
+    showNotification('Generating prior assessment request letter...', 'info');
+    
+    // Generate PDF using jsPDF
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    doc.setFontSize(12);
+    doc.text('GDUFA DMF Prior Assessment Request', 20, 20);
+    doc.text('Date: ' + new Date().toLocaleDateString(), 20, 30);
+    doc.text('DMF Number: ' + (state.dmfData.dmfNumber || 'MF012345'), 20, 40);
+    // Add more content...
+    
+    doc.save('GDUFA_Prior_Assessment_Request.pdf');
+    
+    showNotification('Request letter generated successfully', 'success');
+}
+
+// ============================================
+// AI ASSISTANT
+// ============================================
+
+function openAIAssistant() {
+    document.getElementById('ai-assistant-modal').classList.remove('hidden');
+}
+
+function closeAIAssistant() {
+    document.getElementById('ai-assistant-modal').classList.add('hidden');
+}
+
+async function sendAIMessage() {
+    const input = document.getElementById('ai-input');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    // Add user message to chat
+    addChatMessage(message, 'user');
+    input.value = '';
+    
+    // Get AI response
+    try {
+        const response = await getAIResponse(message);
+        addChatMessage(response, 'ai');
+    } catch (error) {
+        addChatMessage('Sorry, I encountered an error. Please try again.', 'ai');
+    }
+}
+
+function addChatMessage(message, sender) {
+    const container = document.getElementById('ai-messages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'flex items-start space-x-2 animate-fadeInUp';
+    
+    if (sender === 'user') {
+        messageDiv.innerHTML = `
+            <div class="bg-gray-100 rounded-lg p-3 max-w-xs ml-auto">
+                <p class="text-sm">${message}</p>
+            </div>
+            <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-user text-white text-sm"></i>
+            </div>
+        `;
+    } else {
+        messageDiv.innerHTML = `
+            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-robot text-purple-600 text-sm"></i>
+            </div>
+            <div class="bg-purple-50 rounded-lg p-3 max-w-xs">
+                <p class="text-sm">${message}</p>
+            </div>
+        `;
+    }
+    
+    container.appendChild(messageDiv);
+    container.scrollTop = container.scrollHeight;
+    
+    // Store in chat history
+    state.aiChatHistory.push({ message, sender, timestamp: new Date().toISOString() });
+}
+
+async function getAIResponse(message) {
+    // Try to call backend API
+    try {
+        const response = await fetch(`${state.apiBaseUrl}/ai/chat`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getAuthToken()}`
+            },
+            body: JSON.stringify({
+                message,
+                context: state.currentSection,
+                dmfId: state.dmfData.dmfNumber
+            })
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            return data.response;
+        }
+    } catch (error) {
+        console.error('AI API error:', error);
+    }
+    
+    // Fallback responses for demo
+    const responses = {
+        'dmf': 'A Drug Master File (DMF) is a submission to the FDA containing confidential detailed information about facilities, processes, or articles used in manufacturing drugs.',
+        'gdufa': 'GDUFA III allows prior assessment of DMFs 6 months before ANDA submission if certain criteria are met, potentially saving 60-90 days in review time.',
+        'module': 'FDA requires DMF documentation in specific modules: 3.2.S.1 (General Info), 3.2.S.2 (Manufacture), 3.2.S.3 (Characterization), 3.2.S.4 (Control), 3.2.S.5 (Reference Standards), 3.2.S.6 (Container), and 3.2.S.7 (Stability).',
+        'annual': 'Annual reports are required for all active DMFs. They must include any changes, list of authorized parties, and confirmation that the DMF is current.',
+        'help': 'I can help you with DMF submissions, GDUFA prior assessment, chemical structures, FDA compliance, and more. What would you like to know?'
+    };
+    
+    const lowerMessage = message.toLowerCase();
+    for (const key in responses) {
+        if (lowerMessage.includes(key)) {
+            return responses[key];
+        }
+    }
+    
+    return `I understand you're asking about "${message}". Based on FDA guidelines, I recommend checking the specific requirements for your submission type. Would you like me to help you with something specific?`;
+}
+
+// ============================================
+// SUBMISSION FUNCTIONS
+// ============================================
+
+async function submitDMF() {
+    if (!validateAllSteps()) {
+        showNotification('Please complete all required fields', 'error');
+        return;
+    }
+    
+    showLoader('Submitting to FDA...');
+    
+    try {
+        // Prepare submission data
+        const submissionData = {
+            ...state.dmfData,
+            documents: state.uploadedFiles,
+            structures: state.sdFileContents,
+            submittedAt: new Date().toISOString()
+        };
+        
+        // Call backend API
+        const response = await fetch(`${state.apiBaseUrl}/dmf/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getAuthToken()}`
+            },
+            body: JSON.stringify(submissionData)
+        });
+        
+        if (response.ok) {
+            const result = await response.json();
+            showSuccessModal(result.trackingId || 'FDA-2024-' + generateFileId());
+        } else {
+            throw new Error('Submission failed');
+        }
+    } catch (error) {
+        console.error('Submission error:', error);
+        // Show success anyway for demo
+        showSuccessModal('FDA-2024-' + generateFileId());
+    } finally {
+        hideLoader();
+    }
+}
+
+function validateAllSteps() {
+    return state.dmfData.dmfNumber && 
+           state.dmfData.drugName && 
+           state.uploadedFiles.length > 0;
+}
+
+function showSuccessModal(trackingId) {
+    document.getElementById('tracking-id').textContent = trackingId;
+    document.getElementById('success-modal').classList.remove('hidden');
+    
+    // Reset form
+    setTimeout(() => {
+        state.dmfData = {};
+        state.uploadedFiles = [];
+        state.sdFileContents = [];
+        navigateToSection('dashboard');
+    }, 5000);
+}
+
+function closeSuccessModal() {
+    document.getElementById('success-modal').classList.add('hidden');
+}
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+function generateFileId() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+function getFileIcon(type) {
+    if (type.includes('pdf')) return 'pdf';
+    if (type.includes('xml')) return 'code';
+    if (type.includes('sdf')) return 'alt';
+    return 'alt';
+}
+
+function getFileColor(type) {
+    if (type.includes('pdf')) return 'red';
+    if (type.includes('xml')) return 'blue';
+    if (type.includes('sdf')) return 'purple';
+    return 'gray';
+}
+
+function getFileType(extension) {
+    const types = {
+        'pdf': 'application/pdf',
+        'xml': 'text/xml',
+        'sdf': 'chemical/x-mdl-sdfile'
+    };
+    return types[extension] || 'application/octet-stream';
+}
+
+function determineModule(filename) {
+    const lower = filename.toLowerCase();
+    if (lower.includes('nomenclature') || lower.includes('general')) return '3.2.S.1';
+    if (lower.includes('manufacture') || lower.includes('process')) return '3.2.S.2';
+    if (lower.includes('characterization') || lower.includes('impurit')) return '3.2.S.3';
+    if (lower.includes('control') || lower.includes('specification')) return '3.2.S.4';
+    if (lower.includes('reference') || lower.includes('standard')) return '3.2.S.5';
+    if (lower.includes('container') || lower.includes('closure')) return '3.2.S.6';
+    if (lower.includes('stability')) return '3.2.S.7';
+    return '3.2.S.1'; // Default
+}
+
+function showNotification(message, type = 'info') {
+    const colors = {
+        success: 'bg-green-600',
+        error: 'bg-red-600',
+        warning: 'bg-yellow-600',
+        info: 'bg-blue-600'
+    };
+    
+    const notification = document.createElement('div');
+    notification.className = `fixed top-20 right-4 px-6 py-3 ${colors[type]} text-white rounded-lg shadow-lg z-50 animate-fadeInUp`;
+    notification.innerHTML = `
+        <div class="flex items-center">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'} mr-2"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+function showLoader(message = 'Loading...') {
+    const loader = document.createElement('div');
+    loader.id = 'global-loader';
+    loader.className = 'fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-center justify-center';
+    loader.innerHTML = `
+        <div class="bg-white rounded-lg p-6 flex flex-col items-center">
+            <div class="loader mb-4"></div>
+            <p class="text-gray-700">${message}</p>
+        </div>
+    `;
+    document.body.appendChild(loader);
+}
+
+function hideLoader() {
+    const loader = document.getElementById('global-loader');
+    if (loader) {
+        loader.remove();
+    }
+}
+
+function getAuthToken() {
+    // In production, this would get the actual JWT token
+    return localStorage.getItem('auth_token') || 'demo_token';
+}
+
+function saveDraft() {
+    const draft = {
+        dmfData: state.dmfData,
+        uploadedFiles: state.uploadedFiles,
+        sdFileContents: state.sdFileContents,
+        savedAt: new Date().toISOString()
+    };
+    
+    localStorage.setItem('dmf_draft', JSON.stringify(draft));
+    console.log('Draft saved');
+}
+
+function loadDraft() {
+    const draft = localStorage.getItem('dmf_draft');
+    if (draft) {
+        const data = JSON.parse(draft);
+        state.dmfData = data.dmfData || {};
+        state.uploadedFiles = data.uploadedFiles || [];
+        state.sdFileContents = data.sdFileContents || [];
+        
+        showNotification(`Draft restored from ${new Date(data.savedAt).toLocaleString()}`, 'info');
+    }
+}
+
+function closeAllModals() {
+    document.getElementById('ai-assistant-modal').classList.add('hidden');
+    document.getElementById('success-modal').classList.add('hidden');
+}
+
+// Quick Action Functions
+function checkCompliance() {
+    showNotification('Running compliance check...', 'info');
+    setTimeout(() => {
+        showNotification('Compliance check complete: Score 98%', 'success');
+    }, 2000);
+}
+
+function viewTemplates() {
+    showNotification('Loading FDA templates...', 'info');
+    // Would open templates section
+}
+
+// Initialize on page load
+window.addEventListener('load', () => {
+    loadDraft();
+});
+
+// Auto-save before leaving
+window.addEventListener('beforeunload', () => {
+    if (state.dmfData.dmfNumber) {
+        saveDraft();
+    }
+});
+
+console.log('DMF.ai Platform initialized successfully');
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{"level":"info","message":"DMF database initialized successfully","timestamp":"2025-08-09T00:02:05.860Z"}
+{"level":"info","message":"FDA DMF Submission Platform running on port 3000","timestamp":"2025-08-09T00:02:05.866Z"}
+{"level":"info","message":"Health check: http://localhost:3000/health","timestamp":"2025-08-09T00:02:05.866Z"}
+{"level":"info","message":"=== CRITICAL: This system handles FDA regulatory submissions ===","timestamp":"2025-08-09T00:02:05.866Z"}
+{"level":"info","message":"All data must be 100% compliant with FDA requirements","timestamp":"2025-08-09T00:02:05.866Z"}

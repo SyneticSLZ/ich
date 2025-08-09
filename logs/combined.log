@@ -1,0 +1,10 @@
+{"level":"info","message":"Admin user created: admin@whiteoakailaw.com / admin123","timestamp":"2025-08-08T17:51:58.636Z"}
+{"level":"info","message":"FDA Submission Platform server running on port 3000","timestamp":"2025-08-08T17:51:58.643Z"}
+{"level":"info","message":"Health check: http://localhost:3000/health","timestamp":"2025-08-08T17:51:58.644Z"}
+{"level":"info","message":"Admin login: admin@whiteoakailaw.com / admin123","timestamp":"2025-08-08T17:51:58.644Z"}
+{"level":"info","message":"FDA Submission Platform server running on port 3000","timestamp":"2025-08-08T17:52:56.004Z"}
+{"level":"info","message":"Health check: http://localhost:3000/health","timestamp":"2025-08-08T17:52:56.007Z"}
+{"level":"info","message":"Admin login: admin@whiteoakailaw.com / admin123","timestamp":"2025-08-08T17:52:56.007Z"}
+{"level":"info","message":"FDA Submission Platform server running on port 3000","timestamp":"2025-08-08T17:54:11.302Z"}
+{"level":"info","message":"Health check: http://localhost:3000/health","timestamp":"2025-08-08T17:54:11.305Z"}
+{"level":"info","message":"Admin login: admin@whiteoakailaw.com / admin123","timestamp":"2025-08-08T17:54:11.305Z"}
