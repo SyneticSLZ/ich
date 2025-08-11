@@ -93,6 +93,7 @@
             .no-print { display:none; }
             .page-break { page-break-before: always; }
         }
+        
     </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
@@ -180,6 +181,9 @@
                 <button onclick="showTab('summary')" id="tab-summary" class="tab-btn px-6 py-3 rounded-lg font-semibold transition-all duration-300 tab-active">
                     Executive Summary
                 </button>
+                   <button onclick="showTab('Administration')" id="tab-Administration" class="tab-btn px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                    Administration
+                </button>
                 <button onclick="showTab('approvals')" id="tab-approvals" class="tab-btn px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-gray-100">
                     Ultra-Orphan Approvals
                 </button>
@@ -220,6 +224,7 @@
                         </p>
                     </div>
                 </div>
+
 
                 <div class="grid md:grid-cols-2 gap-6 mb-8">
                     <div class="bg-white rounded-xl p-6 shadow-lg">
@@ -317,6 +322,322 @@
             </div>
         </div>
 
+
+
+        <div id="content-Administration" class="tab-content hidden ">
+                <!-- Main Title -->
+        <div class="glass-card rounded-2xl p-8 shadow-xl mb-8">
+            <h1 class="text-3xl font-bold gradient-text mb-3">Route of Administration Analysis</h1>
+            <p class="text-lg text-gray-700">Complete breakdown of all 39 ultra-orphan products (36 approvals + 3 CRLs)</p>
+        </div>
+
+        <!-- Top-Level Summary -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- Injectable vs Non-Injectable Pie -->
+            <div class="glass-card rounded-2xl p-6 shadow-xl">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Overall Distribution</h2>
+                <div class="flex items-center justify-center mb-4">
+                    <div class="relative w-48 h-48">
+                        <svg viewBox="0 0 42 42" class="w-48 h-48">
+                            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#e5e7eb" stroke-width="3"/>
+                            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#3b82f6" stroke-width="3"
+                                    stroke-dasharray="74.4 25.6" stroke-dashoffset="25" transform="rotate(-90 21 21)"/>
+                            <!-- <text x="21" y="18" text-anchor="middle" class="text-xxs font-light fill-gray-400">29</text> -->
+                            <!-- <text x="21" y="26" text-anchor="middle" class="text-xs fill-gray-600">Injectable</text>
+                                                <text x="21" y="16" text-anchor="middle" class="text-2xl font-bold fill-gray-900">29</text> -->
+                        <!-- <text x="21" y="24" text-anchor="middle" class="text-[10px] fill-gray-600">Injectable</text>
+                        <text x="21" y="30" text-anchor="middle" class="text-[8px] fill-gray-500">(74.4%)</text> -->
+                        </svg>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                            <span class="text-sm font-semibold">Injectable</span>
+                        </div>
+                        <span class="text-sm font-bold">29 products (74.4%)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-gray-300 rounded-full mr-2"></div>
+                            <span class="text-sm font-semibold">Non-Injectable</span>
+                        </div>
+                        <span class="text-sm font-bold">10 products (25.6%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Products Breakdown -->
+            <div class="glass-card rounded-2xl p-6 shadow-xl">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Product Categories</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-lg p-3 text-center">
+                        <p class="text-2xl font-bold text-emerald-700">36</p>
+                        <p class="text-xs text-gray-600">FDA Approved Products</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-3 text-center">
+                        <p class="text-2xl font-bold text-red-700">3</p>
+                        <p class="text-xs text-gray-600">Products From CRLs</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 text-center">
+                        <p class="text-2xl font-bold text-blue-700">39</p>
+                        <p class="text-xs text-gray-600">Total Products</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-3 text-center">
+                        <p class="text-2xl font-bold text-purple-700">74.4%</p>
+                        <p class="text-xs text-gray-600">Injectable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Injectable Routes -->
+        <div class="glass-card rounded-2xl p-8 shadow-xl mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Injectable Routes Breakdown (29 Products)</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Left side - Bar chart -->
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">IV Infusion</span>
+                            <span class="text-sm font-bold text-gray-900">20 products</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-6 overflow-hidden">
+                            <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full" style="width: 69%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Subcutaneous</span>
+                            <span class="text-sm font-bold text-gray-900">7 products</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-6 overflow-hidden">
+                            <div class="bg-gradient-to-r from-green-500 to-green-600 h-full rounded-full" style="width: 24%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Intrathecal</span>
+                            <span class="text-sm font-bold text-gray-900">1 product</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-6 overflow-hidden">
+                            <div class="bg-gradient-to-r from-purple-500 to-purple-600 h-full rounded-full" style="width: 3.5%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Intracerebroventricular</span>
+                            <span class="text-sm font-bold text-gray-900">1 product</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-6 overflow-hidden">
+                            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 h-full rounded-full" style="width: 3.5%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Subretinal</span>
+                            <span class="text-sm font-bold text-gray-900">1 product</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-6 overflow-hidden">
+                            <div class="bg-gradient-to-r from-pink-500 to-pink-600 h-full rounded-full" style="width: 3.5%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right side - Product examples -->
+                <div class="bg-blue-50 rounded-lg p-4">
+                    <h3 class="font-bold text-gray-900 mb-3">Key Injectable Products</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start">
+                            <span class="text-blue-600 mt-1 mr-2">•</span>
+                            <span><strong>IV:</strong> ZYNTEGLO, ONPATTRO, MEPSEVII, HEMGENIX</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-green-600 mt-1 mr-2">•</span>
+                            <span><strong>SC:</strong> CRYSVITA, STRENSIQ, GIVLAARI, AMVUTTRA</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-purple-600 mt-1 mr-2">•</span>
+                            <span><strong>Intrathecal:</strong> SPINRAZA</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-indigo-600 mt-1 mr-2">•</span>
+                            <span><strong>ICV:</strong> BRINEURA</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-pink-600 mt-1 mr-2">•</span>
+                            <span><strong>Subretinal:</strong> LUXTURNA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Non-Injectable Routes -->
+        <div class="glass-card rounded-2xl p-8 shadow-xl mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Non-Injectable Routes Breakdown (10 Products)</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Left side - Distribution -->
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Oral</span>
+                            <span class="text-sm font-bold text-gray-900">7 products</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-6 overflow-hidden">
+                            <div class="bg-gradient-to-r from-green-500 to-green-600 h-full rounded-full" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Inhalation</span>
+                            <span class="text-sm font-bold text-gray-900">1 product</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-6 overflow-hidden">
+                            <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 h-full rounded-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Topical</span>
+                            <span class="text-sm font-bold text-gray-900">1 product</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-6 overflow-hidden">
+                            <div class="bg-gradient-to-r from-orange-500 to-orange-600 h-full rounded-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-semibold text-gray-700">Ophthalmic</span>
+                            <span class="text-sm font-bold text-gray-900">1 product</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-6 overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-500 to-cyan-600 h-full rounded-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right side - Product list -->
+                <div class="bg-green-50 rounded-lg p-4">
+                    <h3 class="font-bold text-gray-900 mb-3">Non-Injectable Products</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-start">
+                            <span class="text-green-600 mt-1 mr-2">•</span>
+                            <span><strong>Oral:</strong> GALAFOLD, ZOKINVY, PROCYSBI, BYLVAY, LIVMARLI, OPSUMIT, Celecoxib/Tramadol</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-yellow-600 mt-1 mr-2">•</span>
+                            <span><strong>Inhalation:</strong> Bronchitol (mannitol)</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-orange-600 mt-1 mr-2">•</span>
+                            <span><strong>Topical:</strong> VYJUVEK</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-cyan-600 mt-1 mr-2">•</span>
+                            <span><strong>Ophthalmic:</strong> OXERVATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- By Product Type Analysis -->
+        <div class="glass-card rounded-2xl p-8 shadow-xl mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Injectable Rate by Product Type</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b-2 border-gray-200">
+                            <th class="text-left py-3 px-4 font-semibold text-gray-900">Product Category</th>
+                            <th class="text-center py-3 px-4 font-semibold text-gray-900">Total</th>
+                            <th class="text-center py-3 px-4 font-semibold text-gray-900">Injectable</th>
+                            <th class="text-center py-3 px-4 font-semibold text-gray-900">Non-Injectable</th>
+                            <th class="text-center py-3 px-4 font-semibold text-gray-900">% Injectable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-200 hover:bg-blue-50 transition-colors">
+                            <td class="py-3 px-4 font-medium">Gene Therapies</td>
+                            <td class="text-center py-3 px-4">7</td>
+                            <td class="text-center py-3 px-4 text-blue-600 font-bold">7</td>
+                            <td class="text-center py-3 px-4">0</td>
+                            <td class="text-center py-3 px-4"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-bold">100%</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-blue-50 transition-colors">
+                            <td class="py-3 px-4 font-medium">Enzyme Replacement</td>
+                            <td class="text-center py-3 px-4">8</td>
+                            <td class="text-center py-3 px-4 text-blue-600 font-bold">8</td>
+                            <td class="text-center py-3 px-4">0</td>
+                            <td class="text-center py-3 px-4"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-bold">100%</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-blue-50 transition-colors">
+                            <td class="py-3 px-4 font-medium">Monoclonal Antibodies</td>
+                            <td class="text-center py-3 px-4">6</td>
+                            <td class="text-center py-3 px-4 text-blue-600 font-bold">6</td>
+                            <td class="text-center py-3 px-4">0</td>
+                            <td class="text-center py-3 px-4"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm font-bold">100%</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-blue-50 transition-colors">
+                            <td class="py-3 px-4 font-medium">RNA/Antisense</td>
+                            <td class="text-center py-3 px-4">7</td>
+                            <td class="text-center py-3 px-4 text-blue-600 font-bold">6</td>
+                            <td class="text-center py-3 px-4">1</td>
+                            <td class="text-center py-3 px-4"><span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm font-bold">86%</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-blue-50 transition-colors">
+                            <td class="py-3 px-4 font-medium">Small Molecules</td>
+                            <td class="text-center py-3 px-4">8</td>
+                            <td class="text-center py-3 px-4 text-blue-600 font-bold">1</td>
+                            <td class="text-center py-3 px-4 text-green-600 font-bold">7</td>
+                            <td class="text-center py-3 px-4"><span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-bold">12.5%</span></td>
+                        </tr>
+                        <tr class="border-b border-gray-200 hover:bg-red-50 transition-colors">
+                            <td class="py-3 px-4 font-medium">CRL Products</td>
+                            <td class="text-center py-3 px-4">3</td>
+                            <td class="text-center py-3 px-4 text-red-600 font-bold">1</td>
+                            <td class="text-center py-3 px-4">2</td>
+                            <td class="text-center py-3 px-4"><span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-sm font-bold">33%</span></td>
+                        </tr>
+                        <tr class="bg-gray-100 font-bold">
+                            <td class="py-3 px-4">TOTAL</td>
+                            <td class="text-center py-3 px-4">39</td>
+                            <td class="text-center py-3 px-4 text-blue-700">29</td>
+                            <td class="text-center py-3 px-4">10</td>
+                            <td class="text-center py-3 px-4"><span class="bg-blue-200 text-blue-900 px-3 py-1 rounded-full text-sm">74.4%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Key Finding -->
+        <div class="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-2xl p-6 border-2 border-emerald-300">
+            <h3 class="text-lg font-bold text-gray-900 mb-3 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                </svg>
+                Key Finding
+            </h3>
+            <p class="text-gray-800">
+                Of 39 total ultra-orphan products analyzed (36 FDA approvals + 3 CRLs), <strong>29 products (74.4%) require injectable administration</strong>. 
+                All biologics (gene therapies, ERTs, mAbs) are 100% injectable, while small molecules are predominantly oral (87.5%). 
+                Despite the complexity of injectable manufacturing, <strong>only 1 injectable product received a CRL</strong> compared to 
+                28 injectable products approved with CMC deferrals, demonstrating FDA's consistent flexibility for these complex formulations.
+            </p>
+        </div>
+    </div>
         <!-- Ultra-Orphan Approvals Tab -->
         <div id="content-approvals" class="tab-content hidden">
             <div class="glass-card rounded-2xl p-8 shadow-xl">
@@ -1185,63 +1506,6 @@ function populateCRLCards(data) {
         container.appendChild(card);
     });
     
-    // Add summary comparison box at the end
-    const summaryBox = document.createElement('div');
-    summaryBox.className = 'mt-8 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-6 border-2 border-gray-200';
-    summaryBox.innerHTML = `
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Pattern Analysis: CRLs vs. Approvals</h3>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div>
-                <h4 class="font-semibold text-gray-900 mb-3">CRLs Issued (This Tab)</h4>
-                <ul class="space-y-2 text-sm text-gray-700">
-                    <li class="flex items-start">
-                        <span class="text-red-600 mt-1 mr-2">•</span>
-                        <span>Manufacturing facility issues cited in multiple CRLs</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-red-600 mt-1 mr-2">•</span>
-                        <span>Human factors validation problems</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-red-600 mt-1 mr-2">•</span>
-                        <span>Safety/efficacy balance concerns</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-red-600 mt-1 mr-2">•</span>
-                        <span>All for diseases with &lt;5,000 US patients</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold text-gray-900 mb-3">Approvals with PMCs (Other Tabs)</h4>
-                <ul class="space-y-2 text-sm text-gray-700">
-                    <li class="flex items-start">
-                        <span class="text-green-600 mt-1 mr-2">•</span>
-                        <span>MEPSEVII: Concurrent validation "due to rarity"</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-green-600 mt-1 mr-2">•</span>
-                        <span>ONPATTRO: "Interim method acceptable"</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-green-600 mt-1 mr-2">•</span>
-                        <span>ZYNTEGLO: 8 CMC PMCs for validation gaps</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-green-600 mt-1 mr-2">•</span>
-                        <span>40+ other approvals with CMC deferrals</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="mt-6 p-4 bg-white rounded-lg border-l-4 border-blue-500">
-            <p class="text-gray-800 font-medium">
-                Key Question: Why did these orphan drugs receive CRLs for manufacturing issues while 
-                others with similar or more complex manufacturing challenges received approval with PMCs?
-            </p>
-        </div>
-    `;
-    container.appendChild(summaryBox);
 }
 
 // Update the tab switching function to handle CRL tab
