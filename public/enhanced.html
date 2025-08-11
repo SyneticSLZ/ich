@@ -200,7 +200,7 @@
     <div class="container mx-auto px-4 pb-12">
         
         <!-- Executive Summary Tab -->
-        <div id="content-summary" class="tab-content">
+ <div id="content-summary" class="tab-content">
             <div class="glass-card rounded-2xl p-8 shadow-xl">
                 <div class="mb-8">
                     <h2 class="text-3xl font-bold text-gray-900 mb-4">Executive Summary</h2>
@@ -211,8 +211,8 @@
                             issuing Complete Response Letters (CRLs).
                         </p>
                         <p class="text-gray-700">
-                            Our analysis of <strong>85+ FDA approvals</strong> of ultra-orphan drugs (affecting &lt;5,000 US patients) 
-                            between 2002-2023 reveals a clear pattern: when core product quality is assured, FDA approves products with 
+                            Our analysis of <strong>40+ FDA approvals</strong> of ultra-orphan drugs (affecting &lt;5,000 US patients) 
+                            between 2002-2023 reveals a clear pattern: when core product quality is assured, FDA frequently approves products with 
                             manufacturing deferrals to avoid delaying patient access.
                         </p>
                     </div>
@@ -256,34 +256,35 @@
                         </ul>
                     </div>
 
-                    <div class="bg-white rounded-xl p-6 shadow-lg hidden ">
+                    <div class="bg-white rounded-xl p-6 shadow-lg">
                         <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
                             <svg class="w-6 h-6 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
                                 <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 100 4h2a2 2 0 100 4h2a1 1 0 100 2 2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z" clip-rule="evenodd"></path>
                             </svg>
-                            Common CMC Deferrals  (as percentage of drugs WITH PMCs)
+                            Types of CMC Work Deferred to Post-Approval
                         </h3>
-                        <ul class="space-y-3 text-gray-700">
+                        <p class="text-gray-600 text-sm mb-3">FDA has approved ultra-orphan drugs with deferrals including:</p>
+                        <ul class="space-y-2 text-gray-700">
                             <li class="flex items-start">
                                 <span class="text-blue-600 mt-1 mr-2">•</span>
-                                <span><strong>43%</strong> - Analytical method validation</span>
+                                <span><strong>Analytical Method Validation</strong> - Developing robust, validated release methods</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="text-blue-600 mt-1 mr-2">•</span>
-                                <span><strong>24%</strong> - Stability studies</span>
+                                <span><strong>Stability Studies</strong> - Long-term and accelerated stability protocols</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="text-blue-600 mt-1 mr-2">•</span>
-                                <span><strong>24%</strong> - Shipping validation</span>
+                                <span><strong>Process Validation</strong> - Concurrent validation during commercial production</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="text-blue-600 mt-1 mr-2">•</span>
-                                <span><strong>14%</strong> - Extractables/Leachables</span>
+                                <span><strong>Shipping Validation</strong> - Worst-case temperature excursion studies</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="text-blue-600 mt-1 mr-2">•</span>
-                                <span><strong>19%</strong> - Process validation</span>
+                                <span><strong>Extractables/Leachables</strong> - Container closure system assessments</span>
                             </li>
                         </ul>
                     </div>
@@ -296,13 +297,16 @@
                         received a CRL for manufacturing issues, our analysis shows:
                     </p>
                     <ul class="space-y-2 text-gray-700">
-
                         <li class="flex items-start">
                             <span class="text-purple-600 mt-1 mr-2">1.</span>
-                            <span>FDA has explicit precedent for accepting "concurrent validation due to rarity"</span>
+                            <span>52% of ultra-orphan drugs with documented CMC considerations were approved with post-marketing commitments</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-purple-600 mt-1 mr-2">2.</span>
+                            <span>FDA has explicit precedent for accepting "concurrent validation due to rarity"</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-600 mt-1 mr-2">3.</span>
                             <span>Complex products (gene therapies, ERTs) routinely approved with substantial CMC deferrals</span>
                         </li>
                     </ul>
@@ -825,7 +829,7 @@
         </div>
     </div>
 
-   <script>
+ <script>
         // Enhanced approvals data with new documented PMCs
         const documentedPMCs = [
             {
@@ -1371,7 +1375,7 @@
                 }
                 
                 const card = document.createElement('div');
-                card.className = 'bg-white rounded-xl shadow-lg overflow-hidden card-hover cursor-pointer';
+                card.className = 'bg-white rounded-xl shadow-lg overflow-hidden';
                 card.innerHTML = `
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
@@ -1386,12 +1390,9 @@
                                     <span class="px-3 py-1 text-xs font-semibold rounded-full ${actionBadgeClass}">${item.action}</span>
                                 </div>
                             </div>
-                            <svg class="w-5 h-5 text-gray-400 transform transition-transform duration-300" id="chevron-${index}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
                         </div>
                         
-                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div class="grid md:grid-cols-2 gap-4 text-sm mb-3">
                             <div>
                                 <span class="font-semibold text-gray-700">Indication:</span>
                                 <p class="text-gray-600">${item.indication}</p>
@@ -1402,13 +1403,13 @@
                             </div>
                         </div>
                         
-                        <div class="mt-3">
+                        <div class="mb-4">
                             <span class="font-semibold text-gray-700 text-sm">CMC Issue:</span>
                             <p class="text-gray-600 text-sm mt-1">${item.issue}</p>
                         </div>
                         
-                        <!-- Expandable details section -->
-                        <div id="details-${index}" class="hidden mt-4 pt-4 border-t border-gray-200">
+                        <!-- Always visible details section -->
+                        <div class="mt-4 pt-4 border-t border-gray-200">
                             <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 mb-4">
                                 <h4 class="font-semibold text-gray-900 mb-2">Detailed CMC Considerations:</h4>
                                 <p class="text-gray-700 text-sm">${item.details}</p>
@@ -1431,27 +1432,6 @@
                         </div>
                     </div>
                 `;
-                
-                // Add click handler to expand/collapse
-                card.addEventListener('click', function(e) {
-                    // Don't toggle if clicking on link
-                    if (e.target.tagName === 'A' || e.target.closest('a')) {
-                        return;
-                    }
-                    
-                    const details = document.getElementById(`details-${index}`);
-                    const chevron = document.getElementById(`chevron-${index}`);
-                    
-                    if (details.classList.contains('hidden')) {
-                        details.classList.remove('hidden');
-                        chevron.style.transform = 'rotate(180deg)';
-                        card.classList.add('expanded-row');
-                    } else {
-                        details.classList.add('hidden');
-                        chevron.style.transform = 'rotate(0deg)';
-                        card.classList.remove('expanded-row');
-                    }
-                });
                 
                 container.appendChild(card);
             });
