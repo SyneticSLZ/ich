@@ -1,0 +1,25 @@
+{"level":"info","message":"RNAi Regulatory Intelligence Backend running on port 3000","timestamp":"2025-08-23T15:26:53.382Z"}
+{"level":"info","message":"Initializing data...","timestamp":"2025-08-23T15:26:53.384Z"}
+{"level":"error","message":"Error fetching adverse events for inclisiran:","timestamp":"2025-08-23T15:26:54.187Z"}
+{"level":"error","message":"Error fetching approvals for inclisiran:","timestamp":"2025-08-23T15:26:54.374Z"}
+{"level":"info","message":"Fetched 116 clinical trials for RNAi drugs","timestamp":"2025-08-23T15:26:57.694Z"}
+{"level":"info","message":"Initial data loaded successfully","timestamp":"2025-08-23T15:26:57.695Z"}
+{"level":"info","message":"RNAi Regulatory Intelligence Backend running on port 3000","timestamp":"2025-08-23T15:42:09.474Z"}
+{"level":"info","message":"Initializing data...","timestamp":"2025-08-23T15:42:09.476Z"}
+{"level":"warn","message":"No adverse events found for inclisiran after trying all search strategies","timestamp":"2025-08-23T15:42:11.135Z"}
+{"level":"error","message":"Error fetching approvals for inclisiran:","timestamp":"2025-08-23T15:42:11.307Z"}
+{"level":"info","message":"Fetched 116 clinical trials for RNAi drugs","timestamp":"2025-08-23T15:42:14.602Z"}
+{"level":"info","message":"Initial data loaded successfully","timestamp":"2025-08-23T15:42:14.603Z"}
+{"level":"info","message":"Fetched 116 clinical trials for RNAi drugs","timestamp":"2025-08-23T15:57:45.234Z"}
+{"level":"info","message":"Fetched 116 clinical trials for RNAi drugs","timestamp":"2025-08-23T15:58:14.158Z"}
+{"level":"info","message":"Fetched 116 clinical trials for RNAi drugs","timestamp":"2025-08-23T15:58:25.422Z"}
+{"level":"info","message":"Fetched 116 clinical trials for RNAi drugs","timestamp":"2025-08-23T15:58:30.899Z"}
+{"level":"info","message":"Fetched 116 clinical trials for RNAi drugs","timestamp":"2025-08-23T15:58:38.698Z"}
+{"level":"info","message":"Running scheduled data refresh...","timestamp":"2025-08-23T17:00:00.028Z"}
+{"level":"warn","message":"No adverse events found for inclisiran after trying all search strategies","timestamp":"2025-08-23T17:00:01.537Z"}
+{"level":"warn","message":"No adverse events found for patisiran after trying all search strategies","timestamp":"2025-08-23T17:00:03.425Z"}
+{"level":"warn","message":"No adverse events found for givosiran after trying all search strategies","timestamp":"2025-08-23T17:00:05.402Z"}
+{"level":"warn","message":"No adverse events found for lumasiran after trying all search strategies","timestamp":"2025-08-23T17:00:07.294Z"}
+{"level":"warn","message":"No adverse events found for vutrisiran after trying all search strategies","timestamp":"2025-08-23T17:00:09.196Z"}
+{"level":"info","message":"Fetched 116 clinical trials for RNAi drugs","timestamp":"2025-08-23T17:00:13.568Z"}
+{"level":"info","message":"Scheduled refresh completed","timestamp":"2025-08-23T17:00:13.568Z"}

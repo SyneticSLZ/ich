@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK-0616 (Enlicitide Decanoate) - Oral PCSK9 Inhibitor Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #00539C 0%, #003A70 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #00539C 0%, #003A70 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255,255,255,0.05);
+            transform: rotate(45deg);
+        }
+        
+        .drug-title {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .drug-name {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .drug-subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+        
+        .drug-mechanism {
+            font-size: 1.5em;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 30px;
+            display: inline-block;
+        }
+        
+        .status-badge {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: #ff9800;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #00539C;
+        }
+        
+        .mechanism-detail {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00539C;
+        }
+        
+        .oral-highlight {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
+        
+        .dosing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .dosing-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .dosing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 83, 156, 0.3);
+        }
+        
+        .dosing-card.optimal {
+            border: 2px solid #4caf50;
+        }
+        
+        .dosing-card.optimal::after {
+            content: '✓ Optimal';
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: #4caf50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+        
+        .dosing-dose {
+            font-size: 2em;
+            color: #00539C;
+            font-weight: bold;
+        }
+        
+        .dosing-details {
+            margin-top: 10px;
+            color: #666;
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding: 20px 0;
+            margin: 30px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #00539C 0%, #003A70 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .timeline-item:hover .timeline-content {
+            box-shadow: 0 5px 20px rgba(0, 83, 156, 0.3);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 41px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #00539C;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-dot.future {
+            border-style: dashed;
+            background: #f0f0f0;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #00539C;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+        }
+        
+        .timeline-tooltip {
+            display: none;
+            position: absolute;
+            background: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            z-index: 1000;
+            max-width: 300px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .timeline-item:hover .timeline-tooltip {
+            display: block;
+            left: 100%;
+            top: 0;
+            margin-left: 10px;
+        }
+        
+        .trials-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .trials-table th {
+            background: linear-gradient(135deg, #00539C 0%, #003A70 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .trials-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .trials-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .trials-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .trial-ongoing {
+            background: #fff3cd;
+            color: #856404;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .trial-complete {
+            background: #d4edda;
+            color: #155724;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .efficacy-chart {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 350px;
+            margin-top: 20px;
+        }
+        
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 80px;
+            background: linear-gradient(180deg, #00539C 0%, #003A70 100%);
+            border-radius: 5px 5px 0 0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .chart-bar:hover {
+            opacity: 0.8;
+            transform: translateY(-5px);
+        }
+        
+        .chart-label {
+            position: absolute;
+            bottom: -40px;
+            width: 80px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #666;
+        }
+        
+        .chart-value {
+            position: absolute;
+            top: -25px;
+            width: 80px;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .dose-response-curve {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            height: 300px;
+            position: relative;
+        }
+        
+        .curve-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .safety-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #4caf50;
+        }
+        
+        .safety-percentage {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4caf50;
+        }
+        
+        .commercial-factors {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .factor-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid #00539C;
+        }
+        
+        .factor-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00539C 0%, #003A70 100%);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .comparison-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        
+        .no-data-badge {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+        
+        .projection-badge {
+            background: #cce5ff;
+            color: #004085;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+        
+        .competitive-advantage {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="drug-title">
+                <div class="drug-name">MK-0616 (Enlicitide Decanoate)</div>
+                <div class="drug-subtitle">Merck & Co., Inc.</div>
+                <div class="drug-mechanism">First-in-Class Oral PCSK9 Inhibitor</div>
+            </div>
+            <div class="status-badge">INVESTIGATIONAL</div>
+        </div>
+        
+        <div class="content">
+            <!-- Mechanism and Dosing Section -->
+            <div class="section">
+                <h2 class="section-title">📋 Detailed Information</h2>
+                
+                <div class="oral-highlight">
+                    <strong>🎯 Game-Changer:</strong> First oral PCSK9 inhibitor - No injections required! Daily tablet provides similar efficacy to injectable monoclonal antibodies with the convenience of oral administration.
+                </div>
+                
+                <div class="mechanism-detail">
+                    <h3>Mechanism of Action</h3>
+                    <p>Enlicitide decanoate is a macrocyclic peptide (MW ~1 kDa) that acts as an oral PCSK9 inhibitor. Key mechanisms:</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Binds with high affinity to circulating PCSK9 in plasma</li>
+                        <li>Prevents PCSK9 interaction with LDL receptors on hepatocytes</li>
+                        <li>Inhibits PCSK9-mediated degradation of LDL-R</li>
+                        <li>Increases LDL-R recycling and expression on liver surface</li>
+                        <li>Achieves >90% suppression of free PCSK9 (comparable to mAbs)</li>
+                        <li>Results in 60-65% LDL-C reduction</li>
+                        <li>Survives GI degradation through cyclization and structural modifications</li>
+                    </ul>
+                </div>
+                
+                <div class="competitive-advantage">
+                    <h3>💊 Competitive Advantages vs Injectable PCSK9 Inhibitors</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                        <div>
+                            <strong>✅ Advantages:</strong>
+                            <ul style="margin-top: 5px;">
+                                <li>Oral administration - no needles</li>
+                                <li>At-home convenience</li>
+                                <li>No injection site reactions</li>
+                                <li>Potentially lower cost</li>
+                                <li>Broader prescriber base (GP vs specialist)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong>⚠️ Considerations:</strong>
+                            <ul style="margin-top: 5px;">
+                                <li>Daily dosing vs biweekly/monthly injections</li>
+                                <li>Adherence challenges (~50% real-world)</li>
+                                <li>More frequent than inclisiran (2x/year)</li>
+                                <li>GI tolerability in some patients</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 30px;">Dosing Regimens Evaluated</h3>
+                <div class="dosing-grid">
+                    <div class="dosing-card">
+                        <div class="dosing-dose">6 mg</div>
+                        <div class="dosing-details">
+                            <strong>Once daily</strong><br>
+                            41.2% LDL-C reduction<br>
+                            Moderate efficacy
+                        </div>
+                    </div>
+                    <div class="dosing-card">
+                        <div class="dosing-dose">12 mg</div>
+                        <div class="dosing-details">
+                            <strong>Once daily</strong><br>
+                            55.7% LDL-C reduction<br>
+                            Good efficacy
+                        </div>
+                    </div>
+                    <div class="dosing-card optimal">
+                        <div class="dosing-dose">18 mg</div>
+                        <div class="dosing-details">
+                            <strong>Once daily</strong><br>
+                            59.7% LDL-C reduction<br>
+                            Optimal efficacy
+                        </div>
+                    </div>
+                    <div class="dosing-card optimal">
+                        <div class="dosing-dose">30 mg</div>
+                        <div class="dosing-details">
+                            <strong>Once daily</strong><br>
+                            60.9% LDL-C reduction<br>
+                            Maximum efficacy
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Regulatory Timeline Section -->
+            <div class="section">
+                <h2 class="section-title">🏛️ Regulatory Timeline</h2>
+                
+                <h3>FDA Development Pathway</h3>
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Pre-2021</div>
+                        <div class="timeline-content">
+                            Preclinical Development
+                            <div class="timeline-tooltip">Macrocyclic peptide optimization for oral bioavailability and GI stability</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">November 2021</div>
+                        <div class="timeline-content">
+                            Phase 1 Results (AHA 2021)
+                            <div class="timeline-tooltip">Single/multiple ascending doses showed >90% PCSK9 reduction, LDL-C drops up to 65%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">March 2022</div>
+                        <div class="timeline-content">
+                            Phase 2a Completion
+                            <div class="timeline-tooltip">Confirmed safety and efficacy in hypercholesterolemia patients on statins</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">March 6, 2023</div>
+                        <div class="timeline-content">
+                            Phase 2b Results (ACC 2023)
+                            <div class="timeline-tooltip">Dose-response established; FDA agreement on Phase 3 design obtained</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">August 25, 2023</div>
+                        <div class="timeline-content">
+                            <strong>Phase 3 CORALreef Program Launch</strong>
+                            <div class="timeline-tooltip">Three pivotal trials initiated: Lipids, HeFH, and Outcomes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">June 9, 2025</div>
+                        <div class="timeline-content">
+                            <strong>Positive Phase 3 Topline Results</strong>
+                            <div class="timeline-tooltip">CORALreef HeFH and AddOn trials meet primary endpoints</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">July 2025</div>
+                        <div class="timeline-content">
+                            Pediatric Trial Initiation
+                            <div class="timeline-tooltip">Phase 2/3 trial in pediatric HeFH patients started (NCT07058077)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot future"></div>
+                        <div class="timeline-date">Mid-2026 <span class="projection-badge">Projected</span></div>
+                        <div class="timeline-content">
+                            NDA Filing Expected
+                            <div class="timeline-tooltip">Based on LDL-C surrogate endpoint data from Phase 3 trials</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot future"></div>
+                        <div class="timeline-date">2029 <span class="projection-badge">Projected</span></div>
+                        <div class="timeline-content">
+                            Outcomes Trial Completion
+                            <div class="timeline-tooltip">CORALreef Outcomes results for CV risk reduction label expansion</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comparison-note">
+                    <strong>⚠️ Global Status:</strong> No EMA-specific filings announced. Global development aligned with FDA pathway. No reported clinical holds or CRLs throughout development.
+                </div>
+            </div>
+            
+            <!-- Clinical Trials Section -->
+            <div class="section">
+                <h2 class="section-title">🔬 Clinical Trials Overview</h2>
+                
+                <table class="trials-table">
+                    <thead>
+                        <tr>
+                            <th>Trial</th>
+                            <th>Phase</th>
+                            <th>N</th>
+                            <th>Population</th>
+                            <th>Duration</th>
+                            <th>Primary Endpoint</th>
+                            <th>Key Results</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Dose Escalation</strong></td>
+                            <td>1</td>
+                            <td>~100</td>
+                            <td>Healthy/HC</td>
+                            <td>Variable</td>
+                            <td>Safety/PK/PD</td>
+                            <td>LDL-C ↓65%, PCSK9 ↓>90%</td>
+                            <td><span class="trial-complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Add-on to Statins</strong></td>
+                            <td>2a</td>
+                            <td>~60</td>
+                            <td>Hypercholesterolemia</td>
+                            <td>14 weeks</td>
+                            <td>% LDL-C change</td>
+                            <td>~65% reduction</td>
+                            <td><span class="trial-complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NCT05261126</strong></td>
+                            <td>2b</td>
+                            <td>381</td>
+                            <td>Hypercholesterolemia</td>
+                            <td>16 weeks</td>
+                            <td>% LDL-C at week 8</td>
+                            <td>41-61% reduction (dose-dependent)</td>
+                            <td><span class="trial-complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>CORALreef Lipids</strong></td>
+                            <td>3</td>
+                            <td>~2,700</td>
+                            <td>Hypercholesterolemia</td>
+                            <td>24 weeks</td>
+                            <td>% LDL-C at week 24</td>
+                            <td>Met primary endpoint</td>
+                            <td><span class="trial-complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>CORALreef HeFH</strong></td>
+                            <td>3</td>
+                            <td>~300</td>
+                            <td>HeFH</td>
+                            <td>24 weeks</td>
+                            <td>% LDL-C at week 24</td>
+                            <td>60-65% reduction</td>
+                            <td><span class="trial-complete">Complete</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>CORALreef Outcomes</strong></td>
+                            <td>3</td>
+                            <td>~14,000</td>
+                            <td>ASCVD/High-risk</td>
+                            <td>~4 years</td>
+                            <td>MACE reduction</td>
+                            <td><span class="no-data-badge">Pending</span></td>
+                            <td><span class="trial-ongoing">Ongoing</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pediatric HeFH</strong></td>
+                            <td>2/3</td>
+                            <td>~200</td>
+                            <td>Pediatric HeFH</td>
+                            <td>24 weeks</td>
+                            <td>% LDL-C at week 24</td>
+                            <td><span class="no-data-badge">Pending</span></td>
+                            <td><span class="trial-ongoing">Ongoing</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Open-Label Extension</strong></td>
+                            <td>3</td>
+                            <td>~3,000</td>
+                            <td>Previous trial participants</td>
+                            <td>Long-term</td>
+                            <td>Safety/Efficacy</td>
+                            <td><span class="no-data-badge">Pending</span></td>
+                            <td><span class="trial-ongoing">Ongoing</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="comparison-note" style="margin-top: 20px;">
+                    <strong>📊 Note on Endpoints:</strong> Initial approval will be based on LDL-C surrogate endpoints. CV outcomes data from CORALreef Outcomes (n=14,000) expected 2029 for label expansion.
+                </div>
+            </div>
+            
+            <!-- Efficacy Visualization -->
+            <div class="section">
+                <h2 class="section-title">📈 Efficacy Profile</h2>
+                
+                <div class="efficacy-chart">
+                    <h3>Phase 2b Dose-Response: LDL-C Reduction at Week 8</h3>
+                    <div class="chart-container">
+                        <div class="chart-bar" style="height: 41.2%; left: 50px;">
+                            <div class="chart-value">41.2%</div>
+                            <div class="chart-label">6 mg<br>QD</div>
+                        </div>
+                        <div class="chart-bar" style="height: 55.7%; left: 180px;">
+                            <div class="chart-value">55.7%</div>
+                            <div class="chart-label">12 mg<br>QD</div>
+                        </div>
+                        <div class="chart-bar" style="height: 59.7%; left: 310px; background: linear-gradient(180deg, #4caf50 0%, #2e7d32 100%);">
+                            <div class="chart-value">59.7%</div>
+                            <div class="chart-label">18 mg<br>QD</div>
+                        </div>
+                        <div class="chart-bar" style="height: 60.9%; left: 440px; background: linear-gradient(180deg, #4caf50 0%, #2e7d32 100%);">
+                            <div class="chart-value">60.9%</div>
+                            <div class="chart-label">30 mg<br>QD</div>
+                        </div>
+                        <div class="chart-bar" style="height: 45%; left: 570px; background: linear-gradient(180deg, #9e9e9e 0%, #616161 100%);">
+                            <div class="chart-value">45-55%</div>
+                            <div class="chart-label">ApoB<br>Reduction</div>
+                        </div>
+                        <div class="chart-bar" style="height: 25%; left: 700px; background: linear-gradient(180deg, #ff9800 0%, #f57c00 100%);">
+                            <div class="chart-value">20-30%</div>
+                            <div class="chart-label">Lp(a)<br>Reduction</div>
+                        </div>
+                        <div class="chart-bar" style="height: 80%; left: 830px; background: linear-gradient(180deg, #2196f3 0%, #0d47a1 100%);">
+                            <div class="chart-value">>80%</div>
+                            <div class="chart-label">Achieved<br><70 mg/dL</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dose-response-curve">
+                    <h3>Dose-Response Curve</h3>
+                    <svg class="curve-svg" viewBox="0 0 600 250">
+                        <defs>
+                            <linearGradient id="curveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#00539C;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#4caf50;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Grid lines -->
+                        <line x1="50" y1="200" x2="550" y2="200" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="50" y1="150" x2="550" y2="150" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="50" y1="100" x2="550" y2="100" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="50" y1="50" x2="550" y2="50" stroke="#e0e0e0" stroke-width="1"/>
+                        
+                        <!-- Axes -->
+                        <line x1="50" y1="200" x2="550" y2="200" stroke="#333" stroke-width="2"/>
+                        <line x1="50" y1="200" x2="50" y2="30" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Dose-response curve -->
+                        <path d="M 100 140 Q 200 90, 300 60 T 500 50" stroke="url(#curveGradient)" stroke-width="3" fill="none"/>
+                        
+                        <!-- Data points -->
+                        <circle cx="100" cy="140" r="5" fill="#00539C"/>
+                        <circle cx="200" cy="90" r="5" fill="#00539C"/>
+                        <circle cx="300" cy="60" r="5" fill="#4caf50"/>
+                        <circle cx="400" cy="55" r="5" fill="#4caf50"/>
+                        <circle cx="500" cy="50" r="5" fill="#4caf50"/>
+                        
+                        <!-- Labels -->
+                        <text x="100" y="220" text-anchor="middle" font-size="12">6mg</text>
+                        <text x="200" y="220" text-anchor="middle" font-size="12">12mg</text>
+                        <text x="300" y="220" text-anchor="middle" font-size="12">18mg</text>
+                        <text x="400" y="220" text-anchor="middle" font-size="12">24mg</text>
+                        <text x="500" y="220" text-anchor="middle" font-size="12">30mg</text>
+                        
+                        <text x="30" y="205" text-anchor="middle" font-size="12">0%</text>
+                        <text x="30" y="155" text-anchor="middle" font-size="12">25%</text>
+                        <text x="30" y="105" text-anchor="middle" font-size="12">50%</text>
+                        <text x="30" y="55" text-anchor="middle" font-size="12">75%</text>
+                        
+                        <text x="300" y="240" text-anchor="middle" font-size="14" font-weight="bold">Daily Dose</text>
+                        <text x="15" y="120" text-anchor="middle" font-size="14" font-weight="bold" transform="rotate(-90 15 120)">LDL-C Reduction</text>
+                        
+                        <!-- Plateau annotation -->
+                        <text x="400" y="35" font-size="11" fill="#666">Efficacy plateau at 18-30mg</text>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Safety Profile -->
+            <div class="section">
+                <h2 class="section-title">🛡️ Safety & Pharmacovigilance</h2>
+                
+                <p style="margin-bottom: 20px;">~4,000 patients exposed by 2025. Placebo-like safety profile with no black-box warnings anticipated.</p>
+                
+                <div class="safety-grid">
+                    <div class="safety-item">
+                        <div class="safety-percentage">6-8%</div>
+                        <div>Headache</div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-percentage">5-7%</div>
+                        <div>Nasopharyngitis</div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-percentage">4-6%</div>
+                        <div>GI (diarrhea/nausea)</div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-percentage"><2%</div>
+                        <div>Serious AEs</div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-percentage">1-2%</div>
+                        <div>Discontinuation rate</div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-percentage"><1%</div>
+                        <div>Anti-drug antibodies</div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-percentage"><3%</div>
+                        <div>Myalgia</div>
+                    </div>
+                    <div class="safety-item">
+                        <div class="safety-percentage">0%</div>
+                        <div>Injection site reactions</div>
+                    </div>
+                </div>
+                
+                <div class="mechanism-detail" style="margin-top: 20px;">
+                    <h3>Neurocognitive Safety</h3>
+                    <p>No signals in trials with ~30% achieving very low LDL (<25 mg/dL). Confusion/amnesia <1%. Consistent with PCSK9 mAb class data showing no neurocognitive harm even at LDL <15 mg/dL long-term. Oral route unlikely to differ from injectable safety profile.</p>
+                </div>
+                
+                <div class="mechanism-detail">
+                    <h3>Unique Safety Considerations</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>No injection site reactions (oral administration)</li>
+                        <li>GI tolerability generally good (not dose-related)</li>
+                        <li>No CYP metabolism - acts extracellularly</li>
+                        <li>Low immunogenicity (<1% anti-drug antibodies)</li>
+                        <li>No liver enzyme or glucose elevations</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Commercial Factors -->
+            <div class="section">
+                <h2 class="section-title">💰 Commercial & Market Position</h2>
+                
+                <div class="commercial-factors">
+                    <div class="factor-card">
+                        <div class="factor-title">Projected Pricing</div>
+                        <p>$4,000-6,000/year (potentially lower than injectable PCSK9 mAbs at $5,800/year)</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%;"></div>
+                        </div>
+                        <small>Price competitiveness</small>
+                    </div>
+                    
+                    <div class="factor-card">
+                        <div class="factor-title">Market Potential</div>
+                        <p>$2-8 billion by 2032</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        <small>Revenue projection confidence</small>
+                    </div>
+                    
+                    <div class="factor-card">
+                        <div class="factor-title">Prescriber Base</div>
+                        <p>Broad GP prescribing expected (vs specialist-only for injectables)</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                        <small>Accessibility advantage</small>
+                    </div>
+                    
+                    <div class="factor-card">
+                        <div class="factor-title">Adherence Challenge</div>
+                        <p>~50% real-world adherence expected for daily oral (digital tools planned)</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 50%;"></div>
+                        </div>
+                        <small>Adherence projection</small>
+                    </div>
+                </div>
+                
+                <div class="mechanism-detail" style="margin-top: 20px;">
+                    <h3>Reimbursement Strategy</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Initial restrictions to high-risk/statin-intolerant patients expected</li>
+                        <li>Similar to mAbs with 80% prior authorization denials initially</li>
+                        <li>Pharmacy benefit (not medical) simplifies vs buy-and-bill</li>
+                        <li>Outcomes data (2029) critical for guideline inclusion and expanded coverage</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Pipeline & Future -->
+            <div class="section">
+                <h2 class="section-title">🔮 Pipeline & Sustainability</h2>
+                
+                <div class="mechanism-detail">
+                    <h3>Development Pipeline</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>Late Phase 3 - potential first oral PCSK9 approval ~2026</li>
+                        <li>Pediatric indication development ongoing</li>
+                        <li>Potential combinations with ezetimibe/statins</li>
+                        <li>Patent protection to late 2030s</li>
+                    </ul>
+                </div>
+                
+                <div class="mechanism-detail">
+                    <h3>Competitive Landscape</h3>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Near-term threats:</strong> AstraZeneca's AZD0780 (oral PCSK9i) in development</li>
+                        <li><strong>Long-term competition:</strong> Gene therapies, next-gen siRNAs</li>
+                        <li><strong>Market position:</strong> First-mover advantage in oral PCSK9 space</li>
+                        <li><strong>By 2030:</strong> Orals may dominate PCSK9 market if adherence managed</li>
+                    </ul>
+                </div>
+                
+                <div class="competitive-advantage" style="margin-top: 20px;">
+                    <h3>🚀 Strategic Positioning</h3>
+                    <p><strong>Game-changing potential:</strong> MK-0616 could transform PCSK9 inhibition from specialist injectable to primary care oral therapy, potentially undercutting injectables on both convenience and cost. Success depends on managing adherence challenges and demonstrating CV outcomes by 2029.</p>
+                </div>
+                
+                <div class="comparison-note" style="margin-top: 20px;">
+                    <strong>⏰ Timeline to Market:</strong> With positive Phase 3 data in hand, NDA filing expected mid-2026. Approval could come within 6-12 months, making MK-0616 available to patients by 2027. This positions Merck as the leader in oral PCSK9 inhibition.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Animate progress bars on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-fill');
+                    fills.forEach(fill => {
+                        const width = fill.style.width;
+                        fill.style.width = '0';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.commercial-factors').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Animate chart bars on scroll
+        const chartObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.chart-bar');
+                    bars.forEach((bar, index) => {
+                        const height = bar.style.height;
+                        bar.style.height = '0';
+                        setTimeout(() => {
+                            bar.style.height = height;
+                        }, index * 100);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.chart-container').forEach(el => {
+            chartObserver.observe(el);
+        });
+        
+        // Animate SVG curve on scroll
+        const curveObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const path = entry.target.querySelector('path');
+                    if (path) {
+                        const length = path.getTotalLength();
+                        path.style.strokeDasharray = length;
+                        path.style.strokeDashoffset = length;
+                        path.style.transition = 'stroke-dashoffset 2s ease-in-out';
+                        setTimeout(() => {
+                            path.style.strokeDashoffset = '0';
+                        }, 100);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.curve-svg').forEach(el => {
+            curveObserver.observe(el);
+        });
+    </script>
+</body>
+</html>

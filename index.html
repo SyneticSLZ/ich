@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cholesterol Therapies - Competitive Landscape Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0066CC;
+            --primary-light: #E8F2FF;
+            --success: #00A86B;
+            --warning: #F39C12;
+            --danger: #E74C3C;
+            --text-primary: #2C3E50;
+            --text-secondary: #7F8C8D;
+            --border: #E1E8ED;
+            --background: #FFFFFF;
+            --background-alt: #F8FAFB;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+            background: var(--background-alt);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .nav-tab {
+            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .nav-tab:hover {
+            background: var(--background-alt);
+            color: var(--text-primary);
+        }
+        
+        .nav-tab.active {
+            background: var(--primary-light);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        
+        /* Reference Card */
+        .reference-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .reference-card h2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .reference-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Drug Cards */
+        .drug-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .drug-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+        
+        .drug-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .drug-info {
+            flex: 1;
+        }
+        
+        .drug-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .drug-company {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .drug-mechanism {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--background-alt);
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .drug-status {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .status-approved {
+            background: #E6F7ED;
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+        
+        .status-phase3 {
+            background: #FFF4E6;
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+        
+        .status-phase2 {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .status-phase1 {
+            background: #FDEDEC;
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+        
+        /* Drug Details Grid */
+        .drug-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            padding: 20px;
+            background: var(--background-alt);
+        }
+        
+        .detail-section {
+            background: white;
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+        
+        .detail-section h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        
+        .detail-section p {
+            color: var(--text-primary);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .detail-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .detail-section li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-primary);
+        }
+        
+        .detail-section li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Efficacy Bar */
+        .efficacy-bar {
+            background: var(--border);
+            height: 24px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+        
+        .efficacy-fill {
+            background: var(--success);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        
+        .badge-success {
+            background: #E6F7ED;
+            color: var(--success);
+        }
+        
+        .badge-warning {
+            background: #FFF4E6;
+            color: var(--warning);
+        }
+        
+        .badge-info {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        
+        /* Table Styles */
+        .data-table {
+            width: 100%;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+        }
+        
+        .data-table thead {
+            background: var(--background-alt);
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .data-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .data-table td {
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table tbody tr:hover {
+            background: var(--background-alt);
+        }
+        
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            margin: 32px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .section-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin: 24px 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 24px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .timeline-date {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        
+        .timeline-title {
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .timeline-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .drug-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .drug-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-table {
+                font-size: 12px;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 8px;
+            }
+        }
+        
+        /* Comparison Features */
+        .comparison-grid {
+            display: grid;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .comparison-section {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .comparison-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .info-box {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin: 16px 0;
+        }
+        
+        .info-box p {
+            font-size: 13px;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        
+        .highlight-row {
+            background: #FFFBF0 !important;
+        }
+        
+        .clickable-row {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .clickable-row:hover {
+            background: var(--primary-light) !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">CL</div>
+                <div class="logo-text">Cholesterol Therapies Analysis</div>
+            </div>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
+                <button class="nav-tab" onclick="showTab('approved')">Approved</button>
+                <button class="nav-tab" onclick="showTab('pipeline')">Pipeline</button>
+                <button class="nav-tab" onclick="showTab('comparison')">Comparison</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="reference-card">
+                <h2>📊 Inclisiran (Leqvio®) - Reference Drug</h2>
+                <p>Small-interfering RNA (siRNA) therapy targeting PCSK9 mRNA. Approved in EU (2020) and US (2021). 
+                Unique twice-yearly dosing after initial doses. Achieves ~50% LDL reduction. ORION-4 cardiovascular 
+                outcomes trial ongoing (results expected 2026). Currently positioned as add-on therapy for high-risk 
+                patients not at LDL goal despite maximally tolerated statin therapy.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">18</div>
+                    <div class="stat-label">Total Therapies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">11</div>
+                    <div class="stat-label">Approved Drugs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Pipeline Candidates</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">With CV Outcomes Data</div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Market Timeline</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2015</div>
+                        <div class="timeline-title">First PCSK9 Antibodies</div>
+                        <div class="timeline-description">Repatha & Praluent approved by FDA/EMA</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2017-2019</div>
+                        <div class="timeline-title">CV Outcomes Proven</div>
+                        <div class="timeline-description">FOURIER & ODYSSEY trials show 15% MACE reduction</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020-2021</div>
+                        <div class="timeline-title">New Mechanisms</div>
+                        <div class="timeline-description">Inclisiran (siRNA), Bempedoic acid (ACL inhibitor) approved</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-title">Regional Expansion</div>
+                        <div class="timeline-description">Ebronucimab approved in China</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025-2026</div>
+                        <div class="timeline-title">Oral Era Begins</div>
+                        <div class="timeline-description">MK-0616, AZD0780 expected approvals</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2028-2030</div>
+                        <div class="timeline-title">Future Paradigm</div>
+                        <div class="timeline-description">Gene editing, biosimilars enter market</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Approved Therapies Tab -->
+        <div id="approved" class="tab-content">
+            <div class="section-header">
+                <h2>PCSK9-Targeted Therapies</h2>
+            </div>
+
+            <!-- Repatha -->
+            <div class="drug-card" onclick="window.location.href='repatha.html'">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">Repatha® (evolocumab)</div>
+                        <div class="drug-company">Amgen</div>
+                        <div class="drug-mechanism">PCSK9 Monoclonal Antibody</div>
+                    </div>
+                    <div class="drug-status status-approved">FDA/EMA 2015</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>140 mg Q2W or 420 mg monthly SC</p>
+                        <p>12-26 injections/year</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 60%;">~60% LDL↓</div>
+                        </div>
+                        <p><span class="badge badge-success">✓ CV Outcomes</span>15% MACE reduction</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Key Points</h4>
+                        <ul>
+                            <li>Long safety record (8+ years)</li>
+                            <li>Price cut 60% after outcomes data</li>
+                            <li>No cognitive effects (EBBINGHAUS)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Praluent -->
+            <div class="drug-card" onclick="window.location.href='Praluent.html'">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">Praluent® (alirocumab)</div>
+                        <div class="drug-company">Sanofi/Regeneron</div>
+                        <div class="drug-mechanism">PCSK9 Monoclonal Antibody</div>
+                    </div>
+                    <div class="drug-status status-approved">FDA/EMA 2015</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>75-150 mg Q2W or 300 mg monthly SC</p>
+                        <p>12-26 injections/year</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 55%;">50-60% LDL↓</div>
+                        </div>
+                        <p><span class="badge badge-success">✓ CV + Mortality</span>15% MACE, 15% death↓</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Key Points</h4>
+                        <ul>
+                            <li>Only PCSK9i with mortality benefit</li>
+                            <li>Dose titration flexibility</li>
+                            <li>Patent battle with Amgen resolved</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ebronucimab -->
+            <div class="drug-card" onclick="window.location.href='Ebronucimab.html'">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">Ebronucimab (AK102)</div>
+                        <div class="drug-company">Akeso Inc.</div>
+                        <div class="drug-mechanism">PCSK9 Monoclonal Antibody</div>
+                    </div>
+                    <div class="drug-status status-approved">China NMPA 2024</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>Q2W, Q4W, or Q6W SC options</p>
+                        <p>8-26 injections/year</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 65%;">Up to 65% LDL↓</div>
+                        </div>
+                        <p><span class="badge badge-warning">⏳ Pending</span>No CV outcomes yet</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Key Points</h4>
+                        <ul>
+                            <li>China-only approval currently</li>
+                            <li>Q6W dosing advantage</li>
+                            <li>Potential lower cost locally</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Other Mechanisms</h2>
+            </div>
+
+            <!-- Bempedoic Acid -->
+            <div class="drug-card">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">Nexletol® (bempedoic acid)</div>
+                        <div class="drug-company">Esperion Therapeutics</div>
+                        <div class="drug-mechanism">ACL Inhibitor</div>
+                    </div>
+                    <div class="drug-status status-approved">FDA/EMA 2020</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>180 mg oral once daily</p>
+                        <p>~$400/month (US)</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 22%;">18-25% LDL↓</div>
+                        </div>
+                        <p><span class="badge badge-success">✓ CV Outcomes</span>13% MACE, 23% MI↓</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Key Points</h4>
+                        <ul>
+                            <li>For statin-intolerant patients</li>
+                            <li>No muscle side effects</li>
+                            <li>Can increase uric acid (gout risk)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ezetimibe -->
+            <div class="drug-card">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">Ezetimibe (Zetia®)</div>
+                        <div class="drug-company">Generic (Originally Merck)</div>
+                        <div class="drug-mechanism">Cholesterol Absorption Inhibitor</div>
+                    </div>
+                    <div class="drug-status status-approved">FDA 2002 (Generic)</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>10 mg oral once daily</p>
+                        <p>~$10-20/month (generic)</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 20%;">15-25% LDL↓</div>
+                        </div>
+                        <p><span class="badge badge-success">✓ CV Outcomes</span>6-7% MACE↓</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Key Points</h4>
+                        <ul>
+                            <li>Standard 2nd-line add-on</li>
+                            <li>Very safe, well-tolerated</li>
+                            <li>Often required before PCSK9i</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statins -->
+            <div class="drug-card">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">Statins (Various)</div>
+                        <div class="drug-company">Multiple (Generic)</div>
+                        <div class="drug-mechanism">HMG-CoA Reductase Inhibitors</div>
+                    </div>
+                    <div class="drug-status status-approved">Standard of Care</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>Oral once daily</p>
+                        <p>~$5-10/month (generic)</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 40%;">30-50% LDL↓</div>
+                        </div>
+                        <p><span class="badge badge-success">✓ CV Outcomes</span>25-35% CV risk↓</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Key Points</h4>
+                        <ul>
+                            <li>First-line therapy globally</li>
+                            <li>5-10% muscle symptoms</li>
+                            <li>Foundation for all add-ons</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evinacumab -->
+            <div class="drug-card" onclick="window.location.href='evinacumab-details.html'">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">Evkeeza® (evinacumab)</div>
+                        <div class="drug-company">Regeneron/Ultragenyx</div>
+                        <div class="drug-mechanism">ANGPTL3 Monoclonal Antibody</div>
+                    </div>
+                    <div class="drug-status status-approved">FDA/EMA 2021 (HoFH)</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>15 mg/kg IV monthly</p>
+                        <p>~$450,000/year</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 47%;">47% LDL↓ (HoFH)</div>
+                        </div>
+                        <p><span class="badge badge-info">Orphan Drug</span>Works without LDL receptors</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Key Points</h4>
+                        <ul>
+                            <li>Only for homozygous FH</li>
+                            <li>Ultra-rare disease (~1:1M)</li>
+                            <li>Specialty centers only</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pipeline Tab -->
+        <div id="pipeline" class="tab-content">
+            <div class="section-header">
+                <h2>Oral PCSK9 Inhibitors</h2>
+            </div>
+
+            <!-- MK-0616 -->
+            <div class="drug-card" onclick="window.location.href='MK-0616.html'">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">MK-0616 (enplicitide)</div>
+                        <div class="drug-company">Merck</div>
+                        <div class="drug-mechanism">Oral PCSK9 Inhibitor (Macrocyclic Peptide)</div>
+                    </div>
+                    <div class="drug-status status-phase3">Phase 3 (17,000 pts)</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>6-30 mg oral once daily</p>
+                        <p>First-in-class oral PCSK9i</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 60%;">~60% LDL↓</div>
+                        </div>
+                        <p><span class="badge badge-warning">⏳ Trial Ongoing</span>CORALreef 2029</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Timeline</h4>
+                        <ul>
+                            <li>Phase 3 started: Aug 2023</li>
+                            <li>Expected approval: 2025-26</li>
+                            <li>Outcomes data: ~2029</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AZD0780 -->
+            <div class="drug-card" onclick="window.location.href='astra.html'">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">AZD0780</div>
+                        <div class="drug-company">AstraZeneca</div>
+                        <div class="drug-mechanism">Oral PCSK9 Inhibitor (Small Molecule)</div>
+                    </div>
+                    <div class="drug-status status-phase2">Phase 2 Complete</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>30 mg oral once daily</p>
+                        <p>Can be taken with/without food</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 51%;">50.7% LDL↓</div>
+                        </div>
+                        <p><span class="badge badge-info">Bonus</span>Alzheimer's biomarker↓</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Timeline</h4>
+                        <ul>
+                            <li>Phase 3: Starting 2025</li>
+                            <li>UK Innovation Passport</li>
+                            <li>Fixed-dose combo w/ ezetimibe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIB003 -->
+            <div class="drug-card" onclick="window.location.href='lib.html'">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">LIB003 (lerodalcibep)</div>
+                        <div class="drug-company">LIB Therapeutics</div>
+                        <div class="drug-mechanism">Monthly PCSK9 Inhibitor (Adnectin)</div>
+                    </div>
+                    <div class="drug-status status-phase3">Filing 2025</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>300 mg SC monthly</p>
+                        <p>Small volume: 1.2 mL</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 56%;">56% LDL↓</div>
+                        </div>
+                        <p><span class="badge badge-success">FDA Fast Track</span></p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Key Points</h4>
+                        <ul>
+                            <li>No immunogenicity issues</li>
+                            <li>Monthly convenience</li>
+                            <li>52-week data positive</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Alternative Mechanisms</h2>
+            </div>
+
+            <!-- Obicetrapib -->
+            <div class="drug-card">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">Obicetrapib</div>
+                        <div class="drug-company">NewAmsterdam Pharma</div>
+                        <div class="drug-mechanism">CETP Inhibitor</div>
+                    </div>
+                    <div class="drug-status status-phase3">EMA Filed Aug 2025</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Dosing</h4>
+                        <p>10 mg oral once daily</p>
+                        <p>Fixed-dose combo w/ ezetimibe</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Dual Effects</h4>
+                        <p>LDL: 35-45%↓</p>
+                        <p>HDL: >100%↑</p>
+                        <p>With ezetimibe: ~50% LDL↓</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Key Points</h4>
+                        <ul>
+                            <li>No BP increase (vs torcetrapib)</li>
+                            <li>PREVAIL outcomes ongoing</li>
+                            <li>Potential Alzheimer's benefit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Gene Therapy</h2>
+            </div>
+
+            <!-- VERVE-101 -->
+            <div class="drug-card" onclick="window.location.href='verve.html'">
+                <div class="drug-header">
+                    <div class="drug-info">
+                        <div class="drug-name">VERVE-101</div>
+                        <div class="drug-company">Verve Therapeutics (Acquired by Eli Lilly)</div>
+                        <div class="drug-mechanism">PCSK9 Gene Editing (Base Editor)</div>
+                    </div>
+                    <div class="drug-status status-phase1">Phase 1</div>
+                </div>
+                <div class="drug-details">
+                    <div class="detail-section">
+                        <h4>Treatment</h4>
+                        <p>One-time IV infusion</p>
+                        <p>Permanent PCSK9 knockout</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Efficacy (Projected)</h4>
+                        <div class="efficacy-bar">
+                            <div class="efficacy-fill" style="width: 60%;">~60% LDL↓ (permanent)</div>
+                        </div>
+                        <p><span class="badge badge-info">Revolutionary</span>Lilly: $1.3B acquisition</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Timeline</h4>
+                        <ul>
+                            <li>FDA hold lifted: Oct 2023</li>
+                            <li>First US patient: 2024</li>
+                            <li>Potential approval: 2028-30</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Tab -->
+        <div id="comparison" class="tab-content">
+            <div class="comparison-section">
+                <h3>Comprehensive Feature Comparison</h3>
+                <div class="info-box">
+                    <p><strong>Guide:</strong> This table compares all therapies across key dimensions. Inclisiran (reference) is highlighted. 
+                    Click any row for detailed information. Green badges indicate proven CV outcomes.</p>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Therapy</th>
+                            <th>Mechanism</th>
+                            <th>Dosing</th>
+                            <th>LDL Reduction</th>
+                            <th>CV Outcomes</th>
+                            <th>Annual Cost</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><strong>Inclisiran</strong></td>
+                            <td>PCSK9 siRNA</td>
+                            <td><strong>2x/year SC</strong></td>
+                            <td>50-52%</td>
+                            <td><span class="badge badge-warning">Pending (2026)</span></td>
+                            <td>~$6,500</td>
+                            <td>Approved</td>
+                        </tr>
+                        <tr class="clickable-row" onclick="window.location.href='repatha-details.html'">
+                            <td>Repatha</td>
+                            <td>PCSK9 mAb</td>
+                            <td>Q2W or monthly SC</td>
+                            <td>60%</td>
+                            <td><span class="badge badge-success">✓ 15% MACE↓</span></td>
+                            <td>~$5,800</td>
+                            <td>Approved</td>
+                        </tr>
+                        <tr class="clickable-row" onclick="window.location.href='praluent-details.html'">
+                            <td>Praluent</td>
+                            <td>PCSK9 mAb</td>
+                            <td>Q2W or monthly SC</td>
+                            <td>50-60%</td>
+                            <td><span class="badge badge-success">✓ 15% MACE, 15% mortality↓</span></td>
+                            <td>~$5,850</td>
+                            <td>Approved</td>
+                        </tr>
+                        <tr>
+                            <td>Ebronucimab</td>
+                            <td>PCSK9 mAb</td>
+                            <td>Q6W SC option</td>
+                            <td>65%</td>
+                            <td>No data</td>
+                            <td>TBD (China)</td>
+                            <td>China only</td>
+                        </tr>
+                        <tr>
+                            <td>MK-0616</td>
+                            <td>Oral PCSK9i</td>
+                            <td><strong>Daily oral</strong></td>
+                            <td>60%</td>
+                            <td><span class="badge badge-warning">Trial 2029</span></td>
+                            <td>TBD</td>
+                            <td>Phase 3</td>
+                        </tr>
+                        <tr>
+                            <td>AZD0780</td>
+                            <td>Oral PCSK9i</td>
+                            <td><strong>Daily oral</strong></td>
+                            <td>50%</td>
+                            <td>Planned</td>
+                            <td>TBD</td>
+                            <td>Phase 2/3</td>
+                        </tr>
+                        <tr>
+                            <td>LIB003</td>
+                            <td>PCSK9 binder</td>
+                            <td>Monthly SC</td>
+                            <td>56%</td>
+                            <td>No data yet</td>
+                            <td>TBD</td>
+                            <td>Filing 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Bempedoic Acid</td>
+                            <td>ACL inhibitor</td>
+                            <td>Daily oral</td>
+                            <td>18-25%</td>
+                            <td><span class="badge badge-success">✓ 13% MACE, 23% MI↓</span></td>
+                            <td>~$4,800</td>
+                            <td>Approved</td>
+                        </tr>
+                        <tr>
+                            <td>Ezetimibe</td>
+                            <td>NPC1L1 inhibitor</td>
+                            <td>Daily oral</td>
+                            <td>15-25%</td>
+                            <td><span class="badge badge-success">✓ 6-7% MACE↓</span></td>
+                            <td>Generic (~$120)</td>
+                            <td>Approved</td>
+                        </tr>
+                        <tr>
+                            <td>Statins</td>
+                            <td>HMG-CoA reductase</td>
+                            <td>Daily oral</td>
+                            <td>30-50%</td>
+                            <td><span class="badge badge-success">✓ 25-35% CV↓</span></td>
+                            <td>Generic (~$60)</td>
+                            <td>Standard</td>
+                        </tr>
+                        <tr>
+                            <td>Obicetrapib</td>
+                            <td>CETP inhibitor</td>
+                            <td>Daily oral</td>
+                            <td>35-45% (+HDL↑)</td>
+                            <td><span class="badge badge-warning">PREVAIL ongoing</span></td>
+                            <td>TBD</td>
+                            <td>EU Filed</td>
+                        </tr>
+                        <tr>
+                            <td>Evinacumab</td>
+                            <td>ANGPTL3 mAb</td>
+                            <td>Monthly IV</td>
+                            <td>47% (HoFH)</td>
+                            <td>N/A (orphan)</td>
+                            <td>~$450,000</td>
+                            <td>HoFH only</td>
+                        </tr>
+                        <tr>
+                            <td>VERVE-101</td>
+                            <td>Gene editing</td>
+                            <td><strong>One-time</strong></td>
+                            <td>60% (permanent)</td>
+                            <td>N/A</td>
+                            <td>>$100,000?</td>
+                            <td>Phase 1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="comparison-section">
+                <h3>Dosing Frequency Analysis</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">1</div>
+                        <div class="stat-label">One-Time (Gene editing)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Per Year (Inclisiran)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Monthly (LIB003, Evinacumab)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">365</div>
+                        <div class="stat-label">Daily (All oral agents)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-section">
+                <h3>Clinical Trials Tracker</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Trial Name</th>
+                            <th>Drug</th>
+                            <th>Status</th>
+                            <th>N</th>
+                            <th>Primary Endpoint</th>
+                            <th>Timeline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ORION-4</strong></td>
+                            <td>Inclisiran</td>
+                            <td><span class="badge badge-warning">Ongoing</span></td>
+                            <td>15,000</td>
+                            <td>CV outcomes</td>
+                            <td>Results ~2026</td>
+                        </tr>
+                        <tr>
+                            <td>FOURIER</td>
+                            <td>Repatha</td>
+                            <td><span class="badge badge-success">Complete</span></td>
+                            <td>27,564</td>
+                            <td>MACE</td>
+                            <td>15% MACE reduction</td>
+                        </tr>
+                        <tr>
+                            <td>ODYSSEY Outcomes</td>
+                            <td>Praluent</td>
+                            <td><span class="badge badge-success">Complete</span></td>
+                            <td>18,924</td>
+                            <td>MACE</td>
+                            <td>15% MACE, 15% mortality↓</td>
+                        </tr>
+                        <tr>
+                            <td>CORALreef Outcomes</td>
+                            <td>MK-0616</td>
+                            <td><span class="badge badge-warning">Enrolling</span></td>
+                            <td>14,000</td>
+                            <td>CV outcomes</td>
+                            <td>Results ~2029</td>
+                        </tr>
+                        <tr>
+                            <td>CLEAR Outcomes</td>
+                            <td>Bempedoic Acid</td>
+                            <td><span class="badge badge-success">Complete</span></td>
+                            <td>13,970</td>
+                            <td>4-point MACE</td>
+                            <td>13% MACE, 23% MI↓</td>
+                        </tr>
+                        <tr>
+                            <td>PREVAIL</td>
+                            <td>Obicetrapib</td>
+                            <td><span class="badge badge-warning">Ongoing</span></td>
+                            <td>TBD</td>
+                            <td>CV outcomes</td>
+                            <td>Results ~2026</td>
+                        </tr>
+                        <tr>
+                            <td>HEART-1</td>
+                            <td>VERVE-101</td>
+                            <td><span class="badge badge-info">Phase 1</span></td>
+                            <td>~40</td>
+                            <td>Safety/LDL</td>
+                            <td>Ongoing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="comparison-section">
+                <h3>Market Access & Payer Considerations</h3>
+                <div class="info-box">
+                    <p><strong>Typical Step Therapy Sequence:</strong></p>
+                    <p>1. Maximally tolerated statin (generic, ~$5-10/month)<br>
+                    2. Add ezetimibe (generic, ~$10-20/month)<br>
+                    3. Consider bempedoic acid (if statin intolerant, ~$400/month)<br>
+                    4. PCSK9 inhibitor consideration (if LDL still >70-100 mg/dL)<br>
+                    5. Choice between: Inclisiran (2x/year), mAbs (monthly/biweekly), or oral PCSK9i (when available)</p>
+                </div>
+            </div>
+
+            <div class="comparison-section">
+                <h3>Safety Profiles</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Therapy</th>
+                            <th>Common AEs</th>
+                            <th>Unique Risks</th>
+                            <th>Long-term Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><strong>Inclisiran</strong></td>
+                            <td>ISR ~5%</td>
+                            <td>None identified</td>
+                            <td>4+ years</td>
+                        </tr>
+                        <tr>
+                            <td>PCSK9 mAbs</td>
+                            <td>ISR 2-4%, nasopharyngitis</td>
+                            <td>None (8+ year record)</td>
+                            <td>Excellent</td>
+                        </tr>
+                        <tr>
+                            <td>Bempedoic Acid</td>
+                            <td>Well-tolerated</td>
+                            <td>Gout 3.5%, tendon rupture 0.5%</td>
+                            <td>5+ years</td>
+                        </tr>
+                        <tr>
+                            <td>Statins</td>
+                            <td>Muscle pain 5-10%</td>
+                            <td>Rare rhabdo, slight diabetes risk</td>
+                            <td>30+ years</td>
+                        </tr>
+                        <tr>
+                            <td>Oral PCSK9i</td>
+                            <td>Similar to placebo</td>
+                            <td>TBD (limited data)</td>
+                            <td>Limited</td>
+                        </tr>
+                        <tr>
+                            <td>Gene Editing</td>
+                            <td>Under evaluation</td>
+                            <td>Off-target edits (theoretical)</td>
+                            <td>None</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="comparison-section">
+                <h3>5-10 Year Market Evolution</h3>
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025-2027</div>
+                            <div class="timeline-title">Oral Revolution</div>
+                            <div class="timeline-description">
+                                • MK-0616, AZD0780 enter market<br>
+                                • LIB003 approved as monthly option<br>
+                                • Inclisiran ORION-4 validates CV benefit<br>
+                                • Price competition intensifies
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2028-2030</div>
+                            <div class="timeline-title">Biosimilar Era</div>
+                            <div class="timeline-description">
+                                • PCSK9 mAb biosimilars arrive<br>
+                                • Oral PCSK9i dominate new prescriptions<br>
+                                • Gene editing potentially approved for FH<br>
+                                • Combination pills emerge
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2030-2035</div>
+                            <div class="timeline-title">Precision Medicine</div>
+                            <div class="timeline-description">
+                                • Personalized therapy selection<br>
+                                • Gene editing for broader populations<br>
+                                • Ultra-low cost generics<br>
+                                • Primary prevention expansion
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active from all nav tabs
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Mark nav tab as active
+            event.target.classList.add('active');
+        }
+        
+        // Animate efficacy bars on load
+        window.addEventListener('load', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                        observer.unobserve(bar);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.efficacy-fill').forEach(bar => {
+                observer.observe(bar);
+            });
+        });
+    </script>
+</body>
+</html>
