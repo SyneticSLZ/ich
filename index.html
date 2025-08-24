@@ -34,7 +34,297 @@
             line-height: 1.6;
             font-size: 14px;
         }
+                .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
         
+        .section-header {
+            margin: 32px 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .section-header h2 {
+            font-size: 24px;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        .reference-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+        
+        .data-table th {
+            background: var(--background-alt);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+        
+        .data-table td {
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            vertical-align: top;
+        }
+        
+        .data-table tr:hover {
+            background: var(--background-alt);
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin: 20px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 4px;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--border);
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            margin-left: 24px;
+            flex: 1;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .timeline-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .timeline-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+            z-index: 1;
+        }
+        
+        .info-box {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin: 16px 0;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin: 16px 0;
+        }
+        
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .highlight-positive {
+            background: #d1fae5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .highlight-negative {
+            background: #fee2e2;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .highlight-neutral {
+            background: #e0e7ff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 18px;
+            color: var(--text-primary);
+            margin: 24px 0 12px;
+            font-weight: 600;
+        }
+        
+        h4 {
+            font-size: 14px;
+            color: var(--text-primary);
+            margin: 16px 0 8px;
+            font-weight: 600;
+        }
+        
+        ul {
+            padding-left: 24px;
+            margin: 8px 0;
+        }
+        
+        li {
+            margin: 4px 0;
+            color: var(--text-secondary);
+        }
+        
+        .agency-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        
+        .agency-box {
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            background: white;
+        }
+        
+        .agency-box.ema {
+            border-left: 4px solid #003399;
+        }
+        
+        .agency-box.fda {
+            border-left: 4px solid #0066cc;
+        }
+        
+        .agency-header {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .compliance-event {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .compliance-event.crl {
+            border-left: 4px solid var(--danger);
+        }
+        
+        .compliance-event.hold {
+            border-left: 4px solid var(--warning);
+        }
+        
+        .compliance-event.resolved {
+            border-left: 4px solid var(--success);
+        }
+        
+        .compliance-event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .compliance-event-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+        
+        .compliance-event-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .compliance-event-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
         /* Header */
         .header {
             background: white;
@@ -600,72 +890,699 @@
                 </div>
             </div>
 
-            <!-- Quick Comparison Grid -->
-            <div class="section-header">
-                <h2>Treatment Options at a Glance</h2>
-            </div>
+ <!-- Detailed EMA vs FDA Comparison Section -->
+        <div class="section-header">
+            <h2>EMA vs FDA: Detailed Regulatory Comparison</h2>
+        </div>
+
+        <div class="reference-card">
+            <h3>Overview of Regulatory Divergence Patterns</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+                Analysis of approved cholesterol therapies reveals systematic differences in regulatory approach between EMA and FDA:
+            </p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px;">
-                <!-- Best for Compliance -->
-                <div style="background: white; border: 2px solid var(--success); border-radius: 8px; padding: 16px;">
-                    <h4 style="color: var(--success); margin-bottom: 12px;">✅ Best for Compliance</h4>
-                    <div style="margin-bottom: 12px;">
-                        <strong>Inclisiran</strong>
-                        <div style="font-size: 12px; color: var(--text-secondary);">2 injections/year = 100% compliance</div>
-                    </div>
-                    <div class="efficacy-bar" style="height: 20px;">
-                        <div class="efficacy-fill" style="width: 52%; font-size: 11px;">52% LDL↓</div>
-                    </div>
-                    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">
-                        Perfect for: Non-adherent patients, busy professionals, healthcare system management
-                    </p>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Months Average EMA Lead</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">For inclisiran approval</div>
                 </div>
-                
-                <!-- Most Proven -->
-                <div style="background: white; border: 2px solid var(--primary); border-radius: 8px; padding: 16px;">
-                    <h4 style="color: var(--primary); margin-bottom: 12px;">🏆 Most Proven Outcomes</h4>
-                    <div style="margin-bottom: 12px;">
-                        <strong>Repatha/Praluent</strong>
-                        <div style="font-size: 12px; color: var(--text-secondary);">8+ years real-world data</div>
-                    </div>
-                    <div class="efficacy-bar" style="height: 20px;">
-                        <div class="efficacy-fill" style="width: 60%; font-size: 11px;">60% LDL↓</div>
-                    </div>
-                    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">
-                        15% MACE reduction, 15% mortality benefit (Praluent), extensive safety record
-                    </p>
+                <div class="stat-card">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">FDA Manufacturing CRLs</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Inclisiran, gene editing holds</div>
                 </div>
-                
-                <!-- Most Convenient -->
-                <div style="background: white; border: 2px solid var(--warning); border-radius: 8px; padding: 16px;">
-                    <h4 style="color: var(--warning); margin-bottom: 12px;">🎯 Most Convenient (Coming)</h4>
-                    <div style="margin-bottom: 12px;">
-                        <strong>MK-0616 (Oral)</strong>
-                        <div style="font-size: 12px; color: var(--text-secondary);">Daily pill, no injections</div>
-                    </div>
-                    <div class="efficacy-bar" style="height: 20px;">
-                        <div class="efficacy-fill" style="width: 60%; font-size: 11px;">60% LDL↓</div>
-                    </div>
-                    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">
-                        Expected 2025-26, pharmacy dispensed, potentially lower cost than biologics
-                    </p>
+                <div class="stat-card">
+                    <div class="stat-value">2-4</div>
+                    <div class="stat-label">Years to CV Outcomes Label</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Post-approval for both agencies</div>
                 </div>
-                
-                <!-- Most Affordable -->
-                <div style="background: white; border: 2px solid #8E44AD; border-radius: 8px; padding: 16px;">
-                    <h4 style="color: #8E44AD; margin-bottom: 12px;">💰 Most Affordable</h4>
-                    <div style="margin-bottom: 12px;">
-                        <strong>Statins + Ezetimibe</strong>
-                        <div style="font-size: 12px; color: var(--text-secondary);">Generic combo ~$20/month</div>
-                    </div>
-                    <div class="efficacy-bar" style="height: 20px;">
-                        <div class="efficacy-fill" style="width: 45%; background: #8E44AD; font-size: 11px;">45% LDL↓</div>
-                    </div>
-                    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 8px;">
-                        First-line for all patients, proven outcomes, required before expensive therapies
-                    </p>
+                <div class="stat-card">
+                    <div class="stat-value">6mo vs 5yr</div>
+                    <div class="stat-label">Pediatric Age Difference</div>
+                    <div style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Evinacumab: EMA vs FDA</div>
                 </div>
             </div>
+
+            <h3>Drug-by-Drug Regulatory Comparison</h3>
+            
+            <!-- Inclisiran -->
+            <div class="compliance-event">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Inclisiran (Leqvio®) - siRNA</div>
+                    <div class="compliance-event-date">Novartis</div>
+                </div>
+                <div class="agency-comparison">
+                    <div class="agency-box ema">
+                        <div class="agency-header">🇪🇺 EMA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>Date:</strong> December 9, 2020</p>
+                            <p><strong>Initial Indication:</strong> Adults with primary hypercholesterolaemia (HeFH and non-FH) or mixed dyslipidaemia</p>
+                            <p><strong>Positioning:</strong> Add-on to statins/other LLTs or when statins not tolerated</p>
+                            <p><strong>Administration:</strong> HCP dosing at Day 1, Month 3, then every 6 months</p>
+                        </div>
+                    </div>
+                    <div class="agency-box fda">
+                        <div class="agency-header">🇺🇸 FDA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>Date:</strong> December 21, 2021 (12 months after EMA)</p>
+                            <p><strong>Initial CRL:</strong> December 2020 - third-party manufacturing facility inspection issues</p>
+                            <p><strong>Label Expansion:</strong> July 2023 - broadened to allow earlier use in primary hyperlipidaemia</p>
+                            <p><strong>Key Issue:</strong> COVID-era facility access, not clinical/safety/efficacy concerns</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: 12px;">
+                    <p style="font-size: 12px; margin: 0;"><strong>Divergence Analysis:</strong> EU approved with broad adult dyslipidaemia label one year earlier. US approval delayed solely due to CMC/inspection issues during COVID, not data concerns. FDA later aligned with broader labeling in 2023. Both agencies await ORION-4 outcomes data (expected 2026).</p>
+                </div>
+            </div>
+
+            <!-- Repatha -->
+            <div class="compliance-event">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Repatha® (evolocumab) - PCSK9 mAb</div>
+                    <div class="compliance-event-date">Amgen</div>
+                </div>
+                <div class="agency-comparison">
+                    <div class="agency-box ema">
+                        <div class="agency-header">🇪🇺 EMA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>Date:</strong> 2015</p>
+                            <p><strong>Initial Indication:</strong> Primary hypercholesterolaemia, HoFH, mixed dyslipidaemia</p>
+                            <p><strong>CV Risk Reduction:</strong> Added to label based on FOURIER outcomes</p>
+                        </div>
+                    </div>
+                    <div class="agency-box fda">
+                        <div class="agency-header">🇺🇸 FDA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>Date:</strong> 2015</p>
+                            <p><strong>CV Outcomes Update:</strong> 2017 - reduction of MI, stroke, coronary revascularisation</p>
+                            <p><strong>Evidence Base:</strong> FOURIER trial data</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: 12px;">
+                    <p style="font-size: 12px; margin: 0;"><strong>Divergence Analysis:</strong> Remarkably aligned approval timing. Both agencies granted CV risk reduction claims following FOURIER outcomes data, with FDA updating label in 2017.</p>
+                </div>
+            </div>
+
+            <!-- Praluent -->
+            <div class="compliance-event">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Praluent® (alirocumab) - PCSK9 mAb</div>
+                    <div class="compliance-event-date">Sanofi/Regeneron</div>
+                </div>
+                <div class="agency-comparison">
+                    <div class="agency-box ema">
+                        <div class="agency-header">🇪🇺 EMA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>Date:</strong> 2015</p>
+                            <p><strong>Current Label:</strong> Includes CV risk reduction for ASCVD</p>
+                            <p><strong>Pediatric Extension:</strong> HeFH from age 8</p>
+                        </div>
+                    </div>
+                    <div class="agency-box fda">
+                        <div class="agency-header">🇺🇸 FDA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>Date:</strong> 2015</p>
+                            <p><strong>CV Outcomes:</strong> May 2019 - reduction of MI, stroke, unstable angina</p>
+                            <p><strong>Evidence Base:</strong> ODYSSEY OUTCOMES trial</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: 12px;">
+                    <p style="font-size: 12px; margin: 0;"><strong>Divergence Analysis:</strong> Both approved simultaneously in 2015. FDA added CV outcomes language in 2019 (4 years post-approval) based on ODYSSEY OUTCOMES. EMA includes broader dyslipidaemia use and pediatric indication.</p>
+                </div>
+            </div>
+
+            <!-- Bempedoic Acid -->
+            <div class="compliance-event">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Bempedoic Acid - Oral ACL Inhibitor</div>
+                    <div class="compliance-event-date">Esperion (US: Nexletol/Nexlizet; EU: Nilemdo/Nustendi)</div>
+                </div>
+                <div class="agency-comparison">
+                    <div class="agency-box ema">
+                        <div class="agency-header">🇪🇺 EMA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>Initial:</strong> LDL-C lowering indication</p>
+                            <p><strong>March 2024:</strong> CHMP positive opinion for CV risk reduction</p>
+                            <p><strong>Note:</strong> Combination pill available (Nustendi)</p>
+                        </div>
+                    </div>
+                    <div class="agency-box fda">
+                        <div class="agency-header">🇺🇸 FDA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>2020:</strong> Approved for LDL-C lowering</p>
+                            <p><strong>March 22, 2024:</strong> CV risk-reduction label expansion</p>
+                            <p><strong>Products:</strong> Both Nexletol and Nexlizet received CV indication</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: 12px;">
+                    <p style="font-size: 12px; margin: 0;"><strong>Divergence Analysis:</strong> Both agencies moved simultaneously in March 2024 to add CV outcomes following CLEAR Outcomes trial. EU historically had combination pill first. Regulatory alignment achieved on outcomes recognition.</p>
+                </div>
+            </div>
+
+            <!-- Evinacumab -->
+            <div class="compliance-event">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Evinacumab (Evkeeza®) - ANGPTL3 mAb for HoFH</div>
+                    <div class="compliance-event-date">Regeneron/Ultragenyx</div>
+                </div>
+                <div class="agency-comparison">
+                    <div class="agency-box ema">
+                        <div class="agency-header">🇪🇺 EMA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>Date:</strong> June 17, 2021</p>
+                            <p><strong>Age Range:</strong> <span class="highlight-positive">≥6 months</span></p>
+                            <p><strong>Population:</strong> Adults, adolescents, and children with HoFH</p>
+                            <p><strong>Administration:</strong> IV every 4 weeks</p>
+                        </div>
+                    </div>
+                    <div class="agency-box fda">
+                        <div class="agency-header">🇺🇸 FDA Approval</div>
+                        <div style="font-size: 13px;">
+                            <p><strong>Date:</strong> February 11, 2021 (4 months before EMA)</p>
+                            <p><strong>Initial Age:</strong> ≥12 years</p>
+                            <p><strong>Pediatric Extension:</strong> March 2023 to <span class="highlight-neutral">≥5 years</span></p>
+                            <p><strong>Administration:</strong> IV every 4 weeks</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: 12px;">
+                    <p style="font-size: 12px; margin: 0;"><strong>Divergence Analysis:</strong> FDA approved first but EMA granted significantly broader pediatric access (6 months vs 5 years). This represents the largest age divergence in the class, with EMA showing greater willingness to approve for very young patients in ultra-rare disease.</p>
+                </div>
+            </div>
+
+            <h3>Pipeline & Emerging Therapies Regulatory Status</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Drug/Company</th>
+                        <th>Mechanism</th>
+                        <th>FDA Status</th>
+                        <th>EMA Status</th>
+                        <th>Key Regulatory Events</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>LIB003 (lerodalcibep)</strong><br>LIB Therapeutics</td>
+                        <td>Monthly PCSK9 adnectin</td>
+                        <td>BLA accepted Feb 2025<br>PDUFA: Dec 12, 2025</td>
+                        <td>MAA planned mid-2025</td>
+                        <td>Head-to-head trial vs inclisiran ongoing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MK-0616 (enlicitide)</strong><br>Merck</td>
+                        <td>Oral PCSK9 inhibitor</td>
+                        <td>Phase 3 ongoing</td>
+                        <td>No filing yet</td>
+                        <td>Global Phase 3 program underway</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AZD0780</strong><br>AstraZeneca</td>
+                        <td>Oral PCSK9 inhibitor</td>
+                        <td>Phase 2b complete</td>
+                        <td>No filing yet</td>
+                        <td>PURSUIT trial met primary endpoints</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VERVE-101</strong><br>Now Eli Lilly</td>
+                        <td>In vivo PCSK9 base editing</td>
+                        <td>Clinical hold lifted Oct 2023</td>
+                        <td>Early stage</td>
+                        <td>FDA hold (Nov 2022) lifted after additional data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ebronucimab</strong><br>Akeso (China)</td>
+                        <td>PCSK9 mAb</td>
+                        <td>No submission</td>
+                        <td>No submission</td>
+                        <td>China NMPA approved Sept 30, 2024</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Detailed Compliance History Section -->
+        <div class="section-header">
+            <h2>Compliance History & Regulatory Friction Analysis</h2>
+        </div>
+
+        <div class="reference-card">
+            <h3>Overview of Compliance Events</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+                The cholesterol therapy class has experienced relatively minimal regulatory compliance issues, with most friction points related to manufacturing/CMC rather than safety or efficacy concerns. No OPDP warning letters have been issued for major PCSK9 therapies.
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <!-- Inclisiran CRL -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--danger);"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">December 2020</div>
+                        <div class="timeline-title">Inclisiran Complete Response Letter (CRL)</div>
+                        <div class="timeline-description">
+                            <strong>Issue:</strong> Third-party manufacturing facility inspection<br>
+                            <strong>Context:</strong> COVID-19 pandemic restricted FDA access to facility<br>
+                            <strong>Important:</strong> No concerns about clinical data, safety, or efficacy<br>
+                            <strong>Impact:</strong> 12-month delay in US approval vs EU
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inclisiran Resolution -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--success);"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">December 21, 2021</div>
+                        <div class="timeline-title">Inclisiran CRL Resolution & Approval</div>
+                        <div class="timeline-description">
+                            <strong>Resolution:</strong> Facility inspection completed successfully<br>
+                            <strong>Outcome:</strong> Full FDA approval granted<br>
+                            <strong>Lesson:</strong> CMC readiness critical even with strong clinical data
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OPDP Roszet Letter -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--warning);"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-title">OPDP Untitled Letter - Roszet (Class Example)</div>
+                        <div class="timeline-description">
+                            <strong>Target:</strong> Althera Pharmaceuticals (rosuvastatin/ezetimibe)<br>
+                            <strong>Issue:</strong> Promotional claims regarding LDL-C reduction<br>
+                            <strong>Concerns:</strong> Composite endpoints, mITT/LOCF analyses, multiplicity adjustments<br>
+                            <strong>Relevance:</strong> Demonstrates FDA scrutiny on lipid-lowering claims across class
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verve Clinical Hold -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--danger);"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">November 2022</div>
+                        <div class="timeline-title">FDA Clinical Hold - VERVE-101 Gene Editing</div>
+                        <div class="timeline-description">
+                            <strong>Product:</strong> PCSK9 in vivo base editor<br>
+                            <strong>Reason:</strong> First-in-human gene editing safety review<br>
+                            <strong>FDA Requirements:</strong> Additional preclinical and clinical safety data<br>
+                            <strong>Context:</strong> Standard heightened scrutiny for novel modality
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verve Hold Lifted -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--success);"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">October 2023</div>
+                        <div class="timeline-title">VERVE-101 Clinical Hold Lifted</div>
+                        <div class="timeline-description">
+                            <strong>Resolution:</strong> FDA reviewed additional materials<br>
+                            <strong>Outcome:</strong> US studies permitted to continue<br>
+                            <strong>Significance:</strong> Regulatory pathway clarified for gene editing approaches<br>
+                            <strong>Note:</strong> Eli Lilly acquired Verve assets July 2025
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inclisiran Label Expansion -->
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--success);"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">July 2023</div>
+                        <div class="timeline-title">Inclisiran US Label Broadened</div>
+                        <div class="timeline-description">
+                            <strong>Change:</strong> Expanded to allow earlier use in primary hyperlipidaemia<br>
+                            <strong>Significance:</strong> FDA aligning more closely with EMA's broader initial label<br>
+                            <strong>Pending:</strong> CV outcomes data from ORION-4 (expected 2026)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Detailed Compliance Analysis by Company</h3>
+
+            <div class="compliance-event crl">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Novartis (Inclisiran)</div>
+                </div>
+                <div class="compliance-event-description">
+                    <h4>Complete Response Letter Details (December 2020)</h4>
+                    <ul style="font-size: 13px; line-height: 1.6;">
+                        <li><strong>Primary Issue:</strong> Inability to conduct on-site inspection at third-party manufacturing facility</li>
+                        <li><strong>Facility Location:</strong> Contract manufacturing site (not Novartis-owned)</li>
+                        <li><strong>COVID Impact:</strong> Travel restrictions prevented FDA inspectors from accessing facility</li>
+                        <li><strong>FDA Statement:</strong> "No concerns related to clinical efficacy or safety"</li>
+                        <li><strong>Resolution Timeline:</strong> 12 months from CRL to approval</li>
+                        <li><strong>Key Learning:</strong> Third-party CMC readiness as critical as internal facilities</li>
+                    </ul>
+                    
+                    <h4>Post-Approval Compliance</h4>
+                    <ul style="font-size: 13px; line-height: 1.6;">
+                        <li>No OPDP warning or untitled letters issued</li>
+                        <li>Successful label expansion in 2023 without friction</li>
+                        <li>NHS England population health deal demonstrates system-level acceptance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="compliance-event resolved">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Amgen (Repatha)</div>
+                </div>
+                <div class="compliance-event-description">
+                    <ul style="font-size: 13px; line-height: 1.6;">
+                        <li><strong>Approval Process:</strong> No CRLs during original BLA or subsequent supplements</li>
+                        <li><strong>OPDP History:</strong> No warning or untitled letters specific to Repatha identified</li>
+                        <li><strong>Label Updates:</strong> Smooth addition of CV outcomes data (2017) without regulatory friction</li>
+                        <li><strong>Manufacturing:</strong> No facility inspection issues reported</li>
+                        <li><strong>Post-Market:</strong> 8+ years without significant compliance events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="compliance-event resolved">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Sanofi/Regeneron (Praluent)</div>
+                </div>
+                <div class="compliance-event-description">
+                    <ul style="font-size: 13px; line-height: 1.6;">
+                        <li><strong>Regulatory History:</strong> Clean approval pathway in both EMA and FDA (2015)</li>
+                        <li><strong>OPDP Status:</strong> No enforcement actions identified</li>
+                        <li><strong>CV Outcomes Addition:</strong> FDA label update (May 2019) proceeded without issues</li>
+                        <li><strong>Manufacturing:</strong> No reported CMC-related delays or holds</li>
+                        <li><strong>Patent Litigation:</strong> Resolved Amgen patent dispute (2019) - business not regulatory issue</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="compliance-event resolved">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Esperion (Bempedoic Acid)</div>
+                </div>
+                <div class="compliance-event-description">
+                    <ul style="font-size: 13px; line-height: 1.6;">
+                        <li><strong>Approval:</strong> No CRLs identified for Nexletol or Nexlizet</li>
+                        <li><strong>OPDP:</strong> No direct enforcement actions</li>
+                        <li><strong>CV Label Update:</strong> March 2024 expansion proceeded smoothly in both US and EU</li>
+                        <li><strong>Class Relevance:</strong> OPDP's 2022 Roszet letter highlights scrutiny on LDL-C promotional claims</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="compliance-event hold">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">Verve/Eli Lilly (Gene Editing)</div>
+                </div>
+                <div class="compliance-event-description">
+                    <h4>Clinical Hold Analysis (November 2022 - October 2023)</h4>
+                    <ul style="font-size: 13px; line-height: 1.6;">
+                        <li><strong>Technology:</strong> First-in-class in vivo base editing of PCSK9</li>
+                        <li><strong>FDA Concerns:</strong>
+                            <ul>
+                                <li>Off-target editing potential</li>
+                                <li>Long-term safety of permanent genetic modification</li>
+                                <li>Dose selection for first-in-human studies</li>
+                                <li>Patient selection criteria for irreversible therapy</li>
+                            </ul>
+                        </li>
+                        <li><strong>Resolution Requirements:</strong>
+                            <ul>
+                                <li>Additional preclinical safety studies</li>
+                                <li>Enhanced off-target analysis protocols</li>
+                                <li>Revised clinical trial design with additional safety monitoring</li>
+                                <li>Updated informed consent procedures</li>
+                            </ul>
+                        </li>
+                        <li><strong>Outcome:</strong> Hold lifted after 11 months with pathway forward established</li>
+                        <li><strong>Industry Impact:</strong> Set precedent for gene editing regulatory requirements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Key Compliance Lessons & Patterns</h3>
+            
+            <div class="warning-box">
+                <h4 style="margin-top: 0;">Manufacturing & CMC Readiness</h4>
+                <p style="font-size: 13px; margin: 8px 0;">
+                    The inclisiran CRL demonstrates that even with excellent clinical data, manufacturing readiness can become the rate-limiting factor. Key considerations:
+                </p>
+                <ul style="font-size: 13px; margin: 8px 0;">
+                    <li>Third-party facility inspection readiness is as critical as sponsor facilities</li>
+                    <li>COVID-19 exposed vulnerabilities in global manufacturing networks</li>
+                    <li>FDA maintains strict facility inspection requirements regardless of external circumstances</li>
+                    <li>Companies should maintain multiple manufacturing sites to mitigate single-point failures</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4 style="margin-top: 0;">Promotional Compliance Environment</h4>
+                <p style="font-size: 13px; margin: 8px 0;">
+                    While no PCSK9 inhibitors have received OPDP letters, the 2022 Roszet enforcement action provides guidance:
+                </p>
+                <ul style="font-size: 13px; margin: 8px 0;">
+                    <li>FDA scrutinizes composite endpoint claims in lipid-lowering drugs</li>
+                    <li>mITT and LOCF analyses require careful presentation</li>
+                    <li>Multiplicity adjustments must be clearly disclosed</li>
+                    <li>LDL-C reduction claims must align precisely with trial designs</li>
+                </ul>
+            </div>
+
+            <div class="reference-card" style="background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); margin-top: 24px;">
+                <h4>Novel Modality Regulatory Considerations</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div>
+                        <h5 style="color: var(--primary); font-size: 13px;">Established Technologies (Lower Friction)</h5>
+                        <ul style="font-size: 12px;">
+                            <li>Small molecules (statins, bempedoic acid)</li>
+                            <li>Monoclonal antibodies (Repatha, Praluent)</li>
+                            <li>siRNA with established delivery (inclisiran)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style="color: var(--warning); font-size: 13px;">Novel Technologies (Higher Scrutiny)</h5>
+                        <ul style="font-size: 12px;">
+                            <li>In vivo gene editing (VERVE-101)</li>
+                            <li>Base editing approaches</li>
+                            <li>Permanent genetic modifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Market Access and Implementation Differences -->
+        <div class="section-header">
+            <h2>Market Implementation: System-Level Differences</h2>
+        </div>
+
+        <div class="reference-card">
+            <h3>Notable Implementation Models</h3>
+            
+            <div class="compliance-event" style="border-left: 4px solid var(--success);">
+                <div class="compliance-event-header">
+                    <div class="compliance-event-title">NHS England Population Health Agreement (Inclisiran)</div>
+                    <div class="compliance-event-date">Implemented 2021</div>
+                </div>
+                <div class="compliance-event-description">
+                    <p style="font-size: 13px; margin-bottom: 12px;">
+                        Unique population-level procurement model demonstrating system-level adoption:
+                    </p>
+                    <ul style="font-size: 13px;">
+                        <li><strong>Structure:</strong> Direct NHS procurement for entire eligible population</li>
+                        <li><strong>Administration:</strong> Delivered in primary care settings by nurses</li>
+                        <li><strong>Payment:</strong> Outcomes-based pricing arrangement</li>
+                        <li><strong>Scale:</strong> Potential to treat 300,000+ patients</li>
+                        <li><strong>Significance:</strong> First population-health deal for PCSK9 therapy</li>
+                    </ul>
+                    <div class="info-box" style="margin-top: 12px;">
+                        <p style="font-size: 12px; margin: 0;">This represents a policy innovation rather than regulatory approval, demonstrating how healthcare systems can accelerate access independent of regulatory timelines.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Access Patterns by Region</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Region/Country</th>
+                        <th>Regulatory Approach</th>
+                        <th>Access Model</th>
+                        <th>Key Differences</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>United States</strong></td>
+                        <td>FDA approval + payer coverage</td>
+                        <td>Step therapy required, prior authorization</td>
+                        <td>Must fail 2-3 therapies before PCSK9 access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>European Union</strong></td>
+                        <td>EMA approval + national HTA</td>
+                        <td>Country-specific reimbursement</td>
+                        <td>Varies by member state, generally broader initial labels</td>
+                    </tr>
+                    <tr>
+                        <td><strong>United Kingdom</strong></td>
+                        <td>MHRA (post-Brexit) + NICE</td>
+                        <td>NHS population health model for inclisiran</td>
+                        <td>System-level procurement bypasses individual prescribing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>China</strong></td>
+                        <td>NMPA approval</td>
+                        <td>Domestic + imported options</td>
+                        <td>Ebronucimab provides local alternative at different price point</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Technical Specifications Comparison -->
+        <div class="section-header">
+            <h2>Technical & Clinical Specifications</h2>
+        </div>
+
+        <div class="reference-card">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Drug</th>
+                        <th>Mechanism</th>
+                        <th>LDL-C Reduction</th>
+                        <th>Dosing Frequency</th>
+                        <th>Administration</th>
+                        <th>CV Outcomes Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Inclisiran</strong></td>
+                        <td>siRNA targeting PCSK9 mRNA</td>
+                        <td>50-52%</td>
+                        <td>Day 1, Month 3, then Q6M</td>
+                        <td>SC injection by HCP</td>
+                        <td>Pending (ORION-4, 2026)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Repatha</strong></td>
+                        <td>PCSK9 monoclonal antibody</td>
+                        <td>60%</td>
+                        <td>Q2W or monthly</td>
+                        <td>SC self-injection</td>
+                        <td>15% MACE reduction (FOURIER)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Praluent</strong></td>
+                        <td>PCSK9 monoclonal antibody</td>
+                        <td>45-60%</td>
+                        <td>Q2W or Q4W</td>
+                        <td>SC self-injection</td>
+                        <td>15% MACE, 15% mortality benefit (ODYSSEY)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bempedoic Acid</strong></td>
+                        <td>ACL inhibitor</td>
+                        <td>18-25%</td>
+                        <td>Daily</td>
+                        <td>Oral</td>
+                        <td>13% MACE reduction (CLEAR)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Evinacumab</strong></td>
+                        <td>ANGPTL3 antibody</td>
+                        <td>47-50% (HoFH)</td>
+                        <td>Q4W</td>
+                        <td>IV infusion</td>
+                        <td>N/A (ultra-rare indication)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LIB003</strong> (pending)</td>
+                        <td>PCSK9 adnectin</td>
+                        <td>~60%</td>
+                        <td>Monthly</td>
+                        <td>SC self-injection</td>
+                        <td>Trials ongoing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MK-0616</strong> (pipeline)</td>
+                        <td>Oral PCSK9 inhibitor</td>
+                        <td>60%</td>
+                        <td>Daily</td>
+                        <td>Oral</td>
+                        <td>Phase 3 ongoing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Key Takeaways -->
+        <div class="section-header">
+            <h2>Strategic Implications</h2>
+        </div>
+
+        <div class="reference-card">
+            <h3>Regulatory Strategy Considerations</h3>
+            
+            <div class="comparison-grid">
+                <div>
+                    <h4>EMA Advantages</h4>
+                    <ul style="font-size: 13px; line-height: 1.8;">
+                        <li>Broader initial labeling typical</li>
+                        <li>Faster approval for some drugs (inclisiran)</li>
+                        <li>More aggressive pediatric indications (Evinacumab)</li>
+                        <li>Centralized approval for all EU markets</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>FDA Considerations</h4>
+                    <ul style="font-size: 13px; line-height: 1.8;">
+                        <li>Strict facility inspection requirements</li>
+                        <li>More conservative on novel modalities</li>
+                        <li>Clear pathway for label expansions</li>
+                        <li>Largest single market globally</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Compliance Risk Mitigation</h3>
+            
+            <div class="warning-box">
+                <h4 style="margin-top: 0;">High-Priority Areas</h4>
+                <ol style="font-size: 13px; line-height: 1.8;">
+                    <li><strong>Manufacturing Readiness:</strong> Ensure all facilities (including third-party) are inspection-ready before submission</li>
+                    <li><strong>Promotional Review:</strong> Careful alignment of claims with approved labeling, especially for LDL-C reduction</li>
+                    <li><strong>Novel Modality Planning:</strong> Expect additional scrutiny and longer timelines for first-in-class mechanisms</li>
+                    <li><strong>Outcomes Data:</strong> Plan for 2-4 year timeline from approval to CV outcomes label</li>
+                    <li><strong>Global Harmonization:</strong> Consider sequential vs parallel filing strategies based on inspection readiness</li>
+                </ol>
+            </div>
+
+            <h3>Market Evolution Forecast</h3>
+            
+            <div class="info-box">
+                <h4 style="margin-top: 0;">2025-2027 Regulatory Milestones</h4>
+                <ul style="font-size: 13px; line-height: 1.6; margin: 8px 0;">
+                    <li><strong>December 2025:</strong> LIB003 PDUFA decision - potential new monthly PCSK9 option</li>
+                    <li><strong>2026:</strong> Inclisiran ORION-4 outcomes - critical for market positioning</li>
+                    <li><strong>2026-2027:</strong> First oral PCSK9 inhibitor approvals expected</li>
+                    <li><strong>2027:</strong> Potential biosimilar applications for PCSK9 mAbs</li>
+                </ul>
+            </div>
+        </div>
 
             <!-- Understanding Key Metrics -->
             <div class="comparison-section">
@@ -1038,7 +1955,7 @@
             </div>
 
             <!-- Bempedoic Acid -->
-            <div class="drug-card">
+            <div class="drug-card" onclick="window.location.href='other.html'">
                 <div class="drug-header">
                     <div class="drug-info">
                         <div class="drug-name">Nexletol® (bempedoic acid)</div>
@@ -1072,7 +1989,7 @@
             </div>
 
             <!-- Ezetimibe -->
-            <div class="drug-card">
+            <div class="drug-card" onclick="window.location.href='other.html'">
                 <div class="drug-header">
                     <div class="drug-info">
                         <div class="drug-name">Ezetimibe (Zetia®)</div>
@@ -1106,7 +2023,7 @@
             </div>
 
             <!-- Statins -->
-            <div class="drug-card">
+            <div class="drug-card" onclick="window.location.href='other.html'">
                 <div class="drug-header">
                     <div class="drug-info">
                         <div class="drug-name">Statins (Various)</div>
@@ -1140,7 +2057,7 @@
             </div>
 
             <!-- Evinacumab -->
-            <div class="drug-card" onclick="window.location.href='evinacumab-details.html'">
+            <div class="drug-card" onclick="window.location.href='repatha.html'">
                 <div class="drug-header">
                     <div class="drug-info">
                         <div class="drug-name">Evkeeza® (evinacumab)</div>
@@ -1287,7 +2204,7 @@
             </div>
 
             <!-- Obicetrapib -->
-            <div class="drug-card">
+           <div class="drug-card" onclick="window.location.href='other.html'">
                 <div class="drug-header">
                     <div class="drug-info">
                         <div class="drug-name">Obicetrapib</div>
