@@ -78,6 +78,9 @@
                     <button class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50" onclick="showTab('comparison')">
                         Comparison
                     </button>
+                         <button class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50" onclick="showTab('ema')">
+                        EMA vs FDA
+                    </button>
                 </nav>
 
                 <!-- Theme Toggle -->
@@ -239,38 +242,6 @@
                     </div>
                 </div>
 
-                <!-- EMA vs FDA Comparison -->
-                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
-                    <h3 class="mb-6 text-xl font-light text-gray-900 dark:text-white">EMA vs FDA: Regulatory Comparison</h3>
-                    
-                    <!-- Inclisiran -->
-                    <div class="mb-6">
-                        <h3 class="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">Inclisiran (Leqvio®) - Novartis</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg border-l-4 border-blue-600">
-                                <div class="font-medium mb-2 text-gray-900 dark:text-white">🇪🇺 EMA Approval</div>
-                                <div class="text-xs space-y-1 text-gray-600 dark:text-gray-400">
-                                    <p><strong class="text-gray-900 dark:text-white">Date:</strong> December 9, 2020</p>
-                                    <p><strong class="text-gray-900 dark:text-white">Indication:</strong> Primary hypercholesterolaemia or mixed dyslipidaemia</p>
-                                    <p><strong class="text-gray-900 dark:text-white">Administration:</strong> HCP dosing every 6 months</p>
-                                </div>
-                            </div>
-                            <div class="p-4 bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-lg border-l-4 border-red-600">
-                                <div class="font-medium mb-2 text-gray-900 dark:text-white">🇺🇸 FDA Approval</div>
-                                <div class="text-xs space-y-1 text-gray-600 dark:text-gray-400">
-                                    <p><strong class="text-gray-900 dark:text-white">Date:</strong> December 21, 2021 (12 months after EMA)</p>
-                                    <p><strong class="text-gray-900 dark:text-white">Initial CRL:</strong> Manufacturing facility inspection issues (COVID)</p>
-                                    <p><strong class="text-gray-900 dark:text-white">Label Expansion:</strong> July 2023 - broader primary hyperlipidaemia use</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                            <p class="text-xs text-gray-700 dark:text-gray-300">
-                                <strong>Divergence:</strong> EU approved one year earlier. US delay solely due to COVID-era facility inspection issues, not clinical concerns. Both await ORION-4 outcomes data (2026).
-                            </p>
-                        </div>
-                    </div>
-
                     <!-- Pipeline Table -->
                     <h3 class="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">Pipeline & Emerging Therapies</h3>
                     <div class="overflow-x-auto">
@@ -311,7 +282,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
 
                 <!-- Compliance History Timeline -->
                 <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
@@ -377,7 +347,7 @@
                 </div>
 
                 <!-- Market Evolution -->
-                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="hidden glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
                     <h3 class="mb-6 text-xl font-light text-gray-900 dark:text-white">5-10 Year Market Evolution</h3>
                     
                     <div class="space-y-4">
@@ -483,6 +453,84 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="tab-content hidden" id="ema">
+              <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <!-- EMA vs FDA Comparison -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="mb-6 text-xl font-light text-gray-900 dark:text-white">EMA vs FDA: Regulatory Comparison</h3>
+                    
+                    <!-- Inclisiran -->
+                    <div class="mb-6">
+                        <h3 class="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">Inclisiran (Leqvio®) - Novartis</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg border-l-4 border-blue-600">
+                                <div class="font-medium mb-2 text-gray-900 dark:text-white">🇪🇺 EMA Approval</div>
+                                <div class="text-xs space-y-1 text-gray-600 dark:text-gray-400">
+                                    <p><strong class="text-gray-900 dark:text-white">Date:</strong> December 9, 2020</p>
+                                    <p><strong class="text-gray-900 dark:text-white">Indication:</strong> Primary hypercholesterolaemia or mixed dyslipidaemia</p>
+                                    <p><strong class="text-gray-900 dark:text-white">Administration:</strong> HCP dosing every 6 months</p>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-lg border-l-4 border-red-600">
+                                <div class="font-medium mb-2 text-gray-900 dark:text-white">🇺🇸 FDA Approval</div>
+                                <div class="text-xs space-y-1 text-gray-600 dark:text-gray-400">
+                                    <p><strong class="text-gray-900 dark:text-white">Date:</strong> December 21, 2021 (12 months after EMA)</p>
+                                    <p><strong class="text-gray-900 dark:text-white">Initial CRL:</strong> Manufacturing facility inspection issues (COVID)</p>
+                                    <p><strong class="text-gray-900 dark:text-white">Label Expansion:</strong> July 2023 - broader primary hyperlipidaemia use</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                            <p class="text-xs text-gray-700 dark:text-gray-300">
+                                <strong>Divergence:</strong> EU approved one year earlier. US delay solely due to COVID-era facility inspection issues, not clinical concerns. Both await ORION-4 outcomes data (2026).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pipeline Table -->
+                    <h3 class="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">Pipeline & Emerging Therapies</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800">
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Drug/Company</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Mechanism</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Key Events</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-4 py-3 text-sm text-gray-900 dark:text-white"><strong>LIB003</strong><br>LIB Therapeutics</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Monthly PCSK9 adnectin</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">BLA accepted<br>PDUFA: Dec 12, 2025</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Head-to-head vs inclisiran ongoing</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-4 py-3 text-sm text-gray-900 dark:text-white"><strong>MK-0616</strong><br>Merck</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Oral PCSK9 inhibitor</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Phase 3 ongoing</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Global program underway</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-4 py-3 text-sm text-gray-900 dark:text-white"><strong>AZD0780</strong><br>AstraZeneca</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Oral PCSK9 inhibitor</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Phase 2b complete</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">PURSUIT trial met endpoints</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-4 py-3 text-sm text-gray-900 dark:text-white"><strong>VERVE-101</strong><br>Eli Lilly</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Gene editing</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">Clinical hold lifted</td>
+                                    <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">FDA hold resolved Oct 2023</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
         </div>
 
         <!-- Competitors Tab -->
