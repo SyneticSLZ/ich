@@ -3,1288 +3,679 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZD0780 - Comprehensive Drug Profile</title>
+    <title>AZD0780 - Oral PCSK9 Inhibitor | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 40%;
-            height: 200%;
-            background: rgba(255,255,255,0.05);
-            transform: rotate(45deg);
-        }
-        
-        .drug-title {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .drug-name {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .drug-subtitle {
-            font-size: 24px;
-            opacity: 0.95;
-            margin-bottom: 5px;
-        }
-        
-        .drug-company {
-            font-size: 20px;
-            opacity: 0.9;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
-            border-radius: 20px;
-            margin-top: 20px;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-        }
-        
-        .nav-tabs {
-            display: flex;
-            background: #f8f9fa;
-            border-bottom: 2px solid #e0e0e0;
-            overflow-x: auto;
-        }
-        
-        .nav-tab {
-            padding: 15px 30px;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            font-size: 16px;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        
-        .nav-tab:hover {
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-tab.active {
-            color: #667eea;
-            border-bottom: 3px solid #667eea;
-            margin-bottom: -2px;
-        }
-        
-        .content-area {
-            padding: 40px;
-        }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
+        /* Custom animations matching your project */
+        @keyframes fadeInRow {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .mechanism-section {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .mechanism-title {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .mechanism-icon {
-            width: 40px;
-            height: 40px;
-            background: #667eea;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .mechanism-content {
-            line-height: 1.8;
-            color: #555;
-        }
-        
-        .mechanism-highlight {
-            background: rgba(102, 126, 234, 0.1);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-            color: #667eea;
-        }
-        
-        .dosing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .dosing-card {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s;
-        }
-        
-        .dosing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-color: #667eea;
-        }
-        
-        .dosing-label {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 5px;
-        }
-        
-        .dosing-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .dosing-detail {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
-        }
-        
-        .timeline-container {
-            margin: 30px 0;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 15px;
-        }
-        
-        .timeline-header {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 30px;
-            color: #333;
-        }
-        
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-        
-        .timeline-content {
-            width: 45%;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            position: relative;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .timeline-content:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #667eea;
-            border: 4px solid white;
-            border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        
-        .timeline-date {
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-description {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .timeline-details {
-            display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #e0e0e0;
-            font-size: 13px;
-            color: #555;
-        }
-        
-        .timeline-content:hover .timeline-details {
-            display: block;
-        }
-        
-        .trials-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .trials-table thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .trials-table th {
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        .trials-table td {
-            padding: 15px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .trials-table tbody tr:hover {
-            background: #f8f9fa;
-        }
-        
-        .trial-phase {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        
-        .phase-1 { background: #e3f2fd; color: #1976d2; }
-        .phase-2 { background: #f3e5f5; color: #7b1fa2; }
-        .phase-3 { background: #e8f5e9; color: #388e3c; }
-        
-        .efficacy-chart {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 20px 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .chart-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .bar-chart {
-            display: flex;
-            align-items: flex-end;
-            height: 300px;
-            gap: 20px;
-            padding: 20px 0;
-        }
-        
-        .bar-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-        }
-        
-        .bar {
-            width: 100%;
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px 10px 0 0;
-            position: relative;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .bar:hover {
-            transform: scaleY(1.05);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
-        }
-        
-        .bar-value {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: bold;
-            font-size: 18px;
-            color: #667eea;
-        }
-        
-        .bar-label {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .safety-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .safety-card {
-            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .safety-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .safety-percentage {
-            font-size: 36px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .safety-label {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
-        }
-        
-        .commercial-section {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 20px 0;
-        }
-        
-        .price-estimate {
-            font-size: 32px;
-            font-weight: bold;
-            color: #667eea;
-            margin: 20px 0;
-        }
-        
-        .market-projection {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .projection-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .projection-label {
-            font-size: 14px;
-            color: #666;
-        }
-        
-        .pipeline-timeline {
-            position: relative;
-            padding: 20px 0;
-            margin: 30px 0;
-        }
-        
-        .pipeline-track {
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            position: relative;
-        }
-        
-        .pipeline-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 4px;
-            width: 45%;
-            position: relative;
-            animation: progressGrow 2s ease-out;
-        }
-        
-        @keyframes progressGrow {
-            from { width: 0; }
-        }
-        
-        .pipeline-milestone {
-            position: absolute;
-            top: -40px;
-            transform: translateX(-50%);
-            text-align: center;
-            white-space: nowrap;
-        }
-        
-        .milestone-dot {
-            width: 16px;
-            height: 16px;
-            background: white;
-            border: 3px solid #667eea;
-            border-radius: 50%;
-            margin: 0 auto 5px;
-        }
-        
-        .milestone-label {
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 30px 0;
-        }
-        
-        .info-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .info-card-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .info-icon {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            color: white;
-            font-size: 14px;
-        }
-        
-        .info-list {
-            list-style: none;
-        }
-        
-        .info-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .info-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        
-        .highlight-title {
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        .highlight-content {
-            color: #555;
-            line-height: 1.6;
-        }
-        
-        @media (max-width: 768px) {
-            .timeline-item {
-                flex-direction: column !important;
-            }
-            
-            .timeline-content {
-                width: 90%;
-                margin: 0 auto;
-            }
-            
-            .timeline-line {
-                left: 20px;
-            }
-            
-            .timeline-dot {
-                left: 20px;
-            }
-            
-            .bar-chart {
-                height: 200px;
-            }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.95); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in-row { animation: fadeInRow 0.3s ease forwards; }
+        .animate-pulse-glow { animation: pulse 3s ease-in-out infinite; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { @apply bg-gray-100 dark:bg-gray-800 rounded; }
+        ::-webkit-scrollbar-thumb { @apply bg-gray-400 dark:bg-gray-600 rounded hover:bg-gray-500 dark:hover:bg-gray-500; }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.75);
         }
     </style>
 </head>
-<body>
-    
-    <div class="container">
-        <div class="header">
-            <div class="drug-title">
-                <div class="drug-name">AZD0780</div>
-                <div class="drug-subtitle">Oral PCSK9 Inhibitor (Small Molecule)</div>
-                <div class="drug-company">AstraZeneca</div>
-                <span class="status-badge">Phase III Ongoing (2025)</span>
+<body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+    <!-- Fixed Header (matching your project) -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200 dark:border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <div class="h-12 w-12 bg-gradient-to-r from-green-400 to-cyan-400 rounded-full flex items-center justify-center text-white font-bold text-xl">L</div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-cyan-400 opacity-20 blur-xl animate-pulse-glow"></div>
+                    </div>
+                    <div>
+                        <div class="text-xl font-light bg-gradient-to-r from-green-600 to-cyan-600 dark:from-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                            Leaf Intelligence
+                        </div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 font-light">
+                            AZD0780 Drug Profile
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-1 bg-gray-100/50 dark:bg-gray-800/50 p-1.5 rounded-lg backdrop-blur-sm">
+                    <a href="index.html" class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Overview
+                    </a>
+                    <a href="index.html#approved" class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Competitors
+                    </a>
+                    <button class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-900 dark:text-white bg-white/50 dark:bg-gray-700/50 active">
+                        Drug Profile
+                    </button>
+                </nav>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="relative w-14 h-7 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300 shadow-inner hover:shadow-md">
+                    <div class="absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white dark:bg-gray-900 shadow-lg transform transition-transform duration-300 dark:translate-x-7 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-yellow-500 dark:hidden" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+                        </svg>
+                        <svg class="w-4 h-4 text-indigo-400 hidden dark:block" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                        </svg>
+                    </div>
+                </button>
             </div>
         </div>
-        
-        <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
-            <button class="nav-tab" onclick="showTab('mechanism')">Mechanism & Dosing</button>
-            <button class="nav-tab" onclick="showTab('regulatory')">Regulatory Timeline</button>
-            <button class="nav-tab" onclick="showTab('clinical')">Clinical Trials</button>
-            <button class="nav-tab" onclick="showTab('safety')">Safety Profile</button>
-            <button class="nav-tab" onclick="showTab('commercial')">Commercial</button>
-            <button class="nav-tab" onclick="showTab('pipeline')">Pipeline & Future</button>
-        </div>
-        
-        <div class="content-area">
+    </header>
+
+    <!-- Main Container with padding for fixed header -->
+    <div class="pt-20 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            
+            <!-- Hero Section -->
+            <div class="glass rounded-2xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h1 class="text-4xl font-light mb-2 text-gray-900 dark:text-white">
+                            AZD0780
+                        </h1>
+                        <p class="text-lg text-indigo-600 dark:text-indigo-400 mb-2">
+                            Oral PCSK9 Inhibitor (Small Molecule)
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            AstraZeneca | Phase III Ongoing
+                        </p>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://clinicaltrials.gov/search?term=AZD0780" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 transition-all">
+                            ClinicalTrials.gov
+                        </a>
+                        <a href="https://www.astrazeneca.com/our-therapy-areas/cardiovascular-renal-metabolism.html" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+                            AstraZeneca Pipeline
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">50.7%</div>
+                    <div class="text-xs text-gray-600 dark:text-gray-400 uppercase tracking-wider mt-1">LDL-C Reduction</div>
+                </div>
+                <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-2xl font-bold text-green-600 dark:text-green-400">30 mg</div>
+                    <div class="text-xs text-gray-600 dark:text-gray-400 uppercase tracking-wider mt-1">Daily Dose</div>
+                </div>
+                <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">Phase III</div>
+                    <div class="text-xs text-gray-600 dark:text-gray-400 uppercase tracking-wider mt-1">Current Status</div>
+                </div>
+                <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">2027</div>
+                    <div class="text-xs text-gray-600 dark:text-gray-400 uppercase tracking-wider mt-1">Est. Approval</div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="glass rounded-xl mb-4 border border-gray-200 dark:border-gray-700">
+                <div class="flex overflow-x-auto">
+                    <button class="nav-tab px-6 py-3 text-sm font-medium transition-all text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400" onclick="showTab('overview')">
+                        Overview
+                    </button>
+                    <button class="nav-tab px-6 py-3 text-sm font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" onclick="showTab('mechanism')">
+                        Mechanism
+                    </button>
+                    <button class="nav-tab px-6 py-3 text-sm font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" onclick="showTab('clinical')">
+                        Clinical Trials
+                    </button>
+                    <button class="nav-tab px-6 py-3 text-sm font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" onclick="showTab('safety')">
+                        Safety
+                    </button>
+                    <button class="nav-tab px-6 py-3 text-sm font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" onclick="showTab('regulatory')">
+                        Regulatory
+                    </button>
+                    <button class="nav-tab px-6 py-3 text-sm font-medium transition-all text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" onclick="showTab('commercial')">
+                        Commercial
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
             <!-- Overview Tab -->
-            <div id="overview" class="tab-content active">
-                <div class="info-grid">
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">🔬</div>
-                            Key Features
-                        </div>
-                        <ul class="info-list">
-                            <li>First true oral small molecule PCSK9 inhibitor</li>
-                            <li>Once-daily dosing (30 mg)</li>
-                            <li>No meal restrictions required</li>
-                            <li>~50% LDL-C reduction achieved</li>
-                            <li>UK Innovation Passport (2023)</li>
-                            <li>Potential neuroprotective effects</li>
+            <div class="tab-content" id="overview">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Key Features -->
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                            <span class="text-indigo-600 dark:text-indigo-400">🔬</span> Key Features
+                        </h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                First true oral small molecule PCSK9 inhibitor
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Once-daily dosing (30 mg)
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                No meal restrictions required
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                ~50% LDL-C reduction achieved
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                UK Innovation Passport (2023)
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2">✓</span>
+                                Potential neuroprotective effects
+                            </li>
                         </ul>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">📊</div>
-                            Clinical Highlights
-                        </div>
-                        <ul class="info-list">
-                            <li>Phase IIb PURSUIT: 50.7% LDL reduction</li>
-                            <li>84% patients achieved LDL <70 mg/dL</li>
-                            <li>Consistent efficacy across statin intensities</li>
-                            <li>PCSK9 reduction >90%</li>
-                            <li>Phase III trials recruiting (n>13,000)</li>
-                            <li>MACE outcomes trial through 2029</li>
+
+                    <!-- Clinical Highlights -->
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                            <span class="text-purple-600 dark:text-purple-400">📊</span> Clinical Highlights
+                        </h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                Phase IIb PURSUIT: 50.7% LDL reduction
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                84% patients achieved LDL <70 mg/dL
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                Consistent efficacy across statin intensities
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                PCSK9 reduction >90%
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                Phase III trials recruiting (n>13,000)
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2">•</span>
+                                MACE outcomes trial through 2029
+                            </li>
                         </ul>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">🎯</div>
-                            Strategic Position
-                        </div>
-                        <ul class="info-list">
-                            <li>Part of AZ's $80B CVRM portfolio target</li>
-                            <li>Menarini partnership for EU distribution</li>
-                            <li>Fixed-dose combinations in development</li>
-                            <li>Competing with Merck's MK-0616</li>
-                            <li>Projected $1-5B market by 2030</li>
-                            <li>Patent protection to late 2030s</li>
+
+                    <!-- Strategic Position -->
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                            <span class="text-amber-600 dark:text-amber-400">🎯</span> Strategic Position
+                        </h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2">→</span>
+                                Part of AZ's $80B CVRM portfolio target
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2">→</span>
+                                Menarini partnership for EU distribution
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2">→</span>
+                                Fixed-dose combinations in development
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2">→</span>
+                                Competing with Merck's MK-0616
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2">→</span>
+                                Projected $1-5B market by 2030
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2">→</span>
+                                Patent protection to late 2030s
+                            </li>
                         </ul>
                     </div>
                 </div>
-                
-                <div class="highlight-box">
-                    <div class="highlight-title">Unique Differentiation</div>
-                    <div class="highlight-content">
+
+                <!-- Unique Differentiation Box -->
+                <div class="glass rounded-xl p-6 mt-6 border border-gray-200 dark:border-gray-700 bg-gradient-to-r from-indigo-50/50 to-purple-50/50 dark:from-indigo-900/10 dark:to-purple-900/10">
+                    <h3 class="text-lg font-light text-gray-900 dark:text-white mb-3">🌟 Unique Differentiation</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                         AZD0780 stands out as the first traditional small molecule PCSK9 inhibitor (vs peptide-based competitors), 
                         with potential advantages in manufacturing scalability and tissue distribution. Preliminary data showing 
                         reduction in Alzheimer's biomarkers (CSF p-tau217) suggests possible neuroprotective benefits beyond 
                         cardiovascular effects, though this remains exploratory.
+                    </p>
+                </div>
+
+                <!-- Live Data Links -->
+                <div class="glass rounded-xl p-6 mt-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4">📈 Live Data & Resources</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <a href="https://clinicaltrials.gov/study/NCT06173570" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 hover:border-indigo-500 transition-colors">
+                            <span class="text-blue-600">🔗</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-300">PURSUIT Trial (NCT06173570)</span>
+                        </a>
+                        <a href="https://clinicaltrials.gov/study/NCT07000136" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 hover:border-indigo-500 transition-colors">
+                            <span class="text-blue-600">🔗</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-300">Phase III ASCVD (NCT07000136)</span>
+                        </a>
+                        <a href="https://clinicaltrials.gov/study/NCT07000123" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 hover:border-indigo-500 transition-colors">
+                            <span class="text-blue-600">🔗</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-300">Phase III HeFH (NCT07000123)</span>
+                        </a>
+                        <a href="https://www.leaf.health/search?q=AZD0780" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 hover:border-indigo-500 transition-colors">
+                            <span class="text-green-600">🍃</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-300">Leaf Intelligence Search</span>
+                        </a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=AZD0780" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 hover:border-indigo-500 transition-colors">
+                            <span class="text-purple-600">📚</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-300">PubMed Publications</span>
+                        </a>
+                        <a href="https://www.fda.gov/drugs/development-approval-process-drugs" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 hover:border-indigo-500 transition-colors">
+                            <span class="text-red-600">🏛️</span>
+                            <span class="text-sm text-gray-700 dark:text-gray-300">FDA Drug Database</span>
+                        </a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Mechanism & Dosing Tab -->
-            <div id="mechanism" class="tab-content">
-                <div class="mechanism-section">
-                    <div class="mechanism-title">
-                        <div class="mechanism-icon">⚙️</div>
-                        Mechanism of Action
-                    </div>
-                    <div class="mechanism-content">
-                        AZD0780 is an investigational <span class="mechanism-highlight">oral small-molecule inhibitor of PCSK9</span>. 
-                        It binds with high affinity to the <span class="mechanism-highlight">C-terminal domain of PCSK9</span>, 
+
+            <!-- Mechanism Tab -->
+            <div class="tab-content hidden" id="mechanism">
+                <div class="glass rounded-xl p-6 mb-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-light text-gray-900 dark:text-white mb-4">⚙️ Mechanism of Action</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                        AZD0780 is an investigational <span class="font-medium text-indigo-600 dark:text-indigo-400">oral small-molecule inhibitor of PCSK9</span>. 
+                        It binds with high affinity to the <span class="font-medium text-indigo-600 dark:text-indigo-400">C-terminal domain of PCSK9</span>, 
                         stabilizing the PCSK9-LDL receptor (LDL-R) complex and preventing PCSK9-mediated lysosomal degradation 
-                        of LDL-R on hepatocytes. This unique mechanism allows for:
-                        <ul style="margin-top: 15px; margin-left: 20px;">
-                            <li>Increased recycling and surface expression of LDL-R</li>
-                            <li>Enhanced hepatic uptake and clearance of LDL-C</li>
-                            <li>Substantial reductions in serum LDL-C levels (~50%)</li>
-                            <li>>90% reduction in free PCSK9 levels</li>
-                        </ul>
-                        Unlike macrocyclic peptides (e.g., MK-0616), AZD0780 is a <span class="mechanism-highlight">traditional small molecule</span>, 
-                        potentially offering advantages in manufacturing scalability and tissue distribution. Its extracellular 
-                        action minimizes off-target intracellular effects seen with some lipid therapies.
-                    </div>
+                        of LDL-R on hepatocytes.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">•</span>
+                            Increased recycling and surface expression of LDL-R
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">•</span>
+                            Enhanced hepatic uptake and clearance of LDL-C
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">•</span>
+                            Substantial reductions in serum LDL-C levels (~50%)
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">•</span>
+                            >90% reduction in free PCSK9 levels
+                        </li>
+                    </ul>
                 </div>
-                
-                <div class="mechanism-section">
-                    <div class="mechanism-title">
-                        <div class="mechanism-icon">💊</div>
-                        Dosing Information
+
+                <!-- Dosing Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Administration</div>
+                        <div class="text-xl font-bold text-gray-900 dark:text-white">Oral, QD</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Once-daily tablet</div>
                     </div>
-                    <div class="dosing-grid">
-                        <div class="dosing-card">
-                            <div class="dosing-label">Administration</div>
-                            <div class="dosing-value">Oral, QD</div>
-                            <div class="dosing-detail">Once-daily tablet</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Primary Dose</div>
-                            <div class="dosing-value">30 mg</div>
-                            <div class="dosing-detail">Phase IIb optimal dose</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Dose Range</div>
-                            <div class="dosing-value">5-60 mg</div>
-                            <div class="dosing-detail">Evaluated in trials</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Food Requirements</div>
-                            <div class="dosing-value">None</div>
-                            <div class="dosing-detail">Can be taken without meals</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Onset</div>
-                            <div class="dosing-value">2 weeks</div>
-                            <div class="dosing-detail">LDL-C reduction begins</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Steady State</div>
-                            <div class="dosing-value">4-12 weeks</div>
-                            <div class="dosing-detail">Full effect achieved</div>
-                        </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Primary Dose</div>
+                        <div class="text-xl font-bold text-gray-900 dark:text-white">30 mg</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Phase IIb optimal dose</div>
                     </div>
-                </div>
-                
-                <div class="highlight-box">
-                    <div class="highlight-title">Dosing Advantages</div>
-                    <div class="highlight-content">
-                        No dose adjustments needed for renal/hepatic impairment based on available data. High bioavailability 
-                        unaffected by food enhances patient convenience. Daily dosing prioritizes patient autonomy compared to 
-                        inclisiran's biannual injections, though relies on adherence for sustained effects.
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Dose Range</div>
+                        <div class="text-xl font-bold text-gray-900 dark:text-white">5-60 mg</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Evaluated in trials</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Food Requirements</div>
+                        <div class="text-xl font-bold text-gray-900 dark:text-white">None</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Can be taken without meals</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Onset</div>
+                        <div class="text-xl font-bold text-gray-900 dark:text-white">2 weeks</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">LDL-C reduction begins</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Steady State</div>
+                        <div class="text-xl font-bold text-gray-900 dark:text-white">4-12 weeks</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Full effect achieved</div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Regulatory Timeline Tab -->
-            <div id="regulatory" class="tab-content">
-                <div class="timeline-container">
-                    <div class="timeline-header">FDA/EMA Regulatory Timeline</div>
-                    <div class="timeline">
-                        <div class="timeline-line"></div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">Pre-2023</div>
-                                <div class="timeline-title">Preclinical Development</div>
-                                <div class="timeline-description">Optimization of small-molecule scaffold for oral bioavailability</div>
-                                <div class="timeline-details">
-                                    Focus on developing a traditional small molecule with high oral bioavailability 
-                                    and PCSK9 binding affinity. Extensive preclinical safety and efficacy studies.
-                                </div>
-                            </div>
-                            <div class="timeline-dot"></div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">2023</div>
-                                <div class="timeline-title">Phase I Initiation & UK Innovation Passport</div>
-                                <div class="timeline-description">Single/multiple ascending doses in healthy and hypercholesterolemia patients</div>
-                                <div class="timeline-details">
-                                    52% LDL-C reduction achieved on top of rosuvastatin. UK MHRA granted Innovation Passport 
-                                    under ILAP to expedite development and access.
-                                </div>
-                            </div>
-                            <div class="timeline-dot"></div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">May 29, 2024</div>
-                                <div class="timeline-title">Phase I Results Presented</div>
-                                <div class="timeline-description">ESC 2024 presentation, advancement to Phase II</div>
-                                <div class="timeline-details">
-                                    Positive safety and efficacy data presented at European Society of Cardiology. 
-                                    Decision to advance to Phase II trials based on promising results.
-                                </div>
-                            </div>
-                            <div class="timeline-dot"></div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">March 31, 2025</div>
-                                <div class="timeline-title">Phase IIb PURSUIT Results</div>
-                                <div class="timeline-description">Topline results announced at ACC 2025</div>
-                                <div class="timeline-details">
-                                    50.7% LDL reduction confirmed. 84% of patients achieved guideline goals. 
-                                    Regulatory consultations with FDA and EMA ongoing.
-                                </div>
-                            </div>
-                            <div class="timeline-dot"></div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">May-June 2025</div>
-                                <div class="timeline-title">Phase III Program Launch</div>
-                                <div class="timeline-description">Multiple Phase III trials initiated</div>
-                                <div class="timeline-details">
-                                    D7960C00012 (ASCVD/high-risk), NCT07000123 (HeFH), D7960C00013 (HeFH/ASCVD), 
-                                    and D7960C00015 (MACE outcomes) trials started. Total enrollment >13,000 patients.
-                                </div>
-                            </div>
-                            <div class="timeline-dot"></div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">Mid-2027 (Projected)</div>
-                                <div class="timeline-title">NDA/MAA Filing</div>
-                                <div class="timeline-description">Regulatory submission based on LDL data</div>
-                                <div class="timeline-details">
-                                    Expected filing with FDA and EMA based on Phase III LDL-C reduction data. 
-                                    Potential EMA-first strategy via Menarini partnership.
-                                </div>
-                            </div>
-                            <div class="timeline-dot"></div>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">2029 (Projected)</div>
-                                <div class="timeline-title">MACE Outcomes Data</div>
-                                <div class="timeline-description">Phase III outcomes trial completion</div>
-                                <div class="timeline-details">
-                                    D7960C00015 trial with 10,000 patients expected to provide definitive MACE data. 
-                                    Will support expanded indications and broader reimbursement.
-                                </div>
-                            </div>
-                            <div class="timeline-dot"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="highlight-box">
-                    <div class="highlight-title">Regulatory Strategy</div>
-                    <div class="highlight-content">
-                        Development has advanced steadily without reported clinical holds, CRLs, or significant delays. 
-                        Focus on LDL-C surrogates for initial submissions, similar to prior PCSK9 therapies. 
-                        Potential EMA-first strategy due to European partnerships. Innovation Passport from UK MHRA 
-                        provides expedited pathway in UK market.
-                    </div>
-                </div>
-            </div>
-            
+
             <!-- Clinical Trials Tab -->
-            <div id="clinical" class="tab-content">
-                <table class="trials-table">
-                    <thead>
-                        <tr>
-                            <th>Trial</th>
-                            <th>Phase</th>
-                            <th>Population</th>
-                            <th>N</th>
-                            <th>Primary Endpoint</th>
-                            <th>Key Results</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Phase I<br><small>2023-2024</small></td>
-                            <td><span class="trial-phase phase-1">Phase I</span></td>
-                            <td>Healthy/Hypercholesterolemia</td>
-                            <td>~100</td>
-                            <td>Safety/PK/PD</td>
-                            <td>52% LDL-C reduction on rosuvastatin<br>Total ~78% from baseline<br>PCSK9 >90% reduction</td>
-                        </tr>
-                        <tr>
-                            <td>Phase IIa<br><small>2024</small></td>
-                            <td><span class="trial-phase phase-2">Phase II</span></td>
-                            <td>Add-on to statins</td>
-                            <td>~60</td>
-                            <td>% LDL-C change at week 12</td>
-                            <td>~52% reduction achieved</td>
-                        </tr>
-                        <tr>
-                            <td>PURSUIT<br><small>NCT06173570</small></td>
-                            <td><span class="trial-phase phase-2">Phase IIb</span></td>
-                            <td>Hyperlipidemia</td>
-                            <td>428</td>
-                            <td>% LDL-C change at week 12</td>
-                            <td>50.7% reduction (30 mg)<br>84% achieved <70 mg/dL<br>ApoB/non-HDL-C ~40-50%<br>Lp(a) ~20%, hsCRP reduced</td>
-                        </tr>
-                        <tr>
-                            <td>D7960C00012<br><small>NCT07000136</small></td>
-                            <td><span class="trial-phase phase-3">Phase III</span></td>
-                            <td>ASCVD/High-risk</td>
-                            <td>~2,500</td>
-                            <td>% LDL-C change at week 24</td>
-                            <td>Ongoing (Started May 2025)</td>
-                        </tr>
-                        <tr>
-                            <td>D7960C00013<br><small>NCT07000123</small></td>
-                            <td><span class="trial-phase phase-3">Phase III</span></td>
-                            <td>HeFH/ASCVD</td>
-                            <td>~300</td>
-                            <td>% LDL-C change at week 24</td>
-                            <td>Ongoing (Started June 2025)</td>
-                        </tr>
-                        <tr>
-                            <td>D7960C00015<br><small>NCT07000357</small></td>
-                            <td><span class="trial-phase phase-3">Phase III</span></td>
-                            <td>ASCVD</td>
-                            <td>~10,000</td>
-                            <td>MACE (CV death, MI, stroke)</td>
-                            <td>Ongoing (Ends ~2029)</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="efficacy-chart">
-                    <div class="chart-title">LDL-C Reduction Across Trials</div>
-                    <div class="bar-chart">
-                        <div class="bar-group">
-                            <div class="bar" style="height: 52%;">
-                                <div class="bar-value">52%</div>
-                            </div>
-                            <div class="bar-label">Phase I<br>+Rosuvastatin</div>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 78%;">
-                                <div class="bar-value">78%</div>
-                            </div>
-                            <div class="bar-label">Phase I<br>Total from Baseline</div>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 52%;">
-                                <div class="bar-value">52%</div>
-                            </div>
-                            <div class="bar-label">Phase IIa<br>Week 12</div>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 50.7%;">
-                                <div class="bar-value">50.7%</div>
-                            </div>
-                            <div class="bar-label">PURSUIT<br>30mg Dose</div>
-                        </div>
+            <div class="tab-content hidden" id="clinical">
+                <div class="glass rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Trial</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Phase</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Population</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">N</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Primary Endpoint</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Results/Status</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">Phase I<br><small class="text-gray-500">2023-2024</small></td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400">Phase I</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Healthy/Hypercholesterolemia</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~100</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Safety/PK/PD</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">52% LDL-C reduction</td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-xs text-green-600">Complete</span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">PURSUIT<br><small class="text-gray-500">NCT06173570</small></td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400">Phase IIb</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Hyperlipidemia</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">428</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL-C at week 12</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">50.7% reduction</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT06173570" target="_blank" class="text-xs text-indigo-600 hover:underline">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">D7960C00012<br><small class="text-gray-500">NCT07000136</small></td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase III</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">ASCVD/High-risk</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~2,500</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL-C at week 24</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Ongoing</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT07000136" target="_blank" class="text-xs text-indigo-600 hover:underline">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">D7960C00015<br><small class="text-gray-500">NCT07000357</small></td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase III</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">ASCVD</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~10,000</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">MACE outcomes</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Enrolling (~2029)</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT07000357" target="_blank" class="text-xs text-indigo-600 hover:underline">View →</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                
-                <div class="efficacy-chart">
-                    <div class="chart-title">Secondary Endpoints - PURSUIT Trial</div>
-                    <div class="bar-chart">
-                        <div class="bar-group">
-                            <div class="bar" style="height: 45%; background: linear-gradient(180deg, #4caf50 0%, #2e7d32 100%);">
-                                <div class="bar-value">45%</div>
+
+                <!-- Efficacy Chart -->
+                <div class="glass rounded-xl p-6 mt-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4">LDL-C Reduction Across Trials</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <div class="h-32 flex items-end justify-center mb-2">
+                                <div class="w-16 bg-gradient-to-t from-indigo-600 to-purple-600 rounded-t-lg" style="height: 52%;"></div>
                             </div>
-                            <div class="bar-label">ApoB<br>Reduction</div>
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">52%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Phase I +Statin</div>
                         </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 45%; background: linear-gradient(180deg, #4caf50 0%, #2e7d32 100%);">
-                                <div class="bar-value">45%</div>
+                        <div class="text-center">
+                            <div class="h-32 flex items-end justify-center mb-2">
+                                <div class="w-16 bg-gradient-to-t from-indigo-600 to-purple-600 rounded-t-lg" style="height: 78%;"></div>
                             </div>
-                            <div class="bar-label">Non-HDL-C<br>Reduction</div>
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">78%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Phase I Total</div>
                         </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 20%; background: linear-gradient(180deg, #4caf50 0%, #2e7d32 100%);">
-                                <div class="bar-value">20%</div>
+                        <div class="text-center">
+                            <div class="h-32 flex items-end justify-center mb-2">
+                                <div class="w-16 bg-gradient-to-t from-indigo-600 to-purple-600 rounded-t-lg" style="height: 52%;"></div>
                             </div>
-                            <div class="bar-label">Lp(a)<br>Reduction</div>
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">52%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Phase IIa</div>
                         </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 84%; background: linear-gradient(180deg, #ff9800 0%, #f57c00 100%);">
-                                <div class="bar-value">84%</div>
+                        <div class="text-center">
+                            <div class="h-32 flex items-end justify-center mb-2">
+                                <div class="w-16 bg-gradient-to-t from-indigo-600 to-purple-600 rounded-t-lg" style="height: 50.7%;"></div>
                             </div>
-                            <div class="bar-label">Patients<br><70 mg/dL</div>
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">50.7%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">PURSUIT</div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="highlight-box">
-                    <div class="highlight-title">Exploratory Finding: Neuroprotective Potential</div>
-                    <div class="highlight-content">
-                        Preliminary data from BROADWAY trial substudy showed reduction in cerebrospinal fluid phospho-tau217 
-                        biomarkers, suggesting potential neuroprotective effects via brain PCSK9 modulation. While exploratory, 
-                        this could differentiate AZD0780 if further research confirms cognitive benefits.
                     </div>
                 </div>
             </div>
-            
+
             <!-- Safety Tab -->
-            <div id="safety" class="tab-content">
-                <div class="safety-grid">
-                    <div class="safety-card">
-                        <div class="safety-percentage">38.2%</div>
-                        <div class="safety-label">Overall AEs (Drug)</div>
+            <div class="tab-content hidden" id="safety">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                    <div class="glass rounded-xl p-6 text-center border border-gray-200 dark:border-gray-700">
+                        <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">38.2%</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Overall AEs (Drug)</div>
                     </div>
-                    <div class="safety-card">
-                        <div class="safety-percentage">32.6%</div>
-                        <div class="safety-label">Overall AEs (Placebo)</div>
+                    <div class="glass rounded-xl p-6 text-center border border-gray-200 dark:border-gray-700">
+                        <div class="text-3xl font-bold text-gray-600 dark:text-gray-400 mb-2">32.6%</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Overall AEs (Placebo)</div>
                     </div>
-                    <div class="safety-card">
-                        <div class="safety-percentage">3%</div>
-                        <div class="safety-label">Serious AEs (Drug)</div>
-                    </div>
-                    <div class="safety-card">
-                        <div class="safety-percentage">6%</div>
-                        <div class="safety-label">Serious AEs (Placebo)</div>
-                    </div>
-                    <div class="safety-card">
-                        <div class="safety-percentage">1.5%</div>
-                        <div class="safety-label">Discontinuation (Drug)</div>
-                    </div>
-                    <div class="safety-card">
-                        <div class="safety-percentage">2.3%</div>
-                        <div class="safety-label">Discontinuation (Placebo)</div>
+                    <div class="glass rounded-xl p-6 text-center border border-gray-200 dark:border-gray-700">
+                        <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">3%</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Serious AEs</div>
                     </div>
                 </div>
-                
-                <div class="info-grid">
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">✓</div>
-                            Common Adverse Events (>5%)
-                        </div>
-                        <ul class="info-list">
-                            <li>Headache (6-8%)</li>
-                            <li>Nausea (4-6%, mild)</li>
-                            <li>Diarrhea (4-6%, mild)</li>
-                            <li>All mild to moderate severity</li>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4">✓ Common Adverse Events (>5%)</h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• Headache (6-8%)</li>
+                            <li>• Nausea (4-6%, mild)</li>
+                            <li>• Diarrhea (4-6%, mild)</li>
+                            <li>• All mild to moderate severity</li>
                         </ul>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">✓</div>
-                            No Safety Signals
-                        </div>
-                        <ul class="info-list">
-                            <li>No liver enzyme elevations</li>
-                            <li>No CK elevations</li>
-                            <li>No glucose/glycemic effects</li>
-                            <li>No blood pressure increases</li>
-                            <li>No myalgia signals</li>
-                            <li>No neurocognitive effects</li>
+
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4">✓ No Safety Signals</h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• No liver enzyme elevations</li>
+                            <li>• No CK elevations</li>
+                            <li>• No glucose/glycemic effects</li>
+                            <li>• No myalgia signals</li>
                         </ul>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">ℹ️</div>
-                            Low LDL-C Safety
-                        </div>
-                        <ul class="info-list">
-                            <li>~20% achieved LDL <25 mg/dL</li>
-                            <li>No cognitive adverse events</li>
-                            <li>Class meta-analyses show no impairment</li>
-                            <li>Safe even with LDL <15 mg/dL over 5+ years</li>
-                            <li>Brain lipids preserved with PCSK9 inhibition</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="highlight-box">
-                    <div class="highlight-title">Safety Profile Summary</div>
-                    <div class="highlight-content">
-                        AZD0780 exhibits a favorable safety profile comparable to placebo, with ~1,000 patients exposed by 2025. 
-                        No black-box warnings projected. Small-molecule nature avoids immunogenicity issues of antibodies, 
-                        and extracellular action limits organ toxicity. No renal effects or organ-specific toxicity expected. 
-                        Post-Phase III monitoring planned for rare events.
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Regulatory Tab -->
+            <div class="tab-content hidden" id="regulatory">
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-light text-gray-900 dark:text-white mb-6">FDA/EMA Regulatory Timeline</h3>
+                    
+                    <div class="relative pl-8">
+                        <!-- Timeline line -->
+                        <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-indigo-300 dark:via-indigo-600 to-transparent"></div>
+                        
+                        <!-- Timeline items -->
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">2023</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Phase I Initiation & UK Innovation Passport</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    52% LDL-C reduction achieved on top of rosuvastatin. UK MHRA granted Innovation Passport.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">March 31, 2025</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Phase IIb PURSUIT Results</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    50.7% LDL reduction confirmed. 84% of patients achieved guideline goals.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-amber-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-amber-600 dark:text-amber-400 mb-1">May-June 2025</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Phase III Program Launch</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Multiple Phase III trials initiated. Total enrollment >13,000 patients.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-gray-400 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md border-2 border-dashed border-gray-300 dark:border-gray-600">
+                                <div class="text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Mid-2027 (Projected)</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">NDA/MAA Filing</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Expected filing with FDA and EMA based on Phase III LDL-C reduction data.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-5 w-4 h-4 bg-gray-400 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md border-2 border-dashed border-gray-300 dark:border-gray-600">
+                                <div class="text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">2029 (Projected)</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">MACE Outcomes Data</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    D7960C00015 trial expected to provide definitive MACE data for expanded indications.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Commercial Tab -->
-            <div id="commercial" class="tab-content">
-                <div class="commercial-section">
-                    <div class="price-estimate">$4,000 - $6,000/year</div>
-                    <div style="color: #666; margin-bottom: 30px;">Projected annual cost (potentially discounted for volume vs. injectables)</div>
+            <div class="tab-content hidden" id="commercial">
+                <div class="glass rounded-xl p-6 mb-6 border border-gray-200 dark:border-gray-700">
+                    <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">$4,000 - $6,000/year</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400 mb-6">Projected annual cost (potentially discounted for volume vs. injectables)</div>
                     
-                    <div class="market-projection">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <div class="projection-value">$1-5 Billion</div>
-                            <div class="projection-label">Market potential by 2030</div>
+                            <div class="text-2xl font-bold text-gray-900 dark:text-white">$1-5 Billion</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Market potential by 2030</div>
                         </div>
                         <div>
-                            <div class="projection-value">70-80%</div>
-                            <div class="projection-label">Expected PA denial rate initially</div>
+                            <div class="text-2xl font-bold text-gray-900 dark:text-white">70-80%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Expected PA denial rate initially</div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="info-grid">
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">💰</div>
-                            Payer Considerations
-                        </div>
-                        <ul class="info-list">
-                            <li>Initially restricted to high-risk/statin-intolerant</li>
-                            <li>Similar PA requirements to mAbs expected</li>
-                            <li>Pharmacy benefit eases access vs. medical</li>
-                            <li>Outcomes data key for broader coverage</li>
-                            <li>Volume-based pricing negotiations likely</li>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4">💰 Payer Considerations</h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• Initially restricted to high-risk</li>
+                            <li>• Similar PA requirements to mAbs</li>
+                            <li>• Pharmacy benefit eases access</li>
+                            <li>• Outcomes data key for coverage</li>
                         </ul>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">🏥</div>
-                            Market Access Strategy
-                        </div>
-                        <ul class="info-list">
-                            <li>Broader GP use vs. specialist-only injectables</li>
-                            <li>Adherence programs needed for daily dosing</li>
-                            <li>Fixed-dose combinations for convenience</li>
-                            <li>Potential rosuvastatin/ezetimibe combos</li>
-                            <li>Menarini partnership for EU distribution</li>
+
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4">🏥 Market Access</h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• Broader GP use vs. specialists</li>
+                            <li>• Adherence programs needed</li>
+                            <li>• Fixed-dose combinations</li>
+                            <li>• Menarini EU partnership</li>
                         </ul>
                     </div>
-                    
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">🎯</div>
-                            Competitive Positioning
-                        </div>
-                        <ul class="info-list">
-                            <li>Competing with Merck's MK-0616</li>
-                            <li>Small molecule vs. peptide differentiation</li>
-                            <li>Part of AZ's CV portfolio bundling</li>
-                            <li>Potential neuro indication differentiation</li>
-                            <li>Manufacturing scalability advantage</li>
+
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-light text-gray-900 dark:text-white mb-4">🎯 Competition</h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• vs. Merck's MK-0616</li>
+                            <li>• Small molecule advantage</li>
+                            <li>• AZ CV portfolio bundling</li>
+                            <li>• Manufacturing scalability</li>
                         </ul>
-                    </div>
-                </div>
-                
-                <div class="highlight-box">
-                    <div class="highlight-title">Commercial Outlook</div>
-                    <div class="highlight-content">
-                        As orals enter market, potential to disrupt inclisiran's position if priced competitively. 
-                        Daily pill format favors primary care adoption but requires adherence focus. AZ's existing 
-                        CV portfolio (including potential obicetrapib CETP inhibitor) enables bundling strategies. 
-                        By 2030, oral PCSK9 inhibitors may dominate market, with AZD0780's small molecule nature 
-                        and combination potential supporting its niche in multi-drug regimens.
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pipeline Tab -->
-            <div id="pipeline" class="tab-content">
-                <div class="pipeline-timeline">
-                    <div class="pipeline-track">
-                        <div class="pipeline-progress"></div>
-                    </div>
-                    <div class="pipeline-milestone" style="left: 0;">
-                        <div class="milestone-dot"></div>
-                        <div class="milestone-label">Preclinical</div>
-                    </div>
-                    <div class="pipeline-milestone" style="left: 20%;">
-                        <div class="milestone-dot"></div>
-                        <div class="milestone-label">Phase I</div>
-                    </div>
-                    <div class="pipeline-milestone" style="left: 35%;">
-                        <div class="milestone-dot"></div>
-                        <div class="milestone-label">Phase II</div>
-                    </div>
-                    <div class="pipeline-milestone" style="left: 45%;">
-                        <div class="milestone-dot" style="background: #667eea;"></div>
-                        <div class="milestone-label"><strong>Phase III (Current)</strong></div>
-                    </div>
-                    <div class="pipeline-milestone" style="left: 70%;">
-                        <div class="milestone-dot"></div>
-                        <div class="milestone-label">Approval (2027)</div>
-                    </div>
-                    <div class="pipeline-milestone" style="left: 100%;">
-                        <div class="milestone-dot"></div>
-                        <div class="milestone-label">MACE Data (2029)</div>
-                    </div>
-                </div>
-                
-                <div class="info-grid">
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">🔮</div>
-                            Future Development
-                        </div>
-                        <ul class="info-list">
-                            <li>Fixed-dose combinations with statins/ezetimibe</li>
-                            <li>Potential neuro indications (tau biomarkers)</li>
-                            <li>Part of AZ's $80B CVRM revenue target</li>
-                            <li>Integration with obicetrapib (CETP inhibitor)</li>
-                            <li>Single-pill multi-mechanism therapy</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">⚔️</div>
-                            Competitive Landscape 2030
-                        </div>
-                        <ul class="info-list">
-                            <li>Multiple oral PCSK9 options expected</li>
-                            <li>Competition from gene therapies (Verve)</li>
-                            <li>Generics post-patent (late 2030s)</li>
-                            <li>Inclisiran/mAbs relegated to niches</li>
-                            <li>Triple therapy for highest-risk patients</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-card-title">
-                            <div class="info-icon">🎯</div>
-                            Strategic Differentiation
-                        </div>
-                        <ul class="info-list">
-                            <li>Small molecule vs. peptide competitors</li>
-                            <li>Manufacturing scalability advantage</li>
-                            <li>Broader tissue distribution potential</li>
-                            <li>Portfolio synergies with AZ CV drugs</li>
-                            <li>Possible cognitive benefit claims</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="highlight-box">
-                    <div class="highlight-title">Long-term Outlook</div>
-                    <div class="highlight-content">
-                        By 2030, oral PCSK9 inhibitors likely to dominate market, potentially displacing injectable 
-                        options for most patients. AZD0780's differentiation through small molecule nature, combination 
-                        potential, and possible neuroprotective effects positions it well in multi-drug regimens. 
-                        Patent protection to late 2030s provides sustainability window before generic entry. Success 
-                        depends on outcomes data, pricing strategy, and ability to compete with Merck's first-mover 
-                        advantage.
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <!-- JavaScript -->
     <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark');
+        }
+
         function showTab(tabName) {
             // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Remove active class from all nav tabs
-            const navTabs = document.querySelectorAll('.nav-tab');
-            navTabs.forEach(tab => tab.classList.remove('active'));
+            tabs.forEach(tab => {
+                tab.classList.add('hidden');
+            });
             
             // Show selected tab
-            document.getElementById(tabName).classList.add('active');
+            document.getElementById(tabName).classList.remove('hidden');
             
-            // Add active class to clicked nav tab
-            event.target.classList.add('active');
+            // Update nav tabs
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.classList.remove('text-indigo-600', 'dark:text-indigo-400', 'border-b-2', 'border-indigo-600', 'dark:border-indigo-400');
+                tab.classList.add('text-gray-600', 'dark:text-gray-400');
+            });
+            
+            // Highlight active tab
+            event.target.classList.remove('text-gray-600', 'dark:text-gray-400');
+            event.target.classList.add('text-indigo-600', 'dark:text-indigo-400', 'border-b-2', 'border-indigo-600', 'dark:border-indigo-400');
         }
     </script>
 </body>

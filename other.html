@@ -3,1157 +3,810 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lipid-Lowering Competitors - Comprehensive Analysis</title>
+    <title>Cholesterol Therapy Competitors - Comprehensive Analysis | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .main-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        
-        .main-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .main-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 40%;
-            height: 200%;
-            background: rgba(255,255,255,0.05);
-            transform: rotate(45deg);
-        }
-        
-        .main-title {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .main-subtitle {
-            font-size: 18px;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .drug-nav-container {
-            display: flex;
-            background: #f0f0f0;
-            overflow-x: auto;
-            white-space: nowrap;
-            border-bottom: 3px solid #ddd;
-        }
-        
-        .drug-nav-tab {
-            padding: 15px 25px;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            font-size: 15px;
-            font-weight: 600;
-            color: #555;
-            transition: all 0.3s;
-            white-space: nowrap;
-            position: relative;
-        }
-        
-        .drug-nav-tab:hover {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-        }
-        
-        .drug-nav-tab.active {
-            color: white;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .drug-content {
-            display: none;
-        }
-        
-        .drug-content.active {
-            display: block;
-        }
-        
-        .drug-header {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            padding: 30px 40px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-        
-        .drug-name {
-            font-size: 32px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .drug-subtitle {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-        
-        .drug-company {
-            font-size: 16px;
-            color: #888;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        
-        .nav-tabs {
-            display: flex;
-            background: #f8f9fa;
-            border-bottom: 2px solid #e0e0e0;
-            overflow-x: auto;
-        }
-        
-        .nav-tab {
-            padding: 12px 20px;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            font-size: 14px;
-            font-weight: 600;
-            color: #666;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        
-        .nav-tab:hover {
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        .nav-tab.active {
-            color: #667eea;
-            border-bottom: 3px solid #667eea;
-            margin-bottom: -2px;
-        }
-        
-        .content-area {
-            padding: 30px 40px;
-            min-height: 500px;
-        }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
+        /* Custom animations matching your style */
+        @keyframes fadeInRow {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.95); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in-row { animation: fadeInRow 0.3s ease forwards; }
+        .animate-pulse-glow { animation: pulse 3s ease-in-out infinite; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
         
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 25px 0;
+        /* Staggered animations */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { @apply bg-gray-100 dark:bg-gray-800 rounded; }
+        ::-webkit-scrollbar-thumb { @apply bg-gray-400 dark:bg-gray-600 rounded hover:bg-gray-500 dark:hover:bg-gray-500; }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.75);
         }
         
-        .info-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border: 1px solid #e0e0e0;
+        .drug-tab.active {
+            @apply bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-400 shadow-md;
         }
         
-        .info-card-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
+        .sub-tab.active {
+            @apply bg-indigo-600 text-white;
         }
-        
-        .info-icon {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            color: white;
-            font-size: 14px;
-        }
-        
-        .info-list {
-            list-style: none;
-        }
-        
-        .info-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-            color: #666;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        
-        .info-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-left: 4px solid #667eea;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        
-        .highlight-title {
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        
-        .highlight-content {
-            color: #555;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-        
-        .mechanism-section {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-        }
-        
-        .mechanism-title {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .mechanism-content {
-            line-height: 1.8;
-            color: #555;
-            font-size: 14px;
-        }
-        
-        .mechanism-highlight {
-            background: rgba(102, 126, 234, 0.2);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-            color: #667eea;
-        }
-        
-        .dosing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .dosing-card {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 15px;
-            transition: all 0.3s;
-        }
-        
-        .dosing-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            border-color: #667eea;
-        }
-        
-        .dosing-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 5px;
-        }
-        
-        .dosing-value {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .dosing-detail {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        .timeline-container {
-            margin: 25px 0;
-            padding: 25px;
-            background: #f8f9fa;
-            border-radius: 12px;
-        }
-        
-        .timeline-header {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            color: #333;
-        }
-        
-        .timeline-item {
-            background: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        
-        .timeline-date {
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-        
-        .timeline-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        
-        .timeline-description {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .efficacy-chart {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        
-        .chart-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .bar-chart {
-            display: flex;
-            align-items: flex-end;
-            height: 250px;
-            gap: 15px;
-            padding: 20px 0;
-        }
-        
-        .bar-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-        }
-        
-        .bar {
-            width: 100%;
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-            border-radius: 8px 8px 0 0;
-            position: relative;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        
-        .bar:hover {
-            transform: scaleY(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-        
-        .bar-value {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: bold;
-            font-size: 16px;
-            color: #667eea;
-        }
-        
-        .bar-label {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .safety-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .safety-card {
-            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .safety-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        
-        .safety-percentage {
-            font-size: 28px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .safety-label {
-            font-size: 12px;
-            color: #666;
-            margin-top: 8px;
-        }
-        
-        .commercial-section {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 20px 0;
-        }
-        
-        .price-estimate {
-            font-size: 28px;
-            font-weight: bold;
-            color: #667eea;
-            margin: 15px 0;
-        }
-        
-        .market-projection {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin: 20px 0;
-        }
-        
-        .projection-value {
-            font-size: 22px;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .projection-label {
-            font-size: 13px;
-            color: #666;
-        }
-        
-        @media (max-width: 768px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .drug-nav-container {
-                overflow-x: scroll;
-            }
-            
-            .bar-chart {
-                height: 200px;
-            }
-        }
-        .bar {
-    width: 100%;
-    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-    border-radius: 8px 8px 0 0;
-    position: relative;
-    transition: all 0.3s;
-}
-.bar-chart {
-    display: flex;
-    align-items: flex-end;
-    height: 250px; /* This must be set */
-    gap: 15px;
-    padding: 20px 0;
-}
-.bar-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-}
     </style>
 </head>
-<body>
-    
-    <div class="main-container">
-        <div class="main-header">
-            <div class="main-title">Cholesterol-Lowering Competitors Analysis</div>
-            <div class="main-subtitle">Comprehensive Drug Portfolio Assessment - PCSK9 & Alternative Mechanisms</div>
-        </div>
-        
-        <div class="drug-nav-container">
-            <button class="drug-nav-tab active" onclick="showDrug('statins')">Statins</button>
-            <button class="drug-nav-tab" onclick="showDrug('ezetimibe')">Ezetimibe</button>
-            <button class="drug-nav-tab" onclick="showDrug('bempedoic')">Bempedoic Acid</button>
-            <button class="drug-nav-tab" onclick="showDrug('obicetrapib')">Obicetrapib</button>
-            <button class="drug-nav-tab" onclick="showDrug('evinacumab')">Evinacumab</button>
-        </div>
-        
-        <!-- STATINS -->
-        <div id="statins" class="drug-content active">
-            <div class="drug-header">
-                <div class="drug-name">Statins</div>
-                <div class="drug-subtitle">HMG-CoA Reductase Inhibitors</div>
-                <div class="drug-company">Multiple Manufacturers (Generic)</div>
-                <span class="status-badge">First-Line Therapy</span>
+<body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+    <!-- Fixed Header - Matching your Leaf Intelligence design -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200 dark:border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <img src="leaf.png" alt="Leaf Intelligence" class="h-12 w-12 relative z-10">
+                        <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-cyan-400 opacity-20 blur-xl animate-pulse-glow"></div>
+                    </div>
+                    <div>
+                        <div class="text-xl font-light bg-gradient-to-r from-green-600 to-cyan-600 dark:from-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                            Leaf Intelligence
+                        </div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 font-light">
+                            Competitor Analysis Platform
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-1 bg-gray-100/50 dark:bg-gray-800/50 p-1.5 rounded-lg backdrop-blur-sm">
+                    <a href="index.html" class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Overview
+                    </a>
+                    <button class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-400 shadow-md">
+                        Competitors
+                    </button>
+                    <a href="index.html#comparison" class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Comparison
+                    </a>
+                </nav>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="relative w-14 h-7 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300 shadow-inner hover:shadow-md">
+                    <div class="absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white dark:bg-gray-900 shadow-lg transform transition-transform duration-300 dark:translate-x-7 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-yellow-500 dark:hidden" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+                        </svg>
+                        <svg class="w-4 h-4 text-indigo-400 hidden dark:block" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                        </svg>
+                    </div>
+                </button>
             </div>
+        </div>
+    </header>
+
+    <!-- Main Container with padding for fixed header -->
+    <div class="pt-20 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             
-            <div class="nav-tabs">
-                <button class="nav-tab active" onclick="showTab('statins', 'overview')">Overview</button>
-                <button class="nav-tab" onclick="showTab('statins', 'mechanism')">Mechanism & Dosing</button>
-                <button class="nav-tab" onclick="showTab('statins', 'regulatory')">Clinical Evidence</button>
-                <button class="nav-tab" onclick="showTab('statins', 'safety')">Safety Profile</button>
-                <button class="nav-tab" onclick="showTab('statins', 'commercial')">Commercial</button>
-                <button class="nav-tab" onclick="showTab('statins', 'future')">Future Outlook</button>
+            <!-- Hero Section -->
+            <div class="glass rounded-2xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
+                <h1 class="text-3xl font-light mb-2 text-gray-900 dark:text-white">
+                    Cholesterol-Lowering Competitors Analysis
+                </h1>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Comprehensive Drug Portfolio Assessment - PCSK9 & Alternative Mechanisms
+                </p>
             </div>
-            
-            <div class="content-area">
-                <div id="statins-overview" class="tab-content active">
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">💊</div>
-                                Key Examples
-                            </div>
-                            <ul class="info-list">
-                                <li>Atorvastatin (Lipitor)</li>
-                                <li>Rosuvastatin (Crestor)</li>
-                                <li>Simvastatin (Zocor)</li>
-                                <li>Pravastatin (Pravachol)</li>
-                                <li>Lovastatin (Mevacor)</li>
-                                <li>Fluvastatin (Lescol)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">📊</div>
-                                Efficacy Profile
-                            </div>
-                            <ul class="info-list">
-                                <li>30-50% LDL-C reduction (moderate/high intensity)</li>
-                                <li>25-35% CV risk reduction per mmol/L LDL drop</li>
-                                <li>Proven mortality benefit</li>
-                                <li>Upregulates LDL receptors</li>
-                                <li>Paradoxically increases PCSK9 (feedback)</li>
-                                <li>Foundation of all lipid therapy</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🎯</div>
-                                Market Position
-                            </div>
-                            <ul class="info-list">
-                                <li>Mandatory first-line therapy globally</li>
-                                <li>Generic pricing ($3-10/month)</li>
-                                <li>Gateway to all advanced therapies</li>
-                                <li>5-10% intolerance creates market for alternatives</li>
-                                <li>Required before PCSK9 inhibitor approval</li>
-                                <li>Complementary to inclisiran, not competitive</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Strategic Importance</div>
-                        <div class="highlight-content">
-                            Statins remain the foundational therapy that all new drugs must justify adding to, not replacing. 
-                            Their low cost and proven outcomes create a high bar for cost-effectiveness. Inclisiran and other 
-                            PCSK9 inhibitors are positioned as add-ons for patients not at goal on maximally tolerated statins, 
-                            making statins more ally than adversary in the treatment paradigm.
-                        </div>
-                    </div>
+
+            <!-- Drug Navigation Tabs -->
+            <div class="glass rounded-2xl mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-1 p-2 overflow-x-auto">
+                    <button class="drug-tab px-6 py-3 rounded-lg text-sm font-medium transition-all active" onclick="showDrug('statins', event)">
+                        Statins
+                    </button>
+                    <button class="drug-tab px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showDrug('ezetimibe', event)">
+                        Ezetimibe
+                    </button>
+                    <button class="drug-tab px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showDrug('bempedoic', event)">
+                        Bempedoic Acid
+                    </button>
+                    <button class="drug-tab px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showDrug('obicetrapib', event)">
+                        Obicetrapib
+                    </button>
+                    <button class="drug-tab px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showDrug('evinacumab', event)">
+                        Evinacumab
+                    </button>
+                    <a href="MK-0616.html" class="drug-tab px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 flex items-center gap-2">
+                        MK-0616
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
                 </div>
-                
-                <div id="statins-mechanism" class="tab-content">
-                    <div class="mechanism-section">
-                        <div class="mechanism-title">
-                            <div class="info-icon">⚙️</div>
-                            Mechanism of Action
+            </div>
+
+            <!-- STATINS -->
+            <div id="statins" class="drug-content active">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-2">Statins</h2>
+                            <p class="text-gray-600 dark:text-gray-400">HMG-CoA Reductase Inhibitors • Multiple Manufacturers (Generic)</p>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 mt-2">
+                                First-Line Therapy
+                            </span>
                         </div>
-                        <div class="mechanism-content">
-                            Statins work by <span class="mechanism-highlight">inhibiting HMG-CoA reductase</span>, the rate-limiting 
-                            enzyme in cholesterol synthesis. This leads to:
-                            <ul style="margin-top: 15px; margin-left: 20px;">
-                                <li>Reduced intracellular cholesterol in hepatocytes</li>
-                                <li>Upregulation of LDL receptors via SREBP-2 activation</li>
-                                <li>Increased clearance of LDL from circulation</li>
-                                <li>Compensatory increase in PCSK9 production (limiting factor)</li>
-                                <li>Pleiotropic effects: anti-inflammatory, plaque stabilization</li>
+                        <a href="https://www.leaf.health/intelligence/search?q=statins" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            Live Data
+                        </a>
+                    </div>
+
+                    <!-- Sub-navigation -->
+                    <div class="flex flex-wrap gap-1 mb-6">
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all active" onclick="showSubTab('statins', 'overview', event)">
+                            Overview
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('statins', 'mechanism', event)">
+                            Mechanism & Dosing
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('statins', 'clinical', event)">
+                            Clinical Evidence
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('statins', 'safety', event)">
+                            Safety Profile
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('statins', 'commercial', event)">
+                            Commercial
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('statins', 'future', event)">
+                            Future Outlook
+                        </button>
+                    </div>
+
+                    <!-- Content Sections -->
+                    <div id="statins-overview" class="sub-content active">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                                <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                    <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">💊</span>
+                                    Key Examples
+                                </h3>
+                                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li>• Atorvastatin (Lipitor)</li>
+                                    <li>• Rosuvastatin (Crestor)</li>
+                                    <li>• Simvastatin (Zocor)</li>
+                                    <li>• Pravastatin (Pravachol)</li>
+                                    <li>• Lovastatin (Mevacor)</li>
+                                    <li>• Fluvastatin (Lescol)</li>
+                                </ul>
+                            </div>
+
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                                <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                    <span class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white text-sm">📊</span>
+                                    Efficacy Profile
+                                </h3>
+                                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li>• 30-50% LDL-C reduction (moderate/high intensity)</li>
+                                    <li>• 25-35% CV risk reduction per mmol/L LDL drop</li>
+                                    <li>• Proven mortality benefit</li>
+                                    <li>• Upregulates LDL receptors</li>
+                                    <li>• Paradoxically increases PCSK9 (feedback)</li>
+                                    <li>• Foundation of all lipid therapy</li>
+                                </ul>
+                            </div>
+
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                                <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                    <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">🎯</span>
+                                    Market Position
+                                </h3>
+                                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li>• Mandatory first-line therapy globally</li>
+                                    <li>• Generic pricing ($3-10/month)</li>
+                                    <li>• Gateway to all advanced therapies</li>
+                                    <li>• 5-10% intolerance creates market for alternatives</li>
+                                    <li>• Required before PCSK9 inhibitor approval</li>
+                                    <li>• Complementary to inclisiran, not competitive</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-6 border-l-4 border-indigo-500 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20">
+                            <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Strategic Importance</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300">
+                                Statins remain the foundational therapy that all new drugs must justify adding to, not replacing. 
+                                Their low cost and proven outcomes create a high bar for cost-effectiveness. Inclisiran and other 
+                                PCSK9 inhibitors are positioned as add-ons for patients not at goal on maximally tolerated statins, 
+                                making statins more ally than adversary in the treatment paradigm.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="statins-mechanism" class="sub-content hidden">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 mb-6">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">⚙️</span>
+                                Mechanism of Action
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                                Statins work by <span class="bg-indigo-100 dark:bg-indigo-900/30 px-2 py-1 rounded text-indigo-700 dark:text-indigo-300 font-medium">inhibiting HMG-CoA reductase</span>, 
+                                the rate-limiting enzyme in cholesterol synthesis. This leads to:
+                            </p>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 ml-4">
+                                <li>• Reduced intracellular cholesterol in hepatocytes</li>
+                                <li>• Upregulation of LDL receptors via SREBP-2 activation</li>
+                                <li>• Increased clearance of LDL from circulation</li>
+                                <li>• Compensatory increase in PCSK9 production (limiting factor)</li>
+                                <li>• Pleiotropic effects: anti-inflammatory, plaque stabilization</li>
                             </ul>
                         </div>
-                    </div>
-                    
-                    <div class="dosing-grid">
-                        <div class="dosing-card">
-                            <div class="dosing-label">High-Intensity</div>
-                            <div class="dosing-value">≥50% ↓</div>
-                            <div class="dosing-detail">Atorva 40-80mg, Rosuva 20-40mg</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Moderate-Intensity</div>
-                            <div class="dosing-value">30-49% ↓</div>
-                            <div class="dosing-detail">Atorva 10-20mg, Rosuva 5-10mg</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Low-Intensity</div>
-                            <div class="dosing-value"><30% ↓</div>
-                            <div class="dosing-detail">Simva 10mg, Prava 10-20mg</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Administration</div>
-                            <div class="dosing-value">Daily</div>
-                            <div class="dosing-detail">Usually evening (except atorva/rosuva)</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="statins-regulatory" class="tab-content">
-                    <div class="efficacy-chart">
-                        <div class="chart-title">Landmark Trial Outcomes</div>
-                        <div class="bar-chart">
-                            <div class="bar-group">
-                                <div class="bar" style="height: 31%;">
-                                    <div class="bar-value">31%</div>
-                                </div>
-                                <div class="bar-label">4S Trial<br>Mortality ↓</div>
+
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">High-Intensity</div>
+                                <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">≥50% ↓</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Atorva 40-80mg, Rosuva 20-40mg</div>
                             </div>
-                            <div class="bar-group">
-                                <div class="bar" style="height: 24%;">
-                                    <div class="bar-value">24%</div>
-                                </div>
-                                <div class="bar-label">JUPITER<br>MACE ↓</div>
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Moderate-Intensity</div>
+                                <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">30-49% ↓</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Atorva 10-20mg, Rosuva 5-10mg</div>
                             </div>
-                            <div class="bar-group">
-                                <div class="bar" style="height: 21%;">
-                                    <div class="bar-value">21%</div>
-                                </div>
-                                <div class="bar-label">PROVE-IT<br>Events ↓</div>
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Low-Intensity</div>
+                                <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400"><30% ↓</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Simva 10mg, Prava 10-20mg</div>
                             </div>
-                            <div class="bar-group">
-                                <div class="bar" style="height: 35%;">
-                                    <div class="bar-value">35%</div>
-                                </div>
-                                <div class="bar-label">Meta-analysis<br>CV Risk ↓/mmol</div>
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Administration</div>
+                                <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Daily</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Usually evening (except atorva/rosuva)</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Evidence Base</div>
-                        <div class="highlight-content">
-                            Statins have the most robust outcomes data of any lipid therapy, with dozens of trials showing 
-                            consistent cardiovascular and mortality benefits. This irrefutable evidence makes them the 
-                            cornerstone of preventive cardiology and the benchmark against which all new therapies are measured.
+
+                    <div id="statins-clinical" class="sub-content hidden">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-6">Landmark Trial Outcomes</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">31%</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">4S Trial<br/>Mortality ↓</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">24%</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">JUPITER<br/>MACE ↓</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">21%</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">PROVE-IT<br/>Events ↓</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">35%</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">Meta-analysis<br/>CV Risk ↓/mmol</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-6 border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 mt-6">
+                            <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Evidence Base</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300">
+                                Statins have the most robust outcomes data of any lipid therapy, with dozens of trials showing 
+                                consistent cardiovascular and mortality benefits. This irrefutable evidence makes them the 
+                                cornerstone of preventive cardiology and the benchmark against which all new therapies are measured.
+                            </p>
                         </div>
                     </div>
-                </div>
-                
-                <div id="statins-safety" class="tab-content">
-                    <div class="safety-grid">
-                        <div class="safety-card">
-                            <div class="safety-percentage">5-10%</div>
-                            <div class="safety-label">Muscle Symptoms</div>
+
+                    <div id="statins-safety" class="sub-content hidden">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">5-10%</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Muscle Symptoms</div>
+                            </div>
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-green-600 dark:text-green-400"><0.1%</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Rhabdomyolysis</div>
+                            </div>
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">9%</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Diabetes Risk ↑</div>
+                            </div>
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-green-600 dark:text-green-400">Rare</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Hepatotoxicity</div>
+                            </div>
                         </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage"><0.1%</div>
-                            <div class="safety-label">Rhabdomyolysis</div>
-                        </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">9%</div>
-                            <div class="safety-label">Diabetes Risk ↑</div>
-                        </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">Rare</div>
-                            <div class="safety-label">Hepatotoxicity</div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">⚠️</div>
+
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">⚠️</span>
                                 Key Safety Considerations
-                            </div>
-                            <ul class="info-list">
-                                <li>Statin-associated muscle symptoms (SAMS) main issue</li>
-                                <li>True intolerance likely overestimated (nocebo effect)</li>
-                                <li>Creates substantial market for alternatives</li>
-                                <li>Drug interactions with CYP3A4 inhibitors</li>
-                                <li>Contraindicated in pregnancy</li>
-                                <li>Generally very safe with decades of use</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• Statin-associated muscle symptoms (SAMS) main issue</li>
+                                <li>• True intolerance likely overestimated (nocebo effect)</li>
+                                <li>• Creates substantial market for alternatives</li>
+                                <li>• Drug interactions with CYP3A4 inhibitors</li>
+                                <li>• Contraindicated in pregnancy</li>
+                                <li>• Generally very safe with decades of use</li>
                             </ul>
                         </div>
                     </div>
-                </div>
-                
-                <div id="statins-commercial" class="tab-content">
-                    <div class="commercial-section">
-                        <div class="price-estimate">$3-10/month</div>
-                        <div style="color: #666; margin-bottom: 30px;">Generic pricing globally</div>
-                        
-                        <div class="market-projection">
-                            <div>
-                                <div class="projection-value">Required</div>
-                                <div class="projection-label">Before PCSK9 inhibitor approval</div>
+
+                    <div id="statins-commercial" class="sub-content hidden">
+                        <div class="glass rounded-xl p-8 mb-6 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">$3-10/month</div>
+                            <div class="text-gray-600 dark:text-gray-400 mt-2">Generic pricing globally</div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Required</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Before PCSK9 inhibitor approval</div>
                             </div>
-                            <div>
-                                <div class="projection-value">Foundation</div>
-                                <div class="projection-label">Of all lipid management</div>
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Foundation</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Of all lipid management</div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Commercial Reality</div>
-                        <div class="highlight-content">
-                            Statins set an "essentially free and very effective" benchmark that new therapies must justify 
-                            exceeding. They are gatekeepers rather than competitors - payers require maximally tolerated 
-                            statin therapy before approving expensive alternatives, making them complementary to inclisiran's 
-                            market positioning.
+
+                        <div class="glass rounded-xl p-6 border-l-4 border-amber-500 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 mt-6">
+                            <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Commercial Reality</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300">
+                                Statins set an "essentially free and very effective" benchmark that new therapies must justify 
+                                exceeding. They are gatekeepers rather than competitors - payers require maximally tolerated 
+                                statin therapy before approving expensive alternatives, making them complementary to inclisiran's 
+                                market positioning.
+                            </p>
                         </div>
                     </div>
-                </div>
-                
-                <div id="statins-future" class="tab-content">
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🔮</div>
+
+                    <div id="statins-future" class="sub-content hidden">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white text-sm">🔮</span>
                                 5-10 Year Outlook
-                            </div>
-                            <ul class="info-list">
-                                <li>Will remain foundational therapy</li>
-                                <li>No replacement in primary prevention</li>
-                                <li>Earlier combination therapy in guidelines</li>
-                                <li>Stack with PCSK9 inhibitors, not replaced</li>
-                                <li>Continued generic pricing pressure</li>
-                                <li>Precision medicine for intolerance</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• Will remain foundational therapy</li>
+                                <li>• No replacement in primary prevention</li>
+                                <li>• Earlier combination therapy in guidelines</li>
+                                <li>• Stack with PCSK9 inhibitors, not replaced</li>
+                                <li>• Continued generic pricing pressure</li>
+                                <li>• Precision medicine for intolerance</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- EZETIMIBE -->
-        <div id="ezetimibe" class="drug-content">
-            <div class="drug-header">
-                <div class="drug-name">Ezetimibe (Zetia®)</div>
-                <div class="drug-subtitle">Cholesterol Absorption Inhibitor</div>
-                <div class="drug-company">Merck (now generic)</div>
-                <span class="status-badge">Second-Line Add-On</span>
-            </div>
-            
-            <div class="nav-tabs">
-                <button class="nav-tab active" onclick="showTab('ezetimibe', 'overview')">Overview</button>
-                <button class="nav-tab" onclick="showTab('ezetimibe', 'mechanism')">Mechanism & Dosing</button>
-                <button class="nav-tab" onclick="showTab('ezetimibe', 'clinical')">Clinical Evidence</button>
-                <button class="nav-tab" onclick="showTab('ezetimibe', 'safety')">Safety Profile</button>
-                <button class="nav-tab" onclick="showTab('ezetimibe', 'commercial')">Commercial</button>
-                <button class="nav-tab" onclick="showTab('ezetimibe', 'future')">Future Role</button>
-            </div>
-            
-            <div class="content-area">
-                <div id="ezetimibe-overview" class="tab-content active">
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🔬</div>
-                                Key Features
+
+            <!-- EZETIMIBE -->
+            <div id="ezetimibe" class="drug-content hidden">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-2">Ezetimibe (Zetia®)</h2>
+                            <p class="text-gray-600 dark:text-gray-400">Cholesterol Absorption Inhibitor • Merck (now generic)</p>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 mt-2">
+                                Second-Line Add-On
+                            </span>
+                        </div>
+                        <a href="https://www.leaf.health/intelligence/search?q=ezetimibe" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            Live Data
+                        </a>
+                    </div>
+
+                    <!-- Sub-navigation -->
+                    <div class="flex flex-wrap gap-1 mb-6">
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all active" onclick="showSubTab('ezetimibe', 'overview', event)">
+                            Overview
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('ezetimibe', 'mechanism', event)">
+                            Mechanism & Dosing
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('ezetimibe', 'clinical', event)">
+                            Clinical Evidence
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('ezetimibe', 'safety', event)">
+                            Safety Profile
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('ezetimibe', 'commercial', event)">
+                            Commercial
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('ezetimibe', 'future', event)">
+                            Future Role
+                        </button>
+                    </div>
+
+                    <!-- Content Sections -->
+                    <div id="ezetimibe-overview" class="sub-content active">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                                <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                    <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">🔬</span>
+                                    Key Features
+                                </h3>
+                                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li>• Blocks NPC1L1 transporter in intestine</li>
+                                    <li>• 15-25% LDL-C reduction</li>
+                                    <li>• Once-daily oral dosing (10mg)</li>
+                                    <li>• Generic since 2016</li>
+                                    <li>• Often combined with statins</li>
+                                    <li>• No muscle side effects</li>
+                                </ul>
                             </div>
-                            <ul class="info-list">
-                                <li>Blocks NPC1L1 transporter in intestine</li>
-                                <li>15-25% LDL-C reduction</li>
-                                <li>Once-daily oral dosing (10mg)</li>
-                                <li>Generic since 2016</li>
-                                <li>Often combined with statins</li>
-                                <li>No muscle side effects</li>
+
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                                <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                    <span class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white text-sm">📊</span>
+                                    Clinical Position
+                                </h3>
+                                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li>• IMPROVE-IT: 6-7% MACE reduction</li>
+                                    <li>• Guideline-recommended second-line</li>
+                                    <li>• Required before PCSK9 inhibitors</li>
+                                    <li>• Modest but proven benefit</li>
+                                    <li>• 2% absolute risk reduction</li>
+                                    <li>• Reinforces LDL hypothesis</li>
+                                </ul>
+                            </div>
+
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                                <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                    <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">💰</span>
+                                    Market Impact
+                                </h3>
+                                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li>• ~$10-20/month generic</li>
+                                    <li>• Payer-mandated step therapy</li>
+                                    <li>• Delays need for expensive drugs</li>
+                                    <li>• Co-formulated with statins (Vytorin)</li>
+                                    <li>• Shrinks addressable market for PCSK9</li>
+                                    <li>• Easy add-on for clinicians</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-6 border-l-4 border-blue-500 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+                            <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Competitive Dynamic</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300">
+                                Ezetimibe acts as another gatekeeper before expensive therapies. Many patients achieve goals 
+                                with statin + ezetimibe, never needing PCSK9 inhibitors. Its cheap generic status and benign 
+                                safety profile make it an automatic second step, potentially limiting inclisiran's addressable 
+                                market to those still above goal after both statin and ezetimibe.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="ezetimibe-mechanism" class="sub-content hidden">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 mb-6">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">⚙️</span>
+                                Mechanism of Action
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                                Ezetimibe selectively inhibits <span class="bg-indigo-100 dark:bg-indigo-900/30 px-2 py-1 rounded text-indigo-700 dark:text-indigo-300 font-medium">NPC1L1 (Niemann-Pick C1-Like 1)</span> 
+                                transporter at the intestinal brush border, leading to:
+                            </p>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 ml-4">
+                                <li>• Reduced absorption of dietary and biliary cholesterol</li>
+                                <li>• Decreased cholesterol delivery to liver</li>
+                                <li>• Compensatory upregulation of hepatic LDL receptors</li>
+                                <li>• Enhanced clearance of LDL from circulation</li>
+                                <li>• Complementary mechanism to statins</li>
                             </ul>
                         </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">📊</div>
-                                Clinical Position
+
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Standard Dose</div>
+                                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">10 mg</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Once daily</div>
                             </div>
-                            <ul class="info-list">
-                                <li>IMPROVE-IT: 6-7% MACE reduction</li>
-                                <li>Guideline-recommended second-line</li>
-                                <li>Required before PCSK9 inhibitors</li>
-                                <li>Modest but proven benefit</li>
-                                <li>2% absolute risk reduction</li>
-                                <li>Reinforces LDL hypothesis</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">💰</div>
-                                Market Impact
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">LDL Reduction</div>
+                                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">15-25%</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">As monotherapy</div>
                             </div>
-                            <ul class="info-list">
-                                <li>~$10-20/month generic</li>
-                                <li>Payer-mandated step therapy</li>
-                                <li>Delays need for expensive drugs</li>
-                                <li>Co-formulated with statins (Vytorin)</li>
-                                <li>Shrinks addressable market for PCSK9</li>
-                                <li>Easy add-on for clinicians</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Competitive Dynamic</div>
-                        <div class="highlight-content">
-                            Ezetimibe acts as another gatekeeper before expensive therapies. Many patients achieve goals 
-                            with statin + ezetimibe, never needing PCSK9 inhibitors. Its cheap generic status and benign 
-                            safety profile make it an automatic second step, potentially limiting inclisiran's addressable 
-                            market to those still above goal after both statin and ezetimibe.
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="ezetimibe-mechanism" class="tab-content">
-                    <div class="mechanism-section">
-                        <div class="mechanism-title">
-                            <div class="info-icon">⚙️</div>
-                            Mechanism of Action
-                        </div>
-                        <div class="mechanism-content">
-                            Ezetimibe selectively inhibits <span class="mechanism-highlight">NPC1L1 (Niemann-Pick C1-Like 1)</span> 
-                            transporter at the intestinal brush border, leading to:
-                            <ul style="margin-top: 15px; margin-left: 20px;">
-                                <li>Reduced absorption of dietary and biliary cholesterol</li>
-                                <li>Decreased cholesterol delivery to liver</li>
-                                <li>Compensatory upregulation of hepatic LDL receptors</li>
-                                <li>Enhanced clearance of LDL from circulation</li>
-                                <li>Complementary mechanism to statins</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="dosing-grid">
-                        <div class="dosing-card">
-                            <div class="dosing-label">Standard Dose</div>
-                            <div class="dosing-value">10 mg</div>
-                            <div class="dosing-detail">Once daily</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">LDL Reduction</div>
-                            <div class="dosing-value">15-25%</div>
-                            <div class="dosing-detail">As monotherapy</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">With Statin</div>
-                            <div class="dosing-value">+15%</div>
-                            <div class="dosing-detail">Additional reduction</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Food Effect</div>
-                            <div class="dosing-value">None</div>
-                            <div class="dosing-detail">Can take any time</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="ezetimibe-clinical" class="tab-content">
-                    <div class="timeline-container">
-                        <div class="timeline-header">Key Clinical Evidence</div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2015</div>
-                            <div class="timeline-title">IMPROVE-IT Trial</div>
-                            <div class="timeline-description">
-                                18,144 post-ACS patients on simvastatin ± ezetimibe. Added ezetimibe achieved 
-                                17 mg/dL additional LDL drop and 6.4% relative risk reduction in MACE over 7 years. 
-                                Absolute event reduction: 2% (32.7% vs 34.7%).
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">With Statin</div>
+                                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">+15%</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Additional reduction</div>
                             </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Ongoing</div>
-                            <div class="timeline-title">Combination Studies</div>
-                            <div class="timeline-description">
-                                Multiple trials combining ezetimibe with newer agents (bempedoic acid as Nexlizet, 
-                                obicetrapib fixed-dose combinations). Shows additive effects with different mechanisms.
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Food Effect</div>
+                                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">None</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Can take any time</div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div id="ezetimibe-safety" class="tab-content">
-                    <div class="safety-grid">
-                        <div class="safety-card">
-                            <div class="safety-percentage">Minimal</div>
-                            <div class="safety-label">Muscle Effects</div>
-                        </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">Rare</div>
-                            <div class="safety-label">Liver Issues</div>
-                        </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">Mild</div>
-                            <div class="safety-label">GI Effects</div>
-                        </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">None</div>
-                            <div class="safety-label">Long-term Harms</div>
-                        </div>
-                    </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Safety Advantage</div>
-                        <div class="highlight-content">
-                            Ezetimibe's excellent safety profile (essentially placebo-like tolerability) makes it an 
-                            easy add-on that clinicians reach for reflexively. This "why not try ezetimibe first?" 
-                            mentality creates another hurdle before injectable therapies are considered.
+
+                    <div id="ezetimibe-clinical" class="sub-content hidden">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Key Clinical Evidence</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-blue-500">
+                                    <div class="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1">2015</div>
+                                    <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">IMPROVE-IT Trial</div>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">
+                                        18,144 post-ACS patients on simvastatin ± ezetimibe. Added ezetimibe achieved 
+                                        17 mg/dL additional LDL drop and 6.4% relative risk reduction in MACE over 7 years. 
+                                        Absolute event reduction: 2% (32.7% vs 34.7%).
+                                    </p>
+                                </div>
+                                
+                                <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-amber-500">
+                                    <div class="text-xs text-amber-600 dark:text-amber-400 font-medium mb-1">Ongoing</div>
+                                    <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">Combination Studies</div>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">
+                                        Multiple trials combining ezetimibe with newer agents (bempedoic acid as Nexlizet, 
+                                        obicetrapib fixed-dose combinations). Shows additive effects with different mechanisms.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div id="ezetimibe-commercial" class="tab-content">
-                    <div class="commercial-section">
-                        <div class="price-estimate">$10-20/month</div>
-                        <div style="color: #666; margin-bottom: 30px;">Generic pricing (since 2016)</div>
+
+                    <div id="ezetimibe-safety" class="sub-content hidden">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-green-600 dark:text-green-400">Minimal</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Muscle Effects</div>
+                            </div>
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-green-600 dark:text-green-400">Rare</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Liver Issues</div>
+                            </div>
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">Mild</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">GI Effects</div>
+                            </div>
+                            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                                <div class="text-2xl font-bold text-green-600 dark:text-green-400">None</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Long-term Harms</div>
+                            </div>
+                        </div>
+
+                        <div class="glass rounded-xl p-6 border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
+                            <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Safety Advantage</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300">
+                                Ezetimibe's excellent safety profile (essentially placebo-like tolerability) makes it an 
+                                easy add-on that clinicians reach for reflexively. This "why not try ezetimibe first?" 
+                                mentality creates another hurdle before injectable therapies are considered.
+                            </p>
+                        </div>
                     </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🏥</div>
+
+                    <div id="ezetimibe-commercial" class="sub-content hidden">
+                        <div class="glass rounded-xl p-8 mb-6 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">$10-20/month</div>
+                            <div class="text-gray-600 dark:text-gray-400 mt-2">Generic pricing (since 2016)</div>
+                        </div>
+
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white text-sm">🏥</span>
                                 Impact on PCSK9 Market
-                            </div>
-                            <ul class="info-list">
-                                <li>Payers require ezetimibe trial first</li>
-                                <li>Many patients reach goal with statin+ezetimibe</li>
-                                <li>Reduces pool needing expensive therapies</li>
-                                <li>Creates "step therapy" barrier</li>
-                                <li>Combination pills increase usage</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• Payers require ezetimibe trial first</li>
+                                <li>• Many patients reach goal with statin+ezetimibe</li>
+                                <li>• Reduces pool needing expensive therapies</li>
+                                <li>• Creates "step therapy" barrier</li>
+                                <li>• Combination pills increase usage</li>
                             </ul>
                         </div>
                     </div>
-                </div>
-                
-                <div id="ezetimibe-future" class="tab-content">
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🔮</div>
+
+                    <div id="ezetimibe-future" class="sub-content hidden">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white text-sm">🔮</span>
                                 Future Role
-                            </div>
-                            <ul class="info-list">
-                                <li>Remains baseline therapy with statins</li>
-                                <li>Component of fixed-dose combinations</li>
-                                <li>May combine with oral PCSK9 inhibitors</li>
-                                <li>Continues as cheap generic option</li>
-                                <li>Extra 15% reduction always valuable</li>
-                                <li>Part of "maximize orals first" approach</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• Remains baseline therapy with statins</li>
+                                <li>• Component of fixed-dose combinations</li>
+                                <li>• May combine with oral PCSK9 inhibitors</li>
+                                <li>• Continues as cheap generic option</li>
+                                <li>• Extra 15% reduction always valuable</li>
+                                <li>• Part of "maximize orals first" approach</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- BEMPEDOIC ACID -->
-        <div id="bempedoic" class="drug-content">
-            <div class="drug-header">
-                <div class="drug-name">Bempedoic Acid (Nexletol®)</div>
-                <div class="drug-subtitle">ACL Inhibitor - Oral Non-Statin</div>
-                <div class="drug-company">Esperion Therapeutics</div>
-                <span class="status-badge">FDA Approved with CV Outcomes</span>
-            </div>
-            
-            <div class="nav-tabs">
-                <button class="nav-tab active" onclick="showTab('bempedoic', 'overview')">Overview</button>
-                <button class="nav-tab" onclick="showTab('bempedoic', 'mechanism')">Mechanism & Dosing</button>
-                <button class="nav-tab" onclick="showTab('bempedoic', 'regulatory')">Regulatory & Trials</button>
-                <button class="nav-tab" onclick="showTab('bempedoic', 'safety')">Safety Profile</button>
-                <button class="nav-tab" onclick="showTab('bempedoic', 'commercial')">Commercial</button>
-                <button class="nav-tab" onclick="showTab('bempedoic', 'future')">Future Outlook</button>
-            </div>
-            
-            <div class="content-area">
-                <div id="bempedoic-overview" class="tab-content active">
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🎯</div>
-                                Key Differentiators
-                            </div>
-                            <ul class="info-list">
-                                <li>First oral non-statin with CV outcomes</li>
-                                <li>No muscle side effects (liver-specific)</li>
-                                <li>18-25% LDL reduction</li>
-                                <li>13% MACE reduction proven (CLEAR)</li>
-                                <li>23% MI reduction in statin-intolerant</li>
-                                <li>Once-daily oral (180mg)</li>
-                            </ul>
+
+            <!-- BEMPEDOIC ACID -->
+            <div id="bempedoic" class="drug-content hidden">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-2">Bempedoic Acid (Nexletol®)</h2>
+                            <p class="text-gray-600 dark:text-gray-400">ACL Inhibitor - Oral Non-Statin • Esperion Therapeutics</p>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 mt-2">
+                                FDA Approved with CV Outcomes
+                            </span>
                         </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">✅</div>
-                                Regulatory Milestones
-                            </div>
-                            <ul class="info-list">
-                                <li>FDA approved Feb 2020</li>
-                                <li>EMA approved 2020 (Nilemdo)</li>
-                                <li>CLEAR Outcomes positive March 2023</li>
-                                <li>CV risk reduction label 2023</li>
-                                <li>No CRLs or major delays</li>
-                                <li>Orphan designation for HoFH</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🏆</div>
-                                Competitive Position
-                            </div>
-                            <ul class="info-list">
-                                <li>Fills statin-intolerant niche</li>
-                                <li>Oral alternative to injections</li>
-                                <li>Now has outcomes data advantage</li>
-                                <li>Combo with ezetimibe (Nexlizet)</li>
-                                <li>May become gatekeeper to PCSK9</li>
-                                <li>$400/month vs $6000+ for mAbs</li>
-                            </ul>
-                        </div>
+                        <a href="https://www.leaf.health/intelligence/search?q=bempedoic+acid" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            Live Data
+                        </a>
                     </div>
+
+                    <!-- Sub-navigation -->
+                    <div class="flex flex-wrap gap-1 mb-6">
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all active" onclick="showSubTab('bempedoic', 'overview', event)">
+                            Overview
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('bempedoic', 'mechanism', event)">
+                            Mechanism & Dosing
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('bempedoic', 'regulatory', event)">
+                            Regulatory & Trials
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('bempedoic', 'safety', event)">
+                            Safety Profile
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('bempedoic', 'commercial', event)">
+                            Commercial
+                        </button>
+                        <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('bempedoic', 'future', event)">
+                            Future Outlook
+                        </button>
+                    </div>
+
+                    <!-- Content Sections -->
+                    <div id="bempedoic-overview" class="sub-content active">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                                <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                    <span class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white text-sm">🎯</span>
+                                    Key Differentiators
+                                </h3>
+                                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li>• First oral non-statin with CV outcomes</li>
+                                    <li>• No muscle side effects (liver-specific)</li>
+                                    <li>• 18-25% LDL reduction</li>
+                                    <li>• 13% MACE reduction proven (CLEAR)</li>
+                                    <li>• 23% MI reduction in statin-intolerant</li>
+                                    <li>• Once-daily oral (180mg)</li>
+                                </ul>
+                            </div>
+
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                                <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                    <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">✅</span>
+                                    Regulatory Milestones
+                                </h3>
+                                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li>• FDA approved Feb 2020</li>
+                                    <li>• EMA approved 2020 (Nilemdo)</li>
+                                    <li>• CLEAR Outcomes positive March 2023</li>
+                                    <li>• CV risk reduction label 2023</li>
+                                    <li>• No CRLs or major delays</li>
+                                    <li>• Orphan designation for HoFH</li>
+                                </ul>
+                            </div>
+
+                            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                                <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                    <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">🏆</span>
+                                    Competitive Position
+                                </h3>
+                                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <li>• Fills statin-intolerant niche</li>
+                                    <li>• Oral alternative to injections</li>
+                                    <li>• Now has outcomes data advantage</li>
+                                    <li>• Combo with ezetimibe (Nexlizet)</li>
+                                    <li>• May become gatekeeper to PCSK9</li>
+                                    <li>• $400/month vs $6000+ for mAbs</li>
+                                </ul>
+                            </div>
+
+                            <div class="glass rounded-xl p-6 border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Market Impact on Inclisiran</h4>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        With proven CV outcomes, bempedoic acid can now market itself as preventing heart attacks - 
+                        something inclisiran cannot yet claim. Payers may require trying bempedoic acid (±ezetimibe) 
+                        before approving expensive injectables, creating another step therapy barrier. The 35% LDL 
+                        reduction with bempedoic+ezetimibe may satisfy many patients, shrinking inclisiran's addressable market.
+                    </p>
+                </div>
+            </div>
+
+            <div id="bempedoic-mechanism" class="sub-content hidden">
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 mb-6">
+                    <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                        <span class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white text-sm">⚙️</span>
+                        Mechanism of Action
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        Bempedoic acid inhibits <span class="bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded text-green-700 dark:text-green-300 font-medium">ATP citrate lyase (ACL)</span>, 
+                        an enzyme upstream of HMG-CoA reductase in cholesterol synthesis. Key features:
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 ml-4">
+                        <li>• Prodrug activated by ACSVL1 enzyme (liver-specific)</li>
+                        <li>• Not activated in muscle tissue (avoiding myopathy)</li>
+                        <li>• Reduces hepatic cholesterol synthesis</li>
+                        <li>• Upregulates LDL receptors</li>
+                        <li>• Complementary to statin mechanism</li>
+                        <li>• Can be used with or without statins</li>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Standard Dose</div>
+                        <div class="text-2xl font-bold text-green-600 dark:text-green-400">180 mg</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Once daily</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">LDL Reduction</div>
+                        <div class="text-2xl font-bold text-green-600 dark:text-green-400">18-25%</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Monotherapy</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">With Ezetimibe</div>
+                        <div class="text-2xl font-bold text-green-600 dark:text-green-400">35-38%</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Nexlizet combo</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Time to Effect</div>
+                        <div class="text-2xl font-bold text-green-600 dark:text-green-400">4 weeks</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Maximum LDL drop</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bempedoic-regulatory" class="sub-content hidden">
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">CLEAR Outcomes Trial Results</h3>
                     
-                    <div class="highlight-box">
-                        <div class="highlight-title">Market Impact on Inclisiran</div>
-                        <div class="highlight-content">
-                            With proven CV outcomes, bempedoic acid can now market itself as preventing heart attacks - 
-                            something inclisiran cannot yet claim. Payers may require trying bempedoic acid (±ezetimibe) 
-                            before approving expensive injectables, creating another step therapy barrier. The 35% LDL 
-                            reduction with bempedoic+ezetimibe may satisfy many patients, shrinking inclisiran's addressable market.
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="bempedoic-mechanism" class="tab-content">
-                    <div class="mechanism-section">
-                        <div class="mechanism-title">
-                            <div class="info-icon">⚙️</div>
-                            Mechanism of Action
-                        </div>
-                        <div class="mechanism-content">
-                            Bempedoic acid inhibits <span class="mechanism-highlight">ATP citrate lyase (ACL)</span>, 
-                            an enzyme upstream of HMG-CoA reductase in cholesterol synthesis. Key features:
-                            <ul style="margin-top: 15px; margin-left: 20px;">
-                                <li>Prodrug activated by ACSVL1 enzyme (liver-specific)</li>
-                                <li>Not activated in muscle tissue (avoiding myopathy)</li>
-                                <li>Reduces hepatic cholesterol synthesis</li>
-                                <li>Upregulates LDL receptors</li>
-                                <li>Complementary to statin mechanism</li>
-                                <li>Can be used with or without statins</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="dosing-grid">
-                        <div class="dosing-card">
-                            <div class="dosing-label">Standard Dose</div>
-                            <div class="dosing-value">180 mg</div>
-                            <div class="dosing-detail">Once daily</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">LDL Reduction</div>
-                            <div class="dosing-value">18-25%</div>
-                            <div class="dosing-detail">Monotherapy</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">With Ezetimibe</div>
-                            <div class="dosing-value">35-38%</div>
-                            <div class="dosing-detail">Nexlizet combo</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Time to Effect</div>
-                            <div class="dosing-value">4 weeks</div>
-                            <div class="dosing-detail">Maximum LDL drop</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="bempedoic-regulatory" class="tab-content">
-                    <div class="timeline-container">
-                        <div class="timeline-header">CLEAR Outcomes Trial Results</div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">March 2023</div>
-                            <div class="timeline-title">Primary Endpoint Met</div>
-                            <div class="timeline-description">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-green-500">
+                            <div class="text-xs text-green-600 dark:text-green-400 font-medium mb-1">March 2023</div>
+                            <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">Primary Endpoint Met</div>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
                                 13,970 statin-intolerant patients, 3.4 years follow-up. 13% reduction in 4-point MACE 
                                 (11.7% vs 13.3%, p=0.004). Absolute risk reduction: 1.6%.
-                            </div>
+                            </p>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Key Results</div>
-                            <div class="timeline-title">Component Outcomes</div>
-                            <div class="timeline-description">
+                        
+                        <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-indigo-500">
+                            <div class="text-xs text-indigo-600 dark:text-indigo-400 font-medium mb-1">Key Results</div>
+                            <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">Component Outcomes</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">
                                 • Myocardial infarction: 23% reduction (4.7% vs 6.1%)<br>
                                 • Coronary revascularization: 19% reduction<br>
                                 • Stroke: 19% reduction (not significant alone)<br>
@@ -1161,627 +814,788 @@
                                 • LDL reduction: 21% placebo-adjusted
                             </div>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2023</div>
-                            <div class="timeline-title">Label Expansion</div>
-                            <div class="timeline-description">
+                        
+                        <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-amber-500">
+                            <div class="text-xs text-amber-600 dark:text-amber-400 font-medium mb-1">2023</div>
+                            <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">Label Expansion</div>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
                                 FDA approved new indication to reduce risk of MI, stroke, and coronary revascularization 
                                 in adults with ASCVD or HeFH. First non-statin oral with CV risk reduction claim.
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div>
-                
-                <div id="bempedoic-safety" class="tab-content">
-                    <div class="safety-grid">
-                        <div class="safety-card">
-                            <div class="safety-percentage">3.5%</div>
-                            <div class="safety-label">Gout (vs 2.1% placebo)</div>
-                        </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">0.5%</div>
-                            <div class="safety-label">Tendon Rupture</div>
-                        </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">↑</div>
-                            <div class="safety-label">Uric Acid</div>
-                        </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">None</div>
-                            <div class="safety-label">Muscle Issues</div>
-                        </div>
+            </div>
+
+            <div id="bempedoic-safety" class="sub-content hidden">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">3.5%</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Gout (vs 2.1% placebo)</div>
                     </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">⚠️</div>
-                                Safety Considerations
-                            </div>
-                            <ul class="info-list">
-                                <li>Raises uric acid - monitor for gout</li>
-                                <li>Tendon rupture warning (Achilles)</li>
-                                <li>Small increase in creatinine/BUN</li>
-                                <li>No hepatotoxicity</li>
-                                <li>No myalgia (liver-specific activation)</li>
-                                <li>Generally well tolerated</li>
-                            </ul>
-                        </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">0.5%</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Tendon Rupture</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">↑</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Uric Acid</div>
+                    </div>
+                    <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-green-600 dark:text-green-400">None</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Muscle Issues</div>
                     </div>
                 </div>
-                
-                <div id="bempedoic-commercial" class="tab-content">
-                    <div class="commercial-section">
-                        <div class="price-estimate">~$400/month</div>
-                        <div style="color: #666; margin-bottom: 30px;">US list price (significantly less than PCSK9 mAbs)</div>
-                        
-                        <div class="market-projection">
-                            <div>
-                                <div class="projection-value">Growing</div>
-                                <div class="projection-label">Post-outcomes uptake</div>
-                            </div>
-                            <div>
-                                <div class="projection-value">2033</div>
-                                <div class="projection-label">Patent expiry estimate</div>
-                            </div>
-                        </div>
+
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                        <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">⚠️</span>
+                        Safety Considerations
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <li>• Raises uric acid - monitor for gout</li>
+                        <li>• Tendon rupture warning (Achilles)</li>
+                        <li>• Small increase in creatinine/BUN</li>
+                        <li>• No hepatotoxicity</li>
+                        <li>• No myalgia (liver-specific activation)</li>
+                        <li>• Generally well tolerated</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="bempedoic-commercial" class="sub-content hidden">
+                <div class="glass rounded-xl p-8 mb-6 border border-gray-200 dark:border-gray-700 text-center">
+                    <div class="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">~$400/month</div>
+                    <div class="text-gray-600 dark:text-gray-400 mt-2">US list price (significantly less than PCSK9 mAbs)</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 mb-6">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-green-600 dark:text-green-400">Growing</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Post-outcomes uptake</div>
                     </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Payer Dynamics</div>
-                        <div class="highlight-content">
-                            With outcomes data, payers may mandate trying bempedoic acid before expensive injectables. 
-                            At $400/month vs $6000+ for PCSK9 mAbs, it's an attractive intermediate option. Could become 
-                            standard step therapy: statin → +ezetimibe → +bempedoic → then PCSK9 if needed.
-                        </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">2033</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Patent expiry estimate</div>
                     </div>
                 </div>
-                
-                <div id="bempedoic-future" class="tab-content">
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🔮</div>
-                                Future Positioning
-                            </div>
-                            <ul class="info-list">
-                                <li>Entrenched in statin-intolerant segment</li>
-                                <li>Part of oral combination strategies</li>
-                                <li>Generic by early 2030s</li>
-                                <li>May combine with oral PCSK9 inhibitors</li>
-                                <li>Triple oral therapy possible</li>
-                                <li>Further squeezes injectable market</li>
-                            </ul>
-                        </div>
-                    </div>
+
+                <div class="glass rounded-xl p-6 border-l-4 border-green-500 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
+                    <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Payer Dynamics</h4>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        With outcomes data, payers may mandate trying bempedoic acid before expensive injectables. 
+                        At $400/month vs $6000+ for PCSK9 mAbs, it's an attractive intermediate option. Could become 
+                        standard step therapy: statin → +ezetimibe → +bempedoic → then PCSK9 if needed.
+                    </p>
+                </div>
+            </div>
+
+            <div id="bempedoic-future" class="sub-content hidden">
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                        <span class="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white text-sm">🔮</span>
+                        Future Positioning
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <li>• Entrenched in statin-intolerant segment</li>
+                        <li>• Part of oral combination strategies</li>
+                        <li>• Generic by early 2030s</li>
+                        <li>• May combine with oral PCSK9 inhibitors</li>
+                        <li>• Triple oral therapy possible</li>
+                        <li>• Further squeezes injectable market</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        
+
         <!-- OBICETRAPIB -->
         <div id="obicetrapib" class="drug-content">
-            <div class="drug-header">
-                <div class="drug-name">Obicetrapib</div>
-                <div class="drug-subtitle">Next-Generation CETP Inhibitor</div>
-                <div class="drug-company">NewAmsterdam Pharma</div>
-                <span class="status-badge">EMA Review - Phase III</span>
-            </div>
-            
-            <div class="nav-tabs">
-                <button class="nav-tab active" onclick="showTab('obicetrapib', 'overview')">Overview</button>
-                <button class="nav-tab" onclick="showTab('obicetrapib', 'mechanism')">Mechanism & Dosing</button>
-                <button class="nav-tab" onclick="showTab('obicetrapib', 'regulatory')">Regulatory Status</button>
-                <button class="nav-tab" onclick="showTab('obicetrapib', 'clinical')">Clinical Trials</button>
-                <button class="nav-tab" onclick="showTab('obicetrapib', 'safety')">Safety Profile</button>
-                <button class="nav-tab" onclick="showTab('obicetrapib', 'commercial')">Commercial</button>
-            </div>
-            
-            <div class="content-area">
-                <div id="obicetrapib-overview" class="tab-content active">
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🔬</div>
+            <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-2">Obicetrapib</h2>
+                        <p class="text-gray-600 dark:text-gray-400">Next-Generation CETP Inhibitor • NewAmsterdam Pharma</p>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 mt-2">
+                            EMA Review - Phase III
+                        </span>
+                    </div>
+                    <a href="https://www.leaf.health/intelligence/search?q=obicetrapib" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        Live Data
+                    </a>
+                </div>
+
+                <!-- Sub-navigation -->
+                <div class="flex flex-wrap gap-1 mb-6">
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white" onclick="showSubTab('obicetrapib', 'overview', event)">
+                        Overview
+                    </button>
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('obicetrapib', 'mechanism', event)">
+                        Mechanism & Dosing
+                    </button>
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('obicetrapib', 'regulatory', event)">
+                        Regulatory Status
+                    </button>
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('obicetrapib', 'clinical', event)">
+                        Clinical Trials
+                    </button>
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('obicetrapib', 'safety', event)">
+                        Safety Profile
+                    </button>
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('obicetrapib', 'commercial', event)">
+                        Commercial
+                    </button>
+                </div>
+
+                <!-- Content Sections -->
+                <div id="obicetrapib-overview" class="sub-content active">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">🔬</span>
                                 Key Features
-                            </div>
-                            <ul class="info-list">
-                                <li>35-45% LDL reduction as monotherapy</li>
-                                <li>~50% with ezetimibe combo</li>
-                                <li>Raises HDL >100%</li>
-                                <li>Once-daily oral (10mg)</li>
-                                <li>No blood pressure effects</li>
-                                <li>Potential cognitive benefits (p-tau↓)</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• 35-45% LDL reduction as monotherapy</li>
+                                <li>• ~50% with ezetimibe combo</li>
+                                <li>• Raises HDL >100%</li>
+                                <li>• Once-daily oral (10mg)</li>
+                                <li>• No blood pressure effects</li>
+                                <li>• Potential cognitive benefits (p-tau↓)</li>
                             </ul>
                         </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">📊</div>
+
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-red-600 to-pink-600 rounded-full flex items-center justify-center text-white text-sm">📊</span>
                                 CETP Class History
-                            </div>
-                            <ul class="info-list">
-                                <li>Torcetrapib: Failed (↑mortality)</li>
-                                <li>Anacetrapib: 9% MACE↓ but shelved</li>
-                                <li>Evacetrapib: Failed (no benefit)</li>
-                                <li>Obicetrapib: Clean safety profile</li>
-                                <li>Solves prior class issues</li>
-                                <li>"Rebirth of CETP inhibitors"</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• Torcetrapib: Failed (↑mortality)</li>
+                                <li>• Anacetrapib: 9% MACE↓ but shelved</li>
+                                <li>• Evacetrapib: Failed (no benefit)</li>
+                                <li>• Obicetrapib: Clean safety profile</li>
+                                <li>• Solves prior class issues</li>
+                                <li>• "Rebirth of CETP inhibitors"</li>
                             </ul>
                         </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🎯</div>
+
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">🎯</span>
                                 Strategic Position
-                            </div>
-                            <ul class="info-list">
-                                <li>EMA MAA validated Aug 2025</li>
-                                <li>EU approval possible 2024/25</li>
-                                <li>PREVAIL outcomes trial ongoing</li>
-                                <li>Menarini partnership for Europe</li>
-                                <li>Fixed-dose combo with ezetimibe</li>
-                                <li>Different mechanism vs PCSK9</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• EMA MAA validated Aug 2025</li>
+                                <li>• EU approval possible 2024/25</li>
+                                <li>• PREVAIL outcomes trial ongoing</li>
+                                <li>• Menarini partnership for Europe</li>
+                                <li>• Fixed-dose combo with ezetimibe</li>
+                                <li>• Different mechanism vs PCSK9</li>
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Competitive Threat to Inclisiran</div>
-                        <div class="highlight-content">
+
+                    <div class="glass rounded-xl p-6 border-l-4 border-amber-500 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20">
+                        <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Competitive Threat to Inclisiran</h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
                             An all-oral triple therapy (statin + obicetrapib + ezetimibe) could rival injectable PCSK9 
                             inhibitor efficacy. With ~50% LDL reduction from obicetrapib+ezetimibe combo, many patients 
                             might achieve goals without injections. If approved before oral PCSK9 inhibitors, could gain 
                             foothold as the preferred oral intensification option.
-                        </div>
+                        </p>
                     </div>
                 </div>
-                
-                <div id="obicetrapib-mechanism" class="tab-content">
-                    <div class="mechanism-section">
-                        <div class="mechanism-title">
-                            <div class="info-icon">⚙️</div>
+
+                <!-- Additional sub-content sections for Obicetrapib... -->
+                <div id="obicetrapib-mechanism" class="sub-content hidden">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 mb-6">
+                        <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">⚙️</span>
                             Mechanism of Action
-                        </div>
-                        <div class="mechanism-content">
-                            Obicetrapib inhibits <span class="mechanism-highlight">CETP (Cholesteryl Ester Transfer Protein)</span>, 
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            Obicetrapib inhibits <span class="bg-amber-100 dark:bg-amber-900/30 px-2 py-1 rounded text-amber-700 dark:text-amber-300 font-medium">CETP (Cholesteryl Ester Transfer Protein)</span>, 
                             leading to:
-                            <ul style="margin-top: 15px; margin-left: 20px;">
-                                <li>Reduced transfer of cholesteryl esters from HDL to VLDL/LDL</li>
-                                <li>Enhanced reverse cholesterol transport</li>
-                                <li>Indirect upregulation of LDL receptors</li>
-                                <li>Substantial HDL-C increase (>100%)</li>
-                                <li>Reduction in VLDL remnants</li>
-                                <li>No off-target aldosterone effects (unlike torcetrapib)</li>
-                            </ul>
-                        </div>
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 ml-4">
+                            <li>• Reduced transfer of cholesteryl esters from HDL to VLDL/LDL</li>
+                            <li>• Enhanced reverse cholesterol transport</li>
+                            <li>• Indirect upregulation of LDL receptors</li>
+                            <li>• Substantial HDL-C increase (>100%)</li>
+                            <li>• Reduction in VLDL remnants</li>
+                            <li>• No off-target aldosterone effects (unlike torcetrapib)</li>
+                        </ul>
                     </div>
-                    
-                    <div class="dosing-grid">
-                        <div class="dosing-card">
-                            <div class="dosing-label">Standard Dose</div>
-                            <div class="dosing-value">10 mg</div>
-                            <div class="dosing-detail">Once daily</div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Standard Dose</div>
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">10 mg</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Once daily</div>
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">LDL Reduction</div>
-                            <div class="dosing-value">35-45%</div>
-                            <div class="dosing-detail">On top of statin</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">LDL Reduction</div>
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">35-45%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">On top of statin</div>
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">With Ezetimibe</div>
-                            <div class="dosing-value">~50%</div>
-                            <div class="dosing-detail">Fixed combo</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">With Ezetimibe</div>
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">~50%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Fixed combo</div>
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">HDL Increase</div>
-                            <div class="dosing-value">>100%</div>
-                            <div class="dosing-detail">Substantial rise</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="obicetrapib-regulatory" class="tab-content">
-                    <div class="timeline-container">
-                        <div class="timeline-header">Regulatory Timeline</div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2023-2024</div>
-                            <div class="timeline-title">Phase 3 Trials Complete</div>
-                            <div class="timeline-description">
-                                BROADWAY (2,500 pts), BROOKLYN (HeFH), and TANDEM (combo) trials completed. 
-                                Strong LDL reduction without safety issues seen with prior CETP inhibitors.
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">August 2025</div>
-                            <div class="timeline-title">EMA MAA Validated</div>
-                            <div class="timeline-description">
-                                Marketing authorization application accepted for review by EMA for both obicetrapib 
-                                monotherapy and fixed-dose combination with ezetimibe.
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">2024/25 (Expected)</div>
-                            <div class="timeline-title">EU Approval</div>
-                            <div class="timeline-description">
-                                Potential approval based on LDL surrogate endpoint. FDA likely requires outcomes data.
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">~2026</div>
-                            <div class="timeline-title">PREVAIL Outcomes Trial</div>
-                            <div class="timeline-description">
-                                Large cardiovascular outcomes trial to determine MACE reduction. Critical for FDA approval 
-                                and broader adoption.
-                            </div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">HDL Increase</div>
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">>100%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Substantial rise</div>
                         </div>
                     </div>
                 </div>
-                
-                <div id="obicetrapib-clinical" class="tab-content">
-                    <div class="efficacy-chart">
-                        <div class="chart-title">Phase 3 LDL-C Reduction Results</div>
-                        <div class="bar-chart">
-                            <div class="bar-group">
-                                <div class="bar" style="height: 33%;">
-                                    <div class="bar-value">33%</div>
-                                </div>
-                                <div class="bar-label">BROADWAY<br>84 days</div>
+
+                <div id="obicetrapib-regulatory" class="sub-content hidden">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Regulatory Timeline</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-indigo-500">
+                                <div class="text-xs text-indigo-600 dark:text-indigo-400 font-medium mb-1">2023-2024</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">Phase 3 Trials Complete</div>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">
+                                    BROADWAY (2,500 pts), BROOKLYN (HeFH), and TANDEM (combo) trials completed. 
+                                    Strong LDL reduction without safety issues seen with prior CETP inhibitors.
+                                </p>
                             </div>
-                            <div class="bar-group">
-                                <div class="bar" style="height: 45%;">
-                                    <div class="bar-value">45%</div>
-                                </div>
-                                <div class="bar-label">BROOKLYN<br>HeFH</div>
+                            
+                            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-amber-500">
+                                <div class="text-xs text-amber-600 dark:text-amber-400 font-medium mb-1">August 2025</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">EMA MAA Validated</div>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">
+                                    Marketing authorization application accepted for review by EMA for both obicetrapib 
+                                    monotherapy and fixed-dose combination with ezetimibe.
+                                </p>
                             </div>
-                            <div class="bar-group">
-                                <div class="bar" style="height: 50%;">
-                                    <div class="bar-value">50%</div>
-                                </div>
-                                <div class="bar-label">TANDEM<br>+Ezetimibe</div>
+                            
+                            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-green-500">
+                                <div class="text-xs text-green-600 dark:text-green-400 font-medium mb-1">2024/25 (Expected)</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">EU Approval</div>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">
+                                    Potential approval based on LDL surrogate endpoint. FDA likely requires outcomes data.
+                                </p>
+                            </div>
+                            
+                            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg border-l-4 border-purple-500">
+                                <div class="text-xs text-purple-600 dark:text-purple-400 font-medium mb-1">~2026</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-1">PREVAIL Outcomes Trial</div>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">
+                                    Large cardiovascular outcomes trial to determine MACE reduction. Critical for FDA approval 
+                                    and broader adoption.
+                                </p>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Exploratory Finding</div>
-                        <div class="highlight-content">
+                </div>
+
+                <div id="obicetrapib-clinical" class="sub-content hidden">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-6">Phase 3 LDL-C Reduction Results</h3>
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">33%</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">BROADWAY<br/>84 days</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">45%</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">BROOKLYN<br/>HeFH</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">50%</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">TANDEM<br/>+Ezetimibe</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-xl p-6 border-l-4 border-purple-500 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 mt-6">
+                        <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Exploratory Finding</h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
                             BROADWAY substudy showed 1.1% reduction in CSF p-tau217 (Alzheimer's biomarker) vs placebo 
                             increase, suggesting potential neuroprotective effects. While exploratory, this could provide 
                             unique differentiation if confirmed in further studies.
-                        </div>
+                        </p>
                     </div>
                 </div>
-                
-                <div id="obicetrapib-safety" class="tab-content">
-                    <div class="safety-grid">
-                        <div class="safety-card">
-                            <div class="safety-percentage">No ↑</div>
-                            <div class="safety-label">Blood Pressure</div>
+
+                <div id="obicetrapib-safety" class="sub-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">No ↑</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Blood Pressure</div>
                         </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">None</div>
-                            <div class="safety-label">Liver Fat</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">None</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Liver Fat</div>
                         </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">Mild</div>
-                            <div class="safety-label">GI Effects</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">Mild</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">GI Effects</div>
                         </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">Short</div>
-                            <div class="safety-label">Half-life (no accumulation)</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">Short</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Half-life (no accumulation)</div>
                         </div>
                     </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">✅</div>
-                                Safety Advantages vs Prior CETP
-                            </div>
-                            <ul class="info-list">
-                                <li>No blood pressure increase (vs torcetrapib)</li>
-                                <li>No tissue accumulation (vs anacetrapib)</li>
-                                <li>No electrolyte disturbances</li>
-                                <li>Well-tolerated in trials</li>
-                                <li>Main AEs: nausea, headache (mild)</li>
-                                <li>Solved class safety issues</li>
-                            </ul>
-                        </div>
+
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white text-sm">✅</span>
+                            Safety Advantages vs Prior CETP
+                        </h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• No blood pressure increase (vs torcetrapib)</li>
+                            <li>• No tissue accumulation (vs anacetrapib)</li>
+                            <li>• No electrolyte disturbances</li>
+                            <li>• Well-tolerated in trials</li>
+                            <li>• Main AEs: nausea, headache (mild)</li>
+                            <li>• Solved class safety issues</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div id="obicetrapib-commercial" class="tab-content">
-                    <div class="commercial-section">
-                        <div class="price-estimate">~$4,000/year</div>
-                        <div style="color: #666; margin-bottom: 30px;">Projected pricing (similar to bempedoic acid)</div>
-                        
-                        <div class="market-projection">
-                            <div>
-                                <div class="projection-value">2024/25</div>
-                                <div class="projection-label">EU launch expected</div>
-                            </div>
-                            <div>
-                                <div class="projection-value">Oral</div>
-                                <div class="projection-label">Advantage vs injections</div>
-                            </div>
+
+                <div id="obicetrapib-commercial" class="sub-content hidden">
+                    <div class="glass rounded-xl p-8 mb-6 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">~$4,000/year</div>
+                        <div class="text-gray-600 dark:text-gray-400 mt-2">Projected pricing (similar to bempedoic acid)</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6 mb-6">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">2024/25</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">EU launch expected</div>
+                        </div>
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">Oral</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Advantage vs injections</div>
                         </div>
                     </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Market Positioning</div>
-                        <div class="highlight-content">
+
+                    <div class="glass rounded-xl p-6 border-l-4 border-amber-500 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20">
+                        <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Market Positioning</h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
                             If approved before oral PCSK9 inhibitors, obicetrapib could capture the "next oral after 
                             statin+ezetimibe" position. Fixed-dose combination with ezetimibe offers ~50% LDL reduction 
                             in one pill. Different mechanism allows combination with PCSK9 inhibitors for extreme LDL lowering.
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <!-- EVINACUMAB -->
         <div id="evinacumab" class="drug-content">
-            <div class="drug-header">
-                <div class="drug-name">Evinacumab (Evkeeza®)</div>
-                <div class="drug-subtitle">ANGPTL3 Monoclonal Antibody</div>
-                <div class="drug-company">Regeneron/Ultragenyx</div>
-                <span class="status-badge">FDA/EMA Approved (HoFH Only)</span>
-            </div>
-            
-            <div class="nav-tabs">
-                <button class="nav-tab active" onclick="showTab('evinacumab', 'overview')">Overview</button>
-                <button class="nav-tab" onclick="showTab('evinacumab', 'mechanism')">Mechanism & Dosing</button>
-                <button class="nav-tab" onclick="showTab('evinacumab', 'clinical')">Clinical Evidence</button>
-                <button class="nav-tab" onclick="showTab('evinacumab', 'safety')">Safety Profile</button>
-                <button class="nav-tab" onclick="showTab('evinacumab', 'commercial')">Commercial</button>
-            </div>
-            
-            <div class="content-area">
-                <div id="evinacumab-overview" class="tab-content active">
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🧬</div>
+            <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-2">Evinacumab (Evkeeza®)</h2>
+                        <p class="text-gray-600 dark:text-gray-400">ANGPTL3 Monoclonal Antibody • Regeneron/Ultragenyx</p>
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400 mt-2">
+                            FDA/EMA Approved (HoFH Only)
+                        </span>
+                    </div>
+                    <a href="https://www.leaf.health/intelligence/search?q=evinacumab" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                        Live Data
+                    </a>
+                </div>
+
+                <!-- Sub-navigation -->
+                <div class="flex flex-wrap gap-1 mb-6">
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white" onclick="showSubTab('evinacumab', 'overview', event)">
+                        Overview
+                    </button>
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('evinacumab', 'mechanism', event)">
+                        Mechanism & Dosing
+                    </button>
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('evinacumab', 'clinical', event)">
+                        Clinical Evidence
+                    </button>
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('evinacumab', 'safety', event)">
+                        Safety Profile
+                    </button>
+                    <button class="sub-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showSubTab('evinacumab', 'commercial', event)">
+                        Commercial
+                    </button>
+                </div>
+
+                <!-- Content Sections -->
+                <div id="evinacumab-overview" class="sub-content active">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white text-sm">🧬</span>
                                 Unique Features
-                            </div>
-                            <ul class="info-list">
-                                <li>LDL receptor-independent mechanism</li>
-                                <li>47% LDL reduction in HoFH</li>
-                                <li>Works when PCSK9 inhibitors fail</li>
-                                <li>Monthly IV infusion (15mg/kg)</li>
-                                <li>Orphan drug designation</li>
-                                <li>Only for homozygous FH</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• LDL receptor-independent mechanism</li>
+                                <li>• 47% LDL reduction in HoFH</li>
+                                <li>• Works when PCSK9 inhibitors fail</li>
+                                <li>• Monthly IV infusion (15mg/kg)</li>
+                                <li>• Orphan drug designation</li>
+                                <li>• Only for homozygous FH</li>
                             </ul>
                         </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">🏥</div>
+
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">🏥</span>
                                 Clinical Niche
-                            </div>
-                            <ul class="info-list">
-                                <li>HoFH prevalence: ~1 in 1 million</li>
-                                <li>Approved age ≥12 years</li>
-                                <li>Add-on to other therapies</li>
-                                <li>132 mg/dL absolute LDL drop</li>
-                                <li>Life-saving for extreme cases</li>
-                                <li>Specialist administration only</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• HoFH prevalence: ~1 in 1 million</li>
+                                <li>• Approved age ≥12 years</li>
+                                <li>• Add-on to other therapies</li>
+                                <li>• 132 mg/dL absolute LDL drop</li>
+                                <li>• Life-saving for extreme cases</li>
+                                <li>• Specialist administration only</li>
                             </ul>
                         </div>
-                        
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">💰</div>
+
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                            <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                                <span class="w-8 h-8 bg-gradient-to-r from-red-600 to-pink-600 rounded-full flex items-center justify-center text-white text-sm">💰</span>
                                 Economic Profile
-                            </div>
-                            <ul class="info-list">
-                                <li>~$450,000/year list price</li>
-                                <li>Ultra-orphan drug pricing</li>
-                                <li>Insurance restricted to HoFH</li>
-                                <li>Tiny commercial market</li>
-                                <li>Not competitor to inclisiran</li>
-                                <li>Complementary in extreme cases</li>
+                            </h3>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• ~$450,000/year list price</li>
+                                <li>• Ultra-orphan drug pricing</li>
+                                <li>• Insurance restricted to HoFH</li>
+                                <li>• Tiny commercial market</li>
+                                <li>• Not competitor to inclisiran</li>
+                                <li>• Complementary in extreme cases</li>
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Relevance to Inclisiran</div>
-                        <div class="highlight-content">
+
+                    <div class="glass rounded-xl p-6 border-l-4 border-purple-500 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+                        <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Relevance to Inclisiran</h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
                             Evinacumab doesn't compete with inclisiran - it addresses cases where PCSK9 inhibition fails 
                             (null LDL receptors). Shows that different mechanisms (ANGPTL3) can lower LDL independently 
                             of LDLR, providing options for genetic conditions requiring orthogonal approaches. More 
                             complementary than competitive in the treatment landscape.
-                        </div>
+                        </p>
                     </div>
                 </div>
-                
-                <div id="evinacumab-mechanism" class="tab-content">
-                    <div class="mechanism-section">
-                        <div class="mechanism-title">
-                            <div class="info-icon">⚙️</div>
+
+                <div id="evinacumab-mechanism" class="sub-content hidden">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 mb-6">
+                        <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white text-sm">⚙️</span>
                             Mechanism of Action
-                        </div>
-                        <div class="mechanism-content">
-                            Evinacumab blocks <span class="mechanism-highlight">ANGPTL3 (Angiopoietin-like 3)</span>, 
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            Evinacumab blocks <span class="bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded text-purple-700 dark:text-purple-300 font-medium">ANGPTL3 (Angiopoietin-like 3)</span>, 
                             a protein that inhibits lipoprotein and endothelial lipases:
-                            <ul style="margin-top: 15px; margin-left: 20px;">
-                                <li>LDL receptor-independent pathway</li>
-                                <li>Enhanced clearance of VLDL remnants</li>
-                                <li>Reduced conversion of VLDL to LDL</li>
-                                <li>Dramatically lowers triglycerides</li>
-                                <li>Works even with null LDL receptors</li>
-                                <li>Complementary to PCSK9 inhibition</li>
-                            </ul>
-                        </div>
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400 ml-4">
+                            <li>• LDL receptor-independent pathway</li>
+                            <li>• Enhanced clearance of VLDL remnants</li>
+                            <li>• Reduced conversion of VLDL to LDL</li>
+                            <li>• Dramatically lowers triglycerides</li>
+                            <li>• Works even with null LDL receptors</li>
+                            <li>• Complementary to PCSK9 inhibition</li>
+                        </ul>
                     </div>
-                    
-                    <div class="dosing-grid">
-                        <div class="dosing-card">
-                            <div class="dosing-label">Dose</div>
-                            <div class="dosing-value">15 mg/kg</div>
-                            <div class="dosing-detail">Weight-based</div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Dose</div>
+                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">15 mg/kg</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Weight-based</div>
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Frequency</div>
-                            <div class="dosing-value">Monthly</div>
-                            <div class="dosing-detail">Every 4 weeks</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Frequency</div>
+                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">Monthly</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Every 4 weeks</div>
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Route</div>
-                            <div class="dosing-value">IV</div>
-                            <div class="dosing-detail">60-min infusion</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Route</div>
+                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">IV</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">60-min infusion</div>
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Setting</div>
-                            <div class="dosing-value">Clinic</div>
-                            <div class="dosing-detail">Infusion center</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Setting</div>
+                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">Clinic</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Infusion center</div>
                         </div>
                     </div>
                 </div>
-                
-                <div id="evinacumab-clinical" class="tab-content">
-                    <div class="efficacy-chart">
-                        <div class="chart-title">ELIPSE-HoFH Trial Results</div>
-                        <div class="bar-chart">
-                            <div class="bar-group">
-                                <div class="bar" style="height: 47%;">
-                                    <div class="bar-value">47%</div>
-                                </div>
-                                <div class="bar-label">LDL-C<br>Reduction</div>
+
+                <div id="evinacumab-clinical" class="sub-content hidden">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-6">ELIPSE-HoFH Trial Results</h3>
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">47%</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">LDL-C<br/>Reduction</div>
                             </div>
-                            <div class="bar-group">
-                                <div class="bar" style="height: 132%; max-height: 90%;">
-                                    <div class="bar-value">132 mg/dL</div>
-                                </div>
-                                <div class="bar-label">Absolute<br>LDL Drop</div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">132 mg/dL</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">Absolute<br/>LDL Drop</div>
                             </div>
-                            <div class="bar-group">
-                                <div class="bar" style="height: 50%; background: linear-gradient(180deg, #4caf50 0%, #2e7d32 100%);">
-                                    <div class="bar-value">50%</div>
-                                </div>
-                                <div class="bar-label">Triglyceride<br>Reduction</div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">50%</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">Triglyceride<br/>Reduction</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">No Outcomes Trial</div>
-                        <div class="highlight-content">
+
+                    <div class="glass rounded-xl p-6 border-l-4 border-indigo-500 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 mt-6">
+                        <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">No Outcomes Trial</h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
                             HoFH is too rare for outcomes studies. Efficacy judged on LDL reduction alone, as any 
                             substantial lowering in HoFH is assumed life-saving given extreme baseline risk. Regulatory 
                             approval based on surrogate endpoint was straightforward given unmet need.
-                        </div>
+                        </p>
                     </div>
                 </div>
-                
-                <div id="evinacumab-safety" class="tab-content">
-                    <div class="safety-grid">
-                        <div class="safety-card">
-                            <div class="safety-percentage">Mild</div>
-                            <div class="safety-label">Infusion Reactions</div>
+
+                <div id="evinacumab-safety" class="sub-content hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">Mild</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Infusion Reactions</div>
                         </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">None</div>
-                            <div class="safety-label">Liver Fat ↑</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">None</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Liver Fat ↑</div>
                         </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">No</div>
-                            <div class="safety-label">Muscle Effects</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">No</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Muscle Effects</div>
                         </div>
-                        <div class="safety-card">
-                            <div class="safety-percentage">Good</div>
-                            <div class="safety-label">Overall Tolerance</div>
+                        <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">Good</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Overall Tolerance</div>
                         </div>
                     </div>
-                    
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-card-title">
-                                <div class="info-icon">✅</div>
-                                Safety Profile
-                            </div>
-                            <ul class="info-list">
-                                <li>Main AEs: infusion reactions (mild)</li>
-                                <li>No liver enzyme elevation</li>
-                                <li>No muscle toxicity</li>
-                                <li>Unlike antisense, no liver fat increase</li>
-                                <li>No vitamin deficiency seen</li>
-                                <li>4 years post-approval, no new signals</li>
-                            </ul>
-                        </div>
+
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white text-sm">✅</span>
+                            Safety Profile
+                        </h3>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• Main AEs: infusion reactions (mild)</li>
+                            <li>• No liver enzyme elevation</li>
+                            <li>• No muscle toxicity</li>
+                            <li>• Unlike antisense, no liver fat increase</li>
+                            <li>• No vitamin deficiency seen</li>
+                            <li>• 4 years post-approval, no new signals</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div id="evinacumab-commercial" class="tab-content">
-                    <div class="commercial-section">
-                        <div class="price-estimate">~$450,000/year</div>
-                        <div style="color: #666; margin-bottom: 30px;">Ultra-orphan drug pricing</div>
-                        
-                        <div class="market-projection">
-                            <div>
-                                <div class="projection-value">~1/million</div>
-                                <div class="projection-label">HoFH prevalence</div>
-                            </div>
-                            <div>
-                                <div class="projection-value">Specialty</div>
-                                <div class="projection-label">Lipid clinics only</div>
-                            </div>
+
+                <div id="evinacumab-commercial" class="sub-content hidden">
+                    <div class="glass rounded-xl p-8 mb-6 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">~$450,000/year</div>
+                        <div class="text-gray-600 dark:text-gray-400 mt-2">Ultra-orphan drug pricing</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6 mb-6">
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">~1/million</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">HoFH prevalence</div>
+                        </div>
+                        <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Specialty</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Lipid clinics only</div>
                         </div>
                     </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-title">Not a Competitor</div>
-                        <div class="highlight-content">
-                            Evinacumab exemplifies targeting a different pathway (ANGPTL3) for cases where PCSK9/LDLR 
-                            approaches fail. It's a highly specialized tool for rare genetic conditions, not a threat 
-                            to inclisiran's mainstream market. Shows the diversity of mechanisms being explored in 
-                            lipid management.
-                        </div>
-                    </div>
-                </div>
+
+                    <div class="glass rounded-xl p-6 border-l-4 border-purple-500 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+                       <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-3">Not a Competitor</h4>
+                <p class="text-sm text-gray-700 dark:text-gray-300">
+                    Evinacumab exemplifies targeting a different pathway (ANGPTL3) for cases where PCSK9/LDLR 
+                    approaches fail. It's a highly specialized tool for rare genetic conditions, not a threat 
+                    to inclisiran's mainstream market. Shows the diversity of mechanisms being explored in 
+                    lipid management.
+                </p>
             </div>
         </div>
     </div>
-    
+
+    <!-- JavaScript for all functionality -->
     <script>
-        function showDrug(drugId) {
+        // Theme toggle function
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Load saved theme or default to light
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark');
+        }
+
+        // Show drug function
+        function showDrug(drugId, event) {
             // Hide all drug contents
             const drugContents = document.querySelectorAll('.drug-content');
-            drugContents.forEach(content => content.classList.remove('active'));
+            drugContents.forEach(content => {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            });
             
-            // Remove active class from all drug nav tabs
-            const drugTabs = document.querySelectorAll('.drug-nav-tab');
-            drugTabs.forEach(tab => tab.classList.remove('active'));
+            // Remove active class from all drug tabs
+            const drugTabs = document.querySelectorAll('.drug-tab');
+            drugTabs.forEach(tab => {
+                tab.classList.remove('bg-white', 'dark:bg-gray-700', 'text-indigo-600', 'dark:text-indigo-400', 'shadow-md');
+                tab.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+            });
             
             // Show selected drug content
-            document.getElementById(drugId).classList.add('active');
+            const selectedContent = document.getElementById(drugId);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+                selectedContent.classList.add('active');
+            }
             
             // Add active class to clicked drug tab
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+                event.target.classList.add('bg-white', 'dark:bg-gray-700', 'text-indigo-600', 'dark:text-indigo-400', 'shadow-md');
+            }
             
             // Reset to first sub-tab when switching drugs
-            const firstSubTab = document.querySelector(`#${drugId} .nav-tab`);
+            const firstSubTab = document.querySelector(`#${drugId} .sub-tab`);
             if (firstSubTab) {
                 firstSubTab.click();
             }
         }
-        
-        function showTab(drugId, tabName) {
-            // Hide all tabs for this drug
-            const tabs = document.querySelectorAll(`#${drugId} .tab-content`);
-            tabs.forEach(tab => tab.classList.remove('active'));
+
+        // Show sub-tab function
+        function showSubTab(drugId, tabName, event) {
+            // Hide all sub-content for this drug
+            const subContents = document.querySelectorAll(`#${drugId} .sub-content, #${drugId}-overview, #${drugId}-mechanism, #${drugId}-clinical, #${drugId}-safety, #${drugId}-commercial, #${drugId}-regulatory, #${drugId}-future`);
+            subContents.forEach(content => {
+                if (content) {
+                    content.style.display = 'none';
+                    content.classList.remove('active');
+                }
+            });
             
-            // Remove active class from all nav tabs for this drug
-            const navTabs = document.querySelectorAll(`#${drugId} .nav-tab`);
-            navTabs.forEach(tab => tab.classList.remove('active'));
+            // Remove active class from all sub-tabs for this drug
+            const subTabs = document.querySelectorAll(`#${drugId} .sub-tab`);
+            subTabs.forEach(tab => {
+                tab.classList.remove('bg-indigo-600', 'text-white');
+                tab.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+            });
             
-            // Show selected tab
-            document.getElementById(`${drugId}-${tabName}`).classList.add('active');
+            // Show selected sub-content
+            const selectedSubContent = document.getElementById(`${drugId}-${tabName}`);
+            if (selectedSubContent) {
+                selectedSubContent.style.display = 'block';
+                selectedSubContent.classList.add('active');
+            }
             
-            // Add active class to clicked nav tab
-            event.target.classList.add('active');
+            // Add active class to clicked sub-tab
+            if (event && event.target) {
+                event.target.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+                event.target.classList.add('bg-indigo-600', 'text-white');
+            }
         }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial state for first drug
+            const firstDrugTab = document.querySelector('.drug-tab');
+            if (firstDrugTab) {
+                firstDrugTab.click();
+            }
+            
+            // Animate elements on load
+            const animateElements = document.querySelectorAll('.animate-slide-in');
+            animateElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                }, index * 100);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects for cards
+        document.querySelectorAll('.glass').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.transition = 'all 0.3s ease';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                const activeDrugTab = document.querySelector('.drug-tab.active, .drug-tab[class*="text-indigo"]');
+                const drugTabs = Array.from(document.querySelectorAll('.drug-tab'));
+                const currentIndex = drugTabs.indexOf(activeDrugTab);
+                
+                if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    drugTabs[currentIndex - 1].click();
+                } else if (e.key === 'ArrowRight' && currentIndex < drugTabs.length - 1) {
+                    drugTabs[currentIndex + 1].click();
+                }
+            }
+        });
+
+        // Print functionality
+        window.addEventListener('beforeprint', function() {
+            document.body.classList.add('print-mode');
+        });
+
+        window.addEventListener('afterprint', function() {
+            document.body.classList.remove('print-mode');
+        });
     </script>
+
+    <style>
+        @media print {
+            .print-mode .glass {
+                background: white !important;
+                backdrop-filter: none !important;
+            }
+            
+            .print-mode header {
+                position: relative !important;
+            }
+            
+            .print-mode .drug-content {
+                display: block !important;
+                page-break-after: always;
+            }
+            
+            .print-mode .sub-content {
+                display: block !important;
+            }
+        }
+    </style>
 </body>
 </html>

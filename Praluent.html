@@ -3,1582 +3,1203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praluent® (alirocumab) - Comprehensive Profile</title>
+    <title>Praluent® (alirocumab) - Comprehensive Profile | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 50%;
-            height: 200%;
-            background: rgba(255,255,255,0.1);
-            transform: rotate(35deg);
-        }
-
-        .drug-title {
-            position: relative;
-            z-index: 1;
-        }
-
-        .drug-name {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .drug-subtitle {
-            font-size: 24px;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-
-        .drug-company {
-            font-size: 18px;
-            opacity: 0.8;
-        }
-
-        .badge-first {
-            display: inline-block;
-            background: rgba(255,255,255,0.3);
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-top: 10px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .nav-tabs {
-            display: flex;
-            background: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
-            padding: 0;
-            overflow-x: auto;
-        }
-
-        .nav-tab {
-            padding: 20px 30px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-size: 16px;
-            font-weight: 500;
-            color: #6c757d;
-            transition: all 0.3s;
-            white-space: nowrap;
-            position: relative;
-        }
-
-        .nav-tab:hover {
-            color: #f5576c;
-            background: rgba(245, 87, 108, 0.05);
-        }
-
-        .nav-tab.active {
-            color: #f5576c;
-            background: white;
-        }
-
-        .nav-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .content {
-            padding: 40px;
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
+        /* Custom animations matching your style */
+        @keyframes fadeInRow {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #f5576c;
-        }
-
-        .mechanism-card {
-            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .mechanism-title {
-            font-size: 22px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .mechanism-content {
-            color: #5a6c7d;
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        .dosing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .dosing-card {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .dosing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.2);
-            border-color: #f5576c;
-        }
-
-        .dosing-label {
-            font-size: 14px;
-            color: #6c757d;
-            margin-bottom: 10px;
-        }
-
-        .dosing-value {
-            font-size: 28px;
-            font-weight: bold;
-            color: #f5576c;
-            margin-bottom: 10px;
-        }
-
-        .dosing-detail {
-            font-size: 14px;
-            color: #5a6c7d;
-        }
-
-        .dosing-special {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-
-        .dosing-special .dosing-label,
-        .dosing-special .dosing-detail {
-            color: rgba(255,255,255,0.9);
-        }
-
-        .dosing-special .dosing-value {
-            color: white;
-        }
-
-        .timeline-container {
-            position: relative;
-            padding: 20px 0;
-            margin: 30px 0;
-        }
-
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #f093fb 0%, #f5576c 100%);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            width: 45%;
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .timeline-content:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
-            border-color: #f5576c;
-        }
-
-        .timeline-date {
-            font-size: 18px;
-            font-weight: bold;
-            color: #f5576c;
-            margin-bottom: 10px;
-        }
-
-        .timeline-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-
-        .timeline-description {
-            font-size: 14px;
-            color: #6c757d;
-            line-height: 1.6;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 4px solid #f5576c;
-            border-radius: 50%;
-            z-index: 2;
-        }
-
-        .timeline-highlight {
-            background: #fff3cd !important;
-            border-color: #ffc107 !important;
-        }
-
-        .timeline-highlight .timeline-date {
-            color: #d39e00;
-        }
-
-        .trials-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-top: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .trials-table thead {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-
-        .trials-table th {
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .trials-table tbody tr {
-            border-bottom: 1px solid #e9ecef;
-            transition: all 0.3s;
-        }
-
-        .trials-table tbody tr:hover {
-            background: rgba(245, 87, 108, 0.05);
-            transform: translateX(5px);
-        }
-
-        .trials-table td {
-            padding: 15px;
-            font-size: 14px;
-            color: #5a6c7d;
-        }
-
-        .trial-name {
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .trial-phase {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-            background: #e9ecef;
-            color: #6c757d;
-        }
-
-        .trial-phase.phase3 {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .landmark-trial {
-            background: rgba(245, 87, 108, 0.05) !important;
-        }
-
-        .landmark-trial .trial-name {
-            color: #f5576c;
-            font-weight: bold;
-        }
-
-        .efficacy-bar-chart {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            height: 300px;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .bar-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0 10px;
-        }
-
-        .bar {
-            width: 60px;
-            background: linear-gradient(180deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 8px 8px 0 0;
-            transition: all 0.3s;
-            position: relative;
-            margin-bottom: 10px;
-        }
-
-        .bar:hover {
-            transform: scaleY(1.05);
-            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
-        }
-
-        .bar-value {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-weight: bold;
-            color: #f5576c;
-            font-size: 18px;
-        }
-
-        .bar-label {
-            text-align: center;
-            font-size: 12px;
-            color: #6c757d;
-            margin-top: 10px;
-            max-width: 100px;
-        }
-
-        .mortality-highlight {
-            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%) !important;
-        }
-
-        .safety-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .safety-card {
-            background: white;
-            border: 1px solid #e9ecef;
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s;
-        }
-
-        .safety-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .safety-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .safety-icon {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 50%;
-            margin-right: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .safety-content {
-            color: #6c757d;
-            line-height: 1.8;
-        }
-
-        .safety-list {
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        .safety-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f1f3f5;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .safety-list li:last-child {
-            border-bottom: none;
-        }
-
-        .percentage {
-            font-weight: 600;
-            color: #f5576c;
-        }
-
-        .market-timeline {
-            position: relative;
-            padding: 30px 0;
-        }
-
-        .market-event {
-            background: white;
-            border-left: 4px solid #f5576c;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 12px 12px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .market-event:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.2);
-        }
-
-        .market-year {
-            font-size: 20px;
-            font-weight: bold;
-            color: #f5576c;
-            margin-bottom: 10px;
-        }
-
-        .market-description {
-            color: #5a6c7d;
-            line-height: 1.6;
-        }
-
-        .price-tag {
-            display: inline-block;
-            background: #ffeaa7;
-            color: #2d3436;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: 600;
-            margin: 5px 0;
-        }
-
-        .value-tag {
-            display: inline-block;
-            background: #74b9ff;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: 600;
-            margin: 5px 0;
-        }
-
-        .competition-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .competitor-card {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .competitor-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border-color: #f5576c;
-        }
-
-        .competitor-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .competitor-detail {
-            font-size: 14px;
-            color: #6c757d;
-            margin: 5px 0;
-        }
-
-        .comparison-table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: separate;
-            border-spacing: 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .comparison-table thead {
-            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-            color: white;
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 15px;
-            text-align: left;
-        }
-
-        .comparison-table tbody tr {
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .comparison-table tbody tr:hover {
-            background: rgba(116, 185, 255, 0.05);
-        }
-
-        .feature-name {
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-item {
-                flex-direction: column !important;
-            }
-            
-            .timeline-content {
-                width: 90%;
-                margin: 10px auto;
-            }
-            
-            .timeline-line {
-                left: 20px;
-            }
-            
-            .timeline-dot {
-                left: 20px;
-            }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.95); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in-row { animation: fadeInRow 0.3s ease forwards; }
+        .animate-pulse-glow { animation: pulse 3s ease-in-out infinite; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
+        
+        /* Staggered animations */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { @apply bg-gray-100 dark:bg-gray-800 rounded; }
+        ::-webkit-scrollbar-thumb { @apply bg-gray-400 dark:bg-gray-600 rounded hover:bg-gray-500 dark:hover:bg-gray-500; }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.75);
         }
     </style>
 </head>
-<body>
-    
-    <div class="container">
-        <div class="header">
-            <div class="drug-title">
-                <div class="drug-name">Praluent® (alirocumab)</div>
-                <div class="drug-subtitle">PCSK9 Monoclonal Antibody</div>
-                <div class="drug-company">Sanofi/Regeneron • FDA/EMA Approved 2015</div>
-                <div class="badge-first">FIRST PCSK9 INHIBITOR APPROVED IN US</div>
+<body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+    <!-- Fixed Header - Matching your Leaf Intelligence design -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200 dark:border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <div class="h-12 w-12 bg-gradient-to-r from-green-400 to-cyan-400 rounded-lg flex items-center justify-center">
+                            <span class="text-white text-2xl">🍃</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-cyan-400 opacity-20 blur-xl animate-pulse-glow"></div>
+                    </div>
+                    <div>
+                        <div class="text-xl font-light bg-gradient-to-r from-green-600 to-cyan-600 dark:from-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                            Leaf Intelligence
+                        </div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 font-light">
+                            Praluent Drug Profile
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-1 bg-gray-100/50 dark:bg-gray-800/50 p-1.5 rounded-lg backdrop-blur-sm">
+                    <a href="index.html" class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Overview
+                    </a>
+                    <button class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-400 shadow-md active">
+                        Drug Profile
+                    </button>
+                    <a href="index.html#comparison" class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Comparison
+                    </a>
+                </nav>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="relative w-14 h-7 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300 shadow-inner hover:shadow-md">
+                    <div class="absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white dark:bg-gray-900 shadow-lg transform transition-transform duration-300 dark:translate-x-7 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-yellow-500 dark:hidden" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+                        </svg>
+                        <svg class="w-4 h-4 text-indigo-400 hidden dark:block" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                        </svg>
+                    </div>
+                </button>
             </div>
         </div>
+    </header>
 
-        <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
-            <button class="nav-tab" onclick="showTab('regulatory')">Regulatory Timeline</button>
-            <button class="nav-tab" onclick="showTab('clinical')">Clinical Trials</button>
-            <button class="nav-tab" onclick="showTab('safety')">Safety Profile</button>
-            <button class="nav-tab" onclick="showTab('market')">Market & Commercial</button>
-            <button class="nav-tab" onclick="showTab('comparison')">vs. Repatha</button>
-        </div>
+    <!-- Main Container with padding for fixed header -->
+    <div class="pt-20 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            
+            <!-- Hero Section -->
+            <div class="glass rounded-2xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h1 class="text-4xl font-light mb-2 text-gray-900 dark:text-white">
+                            Praluent® <span class="text-2xl text-gray-600 dark:text-gray-400">(alirocumab)</span>
+                        </h1>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">
+                            First PCSK9 Inhibitor Approved in US • Sanofi/Regeneron
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-green-500 to-emerald-500 text-white">
+                            ✓ FDA/EMA 2015
+                        </span>
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+                            🏆 First PCSK9 mAb
+                        </span>
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500 to-cyan-500 text-white">
+                            💉 Q2W/Q4W
+                        </span>
+                    </div>
+                </div>
+            </div>
 
-        <div class="content">
+            <!-- Tab Navigation -->
+            <div class="glass rounded-2xl mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-1 p-2">
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white" onclick="showTab('overview', event)">
+                        Overview
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('mechanism', event)">
+                        Mechanism
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('regulatory', event)">
+                        Regulatory
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('clinical', event)">
+                        Clinical Trials
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('safety', event)">
+                        Safety
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('market', event)">
+                        Market
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('comparison', event)">
+                        vs. Repatha
+                    </button>
+                </div>
+            </div>
+
             <!-- Overview Tab -->
-            <div id="overview" class="tab-content active">
-                <div class="section">
-                    <h2 class="section-title">Mechanism of Action</h2>
-                    <div class="mechanism-card">
-                        <div class="mechanism-title">PCSK9 Inhibition via Monoclonal Antibody</div>
-                        <div class="mechanism-content">
-                            Praluent is a fully human monoclonal antibody with high affinity binding to circulating PCSK9, preventing its interaction with LDL receptors on hepatocytes. This mechanism leads to:
-                            <ul style="margin-top: 15px; margin-left: 20px;">
-                                <li style="margin: 8px 0;">Prevention of PCSK9-mediated LDL-R degradation</li>
-                                <li style="margin: 8px 0;">Increased LDL-R density on liver cell surface</li>
-                                <li style="margin: 8px 0;">Enhanced uptake and catabolism of LDL-C</li>
-                                <li style="margin: 8px 0;">Substantial serum LDL-C reductions (50-60%)</li>
-                                <li style="margin: 8px 0;">Rapid onset within days, peak effect by 4-8 weeks</li>
-                            </ul>
-                            <div style="margin-top: 20px; padding: 15px; background: rgba(245, 87, 108, 0.1); border-radius: 8px;">
-                                <strong>Key Differentiators:</strong> Acts extracellularly in plasma with rapid onset compared to inclisiran's delayed gene-silencing mechanism. Equivalent to evolocumab in PCSK9 inhibition potency but offers lower starting dose for titration flexibility.
-                            </div>
-                        </div>
+            <div class="tab-content active" id="overview">
+                <!-- Key Alert -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-3">
+                        🎯 First FDA-Approved PCSK9 Inhibitor
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Praluent was the first PCSK9 inhibitor approved by FDA (July 24, 2015), beating Repatha by 34 days. 
+                        Unique among PCSK9 mAbs for showing nominal mortality benefit in ODYSSEY OUTCOMES trial (15% reduction, p=0.026).
+                        Offers lower starting dose (75 mg) for better tolerability and titration flexibility.
+                    </p>
+                    <div class="mt-4 flex gap-4">
+                        <a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/125559s028lbl.pdf" 
+                           target="_blank" 
+                           class="inline-flex items-center text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
+                            FDA Label →
+                        </a>
+                        <a href="https://clinicaltrials.gov/search?cond=Hypercholesterolemia&intr=alirocumab" 
+                           target="_blank" 
+                           class="inline-flex items-center text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
+                            Live Trials →
+                        </a>
                     </div>
                 </div>
 
-                <div class="section">
-                    <h2 class="section-title">Dosing & Administration</h2>
-                    <div class="dosing-grid">
-                        <div class="dosing-card dosing-special">
-                            <div class="dosing-label">Unique Starting Dose</div>
-                            <div class="dosing-value">75 mg</div>
-                            <div class="dosing-detail">Every 2 weeks (Q2W)<br>Lower than competitors</div>
+                <!-- Key Metrics Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                            50-60%
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Titrated Dose</div>
-                            <div class="dosing-value">150 mg</div>
-                            <div class="dosing-detail">Q2W if LDL-C target not met<br>(e.g., <70 mg/dL)</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">LDL-C Reduction</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">45-60% range</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+                            15%
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Alternative Regimen</div>
-                            <div class="dosing-value">300 mg</div>
-                            <div class="dosing-detail">Every 4 weeks (Q4W)<br>Two 150 mg injections</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Mortality Reduction</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">Only PCSK9i with benefit</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-2">
+                            75 mg
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Annual Injections</div>
-                            <div class="dosing-value">12-26</div>
-                            <div class="dosing-detail">More than inclisiran (2-3)<br>Less than daily orals</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Starting Dose</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">Lower than competitors</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                            $5,850
                         </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">HoFH Dosing</div>
-                            <div class="dosing-value">150 mg</div>
-                            <div class="dosing-detail">Q2W maximum<br>Lower efficacy due to LDL-R dependency</div>
-                        </div>
-                        <div class="dosing-card">
-                            <div class="dosing-label">Pediatric (8+)</div>
-                            <div class="dosing-value">Weight-based</div>
-                            <div class="dosing-detail">HeFH/HoFH patients<br>FDA approved 2024</div>
-                        </div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Annual Cost</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">60% price cut from launch</div>
                     </div>
                 </div>
 
-                <div class="section">
-                    <h2 class="section-title">Patient Populations</h2>
-                    <div class="mechanism-card">
-                        <div class="mechanism-title">Approved Indications</div>
-                        <div class="mechanism-content">
-                            <strong>Adults:</strong>
-                            <ul style="margin: 10px 0 10px 20px;">
-                                <li>Heterozygous Familial Hypercholesterolemia (HeFH)</li>
-                                <li>Homozygous Familial Hypercholesterolemia (HoFH) - added 2021</li>
-                                <li>Clinical ASCVD requiring additional LDL-C lowering</li>
-                                <li>CV risk reduction (MI, stroke, unstable angina) - added 2019</li>
-                                <li>Statin-intolerant patients (EMA broader indication)</li>
-                            </ul>
-                            <strong>Pediatric (Age 8+):</strong>
-                            <ul style="margin: 10px 0 10px 20px;">
-                                <li>HeFH or HoFH patients (FDA 2024, EMA 2023)</li>
-                                <li>Weight-based dosing considerations</li>
-                            </ul>
-                            <div style="margin-top: 15px; padding: 10px; background: #d4edda; border-radius: 5px;">
-                                <strong>Advantage:</strong> Lower starting dose (75 mg) allows for better tolerability and titration flexibility compared to fixed-dose competitors
-                            </div>
+                <!-- Detailed Info Cards -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">💊</span>
+                            Dosing & Administration
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                <strong>Starting:</strong> 75 mg Q2W SC (titratable)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                <strong>Titrated:</strong> 150 mg Q2W if needed
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                <strong>Alternative:</strong> 300 mg Q4W (monthly)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                <strong>HoFH:</strong> 150 mg Q2W maximum
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                <strong>Pediatric:</strong> Weight-based (8+ years)
+                            </li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                            <a href="https://products.sanofi.us/praluent/praluent.html" 
+                               target="_blank" 
+                               class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800">
+                                Prescribing Information →
+                            </a>
                         </div>
                     </div>
+
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white text-sm">📊</span>
+                            Key Differentiators
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                First PCSK9i FDA approval (July 2015)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                Only PCSK9i with mortality benefit
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                Lower starting dose option (75 mg)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                Q4W dosing available (300 mg)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-amber-500 mr-2 mt-1">⧗</span>
+                                Patent expiry 2027-2028
+                            </li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                            <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1801174" 
+                               target="_blank" 
+                               class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800">
+                                ODYSSEY OUTCOMES Paper →
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">👥</span>
+                            Patient Populations
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">→</span>
+                                HeFH (heterozygous FH)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">→</span>
+                                HoFH (homozygous FH) - 2021
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">→</span>
+                                Clinical ASCVD
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">→</span>
+                                CV risk reduction - 2019
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">→</span>
+                                Pediatric 8+ years - 2024
+                            </li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                            <a href="https://www.ema.europa.eu/en/medicines/human/EPAR/praluent" 
+                               target="_blank" 
+                               class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800">
+                                EMA Assessment →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mechanism Tab -->
+            <div class="tab-content hidden" id="mechanism">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">PCSK9 Inhibition via Monoclonal Antibody</h3>
+                    <div class="prose prose-sm max-w-none text-gray-600 dark:text-gray-400">
+                        <p class="mb-4">
+                            Praluent is a fully human monoclonal antibody with high affinity binding to circulating PCSK9, 
+                            preventing its interaction with LDL receptors on hepatocytes.
+                        </p>
+                        <ul class="space-y-2 ml-4">
+                            <li><strong>Mechanism:</strong> Prevention of PCSK9-mediated LDL-R degradation</li>
+                            <li><strong>Effect:</strong> Increased LDL-R density on liver cell surface</li>
+                            <li><strong>Result:</strong> Enhanced uptake and catabolism of LDL-C</li>
+                            <li><strong>Reduction:</strong> Substantial serum LDL-C reductions (50-60%)</li>
+                            <li><strong>Onset:</strong> Rapid onset within days, peak effect by 4-8 weeks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dosing Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <div class="glass rounded-xl p-6 border-2 border-purple-500 dark:border-purple-400 hover:shadow-lg transition-all bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+                        <div class="text-2xl font-bold text-gray-900 dark:text-white mb-2">75 mg</div>
+                        <div class="text-xl font-medium text-purple-600 dark:text-purple-400">Starting Dose</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">Every 2 weeks (Q2W)<br>Lower than competitors</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
+                        <div class="text-2xl font-bold text-gray-900 dark:text-white mb-2">150 mg</div>
+                        <div class="text-xl font-medium text-indigo-600 dark:text-indigo-400">Titrated Dose</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">Q2W if LDL-C target not met<br>(e.g., <70 mg/dL)</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
+                        <div class="text-2xl font-bold text-gray-900 dark:text-white mb-2">300 mg</div>
+                        <div class="text-xl font-medium text-indigo-600 dark:text-indigo-400">Alternative</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">Every 4 weeks (Q4W)<br>Two 150 mg injections</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
+                        <div class="text-2xl font-bold text-gray-900 dark:text-white mb-2">12-26</div>
+                        <div class="text-xl font-medium text-amber-600 dark:text-amber-400">Annual Injections</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">More than inclisiran (2-3)<br>Less than daily orals</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
+                        <div class="text-2xl font-bold text-gray-900 dark:text-white mb-2">150 mg</div>
+                        <div class="text-xl font-medium text-green-600 dark:text-green-400">HoFH Dosing</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">Q2W maximum<br>Lower efficacy (LDL-R dependent)</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
+                        <div class="text-2xl font-bold text-gray-900 dark:text-white mb-2">8+ years</div>
+                        <div class="text-xl font-medium text-green-600 dark:text-green-400">Pediatric</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-2">Weight-based dosing<br>HeFH/HoFH patients</div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl p-4 border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        <strong>Key Differentiators:</strong> Acts extracellularly in plasma with rapid onset compared to inclisiran's delayed gene-silencing mechanism. 
+                        Equivalent to evolocumab in PCSK9 inhibition potency but offers lower starting dose for titration flexibility.
+                    </p>
                 </div>
             </div>
 
             <!-- Regulatory Timeline Tab -->
-            <div id="regulatory" class="tab-content">
-                <div class="section">
-                    <h2 class="section-title">FDA Approval Timeline</h2>
-                    <div class="timeline-container">
-                        <div class="timeline-line"></div>
+            <div class="tab-content hidden" id="regulatory">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">FDA Approval Timeline</h3>
+                    
+                    <div class="relative pl-8">
+                        <!-- Timeline line -->
+                        <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-indigo-300 dark:via-indigo-600 to-transparent"></div>
                         
-                        <div class="timeline-item">
-                            <div class="timeline-content timeline-highlight">
-                                <div class="timeline-date">July 24, 2015</div>
-                                <div class="timeline-title">Initial FDA Approval - FIRST PCSK9i</div>
-                                <div class="timeline-description">
+                        <!-- Timeline items -->
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-green-600 dark:text-green-400 mb-1">JULY 24, 2015</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Initial FDA Approval - FIRST PCSK9i</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     First PCSK9 inhibitor approved in US. For HeFH and clinical ASCVD as adjunct to diet/statins.
                                 </div>
+                                <a href="https://www.fda.gov/news-events/press-announcements/fda-approves-praluent-treat-certain-patients-high-cholesterol" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 mt-2 inline-block">
+                                    FDA Announcement →
+                                </a>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
 
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">April 26, 2019</div>
-                                <div class="timeline-title">CV Outcomes Indication</div>
-                                <div class="timeline-description">
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">APRIL 26, 2019</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">CV Outcomes Indication</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     Label expansion for MI, stroke, and unstable angina reduction based on ODYSSEY OUTCOMES trial showing mortality benefit.
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
 
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">April 1, 2021</div>
-                                <div class="timeline-title">HoFH Indication</div>
-                                <div class="timeline-description">
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">APRIL 1, 2021</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">HoFH Indication</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     Expanded to adults with homozygous familial hypercholesterolemia as adjunct to other therapies.
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
 
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">March 11, 2024</div>
-                                <div class="timeline-title">Pediatric Expansion</div>
-                                <div class="timeline-description">
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">MARCH 11, 2024</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Pediatric Expansion</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     Age limit lowered to 8+ years for HeFH patients, younger than competitor approvals.
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
 
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">2025</div>
-                                <div class="timeline-title">Latest Updates</div>
-                                <div class="timeline-description">
+                        <div class="relative">
+                            <div class="absolute -left-5 w-4 h-4 bg-amber-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-amber-600 dark:text-amber-400 mb-1">2025</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Latest Updates</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     Updated pregnancy/lactation data from registries. No fetal harm signals but discontinuation advised. No new restrictions.
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
                     </div>
+                </div>
 
-                    <h2 class="section-title">EMA Approval Timeline</h2>
-                    <div class="timeline-container">
-                        <div class="timeline-line"></div>
+                <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">EMA Approval Timeline</h3>
+                    
+                    <div class="relative pl-8">
+                        <!-- Timeline line -->
+                        <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-blue-300 dark:via-blue-600 to-transparent"></div>
                         
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">September 23, 2015</div>
-                                <div class="timeline-title">EMA Marketing Authorization</div>
-                                <div class="timeline-description">
+                        <!-- Timeline items -->
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-blue-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1">SEPTEMBER 23, 2015</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">EMA Marketing Authorization</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     Broader initial indication than FDA, including statin-intolerant patients. For primary hypercholesterolemia and mixed dyslipidemia.
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
 
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">March 15, 2019</div>
-                                <div class="timeline-title">CV Risk Reduction</div>
-                                <div class="timeline-description">
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-blue-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1">MARCH 15, 2019</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">CV Risk Reduction</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     Expanded for CV risk reduction in adults with established atherosclerotic CVD.
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
 
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">2021</div>
-                                <div class="timeline-title">HoFH Addition</div>
-                                <div class="timeline-description">
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-blue-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1">2021</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">HoFH Addition</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     Added indication for homozygous familial hypercholesterolemia in adults.
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
 
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">2023-2024</div>
-                                <div class="timeline-title">Pediatric Extension</div>
-                                <div class="timeline-description">
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-blue-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1">2023-2024</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Pediatric Extension</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     Extended to ages 8+ for HeFH/HoFH. Continuous PBRERs show no new safety signals.
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
 
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <div class="timeline-date">October 2023</div>
-                                <div class="timeline-title">Latest Revision</div>
-                                <div class="timeline-description">
+                        <div class="relative">
+                            <div class="absolute -left-5 w-4 h-4 bg-blue-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-blue-600 dark:text-blue-400 mb-1">OCTOBER 2023</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Latest Revision</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
                                     2025 confirmations via variation reports. No withdrawals, though pricing negotiations ongoing in France.
                                 </div>
                             </div>
-                            <div class="timeline-dot"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Clinical Trials Tab -->
-            <div id="clinical" class="tab-content">
-                <div class="section">
-                    <h2 class="section-title">ODYSSEY Clinical Development Program</h2>
-                    
-                    <table class="trials-table">
-                        <thead>
-                            <tr>
-                                <th>Trial Name</th>
-                                <th>Phase</th>
-                                <th>N</th>
-                                <th>Year</th>
-                                <th>Primary Endpoint</th>
-                                <th>Key Results</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="trial-name">DF490336</td>
-                                <td><span class="trial-phase">Phase 1</span></td>
-                                <td>183</td>
-                                <td>2013</td>
-                                <td>PK/PD</td>
-                                <td>LDL-C reductions up to 72%</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY MONO</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>103</td>
-                                <td>2014</td>
-                                <td>% LDL-C change at week 24</td>
-                                <td>47% reduction vs ezetimibe</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY COMBO I/II</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>1,036</td>
-                                <td>2014</td>
-                                <td>% LDL-C change at week 24</td>
-                                <td>48-50% reduction with statins</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY FH I/II</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>735</td>
-                                <td>2015</td>
-                                <td>% LDL-C change at week 24 (HeFH)</td>
-                                <td>~58% reduction in HeFH</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY OPTIONS I/II</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>650</td>
-                                <td>2015</td>
-                                <td>% LDL-C change vs alternatives</td>
-                                <td>Superior to doubling statin/adding ezetimibe</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY ALTERNATIVE</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>314</td>
-                                <td>2015</td>
-                                <td>% LDL-C (statin-intolerant)</td>
-                                <td>45% reduction vs ezetimibe</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY LONG TERM</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>2,341</td>
-                                <td>2015</td>
-                                <td>% LDL-C change at week 24</td>
-                                <td>61% reduction; exploratory MACE HR 0.52</td>
-                            </tr>
-                            <tr class="landmark-trial">
-                                <td class="trial-name"><strong>ODYSSEY OUTCOMES</strong></td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td><strong>18,924</strong></td>
-                                <td><strong>2018</strong></td>
-                                <td><strong>MACE (CV death, MI, stroke, UA)</strong></td>
-                                <td><strong>HR 0.85 (15% RRR); Mortality HR 0.85 (p=0.026)</strong></td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY CHOICE I/II</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>1,158</td>
-                                <td>2016</td>
-                                <td>% LDL-C change (Q4W dosing)</td>
-                                <td>52-59% reduction, Q4W confirmed</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY EAST</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>615</td>
-                                <td>2019</td>
-                                <td>% LDL-C change (Asian)</td>
-                                <td>56% reduction vs ezetimibe</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY HoFH</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>69</td>
-                                <td>2020</td>
-                                <td>% LDL-C change (HoFH)</td>
-                                <td>36% reduction</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY OUTCOMES OLE</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>8,242</td>
-                                <td>2023</td>
-                                <td>Long-term MACE (up to 6 years)</td>
-                                <td>Sustained MACE reduction, low AEs</td>
-                            </tr>
-                            <tr>
-                                <td class="trial-name">ODYSSEY KIDS</td>
-                                <td><span class="trial-phase phase3">Phase 3</span></td>
-                                <td>42</td>
-                                <td>2024</td>
-                                <td>% LDL-C change (pediatric)</td>
-                                <td>35-46% reduction</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">Efficacy Outcomes</h2>
-                    <div class="efficacy-bar-chart">
-                        <div class="bar-group">
-                            <div class="bar" style="height: 55%;">
-                                <span class="bar-value">55%</span>
-                            </div>
-                            <div class="bar-label">LDL-C Reduction<br>(ODYSSEY OUTCOMES)</div>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 61%; background: linear-gradient(180deg, #48dbfb 0%, #0984e3 100%);">
-                                <span class="bar-value">61%</span>
-                            </div>
-                            <div class="bar-label">LDL-C Reduction<br>(LONG TERM)</div>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 53%; background: linear-gradient(180deg, #fdcb6e 0%, #e17055 100%);">
-                                <span class="bar-value">53 mg/dL</span>
-                            </div>
-                            <div class="bar-label">Median LDL<br>Achieved</div>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar mortality-highlight" style="height: 15%;">
-                                <span class="bar-value" style="color: #0984e3;">15%</span>
-                            </div>
-                            <div class="bar-label">All-Cause Mortality<br>Reduction (p=0.026)</div>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 15%; background: linear-gradient(180deg, #a29bfe 0%, #6c5ce7 100%);">
-                                <span class="bar-value">15%</span>
-                            </div>
-                            <div class="bar-label">MACE Reduction<br>(Overall)</div>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="height: 24%; background: linear-gradient(180deg, #55efc4 0%, #00b894 100%);">
-                                <span class="bar-value">24%</span>
-                            </div>
-                            <div class="bar-label">MACE Reduction<br>(LDL ≥100 mg/dL)</div>
-                        </div>
+            <div class="tab-content hidden" id="clinical">
+                <div class="glass rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 mb-8">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-medium text-gray-900 dark:text-white">ODYSSEY Clinical Development Program</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Trial Name</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Phase</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">N</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Year</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Primary Endpoint</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Key Results</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Data</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">DF490336</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-900/30 text-gray-800 dark:text-gray-400">Phase 1</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">183</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2013</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">PK/PD</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">LDL-C reductions up to 72%</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT01288443" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">ODYSSEY MONO</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase 3</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">103</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2014</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL-C change at week 24</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">47% reduction vs ezetimibe</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT01644474" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">ODYSSEY COMBO I/II</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase 3</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">1,036</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2014</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL-C change at week 24</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">48-50% reduction with statins</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT01644175" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">ODYSSEY FH I/II</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase 3</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">735</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2015</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL-C change (HeFH)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~58% reduction in HeFH</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT01623115" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">ODYSSEY LONG TERM</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase 3</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2,341</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2015</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL-C change at week 24</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">61% reduction; MACE HR 0.52</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT01507831" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10">
+                                    <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">ODYSSEY OUTCOMES</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400">Phase 3</span></td>
+                                    <td class="px-6 py-4 text-sm font-bold text-gray-600 dark:text-gray-400">18,924</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-gray-600 dark:text-gray-400">2018</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-gray-600 dark:text-gray-400">MACE (CV death, MI, stroke, UA)</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-gray-600 dark:text-gray-400">HR 0.85 (15% RRR); Mortality HR 0.85 (p=0.026)</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT01663402" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs font-bold">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">ODYSSEY HoFH</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase 3</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">69</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2020</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL-C change (HoFH)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">36% reduction</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT03156621" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">ODYSSEY KIDS</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase 3</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">42</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL-C change (pediatric)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">35-46% reduction</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT02890992" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-                <div class="section">
-                    <h2 class="section-title">ODYSSEY OUTCOMES - Detailed Analysis</h2>
-                    <div class="mechanism-card">
-                        <div class="mechanism-title">Primary & Secondary Endpoints</div>
-                        <div class="mechanism-content">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-                                <div>
-                                    <strong>Primary Composite MACE:</strong>
-                                    <ul style="margin: 10px 0 10px 20px;">
-                                        <li>CV death, nonfatal MI/stroke, UA hospitalization</li>
-                                        <li><strong>HR 0.85 (95% CI: 0.78-0.93)</strong></li>
-                                        <li><strong>15% relative risk reduction, p<0.001</strong></li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <strong>All-Cause Mortality (Key Finding):</strong>
-                                    <ul style="margin: 10px 0 10px 20px;">
-                                        <li><strong>HR 0.85 (95% CI: 0.73-0.98)</strong></li>
-                                        <li><strong>15% reduction (3.5% vs 4.1%)</strong></li>
-                                        <li><strong>Nominal p=0.026</strong></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div style="margin-top: 20px; padding: 15px; background: #d4edda; border-radius: 8px;">
-                                <strong>Unique Finding:</strong> ODYSSEY OUTCOMES showed nominal mortality benefit not seen with evolocumab (FOURIER). Greatest benefit in patients with baseline LDL ≥100 mg/dL: MACE 24% RRR, death 29% RRR. Median follow-up 2.8 years.
-                            </div>
+                <!-- Efficacy Chart -->
+                <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-6">ODYSSEY OUTCOMES Results</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">55%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">LDL-C Reduction<br>(OUTCOMES)</div>
                         </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">61%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">LDL-C Reduction<br>(LONG TERM)</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">53 mg/dL</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Median LDL<br>Achieved</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">15%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">All-Cause Mortality<br>Reduction (p=0.026)</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">15%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">MACE Reduction<br>(Overall)</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-red-600 dark:text-red-400">24%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">MACE Reduction<br>(LDL ≥100 mg/dL)</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
+                            <strong>Unique Finding:</strong> ODYSSEY OUTCOMES showed nominal mortality benefit not seen with evolocumab (FOURIER). 
+                            Greatest benefit in patients with baseline LDL ≥100 mg/dL: MACE 24% RRR, death 29% RRR. Median follow-up 2.8 years.
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- Safety Tab -->
-            <div id="safety" class="tab-content">
-                <div class="section">
-                    <h2 class="section-title">Safety Profile Overview</h2>
-                    <div class="mechanism-card">
-                        <div class="mechanism-content">
-                            <strong>Cumulative Exposure:</strong> ~1.5-2 million patient-years by 2025<br>
-                            <strong>Black Box Warnings:</strong> None<br>
-                            <strong>Major Safety Signals:</strong> None identified<br>
-                            <strong>Discontinuation Rate:</strong> ~2% due to adverse events<br>
-                            <strong>Immunogenicity:</strong> Anti-drug antibodies ~5%, neutralizing <1%
+            <div class="tab-content hidden" id="safety">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">Safety Overview</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">1.5-2M</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Patient-years exposure</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">None</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Black Box Warnings</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">~2%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Discontinuation rate</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">~5%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Anti-drug antibodies</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="section">
-                    <h2 class="section-title">Common Adverse Events</h2>
-                    <div class="safety-grid">
-                        <div class="safety-card">
-                            <div class="safety-title">
-                                <div class="safety-icon">1</div>
-                                Most Common AEs
-                            </div>
-                            <div class="safety-content">
-                                <ul class="safety-list">
-                                    <li>Nasopharyngitis <span class="percentage">11.3%</span></li>
-                                    <li>Injection site reactions <span class="percentage">7.2%</span></li>
-                                    <li>Upper respiratory infection <span class="percentage">5.7%</span></li>
-                                    <li>Influenza <span class="percentage">5.7%</span></li>
-                                    <li>Myalgia <span class="percentage">5.4%</span></li>
-                                    <li>UTI <span class="percentage">4.8%</span></li>
-                                </ul>
-                            </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                   <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">1</span>
+                            Most Common AEs
+                        </h4>
+                        <ul class="space-y-3">
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+                                <span>Nasopharyngitis</span>
+                                <span class="font-medium text-indigo-600 dark:text-indigo-400">11.3%</span>
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+                                <span>Injection site reactions</span>
+                                <span class="font-medium text-amber-600 dark:text-amber-400">7.2%</span>
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+                                <span>Upper respiratory infection</span>
+                                <span class="font-medium text-gray-600 dark:text-gray-400">5.7%</span>
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+                                <span>Influenza</span>
+                                <span class="font-medium text-gray-600 dark:text-gray-400">5.7%</span>
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+                                <span>Myalgia</span>
+                                <span class="font-medium text-gray-600 dark:text-gray-400">5.4%</span>
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+                                <span>UTI</span>
+                                <span class="font-medium text-gray-600 dark:text-gray-400">4.8%</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                            <a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/125559s028lbl.pdf#page=12" 
+                               target="_blank" 
+                               class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800">
+                                FDA Safety Data →
+                            </a>
                         </div>
+                    </div>
 
-                        <div class="safety-card">
-                            <div class="safety-title">
-                                <div class="safety-icon">2</div>
-                                Injection Site Reactions
-                            </div>
-                            <div class="safety-content">
-                                Overall incidence: 7.2% (vs 5.1% placebo)
-                                <ul class="safety-list">
-                                    <li>Pruritus <span class="percentage">Most common</span></li>
-                                    <li>Erythema <span class="percentage">Common</span></li>
-                                    <li>Pain <span class="percentage">Less common</span></li>
-                                </ul>
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">2</span>
+                            Injection Site Reactions
+                        </h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                            Overall incidence: 7.2% (vs 5.1% placebo)
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+                                <span>Pruritus</span>
+                                <span class="font-medium text-amber-600 dark:text-amber-400">Most common</span>
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+                                <span>Erythema</span>
+                                <span class="font-medium text-amber-600 dark:text-amber-400">Common</span>
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex justify-between">
+                                <span>Pain</span>
+                                <span class="font-medium text-gray-600 dark:text-gray-400">Less common</span>
+                            </li>
+                        </ul>
+                        <div class="mt-3 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                            <p class="text-xs text-gray-700 dark:text-gray-300">
                                 Higher than Repatha (5.7%) but generally mild
-                            </div>
+                            </p>
                         </div>
+                    </div>
 
-                        <div class="safety-card">
-                            <div class="safety-title">
-                                <div class="safety-icon">3</div>
-                                Serious Adverse Events
-                            </div>
-                            <div class="safety-content">
-                                <ul class="safety-list">
-                                    <li>Overall SAEs <span class="percentage">4.8%</span></li>
-                                    <li>Similar to placebo <span class="percentage">Yes</span></li>
-                                    <li>Immunogenicity <span class="percentage">5% ADA</span></li>
-                                    <li>Neutralizing antibodies <span class="percentage"><1%</span></li>
-                                </ul>
-                            </div>
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full flex items-center justify-center text-white text-sm">3</span>
+                            Special Populations
+                        </h4>
+                        <ul class="space-y-3">
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong>Pregnancy:</strong> No fetal harm signals in registries; discontinuation advised
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong>Lactation:</strong> Limited data available
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong>Statin-Intolerant:</strong> 45% LDL-C reduction, well-tolerated (ALTERNATIVE trial)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong>Pediatric (8+):</strong> 35-46% LDL reduction, similar safety to adults
+                            </li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                            <a href="https://clinicaltrials.gov/study/NCT02890992" 
+                               target="_blank" 
+                               class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800">
+                                ODYSSEY KIDS Trial →
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="section">
-                    <h2 class="section-title">Neurocognitive & Metabolic Safety</h2>
-                    <div class="mechanism-card">
-                        <div class="mechanism-title">Long-Term Safety Data</div>
-                        <div class="mechanism-content">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                <div>
-                                    <strong>Neurocognitive Effects:</strong>
-                                    <ul style="margin: 10px 0 10px 20px;">
-                                        <li>Neurocognitive AEs: 1.2% vs 0.7% placebo</li>
-                                        <li>No association with LDL <25 mg/dL</li>
-                                        <li>2025 meta-analyses confirm no link</li>
-                                        <li>Rare reports non-causal</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <strong>Metabolic Effects:</strong>
-                                    <ul style="margin: 10px 0 10px 20px;">
-                                        <li>New-onset diabetes: HR 1.18 (slight increase)</li>
-                                        <li>Similar to statin effect</li>
-                                        <li>Ophthalmologic AEs: 1.3% (same as placebo)</li>
-                                        <li>No cataract increase</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px;">
-                                <strong>Real-World Evidence:</strong> 2025 data from Japan shows low AE rates consistent with trials. Benign profile in T1D patients. Similar to inclisiran but with more extensive long-term data.
-                            </div>
+                <div class="glass rounded-2xl p-6 mt-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Long-Term Safety Data</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-medium text-gray-900 dark:text-white mb-3">Neurocognitive Effects:</h4>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• Neurocognitive AEs: 1.2% vs 0.7% placebo</li>
+                                <li>• No association with LDL <25 mg/dL</li>
+                                <li>• 2025 meta-analyses confirm no link</li>
+                                <li>• Rare reports non-causal</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900 dark:text-white mb-3">Metabolic Effects:</h4>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• New-onset diabetes: HR 1.18 (slight increase)</li>
+                                <li>• Similar to statin effect</li>
+                                <li>• Ophthalmologic AEs: 1.3% (same as placebo)</li>
+                                <li>• No cataract increase</li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">Special Populations</h2>
-                    <div class="safety-grid">
-                        <div class="safety-card">
-                            <div class="safety-title">
-                                <div class="safety-icon">P</div>
-                                Pregnancy & Lactation
-                            </div>
-                            <div class="safety-content">
-                                <ul style="list-style: none;">
-                                    <li>• No fetal harm signals in registries</li>
-                                    <li>• Discontinuation advised during pregnancy</li>
-                                    <li>• Limited lactation data</li>
-                                    <li>• 2025 label update with registry data</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="safety-card">
-                            <div class="safety-title">
-                                <div class="safety-icon">S</div>
-                                Statin-Intolerant
-                            </div>
-                            <div class="safety-content">
-                                <ul style="list-style: none;">
-                                    <li>• ODYSSEY ALTERNATIVE trial</li>
-                                    <li>• 45% LDL-C reduction</li>
-                                    <li>• Well-tolerated profile</li>
-                                    <li>• EMA broader indication</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="safety-card">
-                            <div class="safety-title">
-                                <div class="safety-icon">K</div>
-                                Pediatric (8+)
-                            </div>
-                            <div class="safety-content">
-                                <ul style="list-style: none;">
-                                    <li>• ODYSSEY KIDS trial</li>
-                                    <li>• 35-46% LDL-C reduction</li>
-                                    <li>• Similar safety to adults</li>
-                                    <li>• Youngest approval age (8+)</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
+                            <strong>Real-World Evidence:</strong> 2025 data from Japan shows low AE rates consistent with trials. 
+                            Benign profile in T1D patients. Similar to inclisiran but with more extensive long-term data.
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- Market Tab -->
-            <div id="market" class="tab-content">
-                <div class="section">
-                    <h2 class="section-title">Pricing & Access Evolution</h2>
-                    <div class="market-timeline">
-                        <div class="market-event">
-                            <div class="market-year">2015</div>
-                            <div class="market-description">
-                                <span class="price-tag">US: $14,000-14,600/year</span>
-                                <span class="price-tag">EU: ~€5,000/year</span><br>
-                                Launch as first PCSK9 inhibitor with high pricing leading to immediate payer pushback
-                            </div>
-                        </div>
-
-                        <div class="market-event">
-                            <div class="market-year">2018-2019</div>
-                            <div class="market-description">
-                                <span class="price-tag">60% price cut to $5,850/year</span><br>
-                                Post-ODYSSEY OUTCOMES price reduction. Net ~$4,000 with rebates<br>
-                                <span class="value-tag">Value-based contracts piloted</span>
-                            </div>
-                        </div>
-
-                        <div class="market-event">
-                            <div class="market-year">2019</div>
-                            <div class="market-description">
-                                Partnership restructure: Regeneron takes US rights, Sanofi maintains ex-US<br>
-                                <span class="value-tag">Copay cards: $50/month for eligible</span>
-                            </div>
-                        </div>
-
-                        <div class="market-event">
-                            <div class="market-year">2025</div>
-                            <div class="market-description">
-                                <span class="price-tag">Annual sales: ~$400-500M</span><br>
-                                Sales plateaued below Repatha. Competition from inclisiran and oral PCSK9i
-                            </div>
-                        </div>
-
-                        <div class="market-event">
-                            <div class="market-year">2027-2028</div>
-                            <div class="market-description">
-                                Patent expiry approaching. Biosimilars expected (Samsung Bioepis in pipeline)<br>
-                                Projected 40-60% price reduction with biosimilar entry
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">Market Access Innovations</h2>
-                    <div class="mechanism-card">
-                        <div class="mechanism-title">Value-Based Contracting</div>
-                        <div class="mechanism-content">
-                            <strong>Unique Market Approach:</strong>
-                            <ul style="margin: 15px 0 15px 20px;">
-                                <li>First PCSK9i with value-based contracts (2018)</li>
-                                <li>Refunds for CV events while on therapy</li>
-                                <li>Copay assistance programs ($50/month)</li>
-                                <li>OOP costs dropped 50% post-price cut</li>
-                                <li>Medicare beneficiaries: $25-150/month</li>
-                            </ul>
-                            
-                            <strong>Access Barriers (Similar to Repatha):</strong>
-                            <ul style="margin: 15px 0 15px 20px;">
-                                <li>70-80% initial prior authorization denials</li>
-                                <li>Requirements: statin intolerance/failure, high LDL (>100-130 mg/dL)</li>
-                                <li>CV risk documentation needed</li>
-                                <li>Uptake <5-10% of eligible patients</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">Competitive Landscape</h2>
-                    <div class="competition-grid">
-                        <div class="competitor-card">
-                            <div class="competitor-name">Repatha (evolocumab)</div>
-                            <div class="competitor-detail">PCSK9 mAb - Amgen</div>
-                            <div class="competitor-detail">Higher sales, similar efficacy</div>
-                        </div>
+            <div class="tab-content hidden" id="market">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">Pricing & Access Evolution</h3>
+                    
+                    <div class="relative pl-8">
+                        <!-- Timeline line -->
+                        <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-green-300 dark:via-green-600 to-transparent"></div>
                         
-                        <div class="competitor-card">
-                            <div class="competitor-name">Leqvio (inclisiran)</div>
-                            <div class="competitor-detail">siRNA - Novartis</div>
-                            <div class="competitor-detail">Twice-yearly dosing</div>
-                        </div>
-                        
-                        <div class="competitor-card">
-                            <div class="competitor-name">Oral PCSK9i</div>
-                            <div class="competitor-detail">Multiple in development</div>
-                            <div class="competitor-detail">Daily oral convenience</div>
-                        </div>
-                        
-                        <div class="competitor-card">
-                            <div class="competitor-name">Biosimilars</div>
-                            <div class="competitor-detail">Samsung Bioepis et al.</div>
-                            <div class="competitor-detail">Expected 2028+</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">Future Outlook</h2>
-                    <div class="mechanism-card">
-                        <div class="mechanism-title">Market Evolution & Pipeline</div>
-                        <div class="mechanism-content">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                <div>
-                                    <strong>Near-Term (2025-2028):</strong>
-                                    <ul style="margin: 10px 0 10px 20px;">
-                                        <li>Patent expiry US/EU ~2027-2028</li>
-                                        <li>Limited lifecycle management</li>
-                                        <li>Higher HoFH doses explored</li>
-                                        <li>No new formulations planned</li>
-                                    </ul>
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-red-600 dark:text-red-400 mb-1">2015</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Launch Pricing</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    <span class="inline-block bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 px-2 py-1 rounded mr-2">US: $14,000-14,600/year</span>
+                                    <span class="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 px-2 py-1 rounded">EU: ~€5,000/year</span><br>
+                                    Launch as first PCSK9 inhibitor with high pricing leading to immediate payer pushback
                                 </div>
-                                <div>
-                                    <strong>Long-Term (2028-2035):</strong>
-                                    <ul style="margin: 10px 0 10px 20px;">
-                                        <li>Biosimilars cut prices 40-60%</li>
-                                        <li>Orals may dominate first-line</li>
-                                        <li>Injections for non-adherent/acute</li>
-                                        <li>Global biosimilar market $70B+</li>
-                                    </ul>
+                                <a href="https://www.reuters.com/article/us-sanofi-cholesterol-idUSKCN0PY1NJ20150724" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 mt-2 inline-block">
+                                    Launch News →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-green-600 dark:text-green-400 mb-1">2018-2019</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Price Reduction</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    <span class="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 px-2 py-1 rounded mr-2">60% price cut to $5,850/year</span><br>
+                                    Post-ODYSSEY OUTCOMES price reduction. Net ~$4,000 with rebates<br>
+                                    <span class="inline-block bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400 px-2 py-1 rounded mt-1">Value-based contracts piloted</span>
                                 </div>
                             </div>
-                            
-                            <div style="margin-top: 20px; padding: 15px; background: rgba(245, 87, 108, 0.1); border-radius: 8px;">
-                                <strong>Legacy Position:</strong> Praluent pioneered PCSK9 inhibition as first FDA-approved agent. Mortality signal in ODYSSEY OUTCOMES remains unique differentiator. Focus shifting to Lp(a) inhibitors and next-generation lipid therapies.
+                        </div>
+
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">2019</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Partnership Restructure</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Partnership restructure: Regeneron takes US rights, Sanofi maintains ex-US<br>
+                                    <span class="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 px-2 py-1 rounded mt-1">Copay cards: $50/month for eligible</span>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-amber-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-amber-600 dark:text-amber-400 mb-1">2025</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Current Status</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    <span class="inline-block bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 px-2 py-1 rounded">Annual sales: ~$400-500M</span><br>
+                                    Sales plateaued below Repatha. Competition from inclisiran and oral PCSK9i
+                                </div>
+                                <a href="https://www.sanofi.com/en/investors/financial-results-and-events" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 mt-2 inline-block">
+                                    Financial Reports →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-5 w-4 h-4 bg-purple-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-purple-600 dark:text-purple-400 mb-1">2027-2028</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Patent Expiry</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Patent expiry approaching. Biosimilars expected (Samsung Bioepis in pipeline)<br>
+                                    Projected 40-60% price reduction with biosimilar entry
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Value-Based Contracting</h3>
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                First PCSK9i with value-based contracts (2018)
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                Refunds for CV events while on therapy
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                Copay assistance programs ($50/month)
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                OOP costs dropped 50% post-price cut
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                Medicare beneficiaries: $25-150/month
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Access Barriers</h3>
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2 mt-1">•</span>
+                                70-80% initial prior authorization denials
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2 mt-1">•</span>
+                                Requirements: statin intolerance/failure
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2 mt-1">•</span>
+                                High LDL threshold (>100-130 mg/dL)
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2 mt-1">•</span>
+                                CV risk documentation needed
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-amber-500 mr-2 mt-1">•</span>
+                                Uptake <5-10% of eligible patients
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Competitive Landscape</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow">
+                            <div class="text-lg font-bold text-gray-900 dark:text-white">Repatha</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">PCSK9 mAb - Amgen</div>
+                            <div class="text-xs text-indigo-600 dark:text-indigo-400 mt-2">Higher sales</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow">
+                            <div class="text-lg font-bold text-gray-900 dark:text-white">Leqvio</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">siRNA - Novartis</div>
+                            <div class="text-xs text-indigo-600 dark:text-indigo-400 mt-2">Twice-yearly</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow">
+                            <div class="text-lg font-bold text-gray-900 dark:text-white">Oral PCSK9i</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Multiple</div>
+                            <div class="text-xs text-indigo-600 dark:text-indigo-400 mt-2">Daily oral</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow">
+                            <div class="text-lg font-bold text-gray-900 dark:text-white">Biosimilars</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Samsung et al.</div>
+                            <div class="text-xs text-indigo-600 dark:text-indigo-400 mt-2">2028+</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <a href="https://www.fiercepharma.com/pharma/pcsk9-market-analysis" target="_blank" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800">
+                            Market Analysis →
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Comparison Tab -->
-            <div id="comparison" class="tab-content">
-                <div class="section">
-                    <h2 class="section-title">Praluent vs. Repatha Head-to-Head Comparison</h2>
-                    
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Praluent (alirocumab)</th>
-                                <th>Repatha (evolocumab)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="feature-name">FDA Approval</td>
-                                <td>July 24, 2015 (FIRST)</td>
-                                <td>August 27, 2015</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">Starting Dose</td>
-                                <td>75 mg Q2W (titratable)</td>
-                                <td>140 mg Q2W (fixed)</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">Alternative Dosing</td>
-                                <td>300 mg Q4W</td>
-                                <td>420 mg monthly</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">Pediatric Age</td>
-                                <td>8+ years</td>
-                                <td>10+ years</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">LDL-C Reduction</td>
-                                <td>50-60%</td>
-                                <td>50-70%</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">Landmark Trial</td>
-                                <td>ODYSSEY OUTCOMES (n=18,924)</td>
-                                <td>FOURIER (n=27,564)</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">MACE Reduction</td>
-                                <td>15% (HR 0.85)</td>
-                                <td>15-20% (HR 0.85)</td>
-                            </tr>
-                            <tr style="background: rgba(116, 185, 255, 0.1);">
-                                <td class="feature-name"><strong>Mortality Benefit</strong></td>
-                                <td><strong>Yes (HR 0.85, p=0.026)</strong></td>
-                                <td><strong>No (HR 1.04)</strong></td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">ISR Rate</td>
-                                <td>7.2%</td>
-                                <td>5.7%</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">Immunogenicity</td>
-                                <td>5% ADA, <1% neutralizing</td>
-                                <td>0.3% ADA, rare neutralizing</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">2025 Sales</td>
-                                <td>~$400-500M</td>
-                                <td>~$1.3B</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">List Price (2025)</td>
-                                <td>$5,850/year</td>
-                                <td>$5,850/year</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">Patent Expiry</td>
-                                <td>2027-2028</td>
-                                <td>Late 2027</td>
-                            </tr>
-                            <tr>
-                                <td class="feature-name">Key Advantage</td>
-                                <td>Lower starting dose, mortality signal</td>
-                                <td>Larger trial, lower ISR rate</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="section">
-                    <h2 class="section-title">Clinical Positioning</h2>
-                    <div class="mechanism-card">
-                        <div class="mechanism-title">When to Choose Each Agent</div>
-                        <div class="mechanism-content">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                                <div style="padding: 20px; background: rgba(245, 87, 108, 0.05); border-radius: 8px;">
-                                    <strong>Consider Praluent When:</strong>
-                                    <ul style="margin: 10px 0 10px 20px;">
-                                        <li>Lower starting dose desired for tolerability</li>
-                                        <li>Titration flexibility needed</li>
-                                        <li>Q4W dosing preferred (300 mg option)</li>
-                                        <li>Younger pediatric patients (8+ vs 10+)</li>
-                                        <li>Very high-risk patients (mortality benefit)</li>
-                                    </ul>
-                                </div>
-                                <div style="padding: 20px; background: rgba(102, 126, 234, 0.05); border-radius: 8px;">
-                                    <strong>Consider Repatha When:</strong>
-                                    <ul style="margin: 10px 0 10px 20px;">
-                                        <li>Fixed dosing simplicity preferred</li>
-                                        <li>Lower injection site reaction risk important</li>
-                                        <li>Extensive long-term safety data desired</li>
-                                        <li>Monthly single-dose option needed</li>
-                                        <li>Lower immunogenicity concerns</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-top: 20px; padding: 15px; background: #d4edda; border-radius: 8px;">
-                                <strong>Clinical Equivalence:</strong> Both agents are considered therapeutically equivalent for LDL-C reduction and CV risk reduction. Choice often based on formulary coverage, patient preference for dosing regimen, and individual tolerability. The mortality signal with Praluent may influence choice in highest-risk patients.
-                            </div>
-                        </div>
+            <div class="tab-content hidden" id="comparison">
+                <div class="glass rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 mb-8">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-medium text-gray-900 dark:text-white">Praluent vs. Repatha Head-to-Head</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Feature</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Praluent (alirocumab)</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Repatha (evolocumab)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">FDA Approval</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">July 24, 2015 (FIRST)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">August 27, 2015</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Starting Dose</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">75 mg Q2W (titratable)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">140 mg Q2W (fixed)</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Alternative Dosing</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">300 mg Q4W</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">420 mg monthly</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Pediatric Age</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">8+ years</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">10+ years</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">LDL-C Reduction</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">50-60%</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">50-70%</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Landmark Trial</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">ODYSSEY OUTCOMES (n=18,924)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">FOURIER (n=27,564)</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">MACE Reduction</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">15% (HR 0.85)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">15-20% (HR 0.85)</td>
+                                </tr>
+                                <tr class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10">
+                                    <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-white">Mortality Benefit</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-green-600 dark:text-green-400">Yes (HR 0.85, p=0.026)</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-gray-600 dark:text-gray-400">No (HR 1.04)</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">ISR Rate</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">7.2%</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">5.7%</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Immunogenicity</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">5% ADA, <1% neutralizing</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">0.3% ADA, rare neutralizing</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">2025 Sales</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~$400-500M</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~$1.3B</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">List Price (2025)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">$5,850/year</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">$5,850/year</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Patent Expiry</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2027-2028</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Late 2027</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Key Advantage</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Lower starting dose, mortality signal</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Larger trial, lower ISR rate</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
-                <div class="section">
-                    <h2 class="section-title">Market Dynamics</h2>
-                    <div class="mechanism-card">
-                        <div class="mechanism-title">Commercial Performance Comparison</div>
-                        <div class="mechanism-content">
-                            <strong>Sales Performance Gap:</strong>
-                            <ul style="margin: 15px 0 15px 20px;">
-                                <li>Repatha outsells Praluent ~3:1 despite similar efficacy</li>
-                                <li>Amgen's stronger cardiovascular portfolio presence</li>
-                                <li>Better payer relationships and formulary positioning</li>
-                                <li>2019 partnership restructure impacted Praluent momentum</li>
-                            </ul>
-                            
-                            <strong>Biosimilar Impact (2028+):</strong>
-                            <ul style="margin: 15px 0 15px 20px;">
-                                <li>Both face similar patent cliffs</li>
-                                <li>Expected 40-60% price erosion</li>
-                                <li>May actually increase utilization through improved access</li>
-                                <li>Outcomes data will sustain relevance vs newer agents</li>
-                            </ul>
-                        </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Consider Praluent When:</h3>
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                Lower starting dose desired for tolerability
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                Titration flexibility needed
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                Q4W dosing preferred (300 mg option)
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                Younger pediatric patients (8+ vs 10+)
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">✓</span>
+                                Very high-risk patients (mortality benefit)
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Consider Repatha When:</h3>
+                        <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-1">✓</span>
+                                Fixed dosing simplicity preferred
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-1">✓</span>
+                                Lower injection site reaction risk important
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-1">✓</span>
+                                Extensive long-term safety data desired
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-1">✓</span>
+                                Monthly single-dose option needed
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-500 mr-2 mt-1">✓</span>
+                                Lower immunogenicity concerns
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl p-4 mt-8 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        <strong>Clinical Equivalence:</strong> Both agents are considered therapeutically equivalent for LDL-C reduction and CV risk reduction. 
+                        Choice often based on formulary coverage, patient preference for dosing regimen, and individual tolerability. 
+                        The mortality signal with Praluent may influence choice in highest-risk patients.
+                    </p>
+                </div>
+
+                <div class="glass rounded-2xl p-6 mt-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Legacy Position</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        Praluent pioneered PCSK9 inhibition as first FDA-approved agent. Mortality signal in ODYSSEY OUTCOMES remains unique differentiator. 
+                        Focus shifting to Lp(a) inhibitors and next-generation lipid therapies.
+                    </p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        <strong>Sales Performance Gap:</strong> Repatha outsells Praluent ~3:1 despite similar efficacy due to Amgen's stronger cardiovascular 
+                        portfolio presence and better payer relationships. 2019 partnership restructure impacted Praluent momentum.
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex gap-4">
+                        <a href="https://www.regeneron.com/pipeline-medicines" target="_blank" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800">
+                            Regeneron Pipeline →
+                        </a>
+                        <a href="https://www.sanofi.com/en/our-science/pipeline" target="_blank" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800">
+                            Sanofi Pipeline →
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
-        function showTab(tabName) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remove active class from all nav tabs
-            const navTabs = document.querySelectorAll('.nav-tab');
-            navTabs.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected tab content
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked nav tab
-            event.target.classList.add('active');
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
         }
 
-        // Animate bars on first view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const bars = entry.target.querySelectorAll('.bar');
-                    bars.forEach((bar, index) => {
-                        setTimeout(() => {
-                            bar.style.animation = 'growBar 1s ease-out';
-                        }, index * 100);
-                    });
-                }
-            });
-        });
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark');
+        }
 
-        const chartContainers = document.querySelectorAll('.efficacy-bar-chart');
-        chartContainers.forEach(container => {
-            observer.observe(container);
-        });
-
-        // Add animation keyframe
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes growBar {
-                from { transform: scaleY(0); }
-                to { transform: scaleY(1); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Add hover effects for timeline items
-        document.querySelectorAll('.timeline-content').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05)';
+        function showTab(tabName, event) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('active');
             });
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
+            
+            // Update button styles
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
             });
-        });
-
-        // Add smooth scrolling for internal navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.remove('hidden');
+            document.getElementById(tabName).classList.add('active');
+            
+            // Style active button
+            event.target.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+            event.target.classList.add('bg-indigo-600', 'text-white');
+        }
     </script>
 </body>
 </html>
