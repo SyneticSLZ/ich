@@ -3,1513 +3,1139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERVE-101/102 - In Vivo Base Editing for PCSK9</title>
+    <title>VERVE-101/102 - Gene Editing Therapy | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #0066CC;
-            --primary-light: #E8F2FF;
-            --success: #00A86B;
-            --warning: #F39C12;
-            --danger: #E74C3C;
-            --text-primary: #2C3E50;
-            --text-secondary: #7F8C8D;
-            --border: #E1E8ED;
-            --background: #FFFFFF;
-            --background-alt: #F8FAFB;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
-            background: var(--background-alt);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-size: 14px;
-        }
-        
-        /* Header */
-        .header {
-            background: white;
-            border-bottom: 1px solid var(--border);
-            padding: 16px 24px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--background-alt);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        
-        .back-button:hover {
-            background: var(--primary-light);
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        
-        .header-badges {
-            display: flex;
-            gap: 8px;
-        }
-        
-        .status-badge {
-            padding: 8px 16px;
-            background: #FDEDEC;
-            color: var(--danger);
-            border: 1px solid var(--danger);
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 12px;
-        }
-        
-        .acquisition-badge {
-            padding: 8px 16px;
-            background: #E6F7ED;
-            color: var(--success);
-            border: 1px solid var(--success);
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 12px;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 32px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .drug-title {
-            margin-bottom: 24px;
-        }
-        
-        .drug-name {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        
-        .drug-company {
-            font-size: 16px;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
-        
-        .drug-mechanism {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .stat-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .stat-value {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-        
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-            background: white;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            overflow-x: auto;
-        }
-        
-        .nav-tab {
-            padding: 10px 20px;
-            background: transparent;
-            border: none;
-            border-radius: 6px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-        
-        .nav-tab:hover {
-            background: var(--background-alt);
-            color: var(--text-primary);
-        }
-        
-        .nav-tab.active {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
-        
-        /* Tab Content */
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        /* Section Styles */
-        .section {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .section-header {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
-        }
-        
-        /* Alert Boxes */
-        .alert {
-            padding: 16px;
-            border-radius: 6px;
-            margin: 16px 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .alert-danger {
-            background: #FDEDEC;
-            border: 1px solid var(--danger);
-            color: #721C24;
-        }
-        
-        .alert-warning {
-            background: #FFF4E6;
-            border: 1px solid var(--warning);
-            color: #856404;
-        }
-        
-        .alert-info {
-            background: var(--primary-light);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .alert-success {
-            background: #E6F7ED;
-            border: 1px solid var(--success);
-            color: #155724;
-        }
-        
-        .alert-icon {
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-        
-        .alert-content {
-            flex: 1;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-        
-        /* Info Cards */
-        .info-card {
-            background: var(--background-alt);
-            border-left: 4px solid var(--primary);
-            padding: 16px;
-            border-radius: 4px;
-            margin-bottom: 16px;
-        }
-        
-        .info-card h3 {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        
-        .info-card p,
-        .info-card ul {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        .info-card ul {
-            margin-left: 20px;
-            margin-top: 8px;
-        }
-        
-        /* Process Steps */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
-            margin: 20px 0;
-        }
-        
-        .process-step {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            text-align: center;
-            position: relative;
-            transition: all 0.2s;
-        }
-        
-        .process-step:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-        
-        .step-number {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
-        .step-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-            margin-top: 8px;
-        }
-        
-        .step-description {
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .timeline-line {
-            position: absolute;
-            left: 12px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 40px;
-            margin-bottom: 24px;
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 4px;
-            top: 4px;
-            width: 18px;
-            height: 18px;
-            background: white;
-            border: 3px solid var(--primary);
-            border-radius: 50%;
-        }
-        
-        .timeline-item.complete .timeline-dot {
-            background: var(--primary);
-        }
-        
-        .timeline-item.paused .timeline-dot {
-            background: var(--danger);
-            border-color: var(--danger);
-        }
-        
-        .timeline-item.future .timeline-dot {
-            border-style: dashed;
-            background: var(--background-alt);
-        }
-        
-        .timeline-content {
-            background: var(--background-alt);
-            padding: 12px 16px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-        
-        .timeline-date {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-        
-        .timeline-title {
-            font-size: 14px;
-            color: var(--text-primary);
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-        
-        .timeline-description {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-        
-        /* Data Tables */
-        .data-table {
-            width: 100%;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .data-table thead {
-            background: var(--background-alt);
-        }
-        
-        .data-table th {
-            padding: 12px 16px;
-            text-align: left;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--border);
-        }
-        
-        .data-table td {
-            padding: 12px 16px;
-            font-size: 13px;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .data-table tbody tr:hover {
-            background: var(--background-alt);
-        }
-        
-        .data-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-        
-        /* Comparison Table */
-        .comparison-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 16px;
-        }
-        
-        .comparison-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .comparison-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-        
-        /* Efficacy Chart */
-        .efficacy-chart {
-            background: var(--background-alt);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 16px;
-        }
-        
-        .chart-container {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            height: 200px;
-            margin-top: 20px;
-        }
-        
-        .chart-bar-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-        }
-        
-        .chart-value {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        
-        .chart-bar {
-            width: 60px;
-            background: var(--primary);
-            border-radius: 4px 4px 0 0;
-            transition: all 0.3s;
-        }
-        
-        .chart-bar.secondary {
-            background: var(--text-secondary);
-        }
-        
-        .chart-bar.success {
-            background: var(--success);
-        }
-        
-        .chart-bar.warning {
-            background: var(--warning);
-        }
-        
-        .chart-label {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-align: center;
-            margin-top: 8px;
-        }
-        
-        /* Safety Grid */
-        .safety-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
-        }
-        
-        .safety-item {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 12px;
-            text-align: center;
-        }
-        
-        .safety-item.resolved {
-            border-left: 3px solid var(--success);
-        }
-        
-        .safety-item.concern {
-            border-left: 3px solid var(--danger);
-        }
-        
-        .safety-item.monitoring {
-            border-left: 3px solid var(--warning);
-        }
-        
-        .safety-value {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-        
-        .safety-label {
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-        
-        /* Badge */
-        .badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        
-        .badge-danger {
-            background: #FDEDEC;
-            color: var(--danger);
-        }
-        
-        .badge-warning {
-            background: #FFF4E6;
-            color: var(--warning);
-        }
-        
-        .badge-success {
-            background: #E6F7ED;
-            color: var(--success);
-        }
-        
-        .badge-info {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
-        
-        /* Pipeline Visual */
-        .pipeline-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 20px 0;
-        }
-        
-        .pipeline-item {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        
-        .pipeline-item.active {
-            border-color: var(--primary);
-            background: var(--primary-light);
-        }
-        
-        .pipeline-item:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-        
-        .pipeline-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-        
-        .pipeline-target {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-        
-        .pipeline-status {
-            font-size: 11px;
-            color: var(--primary);
-            font-weight: 500;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 16px;
-            }
-            
-            .drug-name {
-                font-size: 24px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .process-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .nav-tabs {
-                overflow-x: auto;
-            }
-            
-            .pipeline-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Links */
-        a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .source-link {
-            font-size: 11px;
-            color: var(--primary);
-            margin-left: 4px;
+        /* Custom animations matching Leaf Intelligence style */
+        @keyframes fadeInRow {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.95); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in-row { animation: fadeInRow 0.3s ease forwards; }
+        .animate-pulse-glow { animation: pulse 3s ease-in-out infinite; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
+        
+        /* Staggered animations */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { @apply bg-gray-100 dark:bg-gray-800 rounded; }
+        ::-webkit-scrollbar-thumb { @apply bg-gray-400 dark:bg-gray-600 rounded hover:bg-gray-500 dark:hover:bg-gray-500; }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.75);
         }
     </style>
 </head>
-<body>
-    
-    <header class="header">
-        <div class="header-content">
-            <a href="index.html" class="back-button">
-                ← Back to Dashboard
-            </a>
-            <div class="header-badges">
-                <div class="status-badge">PHASE 1 - PAUSED/PIVOTED</div>
-                <div class="acquisition-badge">LILLY ACQUISITION $1B</div>
+<body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+    <!-- Fixed Header - Matching Leaf Intelligence design -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200 dark:border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <img src="leaf.png" alt="Leaf Intelligence" class="h-12 w-12 relative z-10">
+                        <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-cyan-400 opacity-20 blur-xl animate-pulse-glow"></div>
+                    </div>
+                    <div>
+                        <div class="text-xl font-light bg-gradient-to-r from-green-600 to-cyan-600 dark:from-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                            Leaf Intelligence
+                        </div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 font-light">
+                            Cholesterol Therapies Analysis
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-1 bg-gray-100/50 dark:bg-gray-800/50 p-1.5 rounded-lg backdrop-blur-sm">
+                    <a href="index.html" class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Overview
+                    </a>
+                    <button class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-400 shadow-md active">
+                        Drug Profile
+                    </button>
+                    <a href="index.html#comparison" class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Comparison
+                    </a>
+                </nav>
+
+                <!-- Theme Toggle -->
+                <!-- <button onclick="toggleTheme()" class="relative w-14 h-7 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300 shadow-inner hover:shadow-md">
+                    <div class="absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white dark:bg-gray-900 shadow-lg transform transition-transform duration-300 dark:translate-x-7 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-yellow-500 dark:hidden" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+                        </svg>
+                        <svg class="w-4 h-4 text-indigo-400 hidden dark:block" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                        </svg>
+                    </div>
+                </button> -->
             </div>
         </div>
     </header>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <div class="drug-title">
-                <h1 class="drug-name">VERVE-101 / VERVE-102</h1>
-                <div class="drug-company">Verve Therapeutics → Eli Lilly (Acquired July 25, 2025)</div>
-                <div class="drug-mechanism">First-in-Class In Vivo Base Editing Therapy</div>
-            </div>
+    <!-- Main Container with padding for fixed header -->
+    <div class="pt-20 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">One-Time</div>
-                    <div class="stat-label">Treatment Paradigm</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">50-70%</div>
-                    <div class="stat-label">LDL Reduction (Permanent)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">2028-2030</div>
-                    <div class="stat-label">Potential Approval</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">$1-2M</div>
-                    <div class="stat-label">Expected Price Range</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Navigation Tabs -->
-        <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
-            <button class="nav-tab" onclick="showTab('technology')">Technology</button>
-            <button class="nav-tab" onclick="showTab('regulatory')">Regulatory</button>
-            <button class="nav-tab" onclick="showTab('clinical')">Clinical Trials</button>
-            <button class="nav-tab" onclick="showTab('safety')">Safety</button>
-            <button class="nav-tab" onclick="showTab('commercial')">Commercial</button>
-            <button class="nav-tab" onclick="showTab('future')">Future Outlook</button>
-        </div>
-
-        <!-- Overview Tab -->
-        <div id="overview" class="tab-content active">
-            <div class="alert alert-danger">
-                <span class="alert-icon">🎯</span>
-                <div class="alert-content">
-                    <strong>Paradigm Shift Alert:</strong> One-time IV infusion permanently inactivates PCSK9 gene in liver cells, potentially providing lifelong LDL-C reduction. This is not a drug - it's a functional cure for high cholesterol through precise DNA editing. <a href="https://fiercebiotech.com" class="source-link">[Source]</a>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-header">Key Information</h2>
-                
-                <div class="info-card">
-                    <h3>What is VERVE-101/102?</h3>
-                    <p>An investigational gene-editing therapy using CRISPR-derived base-editing technology to permanently reduce cholesterol. It makes a single-letter change in the DNA of liver cells to turn off PCSK9 production forever.</p>
-                    <ul>
-                        <li>Uses adenine base editor (ABE) - no double-strand DNA breaks</li>
-                        <li>Delivered via lipid nanoparticle (LNP) to liver</li>
-                        <li>Single IV infusion intended to last a lifetime</li>
-                        <li>Mimics natural PCSK9 mutations that protect against heart disease</li>
-                    </ul>
-                </div>
-
-                <div class="info-card">
-                    <h3>Current Status</h3>
-                    <ul>
-                        <li><strong>VERVE-101:</strong> Paused April 2024 due to safety concerns (liver enzyme elevation, low platelets)</li>
-                        <li><strong>VERVE-102:</strong> Improved version with better LNP formulation, IND cleared March 2025</li>
-                        <li><strong>Heart-2 Trial:</strong> Starting H2 2025 with VERVE-102</li>
-                        <li><strong>Lilly Acquisition:</strong> Completed July 25, 2025 for ~$1 billion <a href="https://fiercebiotech.com" class="source-link">[Source]</a></li>
-                    </ul>
-                </div>
-
-                <h3 style="margin-top: 24px; margin-bottom: 16px; font-size: 16px;">Pipeline Programs</h3>
-                <div class="pipeline-grid">
-                    <div class="pipeline-item active">
-                        <div class="pipeline-name">VERVE-102</div>
-                        <div class="pipeline-target">PCSK9 (HeFH/ASCVD)</div>
-                        <div class="pipeline-status">Phase 1b/2 Starting</div>
+            <!-- Hero Section -->
+            <div class="glass rounded-2xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h1 class="text-4xl font-light mb-2 text-gray-900 dark:text-white">
+                            VERVE-101 / VERVE-102
+                        </h1>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">
+                            First-in-Class In Vivo Base Editing Therapy • Verve Therapeutics → Eli Lilly
+                        </p>
                     </div>
-                    <div class="pipeline-item">
-                        <div class="pipeline-name">VERVE-201</div>
-                        <div class="pipeline-target">ANGPTL3 (HoFH)</div>
-                        <div class="pipeline-status">IND-Enabling</div>
-                    </div>
-                    <div class="pipeline-item">
-                        <div class="pipeline-name">VERVE-301</div>
-                        <div class="pipeline-target">Lp(a) Reduction</div>
-                        <div class="pipeline-status">Research Stage</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-red-500 to-pink-500 text-white">
+                            Phase 1 - Paused/Pivoted
+                        </span>
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-green-500 to-emerald-500 text-white">
+                            Lilly Acquisition $1B
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2 class="section-header">Competitive Positioning</h2>
-                
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Approach</th>
-                            <th>Frequency</th>
-                            <th>LDL Reduction</th>
-                            <th>Reversibility</th>
-                            <th>Market Timeline</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="background: var(--primary-light);">
-                            <td><strong>VERVE Gene Editing</strong></td>
-                            <td>Once lifetime</td>
-                            <td>50-70%</td>
-                            <td>Irreversible</td>
-                            <td>2028-2030</td>
-                        </tr>
-                        <tr>
-                            <td>Inclisiran (siRNA)</td>
-                            <td>2x/year</td>
-                            <td>50%</td>
-                            <td>Reversible</td>
-                            <td>Approved</td>
-                        </tr>
-                        <tr>
-                            <td>PCSK9 mAbs</td>
-                            <td>Monthly</td>
-                            <td>60%</td>
-                            <td>Reversible</td>
-                            <td>Approved</td>
-                        </tr>
-                        <tr>
-                            <td>Oral PCSK9i</td>
-                            <td>Daily</td>
-                            <td>60%</td>
-                            <td>Reversible</td>
-                            <td>2026-2027</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Technology Tab -->
-        <div id="technology" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">How Base Editing Works</h2>
-                
-                <div class="process-grid">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <div class="step-title">Delivery</div>
-                        <div class="step-description">LNP carries mRNA for base editor + guide RNA to liver via IV</div>
+            <!-- Key Metrics Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                        One-Time
                     </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <div class="step-title">Targeting</div>
-                        <div class="step-description">Guide RNA directs editor to PCSK9 gene in hepatocytes</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <div class="step-title">Editing</div>
-                        <div class="step-description">ABE makes precise A→G change without cutting DNA</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <div class="step-title">Result</div>
-                        <div class="step-description">Introduces stop codon, halting PCSK9 production</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">5</div>
-                        <div class="step-title">Effect</div>
-                        <div class="step-description">50-70% of liver cells edited, 80-90% PCSK9↓</div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">6</div>
-                        <div class="step-title">Outcome</div>
-                        <div class="step-description">50-70% LDL reduction sustained indefinitely</div>
-                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Treatment Paradigm</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">Permanent gene edit</div>
                 </div>
-
-                <div class="info-card">
-                    <h3>Technical Specifications</h3>
-                    <ul>
-                        <li><strong>Editor Type:</strong> Adenine Base Editor (ABE) - Cas9 nickase + TadA deaminase</li>
-                        <li><strong>Target:</strong> PCSK9 gene exon 1 - introduces premature stop codon</li>
-                        <li><strong>Delivery:</strong> Liver-targeted LNP (similar to COVID vaccines but optimized)</li>
-                        <li><strong>Editing Efficiency:</strong> 50-70% of hepatocytes at therapeutic doses</li>
-                        <li><strong>Off-target Rate:</strong> <0.1% genome-wide (WGS validated)</li>
-                        <li><strong>Germline Risk:</strong> Minimal - no gonadal LNP distribution shown <a href="https://fiercebiotech.com" class="source-link">[Source]</a></li>
-                    </ul>
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                        50-70%
+                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">LDL Reduction</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">Permanent effect</div>
+                </div>
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-2">
+                        2028-2030
+                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Potential Approval</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">If Phase 3 succeeds</div>
+                </div>
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+                        $1-2M
+                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Expected Price</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">One-time cost</div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2 class="section-header">VERVE-101 vs VERVE-102</h2>
-                
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>VERVE-101</th>
-                            <th>VERVE-102 (Improved)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>LNP Formulation</strong></td>
-                            <td>First-generation LNP</td>
-                            <td>GalNAc-conjugated (enhanced liver targeting)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Status</strong></td>
-                            <td><span class="badge badge-danger">Paused April 2024</span></td>
-                            <td><span class="badge badge-success">IND Cleared March 2025</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tolerability</strong></td>
-                            <td>Grade 3 ALT elevations, thrombocytopenia</td>
-                            <td>Expected improved safety profile</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dosing</strong></td>
-                            <td>0.1-0.6 mg/kg tested</td>
-                            <td>Potentially lower doses needed</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Trial</strong></td>
-                            <td>Heart-1 (paused)</td>
-                            <td>Heart-2 (starting H2 2025)</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Tab Navigation -->
+            <div class="glass rounded-2xl mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-1 p-2">
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white" onclick="showTab('overview', event)">
+                        Overview
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('technology', event)">
+                        Technology
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('regulatory', event)">
+                        Regulatory
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('clinical', event)">
+                        Clinical Trials
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('safety', event)">
+                        Safety
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('commercial', event)">
+                        Commercial
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('future', event)">
+                        Future Outlook
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- Regulatory Tab -->
-        <div id="regulatory" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">FDA Regulatory Timeline</h2>
-                
-                <div class="alert alert-warning">
-                    <span class="alert-icon">⚠️</span>
-                    <div class="alert-content">
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview">
+                <!-- Paradigm Shift Alert -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-3">
+                        🎯 Paradigm Shift Alert
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        One-time IV infusion permanently inactivates PCSK9 gene in liver cells, potentially providing lifelong LDL-C reduction. 
+                        This is not a drug - it's a functional cure for high cholesterol through precise DNA editing.
+                    </p>
+                    <div class="mt-4">
+                        <a href="https://clinicaltrials.gov/study/NCT05398029" 
+                           target="_blank" 
+                           class="inline-flex items-center text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
+                            View Clinical Trial Data →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Key Information Cards -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">🧬</span>
+                            What is VERVE-101/102?
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            An investigational gene-editing therapy using CRISPR-derived base-editing technology to permanently reduce cholesterol. 
+                            It makes a single-letter change in the DNA of liver cells to turn off PCSK9 production forever.
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                Uses adenine base editor (ABE) - no double-strand DNA breaks
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                Delivered via lipid nanoparticle (LNP) to liver
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                Single IV infusion intended to last a lifetime
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                                <span class="text-green-500 mr-2 mt-1">•</span>
+                                Mimics natural PCSK9 mutations that protect against heart disease
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="flex items-center gap-2 mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                            <span class="w-8 h-8 bg-gradient-to-r from-amber-600 to-orange-600 rounded-full flex items-center justify-center text-white text-sm">📊</span>
+                            Current Status
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">VERVE-101:</strong> Paused April 2024 due to safety concerns (liver enzyme elevation, low platelets)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">VERVE-102:</strong> Improved version with better LNP formulation, IND cleared March 2025
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Heart-2 Trial:</strong> Starting H2 2025 with VERVE-102
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Lilly Acquisition:</strong> Completed July 25, 2025 for ~$1 billion
+                            </li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                            <a href="https://investors.vrtx.com/news-releases" 
+                               target="_blank" 
+                               class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800">
+                                View Press Releases →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pipeline Programs -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">Pipeline Programs</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 p-6 rounded-lg border-2 border-indigo-500 dark:border-indigo-400 shadow-md">
+                            <div class="text-lg font-medium text-gray-900 dark:text-white mb-2">VERVE-102</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">PCSK9 (HeFH/ASCVD)</div>
+                            <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400">Phase 1b/2 Starting</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                            <div class="text-lg font-medium text-gray-900 dark:text-white mb-2">VERVE-201</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">ANGPTL3 (HoFH)</div>
+                            <div class="text-xs font-medium text-gray-500">IND-Enabling</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                            <div class="text-lg font-medium text-gray-900 dark:text-white mb-2">VERVE-301</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">Lp(a) Reduction</div>
+                            <div class="text-xs font-medium text-gray-500">Research Stage</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competitive Positioning Table -->
+                <div class="glass rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-medium text-gray-900 dark:text-white">Competitive Positioning</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Approach</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Frequency</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">LDL Reduction</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Reversibility</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Market Timeline</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="bg-amber-50 dark:bg-amber-900/10 hover:bg-amber-100 dark:hover:bg-amber-900/20 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">VERVE Gene Editing</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Once lifetime</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">50-70%</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Irreversible</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2028-2030</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">Inclisiran (siRNA)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2x/year</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">50%</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Reversible</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Approved</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">PCSK9 mAbs</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Monthly</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">60%</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Reversible</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Approved</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">Oral PCSK9i</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Daily</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">60%</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Reversible</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">2026-2027</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Tab -->
+            <div class="tab-content hidden" id="technology">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">How Base Editing Works</h3>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium mb-3">1</div>
+                            <div class="text-xs font-medium text-gray-900 dark:text-white mb-1">Delivery</div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">LNP carries mRNA for base editor + guide RNA to liver via IV</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium mb-3">2</div>
+                            <div class="text-xs font-medium text-gray-900 dark:text-white mb-1">Targeting</div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">Guide RNA directs editor to PCSK9 gene in hepatocytes</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium mb-3">3</div>
+                            <div class="text-xs font-medium text-gray-900 dark:text-white mb-1">Editing</div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">ABE makes precise A→G change without cutting DNA</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium mb-3">4</div>
+                            <div class="text-xs font-medium text-gray-900 dark:text-white mb-1">Result</div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">Introduces stop codon, halting PCSK9 production</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium mb-3">5</div>
+                            <div class="text-xs font-medium text-gray-900 dark:text-white mb-1">Effect</div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">50-70% of liver cells edited, 80-90% PCSK9↓</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="w-8 h-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium mb-3">6</div>
+                            <div class="text-xs font-medium text-gray-900 dark:text-white mb-1">Outcome</div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400">50-70% LDL reduction sustained indefinitely</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-4">Technical Specifications</h4>
+                        <ul class="space-y-2">
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Editor Type:</strong> Adenine Base Editor (ABE) - Cas9 nickase + TadA deaminase
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Target:</strong> PCSK9 gene exon 1 - introduces premature stop codon
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Delivery:</strong> Liver-targeted LNP (similar to COVID vaccines but optimized)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Editing Efficiency:</strong> 50-70% of hepatocytes at therapeutic doses
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Off-target Rate:</strong> <0.1% genome-wide (WGS validated)
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Germline Risk:</strong> Minimal - no gonadal LNP distribution shown
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- VERVE-101 vs VERVE-102 Comparison -->
+                <div class="glass rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-medium text-gray-900 dark:text-white">VERVE-101 vs VERVE-102</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Feature</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">VERVE-101</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">VERVE-102 (Improved)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">LNP Formulation</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">First-generation LNP</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">GalNAc-conjugated (enhanced liver targeting)</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Status</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400">
+                                            Paused April 2024
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">
+                                            IND Cleared March 2025
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Tolerability</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Grade 3 ALT elevations, thrombocytopenia</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Expected improved safety profile</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Dosing</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">0.1-0.6 mg/kg tested</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Potentially lower doses needed</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Trial</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Heart-1 (paused)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Heart-2 (starting H2 2025)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regulatory Tab -->
+            <div class="tab-content hidden" id="regulatory">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20">
+                    <p class="text-gray-700 dark:text-gray-300">
+                        <span class="text-lg mr-2">⚠️</span>
                         As the first in vivo base editing therapy, VERVE faces unprecedented regulatory scrutiny. Every step sets precedent for the entire field.
-                    </div>
-                </div>
-                
-                <div class="timeline">
-                    <div class="timeline-line"></div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">October 2022</div>
-                            <div class="timeline-title">IND Submission</div>
-                            <div class="timeline-description">First IND for in vivo base editing submitted to FDA</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item paused">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">November 2022</div>
-                            <div class="timeline-title">FDA Clinical Hold</div>
-                            <div class="timeline-description">Concerns: germline editing, off-targets, potency, LNP safety <a href="https://fiercebiotech.com" class="source-link">[Source]</a></div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">2022-2023</div>
-                            <div class="timeline-title">Ex-US Trial Start</div>
-                            <div class="timeline-description">Trials began in New Zealand and UK while FDA hold active</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">October 2023</div>
-                            <div class="timeline-title">FDA Hold Lifted</div>
-                            <div class="timeline-description">Comprehensive safety data satisfied FDA concerns <a href="https://fiercebiotech.com" class="source-link">[Source]</a></div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item paused">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">April 2024</div>
-                            <div class="timeline-title">Voluntary Pause</div>
-                            <div class="timeline-description">Heart-1 paused due to Grade 3 ALT elevation and thrombocytopenia</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">March 2025</div>
-                            <div class="timeline-title">VERVE-102 IND Cleared</div>
-                            <div class="timeline-description">FDA approves improved version with better LNP</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">July 25, 2025</div>
-                            <div class="timeline-title">Lilly Acquisition</div>
-                            <div class="timeline-description">$1B deal complete, enhanced resources <a href="https://biopharmadive.com" class="source-link">[Source]</a></div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item future">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">H2 2025</div>
-                            <div class="timeline-title">Heart-2 Start</div>
-                            <div class="timeline-description">Phase 1b/2 trial initiation expected</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item future">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">2028-2030</div>
-                            <div class="timeline-title">Potential BLA</div>
-                            <div class="timeline-description">If Phase 3 successful, multi-year follow-up required</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-header">Global Regulatory Status</h2>
-                
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Region</th>
-                            <th>Status</th>
-                            <th>Key Events</th>
-                            <th>Timeline</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>FDA (US)</strong></td>
-                            <td><span class="badge badge-info">Phase 1</span></td>
-                            <td>Hold lifted, VERVE-102 IND cleared</td>
-                            <td>BLA ~2028-2030</td>
-                        </tr>
-                        <tr>
-                            <td><strong>EMA (EU)</strong></td>
-                            <td><span class="badge badge-warning">Pre-clinical</span></td>
-                            <td>No hold, more permissive initially</td>
-                            <td>MAA ~2030</td>
-                        </tr>
-                        <tr>
-                            <td><strong>MHRA (UK)</strong></td>
-                            <td><span class="badge badge-info">Phase 1</span></td>
-                            <td>First to approve human trials</td>
-                            <td>Active sites</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Medsafe (NZ)</strong></td>
-                            <td><span class="badge badge-info">Phase 1</span></td>
-                            <td>Enabled first-in-human dosing</td>
-                            <td>Active sites</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Clinical Trials Tab -->
-        <div id="clinical" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">Clinical Development Program</h2>
-                
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Trial</th>
-                            <th>Phase</th>
-                            <th>N</th>
-                            <th>Population</th>
-                            <th>Status</th>
-                            <th>Key Results</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Preclinical</strong></td>
-                            <td>Pre</td>
-                            <td>~50</td>
-                            <td>Non-human primates</td>
-                            <td>Complete</td>
-                            <td>89% PCSK9↓, 69% LDL↓ >2.5yr <a href="https://fiercebiotech.com" class="source-link">[Source]</a></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Heart-1</strong><br>(NCT05398029)</td>
-                            <td>1b</td>
-                            <td>44 planned<br>~12 dosed</td>
-                            <td>HeFH/ASCVD</td>
-                            <td><span class="badge badge-danger">Paused</span></td>
-                            <td>83% PCSK9↓, 55% LDL↓<br>Safety issues at 0.6 mg/kg</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Heart-2</strong><br>(VERVE-102)</td>
-                            <td>1b/2</td>
-                            <td>~100</td>
-                            <td>HeFH/CAD</td>
-                            <td><span class="badge badge-info">Starting H2 2025</span></td>
-                            <td>—</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Long-term Registry</strong></td>
-                            <td>4</td>
-                            <td>All pts</td>
-                            <td>All treated</td>
-                            <td>Ongoing</td>
-                            <td>5-15 year follow-up planned</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="alert alert-info">
-                    <span class="alert-icon">📊</span>
-                    <div class="alert-content">
-                        <strong>No CV Outcomes Trials Yet:</strong> Approval will rely on LDL-C as surrogate endpoint with post-marketing outcomes commitment. Expected 50-80% lifetime MACE reduction if given early, based on genetic data.
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-header">Efficacy Results</h2>
-                
-                <div class="efficacy-chart">
-                    <h3 style="font-size: 14px; margin-bottom: 16px;">Heart-1 Interim Data (High Dose Cohort)</h3>
-                    <div class="chart-container">
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">83%</div>
-                            <div class="chart-bar" style="height: 83%;"></div>
-                            <div class="chart-label">PCSK9<br>Reduction</div>
-                        </div>
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">55%</div>
-                            <div class="chart-bar" style="height: 55%;"></div>
-                            <div class="chart-label">LDL-C<br>Reduction<br>(Day 180)</div>
-                        </div>
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">46%</div>
-                            <div class="chart-bar" style="height: 46%;"></div>
-                            <div class="chart-label">LDL-C<br>Reduction<br>(Low dose)</div>
-                        </div>
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">45%</div>
-                            <div class="chart-bar secondary" style="height: 45%;"></div>
-                            <div class="chart-label">ApoB<br>Reduction</div>
-                        </div>
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">30%</div>
-                            <div class="chart-bar warning" style="height: 30%;"></div>
-                            <div class="chart-label">Lp(a)<br>Reduction</div>
-                        </div>
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">88%</div>
-                            <div class="chart-bar success" style="height: 88%;"></div>
-                            <div class="chart-label">Projected<br>CAD Risk↓</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-card" style="margin-top: 20px;">
-                    <h3>Durability Profile</h3>
-                    <ul>
-                        <li><strong>Primate Data:</strong> >2.5 years sustained effect with no rebound</li>
-                        <li><strong>Human Projection:</strong> Expected lifelong effect from single infusion</li>
-                        <li><strong>Editing Coverage:</strong> 50-70% hepatocytes edited at therapeutic doses</li>
-                        <li><strong>Genetic Comparison:</strong> Mimics PCSK9 R46L carriers (88% lower CAD risk)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Safety Tab -->
-        <div id="safety" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">Safety Profile</h2>
-                
-                <div class="alert alert-danger">
-                    <span class="alert-icon">⚠️</span>
-                    <div class="alert-content">
-                        <strong>Critical Safety Event:</strong> Heart-1 paused April 2024 due to Grade 3 ALT elevation and thrombocytopenia at 0.6 mg/kg dose. Led to complete redesign with VERVE-102.
-                    </div>
-                </div>
-                
-                <div class="safety-grid">
-                    <div class="safety-item concern">
-                        <div class="safety-value">Grade 3</div>
-                        <div class="safety-label">ALT Elevation<br>(Led to pause)</div>
-                    </div>
-                    <div class="safety-item concern">
-                        <div class="safety-value">Low Platelets</div>
-                        <div class="safety-label">Thrombocytopenia<br>(0.6 mg/kg)</div>
-                    </div>
-                    <div class="safety-item resolved">
-                        <div class="safety-value"><0.1%</div>
-                        <div class="safety-label">Off-Target Edits<br>(WGS validated)</div>
-                    </div>
-                    <div class="safety-item resolved">
-                        <div class="safety-value">Minimal</div>
-                        <div class="safety-label">Germline Risk<br>(No gonadal uptake)</div>
-                    </div>
-                    <div class="safety-item monitoring">
-                        <div class="safety-value">70%</div>
-                        <div class="safety-label">Pre-existing Anti-Cas9<br>(Managed w/ steroids)</div>
-                    </div>
-                    <div class="safety-item monitoring">
-                        <div class="safety-value">20-30%</div>
-                        <div class="safety-label">Infusion Reactions<br>(Mild, transient)</div>
-                    </div>
-                </div>
-
-                <div class="info-card" style="margin-top: 24px;">
-                    <h3>Long-term Monitoring Requirements</h3>
-                    <ul>
-                        <li><strong>5-15 Year Follow-up:</strong> All patients in mandatory registry</li>
-                        <li><strong>Cancer Surveillance:</strong> Annual screening for hepatocellular carcinoma</li>
-                        <li><strong>Genomic Monitoring:</strong> Periodic WGS for emergent off-targets</li>
-                        <li><strong>Liver Function:</strong> Quarterly LFTs year 1, then biannual</li>
-                        <li><strong>Reproductive Health:</strong> Counseling on theoretical germline risks</li>
-                    </ul>
-                </div>
-
-                <div class="alert alert-success" style="margin-top: 20px;">
-                    <span class="alert-icon">✓</span>
-                    <div class="alert-content">
-                        <strong>Safety Advantages vs Other Gene Therapies:</strong>
-                        No double-strand DNA breaks (unlike CRISPR), no viral vectors, liver-specific targeting, single nucleotide change only, precedent from healthy PCSK9 LOF humans.
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-header">Brain Safety & Low Cholesterol</h2>
-                
-                <div class="info-card">
-                    <h3>No Cognitive Risk Expected</h3>
-                    <p>PCSK9 inhibition doesn't cross blood-brain barrier. Brain cholesterol is synthesized independently from plasma LDL.</p>
-                    <ul>
-                        <li>Genetic PCSK9 knockouts show no cognitive deficits</li>
-                        <li>Meta-analyses of PCSK9 inhibitors (LDL <20 mg/dL) show no dementia risk over 5+ years</li>
-                        <li>All trials monitor neurocognition - no signals reported</li>
-                        <li>EBBINGHAUS study (evolocumab) confirmed cognitive safety</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Commercial Tab -->
-        <div id="commercial" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">Pricing & Market Strategy</h2>
-                
-                <div class="alert alert-warning">
-                    <span class="alert-icon">💰</span>
-                    <div class="alert-content">
-                        <strong>Expected Pricing:</strong> $1-2 million upfront, justified by lifetime benefit vs ~$100K+ in chronic drugs/events over decades. Payment models likely include annuities, outcomes-based rebates.
-                    </div>
-                </div>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value">~1M</div>
-                        <div class="stat-label">US HeFH/ASCVD Patients</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">30-50%</div>
-                        <div class="stat-label">Initial Approval Rate</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">15-20 yrs</div>
-                        <div class="stat-label">Break-even vs Chronic Rx</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">$2-3B</div>
-                        <div class="stat-label">Peak Sales (Base Case)</div>
-                    </div>
-                </div>
-
-                <div class="info-card" style="margin-top: 24px;">
-                    <h3>Reimbursement Challenges</h3>
-                    <ul>
-                        <li><strong>High upfront cost:</strong> Budget impact concerns for payers</li>
-                        <li><strong>Insurance churn:</strong> Patient may switch insurers after cure</li>
-                        <li><strong>Irreversibility:</strong> Ethical and practical concerns</li>
-                        <li><strong>Prior auth:</strong> Extensive documentation, step therapy failures required</li>
-                        <li><strong>Coverage restrictions:</strong> Initially only severe cases with multiple therapy failures</li>
-                    </ul>
-                </div>
-
-                <div class="info-card">
-                    <h3>Delivery Infrastructure</h3>
-                    <ul>
-                        <li>Initially at specialized centers (like CAR-T model)</li>
-                        <li>Medical benefit, not pharmacy</li>
-                        <li>Eventually may expand to infusion centers</li>
-                        <li>Requires long-term follow-up infrastructure</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-header">Market Scenarios</h2>
-                
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Timeframe</th>
-                            <th>Conservative</th>
-                            <th>Base Case</th>
-                            <th>Optimistic</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>2025-2027</strong></td>
-                            <td>Clinical trials only</td>
-                            <td>Phase 2/3 progression</td>
-                            <td>Accelerated approval pathway</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2028-2030</strong></td>
-                            <td>Limited HoFH approval</td>
-                            <td>HeFH approval, slow uptake</td>
-                            <td>Broad HeFH use, ASCVD trials</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2030-2035</strong></td>
-                            <td>Niche for severe cases</td>
-                            <td>Standard for genetic dyslipidemia</td>
-                            <td>Primary prevention consideration</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Peak Sales</strong></td>
-                            <td>$500M</td>
-                            <td>$2-3B</td>
-                            <td>$5B+</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Future Outlook Tab -->
-        <div id="future" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">Critical Success Factors</h2>
-                
-                <div class="info-card">
-                    <h3>What Must Go Right</h3>
-                    <ul>
-                        <li><strong>Safety Validation:</strong> No long-term adverse effects over 5+ years</li>
-                        <li><strong>Efficacy Durability:</strong> Truly permanent LDL reduction demonstrated</li>
-                        <li><strong>Manufacturing Scale:</strong> Consistent, scalable production achieved</li>
-                        <li><strong>Regulatory Alignment:</strong> FDA/EMA satisfied with safety profile</li>
-                        <li><strong>Payer Acceptance:</strong> Sustainable reimbursement models developed</li>
-                        <li><strong>Public Trust:</strong> "Gene editing" fears overcome through transparency</li>
-                    </ul>
-                </div>
-
-                <div class="alert alert-danger" style="margin-top: 20px;">
-                    <span class="alert-icon">⚠️</span>
-                    <div class="alert-content">
-                        <strong>Key Risks:</strong> Unknown long-term effects, potential for delayed adverse events, regulatory delays, public/physician resistance to irreversible therapy, competition from safer/simpler approaches.
-                    </div>
-                </div>
-
-                <div class="alert alert-success" style="margin-top: 20px;">
-                    <span class="alert-icon">✓</span>
-                    <div class="alert-content">
-                        <strong>Why Lilly's Acquisition Makes Sense:</strong> Hedging across entire PCSK9 landscape, access to transformative technology, leverage existing CV infrastructure, first-mover in gene editing for common diseases, platform potential beyond PCSK9.
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2 class="section-header">Precedents & Competition</h2>
-                
-                <div class="comparison-card">
-                    <div class="comparison-header">
-                        <div class="comparison-title">Casgevy (Vertex/CRISPR)</div>
-                        <span class="badge badge-success">FDA/EMA 2023</span>
-                    </div>
-                    <p style="font-size: 13px; color: var(--text-secondary);">
-                        First CRISPR therapy approved for sickle cell. Price: $2.2M. Ex vivo editing (not in vivo like VERVE). 
-                        Shows regulatory pathway possible, high price accepted for genetic diseases.
                     </p>
                 </div>
 
-                <div class="comparison-card">
-                    <div class="comparison-header">
-                        <div class="comparison-title">NTLA-2001 (Intellia)</div>
-                        <span class="badge badge-info">Phase 3</span>
+                <!-- FDA Regulatory Timeline -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">FDA Regulatory Timeline</h3>
+                    
+                    <div class="relative pl-8">
+                        <!-- Timeline line -->
+                        <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-indigo-300 dark:via-indigo-600 to-transparent"></div>
+                        
+                        <!-- Timeline items -->
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">OCTOBER 2022</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">IND Submission</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    First IND for in vivo base editing submitted to FDA
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-red-600 dark:text-red-400 mb-1">NOVEMBER 2022</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">FDA Clinical Hold</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Concerns: germline editing, off-targets, potency, LNP safety
+                                </div>
+                                <a href="https://www.fda.gov/news-events/fda-newsroom" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 mt-2 inline-block">
+                                    View FDA Updates →
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">2022-2023</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Ex-US Trial Start</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Trials began in New Zealand and UK while FDA hold active
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-green-600 dark:text-green-400 mb-1">OCTOBER 2023</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">FDA Hold Lifted</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Comprehensive safety data satisfied FDA concerns
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-red-600 dark:text-red-400 mb-1">APRIL 2024</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Voluntary Pause</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Heart-1 paused due to Grade 3 ALT elevation and thrombocytopenia
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-green-600 dark:text-green-400 mb-1">MARCH 2025</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">VERVE-102 IND Cleared</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    FDA approves improved version with better LNP
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-green-600 dark:text-green-400 mb-1">JULY 25, 2025</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Lilly Acquisition</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    $1B deal complete, enhanced resources
+                                </div>
+                                <a href="https://investor.lilly.com/news-releases" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 mt-2 inline-block">
+                                    View Announcement →
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-amber-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-amber-600 dark:text-amber-400 mb-1">H2 2025 (PROJECTED)</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Heart-2 Start</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Phase 1b/2 trial initiation expected
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="absolute -left-5 w-4 h-4 bg-amber-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-amber-600 dark:text-amber-400 mb-1">2028-2030 (PROJECTED)</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Potential BLA</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    If Phase 3 successful, multi-year follow-up required
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p style="font-size: 13px; color: var(--text-secondary);">
-                        In vivo CRISPR for ATTR amyloidosis. 87% TTR reduction, no major safety issues. 
-                        Most similar precedent - shows in vivo editing feasible.
-                    </p>
                 </div>
 
-                <div class="comparison-card">
-                    <div class="comparison-header">
-                        <div class="comparison-title">Zolgensma (Novartis)</div>
-                        <span class="badge badge-success">FDA/EMA 2019</span>
+                <!-- Global Regulatory Status -->
+                <div class="glass rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-medium text-gray-900 dark:text-white">Global Regulatory Status</h3>
                     </div>
-                    <p style="font-size: 13px; color: var(--text-secondary);">
-                        One-time AAV gene therapy for SMA. Price: $2.1M. 
-                        Payer acceptance of high-cost cures, but 20-30% abandonment rate.
-                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Region</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Key Events</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Timeline</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">FDA (US)</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400">
+                                            Phase 1
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Hold lifted, VERVE-102 IND cleared</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">BLA ~2028-2030</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://www.fda.gov" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">EMA (EU)</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400">
+                                            Pre-clinical
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">No hold, more permissive initially</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">MAA ~2030</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://www.ema.europa.eu" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">MHRA (UK)</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400">
+                                            Phase 1
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">First to approve human trials</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Active sites</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Medsafe (NZ)</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400">
+                                            Phase 1
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Enabled first-in-human dosing</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Active sites</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://www.medsafe.govt.nz" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2 class="section-header">Bottom Line Assessment</h2>
-                
-                <div class="info-card" style="background: linear-gradient(135deg, #E8F2FF 0%, #F8FAFB 100%); border-left-color: var(--primary); border-left-width: 4px;">
-                    <h3>Strategic Outlook</h3>
-                    <p style="line-height: 1.8;">
-                        <strong>Near-term (2025-2027):</strong> Minimal commercial impact - still in trials<br>
-                        <strong>Medium-term (2028-2030):</strong> Potential approval for severe genetic dyslipidemia<br>
-                        <strong>Long-term (2030+):</strong> Could revolutionize CV prevention if safety proven<br><br>
-                        <strong>Probability of Success:</strong> ~40-50% for HeFH indication by 2030<br>
-                        <strong>Market Disruption:</strong> Extreme if successful, minimal if safety issues emerge<br>
-                        <strong>Strategic Value:</strong> Critical optionality for future of lipid management
+            <!-- Clinical Trials Tab -->
+            <div class="tab-content hidden" id="clinical">
+                <div class="glass rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 mb-8">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-medium text-gray-900 dark:text-white">Clinical Development Program</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Trial</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Phase</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">N</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Population</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Key Results</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Data</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Preclinical</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Pre</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~50</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Non-human primates</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">
+                                            Complete
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">89% PCSK9↓, 69% LDL↓ >2.5yr</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Heart-1<br>(NCT05398029)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">1b</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">44 planned<br>~12 dosed</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">HeFH/ASCVD</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400">
+                                            Paused
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">83% PCSK9↓, 55% LDL↓<br>Safety issues at 0.6 mg/kg</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/study/NCT05398029" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Heart-2<br>(VERVE-102)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">1b/2</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~100</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">HeFH/CAD</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400">
+                                            Starting H2 2025
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">—</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">Track →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Long-term Registry</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">4</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">All pts</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">All treated</td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400">
+                                            Ongoing
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">5-15 year follow-up planned</td>
+                                    <td class="px-6 py-4"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+                    <p class="text-gray-700 dark:text-gray-300">
+                        <span class="text-lg mr-2">📊</span>
+                        <strong>No CV Outcomes Trials Yet:</strong> Approval will rely on LDL-C as surrogate endpoint with post-marketing outcomes commitment. 
+                        Expected 50-80% lifetime MACE reduction if given early, based on genetic data.
                     </p>
+                </div>
+
+                <!-- Efficacy Results -->
+                <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">Heart-1 Interim Data (High Dose Cohort)</h3>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">83%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">PCSK9<br>Reduction</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">55%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">LDL-C Reduction<br>(Day 180)</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">46%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">LDL-C Reduction<br>(Low dose)</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-gray-600 dark:text-gray-400">45%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">ApoB<br>Reduction</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">30%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Lp(a)<br>Reduction</div>
+                        </div>
+                        <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">88%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400">Projected<br>CAD Risk↓</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                        <h4 class="text-sm font-medium text-gray-900 dark:text-white mb-3">Durability Profile</h4>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li><strong class="text-gray-900 dark:text-white">Primate Data:</strong> >2.5 years sustained effect with no rebound</li>
+                            <li><strong class="text-gray-900 dark:text-white">Human Projection:</strong> Expected lifelong effect from single infusion</li>
+                            <li><strong class="text-gray-900 dark:text-white">Editing Coverage:</strong> 50-70% hepatocytes edited at therapeutic doses</li>
+                            <li><strong class="text-gray-900 dark:text-white">Genetic Comparison:</strong> Mimics PCSK9 R46L carriers (88% lower CAD risk)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety Tab -->
+            <div class="tab-content hidden" id="safety">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700 bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20">
+                    <p class="text-gray-700 dark:text-gray-300">
+                        <span class="text-lg mr-2">⚠️</span>
+                        <strong>Critical Safety Event:</strong> Heart-1 paused April 2024 due to Grade 3 ALT elevation and thrombocytopenia at 0.6 mg/kg dose. 
+                        Led to complete redesign with VERVE-102.
+                    </p>
+                </div>
+
+                <!-- Safety Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-red-500">
+                        <div class="text-lg font-bold text-gray-900 dark:text-white">Grade 3</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">ALT Elevation<br>(Led to pause)</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-red-500">
+                        <div class="text-lg font-bold text-gray-900 dark:text-white">Low Platelets</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">Thrombocytopenia<br>(0.6 mg/kg)</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-green-500">
+                        <div class="text-lg font-bold text-gray-900 dark:text-white"><0.1%</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">Off-Target Edits<br>(WGS validated)</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-green-500">
+                        <div class="text-lg font-bold text-gray-900 dark:text-white">Minimal</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">Germline Risk<br>(No gonadal uptake)</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-amber-500">
+                        <div class="text-lg font-bold text-gray-900 dark:text-white">70%</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">Pre-existing Anti-Cas9<br>(Managed w/ steroids)</div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-amber-500">
+                        <div class="text-lg font-bold text-gray-900 dark:text-white">20-30%</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400">Infusion Reactions<br>(Mild, transient)</div>
+                    </div>
+                </div>
+
+                <!-- Long-term Monitoring -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">Long-term Monitoring Requirements</h3>
+                    <ul class="space-y-3">
+                        <li class="text-sm text-gray-600 dark:text-gray-400">
+                            <strong class="text-gray-900 dark:text-white">5-15 Year Follow-up:</strong> All patients in mandatory registry
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400">
+                            <strong class="text-gray-900 dark:text-white">Cancer Surveillance:</strong> Annual screening for hepatocellular carcinoma
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400">
+                            <strong class="text-gray-900 dark:text-white">Genomic Monitoring:</strong> Periodic WGS for emergent off-targets
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400">
+                            <strong class="text-gray-900 dark:text-white">Liver Function:</strong> Quarterly LFTs year 1, then biannual
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400">
+                            <strong class="text-gray-900 dark:text-white">Reproductive Health:</strong> Counseling on theoretical germline risks
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
+                    <p class="text-gray-700 dark:text-gray-300">
+                        <span class="text-lg mr-2">✓</span>
+                        <strong>Safety Advantages vs Other Gene Therapies:</strong> No double-strand DNA breaks (unlike CRISPR), no viral vectors, 
+                        liver-specific targeting, single nucleotide change only, precedent from healthy PCSK9 LOF humans.
+                    </p>
+                </div>
+
+                <!-- Brain Safety -->
+                <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">Brain Safety & Low Cholesterol</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        PCSK9 inhibition doesn't cross blood-brain barrier. Brain cholesterol is synthesized independently from plasma LDL.
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="text-sm text-gray-600 dark:text-gray-400">• Genetic PCSK9 knockouts show no cognitive deficits</li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400">• Meta-analyses of PCSK9 inhibitors (LDL <20 mg/dL) show no dementia risk over 5+ years</li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400">• All trials monitor neurocognition - no signals reported</li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400">• EBBINGHAUS study (evolocumab) confirmed cognitive safety</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Commercial Tab -->
+            <div class="tab-content hidden" id="commercial">
+                <div class="glass rounded-2xl p-8 mb-8 border border-gray-200 dark:border-gray-700 text-center">
+                    <div class="text-4xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-2">
+                        $1-2 Million
+                    </div>
+                    <div class="text-gray-600 dark:text-gray-400">Expected upfront pricing, justified by lifetime benefit vs ~$100K+ in chronic drugs/events over decades</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-500 mt-2">Payment models likely include annuities, outcomes-based rebates</div>
+                </div>
+
+                <!-- Market Metrics -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">~1M</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">US HeFH/ASCVD Patients</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">30-50%</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Initial Approval Rate</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-green-600 dark:text-green-400">15-20 yrs</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Break-even vs Chronic Rx</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 text-center">
+                        <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">$2-3B</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Peak Sales (Base Case)</div>
+                    </div>
+                </div>
+
+                <!-- Reimbursement Challenges -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Reimbursement Challenges</h3>
+                        <ul class="space-y-2">
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">High upfront cost:</strong> Budget impact concerns for payers
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Insurance churn:</strong> Patient may switch insurers after cure
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Irreversibility:</strong> Ethical and practical concerns
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Prior auth:</strong> Extensive documentation, step therapy failures required
+                            </li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Coverage restrictions:</strong> Initially only severe cases with multiple therapy failures
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Delivery Infrastructure</h3>
+                        <ul class="space-y-2">
+                            <li class="text-sm text-gray-600 dark:text-gray-400">• Initially at specialized centers (like CAR-T model)</li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">• Medical benefit, not pharmacy</li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">• Eventually may expand to infusion centers</li>
+                            <li class="text-sm text-gray-600 dark:text-gray-400">• Requires long-term follow-up infrastructure</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Market Scenarios Table -->
+                <div class="glass rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-medium text-gray-900 dark:text-white">Market Scenarios</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Timeframe</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Conservative</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Base Case</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Optimistic</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">2025-2027</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Clinical trials only</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Phase 2/3 progression</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Accelerated approval pathway</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">2028-2030</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Limited HoFH approval</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">HeFH approval, slow uptake</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Broad HeFH use, ASCVD trials</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">2030-2035</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Niche for severe cases</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Standard for genetic dyslipidemia</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Primary prevention consideration</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Peak Sales</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">$500M</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">$2-3B</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">$5B+</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Outlook Tab -->
+            <div class="tab-content hidden" id="future">
+                <!-- Critical Success Factors -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">Critical Success Factors</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                            <h4 class="text-sm font-medium text-gray-900 dark:text-white mb-3">What Must Go Right</h4>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• No long-term adverse effects over 5+ years</li>
+                                <li>• Truly permanent LDL reduction demonstrated</li>
+                                <li>• Consistent, scalable production achieved</li>
+                                <li>• FDA/EMA satisfied with safety profile</li>
+                                <li>• Sustainable reimbursement models developed</li>
+                                <li>• "Gene editing" fears overcome through transparency</li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 border-l-4 border-red-500">
+                            <h4 class="text-sm font-medium text-gray-900 dark:text-white mb-3">Key Risks</h4>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• Unknown long-term effects</li>
+                                <li>• Potential for delayed adverse events</li>
+                                <li>• Regulatory delays</li>
+                                <li>• Public/physician resistance to irreversible therapy</li>
+                                <li>• Competition from safer/simpler approaches</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
+                    <p class="text-gray-700 dark:text-gray-300">
+                        <span class="text-lg mr-2">✓</span>
+                        <strong>Why Lilly's Acquisition Makes Sense:</strong> Hedging across entire PCSK9 landscape, access to transformative technology, 
+                        leverage existing CV infrastructure, first-mover in gene editing for common diseases, platform potential beyond PCSK9.
+                    </p>
+                </div>
+
+                <!-- Precedents & Competition -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">Precedents & Competition</h3>
+                    
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-medium text-gray-900 dark:text-white">Casgevy (Vertex/CRISPR)</h4>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">
+                                    FDA/EMA 2023
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                First CRISPR therapy approved for sickle cell. Price: $2.2M. Ex vivo editing (not in vivo like VERVE). 
+                                Shows regulatory pathway possible, high price accepted for genetic diseases.
+                            </p>
+                            <a href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease" 
+                               target="_blank" 
+                               class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-3 inline-block">
+                                View FDA Announcement →
+                            </a>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-medium text-gray-900 dark:text-white">NTLA-2001 (Intellia)</h4>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400">
+                                    Phase 3
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                In vivo CRISPR for ATTR amyloidosis. 87% TTR reduction, no major safety issues. 
+                                Most similar precedent - shows in vivo editing feasible.
+                            </p>
+                            <a href="https://clinicaltrials.gov/search?intr=NTLA-2001" 
+                               target="_blank" 
+                               class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-3 inline-block">
+                                View Clinical Trials →
+                            </a>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="text-lg font-medium text-gray-900 dark:text-white">Zolgensma (Novartis)</h4>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">
+                                    FDA/EMA 2019
+                                </span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                One-time AAV gene therapy for SMA. Price: $2.1M. 
+                                Payer acceptance of high-cost cures, but 20-30% abandonment rate.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Line Assessment -->
+                <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">Strategic Outlook</h3>
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            <strong class="text-gray-900 dark:text-white">Near-term (2025-2027):</strong> Minimal commercial impact - still in trials
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            <strong class="text-gray-900 dark:text-white">Medium-term (2028-2030):</strong> Potential approval for severe genetic dyslipidemia
+                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            <strong class="text-gray-900 dark:text-white">Long-term (2030+):</strong> Could revolutionize CV prevention if safety proven
+                        </p>
+                        <div class="pt-4 mt-4 border-t border-indigo-300 dark:border-indigo-600">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Probability of Success:</strong> ~40-50% for HeFH indication by 2030
+                            </p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Market Disruption:</strong> Extreme if successful, minimal if safety issues emerge
+                            </p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white">Strategic Value:</strong> Critical optionality for future of lipid management
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
-        function showTab(tabName) {
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark');
+        }
+
+        function showTab(tabName, event) {
             // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
+            tabs.forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('active');
+            });
             
-            // Remove active from all nav tabs
-            const navTabs = document.querySelectorAll('.nav-tab');
-            navTabs.forEach(tab => tab.classList.remove('active'));
+            // Update button styles
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+            });
             
             // Show selected tab
+            document.getElementById(tabName).classList.remove('hidden');
             document.getElementById(tabName).classList.add('active');
             
-            // Mark nav tab as active
-            event.target.classList.add('active');
+            // Style active button
+            event.target.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+            event.target.classList.add('bg-indigo-600', 'text-white');
         }
-        
-        // Animate elements on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Animate chart bars
-                    const chartBars = entry.target.querySelectorAll('.chart-bar');
-                    chartBars.forEach((bar, index) => {
-                        const height = bar.style.height;
-                        bar.style.height = '0';
-                        setTimeout(() => {
-                            bar.style.height = height;
-                        }, index * 100);
-                    });
-                    
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        // Observe all sections
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
     </script>
 </body>
 </html>

@@ -3,1117 +3,739 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ebronucimab (AK102) - PCSK9 Monoclonal Antibody</title>
+    <title>Ebronucimab (AK102) - Comprehensive Drug Profile | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #0066CC;
-            --primary-light: #E8F2FF;
-            --success: #00A86B;
-            --warning: #F39C12;
-            --danger: #E74C3C;
-            --text-primary: #2C3E50;
-            --text-secondary: #7F8C8D;
-            --border: #E1E8ED;
-            --background: #FFFFFF;
-            --background-alt: #F8FAFB;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
-            background: var(--background-alt);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-size: 14px;
-        }
-        
-        /* Header */
-        .header {
-            background: white;
-            border-bottom: 1px solid var(--border);
-            padding: 16px 24px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--background-alt);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        
-        .back-button:hover {
-            background: var(--primary-light);
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        
-        .status-badge {
-            padding: 8px 16px;
-            background: #E6F7ED;
-            color: var(--success);
-            border: 1px solid var(--success);
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 12px;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 32px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .drug-title {
-            margin-bottom: 24px;
-        }
-        
-        .drug-name {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        
-        .drug-company {
-            font-size: 16px;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
-        
-        .drug-mechanism {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        /* Quick Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .stat-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .stat-value {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-        
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-            background: white;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-        
-        .nav-tab {
-            padding: 10px 20px;
-            background: transparent;
-            border: none;
-            border-radius: 6px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .nav-tab:hover {
-            background: var(--background-alt);
-            color: var(--text-primary);
-        }
-        
-        .nav-tab.active {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
-        
-        /* Tab Content */
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        /* Section Styles */
-        .section {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .section-header {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
-        }
-        
-        /* Info Cards */
-        .info-card {
-            background: var(--background-alt);
-            border-left: 4px solid var(--primary);
-            padding: 16px;
-            border-radius: 4px;
-            margin-bottom: 16px;
-        }
-        
-        .info-card h3 {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        
-        .info-card p,
-        .info-card ul {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        .info-card ul {
-            margin-left: 20px;
-            margin-top: 8px;
-        }
-        
-        /* Dosing Cards */
-        .dosing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin-top: 16px;
-        }
-        
-        .dosing-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.2s;
-        }
-        
-        .dosing-card:hover {
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary);
-        }
-        
-        .dosing-card.featured {
-            border: 2px solid var(--primary);
-            background: var(--primary-light);
-        }
-        
-        .dosing-frequency {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-        
-        .dosing-details {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        .dosing-details strong {
-            color: var(--text-primary);
-            display: block;
-            margin-bottom: 4px;
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .timeline-line {
-            position: absolute;
-            left: 12px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 40px;
-            margin-bottom: 24px;
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 4px;
-            top: 4px;
-            width: 18px;
-            height: 18px;
-            background: white;
-            border: 3px solid var(--primary);
-            border-radius: 50%;
-        }
-        
-        .timeline-item.complete .timeline-dot {
-            background: var(--primary);
-        }
-        
-        .timeline-content {
-            background: var(--background-alt);
-            padding: 12px 16px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-        
-        .timeline-date {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-        
-        .timeline-title {
-            font-size: 14px;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-        
-        .timeline-description {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-        
-        /* Data Tables */
-        .data-table {
-            width: 100%;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .data-table thead {
-            background: var(--background-alt);
-        }
-        
-        .data-table th {
-            padding: 12px 16px;
-            text-align: left;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--border);
-        }
-        
-        .data-table td {
-            padding: 12px 16px;
-            font-size: 13px;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .data-table tbody tr:hover {
-            background: var(--background-alt);
-        }
-        
-        .data-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-        
-        /* Efficacy Chart */
-        .efficacy-chart {
-            background: var(--background-alt);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 16px;
-        }
-        
-        .chart-container {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            height: 200px;
-            margin-top: 20px;
-        }
-        
-        .chart-bar-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-        }
-        
-        .chart-value {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        
-        .chart-bar {
-            width: 60px;
-            background: var(--primary);
-            border-radius: 4px 4px 0 0;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .chart-bar:hover {
-            opacity: 0.8;
-        }
-        
-        .chart-bar.secondary {
-            background: var(--text-secondary);
-        }
-        
-        .chart-bar.success {
-            background: var(--success);
-        }
-        
-        .chart-label {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-align: center;
-            margin-top: 8px;
-        }
-        
-        /* Safety Grid */
-        .safety-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
-        }
-        
-        .safety-item {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 12px;
-            text-align: center;
-        }
-        
-        .safety-value {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--success);
-            margin-bottom: 4px;
-        }
-        
-        .safety-label {
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-        
-        /* Alert Boxes */
-        .alert {
-            padding: 12px 16px;
-            border-radius: 6px;
-            margin: 16px 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .alert-warning {
-            background: #FFF4E6;
-            border: 1px solid var(--warning);
-            color: #856404;
-        }
-        
-        .alert-info {
-            background: var(--primary-light);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .alert-icon {
-            font-size: 16px;
-        }
-        
-        .alert-content {
-            flex: 1;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-        
-        /* Badge */
-        .badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        
-        .badge-warning {
-            background: #FFF4E6;
-            color: var(--warning);
-        }
-        
-        .badge-success {
-            background: #E6F7ED;
-            color: var(--success);
-        }
-        
-        /* Progress Bars */
-        .progress-bar {
-            background: var(--border);
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 8px 0;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            transition: width 0.5s ease;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 16px;
-            }
-            
-            .drug-name {
-                font-size: 24px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .dosing-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-tabs {
-                overflow-x: auto;
-            }
+        /* Custom animations matching Leaf Intelligence style */
+        @keyframes fadeInRow {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.95); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in-row { animation: fadeInRow 0.3s ease forwards; }
+        .animate-pulse-glow { animation: pulse 3s ease-in-out infinite; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
+        
+        /* Staggered animations */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { @apply bg-gray-100 dark:bg-gray-800 rounded; }
+        ::-webkit-scrollbar-thumb { @apply bg-gray-400 dark:bg-gray-600 rounded hover:bg-gray-500 dark:hover:bg-gray-500; }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .dark .glass {
+            background: rgba(17, 24, 39, 0.75);
         }
     </style>
 </head>
-<body>
-    
-    <header class="header">
-        <div class="header-content">
-            <a href="index.html" class="back-button">
-                ← Back to Dashboard
-            </a>
-            <div class="status-badge">NMPA APPROVED 2024</div>
+<body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+    <!-- Fixed Header - Leaf Intelligence Design -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200 dark:border-gray-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <img src="leaf.png" alt="Leaf Intelligence" class="h-12 w-12 relative z-10">
+                        <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-cyan-400 opacity-20 blur-xl animate-pulse-glow"></div>
+                    </div>
+                    <div>
+                        <div class="text-xl font-light bg-gradient-to-r from-green-600 to-cyan-600 dark:from-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
+                            Leaf Intelligence
+                        </div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 font-light">
+                            Cholesterol Therapies Analysis
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-1 bg-gray-100/50 dark:bg-gray-800/50 p-1.5 rounded-lg backdrop-blur-sm">
+                    <a href="index.html" class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Overview
+                    </a>
+                    <a href="index.html#approved" class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50">
+                        Competitors
+                    </a>
+                    <button class="px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-900 dark:text-white bg-white/50 dark:bg-gray-700/50 active">
+                        Drug Profile
+                    </button>
+                </nav>
+
+                <!-- Theme Toggle -->
+                <!-- <button onclick="toggleTheme()" class="relative w-14 h-7 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300 shadow-inner hover:shadow-md">
+                    <div class="absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white dark:bg-gray-900 shadow-lg transform transition-transform duration-300 dark:translate-x-7 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-yellow-500 dark:hidden" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+                        </svg>
+                        <svg class="w-4 h-4 text-indigo-400 hidden dark:block" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                        </svg>
+                    </div>
+                </button> -->
+            </div>
         </div>
     </header>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <div class="drug-title">
-                <h1 class="drug-name">Ebronucimab (AK102)</h1>
-                <div class="drug-company">Akeso Inc. • China</div>
-                <div class="drug-mechanism">PCSK9 Monoclonal Antibody</div>
-            </div>
+    <!-- Main Container with padding for fixed header -->
+    <div class="pt-20 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">65%</div>
-                    <div class="stat-label">Max LDL Reduction</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">Q6W</div>
-                    <div class="stat-label">Best Dosing Option</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">8-9</div>
-                    <div class="stat-label">Injections/Year (Q6W)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">China Only</div>
-                    <div class="stat-label">Current Availability</div>
+            <!-- Hero Section -->
+            <div class="glass rounded-2xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h1 class="text-4xl font-light mb-2 text-gray-900 dark:text-white">
+                            Ebronucimab <span class="text-2xl text-gray-600 dark:text-gray-400">(AK102)</span>
+                        </h1>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">
+                            PCSK9 Monoclonal Antibody • Akeso Inc. • China
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-green-500 to-emerald-500 text-white">
+                            NMPA Approved 2024
+                        </span>
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+                            🎯 Q6W Dosing
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Navigation Tabs -->
-        <div class="nav-tabs">
-            <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
-            <button class="nav-tab" onclick="showTab('clinical')">Clinical Data</button>
-            <button class="nav-tab" onclick="showTab('regulatory')">Regulatory</button>
-            <button class="nav-tab" onclick="showTab('safety')">Safety</button>
-            <button class="nav-tab" onclick="showTab('commercial')">Commercial</button>
-        </div>
+            <!-- Key Metrics Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                        65%
+                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Max LDL Reduction</div>
+                    <a href="https://clinicaltrials.gov/search?cond=Hypercholesterolemia&intr=AK102" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-2 inline-block">
+                        View Data →
+                    </a>
+                </div>
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+                        Q6W
+                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Best Dosing Option</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">8-9 injections/year</div>
+                </div>
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-2">
+                        China
+                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Current Availability</div>
+                    <a href="https://www.nmpa.gov.cn/english/" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-2 inline-block">
+                        NMPA Database →
+                    </a>
+                </div>
+                <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                    <div class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                        ¥8-12K
+                    </div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Annual Cost</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">~$1,100-1,650 USD</div>
+                </div>
+            </div>
 
-        <!-- Overview Tab -->
-        <div id="overview" class="tab-content active">
-            <div class="section">
-                <h2 class="section-header">Key Information</h2>
-                
-                <div class="info-card">
-                    <h3>Mechanism of Action</h3>
-                    <p>Fully human IgG1 monoclonal antibody that binds circulating PCSK9, preventing LDL receptor degradation. This leads to:</p>
-                    <ul>
-                        <li>Increased hepatic LDL receptor expression</li>
-                        <li>Enhanced LDL-C clearance from circulation</li>
-                        <li>50-70% LDL-C reduction within 1-2 weeks</li>
-                        <li>Minimal impact on triglycerides or HDL-C</li>
+            <!-- Tab Navigation -->
+            <div class="glass rounded-2xl mb-8 border border-gray-200 dark:border-gray-700">
+                <div class="flex flex-wrap gap-1 p-2">
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-indigo-600 text-white" onclick="showTab('overview', event)">
+                        Overview
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('clinical', event)">
+                        Clinical Data
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('regulatory', event)">
+                        Regulatory
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('safety', event)">
+                        Safety
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg text-sm font-medium transition-all bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" onclick="showTab('commercial', event)">
+                        Commercial
+                    </button>
+                </div>
+            </div>
+
+            <!-- Overview Tab -->
+            <div class="tab-content active" id="overview">
+                <!-- Mechanism of Action -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">Mechanism of Action</h3>
+                    <div class="prose prose-sm max-w-none text-gray-600 dark:text-gray-400">
+                        <p class="mb-4">
+                            Fully human IgG1 monoclonal antibody that binds circulating PCSK9, preventing LDL receptor degradation. This leads to:
+                        </p>
+                        <ul class="space-y-2 ml-4">
+                            <li>• Increased hepatic LDL receptor expression</li>
+                            <li>• Enhanced LDL-C clearance from circulation</li>
+                            <li>• 50-70% LDL-C reduction within 1-2 weeks</li>
+                            <li>• Minimal impact on triglycerides or HDL-C</li>
+                        </ul>
+                    </div>
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/?term=PCSK9+monoclonal+antibody" target="_blank" class="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-4 inline-block">
+                        View PubMed Literature →
+                    </a>
+                </div>
+
+                <!-- Target Population -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">Target Population</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">
+                        Adults with primary hypercholesterolemia (including HeFH) and mixed dyslipidemia who:
+                    </p>
+                    <ul class="space-y-2 ml-4 text-gray-600 dark:text-gray-400">
+                        <li>• Are on maximally tolerated statin therapy</li>
+                        <li>• Are statin-intolerant</li>
+                        <li>• Require additional LDL-C reduction beyond current therapy</li>
                     </ul>
                 </div>
 
-                <div class="info-card">
-                    <h3>Target Population</h3>
-                    <p>Adults with primary hypercholesterolemia (including HeFH) and mixed dyslipidemia who:</p>
-                    <ul>
-                        <li>Are on maximally tolerated statin therapy</li>
-                        <li>Are statin-intolerant</li>
-                        <li>Require additional LDL-C reduction beyond current therapy</li>
-                    </ul>
-                </div>
-
-                <h3 style="margin-top: 24px; margin-bottom: 16px; font-size: 16px; color: var(--text-primary);">Dosing Regimens</h3>
-                <div class="dosing-grid">
-                    <div class="dosing-card">
-                        <div class="dosing-frequency">Q2W</div>
-                        <div class="dosing-details">
-                            <strong>150 mg</strong>
-                            Every 2 weeks<br>
-                            26 injections/year<br>
-                            65% LDL reduction
+                <!-- Dosing Regimens -->
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">Dosing Regimens</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">Q2W</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white block mb-1">150 mg</strong>
+                                Every 2 weeks<br>
+                                26 injections/year<br>
+                                <span class="text-green-600 dark:text-green-400">65% LDL reduction</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="dosing-card">
-                        <div class="dosing-frequency">Q4W</div>
-                        <div class="dosing-details">
-                            <strong>300-450 mg</strong>
-                            Monthly<br>
-                            12 injections/year<br>
-                            66% LDL reduction
+                        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-shadow">
+                            <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">Q4W</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white block mb-1">300-450 mg</strong>
+                                Monthly<br>
+                                12 injections/year<br>
+                                <span class="text-green-600 dark:text-green-400">66% LDL reduction</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="dosing-card featured">
-                        <div class="dosing-frequency">Q6W ⭐</div>
-                        <div class="dosing-details">
-                            <strong>420-450 mg</strong>
-                            Every 6 weeks<br>
-                            8-9 injections/year<br>
-                            60% LDL reduction<br>
-                            <em style="color: var(--primary);">Key differentiator</em>
+                        <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border-2 border-green-500 dark:border-green-400 shadow-lg">
+                            <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">Q6W ⭐</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">
+                                <strong class="text-gray-900 dark:text-white block mb-1">420-450 mg</strong>
+                                Every 6 weeks<br>
+                                8-9 injections/year<br>
+                                <span class="text-green-600 dark:text-green-400">60% LDL reduction</span><br>
+                                <em class="text-indigo-600 dark:text-indigo-400 mt-1 inline-block">Key differentiator</em>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="alert alert-info" style="margin-top: 24px;">
-                    <span class="alert-icon">💡</span>
-                    <div class="alert-content">
+                <!-- Competitive Positioning Alert -->
+                <div class="glass rounded-xl p-4 border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        <span class="text-lg mr-2">💡</span>
                         <strong>Competitive Positioning:</strong> Q6W dosing offers better convenience than biweekly mAbs (26 injections/year) but still requires more injections than inclisiran (2/year). Success depends on aggressive pricing and securing reimbursement through China's NRDL.
-                    </div>
+                    </p>
+                    <a href="http://www.nhsa.gov.cn/col/col14649/index.html" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-2 inline-block">
+                        View NRDL Database →
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <!-- Clinical Data Tab -->
-        <div id="clinical" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">Clinical Trials Overview</h2>
-                
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Trial</th>
-                            <th>Phase</th>
-                            <th>N</th>
-                            <th>Population</th>
-                            <th>Duration</th>
-                            <th>Primary Endpoint</th>
-                            <th>Key Results</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Dose Escalation</strong></td>
-                            <td>I</td>
-                            <td>~100</td>
-                            <td>Healthy volunteers</td>
-                            <td>8 weeks</td>
-                            <td>Safety/PK/PD</td>
-                            <td>LDL ↓70% (single dose)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AK102-301</strong></td>
-                            <td>III</td>
-                            <td>480</td>
-                            <td>Primary HC/Mixed</td>
-                            <td>52 weeks</td>
-                            <td>% LDL change at wk 12</td>
-                            <td>65-66% reduction</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AK102-302</strong></td>
-                            <td>III</td>
-                            <td>264</td>
-                            <td>HeFH</td>
-                            <td>12 weeks</td>
-                            <td>% LDL change at wk 12</td>
-                            <td>60-65% reduction</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AK102-303</strong></td>
-                            <td>III</td>
-                            <td>360</td>
-                            <td>Primary HC (Q6W)</td>
-                            <td>12 weeks</td>
-                            <td>% LDL change at wk 12</td>
-                            <td>60% reduction (Q6W)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AK102-304</strong></td>
-                            <td>III</td>
-                            <td>240</td>
-                            <td>High-risk HC</td>
-                            <td>12 weeks</td>
-                            <td>% LDL reduction</td>
-                            <td>~65% reduction</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Clinical Data Tab -->
+            <div class="tab-content hidden" id="clinical">
+                <div class="glass rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 mb-8">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <h3 class="text-xl font-medium text-gray-900 dark:text-white">Clinical Trials Overview</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Trial</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Phase</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">N</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Population</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Duration</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Primary Endpoint</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Key Results</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Data</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">Dose Escalation</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400">Phase I</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~100</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Healthy volunteers</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">8 weeks</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Safety/PK/PD</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">LDL ↓70% (single dose)</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://clinicaltrials.gov/search?cond=Hypercholesterolemia&intr=AK102" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">View →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">AK102-301</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase III</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">480</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Primary HC/Mixed</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">52 weeks</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL change at wk 12</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">65-66% reduction</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://www.chictr.org.cn/searchproj.html?title=AK102&officialname=&subjectid=&secondaryid=&applier=&studyleader=&ethicalcommitteesanction=&sponsor=&studyclassification=&studydesign=&studydate=&studyexecutor=&studystatus=&country=&province=&city=&insname=&hospitalname=&departmentname=&hospitallevel=&measure=&intercode=&sourceofspends=&createyear=&isuploadrf=&whetherpublic=&btngo=btn&page=1" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">ChiCTR →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">AK102-302</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase III</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">264</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">HeFH</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">12 weeks</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL change at wk 12</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">60-65% reduction</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://www.chictr.org.cn/" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">ChiCTR →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">AK102-303</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase III</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">360</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Primary HC (Q6W)</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">12 weeks</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL change at wk 12</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">60% reduction (Q6W)</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://www.chictr.org.cn/" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">ChiCTR →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">AK102-304</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Phase III</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">240</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">High-risk HC</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">12 weeks</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">% LDL reduction</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">~65% reduction</td>
+                                    <td class="px-6 py-4">
+                                        <a href="https://www.chictr.org.cn/" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 text-xs">ChiCTR →</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-                <div class="alert alert-warning" style="margin-top: 20px;">
-                    <span class="alert-icon">⚠️</span>
-                    <div class="alert-content">
+                <div class="glass rounded-xl p-4 border-l-4 border-amber-500 bg-amber-50 dark:bg-amber-900/20 mb-8">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        <span class="text-lg mr-2">⚠️</span>
                         <strong>No CV Outcomes Data:</strong> All trials used LDL-C as surrogate endpoint. No MACE reduction studies completed or ongoing. Approval based on biomarker efficacy similar to initial PCSK9 mAb approvals.
+                    </p>
+                </div>
+
+                <!-- Efficacy Profile -->
+                <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">Efficacy Profile</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">65%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Q2W<br>150mg</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">66%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Q4W<br>450mg</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">60%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Q6W<br>420mg</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">50%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">ApoB<br>Reduction</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">80-90%</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Achieved<br><70 mg/dL</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-3">Key Efficacy Points</h4>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• Consistent 60-66% LDL reduction across all dosing regimens</li>
+                            <li>• 80-90% of patients achieved guideline LDL goals (<70 mg/dL)</li>
+                            <li>• Sustained efficacy over 52 weeks in long-term extension</li>
+                            <li>• Q6W dosing maintains smooth LDL control without trough spikes</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2 class="section-header">Efficacy Profile</h2>
-                
-                <div class="efficacy-chart">
-                    <h3 style="font-size: 14px; margin-bottom: 16px;">LDL-C Reduction by Dosing Regimen</h3>
-                    <div class="chart-container">
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">65%</div>
-                            <div class="chart-bar" style="height: 65%;"></div>
-                            <div class="chart-label">Q2W<br>150mg</div>
+            <!-- Regulatory Tab -->
+            <div class="tab-content hidden" id="regulatory">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">Regulatory Timeline</h3>
+                    
+                    <div class="relative pl-8">
+                        <!-- Timeline line -->
+                        <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-indigo-300 dark:via-indigo-600 to-transparent"></div>
+                        
+                        <!-- Timeline items -->
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">NOVEMBER 2018</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Phase I Completion</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Safety and PK/PD established, up to 70% LDL reduction with single dose
+                                </div>
+                            </div>
                         </div>
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">66%</div>
-                            <div class="chart-bar" style="height: 66%;"></div>
-                            <div class="chart-label">Q4W<br>450mg</div>
+
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">DECEMBER 2021</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Phase III Enrollment Complete</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    All four pivotal trials fully enrolled
+                                </div>
+                            </div>
                         </div>
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">60%</div>
-                            <div class="chart-bar" style="height: 60%;"></div>
-                            <div class="chart-label">Q6W<br>420mg</div>
+
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">MAY 2023</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Phase III Results Announced</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    60-66% LDL reduction demonstrated across regimens
+                                </div>
+                            </div>
                         </div>
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">50%</div>
-                            <div class="chart-bar secondary" style="height: 50%;"></div>
-                            <div class="chart-label">ApoB<br>Reduction</div>
+
+                        <div class="relative mb-8">
+                            <div class="absolute -left-5 w-4 h-4 bg-indigo-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">JUNE 2, 2023</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">NDA Accepted by NMPA</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Application for hypercholesterolemia accepted for review
+                                </div>
+                            </div>
                         </div>
-                        <div class="chart-bar-wrapper">
-                            <div class="chart-value">80-90%</div>
-                            <div class="chart-bar success" style="height: 85%;"></div>
-                            <div class="chart-label">Achieved<br>&lt;70 mg/dL</div>
+
+                        <div class="relative">
+                            <div class="absolute -left-5 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                            <div class="ml-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg shadow-md">
+                                <div class="text-xs font-medium text-green-600 dark:text-green-400 mb-1">SEPTEMBER 30, 2024</div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">✅ APPROVAL GRANTED</div>
+                                <div class="text-xs text-gray-600 dark:text-gray-400">
+                                    Approved based on four Phase III trials. Trade name: 伊喜宁 (Yixining)
+                                </div>
+                                <a href="https://www.nmpa.gov.cn/english/" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 mt-2 inline-block">
+                                    View NMPA Announcement →
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="info-card" style="margin-top: 20px;">
-                    <h3>Key Efficacy Points</h3>
-                    <ul>
-                        <li>Consistent 60-66% LDL reduction across all dosing regimens</li>
-                        <li>80-90% of patients achieved guideline LDL goals (&lt;70 mg/dL)</li>
-                        <li>Sustained efficacy over 52 weeks in long-term extension</li>
-                        <li>Q6W dosing maintains smooth LDL control without trough spikes</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Regulatory Tab -->
-        <div id="regulatory" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">Regulatory Timeline</h2>
-                
-                <div class="timeline">
-                    <div class="timeline-line"></div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">November 2018</div>
-                            <div class="timeline-title">Phase I Completion</div>
-                            <div class="timeline-description">Safety and PK/PD established, up to 70% LDL reduction with single dose</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">December 2021</div>
-                            <div class="timeline-title">Phase III Enrollment Complete</div>
-                            <div class="timeline-description">All four pivotal trials fully enrolled</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">May 2023</div>
-                            <div class="timeline-title">Phase III Results Announced</div>
-                            <div class="timeline-description">60-66% LDL reduction demonstrated across regimens</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">June 2, 2023</div>
-                            <div class="timeline-title">NDA Accepted by NMPA</div>
-                            <div class="timeline-description">Application for hypercholesterolemia accepted for review</div>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item complete">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">September 30, 2024</div>
-                            <div class="timeline-title"><strong>APPROVAL GRANTED</strong></div>
-                            <div class="timeline-description">Approved based on four Phase III trials. Trade name: 伊喜宁 (Yixining)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="alert alert-warning">
-                    <span class="alert-icon">⚠️</span>
-                    <div class="alert-content">
+                <div class="glass rounded-xl p-4 border-l-4 border-amber-500 bg-amber-50 dark:bg-amber-900/20 mb-8">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        <span class="text-lg mr-2">⚠️</span>
                         <strong>International Status:</strong> No FDA or EMA filings as of 2025. Global expansion would require bridging studies in diverse populations and GMP inspections of Chinese manufacturing sites. Potential Western partnership could accelerate international development.
+                    </p>
+                </div>
+
+                <!-- Regulatory Comparison Table -->
+                <div class="glass rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Region</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Filing Date</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Approval Date</th>
+                                    <th class="px-6 py-4 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">China (NMPA)</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">Approved</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">June 2023</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Sept 2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">15-month review, no issues</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">United States (FDA)</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400">Not Filed</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">—</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">—</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Would need bridging studies</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Europe (EMA)</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400">Not Filed</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">—</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">—</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">Potential Menarini partnership</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Japan (PMDA)</td>
+                                    <td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400">Not Filed</span></td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">—</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">—</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">No current plans</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2 class="section-header">Regulatory Comparison</h2>
-                
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Region</th>
-                            <th>Status</th>
-                            <th>Filing Date</th>
-                            <th>Approval Date</th>
-                            <th>Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>China (NMPA)</strong></td>
-                            <td><span class="badge badge-success">Approved</span></td>
-                            <td>June 2023</td>
-                            <td>Sept 2024</td>
-                            <td>15-month review, no issues</td>
-                        </tr>
-                        <tr>
-                            <td><strong>United States (FDA)</strong></td>
-                            <td><span class="badge badge-warning">Not Filed</span></td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>Would need bridging studies</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Europe (EMA)</strong></td>
-                            <td><span class="badge badge-warning">Not Filed</span></td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>Potential Menarini partnership</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Japan (PMDA)</strong></td>
-                            <td><span class="badge badge-warning">Not Filed</span></td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>No current plans</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Safety Tab -->
-        <div id="safety" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">Safety Profile</h2>
-                
-                <p style="margin-bottom: 20px; font-size: 14px;">Cumulative exposure: ~2,000 patient-years by 2025. No black-box warnings.</p>
-                
-                <div class="safety-grid">
-                    <div class="safety-item">
-                        <div class="safety-value">70-80%</div>
-                        <div class="safety-label">Overall AEs (similar to placebo)</div>
-                    </div>
-                    <div class="safety-item">
-                        <div class="safety-value">5-10%</div>
-                        <div class="safety-label">Serious AEs</div>
-                    </div>
-                    <div class="safety-item">
-                        <div class="safety-value">&lt;2%</div>
-                        <div class="safety-label">Discontinuation due to AEs</div>
-                    </div>
-                    <div class="safety-item">
-                        <div class="safety-value">5-10%</div>
-                        <div class="safety-label">Injection site reactions</div>
-                    </div>
-                    <div class="safety-item">
-                        <div class="safety-value">8-12%</div>
-                        <div class="safety-label">Nasopharyngitis</div>
-                    </div>
-                    <div class="safety-item">
-                        <div class="safety-value">1-3%</div>
-                        <div class="safety-label">Anti-drug antibodies</div>
+            <!-- Safety Tab -->
+            <div class="tab-content hidden" id="safety">
+                <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-4">Safety Profile</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">
+                        Cumulative exposure: ~2,000 patient-years by 2025. No black-box warnings.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center border border-gray-200 dark:border-gray-600">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">70-80%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Overall AEs (similar to placebo)</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center border border-gray-200 dark:border-gray-600">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">5-10%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Serious AEs</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center border border-gray-200 dark:border-gray-600">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400"><2%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Discontinuation due to AEs</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center border border-gray-200 dark:border-gray-600">
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">5-10%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Injection site reactions</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center border border-gray-200 dark:border-gray-600">
+                            <div class="text-2xl font-bold text-amber-600 dark:text-amber-400">8-12%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Nasopharyngitis</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 text-center border border-gray-200 dark:border-gray-600">
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400">1-3%</div>
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mt-1">Anti-drug antibodies</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="info-card" style="margin-top: 24px;">
-                    <h3>Neurocognitive Safety</h3>
-                    <p>No signals in trials despite 20-30% achieving very low LDL (&lt;25 mg/dL). Memory impairment and confusion &lt;1%, similar to placebo. Consistent with PCSK9 class data showing no cognitive decline even at LDL &lt;15 mg/dL over 5+ years.</p>
-                </div>
-
-                <div class="info-card">
-                    <h3>Immunogenicity</h3>
-                    <p>As a fully human monoclonal antibody, immunogenic potential is low. Anti-drug antibodies detected in 1-3% of patients with no impact on efficacy or safety. No neutralizing antibodies reported.</p>
-                </div>
-
-                <div class="info-card">
-                    <h3>Special Populations</h3>
-                    <ul>
-                        <li><strong>Elderly:</strong> No dose adjustment needed, similar safety profile</li>
-                        <li><strong>Renal impairment:</strong> No dose adjustment (mAbs not renally cleared)</li>
-                        <li><strong>Hepatic impairment:</strong> Limited data, use with caution</li>
-                        <li><strong>Pregnancy:</strong> Category B equivalent (animal studies negative)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Commercial Tab -->
-        <div id="commercial" class="tab-content">
-            <div class="section">
-                <h2 class="section-header">Market Position</h2>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value">¥8-12K</div>
-                        <div class="stat-label">Expected Annual Cost</div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-4">Neurocognitive Safety</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            No signals in trials despite 20-30% achieving very low LDL (<25 mg/dL). Memory impairment and confusion <1%, similar to placebo. Consistent with PCSK9 class data showing no cognitive decline even at LDL <15 mg/dL over 5+ years.
+                        </p>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/?term=PCSK9+cognitive+safety" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-2 inline-block">
+                            View Safety Literature →
+                        </a>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value">30-50%</div>
-                        <div class="stat-label">Below Import Price</div>
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-4">Immunogenicity</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            As a fully human monoclonal antibody, immunogenic potential is low. Anti-drug antibodies detected in 1-3% of patients with no impact on efficacy or safety. No neutralizing antibodies reported.
+                        </p>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value">Pending</div>
-                        <div class="stat-label">NRDL Status</div>
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-4">Special Populations</h4>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li><strong class="text-gray-900 dark:text-white">Elderly:</strong> No dose adjustment needed, similar safety profile</li>
+                            <li><strong class="text-gray-900 dark:text-white">Renal impairment:</strong> No dose adjustment (mAbs not renally cleared)</li>
+                            <li><strong class="text-gray-900 dark:text-white">Hepatic impairment:</strong> Limited data, use with caution</li>
+                            <li><strong class="text-gray-900 dark:text-white">Pregnancy:</strong> Category B equivalent (animal studies negative)</li>
+                        </ul>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value">10-20%</div>
-                        <div class="stat-label">Est. First Year Uptake</div>
-                    </div>
-                </div>
-
-                <div class="info-card" style="margin-top: 24px;">
-                    <h3>Pricing Strategy</h3>
-                    <p>Expected ¥8,000-12,000/year (approximately $1,100-1,650 USD), positioning 30-50% below imported PCSK9 mAbs like Repatha. Final pricing pending NRDL negotiations.</p>
-                </div>
-
-                <div class="info-card">
-                    <h3>Reimbursement Outlook</h3>
-                    <p>Not yet on National Reimbursement Drug List (NRDL). Inclusion in 2025-2026 cycles could provide 70-80% coverage, dramatically improving access. Government CV disease initiatives favor domestic products.</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 10%;"></div>
-                    </div>
-                    <small style="color: var(--text-secondary);">Current reimbursement coverage: ~10%</small>
-                </div>
-
-                <div class="info-card">
-                    <h3>Competitive Advantages</h3>
-                    <ul>
-                        <li>Q6W dosing offers improved convenience (8-9 injections/year)</li>
-                        <li>Domestic production avoids import costs and supply chain issues</li>
-                        <li>Government "Healthy China 2030" initiative supports local innovation</li>
-                        <li>First domestic PCSK9 mAb in large Chinese market</li>
-                    </ul>
-                </div>
-
-                <div class="info-card">
-                    <h3>Market Challenges</h3>
-                    <ul>
-                        <li>Inclisiran entering China with 2x/year dosing advantage</li>
-                        <li>Oral PCSK9 inhibitors coming by 2026-2027</li>
-                        <li>No CV outcomes data vs proven benefit for Repatha/Praluent</li>
-                        <li>Limited global expansion potential without partner</li>
-                    </ul>
                 </div>
             </div>
 
-            <div class="section">
-                <h2 class="section-header">Future Outlook</h2>
-                
-                <div class="info-card">
-                    <h3>Near-term (2025-2027)</h3>
-                    <ul>
-                        <li>Focus on NRDL inclusion for broader reimbursement</li>
-                        <li>Real-world evidence collection in Chinese population</li>
-                        <li>Potential partnership discussions for global development</li>
-                        <li>Competition from inclisiran China launch</li>
-                    </ul>
+            <!-- Commercial Tab -->
+            <div class="tab-content hidden" id="commercial">
+                <!-- Market Position Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                            ¥8-12K
+                        </div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Expected Annual Cost</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">~$1,100-1,650 USD</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
+                            30-50%
+                        </div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Below Import Price</div>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-2">
+                            Pending
+                        </div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">NRDL Status</div>
+                        <a href="http://www.nhsa.gov.cn/col/col14649/index.html" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-2 inline-block">
+                            Check Status →
+                        </a>
+                    </div>
+                    <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+                        <div class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                            10-20%
+                        </div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Est. First Year Uptake</div>
+                    </div>
                 </div>
 
-                <div class="info-card">
-                    <h3>Long-term (2028-2030)</h3>
-                    <ul>
-                        <li>Biosimilar competition from Repatha/Praluent</li>
-                        <li>Oral PCSK9 inhibitors may dominate new prescriptions</li>
-                        <li>May become niche option for specific populations</li>
-                        <li>Potential EMA/FDA filing if partnered with Western company</li>
-                    </ul>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-4">Pricing Strategy</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Expected ¥8,000-12,000/year (approximately $1,100-1,650 USD), positioning 30-50% below imported PCSK9 mAbs like Repatha. Final pricing pending NRDL negotiations.
+                        </p>
+                        <div class="mt-4">
+                            <div class="text-xs text-gray-600 dark:text-gray-400 mb-1">Current reimbursement coverage:</div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full" style="width: 10%"></div>
+                            </div>
+                            <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">~10%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-4">Reimbursement Outlook</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            Not yet on National Reimbursement Drug List (NRDL). Inclusion in 2025-2026 cycles could provide 70-80% coverage, dramatically improving access. Government CV disease initiatives favor domestic products.
+                        </p>
+                        <a href="http://www.nhsa.gov.cn/" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-2 inline-block">
+                            View NHSA Updates →
+                        </a>
+                    </div>
                 </div>
 
-                <div class="alert alert-info" style="margin-top: 24px;">
-                    <span class="alert-icon">🎯</span>
-                    <div class="alert-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-4">Competitive Advantages</h4>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• Q6W dosing offers improved convenience (8-9 injections/year)</li>
+                            <li>• Domestic production avoids import costs and supply chain issues</li>
+                            <li>• Government "Healthy China 2030" initiative supports local innovation</li>
+                            <li>• First domestic PCSK9 mAb in large Chinese market</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+                        <h4 class="font-medium text-gray-900 dark:text-white mb-4">Market Challenges</h4>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li>• Inclisiran entering China with 2x/year dosing advantage</li>
+                            <li>• Oral PCSK9 inhibitors coming by 2026-2027</li>
+                            <li>• No CV outcomes data vs proven benefit for Repatha/Praluent</li>
+                            <li>• Limited global expansion potential without partner</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Future Outlook -->
+                <div class="glass rounded-2xl p-6 mt-8 border border-gray-200 dark:border-gray-700">
+                    <h3 class="text-xl font-medium text-gray-900 dark:text-white mb-6">Future Outlook</h3>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                            <h4 class="font-medium text-gray-900 dark:text-white mb-3">Near-term (2025-2027)</h4>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• Focus on NRDL inclusion for broader reimbursement</li>
+                                <li>• Real-world evidence collection in Chinese population</li>
+                                <li>• Potential partnership discussions for global development</li>
+                                <li>• Competition from inclisiran China launch</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                            <h4 class="font-medium text-gray-900 dark:text-white mb-3">Long-term (2028-2030)</h4>
+                            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <li>• Biosimilar competition from Repatha/Praluent</li>
+                                <li>• Oral PCSK9 inhibitors may dominate new prescriptions</li>
+                                <li>• May become niche option for specific populations</li>
+                                <li>• Potential EMA/FDA filing if partnered with Western company</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass rounded-xl p-4 border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20 mt-8">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        <span class="text-lg mr-2">🎯</span>
                         <strong>Strategic Summary:</strong> Ebronucimab's success depends on aggressive pricing, securing NRDL inclusion, and leveraging Q6W dosing convenience. Without CV outcomes data or global presence, it faces challenges from inclisiran's superior dosing and upcoming oral alternatives. Best positioned as China's domestic champion in the near term.
-                    </div>
+                    </p>
+                    <a href="http://www.akesomed.com/en/index.php" target="_blank" class="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 mt-2 inline-block">
+                        Visit Akeso Website →
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
-        function showTab(tabName) {
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.body.classList.add('dark');
+        }
+
+        function showTab(tabName, event) {
             // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
+            tabs.forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('active');
+            });
             
-            // Remove active from all nav tabs
-            const navTabs = document.querySelectorAll('.nav-tab');
-            navTabs.forEach(tab => tab.classList.remove('active'));
+            // Update button styles
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+            });
             
             // Show selected tab
+            document.getElementById(tabName).classList.remove('hidden');
             document.getElementById(tabName).classList.add('active');
             
-            // Mark nav tab as active
-            event.target.classList.add('active');
+            // Style active button
+            event.target.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+            event.target.classList.add('bg-indigo-600', 'text-white');
         }
-        
-        // Animate progress bars and charts on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Animate progress bars
-                    const progressFills = entry.target.querySelectorAll('.progress-fill');
-                    progressFills.forEach(fill => {
-                        const width = fill.style.width;
-                        fill.style.width = '0';
-                        setTimeout(() => {
-                            fill.style.width = width;
-                        }, 100);
-                    });
-                    
-                    // Animate chart bars
-                    const chartBars = entry.target.querySelectorAll('.chart-bar');
-                    chartBars.forEach((bar, index) => {
-                        const height = bar.style.height;
-                        bar.style.height = '0';
-                        setTimeout(() => {
-                            bar.style.height = height;
-                        }, index * 100);
-                    });
-                    
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        // Observe all sections
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
     </script>
 </body>
 </html>
