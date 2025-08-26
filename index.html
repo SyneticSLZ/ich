@@ -81,6 +81,10 @@
                          <button class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50" onclick="showTab('ema')">
                         EMA vs FDA
                     </button>
+                    </button>
+                         <button class="nav-tab px-5 py-2 rounded-md text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-gray-700/50" onclick="showTab('compliance')">
+                        Compliance
+                    </button>
                 </nav>
 
                 <!-- Theme Toggle -->
@@ -780,29 +784,7 @@
             </div>
         </div>
 
-        <!-- Key Metrics Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8">
-            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                <div class="text-2xl font-light text-indigo-600 dark:text-indigo-400 mb-1">12</div>
-                <div class="text-xs font-medium text-gray-900 dark:text-white">Months Average EMA Lead</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">For inclisiran approval</div>
-            </div>
-            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                <div class="text-2xl font-light text-indigo-600 dark:text-indigo-400 mb-1">3</div>
-                <div class="text-xs font-medium text-gray-900 dark:text-white">FDA Manufacturing CRLs</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">CMC-related delays</div>
-            </div>
-            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                <div class="text-2xl font-light text-indigo-600 dark:text-indigo-400 mb-1">2-4</div>
-                <div class="text-xs font-medium text-gray-900 dark:text-white">Years to CV Label</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Post-approval for both</div>
-            </div>
-            <div class="glass rounded-xl p-4 border border-gray-200 dark:border-gray-700">
-                <div class="text-2xl font-light text-indigo-600 dark:text-indigo-400 mb-1">6mo vs 5yr</div>
-                <div class="text-xs font-medium text-gray-900 dark:text-white">Pediatric Age Gap</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Evinacumab: EMA vs FDA</div>
-            </div>
-        </div>
+  
 
         <!-- Drug-by-Drug Comparisons -->
         <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
@@ -1053,7 +1035,325 @@
         </div>
     </div>
 </div>
+<div class="tab-content hidden" id="compliance">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Hero Section -->
+        <div class="glass rounded-2xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
+            <h1 class="text-3xl font-light mb-2 text-gray-900 dark:text-white">
+                Compliance History & Regulatory Analysis
+            </h1>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+                Minimal regulatory friction, mostly CMC-related issues
+            </p>
+        </div>
 
+        <!-- Executive Summary -->
+        <div class="glass rounded-2xl p-8 mb-8 border border-gray-200 dark:border-gray-700">
+            <h2 class="flex items-center gap-2 mb-6 text-xl font-light text-gray-900 dark:text-white">
+                <span>🎯</span> Compliance Overview
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="mb-4 text-lg font-light text-gray-800 dark:text-gray-200">Key Compliance Patterns</h3>
+                    <ul class="space-y-3">
+                        <li class="text-sm text-gray-600 dark:text-gray-400 animate-slide-in">
+                            <strong class="text-gray-900 dark:text-white">Manufacturing dominates delays</strong> - 3 holds/CRLs all CMC-related, not clinical
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400 animate-slide-in stagger-1">
+                            <strong class="text-gray-900 dark:text-white">No OPDP enforcement</strong> - Zero warning letters for PCSK9 class to date
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400 animate-slide-in stagger-2">
+                            <strong class="text-gray-900 dark:text-white">COVID exposed vulnerabilities</strong> - Third-party facility access became critical
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400 animate-slide-in stagger-3">
+                            <strong class="text-gray-900 dark:text-white">Novel modalities scrutinized</strong> - Gene editing faced 11-month hold
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mb-4 text-lg font-light text-gray-800 dark:text-gray-200">Regulatory Success Factors</h3>
+                    <ul class="space-y-3">
+                        <li class="text-sm text-gray-600 dark:text-gray-400 animate-slide-in stagger-4">
+                            <strong class="text-gray-900 dark:text-white">Clean safety profiles</strong> - No clinical safety-driven CRLs
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400 animate-slide-in stagger-5">
+                            <strong class="text-gray-900 dark:text-white">Smooth label expansions</strong> - CV outcomes added without friction
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400 animate-slide-in" style="animation-delay: 0.6s;">
+                            <strong class="text-gray-900 dark:text-white">8+ years post-market success</strong> - Repatha/Praluent proven track records
+                        </li>
+                        <li class="text-sm text-gray-600 dark:text-gray-400 animate-slide-in" style="animation-delay: 0.7s;">
+                            <strong class="text-gray-900 dark:text-white">Established tech advantage</strong> - mAbs and small molecules face less scrutiny
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-lg border-l-4 border-indigo-500">
+                <p class="text-sm text-gray-700 dark:text-gray-300">
+                    <span class="text-lg mr-2">💡</span>
+                    <strong>Key Insight:</strong> The cholesterol therapy space shows remarkably clean compliance history with regulatory issues limited to manufacturing/CMC rather than safety or efficacy. Third-party manufacturing readiness and novel modality safety data are the primary regulatory risk factors.
+                </p>
+            </div>
+        </div>
+
+        <!-- Compliance Timeline -->
+        <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+            <h3 class="mb-6 text-xl font-light text-gray-900 dark:text-white">Regulatory Timeline</h3>
+            
+            <div class="relative pl-8">
+                <!-- Timeline line -->
+                <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-indigo-300 dark:via-indigo-600 to-transparent"></div>
+                
+                <!-- Timeline items -->
+                <div class="relative mb-8">
+                    <div class="absolute -left-5 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                    <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">DECEMBER 2020</div>
+                        <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Inclisiran Complete Response Letter</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 space-y-1">
+                            <p><strong class="text-gray-900 dark:text-white">Issue:</strong> Third-party manufacturing facility inspection</p>
+                            <p><strong class="text-gray-900 dark:text-white">Context:</strong> COVID-19 restricted FDA access</p>
+                            <p><strong class="text-gray-900 dark:text-white">Important:</strong> No clinical/safety/efficacy concerns</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-8">
+                    <div class="absolute -left-5 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                    <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">DECEMBER 21, 2021</div>
+                        <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">Inclisiran CRL Resolution</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 space-y-1">
+                            <p><strong class="text-gray-900 dark:text-white">Resolution:</strong> Facility inspection completed</p>
+                            <p><strong class="text-gray-900 dark:text-white">Outcome:</strong> Full FDA approval granted</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mb-8">
+                    <div class="absolute -left-5 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                    <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">NOVEMBER 2022</div>
+                        <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">VERVE-101 Clinical Hold</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 space-y-1">
+                            <p><strong class="text-gray-900 dark:text-white">Product:</strong> PCSK9 gene editor</p>
+                            <p><strong class="text-gray-900 dark:text-white">Reason:</strong> First-in-human safety review</p>
+                            <p><strong class="text-gray-900 dark:text-white">Requirements:</strong> Additional safety data</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-5 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-900"></div>
+                    <div class="ml-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                        <div class="text-xs font-medium text-indigo-600 dark:text-indigo-400 mb-1">OCTOBER 2023</div>
+                        <div class="text-sm font-medium text-gray-900 dark:text-white mb-2">VERVE-101 Hold Lifted</div>
+                        <div class="text-xs text-gray-600 dark:text-gray-400 space-y-1">
+                            <p><strong class="text-gray-900 dark:text-white">Resolution:</strong> FDA reviewed additional materials</p>
+                            <p><strong class="text-gray-900 dark:text-white">Outcome:</strong> US studies permitted to continue</p>
+                            <p><strong class="text-gray-900 dark:text-white">Note:</strong> Eli Lilly acquired assets July 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company-by-Company Analysis -->
+        <div class="glass rounded-2xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+            <h3 class="mb-6 text-xl font-light text-gray-900 dark:text-white">Detailed Compliance Analysis by Company</h3>
+            
+            <!-- Novartis -->
+            <div class="mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h4 class="text-lg font-light text-gray-900 dark:text-white">Novartis (Inclisiran)</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">siRNA therapy</p>
+                    </div>
+                    <span class="px-3 py-1 text-xs font-medium bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 text-amber-700 dark:text-amber-300 rounded-full">CRL - CMC Issue</span>
+                </div>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h5 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Complete Response Letter Details (December 2020)</h5>
+                        <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                            <li>• <strong class="text-gray-900 dark:text-white">Primary Issue:</strong> Inability to conduct on-site inspection at third-party manufacturing facility</li>
+                            <li>• <strong class="text-gray-900 dark:text-white">COVID Impact:</strong> Travel restrictions prevented FDA inspectors from accessing facility</li>
+                            <li>• <strong class="text-gray-900 dark:text-white">FDA Statement:</strong> "No concerns related to clinical efficacy or safety"</li>
+                            <li>• <strong class="text-gray-900 dark:text-white">Resolution Timeline:</strong> 12 months from CRL to approval</li>
+                            <li>• <strong class="text-gray-900 dark:text-white">Key Learning:</strong> Third-party CMC readiness as critical as internal facilities</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h5 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Post-Approval Compliance</h5>
+                        <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                            <li>• No OPDP warning or untitled letters issued</li>
+                            <li>• Successful label expansion in 2023 without friction</li>
+                            <li>• NHS England population health deal demonstrates system-level acceptance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amgen -->
+            <div class="mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h4 class="text-lg font-light text-gray-900 dark:text-white">Amgen (Repatha)</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">PCSK9 mAb</p>
+                    </div>
+                    <span class="px-3 py-1 text-xs font-medium bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 rounded-full">Clean Record</span>
+                </div>
+                
+                <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                    <li>• <strong class="text-gray-900 dark:text-white">Approval Process:</strong> No CRLs during original BLA or subsequent supplements</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">OPDP History:</strong> No warning or untitled letters specific to Repatha identified</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">Label Updates:</strong> Smooth addition of CV outcomes data (2017) without regulatory friction</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">Manufacturing:</strong> No facility inspection issues reported</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">Post-Market:</strong> 8+ years without significant compliance events</li>
+                </ul>
+            </div>
+
+            <!-- Sanofi/Regeneron -->
+            <div class="mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h4 class="text-lg font-light text-gray-900 dark:text-white">Sanofi/Regeneron (Praluent)</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">PCSK9 mAb</p>
+                    </div>
+                    <span class="px-3 py-1 text-xs font-medium bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 rounded-full">Clean Record</span>
+                </div>
+                
+                <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                    <li>• <strong class="text-gray-900 dark:text-white">Regulatory History:</strong> Clean approval pathway in both EMA and FDA (2015)</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">OPDP Status:</strong> No enforcement actions identified</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">CV Outcomes Addition:</strong> FDA label update (May 2019) proceeded without issues</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">Manufacturing:</strong> No reported CMC-related delays or holds</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">Patent Litigation:</strong> Resolved Amgen patent dispute (2019) - business not regulatory issue</li>
+                </ul>
+            </div>
+
+            <!-- Esperion -->
+            <div class="mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h4 class="text-lg font-light text-gray-900 dark:text-white">Esperion (Bempedoic Acid)</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Oral ACL Inhibitor</p>
+                    </div>
+                    <span class="px-3 py-1 text-xs font-medium bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-700 dark:text-green-300 rounded-full">Clean Record</span>
+                </div>
+                
+                <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                    <li>• <strong class="text-gray-900 dark:text-white">Approval:</strong> No CRLs identified for Nexletol or Nexlizet</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">OPDP:</strong> No direct enforcement actions</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">CV Label Update:</strong> March 2024 expansion proceeded smoothly in both US and EU</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">Class Relevance:</strong> OPDP's 2022 Roszet letter highlights scrutiny on LDL-C promotional claims</li>
+                </ul>
+            </div>
+
+            <!-- Verve/Eli Lilly -->
+            <div class="p-4 bg-white dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h4 class="text-lg font-light text-gray-900 dark:text-white">Verve/Eli Lilly (Gene Editing)</h4>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">PCSK9 base editing</p>
+                    </div>
+                    <span class="px-3 py-1 text-xs font-medium bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 text-amber-700 dark:text-amber-300 rounded-full">Clinical Hold</span>
+                </div>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h5 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Clinical Hold Analysis (November 2022 - October 2023)</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h6 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">FDA Concerns:</h6>
+                                <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                                    <li>• Off-target editing potential</li>
+                                    <li>• Long-term safety of permanent modification</li>
+                                    <li>• Dose selection for first-in-human</li>
+                                    <li>• Patient selection criteria</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">Resolution Requirements:</h6>
+                                <ul class="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                                    <li>• Additional preclinical safety studies</li>
+                                    <li>• Enhanced off-target analysis</li>
+                                    <li>• Revised trial design</li>
+                                    <li>• Updated informed consent</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-3 bg-amber-50 dark:bg-amber-900/20 rounded border-l-4 border-amber-500">
+                        <p class="text-xs text-gray-700 dark:text-gray-300">
+                            <strong>Outcome:</strong> Hold lifted after 11 months with pathway established. Set precedent for gene editing regulatory requirements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Compliance Lessons -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <!-- Manufacturing & CMC -->
+            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                <h3 class="flex items-center gap-2 mb-4 text-lg font-light text-gray-900 dark:text-white">
+                    <span>⚙️</span> Manufacturing & CMC Readiness
+                </h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">
+                    The inclisiran CRL demonstrates that manufacturing can be rate-limiting:
+                </p>
+                <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                    <li>• <strong class="text-gray-900 dark:text-white">Third-party readiness critical:</strong> As important as sponsor facilities</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">COVID exposed vulnerabilities:</strong> Global manufacturing network gaps</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">FDA strictness maintained:</strong> No exceptions for external circumstances</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">Multiple sites advised:</strong> Mitigate single-point failures</li>
+                </ul>
+            </div>
+
+            <!-- Promotional Compliance -->
+            <div class="glass rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+                <h3 class="flex items-center gap-2 mb-4 text-lg font-light text-gray-900 dark:text-white">
+                    <span>📢</span> Promotional Compliance Environment
+                </h3>
+                <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">
+                    While no PCSK9 inhibitors have received OPDP letters:
+                </p>
+                <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                    <li>• <strong class="text-gray-900 dark:text-white">Composite endpoints scrutinized:</strong> FDA reviews claims carefully</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">Analysis methods matter:</strong> mITT and LOCF need clear presentation</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">Multiplicity adjustments:</strong> Must be clearly disclosed</li>
+                    <li>• <strong class="text-gray-900 dark:text-white">LDL-C claims precision:</strong> Must align with trial designs</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Novel Modality Considerations -->
+        <div class="glass rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+            <h3 class="mb-4 text-xl font-light text-gray-900 dark:text-white">Novel Modality Regulatory Considerations</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg border-l-4 border-green-500">
+                    <h4 class="text-sm font-medium text-gray-900 dark:text-white mb-3">✅ Established Technologies (Lower Friction)</h4>
+                    <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                        <li>• Small molecules (statins, bempedoic acid)</li>
+                        <li>• Monoclonal antibodies (Repatha, Praluent)</li>
+                        <li>• siRNA with established delivery (inclisiran)</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-lg border-l-4 border-amber-500">
+                    <h4 class="text-sm font-medium text-gray-900 dark:text-white mb-3">⚠️ Novel Technologies (Higher Scrutiny)</h4>
+                    <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+                        <li>• In vivo gene editing (VERVE-101)</li>
+                        <li>• Base editing approaches</li>
+                        <li>• Permanent genetic modifications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         <!-- Competitors Tab -->
         <div class="tab-content hidden" id="approved">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
