@@ -1,0 +1,2512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[¹⁷⁷Lu]Lu-NeoB - Complete Investment Analysis | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .nav-bar {
+            background: white;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .container {
+            margin-top: 56px;
+            padding: 32px 24px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tab-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            overflow: hidden;
+            margin-top: 24px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e3f2f0;
+            overflow-x: auto;
+            background: #fafffe;
+        }
+
+        .tab-btn {
+            padding: 14px 20px;
+            border: none;
+            background: none;
+            color: #6c757d;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #0a6b5e;
+            background: #f0f7f6;
+        }
+
+        .tab-btn.active {
+            color: #0a6b5e;
+            border-bottom-color: #0a6b5e;
+            background: white;
+        }
+
+        .tab-content {
+            padding: 24px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0a6b5e;
+            margin-bottom: 16px;
+        }
+
+        .subsection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .data-card {
+            background: #f8fffe;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .detail-text {
+            color: #424242;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0a6b5e;
+        }
+
+        .metric-detail {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        .expandable-section {
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .expandable-header {
+            background: #f0f7f6;
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #0a6b5e;
+            transition: background 0.2s;
+        }
+
+        .expandable-header:hover {
+            background: #e6f3f1;
+        }
+
+        .expandable-content {
+            padding: 16px;
+            display: none;
+            background: white;
+        }
+
+        .expandable-content.active {
+            display: block;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+            margin: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 12px;
+            top: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: #e3f2f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: #0a6b5e;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .trial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .trial-table th {
+            background: #f0f7f6;
+            padding: 12px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0a6b5e;
+            border-bottom: 2px solid #e3f2f0;
+        }
+
+        .trial-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f7f6;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .status-active { 
+            background: #d4f4ec;
+            color: #0a6b5e;
+        }
+
+        .status-completed { 
+            background: #e3f2f0;
+            color: #0a6b5e;
+        }
+
+        .status-recruiting { 
+            background: #cfe2ff;
+            color: #084298;
+        }
+
+        .link-btn {
+            color: #0a6b5e;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .link-btn:hover {
+            background: #f0f7f6;
+        }
+
+        .ae-table {
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .ae-table th {
+            background: #fff3cd;
+            padding: 10px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            color: #856404;
+        }
+
+        .ae-table td {
+            padding: 10px;
+            border-bottom: 1px solid #fff3cd;
+            font-size: 13px;
+        }
+
+        .reference-list {
+            font-size: 11px;
+            color: #6c757d;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e3f2f0;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .regulatory-flow {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .flow-node {
+            background: white;
+            border: 2px solid #0a6b5e;
+            border-radius: 8px;
+            padding: 16px;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-node.completed {
+            background: #d4f4ec;
+        }
+
+        .flow-node.active {
+            background: #cfe2ff;
+            border-color: #084298;
+        }
+
+        .flow-arrow {
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0a6b5e;
+            font-size: 20px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7f6 0%, #e6f3f1 100%);
+            border-left: 4px solid #0a6b5e;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .risk-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .risk-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .risk-high { background: #dc3545; }
+        .risk-medium { background: #ffc107; }
+        .risk-low { background: #28a745; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <img src="leaf.png" alt="Leaf Intelligence" class="h-14 w-14 object-contain">
+                <div class="ml-3">
+                    <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Leaf Intelligence
+                    </span>
+                    <div class="text-xs text-gray-600 font-medium tracking-wide">AI Research Platform</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-tabs ml-8">
+            <a href="#" class="nav-tab">Companies</a>
+            <a href="#" class="nav-tab active">Pharmaceuticals Intelligence</a>
+            <a href="#" class="nav-tab">Reports</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <div class="bg-white rounded-lg p-6 shadow-sm mb-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">[¹⁷⁷Lu]Lu-NeoB (AAA603)</h1>
+                    <p class="text-lg text-gray-600 mt-2">First-in-Class GRPR-Targeted Radioligand Therapy for ER+/HER2- Breast Cancer</p>
+                    <div class="flex gap-4 mt-4">
+                        <span class="status-badge status-recruiting">Phase I/II</span>
+                        <span class="text-sm text-gray-600">Novartis/Advanced Accelerator Applications</span>
+                        <span class="text-sm text-gray-600">Target: GRPR+ Breast Cancer with ESR1 Resistance</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-gray-500">Development Stage</div>
+                    <div class="text-2xl font-bold text-blue-600">Early Clinical</div>
+                    <div class="text-sm text-gray-500">Multiple Combination Trials</div>
+                    <div class="text-sm text-gray-500">Est. Filing: ≥2028</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Container -->
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('clinical')">Clinical & Regulatory</button>
+                <button class="tab-btn" onclick="showTab('scientific')">Scientific & IP</button>
+                <button class="tab-btn" onclick="showTab('commercial')">Commercial & Market</button>
+                <button class="tab-btn" onclick="showTab('financial')">Financial & Strategic</button>
+                <button class="tab-btn" onclick="showTab('operational')">Operational & Manufacturing</button>
+                <button class="tab-btn" onclick="showTab('management')">Management & Team</button>
+                <button class="tab-btn" onclick="showTab('safety')">Safety & Toxicology</button>
+                <button class="tab-btn" onclick="showTab('trials')">Complete Trial Analysis</button>
+            </div>
+
+            <!-- Clinical & Regulatory Tab -->
+            <div id="clinical" class="tab-content active">
+                <div class="section-title">1. Clinical & Regulatory Diligence</div>
+                
+                <!-- Trial Design & Protocol -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.1 Trial Design & Protocol Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Current Clinical Development Overview</h4>
+                            <p class="detail-text">
+                                Novartis (Advanced Accelerator Applications) is running multiple early-phase trials of [¹⁷⁷Lu]Lu-NeoB in GRPR-positive breast cancer, all open-label with no active control arms. The development program leverages a theranostic approach using ⁶⁸Ga-NeoB PET for patient selection and dosimetry.
+                            </p>
+                        </div>
+
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">NeoRay Trial (Phase I/IIa, NCT03872778)</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> First-in-human "basket" trial in advanced solid tumors including prostate, breast, GIST, lung, and glioblastoma with GRPR expression confirmed by ⁶⁸Ga-NeoB PET. ¹⁷⁷Lu-NeoB dosed every 28 days up to 6 cycles.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Primary Endpoints:</strong> Safety, dosimetry, and preliminary anti-tumor activity. Eligibility requires ≥1 measurable lesion with ⁶⁸Ga-NeoB uptake (visual score ≥2).
+                            </p>
+                            <p class="detail-text">
+                                <strong>Status:</strong> Active as of May 2025 with no results reported. Early data from press releases and investigator comments indicate manageable safety in dose-escalation with expected organ targeting showing high tumor uptake and clearance via kidneys.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Phase Ib Combination Study (NCT05870579)</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> Dose-finding study combining [¹⁷⁷Lu]Lu-NeoB with ribociclib (600 mg d1-21) and fulvestrant (500 mg on scheduled days) in ER+/HER2-, GRPR+ metastatic breast cancer who relapsed on adjuvant endocrine therapy or progressed on endocrine+CDK4/6 inhibitor.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Dose Escalation:</strong> 3+3 design with doses of 100 → 150 → 200 → 250 mCi IV on Day 1 of 28-day cycles. A concurrent "backfill" phase enrolls additional patients at cleared doses to gather expanded safety/efficacy data. DLT-driven escalation rules with predefined toxicity boundaries at each dose level.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Sample Size:</strong> ~48 patients (dose escalation + backfill). Geography includes sites in US, EU, and China to ensure regulatory relevance across regions.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Status:</strong> Recruiting since November 2023. Primary endpoint is the recommended dose (RD) for ¹⁷⁷Lu-NeoB in this triplet combination.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Phase I/II Capecitabine Combination (NeoB D1, NCT06247995)</h4>
+                            <p class="detail-text">
+                                <strong>Phase I Design:</strong> Two-part trial in ER+/HER2-, GRPR+ metastatic breast cancer post-CDK4/6i. Starts at 150 mCi ¹⁷⁷Lu-NeoB every 6 weeks + capecitabine (1000 mg/m² BID 14 days on/7 off).
+                            </p>
+                            <p class="detail-text">
+                                <strong>Novel Fractionation Approach:</strong> Comparing 200 mCi Q6W vs 100 mCi Q3W to test whether smaller, more frequent doses improve tolerability or efficacy while delivering the same total dose per 6 weeks.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Phase II Design:</strong> ~28-40 patients randomized to two selected dose regimens to gauge preliminary efficacy (ORR, clinical benefit rate, PFS, OS). Not powered for definitive efficacy but aims to identify the better regimen for future pivotal trials.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Status:</strong> Began enrollment August 2024. Total sample size ~58 (up to 18 in Phase I, ~40 in Phase II). A parallel Japanese cohort is planned alongside Phase II to address regional dosing and PK needs.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Patient Selection</div>
+                                <div class="metric-value">GRPR+ by PET</div>
+                                <div class="metric-detail">⁶⁸Ga-NeoB score ≥2</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Treatment Duration</div>
+                                <div class="metric-value">6 Cycles</div>
+                                <div class="metric-detail">Q4-6 weeks dosing</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Geographic Reach</div>
+                                <div class="metric-value">Global</div>
+                                <div class="metric-detail">US, EU, China, Japan</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Primary Focus</div>
+                                <div class="metric-value">Post-CDK4/6</div>
+                                <div class="metric-detail">2L/3L metastatic setting</div>
+                            </div>
+                        </div>
+
+                        <div class="reference-list">
+                            Sources: <a href="https://www.novartis.com/clinicaltrials/study/nct05870579" target="_blank" class="link-btn">Novartis Clinical Trials</a> | 
+                            <a href="https://clinicaltrials.gov/ct2/show/NCT05870579" target="_blank" class="link-btn">ClinicalTrials.gov</a> |
+                            <a href="https://www.cancernetwork.com" target="_blank" class="link-btn">Cancer Network</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinical Data Quality -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.2 Clinical Data Quality & Early Signals</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Phase II Signal Strength</h4>
+                            <p class="detail-text">
+                                The development program is early, so no reported efficacy outcomes are yet in the public domain as of late 2025. The concept is supported by strong target expression and known efficacy of radioligand therapy in other cancers, but whether ¹⁷⁷Lu-NeoB can produce a robust signal in breast cancer remains to be seen.
+                            </p>
+                        </div>
+
+                        <p class="detail-text">
+                            <strong>Preclinical Support:</strong> Novartis has hinted at early activity, noting "anti-tumor activity" is being evaluated and the agent shows uptake in lesions. The Phase I monotherapy (NeoRay) is primarily assessing safety/dosimetry; any anti-tumor responses observed there (e.g., RECIST tumor shrinkage or prolonged disease control in heavily pre-treated patients) would bolster confidence.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Dosimetry Findings:</strong> After a few patients at each dose, radiation dosimetry to organs is assessed intensively (multiple SPECT scans at days 2, 3, 8, 15 of cycle 1) to ensure organ doses remain within safe bounds. Data suggest a favorable dosimetry profile with high tumor uptake relative to normal organs.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Data Integrity Measures:</strong> The trials are sponsored by Novartis/AAA with likely use of experienced CROs or in-house teams with extensive radiopharmaceutical trial expertise (they ran the NETTER-1 trial for Lutathera). Source data verification is expected to be rigorous, especially because endpoints like dosimetry and imaging response require centralized analysis.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Long-term Follow-up:</strong> The protocols specify follow-up schedules every 3 months up to 3 years, then every 6 months to 5 years for OS and safety monitoring. This extensive follow-up is critical for detecting late toxicities like myelodysplastic syndrome.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Subgroup Analyses Planned</h4>
+                            <p class="detail-text">
+                                Given small Phase I samples, subgroup analyses will have limited statistical power. However, trials stratify or enroll fairly uniform subgroups: all are ER+, all had CDK4/6i, some allowed prior PARP if BRCA+, some allowed prior T-DXd if HER2-low.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Key Subgroups of Interest:</strong>
+                                <br>• ESR1 mutation status (may affect GRPR expression)
+                                <br>• HER2-low vs HER2-zero patients
+                                <br>• Visceral vs bone-predominant disease
+                                <br>• Prior exposure to ADCs (T-DXd)
+                                <br>• GRPR uptake level by semi-quantitative SUV
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regulatory Strategy -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.3 Regulatory Strategy & Approval Pathway</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="regulatory-flow">
+                            <div class="flow-node">
+                                <div class="flow-arrow">→</div>
+                                <strong>Phase I/II</strong>
+                                <p class="text-sm mt-1">Current Stage</p>
+                                <p class="text-xs text-gray-500">2023-2026</p>
+                            </div>
+                            <div class="flow-node">
+                                <div class="flow-arrow">→</div>
+                                <strong>End of Phase II</strong>
+                                <p class="text-sm mt-1">FDA Meeting</p>
+                                <p class="text-xs text-gray-500">2026-2027</p>
+                            </div>
+                            <div class="flow-node">
+                                <div class="flow-arrow">→</div>
+                                <strong>Phase III Design</strong>
+                                <p class="text-sm mt-1">Randomized Trial</p>
+                                <p class="text-xs text-gray-500">2027-2029</p>
+                            </div>
+                            <div class="flow-node">
+                                <div class="flow-arrow">→</div>
+                                <strong>NDA/BLA Filing</strong>
+                                <p class="text-sm mt-1">With CDx</p>
+                                <p class="text-xs text-gray-500">≥2028</p>
+                            </div>
+                            <div class="flow-node">
+                                <strong>Approval</strong>
+                                <p class="text-sm mt-1">Potential Launch</p>
+                                <p class="text-xs text-gray-500">2029-2030</p>
+                            </div>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Regulatory Interactions & Designations</h4>
+                            <p class="detail-text">
+                                <strong>Current Status:</strong> No FDA Fast Track or Breakthrough Therapy designation announced for ¹⁷⁷Lu-NeoB in breast cancer. Novartis may seek Fast Track once Phase II efficacy data emerge, particularly if preliminary ORR or durability looks promising in refractory population.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Approval Pathway:</strong> Traditional approval expected via randomized controlled Phase III study in GRPR+ ER+ metastatic breast cancer post-CDK4/6. Likely design: ¹⁷⁷Lu-NeoB + endocrine/chemo vs standard care with PFS as primary endpoint by independent review, OS as key secondary.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Accelerated Approval Possibility:</strong> Theoretically possible on ORR in single-arm trial for refractory subset, but since Novartis is pursuing combination therapy, FDA will likely insist on randomized data to demonstrate contribution of the radioligand component.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Companion Diagnostic Requirements</h4>
+                            <p class="detail-text">
+                                <strong>⁶⁸Ga-NeoB PET Imaging:</strong> Critical regulatory component functioning as diagnostic to select patients. FDA will likely require parallel approval of this imaging agent (similar to ⁶⁸Ga-PSMA PET approval alongside ¹⁷⁷Lu-PSMA therapy).
+                            </p>
+                            <p class="detail-text">
+                                <strong>CDx Development:</strong> FDA/Center for Devices and Radiological Health involvement expected - possibly PMA or NDA for ⁶⁸Ga-NeoB kit. Trials use visual score ≥2 on 0-3 scale; this threshold likely to be locked as CDx cutoff for approval.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Label Implications:</strong> Expected label will be for "patients with GRPR-expressing tumors as determined by an approved test (⁶⁸Ga-NeoB PET)," inherently limiting market to those who undergo the scan.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Global Regulatory Strategy</h4>
+                            <p class="detail-text">
+                                <strong>EMA:</strong> Will require evidence of benefit; PFS acceptable primary endpoint in this setting. European regulators may scrutinize safety (radiation exposure) and require positive risk-benefit given alternative treatments.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Japan PMDA:</strong> Parallel Japanese cohort already planned in capecitabine trial, signaling intent to use data for Japan filing. Local bridging study may be required.
+                            </p>
+                            <p class="detail-text">
+                                <strong>China NMPA:</strong> Having Chinese sites in Phase Ib enables potential inclusion of Chinese patients in Phase III or bridging study. NMPA often requires local data for approval.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manufacturing & CMC -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.4 Chemistry, Manufacturing & Controls (CMC)</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="detail-text">
+                            <strong>Manufacturing Process:</strong> ¹⁷⁷Lu-NeoB (code name AAA603) is manufactured by attaching lutetium-177 (beta emitter with ~6.7 day half-life) to the NeoB peptide via DOTA chelator. Key CMC aspects include radionuclide purity (Lu-177 should be high specific activity, low Lu-175 impurity), radiochemical purity (labeled compound vs free lutetium), and stability of the product.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Isotope Production:</strong> Lutetium-177 is produced in nuclear reactors either via direct Lu-176 irradiation or via Yb-176 → Lu-177 route. Global supply can be a limiting factor. The shelf-life of reconstituted dose is short (likely hours) due to decay and radiochemical stability.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Quality Requirements:</strong> FDA will scrutinize dosimetry calculations ensuring patient exposure per cycle is understood and adherence to good manufacturing practice at production sites. Novartis had learning experience with Pluvicto (FDA citations on manufacturing) which must be addressed before filing ¹⁷⁷Lu-NeoB.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Regulatory Precedents:</strong> Closest analog is Novartis's own Pluvicto (¹⁷⁷Lu-PSMA-617) approval in mCRPC. Pluvicto got FDA approval March 2022 based on Phase 3 with meaningful PFS and OS benefit. FDA required patients have PET-confirmed target expression.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scientific & IP Tab -->
+            <div id="scientific" class="tab-content">
+                <div class="section-title">2. Scientific & Intellectual Property Diligence</div>
+
+                <!-- Mechanism of Action -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.1 Mechanism of Action & Scientific Rationale</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">GRPR-Targeted Radioligand Therapy Innovation</h4>
+                            <p class="detail-text">
+                                [¹⁷⁷Lu]Lu-NeoB (a.k.a. ¹⁷⁷Lu-NeoBOMB1) is a radiolabeled antagonist of the gastrin-releasing peptide receptor (GRPR), a G-protein-coupled receptor (Bombesin subtype 2) overexpressed in many breast cancers, especially ER+ tumors.
+                            </p>
+                        </div>
+
+                        <p class="detail-text">
+                            <strong>Mechanism:</strong> NeoB is a peptide designed based on bombesin analogues but in antagonist form - it binds the receptor without activating it. Antagonists achieve higher tumor uptake and longer retention than agonists without causing receptor internalization loss or acute biological effects. Once NeoB binds GRPR on cancer cells, the conjugated Lutetium-177 emits beta particles (~0.5 MeV) that travel ~1-2 mm in tissue, inducing DNA double-strand breaks and cell death in the tumor and its microenvironment.
+                        </p>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Target Expression</div>
+                                <div class="metric-value">~83%</div>
+                                <div class="metric-detail">of ER+ tumors GRPR+</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Beta Emission</div>
+                                <div class="metric-value">~0.5 MeV</div>
+                                <div class="metric-detail">1-2mm tissue penetration</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Half-life</div>
+                                <div class="metric-value">6.7 days</div>
+                                <div class="metric-detail">Lu-177 decay</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Mechanism Type</div>
+                                <div class="metric-value">Antagonist</div>
+                                <div class="metric-detail">No receptor activation</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Scientific Novelty:</strong> This is a first-in-class approach in breast cancer. No GRPR-targeted therapy is approved in oncology. While conceptually following the model of other radioligands (like ¹⁷⁷Lu-DOTATATE for NETs, ¹⁷⁷Lu-PSMA for prostate), it's novel in its target and modality for breast cancer but leverages proven science of beta-emitter therapy.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Orthogonal Mechanism:</strong> Doesn't rely on cell proliferation per se - radiation can kill dividing and non-dividing cells and can penetrate to treat multi-focal disease, especially bone metastases which are common in ER+ breast cancer.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Scientific Rationale for Combinations</h4>
+                            <p class="detail-text">
+                                <strong>With Ribociclib + Fulvestrant:</strong> Multi-pronged attack where endocrine therapy suppresses ER growth signals, ribociclib induces G1 cell-cycle arrest and may enhance radiosensitivity. Some preclinical data suggest CDK4/6i can impair DNA damage repair, potentially augmenting radiation effect. Fulvestrant may also upregulate GRPR expression in some models since GRPR is an ER-regulated gene.
+                            </p>
+                            <p class="detail-text">
+                                <strong>With Capecitabine:</strong> Capecitabine is a known radiosensitizer. As a prodrug of 5-FU, it can synergize with radiation by inhibiting DNA repair and causing cell-cycle arrest in S-phase where cells are more radiosensitive. Historically, 5-FU is used with radiation in many cancers to enhance efficacy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preclinical Evidence -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.2 Preclinical Evidence & Validation</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Preclinical Efficacy Data</h4>
+                            <p class="detail-text">
+                                Extensive animal studies by inventors (Erasmus MC and Demokritos center) demonstrated strong proof of concept. In prostate cancer xenograft (PC-3 model), ¹⁷⁷Lu-NeoB demonstrated high tumor uptake (~12-18 %ID/g) and significantly prolonged survival.
+                            </p>
+                        </div>
+
+                        <p class="detail-text">
+                            <strong>Survival Benefit:</strong> Treated groups lived ~82-99 days vs 19 days for controls. Different dose levels didn't differ much in efficacy, suggesting even lower doses saturated tumor kill in mice - potentially indicating a wide therapeutic index.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Favorable Biodistribution:</strong> Mice had faster clearance from GRPR-rich pancreas than tumor, improving tumor-to-pancreas dose ratio. In GRPR+ GI tumor models, similarly high uptake and tumor growth delay were observed.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Preclinical Toxicology (Ruigrok et al., Eur J Nucl Med 2022)</h4>
+                            <p class="detail-text">
+                                <strong>Study Design:</strong> Repeated ¹⁷⁷Lu-NeoB doses to healthy mice to assess tolerability and organ toxicity.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Key Findings:</strong>
+                                <br>• Highest radiation doses hit pancreas, liver, and kidneys (pancreas due to GRPR expression, kidneys due to excretion)
+                                <br>• Histology revealed kidney damage at higher doses (hydronephrosis, nephropathy)
+                                <br>• Pancreas and liver showed no clear microscopic toxicity despite high absorbed dose
+                                <br>• Blood urea nitrogen rose in high-dose groups, corroborating renal stress
+                                <br>• No behavioral or weight issues noted; lower dose groups had minimal toxicity
+                            </p>
+                            <p class="detail-text">
+                                <strong>Conclusion:</strong> Repeated ¹⁷⁷Lu-NeoB was generally tolerated; kidneys are the dose-limiting organ (similar to other radioligands). This informed human dosing with aggressive renal protection and dose fractionation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Differentiation -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.3 Differentiation from Competitors</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <table class="trial-table">
+                            <thead>
+                                <tr>
+                                    <th>Aspect</th>
+                                    <th>¹⁷⁷Lu-NeoB</th>
+                                    <th>ADCs (Enhertu/Trodelvy)</th>
+                                    <th>Oral SERDs</th>
+                                    <th>Chemotherapy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Mechanism</strong></td>
+                                    <td>Targeted radiotherapy</td>
+                                    <td>Antibody-drug conjugate</td>
+                                    <td>ER degradation</td>
+                                    <td>DNA damage</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Target</strong></td>
+                                    <td>GRPR (83% ER+)</td>
+                                    <td>HER2/Trop-2</td>
+                                    <td>Estrogen receptor</td>
+                                    <td>Non-specific</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Administration</strong></td>
+                                    <td>IV q4-6 weeks × 6</td>
+                                    <td>IV q3 weeks indefinite</td>
+                                    <td>Daily oral</td>
+                                    <td>Various schedules</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bone Mets</strong></td>
+                                    <td>Excellent penetration</td>
+                                    <td>Variable</td>
+                                    <td>Limited</td>
+                                    <td>Limited</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Infrastructure</strong></td>
+                                    <td>Nuclear medicine required</td>
+                                    <td>Standard infusion</td>
+                                    <td>Pharmacy</td>
+                                    <td>Standard infusion</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Key Scientific Advantages</h4>
+                            <p class="detail-text">
+                                <strong>No Cross-Resistance:</strong> Orthogonal mechanism to endocrine therapy or chemotherapy - radiation-induced DNA damage independent of proliferation status or resistance mutations.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Bone Metastases Targeting:</strong> Beta radiation can penetrate bone lesions effectively, addressing a major site of ER+ breast cancer metastases that are sometimes less responsive to systemic therapy.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Finite Treatment Duration:</strong> 6 cycles total vs indefinite treatment with ADCs or oral agents - potentially better patient convenience and compliance between cycles.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Theranostic Approach:</strong> PET imaging allows direct visualization of target expression and potential treatment response prediction.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intellectual Property -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.4 Intellectual Property Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Patent Estate Overview</h4>
+                            <p class="detail-text">
+                                ¹⁷⁷Lu-NeoB is protected primarily by composition-of-matter patents on the NeoB peptide and its radioconjugates. The invention stems from research at Erasmus MC (Netherlands) and National Center for Scientific Research "Demokritos" (Greece). Novartis' subsidiary AAA licensed exclusive rights to NeoBOMB1 from those institutions.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Priority Date</div>
+                                <div class="metric-value">~2015-2016</div>
+                                <div class="metric-detail">Original filing</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Base Expiry</div>
+                                <div class="metric-value">2035-2036</div>
+                                <div class="metric-detail">20-year term</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">With Extension</div>
+                                <div class="metric-value">~2040</div>
+                                <div class="metric-detail">Up to 5 years PTE</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Patent Families</div>
+                                <div class="metric-value">~100</div>
+                                <div class="metric-detail">Global coverage</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Core Patents:</strong> WO2017/178168 covers NeoB composition. WO2021/121734 (2021) covers "modified GRPR antagonist peptides" including NeoB analogs, listing jurisdictions in Europe, US, China with 2020 priority - possibly improvement patents to extend coverage.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Freedom to Operate:</strong> By licensing from originators, Novartis has locked up key IP. No evidence of blocking patents from competitors. RM2 and other bombesin analogs have different structures. Novartis proceeded without known FTO disputes.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Licensing Obligations:</strong> Erasmus/Demokritos license presumably obligates AAA/Novartis to pay royalties on sales (typically mid-single-digit) plus milestone payments upon approvals. Standard and not prohibitive given Novartis scale.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Competitive IP Landscape</h4>
+                            <p class="detail-text">
+                                <strong>Other GRPR Ligands:</strong> ⁶⁸Ga-RM2 (BAY 864367) was in development by Bayer for imaging. ¹⁷⁷Lu-RM2 tried in pilot studies. NeoB has distinct sequence with different C-terminus (NHEt). Side-by-side comparisons show NeoBOMB1 has better stability and similar affinities.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Emerging Competition:</strong> Clarity Pharmaceuticals has Cu-64 SAR-bombesin using different chelator and ⁶⁴Cu/⁶⁷Cu pairing - separate IP. Radiopharm Theranostics working on Ga-68 bombesin PET. These are years behind but could emerge mid-2030s.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Patent Litigation Risk:</strong> Currently no record of litigation around NeoBOMB1. As program progresses, competitors might challenge via oppositions in Europe or PTAB in US. No active challenges yet, likely because program was early and under radar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commercial & Market Tab -->
+            <div id="commercial" class="tab-content">
+                <div class="section-title">3. Commercial & Market Diligence</div>
+
+                <!-- Market Opportunity -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.1 Epidemiology & Market Sizing</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Global Breast Cancer Landscape</h4>
+                            <p class="detail-text">
+                                Globally, breast cancer is the most common cancer with ~2.3 million new cases per year (2020 data). In the U.S., about 280,000 new invasive breast cancer cases occur annually. There are an estimated 168,000 women in the U.S. living with metastatic breast cancer and millions worldwide.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Global Incidence</div>
+                                <div class="metric-value">2.3M</div>
+                                <div class="metric-detail">New cases annually</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">HR+/HER2- Share</div>
+                                <div class="metric-value">70%</div>
+                                <div class="metric-detail">~1.6M cases globally</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">GRPR Expression</div>
+                                <div class="metric-value">83%</div>
+                                <div class="metric-detail">Of ER+ tumors</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Post-CDK4/6 Market</div>
+                                <div class="metric-value">~150k/year</div>
+                                <div class="metric-detail">Global eligible patients</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Target Population:</strong> About 70% of breast cancers are HR+ (ER or PR positive), HER2-negative. GRPR expression overlaps heavily with HR status - ~83% of ER+ tumors express GRPR by IHC, whereas ER-negative tumors rarely do (~12%). This means the potential population for ¹⁷⁷Lu-NeoB could be quite large.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Line of Therapy:</strong> Current trials target post-CDK4/6 inhibitor setting (1st or 2nd line metastatic). In the U.S., estimated ~50,000 patients per year progress after CDK4/6 inhibitor. Worldwide, this could be ~150,000+ per year who could be candidates for subsequent therapy.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Duration of Therapy:</strong> Unlike chronic endocrine pills, ¹⁷⁷Lu-NeoB is given in fixed cycles (up to 6 cycles Q4-6 weeks, ~6-9 months total treatment). Treatment stops at progression or after 6 doses. Protocol allows considering additional cycles on case-by-case basis.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Market Size Projections</h4>
+                            <p class="detail-text">
+                                <strong>Conservative Scenario:</strong> If 20-30% of eligible post-CDK4/6 patients receive ¹⁷⁷Lu-NeoB, that's 20,000-30,000 patients/year globally. At $150k per patient course, that's $3-4.5 billion potential revenue annually.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Realistic Base Case:</strong> More likely $1-2 billion peak sales if it carves a niche alongside ADCs, capturing perhaps 10-15% of eligible patients globally.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Geographic Distribution:</strong> U.S., Western Europe, and Japan would be key markets with high CDK4/6 uptake. China rapidly adopting CDK4/6 inhibitors (several domestic versions) creating future opportunity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competitive Landscape -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.2 Competitive Landscape Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Post-CDK4/6 Treatment Landscape</h4>
+                            <p class="detail-text">
+                                Once an HR+/HER2- tumor progresses on CDK4/6 + endocrine therapy, treatment options fragment across multiple mechanisms, creating both competition and opportunity for ¹⁷⁷Lu-NeoB.
+                            </p>
+                        </div>
+
+                        <table class="trial-table">
+                            <thead>
+                                <tr>
+                                    <th>Therapy Class</th>
+                                    <th>Example</th>
+                                    <th>Efficacy</th>
+                                    <th>Key Limitation</th>
+                                    <th>Cost/Course</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Oral SERD</strong></td>
+                                    <td>Elacestrant (Orserdu)</td>
+                                    <td>PFS 2-3 mo benefit</td>
+                                    <td>ESR1-mut only (30%)</td>
+                                    <td>~$17k/month</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PI3K Inhibitor</strong></td>
+                                    <td>Alpelisib (Piqray)</td>
+                                    <td>PFS 11 vs 5.7 mo</td>
+                                    <td>PIK3CA-mut only (40%)</td>
+                                    <td>~$15k/month</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ADC - Trop2</strong></td>
+                                    <td>Sacituzumab (Trodelvy)</td>
+                                    <td>PFS 5.5 vs 4.0 mo</td>
+                                    <td>G3/4 neutropenia 50%</td>
+                                    <td>~$150k/year</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ADC - HER2</strong></td>
+                                    <td>T-DXd (Enhertu)</td>
+                                    <td>PFS 10.1 vs 5.4 mo</td>
+                                    <td>HER2-low only, ILD 12%</td>
+                                    <td>~$180k/year</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Chemotherapy</strong></td>
+                                    <td>Capecitabine</td>
+                                    <td>PFS ~4-6 mo</td>
+                                    <td>Low response ~10-20%</td>
+                                    <td>Generic (cheap)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Competitive Positioning for ¹⁷⁷Lu-NeoB</h4>
+                            <p class="detail-text">
+                                <strong>Differentiation Factors:</strong>
+                                <br>• Only radioligand therapy - leveraging physical mechanism (radiation) vs chemical
+                                <br>• No cross-resistance with endocrine or chemotherapy resistance mechanisms
+                                <br>• Particularly effective for bone metastases (common in ER+ disease)
+                                <br>• Finite treatment duration (6 cycles) vs indefinite ADC/oral therapy
+                                <br>• Less frequent administration (Q4-6 weeks) vs weekly chemo or Q3W ADCs
+                            </p>
+                            <p class="detail-text mt-2">
+                                <strong>Challenges:</strong>
+                                <br>• Requires nuclear medicine infrastructure (not every center equipped)
+                                <br>• Physician unfamiliarity with radiopharmaceuticals in breast cancer
+                                <br>• Competition from established ADCs with proven efficacy
+                                <br>• Potential for payer step therapy requirements
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Pipeline Competition</h4>
+                            <p class="detail-text">
+                                <strong>ADCs in Development:</strong> Datopotamab deruxtecan (Dato-DXd) from AZ/Daiichi in Phase 3, potentially displacing Trodelvy. Multiple other ADCs targeting various antigens.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Next-Gen SERDs:</strong> Camizestrant (AZ) in Phase 3, PRT2527 (Lilly) and others. If they show OS benefit, might be preferred before radiation/chemo.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Other Radioligands:</strong> Clarity Pharmaceuticals developing ⁶⁷Cu-SAR-bombesin (years behind). Potential alpha-emitter versions could emerge if beta insufficient.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Strategy -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.3 Pricing & Reimbursement Strategy</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Expected US Price</div>
+                                <div class="metric-value">$40-50k</div>
+                                <div class="metric-detail">Per dose</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Total Course Cost</div>
+                                <div class="metric-value">$240-300k</div>
+                                <div class="metric-detail">6 doses</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Comparator Pricing</div>
+                                <div class="metric-value">Similar</div>
+                                <div class="metric-detail">To Pluvicto/ADCs</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">EU/ROW Price</div>
+                                <div class="metric-value">~50%</div>
+                                <div class="metric-detail">Of US pricing</div>
+                            </div>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Pricing Benchmarks</h4>
+                            <p class="detail-text">
+                                <strong>Lutathera:</strong> Launched ~$47,500 per dose (2018), 4 doses = ~$190k total per patient
+                            </p>
+                            <p class="detail-text">
+                                <strong>Pluvicto:</strong> Launched 2022 at ~$42,500 per dose, 6 doses max = $255k total course
+                            </p>
+                            <p class="detail-text">
+                                <strong>ADCs:</strong> Enhertu and Trodelvy ~$14-16k per cycle, annualizing to ~$180k/year
+                            </p>
+                            <p class="detail-text">
+                                <strong>Expected ¹⁷⁷Lu-NeoB:</strong> Given 6-dose course, likely ~$45k per dose = ~$270k total, aligning with Pluvicto precedent
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Reimbursement Considerations</h4>
+                            <p class="detail-text">
+                                <strong>U.S. Medicare:</strong> Will likely reimburse radiopharmaceuticals either as drugs (if free-standing center) or under hospital outpatient. Lutathera and Pluvicto have codes and are reimbursed separately. May require prior authorization confirming indication criteria.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Commercial Payers:</strong> Will require documentation of progression on at least one line of endocrine + CDK4/6, GRPR-positive disease as evidenced by diagnostic PET. May impose step therapy requiring prior ADC or chemotherapy.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Europe (NICE/G-BA):</strong> Will evaluate cost vs benefit. If OS benefit is moderate, NICE might demand huge discount. Germany might assign low added benefit rating if only incremental improvement.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Cost-Effectiveness:</strong> Trodelvy showed ICER ~$613k per QALY at list price. If ¹⁷⁷Lu-NeoB shows similar PFS benefit, ICER could be >$300k/QALY, requiring significant discounts for acceptance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KOL & Adoption -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.4 KOL Adoption & Market Access</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="detail-text">
+                            <strong>Physician Adoption Factors:</strong> Oncologists treating breast cancer are increasingly familiar with targeted therapies but radiopharmaceuticals have traditionally been domain of nuclear medicine. For ¹⁷⁷Lu-NeoB adoption, multidisciplinary buy-in is needed.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Early Adopters:</strong> Academic centers will likely champion it first. Trial PIs like Dr. Mario Campone (France), Dr. Debasish Tripathy (MD Anderson) are influential. Nuclear medicine physicians like Louise Emmett (Australia) already involved will push within tumor boards.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Referral Model:</strong> Medical oncologist manages overall care and refers patient to nuclear medicine for actual dosing; after completion, patient returns to oncologist. This requires coordination but can work well if relationships established.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Infrastructure Requirements</h4>
+                            <p class="detail-text">
+                                <strong>Treatment Centers:</strong> Each hospital needs training, licensing (materials license to handle Lu-177). Many cancer centers have this due to existing use of radioimmunotherapy or current Lutathera.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Network Expansion:</strong> Novartis has around 200 centers in US authorized for Lutathera. For breast cancer (more common), likely need 300+ centers to cover majority of patients by referral.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Patient Logistics:</strong> Radiation safety precautions for few days post-injection. Outpatient administration expected. Between cycles, patients relatively free of therapy - potential QoL advantage.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial & Strategic Tab -->
+            <div id="financial" class="tab-content">
+                <div class="section-title">4. Financial & Strategic Diligence</div>
+
+                <!-- Company Financials -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.1 Novartis Corporate Context & Resources</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Market Cap</div>
+                                <div class="metric-value">~$240B</div>
+                                <div class="metric-detail">Global pharma leader</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Annual Revenue</div>
+                                <div class="metric-value">~$50B</div>
+                                <div class="metric-detail">Net income ~$12B</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">R&D Budget</div>
+                                <div class="metric-value">$9-10B</div>
+                                <div class="metric-detail">Annual investment</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">AAA Acquisition</div>
+                                <div class="metric-value">$3.9B</div>
+                                <div class="metric-detail">2018 net price</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Strategic Commitment:</strong> The Radioligand Therapy (RLT) platform is one of CEO Vas Narasimhan's highlighted areas of innovation. Novartis has invested >$700M to expand manufacturing in Indianapolis for Pluvicto and announced $2.5B commitment to US manufacturing including RLT over 5 years.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Development Costs:</strong> Phase 3 breast trial might cost $50-100M (global ~300 patient trial plus long-term follow-up). Manufacturing scale-up maybe another $50M. Total investment perhaps few hundred million - easily managed within Novartis R&D budget.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Platform Synergies:</strong> RLT portfolio includes neuroendocrine (Lutathera), prostate (Pluvicto), potentially breast (NeoB), plus others in pipeline (FAP-targeted). This synergy allows leveraging same manufacturing and sales infrastructure across indications.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Licensing & Royalty Obligations</h4>
+                            <p class="detail-text">
+                                <strong>Erasmus MC/Demokritos License:</strong> Exclusive rights to NeoBOMB1 with likely mid-single-digit royalties (est. 5%) on sales plus milestone payments. At peak $2B sales, royalty ~$100M/year - acceptable relative to profit.
+                            </p>
+                            <p class="detail-text">
+                                <strong>No External Partners:</strong> Unlike some programs, Novartis fully owns development with no cost-sharing partner. They bear all costs but retain full reward.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Valuation Modeling -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.2 Asset Valuation & NPV Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Risk-Adjusted NPV Model</h4>
+                            <p class="detail-text">
+                                Modeling ¹⁷⁷Lu-NeoB value requires assumptions about clinical success probability, market penetration, and competitive dynamics in rapidly evolving post-CDK4/6 landscape.
+                            </p>
+                        </div>
+
+                        <table class="trial-table">
+                            <thead>
+                                <tr>
+                                    <th>Scenario</th>
+                                    <th>Peak Sales</th>
+                                    <th>Probability</th>
+                                    <th>Unrisked NPV</th>
+                                    <th>Risk-Adjusted NPV</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Base Case</strong></td>
+                                    <td>$1.5B (2034)</td>
+                                    <td>40%</td>
+                                    <td>$3-4B</td>
+                                    <td>$1.2-1.6B</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Upside</strong></td>
+                                    <td>$4B (broader use)</td>
+                                    <td>20%</td>
+                                    <td>$6-8B</td>
+                                    <td>$1.2-1.6B</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Downside</strong></td>
+                                    <td>$500M (niche)</td>
+                                    <td>30%</td>
+                                    <td>$1-1.5B</td>
+                                    <td>$0.3-0.45B</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Failure</strong></td>
+                                    <td>$0</td>
+                                    <td>10%</td>
+                                    <td>-$200M</td>
+                                    <td>-$20M</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Key Valuation Assumptions</h4>
+                            <p class="detail-text">
+                                <strong>Launch Timeline:</strong> ~2029 assuming Phase III from 2026-2028, submission 2028, approvals 2029
+                            </p>
+                            <p class="detail-text">
+                                <strong>Pricing:</strong> US ~$200k per patient; ex-US ~$100k; blended global net ~$150k
+                            </p>
+                            <p class="detail-text">
+                                <strong>Patient Uptake:</strong> Starting few hundred year 1, growing to 10,000 by year 5, peak 15,000 patients/year
+                            </p>
+                            <p class="detail-text">
+                                <strong>COGS:</strong> ~20% of sales due to isotope and manufacturing costs
+                            </p>
+                            <p class="detail-text">
+                                <strong>Probability of Success:</strong> ~40% for reaching market (typical Phase II oncology 30%, but platform experience adds confidence)
+                            </p>
+                            <p class="detail-text">
+                                <strong>Discount Rate:</strong> 8% WACC for Novartis NPV; 10% for risk investor perspective
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Investment Return Analysis</h4>
+                            <p class="detail-text">
+                                <strong>For Novartis:</strong> Expected positive rNPV of $1.2-1.6B justifies continued investment given relatively low remaining development cost ($200-300M). IRR on incremental investment could exceed 20% if successful.
+                            </p>
+                            <p class="detail-text">
+                                <strong>For External Investor (Blackstone):</strong> Potential royalty deal structure: Pay $300M now for 5% royalty. If sales reach $2B peak, receive $100M/year at peak - attractive >20% IRR. Risk if sales only $500M, return marginal.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategic Options -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.3 Strategic Options & Deal Structuring</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Potential Investment Structures</h4>
+                            <p class="detail-text">
+                                While Novartis doesn't need external funding, Blackstone Life Sciences could propose creative structures to participate in ¹⁷⁷Lu-NeoB value creation.
+                            </p>
+                        </div>
+
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Royalty Purchase</h4>
+                            <p class="detail-text">
+                                Blackstone could offer upfront lump sum for percentage of future ¹⁷⁷Lu-NeoB sales. Precedent: Blackstone's $2B deal with Alnylam/Novartis for inclisiran royalties. Structure could include milestone payments upon Phase III success and approval.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Manufacturing Partnership</h4>
+                            <p class="detail-text">
+                                Fund expansion of radiopharmaceutical manufacturing capacity in exchange for supply agreement or profit share. Given capacity constraints seen with Pluvicto, additional investment could accelerate market penetration.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Geographic Licensing</h4>
+                            <p class="detail-text">
+                                Acquire rights for specific regions (e.g., China/Asia-Pacific) where local expertise might accelerate adoption. Though Novartis including China in trials suggests they plan global rollout themselves.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Platform Investment</h4>
+                            <p class="detail-text">
+                                Rather than single asset, invest in entire RLT platform including NeoB, future alpha-emitters, and next-generation ligands. Could structure as minority stake in theoretical RLT subsidiary.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Analysis -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.4 Financial Risk Assessment</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-medium"></div>
+                            <div>
+                                <strong>Competitive Erosion:</strong> If ADCs like Enhertu move to first-line or new agents emerge, ¹⁷⁷Lu-NeoB might be relegated to smaller later-line market, reducing peak sales potential.
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-low"></div>
+                            <div>
+                                <strong>Development Cost Overrun:</strong> Given Novartis scale and experience, unlikely to face financial constraints. Worst case write-off of few hundred million R&D.
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-medium"></div>
+                            <div>
+                                <strong>Reimbursement Pressure:</strong> High cost per patient could face pushback, especially if efficacy only modest. May require significant discounts impacting net revenue.
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-low"></div>
+                            <div>
+                                <strong>Patent Expiry:</strong> 2035-2036 base expiry provides ~6-7 years post-launch exclusivity. Sufficient for ROI but limits long-term value.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operational Tab -->
+            <div id="operational" class="tab-content">
+                <div class="section-title">5. Operational & Manufacturing Diligence</div>
+
+                <!-- Manufacturing Complexity -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>5.1 Manufacturing Infrastructure & Scale</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Radiopharmaceutical Manufacturing Complexity</h4>
+                            <p class="detail-text">
+                                ¹⁷⁷Lu-NeoB is a short-lived radiopharmaceutical requiring tightly coordinated manufacturing with patient dosing. Key steps: produce Lutetium-177 isotope, radiolabel NeoB peptide, perform quality control, then ship to site for injection all within days (Lu-177 half-life ~6.7 days).
+                            </p>
+                        </div>
+
+                        <p class="detail-text">
+                            <strong>Current Infrastructure:</strong> Novartis through AAA has manufacturing facilities in Ivrea, Italy and Millburn, NJ currently producing Lutathera and Pluvicto. They built a large new facility in Indianapolis for Pluvicto expected to vastly increase capacity. Also constructing site in Visp, Switzerland with Siegfried as partner.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>2022 Manufacturing Crisis:</strong> In May 2022, Novartis suspended production at Ivrea and Millburn due to "potential quality issues" - FDA had issued Form 483 citing quality control deficiencies. This led to shortage of Pluvicto for months. They have since resolved issues and resumed supply with FDA classifying shortage resolved by end of 2022 after fixes and bringing new sites online.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Isotope Supply Chain</h4>
+                            <p class="detail-text">
+                                <strong>Reactor Dependency:</strong> Currently handful of reactors produce Lu-177 (NRG in Netherlands, ANSTO in Australia). NRG's reactor from 1960s era, scheduled to go offline mid-2020s, but new reactors coming online.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Supply Agreements:</strong> Novartis contracts with NRG, IRE/Curium for isotope supply. Also exploring alternative producers like BWXT and ITM using accelerator-based production. NorthStar announced supplying Lu-177 from accelerator method by 2024.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Capacity Planning:</strong> Breast cancer population larger than neuroendocrine or prostate. To treat thousands of breast patients per year, production capacity must scale significantly. Indianapolis site capable of up to 250k doses/year across products.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">Production Sites</div>
+                                <div class="metric-value">4+</div>
+                                <div class="metric-detail">Global facilities</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Capacity Target</div>
+                                <div class="metric-value">250k doses/yr</div>
+                                <div class="metric-detail">Indianapolis alone</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Lead Time</div>
+                                <div class="metric-value">2-3 weeks</div>
+                                <div class="metric-detail">Reactor to patient</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Shelf Life</div>
+                                <div class="metric-value">Hours</div>
+                                <div class="metric-detail">Post-synthesis</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quality & Compliance -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>5.2 Quality Systems & Regulatory Compliance</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="detail-text">
+                            <strong>CMC Requirements:</strong> Must demonstrate batch-to-batch consistency, radiochemical purity >95%, sterility, apyrogenicity. Analytical methods (HPLC for radiochemical purity, gamma spectroscopy for radionuclidic purity) need validation.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>FDA Compliance History:</strong> The 2022 Form 483 cited insufficient sterility assurance at manufacturing sites. Novartis responded with corrective actions, diversified production sites including new Zaragoza, Spain facility for EU Lutathera supply during halt.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Radiation Safety:</strong> Handling radioactive materials requires NRC oversight in US, equivalent in other countries. Manufacturing facilities need proper licenses and waste disposal routes. AAA's existing facilities have required licenses.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Distribution & Logistics</h4>
+                            <p class="detail-text">
+                                <strong>Just-in-Time Model:</strong> Because product decays, cannot stockpile. Must produce and ship within day or two to arrive on injection day. Uses specialized couriers with appropriate radiation packaging.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Risk Mitigation:</strong> Multiple reactors, multiple courier hubs to handle reactor maintenance downtime, flight delays, customs holds that could cause doses to miss injection window.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Cost Structure:</strong> Making isotopes and disposing waste not cheap, but at expected $200k revenue per patient, even $20k production cost yields acceptable margins (70-80% gross margin possible).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal Considerations -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>5.3 Legal & Liability Considerations</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Product Liability</h4>
+                            <p class="detail-text">
+                                Radiopharmaceuticals come with radiation risk. Patients could potentially sue if they develop leukemia claiming it's from the drug. However, patients sign informed consent acknowledging risk, and label will warn of MDS/secondary malignancy risk. Novartis likely has appropriate insurance coverage.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Environmental Compliance</h4>
+                            <p class="detail-text">
+                                Manufacturing sites must follow strict radiation safety regulations. AAA's sites have good safety track record with no known radiation leak incidents. Waste disposal managed through decay storage (Lu-177 decays to stable Hf-177 in ~2 months).
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Import/Export Considerations</h4>
+                            <p class="detail-text">
+                                Transporting radioisotopes across borders can be bureaucratic. Must avoid geopolitically risky sources. Novartis likely avoids Russian research reactors given current sanctions environment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Management Tab -->
+            <div id="management" class="tab-content">
+                <div class="section-title">6. Management & Team Execution</div>
+
+                <!-- Leadership -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>6.1 Leadership & Organizational Structure</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Radioligand Therapy Leadership</h4>
+                            <p class="detail-text">
+                                The program sits within Novartis Oncology, specifically in the Radioligand Therapy unit (formerly AAA). Since the 2018 acquisition, Novartis integrated AAA while maintaining its specialized expertise.
+                            </p>
+                        </div>
+
+                        <p class="detail-text">
+                            <strong>CEO Support:</strong> Vas Narasimhan publicly emphasized potential of radioligand therapies, calling them a key platform. The commitment of billions to manufacturing expansions signals top-level buy-in.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Key Personnel Changes:</strong> Stefano Buono, AAA founder, left to start new ventures. Dr. Susanne Schaffert was President of Novartis Oncology until 2022, championing radioligand efforts. Post-2022 reorganization merged Oncology and Pharma units.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Clinical Development Team</h4>
+                            <p class="detail-text">
+                                <strong>Trial Leadership:</strong> Respected oncologists involved including Dr. Mario Campone (France), Dr. Debasish Tripathy (MD Anderson), Dr. Aleix Prat (Spain) - all well-known breast cancer experts.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Nuclear Medicine Integration:</strong> Louise Emmett (Australia) and other nuclear medicine KOLs involved, showing well-rounded advisory team bridging oncology and nuclear medicine.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Cross-functional Coordination:</strong> Radioligand development requires coordination between oncology clinical teams and radio-pharmacy/manufacturing - evidence suggests successful integration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track Record -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>6.2 Execution Track Record</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Lutathera Approval</div>
+                                <div class="metric-value">2018</div>
+                                <div class="metric-detail">FDA & EMA success</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Pluvicto Approval</div>
+                                <div class="metric-value">2022</div>
+                                <div class="metric-detail">Rapid uptake achieved</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Manufacturing Recovery</div>
+                                <div class="metric-value">6 months</div>
+                                <div class="metric-detail">Post-2022 shutdown</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Pipeline Programs</div>
+                                <div class="metric-value">Multiple</div>
+                                <div class="metric-detail">FAP, GRPR, others</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Proven Capabilities:</strong> Two major radioligand approvals under this team in last ~5 years. The 2022 manufacturing stumble was addressed with cross-functional effort to fix production while continuing clinical development.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Commercial Execution:</strong> Novartis Oncology currently markets Kisqali (ribociclib) in breast cancer, providing existing relationships with breast oncologists. They'll leverage this for ¹⁷⁷Lu-NeoB education and referral coordination.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Global Trial Management:</strong> Successfully managing regulatory aspects in China, Japan, EU, US in parallel. Multiple global trials for RLT platform demonstrate execution capability.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Risks & Mitigation -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>6.3 Execution Risks & Mitigation</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-low"></div>
+                            <div>
+                                <strong>Team Stability:</strong> No major departures reported except founder earlier. Likely staffed up with seasoned pharma operations people post-integration.
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-medium"></div>
+                            <div>
+                                <strong>Cross-functional Alignment:</strong> Requires coordination between traditional oncology and nuclear medicine. Some territorial issues possible but tumor boards facilitate collaboration.
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-low"></div>
+                            <div>
+                                <strong>Resource Prioritization:</strong> Given strategic importance of RLT platform, unlikely to be deprioritized unless Phase II data very disappointing.
+                            </div>
+                        </div>
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-medium"></div>
+                            <div>
+                                <strong>Commercial Education:</strong> Sales force needs training on radiopharmaceutical logistics and referral patterns. Specialized sub-team likely required similar to Pluvicto team.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety Tab -->
+            <div id="safety" class="tab-content">
+                <div class="section-title">7. Safety & Toxicology Profile</div>
+
+                <!-- Expected Safety Profile -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.1 Expected Safety Profile Based on Class</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Radioligand Therapy Class Effects</h4>
+                            <p class="detail-text">
+                                Based on preclinical data and analogy to other ¹⁷⁷Lu therapies, primary toxicities expected are hematologic and renal. Early human experience indicates "good tolerability and safety" with low uptake in at-risk organs like pancreas and marrow.
+                            </p>
+                        </div>
+
+                        <table class="ae-table">
+                            <thead>
+                                <tr>
+                                    <th>Toxicity</th>
+                                    <th>Expected Incidence</th>
+                                    <th>Severity</th>
+                                    <th>Management</th>
+                                    <th>Precedent (Lutathera)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Bone Marrow</strong></td>
+                                    <td>Common</td>
+                                    <td>G1-3 typical</td>
+                                    <td>Growth factors, dose delays</td>
+                                    <td>44% G≥3 lymphopenia</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Renal</strong></td>
+                                    <td>Dose-limiting</td>
+                                    <td>Variable</td>
+                                    <td>Amino acid infusion</td>
+                                    <td>~5% G≥3 nephrotoxicity</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Liver</strong></td>
+                                    <td>Uncommon</td>
+                                    <td>Mild</td>
+                                    <td>Monitoring</td>
+                                    <td><1% serious</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>GI</strong></td>
+                                    <td>Mild</td>
+                                    <td>G1-2</td>
+                                    <td>Antiemetics</td>
+                                    <td>5-7% G3 N/V</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>MDS (late)</strong></td>
+                                    <td>~2-3%</td>
+                                    <td>Serious</td>
+                                    <td>Long-term monitoring</td>
+                                    <td>2.3% at 5 years</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p class="detail-text mt-4">
+                            <strong>Combination-Specific Concerns:</strong>
+                            <br>• With Ribociclib: Additive neutropenia risk (ribociclib ~75% any-grade, 21% G3/4), QT prolongation monitoring required
+                            <br>• With Capecitabine: Both cause myelosuppression, potential for hand-foot syndrome from capecitabine
+                            <br>• Trials have stringent inclusion criteria for blood counts and exclude recent heavy chemotherapy
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Preclinical Toxicology -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.2 Preclinical Toxicology Findings</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="detail-text">
+                            <strong>Mouse Studies (Ruigrok et al.):</strong> Dedicated toxicology study gave repeated ¹⁷⁷Lu-NeoB doses to healthy mice. Findings showed kidneys as dose-limiting organ with histologic damage at high doses (hydronephrosis, nephropathy). Blood urea nitrogen rose in high-dose groups. Pancreas and liver showed no clear microscopic toxicity despite high absorbed dose.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Key Finding:</strong> No behavioral or weight issues noted, lower dose groups had minimal toxicity. Conclusion: repeated ¹⁷⁷Lu-NeoB generally tolerated with kidneys as critical organ, informing human dosing strategy with renal protection measures.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Safety Differentiation vs Other Therapies</h4>
+                            <p class="detail-text">
+                                <strong>vs ADCs:</strong> No ILD risk (12% with Enhertu), less acute toxicity than payload-driven effects
+                            </p>
+                            <p class="detail-text">
+                                <strong>vs Chemotherapy:</strong> No alopecia, less nausea (unless from amino acid infusion), no neuropathy
+                            </p>
+                            <p class="detail-text">
+                                <strong>vs Endocrine:</strong> Different toxicity profile - radiation effects vs metabolic/hormonal
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Mitigation -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.3 Safety Monitoring & Risk Management</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="detail-text">
+                            <strong>Trial Safety Measures:</strong>
+                            <br>• Intensive dosimetry (SPECT scans days 2,3,8,15 of cycle 1) to ensure organ doses within bounds
+                            <br>• Tight renal/marrow eligibility criteria and monitoring cadence
+                            <br>• DLT boundaries predefined at each dose level with backfill safety expansion
+                            <br>• Long-term follow-up to 5 years for MDS/secondary malignancy surveillance
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Expected DLTs:</strong> Neutropenia lasting >7 days, febrile neutropenia, thrombocytopenia at high grades. Red flag if >25% patients need to stop treatment early for AEs.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Post-Marketing Requirements:</strong> FDA will likely require registry for long-term safety tracking (MDS cases), routine for radiotherapies. Similar to Lutathera post-marketing commitments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complete Trial Analysis Tab -->
+            <div id="trials" class="tab-content">
+                <div class="section-title">8. Complete Clinical Trial Portfolio</div>
+
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- NeoRay Trial -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2019-Ongoing</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">NeoRay Phase I/IIa (NCT03872778)</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> First-in-human "basket" trial in advanced solid tumors (prostate, breast, GIST, lung, glioblastoma) with GRPR expression confirmed by ⁶⁸Ga-NeoB PET
+                            </p>
+                            <p class="detail-text">
+                                <strong>Treatment:</strong> ¹⁷⁷Lu-NeoB dosed every 28 days up to 6 cycles
+                            </p>
+                            <p class="detail-text">
+                                <strong>Primary Endpoints:</strong> Safety, dosimetry, preliminary anti-tumor activity
+                            </p>
+                            <p class="detail-text">
+                                <strong>Eligibility:</strong> ≥1 measurable lesion with ⁶⁸Ga-NeoB uptake (visual score ≥2)
+                            </p>
+                            <p class="detail-text">
+                                <strong>Status:</strong> Active; no results reported as of May 2025. Early data indicate manageable safety with high tumor uptake
+                            </p>
+                            <div class="reference-list">
+                                <a href="https://clinicaltrials.gov/ct2/show/NCT03872778" target="_blank" class="link-btn">ClinicalTrials.gov →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase Ib Combination -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot" style="background: #084298;"></div>
+                        <div class="timeline-date">Nov 2023-2032</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Phase Ib Ribociclib/Fulvestrant Combo (NCT05870579)</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> Open-label, dose-escalation with concurrent "backfill" in ER+/HER2-, GRPR+ mBC
+                            </p>
+                            <p class="detail-text">
+                                <strong>Dose Levels:</strong> ¹⁷⁷Lu-NeoB 100→150→200→250 mCi IV Day 1 q28d × 6 cycles
+                            </p>
+                            <p class="detail-text">
+                                <strong>Combination:</strong> Ribociclib 600mg d1-21 + Fulvestrant 500mg scheduled days
+                            </p>
+                            <p class="detail-text">
+                                <strong>Sample Size:</strong> ~48 patients (dose escalation + backfill expansion)
+                            </p>
+                            <p class="detail-text">
+                                <strong>Geography:</strong> US (MD Anderson, UCLA, UPenn), EU (France, Germany, Spain), China
+                            </p>
+                            <p class="detail-text">
+                                <strong>Primary Endpoint:</strong> DLT rate → Recommended Dose
+                            </p>
+                            <p class="detail-text">
+                                <strong>Status:</strong> Currently recruiting
+                            </p>
+                            <div class="reference-list">
+                                <a href="https://www.novartis.com/clinicaltrials/study/nct05870579" target="_blank" class="link-btn">Novartis Trial Page →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase I/II Capecitabine -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot" style="background: #084298;"></div>
+                        <div class="timeline-date">Aug 2024-Ongoing</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Phase I/II Capecitabine Combo "NeoB D1" (NCT06247995)</h4>
+                            <p class="detail-text">
+                                <strong>Phase I Design:</strong> Dose escalation starting 150 mCi ¹⁷⁷Lu-NeoB q6w + capecitabine 1000 mg/m² BID
+                            </p>
+                            <p class="detail-text">
+                                <strong>Novel Aspect:</strong> Comparing fractionation - 200 mCi Q6W vs 100 mCi Q3W (same total dose)
+                            </p>
+                            <p class="detail-text">
+                                <strong>Phase II:</strong> ~28-40 patients randomized to selected dose regimens for preliminary efficacy
+                            </p>
+                            <p class="detail-text">
+                                <strong>Primary Endpoints:</strong> Phase I - DLT/dose; Phase II - ORR, CBR, PFS
+                            </p>
+                            <p class="detail-text">
+                                <strong>Sample Size:</strong> ~58 total (18 Phase I, 40 Phase II)
+                            </p>
+                            <p class="detail-text">
+                                <strong>Special Feature:</strong> Parallel Japanese cohort planned for regional requirements
+                            </p>
+                            <div class="reference-list">
+                                <a href="https://clinicaltrials.gov/ct2/show/NCT06247995" target="_blank" class="link-btn">ClinicalTrials.gov →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Future Studies -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot" style="background: #ffc107;"></div>
+                        <div class="timeline-date">2026-2029 (Projected)</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Anticipated Phase III Design</h4>
+                            <p class="detail-text">
+                                <strong>Expected Design:</strong> Randomized controlled study in GRPR+ ER+ mBC post-CDK4/6
+                            </p>
+                            <p class="detail-text">
+                                <strong>Likely Arms:</strong> ¹⁷⁷Lu-NeoB + standard therapy vs standard care alone
+                            </p>
+                            <p class="detail-text">
+                                <strong>Primary Endpoint:</strong> PFS by independent review
+                            </p>
+                            <p class="detail-text">
+                                <strong>Key Secondary:</strong> Overall survival, ORR, safety
+                            </p>
+                            <p class="detail-text">
+                                <strong>Sample Size:</strong> Likely 300-600 patients globally
+                            </p>
+                            <p class="detail-text">
+                                <strong>Critical Success Factor:</strong> Comparator selection (vs chemo, ADC, or physician's choice)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Table -->
+                <div class="subsection-title">Trial Portfolio Summary</div>
+                <table class="trial-table">
+                    <thead>
+                        <tr>
+                            <th>Trial</th>
+                            <th>Phase</th>
+                            <th>N</th>
+                            <th>Design</th>
+                            <th>Primary Endpoint</th>
+                            <th>Status</th>
+                            <th>Key Feature</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NeoRay</td>
+                            <td>I/IIa</td>
+                            <td>TBD</td>
+                            <td>Basket, single-arm</td>
+                            <td>Safety/dosimetry</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>First-in-human</td>
+                        </tr>
+                        <tr>
+                            <td>NCT05870579</td>
+                            <td>Ib</td>
+                            <td>~48</td>
+                            <td>Dose escalation + backfill</td>
+                            <td>DLT → RD</td>
+                            <td><span class="status-badge status-recruiting">Recruiting</span></td>
+                            <td>Triple combo</td>
+                        </tr>
+                        <tr>
+                            <td>NeoB D1</td>
+                            <td>I/II</td>
+                            <td>~58</td>
+                            <td>Dose escalation → randomized</td>
+                            <td>DLT then ORR/PFS</td>
+                            <td><span class="status-badge status-recruiting">Recruiting</span></td>
+                            <td>Fractionation study</td>
+                        </tr>
+                        <tr style="background: #f0f7f6;">
+                            <td><strong>Future Phase III</strong></td>
+                            <td><strong>III</strong></td>
+                            <td><strong>~300-600</strong></td>
+                            <td><strong>Randomized controlled</strong></td>
+                            <td><strong>PFS</strong></td>
+                            <td><span class="status-badge">Planned</span></td>
+                            <td><strong>Registration trial</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-2">Key Trial Design Considerations</h4>
+                    <p class="detail-text">
+                        <strong>Patient Selection:</strong> All trials require GRPR positivity by ⁶⁸Ga-NeoB PET (score ≥2), ensuring target engagement
+                    </p>
+                    <p class="detail-text">
+                        <strong>Safety Focus:</strong> Extensive dosimetry and long-term follow-up (5 years) for late effects monitoring
+                    </p>
+                    <p class="detail-text">
+                        <strong>Global Strategy:</strong> Including China, Japan early for regulatory alignment and market access
+                    </p>
+                    <p class="detail-text">
+                        <strong>Combination Rationale:</strong> Testing with both endocrine (ribociclib/fulvestrant) and chemotherapy (capecitabine) to identify optimal partner
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Summary Section -->
+        <div class="tab-container mt-6">
+            <div class="section-title p-6">Investment Committee Summary</div>
+            <div class="p-6">
+                <div class="highlight-box">
+                    <h3 class="text-xl font-bold mb-4 text-gray-900">Executive Investment Thesis</h3>
+                    <p class="detail-text">
+                        [¹⁷⁷Lu]Lu-NeoB represents a pioneering radioligand therapy opportunity in breast cancer with first-in-class potential. As the first GRPR-targeted therapy in oncology, it addresses a significant unmet need in post-CDK4/6 ER+ breast cancer where current options provide limited benefit. The asset leverages Novartis's proven radioligand platform expertise while targeting a broader patient population than prior RLT successes.
+                    </p>
+                </div>
+
+                <div class="metric-grid mt-6">
+                    <div class="metric-card">
+                        <div class="metric-label">Clinical Risk</div>
+                        <div class="metric-value text-yellow-600">⚠ Medium-High</div>
+                        <div class="metric-detail">Early phase, no efficacy data yet</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Regulatory Risk</div>
+                        <div class="metric-value text-yellow-600">⚠ Medium</div>
+                        <div class="metric-detail">Requires Phase III, CDx development</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Commercial Risk</div>
+                        <div class="metric-value text-yellow-600">⚠ Medium</div>
+                        <div class="metric-detail">Competitive landscape, infrastructure needs</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Financial Upside</div>
+                        <div class="metric-value text-green-600">✓ High</div>
+                        <div class="metric-detail">$1-4B peak sales potential</div>
+                    </div>
+                </div>
+
+                <div class="data-card mt-6">
+                    <h4 class="font-semibold mb-3">Key Investment Strengths</h4>
+                    <ul class="space-y-2">
+                        <li>✓ <strong>Novel Mechanism:</strong> First-in-class GRPR antagonist radioligand with no cross-resistance to existing therapies</li>
+                        <li>✓ <strong>Broad Target Expression:</strong> ~83% of ER+ tumors express GRPR, large addressable population</li>
+                        <li>✓ <strong>Platform Validation:</strong> Novartis has proven RLT success with Lutathera and Pluvicto</li>
+                        <li>✓ <strong>Bone Metastases Advantage:</strong> Superior penetration for common ER+ metastatic sites</li>
+                        <li>✓ <strong>Strong Preclinical Data:</strong> Compelling xenograft efficacy with 82-99 day survival vs 19 days control</li>
+                        <li>✓ <strong>Manufacturing Infrastructure:</strong> Existing facilities and expansion underway</li>
+                        <li>✓ <strong>IP Protection:</strong> Composition patents to 2035-2036, potential extension to 2040</li>
+                        <li>✓ <strong>Strategic Fit:</strong> Aligns with Novartis RLT platform strategy and CEO priorities</li>
+                    </ul>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-3">Key Investment Risks</h4>
+                    <ul class="space-y-2">
+                        <li>⚠ <strong>Early Stage:</strong> No human efficacy data yet reported, Phase I/II ongoing</li>
+                        <li>⚠ <strong>Long Timeline:</strong> Approval not expected until ≥2028-2029</li>
+                        <li>⚠ <strong>Competitive Intensity:</strong> Multiple ADCs and new agents competing for same patients</li>
+                        <li>⚠ <strong>Infrastructure Limitations:</strong> Requires nuclear medicine facilities, not universally available</li>
+                        <li>⚠ <strong>Manufacturing Complexity:</strong> Isotope supply constraints, 2022 shutdown precedent</li>
+                        <li>⚠ <strong>Reimbursement Challenges:</strong> High cost may face payer resistance without strong efficacy</li>
+                        <li>⚠ <strong>Safety Unknowns:</strong> Combination toxicity profile still being established</li>
+                    </ul>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-3">Financial Projections & Returns</h4>
+                    <table class="trial-table">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Peak Sales</th>
+                                <th>Probability</th>
+                                <th>NPV (Unrisked)</th>
+                                <th>rNPV</th>
+                                <th>IRR Potential</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: #f0f7f6;">
+                                <td><strong>Base Case</strong></td>
+                                <td><strong>$1.5B</strong></td>
+                                <td><strong>40%</strong></td>
+                                <td><strong>$3-4B</strong></td>
+                                <td><strong>$1.2-1.6B</strong></td>
+                                <td><strong>20-25%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Upside</td>
+                                <td>$4B</td>
+                                <td>20%</td>
+                                <td>$6-8B</td>
+                                <td>$1.2-1.6B</td>
+                                <td>25-30%</td>
+                            </tr>
+                            <tr>
+                                <td>Downside</td>
+                                <td>$500M</td>
+                                <td>30%</td>
+                                <td>$1-1.5B</td>
+                                <td>$0.3-0.45B</td>
+                                <td>10-15%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box mt-6">
+                    <h4 class="font-semibold mb-2">Investment Recommendation</h4>
+                    <p class="detail-text">
+                        <strong>Rating: HOLD/MONITOR with conditional investment triggers</strong>
+                        <br><br>
+                        [¹⁷⁷Lu]Lu-NeoB presents compelling long-term opportunity but requires Phase II efficacy data before major capital commitment. The asset's rNPV of $1.2-1.6B justifies Novartis's continued development. For external investors like Blackstone, optimal entry point is post-Phase II positive data when clinical risk partially de-risked.
+                        <br><br>
+                        <strong>Recommended Investment Structure (if pursuing):</strong>
+                        <br>1. <strong>Wait for Phase II data</strong> (expected 2026-2027) showing ORR >20% and PFS >6 months
+                        <br>2. <strong>Royalty purchase</strong> ($300-500M for 5-7% of sales) rather than equity given Novartis ownership
+                        <br>3. <strong>Manufacturing partnership</strong> to address capacity constraints and accelerate market penetration
+                        <br>4. <strong>Milestone-based structure</strong> with payments tied to Phase III success and regulatory approval
+                        <br><br>
+                        <strong>Key Monitoring Metrics:</strong>
+                        <br>• Phase Ib/II safety and preliminary efficacy readouts
+                        <br>• Competitive trial results (especially ADCs in similar populations)
+                        <br>• Manufacturing capacity expansion progress
+                        <br>• Regulatory feedback on Phase III design
+                        <br>• GRPR expression prevalence validation in larger cohorts
+                        <br><br>
+                        The investment thesis strengthens significantly if early data shows ORR >30% with manageable safety in combinations. Given Novartis's platform expertise and strategic commitment, probability of technical success higher than typical early-stage oncology assets. However, commercial success will depend heavily on differentiation from rapidly evolving ADC landscape.
+                    </p>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-3">Due Diligence Scorecard Summary</h4>
+                    <table class="trial-table">
+                        <thead>
+                            <tr>
+                                <th>Criterion</th>
+                                <th>Assessment</th>
+                                <th>Risk Level</th>
+                                <th>Key Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Clinical Design</td>
+                                <td>✓ Appropriate</td>
+                                <td class="text-green-600">Low</td>
+                                <td>Well-designed dose escalation with theranostic selection</td>
+                            </tr>
+                            <tr>
+                                <td>Efficacy Signal</td>
+                                <td>⚠ Pending</td>
+                                <td class="text-yellow-600">Unknown</td>
+                                <td>No human efficacy data yet; strong preclinical</td>
+                            </tr>
+                            <tr>
+                                <td>Safety Profile</td>
+                                <td>✓ Manageable</td>
+                                <td class="text-green-600">Low-Med</td>
+                                <td>Expected class effects; kidney/marrow monitoring needed</td>
+                            </tr>
+                            <tr>
+                                <td>Regulatory Path</td>
+                                <td>⚠ Standard</td>
+                                <td class="text-yellow-600">Medium</td>
+                                <td>Requires Phase III; CDx development adds complexity</td>
+                            </tr>
+                            <tr>
+                                <td>Scientific Rationale</td>
+                                <td>✓ Strong</td>
+                                <td class="text-green-600">Low</td>
+                                <td>Validated target, proven modality, novel in breast</td>
+                            </tr>
+                            <tr>
+                                <td>IP Position</td>
+                                <td>✓ Solid</td>
+                                <td class="text-green-600">Low</td>
+                                <td>Composition patents provide adequate runway</td>
+                            </tr>
+                            <tr>
+                                <td>Market Opportunity</td>
+                                <td>✓ Large</td>
+                                <td class="text-yellow-600">Medium</td>
+                                <td>Significant need but competitive landscape</td>
+                            </tr>
+                            <tr>
+                                <td>Manufacturing</td>
+                                <td>⚠ Complex</td>
+                                <td class="text-yellow-600">Medium</td>
+                                <td>Isotope supply, capacity scaling challenges</td>
+                            </tr>
+                            <tr>
+                                <td>Team Execution</td>
+                                <td>✓ Proven</td>
+                                <td class="text-green-600">Low</td>
+                                <td>Two RLT approvals; recovered from 2022 issues</td>
+                            </tr>
+                            <tr>
+                                <td>Financial Returns</td>
+                                <td>✓ Attractive</td>
+                                <td class="text-green-600">Low</td>
+                                <td>Positive rNPV even with conservative assumptions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching function
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Toggle expandable sections
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('span:last-child');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                arrow.textContent = '▶';
+            } else {
+                content.classList.add('active');
+                arrow.textContent = '▼';
+            }
+        }
+
+    // Market Opportunity Chart (continuation)
+        const marketCtx = document.getElementById('marketChart');
+        if (marketCtx) {
+            new Chart(marketCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Global BC Cases', 'HR+/HER2-', 'GRPR+ Eligible', 'Post-CDK4/6', 'Addressable Market'],
+                    datasets: [{
+                        label: 'Patient Population (000s)',
+                        data: [2300, 1610, 1336, 150, 30],
+                        backgroundColor: ['#0a6b5e', '#0a6b5e', '#0a6b5e', '#084298', '#ffc107'],
+                        borderColor: '#0a6b5e',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Market Opportunity Funnel - Annual Global Patients'
+                        },
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Patients (000s)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Competition Timeline Chart
+        const competitionCtx = document.getElementById('competitionChart');
+        if (competitionCtx) {
+            new Chart(competitionCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'],
+                    datasets: [
+                        {
+                            label: 'Elacestrant',
+                            data: [100, 200, 350, 500, 650, 750, 800, 850],
+                            borderColor: '#dc3545',
+                            backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Camizestrant',
+                            data: [null, null, null, 100, 300, 600, 900, 1200],
+                            borderColor: '#ffc107',
+                            backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: '[¹⁷⁷Lu]Lu-NeoB',
+                            data: [null, null, null, null, null, null, 200, 1500],
+                            borderColor: '#0a6b5e',
+                            backgroundColor: 'rgba(10, 107, 94, 0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'ADCs Combined',
+                            data: [800, 1200, 1800, 2500, 3200, 3800, 4200, 4500],
+                            borderColor: '#6c757d',
+                            backgroundColor: 'rgba(108, 117, 125, 0.1)',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Projected Market Share Evolution ($ Millions)'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Sales ($ Millions)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Year'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Safety Comparison Chart
+        const safetyCtx = document.getElementById('safetyChart');
+        if (safetyCtx) {
+            new Chart(safetyCtx.getContext('2d'), {
+                type: 'horizontalBar',
+                data: {
+                    labels: ['Bone Marrow Suppression', 'Renal Toxicity', 'GI Toxicity', 'ILD Risk', 'Secondary Malignancy', 'QT Prolongation'],
+                    datasets: [
+                        {
+                            label: '[¹⁷⁷Lu]Lu-NeoB Expected',
+                            data: [40, 20, 15, 0, 3, 5],
+                            backgroundColor: '#0a6b5e'
+                        },
+                        {
+                            label: 'ADCs (Enhertu)',
+                            data: [30, 5, 35, 12, 1, 2],
+                            backgroundColor: '#dc3545'
+                        },
+                        {
+                            label: 'Chemotherapy',
+                            data: [50, 10, 45, 2, 2, 3],
+                            backgroundColor: '#6c757d'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Expected Toxicity Profile Comparison (% Grade ≥3)'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 60,
+                            title: {
+                                display: true,
+                                text: 'Incidence (%)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // NPV Waterfall Chart
+        const npvCtx = document.getElementById('npvChart');
+        if (npvCtx) {
+            new Chart(npvCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Peak Sales', 'COGS', 'Royalties', 'SG&A', 'Tax', 'Net Cash Flow', 'Discounted', 'Risk-Adjusted'],
+                    datasets: [{
+                        label: 'Value ($B)',
+                        data: [2.0, -0.4, -0.1, -0.3, -0.2, 1.0, 0.8, 0.32],
+                        backgroundColor: function(context) {
+                            const value = context.parsed.y;
+                            return value < 0 ? '#dc3545' : '#0a6b5e';
+                        },
+                        borderColor: '#333',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'NPV Build-Up Analysis (Base Case)'
+                        },
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Value ($B)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Trial Enrollment Projection
+        const enrollmentCtx = document.getElementById('enrollmentChart');
+        if (enrollmentCtx) {
+            new Chart(enrollmentCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Q4 2023', 'Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026'],
+                    datasets: [
+                        {
+                            label: 'Phase Ib Ribociclib/Fulvestrant',
+                            data: [5, 12, 20, 28, 35, 40, 45, 48, 48, 48],
+                            borderColor: '#084298',
+                            backgroundColor: 'rgba(8, 66, 152, 0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Phase I/II Capecitabine',
+                            data: [null, null, null, 5, 15, 25, 35, 45, 52, 58],
+                            borderColor: '#ffc107',
+                            backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Clinical Trial Enrollment Projections'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Cumulative Patients Enrolled'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Quarter'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

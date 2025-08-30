@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atirmociclib (PF-07220060) - Complete Investment Analysis | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .nav-bar {
+            background: white;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .container {
+            margin-top: 56px;
+            padding: 32px 24px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tab-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            overflow: hidden;
+            margin-top: 24px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e3f2f0;
+            overflow-x: auto;
+            background: #fafffe;
+        }
+
+        .tab-btn {
+            padding: 14px 20px;
+            border: none;
+            background: none;
+            color: #6c757d;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #0a6b5e;
+            background: #f0f7f6;
+        }
+
+        .tab-btn.active {
+            color: #0a6b5e;
+            border-bottom-color: #0a6b5e;
+            background: white;
+        }
+
+        .tab-content {
+            padding: 24px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0a6b5e;
+            margin-bottom: 16px;
+        }
+
+        .subsection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .data-card {
+            background: #f8fffe;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .detail-text {
+            color: #424242;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0a6b5e;
+        }
+
+        .metric-detail {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        .expandable-section {
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .expandable-header {
+            background: #f0f7f6;
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #0a6b5e;
+            transition: background 0.2s;
+        }
+
+        .expandable-header:hover {
+            background: #e6f3f1;
+        }
+
+        .expandable-content {
+            padding: 16px;
+            display: none;
+            background: white;
+        }
+
+        .expandable-content.active {
+            display: block;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+            margin: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 12px;
+            top: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: #e3f2f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: #0a6b5e;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .trial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .trial-table th {
+            background: #f0f7f6;
+            padding: 12px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0a6b5e;
+            border-bottom: 2px solid #e3f2f0;
+        }
+
+        .trial-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f7f6;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .status-active { 
+            background: #d4f4ec;
+            color: #0a6b5e;
+        }
+
+        .status-completed { 
+            background: #e3f2f0;
+            color: #0a6b5e;
+        }
+
+        .status-recruiting { 
+            background: #cfe2ff;
+            color: #084298;
+        }
+
+        .link-btn {
+            color: #0a6b5e;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .link-btn:hover {
+            background: #f0f7f6;
+        }
+
+        .ae-table {
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .ae-table th {
+            background: #fff3cd;
+            padding: 10px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            color: #856404;
+        }
+
+        .ae-table td {
+            padding: 10px;
+            border-bottom: 1px solid #fff3cd;
+            font-size: 13px;
+        }
+
+        .reference-list {
+            font-size: 11px;
+            color: #6c757d;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e3f2f0;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .regulatory-flow {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .flow-node {
+            background: white;
+            border: 2px solid #0a6b5e;
+            border-radius: 8px;
+            padding: 16px;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-node.completed {
+            background: #d4f4ec;
+        }
+
+        .flow-node.active {
+            background: #cfe2ff;
+            border-color: #084298;
+        }
+
+        .flow-arrow {
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0a6b5e;
+            font-size: 20px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7f6 0%, #e6f3f1 100%);
+            border-left: 4px solid #0a6b5e;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .risk-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .risk-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .risk-high { background: #dc3545; }
+        .risk-medium { background: #ffc107; }
+        .risk-low { background: #28a745; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <img src="leaf.png" alt="Leaf Intelligence" class="h-14 w-14 object-contain">
+                <div class="ml-3">
+                    <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Leaf Intelligence
+                    </span>
+                    <div class="text-xs text-gray-600 font-medium tracking-wide">AI Research Platform</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-tabs ml-8">
+            <a href="#" class="nav-tab">Companies</a>
+            <a href="#" class="nav-tab active">Pharmaceuticals Intelligence</a>
+            <a href="#" class="nav-tab">Reports</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <div class="bg-white rounded-lg p-6 shadow-sm mb-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Atirmociclib (PF-07220060)</h1>
+                    <p class="text-lg text-gray-600 mt-2">Next-Generation Selective CDK4 Inhibitor for HR+/HER2- Breast Cancer</p>
+                    <div class="flex gap-4 mt-4">
+                        <span class="status-badge status-active">Phase 3</span>
+                        <span class="text-sm text-gray-600">Pfizer Internal Development</span>
+                        <span class="text-sm text-gray-600">Target: First-line HR+/HER2- Metastatic Breast Cancer</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-gray-500">Development Status</div>
+                    <div class="text-2xl font-bold text-blue-600">FourLight-3 Enrolling</div>
+                    <div class="text-sm text-gray-500">FDA Fast Track Potential</div>
+                    <div class="text-sm text-gray-500">Expected Approval: 2027-2028</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Container -->
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('clinical')">Clinical & Regulatory</button>
+                <button class="tab-btn" onclick="showTab('scientific')">Scientific & IP</button>
+                <button class="tab-btn" onclick="showTab('commercial')">Commercial & Market</button>
+                <button class="tab-btn" onclick="showTab('financial')">Financial & Strategic</button>
+                <button class="tab-btn" onclick="showTab('operational')">Operational & Legal</button>
+                <button class="tab-btn" onclick="showTab('management')">Management & Team</button>
+                <button class="tab-btn" onclick="showTab('safety')">Safety & Toxicology</button>
+                <button class="tab-btn" onclick="showTab('trials')">Complete Trial Analysis</button>
+            </div>
+
+            <!-- Clinical & Regulatory Tab -->
+            <div id="clinical" class="tab-content active">
+                <div class="section-title">1. Clinical & Regulatory Diligence</div>
+                
+                <!-- Trial Design & Endpoints -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.1 Trial Design & Endpoints</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">FourLight-3 Phase 3 Design Overview</h4>
+                            <p class="detail-text">
+                                FourLight-3 (NCT06760637) is an open-label, randomized, multicenter Phase 3 study enrolling approximately 1020 patients globally, comparing atirmociclib (300mg BID continuous) + letrozole versus investigator's choice of approved CDK4/6 inhibitor (palbociclib, ribociclib, or abemaciclib) + letrozole in first-line HR+/HER2− metastatic breast cancer.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Primary Endpoint</div>
+                                <div class="metric-value">PFS (BICR)</div>
+                                <div class="metric-detail">Blinded independent central review</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Randomization</div>
+                                <div class="metric-value">1:1</div>
+                                <div class="metric-detail">Stratified by region, visceral disease</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Sample Size</div>
+                                <div class="metric-value">~1020</div>
+                                <div class="metric-detail">Global enrollment including China</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Design</div>
+                                <div class="metric-value">Open-label</div>
+                                <div class="metric-detail">Non-inferiority/superiority</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Key Secondary Endpoints:</strong> Overall survival (OS), investigator-assessed PFS, objective response rate (ORR), duration of response (DoR), clinical benefit rate (CBR), safety, and patient-reported outcomes using EORTC QLQ-C30, BR-23, and EQ-5D instruments. The trial is powered for non-inferiority of PFS with potential for superiority if atirmociclib truly extends PFS.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Patient Population:</strong> Postmenopausal women with HR+/HER2- advanced or metastatic breast cancer, no prior systemic therapy for advanced disease, ECOG 0-1, and measurable or bone-only disease per RECIST 1.1. Key exclusions include visceral crisis, active CNS metastases, and recent (<12 months) adjuvant CDK4/6 or endocrine therapy.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Geographic Distribution:</strong> Global enrollment across U.S., EU countries, China, Japan, and other regions to support worldwide regulatory filings. The inclusion of China is strategic, enabling simultaneous submission to the NMPA and tapping a large patient pool early.
+                        </p>
+
+                        <div class="reference-list">
+                            Sources: <a href="https://clinicaltrials.gov/study/NCT06760637" target="_blank" class="link-btn">ClinicalTrials.gov</a> | 
+                            <a href="https://www.pfizeroncologydevelopment.com/clinical_trial/NCT06760637" target="_blank" class="link-btn">Pfizer Oncology Development</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 1/2 Efficacy Results -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.2 Phase 1/2 Clinical Efficacy Results</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">First-Line Combination Cohort Results</h4>
+                            <p class="detail-text">
+                                In the Phase 1/2a dose-escalation and expansion trial (NCT04557449), the first-line letrozole combination cohort (n=34) demonstrated compelling efficacy with atirmociclib at the recommended Phase 2 dose of 300mg BID continuous daily dosing.
+                            </p>
+                        </div>
+
+                        <canvas id="efficacyChart" class="chart-container"></canvas>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">Objective Response Rate</div>
+                                <div class="metric-value">58.8%</div>
+                                <div class="metric-detail">All partial responses</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Clinical Benefit Rate</div>
+                                <div class="metric-value">94.1%</div>
+                                <div class="metric-detail">ORR + sustained SD</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Median PFS</div>
+                                <div class="metric-value">Not Reached</div>
+                                <div class="metric-detail">74% progression-free at 16.5mo</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Time to Response</div>
+                                <div class="metric-value">3.7 months</div>
+                                <div class="metric-detail">Median time to PR</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Comparative Context:</strong> These outcomes mirror or slightly exceed historical data from PALOMA-2 (palbociclib + letrozole), where ORR was ~42% and median PFS was ~24.8 months. Atirmociclib's ~59% ORR is notably higher, though cross-trial comparisons must be interpreted cautiously. The high CBR (94%) indicates nearly all patients derived benefit through response or prolonged stable disease.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Continuous Dosing Advantage:</strong> Notably, 25 of 34 patients (74%) remained on treatment without progression at 16.5 months median follow-up. The ability to maintain continuous daily dosing without mandatory week-off periods potentially contributes to sustained target inhibition and improved outcomes.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Biomarker Analysis:</strong> Responses were largely independent of PIK3CA/AKT1/PTEN mutations in circulating tumor DNA. ORR was 61.5% in mutation-positive versus 53.3% in mutation-negative patients, with CBR 84.6% versus 100% respectively, suggesting broad activity in HR+ tumors irrespective of PIK3CA status.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Dose Intensity Maintained:</strong> The median relative dose intensity was 99.3%, with 85% of patients maintaining ≥90% of the intended dose intensity. This high dose intensity maintenance contrasts sharply with palbociclib, where many patients require dose reductions to 100mg or 75mg from the starting 125mg due to neutropenia.
+                        </p>
+
+                        <div class="reference-list">
+                            Sources: <a href="https://www.onclive.com/view/atirmociclib-plus-letrozole-demonstrates-preliminary-efficacy-and-safety" target="_blank" class="link-btn">OncLive Phase 1/2 Results</a> | 
+                            Miami Breast Cancer Conference 2025 Abstract
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety Profile -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.3 Safety Profile Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Key Safety Differentiator</h4>
+                            <p class="detail-text">
+                                Atirmociclib demonstrates a markedly improved hematologic safety profile compared to pan-CDK4/6 inhibitors. Grade ≥3 neutropenia occurred in only 23.5% of patients versus ~60-70% with palbociclib (66% in PALOMA trials, 84.5% in Asian PALOMA-4).
+                            </p>
+                        </div>
+
+                        <table class="ae-table">
+                            <thead>
+                                <tr>
+                                    <th>Adverse Event</th>
+                                    <th>Any Grade (%)</th>
+                                    <th>Grade ≥3 (%)</th>
+                                    <th>Clinical Impact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Neutropenia</td>
+                                    <td>61.8%</td>
+                                    <td>23.5%</td>
+                                    <td>3-fold reduction vs palbociclib</td>
+                                </tr>
+                                <tr>
+                                    <td>Leukopenia</td>
+                                    <td>41.2%</td>
+                                    <td>0%</td>
+                                    <td>No Grade 3/4 reported</td>
+                                </tr>
+                                <tr>
+                                    <td>Anemia</td>
+                                    <td>23.5%</td>
+                                    <td>0%</td>
+                                    <td>Manageable</td>
+                                </tr>
+                                <tr>
+                                    <td>Lymphopenia</td>
+                                    <td>20.6%</td>
+                                    <td>2.9%</td>
+                                    <td>Minimal Grade 3</td>
+                                </tr>
+                                <tr>
+                                    <td>Fatigue</td>
+                                    <td>Common</td>
+                                    <td>Rare</td>
+                                    <td>Mostly Grade 1-2</td>
+                                </tr>
+                                <tr>
+                                    <td>ILD/Pneumonitis</td>
+                                    <td>2.9%</td>
+                                    <td>2.9%</td>
+                                    <td>One case, resolved</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">Any Grade ≥3 TRAE</div>
+                                <div class="metric-value">41.2%</div>
+                                <div class="metric-detail">Mostly neutropenia</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Dose Reductions</div>
+                                <div class="metric-value">8.8%</div>
+                                <div class="metric-detail">vs ~36% palbociclib</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Discontinuation Rate</div>
+                                <div class="metric-value">2.9%</div>
+                                <div class="metric-detail">vs 9.7% palbociclib</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Febrile Neutropenia</div>
+                                <div class="metric-value">0%</div>
+                                <div class="metric-detail">vs 1-2% with palbociclib</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Critical Safety Advantages:</strong> No Grade 4 neutropenia or febrile neutropenia events were reported. No treatment-related deaths occurred. No significant liver enzyme elevations or QT prolongation signals were noted, which differentiates from ribociclib (requires ECG monitoring) and abemaciclib (GI toxicity).
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>ILD Signal:</strong> One patient (2.9%) experienced Grade 3 interstitial lung disease, which resolved with management. This is a known rare class effect for CDK4/6 inhibitors. The incidence appears consistent with the ~1% rate seen with other agents in this class.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Continuous Dosing Feasibility:</strong> The improved safety profile enabled continuous daily dosing in essentially all patients, with no mandatory "week off" periods. This consistent target inhibition may contribute to efficacy while simplifying patient management.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Regulatory Strategy -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.4 Regulatory Strategy & Timeline</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="regulatory-flow">
+                            <div class="flow-node completed">
+                                <div class="flow-arrow">→</div>
+                                <strong>Phase 1/2</strong>
+                                <p class="text-sm mt-1">Completed 2024</p>
+                                <p class="text-xs text-gray-500">RP2D: 300mg BID</p>
+                            </div>
+                            <div class="flow-node active">
+                                <div class="flow-arrow">→</div>
+                                <strong>Phase 3 FourLight-3</strong>
+                                <p class="text-sm mt-1">Enrolling 2025</p>
+                                <p class="text-xs text-gray-500">n=1020 patients</p>
+                            </div>
+                            <div class="flow-node">
+                                <div class="flow-arrow">→</div>
+                                <strong>Primary Analysis</strong>
+                                <p class="text-sm mt-1">Expected 2027</p>
+                                <p class="text-xs text-gray-500">PFS readout</p>
+                            </div>
+                            <div class="flow-node">
+                                <div class="flow-arrow">→</div>
+                                <strong>NDA Filing</strong>
+                                <p class="text-sm mt-1">Late 2027</p>
+                                <p class="text-xs text-gray-500">FDA/EMA/NMPA</p>
+                            </div>
+                            <div class="flow-node">
+                                <strong>Approval</strong>
+                                <p class="text-sm mt-1">2028</p>
+                                <p class="text-xs text-gray-500">Global launch</p>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>FDA Strategy:</strong> Atirmociclib will be reviewed as a 505(b)(1) new molecular entity. The design follows precedent - CDK4/6 inhibitors were approved on PFS endpoints in similar populations. An End-of-Phase 2 meeting with FDA likely occurred in 2024, where Pfizer presented Phase 2 results and the Phase 3 plan. The fact they proceeded with a large Phase 3 signals FDA did not object.
+                        </p>
+
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Regulatory Considerations</h4>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-low"></div>
+                                <div>
+                                    <strong>Endpoint Acceptance:</strong> PFS is an established approvable endpoint for first-line HR+ MBC. FDA has accepted this for all current CDK4/6 inhibitors.
+                                </div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-low"></div>
+                                <div>
+                                    <strong>No Companion Diagnostic:</strong> Patient selection based on routine HR/HER2 testing. No proprietary test needed, simplifying regulatory path.
+                                </div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-medium"></div>
+                                <div>
+                                    <strong>Non-inferiority Design:</strong> Must preserve substantial fraction of control benefit. If only non-inferior, may need to demonstrate clear safety advantage for differentiation.
+                                </div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-low"></div>
+                                <div>
+                                    <strong>CMC Readiness:</strong> Pfizer has extensive small molecule manufacturing experience. Crystalline hydrate Form 1 identified for stability.
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Global Regulatory Alignment:</strong> EMA will similarly look for non-inferior PFS with OS follow-up trend. PMDA (Japan) requirements met through global trial participation. NMPA (China) submission enabled by Chinese patient inclusion in Phase 3, potentially avoiding separate bridging study.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Potential for Priority Review:</strong> If Phase 3 shows superiority in PFS or significant safety improvement, Pfizer could request Priority Review (6-month timeline vs standard 10 months). However, as a "me-better" drug in a non-orphan indication, standard review more likely unless clear advantage demonstrated.
+                        </p>
+
+                        <div class="reference-list">
+                            Sources: FDA CDK4/6 Inhibitor Guidance | <a href="https://www.pfizer.com/news/press-release" target="_blank" class="link-btn">Pfizer Pipeline Updates</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combination Development -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.5 Combination Development Strategy</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Dual CDK Inhibition Strategy</h4>
+                            <p class="detail-text">
+                                TACTIVE-I trial (NCT05262400) is testing atirmociclib in combination with PF-07104091, a selective CDK2 inhibitor, plus endocrine therapy in patients who progressed on prior CDK4/6 inhibitors. The rationale: some tumors become resistant by upregulating Cyclin E/CDK2; simultaneous blockade of CDK4 and CDK2 could shut down cell-cycle escape routes.
+                            </p>
+                        </div>
+
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">TACTIVE-I Early Results</h4>
+                            <p class="detail-text">
+                                <strong>Safety:</strong> The combination is feasible with no unexpected synergistic toxicity beyond expected cytopenias and fatigue. Dose escalation successfully completed.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Efficacy Signals:</strong> Some anti-tumor activity observed even in heavily pretreated cases, including a few partial responses, suggesting potential to re-sensitize CDK4/6-resistant tumors.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Next Steps:</strong> Phase 2 expansion planned pending RP2D determination. This could position atirmociclib + CDK2i as a salvage therapy for the ~30% of patients who relapse on first-line CDK4/6 inhibitors.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">TACTIVE-K: Atirmociclib + Vepdegestrant</h4>
+                            <p class="detail-text">
+                                Phase 1b/2 trial (NCT06086837) exploring atirmociclib + vepdegestrant (ARV-471, Pfizer/Arvinas PROTAC ER degrader) in ER+ MBC after CDK4/6 inhibitor progression, particularly in ESR1-mutant disease.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Strategic Rationale:</strong> Creates a chemotherapy-free doublet targeting both cell cycle (CDK4) and ER signaling. If successful, could become a proprietary combination beyond reach of generics.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Timeline:</strong> Initiated 2024, dose-finding ongoing. A Phase 3 first-line trial of this combination reportedly planned for late 2025, contingent on dose/schedule optimization.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">FourLight-1 Strategic Pivot</h4>
+                            <p class="detail-text">
+                                Originally planned as a ~500-patient Phase 3 testing atirmociclib + fulvestrant in second-line, FourLight-1 was downscoped to a ~333-patient Phase 2 in March 2025. This signals Pfizer's strategic focus on first-line and combination uses rather than second-line monotherapy cycling.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scientific & IP Tab -->
+            <div id="scientific" class="tab-content">
+                <div class="section-title">2. Scientific & Intellectual Property Diligence</div>
+
+                <!-- Mechanism of Action -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.1 Mechanism of Action & Scientific Rationale</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">CDK4-Selective Innovation</h4>
+                            <p class="detail-text">
+                                Atirmociclib is a highly selective inhibitor of CDK4 with ~20-fold greater selectivity for CDK4 over CDK6 compared to palbociclib, and ~4-fold greater than abemaciclib. This selectivity addresses the hypothesis that CDK6 inhibition contributes disproportionately to myelosuppression without being necessary for anti-tumor efficacy in ER+ breast cancer.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">CDK4 Selectivity</div>
+                                <div class="metric-value">20-fold</div>
+                                <div class="metric-detail">vs CDK6 (over palbociclib)</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">IC50 CDK4/Cyclin D1</div>
+                                <div class="metric-value">Low nM</div>
+                                <div class="metric-detail">Potent target inhibition</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Dosing Schedule</div>
+                                <div class="metric-value">Continuous</div>
+                                <div class="metric-detail">No week-off required</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Rb Phosphorylation</div>
+                                <div class="metric-value">>90% inhibition</div>
+                                <div class="metric-detail">In tumor models</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Preclinical Validation:</strong> Published in Cancer Cell (2025), Pfizer's preclinical studies demonstrated that continuous dosing of atirmociclib achieves superior tumor growth inhibition versus intermittent dosing at MTD. In CDK4-dependent models, atirmociclib induced deeper tumor regressions than palbociclib, attributable to the ability to dose higher/longer without causing severe neutropenia.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Hematopoietic Sparing:</strong> CDK6 plays a critical role in hematopoiesis, particularly in maintaining neutrophil production. By sparing CDK6, atirmociclib reduces impact on bone marrow while maintaining anti-tumor activity through CDK4 inhibition. Preclinical models showed significantly less cytotoxic effect on human hematopoietic stem/progenitor cells compared to pan-CDK4/6 inhibitors.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Resistance Mechanisms Addressed:</strong> Some palbociclib resistance may arise from inadequate CDK4 suppression due to dose-limiting neutropenia preventing full target coverage. Atirmociclib's ability to maintain 99% dose intensity enables more complete and sustained CDK4 blockade, potentially delaying resistance development.
+                        </p>
+
+                        <div class="reference-list">
+                            Sources: Cancer Cell 2025 Publication | <a href="https://www.cell.com/cancer-cell/fulltext/S1535-6108(25)00058-3" target="_blank" class="link-btn">CDK4 Selective Inhibition Paper</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patent Portfolio -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.2 Intellectual Property Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Comprehensive Patent Estate</h4>
+                            <p class="detail-text">
+                                Pfizer has erected a multi-layered patent fortress around atirmociclib. Primary composition-of-matter patent (WO 2019/207463, U.S. Patent No. 10,766,884) covers the molecule itself, with priority date ~2018, providing protection to 2038 base, potentially extendable to mid-2040s with patent term extension.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Patent Expiry (Base)</div>
+                                <div class="metric-value">2039</div>
+                                <div class="metric-detail">20 years from filing</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">With PTE</div>
+                                <div class="metric-value">~2044</div>
+                                <div class="metric-detail">Up to 5 years extension</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">NCE Exclusivity</div>
+                                <div class="metric-value">5 years</div>
+                                <div class="metric-detail">U.S. data exclusivity</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">EU Exclusivity</div>
+                                <div class="metric-value">8+2+1 years</div>
+                                <div class="metric-detail">Data + market + pediatric</div>
+                            </div>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Patent Portfolio Layers</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Composition Patents:</strong> WO 2019/207463 and U.S. 10,766,884 cover atirmociclib molecule. Granted in US (2020), likely in EU/Japan/China as well.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Method of Use Patents:</strong> US20250041298A1 (published 2025) covers "CDK4 inhibitor for the treatment of cancer," including specific dosing (200-1000mg daily or 100-500mg BID) and combinations with SERDs/AIs.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Formulation Patents:</strong> WO 2022/058871A1 and WO 2024/023703 cover crystalline hydrate Form 1 and other polymorphs, potentially extending protection to ~2042.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Additional Filings:</strong> WO 2022/034504, WO 2023/100134 listed in conflict statements, likely covering derivatives, combinations, or specific uses.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Freedom to Operate</h4>
+                            <p class="detail-text">
+                                <strong>Clear Path:</strong> No known third-party patents blocking atirmociclib. Competitors (BeiGene, Roche/Regor) have distinct compounds with separate IP.
+                            </p>
+                            <p class="detail-text">
+                                <strong>No Licensing Obligations:</strong> Pfizer solely owns atirmociclib (unlike vepdegestrant partnership with Arvinas). No upstream royalties or inventorship disputes identified.
+                            </p>
+                            <p class="detail-text">
+                                <strong>Defensive Position:</strong> Strong composition patents would block generic entry until late 2030s at earliest. Generic challenges expected ~5 years before expiry (mid-2030s), well after peak sales period.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competitive Science -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.3 Scientific Differentiation vs Competitors</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <table class="trial-table">
+                            <thead>
+                                <tr>
+                                    <th>CDK Inhibitor</th>
+                                    <th>Selectivity</th>
+                                    <th>Dosing</th>
+                                    <th>Grade 3/4 Neutropenia</th>
+                                    <th>Key Differentiator</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: #f0f7f6;">
+                                    <td><strong>Atirmociclib</strong></td>
+                                    <td>CDK4-selective</td>
+                                    <td>Continuous daily</td>
+                                    <td>23.5%</td>
+                                    <td>Lowest neutropenia, no breaks</td>
+                                </tr>
+                                <tr>
+                                    <td>Palbociclib</td>
+                                    <td>CDK4/6</td>
+                                    <td>3 weeks on/1 off</td>
+                                    <td>60-70%</td>
+                                    <td>First to market, going generic</td>
+                                </tr>
+                                <tr>
+                                    <td>Ribociclib</td>
+                                    <td>CDK4/6</td>
+                                    <td>3 weeks on/1 off</td>
+                                    <td>50-60%</td>
+                                    <td>OS benefit, QT monitoring needed</td>
+                                </tr>
+                                <tr>
+                                    <td>Abemaciclib</td>
+                                    <td>CDK4/6 (CDK4>6)</td>
+                                    <td>Continuous</td>
+                                    <td>20-25%</td>
+                                    <td>Continuous but 80% diarrhea</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Emerging CDK4-Selective Competition</h4>
+                            
+                            <p class="detail-text">
+                                <strong>BeiGene BGB-43395:</strong> Phase 3 trials planned in first and second-line. ~1 year behind Pfizer's timeline. Focus likely on China market initially.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Roche/Regor RGT-587:</strong> "Phase 1 ready" selective CDK4. Roche paid $850M upfront for portfolio in 2022. Several years behind atirmociclib.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Hengrui HRS-6209:</strong> CDK4/6 inhibitor in Phase 2 in China. Selectivity profile unclear. Domestic Chinese competitor.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Avenzo ARTS-023:</strong> Selective CDK4 in preclinical, first-in-human planned mid-2025. Small biotech, potential licensing candidate.
+                            </p>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Scientific Validation:</strong> Multiple companies pursuing CDK4-selective approach provides convergent validation of Pfizer's hypothesis. This reduces scientific risk while confirming market opportunity. Pfizer's 2-3 year head start and Phase 3 enrollment provide significant first-mover advantage in establishing CDK4-selective as new standard.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commercial & Market Tab -->
+            <div id="commercial" class="tab-content">
+                <div class="section-title">3. Commercial & Market Diligence</div>
+
+                <!-- Market Opportunity -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.1 Target Population & Market Sizing</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Addressable Market Overview</h4>
+                            <p class="detail-text">
+                                Breast cancer represents ~2.3 million new cases annually globally, with HR+/HER2- subtype comprising ~70% (~1.6 million cases). The relevant first-line metastatic population in major markets is estimated at ~100,000+ patients annually, with treatment duration averaging 20-24 months.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Global BC Incidence</div>
+                                <div class="metric-value">2.3M</div>
+                                <div class="metric-detail">Annual new cases</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">HR+ Prevalence</div>
+                                <div class="metric-value">70%</div>
+                                <div class="metric-detail">~1.6M cases/year</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">1L Metastatic (US)</div>
+                                <div class="metric-value">~30k/year</div>
+                                <div class="metric-detail">New + recurrent</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Treatment Duration</div>
+                                <div class="metric-value">20-24 mo</div>
+                                <div class="metric-detail">Average 1L therapy</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Current CDK4/6 Market Size:</strong> Global sales for CDK4/6 inhibitor class were ~$7-8 billion in 2022 (Ibrance ~$3.3B, Kisqali ~$1.2B, Verzenio ~$1.5B). By 2025, combined sales estimated at $8-9 billion with abemaciclib's adjuvant use growing.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Geographic Distribution:</strong>
+                            <br>• United States: ~40-50% of global oncology revenue due to pricing. ~30,000 first-line patients annually
+                            <br>• Europe: ~500k new BC cases/year, but lower pricing after HTA negotiations
+                            <br>• China: ~420k new BC cases/year, growing rapidly but significantly lower pricing due to NRDL
+                            <br>• Japan: Premium pricing but smaller volume
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Adjuvant Opportunity:</strong> If atirmociclib demonstrates benefit in high-risk early disease (like abemaciclib in monarchE), the addressable population could expand 2-3x. Currently, ~300k early-stage HR+ diagnosed annually in US + EU, with high-risk subset (~30%) potential candidates for adjuvant CDK4 therapy.
+                        </p>
+
+                        <canvas id="marketChart" class="chart-container"></canvas>
+                    </div>
+                </div>
+
+                <!-- Competitive Dynamics -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.2 Competitive Landscape at Launch</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Critical Launch Timing: 2027-2028</h4>
+                            <p class="detail-text">
+                                Atirmociclib will launch into a transforming market. Palbociclib goes generic in US ~2027, creating a low-cost competitor. Ribociclib and abemaciclib remain on patent until ~2029-2030, maintaining premium pricing but with established OS benefit claims.
+                            </p>
+                        </div>
+
+                        <table class="trial-table">
+                            <thead>
+                                <tr>
+                                    <th>Competitor</th>
+                                    <th>Patent Status 2027</th>
+                                    <th>Key Advantage</th>
+                                    <th>Vulnerability</th>
+                                    <th>Expected Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Generic Palbociclib</td>
+                                    <td>Off-patent</td>
+                                    <td>Cost (~90% discount)</td>
+                                    <td>No OS data, neutropenia burden</td>
+                                    <td>~$20k/year</td>
+                                </tr>
+                                <tr>
+                                    <td>Ribociclib (Kisqali)</td>
+                                    <td>On-patent to 2029</td>
+                                    <td>Proven OS benefit</td>
+                                    <td>QT monitoring, 3/1 schedule</td>
+                                    <td>~$180k/year</td>
+                                </tr>
+                                <tr>
+                                    <td>Abemaciclib (Verzenio)</td>
+                                    <td>On-patent to 2030</td>
+                                    <td>OS benefit, adjuvant label</td>
+                                    <td>80% diarrhea rate</td>
+                                    <td>~$180k/year</td>
+                                </tr>
+                                <tr style="background: #f0f7f6;">
+                                    <td><strong>Atirmociclib</strong></td>
+                                    <td>New launch</td>
+                                    <td>Superior safety, continuous</td>
+                                    <td>No OS data at launch</td>
+                                    <td>~$150-180k/year</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Differentiation Strategy</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Versus Generic Palbociclib:</strong> Emphasize 3-fold reduction in Grade 3/4 neutropenia (23.5% vs 66%), no mandatory dose breaks, 99% dose intensity maintenance, potential for improved outcomes through consistent target suppression.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Versus Ribociclib:</strong> No ECG monitoring required, no QT prolongation risk, simpler continuous dosing, comparable efficacy expected based on class effect.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Versus Abemaciclib:</strong> Minimal GI toxicity versus 80% diarrhea rate, better overall tolerability while maintaining continuous dosing advantage.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing & Reimbursement -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.3 Pricing & Market Access Strategy</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">US List Price (WAC)</div>
+                                <div class="metric-value">$14-16k</div>
+                                <div class="metric-detail">Per month expected</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Annual Cost</div>
+                                <div class="metric-value">$168-192k</div>
+                                <div class="metric-detail">Before rebates</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Net Price</div>
+                                <div class="metric-value">-25-35%</div>
+                                <div class="metric-detail">After rebates/discounts</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Generic Impact</div>
+                                <div class="metric-value">$20k/year</div>
+                                <div class="metric-detail">Palbociclib generic price</div>
+                            </div>
+                        </div>
+
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Payer Strategy Challenges & Solutions</h4>
+                            
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-high"></div>
+                                <div>
+                                    <strong>Step Therapy Risk:</strong> Payers likely to mandate generic palbociclib first. Mitigation: Generate health economic data showing reduced hospitalization costs from lower neutropenia rates. Febrile neutropenia hospitalization costs ~$15k per event.
+                                </div>
+                            </div>
+
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-medium"></div>
+                                <div>
+                                    <strong>ICER Assessment:</strong> Cost-effectiveness challenging versus generic (~$500k/QALY if similar efficacy). Need to demonstrate QoL improvements and reduced medical resource utilization.
+                                </div>
+                            </div>
+
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-medium"></div>
+                                <div>
+                                    <strong>EU HTA:</strong> NICE/G-BA may not recognize added benefit without OS data. Significant discounts likely required for reimbursement.
+                                </div>
+                            </div>
+
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-low"></div>
+                                <div>
+                                    <strong>Medicare Part D:</strong> Coverage assured but prior authorization expected. Protected from negotiation for 9 years as new molecular entity.
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Value-Based Contracting Options:</strong>
+                            <br>• Outcomes-based rebates if patients experience Grade 3/4 neutropenia
+                            <br>• Performance guarantees on dose intensity maintenance
+                            <br>• Portfolio deals leveraging Pfizer's oncology franchise
+                            <br>• Patient assistance programs to ensure access despite high cost-sharing
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Commercial Execution -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.4 Launch Strategy & Peak Sales Projections</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Leveraging Pfizer's Infrastructure</h4>
+                            <p class="detail-text">
+                                Pfizer's existing Ibrance sales force and relationships provide immediate market access. The company can redeploy its breast cancer team seamlessly from Ibrance to atirmociclib, maintaining physician relationships while transitioning the narrative from first-generation to next-generation CDK4 inhibition.
+                            </p>
+                        </div>
+
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Peak Sales Scenarios</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Bull Case ($5-6B):</strong> Atirmociclib becomes preferred first-line therapy, capturing 50% share. Expansion into adjuvant setting. Premium pricing maintained through demonstrated value.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Base Case ($2B):</strong> 25% market share split with generics and branded competitors. Modest share in US, limited EU uptake due to pricing. China volume offset by low pricing.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Bear Case ($500M-1B):</strong> Restricted to second-line or post-generic failure. Limited to 10-20% share. Significant price erosion to compete with generics.
+                            </p>
+                            </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Key Launch Success Factors</h4>
+                            
+                            <p class="detail-text">
+                                <strong>NCCN Guideline Inclusion:</strong> Critical for physician adoption. Need Category 1 recommendation alongside other CDK4/6 inhibitors based on Phase 3 data.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>KOL Advocacy:</strong> Leading oncologists from Dana-Farber (Dr. Antonio Giordano) and other centers already engaged through trials. Their endorsement of safety advantages crucial.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Real-World Evidence Generation:</strong> Post-launch studies demonstrating reduced healthcare resource utilization and maintained dose intensity will support value proposition.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Combination Strategy:</strong> If atirmociclib + vepdegestrant shows superiority to AI + CDK4/6, creates proprietary regimen competitors cannot match, potentially justifying premium pricing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial & Strategic Tab -->
+            <div id="financial" class="tab-content">
+                <div class="section-title">4. Financial & Strategic Diligence</div>
+
+                <!-- Pfizer Financials -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.1 Pfizer Financial Position & Investment Capacity</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Market Cap (2025)</div>
+                                <div class="metric-value">~$140B</div>
+                                <div class="metric-detail">NYSE: PFE</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Cash Position</div>
+                                <div class="metric-value">~$20B</div>
+                                <div class="metric-detail">Estimated 2025</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">R&D Budget</div>
+                                <div class="metric-value">$11B/year</div>
+                                <div class="metric-detail">2025 annual spend</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Ibrance Revenue Loss</div>
+                                <div class="metric-value">$3-4B</div>
+                                <div class="metric-detail">Expected 2027-2028</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Patent Cliff Challenge:</strong> Pfizer faces significant revenue loss between 2025-2030 from patent expiries including Ibrance (2027), Xeljanz, and Eliquis. Atirmociclib is strategically critical to maintain breast cancer franchise leadership and offset ~$3-4B annual Ibrance revenue loss.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Development Investment:</strong> Total atirmociclib development costs estimated at $200-300M through approval (Phase 1-3, regulatory, CMC). This represents <3% of annual R&D budget - minimal financial risk for Pfizer. Launch costs additional ~$50M/year leveraging existing infrastructure.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Strategic Context:</strong> $43B Seagen acquisition (2023) brought ADC portfolio. Atirmociclib maintains small molecule presence while Pfizer builds biologics capability. Combined with vepdegestrant partnership (Arvinas), creates integrated breast cancer portfolio.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Valuation Analysis -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.2 Risk-Adjusted NPV & Return Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Investment Case Modeling</h4>
+                            <p class="detail-text">
+                                Probability of Success (PoS) estimated at 60% based on strong Phase 2 data, validated mechanism, and Pfizer's execution capabilities. Primary risk is commercial rather than technical.
+                            </p>
+                        </div>
+
+                        <canvas id="npvChart" class="chart-container"></canvas>
+
+                        <table class="trial-table mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Scenario</th>
+                                    <th>Peak Sales</th>
+                                    <th>PoS-Adjusted</th>
+                                    <th>NPV @ 10%</th>
+                                    <th>IRR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bull Case</td>
+                                    <td>$5-6B</td>
+                                    <td>20% weight</td>
+                                    <td>$8-10B</td>
+                                    <td>35-40%</td>
+                                </tr>
+                                <tr style="background: #f0f7f6;">
+                                    <td><strong>Base Case</strong></td>
+                                    <td><strong>$2B</strong></td>
+                                    <td><strong>60% weight</strong></td>
+                                    <td><strong>$5B</strong></td>
+                                    <td><strong>25-30%</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Bear Case</td>
+                                    <td>$0.5-1B</td>
+                                    <td>20% weight</td>
+                                    <td>$1-2B</td>
+                                    <td>15-20%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Key Value Drivers</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Revenue Timeline:</strong> First sales 2028, ramp to peak by 2031. Patent protection to ~2044 enables 15+ years market exclusivity. Cumulative revenue potential $20-30B over product lifecycle.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Margin Profile:</strong> COGS ~5% for oral small molecule. Gross margin ~95%. EBIT margin 60-70% at peak given leveraged commercial infrastructure.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Sensitivity Analysis:</strong> NPV most sensitive to: (1) Market share vs generics, (2) Net pricing erosion, (3) Potential adjuvant indication expansion.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategic Options -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.3 Strategic Deal Structuring Options</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Potential Blackstone Investment Structures</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Royalty Financing:</strong> Blackstone could provide $500M-1B upfront for 3-5% royalty on global sales. IRR 15-20% if base case achieved. Similar to Blackstone's deals with Novartis/Alnylam.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Milestone-Based Investment:</strong> Tranched financing tied to clinical/commercial milestones. De-risks investment while maintaining upside exposure.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Combination Development Partnership:</strong> Co-fund Phase 3 of atirmociclib + vepdegestrant combo for share of that specific indication's economics.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>China Rights Monetization:</strong> Pfizer could monetize China rights to local partner given pricing challenges, retaining US/EU markets.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Strategic Value Beyond NPV</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Franchise Preservation:</strong> Maintains Pfizer's #1 position in HR+ breast cancer, preventing competitor incursion during Ibrance patent expiry.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Platform Synergies:</strong> Enables combinations with vepdegestrant (PROTAC), KAT6 inhibitor (PF-07248144), creating integrated portfolio competitors cannot replicate.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Sales Force Utilization:</strong> Keeps large breast cancer sales team productive post-Ibrance, avoiding restructuring costs and maintaining relationships.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exit Strategies -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.4 Value Realization & Exit Scenarios</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="detail-text">
+                            <strong>For Pfizer:</strong> Hold and commercialize through patent life. Potential to out-license in select markets if economics unfavorable (e.g., China if NRDL pricing too low).
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>For External Investors:</strong>
+                            <br>• Royalty stream sale to secondary buyers once de-risked
+                            <br>• Arvinas acquisition to capture vepdegestrant combo value
+                            <br>• Structured exit through revenue milestones/caps
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Payback Period:</strong> At $2B peak sales with 70% margins, payback on $300M investment within 2-3 years of launch. Attractive risk-return for late-stage oncology asset.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operational & Legal Tab -->
+            <div id="operational" class="tab-content">
+                <div class="section-title">5. Operational & Legal Diligence</div>
+
+                <!-- Manufacturing -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>5.1 Manufacturing & Supply Chain</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Manufacturing Scale Requirements</h4>
+                            <p class="detail-text">
+                                At 600mg daily dose and 50,000 patients globally, annual API requirement is ~11 metric tons. This is substantial but within capabilities of Pfizer's network or major CMOs. Manufacturing process well-established from Phase 3 supply.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">API Requirement</div>
+                                <div class="metric-value">11 MT/year</div>
+                                <div class="metric-detail">At 50k patients</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Formulation</div>
+                                <div class="metric-value">Oral tablet</div>
+                                <div class="metric-detail">300mg BID dosing</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Stability</div>
+                                <div class="metric-value">≥24 months</div>
+                                <div class="metric-detail">Room temperature</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">COGS</div>
+                                <div class="metric-value"><5%</div>
+                                <div class="metric-detail">Of selling price</div>
+                            </div>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Supply Chain Strategy</h4>
+                            
+                            <p class="detail-text">
+                                <strong>API Production:</strong> Likely internal at Pfizer facilities (Ireland, Kalamazoo) or trusted CMO. Dual-sourcing for risk mitigation. Multi-step organic synthesis with crystallization for polymorph control.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Formulation Sites:</strong> Multiple locations for finished product - US, Europe, potentially Puerto Rico. Can leverage Ibrance tablet production lines as they become available.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Critical Materials:</strong> No rare or single-source raw materials identified. Standard fine chemicals, solvents, catalysts. Pfizer typically maintains 6-month safety stock of critical inputs.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Distribution:</strong> Specialty pharmacy channel in US (like Ibrance). Standard oncology distribution in EU/ROW. No cold chain requirements - significant advantage over biologics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quality & Compliance -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>5.2 Regulatory Compliance & Quality Systems</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="detail-text">
+                            <strong>GMP Compliance:</strong> Pfizer's manufacturing sites regularly inspected by FDA/EMA. No significant 483 observations or warning letters for small molecule facilities in recent years. Process validation batches for NDA likely already manufactured.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Clinical Trial Compliance:</strong> Phase 3 conducted at high-quality sites including Dana-Farber, using established CROs. No GCP violations or clinical holds reported. DMC oversight ensures safety monitoring.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Pharmacovigilance Plan:</strong> Enhanced monitoring for ILD/pneumonitis given one Phase 2 case. Standard REMS not expected but label warnings likely for neutropenia monitoring (though reduced from competitors) and ILD awareness.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Environmental/Safety:</strong> PROTAC synthesis may involve thalidomide analogs (teratogenic) for E3 ligase binding - but atirmociclib is not a PROTAC. Standard cytotoxic handling protocols sufficient. No special environmental concerns.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Legal Issues -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>5.3 Legal & IP Considerations</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Current Legal Status</h4>
+                            
+                            <p class="detail-text">
+                                <strong>No Active Litigation:</strong> No patent disputes, product liability cases, or regulatory investigations involving atirmociclib.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Future Patent Defense:</strong> Generic challenges expected ~5 years before patent expiry (mid-2030s). Pfizer experienced with paragraph IV litigation from Ibrance defense.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Promotional Compliance:</strong> Must avoid unproven superiority claims versus other CDK4/6 inhibitors without head-to-head data. Can present tolerability differences from separate trials carefully.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Partnership Obligations</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Arvinas (Vepdegestrant):</strong> 50/50 profit share on ARV-471 affects combo economics but not atirmociclib monotherapy. Potential synergies if combo succeeds.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>No Royalty Burden:</strong> Atirmociclib fully owned by Pfizer. No upstream licensing obligations or university royalties identified.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Management & Team Tab -->
+            <div id="management" class="tab-content">
+                <div class="section-title">6. Management & Team Execution</div>
+
+                <!-- Leadership -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>6.1 Pfizer Oncology Leadership</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Key Personnel</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Dr. Chris Boshoff - Chief Oncology Officer:</strong> Oversees Pfizer's oncology pipeline. Publicly highlighted atirmociclib as "promising pipeline asset" at ASCO 2024. Strong strategic vision for integrated breast cancer portfolio.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Dr. Karin Tollefson - Chief Oncology Medical Officer:</strong> Ensures robust trial design and regulatory alignment. No protocol amendments or safety issues under her oversight.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Dr. Antonio Giordano - Lead Investigator (Dana-Farber):</strong> Presented Phase 1/2 data at Miami Breast Cancer Conference 2025. Top KOL engagement secured.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Albert Bourla - CEO:</strong> Publicly committed to mitigating patent cliffs through oncology innovation. Atirmociclib likely in corporate growth projections.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Execution Track Record -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>6.2 Development & Commercial Execution</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Proven Execution Capabilities</h4>
+                            <p class="detail-text">
+                                Pfizer successfully launched Ibrance to become the leading CDK4/6 inhibitor with >$5B peak sales. The team has deep experience in breast cancer drug development, regulatory navigation, and global commercialization.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Development Milestones Achieved</h4>
+                            
+                            <p class="detail-text">
+                                • First-in-human to Phase 3: ~5 years (2020-2025), efficient despite COVID
+                                <br>• Rapid Phase 3 initiation after positive Phase 2 data
+                                <br>• Strategic deprioritization of FourLight-1 shows disciplined resource allocation
+                                <br>• Global trial execution across US, EU, Asia demonstrates operational excellence
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Commercial Preparedness</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Sales Force:</strong> Large experienced breast cancer team from Ibrance can transition seamlessly. No need to build new infrastructure.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Market Access:</strong> Established payer relationships and contracting capabilities. Experience navigating CDK4/6 reimbursement landscape.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Medical Affairs:</strong> Strong KOL network from Ibrance era. Many top breast oncologists already engaged through trials.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Portfolio Integration:</strong> Coordinated strategy with vepdegestrant (Arvinas), KAT6 inhibitor (PF-07248144), and Seagen ADCs creates competitive moat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risk Mitigation -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>6.3 Execution Risks & Mitigation</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-low"></div>
+                            <div>
+                                <strong>Key Person Risk:</strong> Minimal given Pfizer's depth. Multiple layers of experienced management. No dependency on single individual.
+                            </div>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-medium"></div>
+                            <div>
+                                <strong>Internal Competition:</strong> Challenge of transitioning from Ibrance to atirmociclib. Mitigated by aligning sales incentives and clear positioning as next-generation upgrade.
+                            </div>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-low"></div>
+                            <div>
+                                <strong>Integration with Seagen:</strong> $43B acquisition creates bandwidth challenges. However, breast cancer remains strategic priority with dedicated resources.
+                            </div>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-medium"></div>
+                            <div>
+                                <strong>Payer Negotiation:</strong> Team must pivot from premium pricing (Ibrance) to value-based messaging. Experience from other competitive markets applicable.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety & Toxicology Tab -->
+            <div id="safety" class="tab-content">
+                <div class="section-title">7. Comprehensive Safety & Toxicology Profile</div>
+
+                <!-- Phase 1/2 Safety -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.1 Dose Escalation & MTD Determination</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Phase 1 Dose-Finding Results</h4>
+                            <p class="detail-text">
+                                No dose-limiting toxicities observed up to 700mg daily (highest dose tested). Maximum tolerated dose not reached. Recommended Phase 2 dose of 300mg BID selected based on optimal pharmacodynamic effect (89% CDK4 target coverage) rather than toxicity limitations.
+                            </p>
+                        </div>
+
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Dose Escalation Cohorts Safety</h4>
+                            
+                            <p class="detail-text">
+                                <strong>30-100mg QD:</strong> No DLTs, minimal AEs, suboptimal target coverage
+                                <br><strong>200-400mg QD:</strong> Acceptable safety, improved efficacy signals
+                                <br><strong>300mg BID (selected):</strong> Optimal balance of safety, PK/PD, and continuous target suppression
+                                <br><strong>400-700mg:</strong> No additional efficacy, slight increase in Grade 1-2 AEs
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparative Safety -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.2 Comparative Safety Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <canvas id="safetyComparisonChart" class="chart-container"></canvas>
+
+                        <table class="trial-table mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Safety Parameter</th>
+                                    <th>Atirmociclib</th>
+                                    <th>Palbociclib</th>
+                                    <th>Ribociclib</th>
+                                    <th>Abemaciclib</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Grade 3/4 Neutropenia</td>
+                                    <td style="background: #d4f4ec;">23.5%</td>
+                                    <td>60-70%</td>
+                                    <td>50-60%</td>
+                                    <td>20-25%</td>
+                                </tr>
+                                <tr>
+                                    <td>Febrile Neutropenia</td>
+                                    <td style="background: #d4f4ec;">0%</td>
+                                    <td>1-2%</td>
+                                    <td>1%</td>
+                                    <td><1%</td>
+                                </tr>
+                                <tr>
+                                    <td>Dose Reductions</td>
+                                    <td style="background: #d4f4ec;">8.8%</td>
+                                    <td>36%</td>
+                                    <td>33%</td>
+                                    <td>43%</td>
+                                </tr>
+                                <tr>
+                                    <td>Discontinuations</td>
+                                    <td style="background: #d4f4ec;">2.9%</td>
+                                    <td>9.7%</td>
+                                    <td>7.5%</td>
+                                    <td>13%</td>
+                                </tr>
+                                <tr>
+                                    <td>QT Prolongation</td>
+                                    <td style="background: #d4f4ec;">None</td>
+                                    <td>None</td>
+                                    <td>3% (monitoring required)</td>
+                                    <td>None</td>
+                                </tr>
+                                <tr>
+                                    <td>Diarrhea (any grade)</td>
+                                    <td style="background: #d4f4ec;">Low</td>
+                                    <td>20%</td>
+                                    <td>35%</td>
+                                    <td>80%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Special Populations -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.3 Special Populations & Drug Interactions</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Asian Population Safety</h4>
+                            <p class="detail-text">
+                                Particularly relevant given high neutropenia rates in Asian patients on palbociclib (84.5% Grade 3/4 in PALOMA-4). Atirmociclib's reduced myelosuppression especially valuable in this population. China bridging studies confirmed similar PK/safety profile.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Drug-Drug Interactions</h4>
+                            
+                            <p class="detail-text">
+                                <strong>With Palbociclib (TACTIVE trials):</strong> PK interaction identified - atirmociclib increased palbociclib exposure, likely via CYP3A4 interaction. Managed with dose adjustment.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>With Endocrine Therapy:</strong> No significant interactions with letrozole or fulvestrant. Compatible with standard endocrine backbone.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>With CDK2 Inhibitor:</strong> TACTIVE-I shows manageable combination with PF-07104091. Overlapping cytopenias monitored but not prohibitive.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Long-Term Safety Considerations</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Continuous Dosing Tolerance:</strong> No evidence of cumulative toxicity with continuous administration. 74% of patients maintained treatment >16 months without emerging safety signals.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>ILD Monitoring:</strong> Given one Grade 3 case (2.9%), enhanced pharmacovigilance planned. Consistent with ~1% class incidence. Management guidelines will be included in label.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Secondary Malignancy Risk:</strong> Theoretical concern with prolonged cell cycle inhibition. No signals in current data but requires long-term follow-up.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complete Trial Analysis Tab -->
+            <div id="trials" class="tab-content">
+                <div class="section-title">8. Complete Clinical Trial Portfolio</div>
+
+                <!-- Trial Timeline -->
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Phase 1/2a -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2020-2024</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Phase 1/2a Dose Escalation & Expansion (NCT04557449)</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> Multicenter, open-label dose-escalation and expansion
+                                <br><strong>Cohorts:</strong> Multiple including CDK4/6i-naïve and pretreated
+                                <br><strong>Key Cohort 2B:</strong> Atirmociclib 300mg BID + letrozole in 1L (n=34)
+                                <br><strong>Primary:</strong> MTD, safety, RP2D determination
+                                <br><strong>Secondary:</strong> ORR, CBR, PFS, PK/PD
+                            </p>
+                            <p class="detail-text mt-2">
+                                <strong>Results:</strong>
+                                <br>• RP2D: 300mg BID continuous
+                                <br>• ORR: 58.8%, CBR: 94.1% in 1L cohort
+                                <br>• Median PFS not reached (74% progression-free at 16.5mo)
+                                <br>• Grade ≥3 neutropenia: 23.5%
+                                <br>• Dose intensity maintained: 99.3%
+                            </p>
+                            <div class="reference-list">
+                                Status: <span class="status-badge status-completed">Completed</span> | 
+                                <a href="https://clinicaltrials.gov/ct2/show/NCT04557449" target="_blank" class="link-btn">View Trial →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FourLight-3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot" style="background: #084298;"></div>
+                        <div class="timeline-date">2025-2037</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">🔵 FourLight-3 Phase 3 (NCT06760637) - PIVOTAL</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> Open-label, randomized, multicenter, global
+                                <br><strong>Population:</strong> 1st-line HR+/HER2- metastatic BC, no prior systemic therapy for advanced disease
+                                <br><strong>n=1020:</strong> Randomized 1:1
+                                <br><strong>Arms:</strong> 
+                                <br>• Atirmociclib 300mg BID + letrozole
+                                <br>• Investigator's choice CDK4/6i (palbo/ribo/abema) + letrozole
+                                <br><strong>Primary:</strong> PFS by BICR (non-inferiority/superiority)
+                                <br><strong>Key Secondary:</strong> OS, ORR, DoR, safety, PROs
+                            </p>
+                            <p class="detail-text mt-2">
+                                <strong>Strategic Importance:</strong> Registrational trial for global approval. Includes China sites for NMPA submission. First patient enrolled January 2025.
+                            </p>
+                            <div class="reference-list">
+                                Status: <span class="status-badge status-recruiting">Recruiting</span> | 
+                                <a href="https://clinicaltrials.gov/study/NCT06760637" target="_blank" class="link-btn">View Trial →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FourLight-1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot" style="background: #ffc107;"></div>
+                        <div class="timeline-date">2025-2028</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">FourLight-1 Phase 2 (Downscoped)</h4>
+                            <p class="detail-text">
+                                <strong>Original:</strong> ~500-patient Phase 3 for 2nd-line post-CDK4/6
+                                <br><strong>Revised (March 2025):</strong> ~333-patient Phase 2, no longer registrational
+                                <br><strong>Design:</strong> Atirmociclib + fulvestrant vs control in 2L
+                                <br><strong>Strategic Decision:</strong> Deprioritized to focus resources on 1L and combinations
+                            </p>
+                            <p class="detail-text mt-2">
+                                Signals Pfizer's assessment that cycling CDK inhibitors in 2L has limited value. Resources redirected to higher-value indications.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- TACTIVE-I -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024-2026</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">TACTIVE-I Phase 1b/2 (NCT05262400)</h4>
+                            <p class="detail-text">
+                                <strong>Innovation:</strong> Dual CDK4 + CDK2 inhibition
+                                <br><strong>Design:</strong> Atirmociclib + PF-07104091 (CDK2i) + ET
+                                <br><strong>Population:</strong> CDK4/6i-resistant HR+ MBC
+                                <br><strong>Rationale:</strong> Target Cyclin E/CDK2 resistance mechanism
+                                <br><strong>Status:</strong> Dose escalation complete, expansion ongoing
+                            </p>
+                            <p class="detail-text mt-2">
+                                <strong>Early Results:</strong> Combination feasible, no unexpected toxicity. Some PRs in heavily pretreated patients. Could become salvage therapy for 30% who progress on 1L CDK4/6i.
+                            </p>
+                            <div class="reference-list">
+                                Status: <span class="status-badge status-active">Active</span> | 
+                                <a href="https://clinicaltrials.gov/ct2/show/NCT05262400" target="_blank" class="link-btn">View Trial →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TACTIVE-K -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024-2027</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">TACTIVE-K Phase 1b/2 (NCT06086837)</h4>
+                            <p class="detail-text">
+                                <strong>Strategic Combination:</strong> Atirmociclib + Vepdegestrant (ARV-471)
+                                <br><strong>Design:</strong> Dose-finding then expansion
+                                <br><strong>Population:</strong> ER+ MBC with ESR1 mutations
+                                <br><strong>Rationale:</strong> Chemotherapy-free doublet targeting cell cycle + ER
+                                <br><strong>Future:</strong> Phase 3 1L trial planned late 2025 if successful
+                            </p>
+                            <p class="detail-text mt-2">
+                                Creates proprietary combination beyond generic reach. If superior to AI + CDK4/6, could justify premium pricing despite generic competition.
+                            </p>
+                            <div class="reference-list">
+                                Status: <span class="status-badge status-active">Dose-Finding</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regional Studies -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023-2024</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Regional Bridging Studies</h4>
+                            
+                            <div class="data-card mt-2">
+                                <strong>China PK/Safety (NCT05732428):</strong>
+                                <br>• n=9 Chinese patients
+                                <br>• Confirmed similar exposure and safety
+                                <br>• Supports China inclusion in global trials
+                            </div>
+                            
+                            <div class="data-card mt-2">
+                                <strong>Japan PK Study (NCT05463952):</strong>
+                                <br>• PMDA requirement fulfilled
+                                <br>• No new safety signals
+                                <br>• Enables Japanese registration
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comprehensive Trial Summary Table -->
+                <div class="subsection-title">Clinical Development Summary</div>
+                <table class="trial-table">
+                    <thead>
+                        <tr>
+                            <th>Trial</th>
+                            <th>Phase</th>
+                            <th>N</th>
+                            <th>Setting</th>
+                            <th>Primary Endpoint</th>
+                            <th>Key Results/Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NCT04557449</td>
+                            <td>1/2a</td>
+                            <td>~100</td>
+                            <td>Dose escalation</td>
+                            <td>MTD/RP2D</td>
+                            <td>300mg BID selected, ORR 58.8%</td>
+                        </tr>
+                        <tr style="background: #f0f7f6;">
+                            <td><strong>FourLight-3</strong></td>
+                            <td><strong>3</strong></td>
+                            <td><strong>1020</strong></td>
+                            <td><strong>1L HR+ MBC</strong></td>
+                            <td><strong>PFS (BICR)</strong></td>
+                            <td><strong>Enrolling - Pivotal</strong></td>
+                        </tr>
+                        <tr>
+                            <td>FourLight-1</td>
+                            <td>2</td>
+                            <td>333</td>
+                            <td>2L post-CDK</td>
+                            <td>PFS</td>
+                            <td>Downscoped from Ph3</td>
+                        </tr>
+                        <tr>
+                            <td>TACTIVE-I</td>
+                            <td>1b/2</td>
+                            <td>TBD</td>
+                            <td>CDK-resistant</td>
+                            <td>Safety/RP2D</td>
+                            <td>CDK4+CDK2 feasible</td>
+                        </tr>
+                        <tr>
+                            <td>TACTIVE-K</td>
+                            <td>1b/2</td>
+                            <td>TBD</td>
+                            <td>ESR1-mut</td>
+                            <td>Safety/RP2D</td>
+                            <td>With vepdegestrant</td>
+                        </tr>
+                        <tr>
+                            <td>China Bridge</td>
+                            <td>1</td>
+                            <td>9</td>
+                            <td>Chinese pts</td>
+                            <td>PK/Safety</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>Japan Bridge</td>
+                            <td>1</td>
+                            <td>Small</td>
+                            <td>Japanese pts</td>
+                            <td>PK/Safety</td>
+                            <td>Completed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Investment Summary Section -->
+        <div class="tab-container mt-6">
+            <div class="section-title p-6">Investment Committee Summary</div>
+            <div class="p-6">
+                <div class="highlight-box">
+                    <h3 class="text-xl font-bold mb-4 text-gray-900">Executive Investment Thesis</h3>
+                    <p class="detail-text">
+                        Atirmociclib represents a compelling late-stage oncology investment with validated mechanism, strong Phase 2 proof-of-concept, and clear differentiation through superior safety profile. As the first CDK4-selective inhibitor to reach Phase 3, it addresses the primary limitation of current CDK4/6 inhibitors (neutropenia) while maintaining efficacy through continuous dosing.
+                    </p>
+                </div>
+
+                <div class="metric-grid mt-6">
+                    <div class="metric-card">
+                        <div class="metric-label">Clinical Risk</div>
+                        <div class="metric-value text-green-600">✓ Low</div>
+                        <div class="metric-detail">Strong Phase 2, validated target</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Regulatory Risk</div>
+                        <div class="metric-value text-green-600">✓ Low</div>
+                        <div class="metric-detail">Precedented pathway, no CDx</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Commercial Risk</div>
+                        <div class="metric-value text-yellow-600">⚠ High</div>
+                        <div class="metric-detail">Generic competition 2027</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Financial Upside</div>
+                        <div class="metric-value text-yellow-600">⚠ Moderate</div>
+                        <div class="metric-detail">$2B base case peak sales</div>
+                    </div>
+                </div>
+
+                <div class="data-card mt-6">
+                    <h4 class="font-semibold mb-3">Key Investment Strengths</h4>
+                    <ul class="space-y-2">
+                        <li>✓ <strong>3-fold reduction in Grade 3/4 neutropenia</strong> (23.5% vs 60-70% palbociclib)</li>
+                        <li>✓ <strong>Continuous daily dosing</strong> with 99% dose intensity maintenance</li>
+                        <li>✓ <strong>Strong Phase 2 efficacy:</strong> 58.8% ORR, 94.1% CBR in first-line</li>
+                        <li>✓ <strong>Comprehensive IP protection</strong> to mid-2040s</li>
+                        <li>✓ <strong>Pfizer's execution capabilities</strong> and existing infrastructure</li>
+                        <li>✓ <strong>First-mover advantage</strong> in CDK4-selective class</li>
+                        <li>✓ <strong>Strategic combinations</strong> with vepdegestrant and CDK2 inhibitor</li>
+                    </ul>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-3">Key Investment Risks</h4>
+                    <ul class="space-y-2">
+                        <li>⚠ <strong>Generic palbociclib competition</strong> at launch (2027)</li>
+                        <li>⚠ <strong>Ribociclib/abemaciclib OS advantage</strong> without head-to-head data</li>
+                        <li>⚠ <strong>Payer restrictions</strong> likely requiring generic failure first</li>
+                        <li>⚠ <strong>Non-inferiority design</strong> may limit differentiation claims</li>
+                        <li>⚠ <strong>Emerging CDK4-selective competitors</strong> (BeiGene, Roche)</li>
+                        <li>⚠ <strong>FourLight-1 deprioritization</strong> signals limited 2L opportunity</li>
+                    </ul>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-3">Financial Return Projections</h4>
+                    <table class="trial-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Bull Case</th>
+                                <th>Base Case</th>
+                                <th>Bear Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Peak Sales</td>
+                                <td>$5-6B</td>
+                                <td>$2B</td>
+                                <td>$0.5-1B</td>
+                            </tr>
+                            <tr>
+                                <td>Probability</td>
+                                <td>20%</td>
+                                <td>60%</td>
+                                <td>20%</td>
+                            </tr>
+                            <tr>
+                                <td>NPV @ 10%</td>
+                                <td>$8-10B</td>
+                                <td>$5B</td>
+                                <td>$1-2B</td>
+                            </tr>
+                            <tr>
+                                <td>IRR</td>
+                                <td>35-40%</td>
+                                <td>25-30%</td>
+                                <td>15-20%</td>
+                            </tr>
+                            <tr style="background: #f0f7f6;">
+                                <td><strong>Weighted NPV</strong></td>
+                                <td colspan="3" style="text-align: center;"><strong>$5B</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box mt-6">
+                    <h4 class="font-semibold mb-2">Investment Recommendation</h4>
+                    <p class="detail-text">
+                        <strong>Rating: BUY with commercial risk mitigation focus</strong>
+                        <br><br>
+                        Atirmociclib presents a solid late-stage opportunity with strong scientific rationale and execution capabilities, tempered by significant commercial headwinds from generic competition. The $5B risk-adjusted NPV supports continued investment, but success requires:
+                        <br><br>
+                        1. <strong>Aggressive payer strategy</strong> emphasizing total cost of care reduction
+                        <br>2. <strong>Combination development acceleration</strong> (vepdegestrant combo for differentiation)
+                        <br>3. <strong>Real-world evidence generation</strong> demonstrating reduced healthcare utilization
+                        <br>4. <strong>Strategic pricing</strong> potentially at parity or below branded competitors
+                        <br><br>
+                        For external investors (Blackstone), consider royalty financing ($500M-1B for 3-5% royalty) or milestone-based investment tied to commercial uptake metrics. The 25-30% IRR in base case is attractive for late-stage oncology, though commercial risk requires careful structuring.
+                        <br><br>
+                        <strong>Critical Success Factors:</strong> (1) Phase 3 meets primary endpoint, (2) Safety advantage maintained in larger population, (3) Rapid guideline inclusion, (4) Effective transition from Ibrance franchise, (5) Combination data supporting proprietary regimens.
+                    </p>
+                </div>
+
+                <div class="data-card mt-6">
+                    <h4 class="font-semibold mb-3">Risk Mitigation Strategies</h4>
+                    
+                    <p class="detail-text">
+                        <strong>Commercial Risk Mitigation:</strong>
+                        <br>• Generate head-to-head QoL data vs generic palbociclib
+                        <br>• Develop health economic models quantifying hospitalization reduction
+                        <br>• Pursue value-based contracts with performance guarantees
+                        <br>• Accelerate vepdegestrant combination to create differentiated regimen
+                    </p>
+
+                    <p class="detail-text mt-3">
+                        <strong>Regulatory Risk Mitigation:</strong>
+                        <br>• Maintain robust safety database through Phase 3
+                        <br>• Plan post-marketing OS data collection
+                        <br>• Engage FDA/EMA early on labeling strategy
+                    </p>
+
+                    <p class="detail-text mt-3">
+                        <strong>Competitive Risk Mitigation:</strong>
+                        <br>• Secure first-mover advantage through rapid enrollment
+                        <br>• Build KOL advocacy network emphasizing tolerability
+                        <br>• Consider adjuvant trial to expand indication
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching function
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Toggle expandable sections
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('span:last-child');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                arrow.textContent = '▶';
+            } else {
+                content.classList.add('active');
+                arrow.textContent = '▼';
+            }
+        }
+
+        // Efficacy Chart
+        const efficacyCtx = document.getElementById('efficacyChart');
+        if (efficacyCtx) {
+            new Chart(efficacyCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['ORR', 'CBR', '6-mo PFS Rate', 'Dose Intensity'],
+                    datasets: [{
+                        label: 'Atirmociclib + Letrozole',
+                        data: [58.8, 94.1, 74, 99.3],
+                        backgroundColor: '#0a6b5e',
+                        borderColor: '#0a6b5e',
+                        borderWidth: 1
+                    }, {
+                        label: 'Historical Palbociclib + Letrozole',
+                        data: [42, 85, 65, 70],
+                        backgroundColor: '#e3f2f0',
+                        borderColor: '#0a6b5e',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Phase 1/2 Efficacy Outcomes (%)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Percentage (%)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Market Size Chart
+        const marketCtx = document.getElementById('marketChart');
+        if (marketCtx) {
+            new Chart(marketCtx.getContext('2d'), {
+                type: 'pie',
+                data: {
+                    labels: ['United States', 'Europe', 'China', 'Japan', 'Rest of World'],
+                    datasets: [{
+                        data: [45, 25, 15, 8, 7],
+                        backgroundColor: [
+                            '#0a6b5e',
+                            '#2c8a7f',
+                            '#4ea9a0',
+                            '#70c8c1',
+                            '#92e7e2'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'CDK4/6 Inhibitor Market by Region (% Revenue)'
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        // NPV Scenarios Chart
+        const npvCtx = document.getElementById('npvChart');
+        if (npvCtx) {
+            new Chart(npvCtx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035'],
+                    datasets: [{
+                        label: 'Bull Case',
+                        data: [500, 2000, 4000, 5500, 5800, 6000, 5800, 5500],
+                        borderColor: '#28a745',
+                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Base Case',
+                        data: [200, 800, 1500, 2000, 2000, 2000, 1900, 1800],
+                        borderColor: '#0a6b5e',
+                        backgroundColor: 'rgba(10, 107, 94, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Bear Case',
+                        data: [100, 300, 500, 700, 800, 800, 700, 600],
+                        borderColor: '#dc3545',
+                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Revenue Projections by Scenario ($M)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Revenue ($M)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Safety Comparison Chart
+        const safetyCtx = document.getElementById('safetyComparisonChart');
+        if (safetyCtx) {
+            new Chart(safetyCtx.getContext('2d'), {
+                type: 'horizontalBar',
+                data: {
+                    labels: ['Grade 3/4 Neutropenia', 'Dose Reductions', 'Discontinuations', 'Febrile Neutropenia'],
+                    datasets: [{
+                        label: 'Atirmociclib (%)',
+                        data: [23.5, 8.8, 2.9, 0],
+                        backgroundColor: '#0a6b5e'
+                    }, {
+                        label: 'Palbociclib (%)',
+                        data: [66, 36, 9.7, 2],
+                        backgroundColor: '#e3f2f0'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Safety Profile Comparison'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 70,
+                            title: {
+                                display: true,
+                                text: 'Incidence (%)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

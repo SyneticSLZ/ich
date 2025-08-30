@@ -1,0 +1,2664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disitamab Vedotin (RC48) - Complete Investment Analysis | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .nav-bar {
+            background: white;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .container {
+            margin-top: 56px;
+            padding: 32px 24px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tab-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            overflow: hidden;
+            margin-top: 24px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e3f2f0;
+            overflow-x: auto;
+            background: #fafffe;
+        }
+
+        .tab-btn {
+            padding: 14px 20px;
+            border: none;
+            background: none;
+            color: #6c757d;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #0a6b5e;
+            background: #f0f7f6;
+        }
+
+        .tab-btn.active {
+            color: #0a6b5e;
+            border-bottom-color: #0a6b5e;
+            background: white;
+        }
+
+        .tab-content {
+            padding: 24px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0a6b5e;
+            margin-bottom: 16px;
+        }
+
+        .subsection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .data-card {
+            background: #f8fffe;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .detail-text {
+            color: #424242;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0a6b5e;
+        }
+
+        .metric-detail {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        .expandable-section {
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .expandable-header {
+            background: #f0f7f6;
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #0a6b5e;
+            transition: background 0.2s;
+        }
+
+        .expandable-header:hover {
+            background: #e6f3f1;
+        }
+
+        .expandable-content {
+            padding: 16px;
+            display: none;
+            background: white;
+        }
+
+        .expandable-content.active {
+            display: block;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+            margin: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 12px;
+            top: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: #e3f2f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: #0a6b5e;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .trial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .trial-table th {
+            background: #f0f7f6;
+            padding: 12px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0a6b5e;
+            border-bottom: 2px solid #e3f2f0;
+        }
+
+        .trial-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f7f6;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .status-active { 
+            background: #d4f4ec;
+            color: #0a6b5e;
+        }
+
+        .status-completed { 
+            background: #e3f2f0;
+            color: #0a6b5e;
+        }
+
+        .status-recruiting { 
+            background: #cfe2ff;
+            color: #084298;
+        }
+
+        .status-approved {
+            background: #28a745;
+            color: white;
+        }
+
+        .link-btn {
+            color: #0a6b5e;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .link-btn:hover {
+            background: #f0f7f6;
+        }
+
+        .ae-table {
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .ae-table th {
+            background: #fff3cd;
+            padding: 10px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            color: #856404;
+        }
+
+        .ae-table td {
+            padding: 10px;
+            border-bottom: 1px solid #fff3cd;
+            font-size: 13px;
+        }
+
+        .reference-list {
+            font-size: 11px;
+            color: #6c757d;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e3f2f0;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .regulatory-flow {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .flow-node {
+            background: white;
+            border: 2px solid #0a6b5e;
+            border-radius: 8px;
+            padding: 16px;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-node.completed {
+            background: #d4f4ec;
+        }
+
+        .flow-node.active {
+            background: #cfe2ff;
+            border-color: #084298;
+        }
+
+        .flow-arrow {
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0a6b5e;
+            font-size: 20px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7f6 0%, #e6f3f1 100%);
+            border-left: 4px solid #0a6b5e;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .risk-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .risk-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .risk-high { background: #dc3545; }
+        .risk-medium { background: #ffc107; }
+        .risk-low { background: #28a745; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <img src="leaf.png" alt="Leaf Intelligence" class="h-14 w-14 object-contain">
+                <div class="ml-3">
+                    <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Leaf Intelligence
+                    </span>
+                    <div class="text-xs text-gray-600 font-medium tracking-wide">AI Research Platform</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <div class="bg-white rounded-lg p-6 shadow-sm mb-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Disitamab Vedotin (RC48/Aidixi®)</h1>
+                    <p class="text-lg text-gray-600 mt-2">HER2-Targeted Antibody-Drug Conjugate with MMAE Payload</p>
+                    <div class="flex gap-4 mt-4">
+                        <span class="status-badge status-approved">Approved China</span>
+                        <span class="text-sm text-gray-600">RemeGen / Pfizer-Seagen Partnership</span>
+                        <span class="text-sm text-gray-600">Target: HER2+ & HER2-low Breast Cancer</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-gray-500">China Regulatory Status</div>
+                    <div class="text-2xl font-bold text-green-600">NMPA Approved</div>
+                    <div class="text-sm text-gray-500">3 Indications • NRDL Listed</div>
+                    <div class="text-sm text-gray-500">Global Development: Phase 2-3</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Container -->
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('clinical')">Clinical & Regulatory</button>
+                <button class="tab-btn" onclick="showTab('scientific')">Scientific & IP</button>
+                <button class="tab-btn" onclick="showTab('commercial')">Commercial & Market</button>
+                <button class="tab-btn" onclick="showTab('financial')">Financial & Strategic</button>
+                <button class="tab-btn" onclick="showTab('operational')">Operational & Legal</button>
+                <button class="tab-btn" onclick="showTab('management')">Management & Team</button>
+                <button class="tab-btn" onclick="showTab('safety')">Safety & Toxicology</button>
+                <button class="tab-btn" onclick="showTab('trials')">Complete Trial Analysis</button>
+            </div>
+
+            <!-- Clinical & Regulatory Tab -->
+            <div id="clinical" class="tab-content active">
+                <div class="section-title">1. Clinical & Regulatory Diligence</div>
+                
+                <!-- Trial Design & Protocol -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.1 Trial Design & Protocol</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">RC48-C006 Phase 3 Design Overview</h4>
+                            <p class="detail-text">
+                                RC48-C006 (NCT03500380) is an open-label trial in HER2-positive metastatic breast cancer with liver metastases. The trial randomized 104 patients (53 DV; 51 lapatinib+capecitabine) who had prior trastuzumab and taxane. The primary endpoint was progression-free survival (PFS) by independent review; secondary endpoints included overall survival (OS), objective response rate (ORR), and safety.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Primary Endpoint</div>
+                                <div class="metric-value">PFS</div>
+                                <div class="metric-detail">By independent review</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Sample Size</div>
+                                <div class="metric-value">104</div>
+                                <div class="metric-detail">53 DV vs 51 control</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Comparator</div>
+                                <div class="metric-value">Lapatinib+Cape</div>
+                                <div class="metric-detail">Then-standard in China</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Stratification</div>
+                                <div class="metric-value">Liver Mets</div>
+                                <div class="metric-detail">All patients had liver mets</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Geographic Distribution:</strong> The pivotal study was conducted entirely in China. This provides robust data for NMPA but means Western populations were not included – any differences in patient demographics or standards of care will need bridging.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Statistical Power:</strong> The Phase 3, with ~100 patients, was relatively small. It was powered to detect a PFS hazard ratio ~0.5–0.6. Indeed, it achieved an HR of 0.56, p=0.0143.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Crossover Design:</strong> Patients on lapatinib+capecitabine could receive DV after progression. This ethical choice, while beneficial to patients, complicates OS interpretation (diminishing OS difference).
+                        </p>
+
+                        <div class="reference-list">
+                            Sources: <a href="https://clinicaltrials.gov/ct2/show/NCT03500380" target="_blank" class="link-btn">ClinicalTrials.gov NCT03500380</a> | 
+                            <a href="https://www.adcreview.com" target="_blank" class="link-btn">ADC Review</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinical Efficacy Results -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.2 Clinical Efficacy & Data Quality</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Phase 3 Primary Endpoint Achievement</h4>
+                            <p class="detail-text">
+                                DV significantly improved PFS versus lapatinib+capecitabine: 9.9 vs 4.9 months (HR 0.56, 95% CI 0.35–0.90, P≈0.01). This ~5-month PFS gain is clinically meaningful in this hard-to-treat subgroup.
+                            </p>
+                        </div>
+
+                        <canvas id="pfsChart" class="chart-container"></canvas>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">Median PFS (DV)</div>
+                                <div class="metric-value">9.9 mo</div>
+                                <div class="metric-detail">vs 4.9 mo control</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Hazard Ratio</div>
+                                <div class="metric-value">0.56</div>
+                                <div class="metric-detail">95% CI: 0.35-0.90, p=0.0143</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">ORR (Phase 3)</div>
+                                <div class="metric-value">~38%</div>
+                                <div class="metric-detail">vs ~14% control</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Risk Reduction</div>
+                                <div class="metric-value">44%</div>
+                                <div class="metric-detail">In progression/death</div>
+                            </div>
+                        </div>
+
+                        <div class="subsection-title">Phase 1/2 Signal Finding</div>
+                        <p class="detail-text">
+                            In pooled Phase 1/Ib results, ORR at RP2D (2.0 mg/kg) reached 42.9% in HER2-positive and 33.3% in HER2-low advanced breast cancer. Median PFS was ~5.7 months in HER2+ and ~5.1 months in HER2-low patients. These outcomes, achieved in heavily pretreated populations (88% had ≥3 prior lines), indicated a clear anti-tumor effect even among HER2-low tumors.
+                        </p>
+
+                        <table class="trial-table">
+                            <thead>
+                                <tr>
+                                    <th>Population</th>
+                                    <th>ORR</th>
+                                    <th>Median PFS</th>
+                                    <th>Prior Lines</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>HER2-positive (Phase 1/2)</td>
+                                    <td>42.9%</td>
+                                    <td>5.7 months</td>
+                                    <td>≥3 (88%)</td>
+                                </tr>
+                                <tr>
+                                    <td>HER2-low (Phase 1/2)</td>
+                                    <td>33.3%</td>
+                                    <td>5.1 months</td>
+                                    <td>≥3 (85%)</td>
+                                </tr>
+                                <tr>
+                                    <td>HER2+ Liver Mets (Phase 3)</td>
+                                    <td>38%</td>
+                                    <td>9.9 months</td>
+                                    <td>≥2 (100%)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p class="detail-text mt-4">
+                            <strong>Overall Survival Data:</strong> At the cutoff (Dec 2023), median OS was not reached on DV vs 25.9 months on control, with a trend favoring DV (HR ~0.56). However, due to cross-over, the true OS benefit may be underestimated. Longer follow-up is needed; updated OS is expected in late 2025.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Subgroup Analyses:</strong> The Phase 3 is narrowly focused (all patients had liver metastases), so subgroup analyses were limited. An exploratory cut by HER2 expression level (IHC 3+ vs 2+) has not been reported but all patients were HER2-positive by standard criteria.
+                        </p>
+
+                        <div class="reference-list">
+                            Sources: SABCS 2024 Presentation | RemeGen Corporate Announcement | PubMed PMID: 38940019
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety Profile -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.3 Safety Profile & Tolerability</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Overall Safety Summary</h4>
+                            <p class="detail-text">
+                                Disitamab vedotin's toxicity profile is manageable and in line with other MMAE-based ADCs. In the Phase 3, no new safety signals emerged. Importantly, DV has not shown the interstitial lung disease (ILD) signal that is associated with trastuzumab deruxtecan.
+                            </p>
+                        </div>
+
+                        <table class="ae-table">
+                            <thead>
+                                <tr>
+                                    <th>Adverse Event</th>
+                                    <th>All Grades (%)</th>
+                                    <th>Grade ≥3 (%)</th>
+                                    <th>Clinical Significance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AST elevation</td>
+                                    <td>~46%</td>
+                                    <td><5-10%</td>
+                                    <td>Mostly transient</td>
+                                </tr>
+                                <tr>
+                                    <td>ALT elevation</td>
+                                    <td>~42%</td>
+                                    <td><5-10%</td>
+                                    <td>Transient</td>
+                                </tr>
+                                <tr>
+                                    <td>Neutropenia</td>
+                                    <td>~50-55%</td>
+                                    <td>17-19%</td>
+                                    <td>Manageable with G-CSF</td>
+                                </tr>
+                                <tr>
+                                    <td>Peripheral neuropathy</td>
+                                    <td>~45-50%</td>
+                                    <td>5.9%</td>
+                                    <td>MMAE class effect</td>
+                                </tr>
+                                <tr>
+                                    <td>Nausea</td>
+                                    <td>~30%</td>
+                                    <td>One patient</td>
+                                    <td>Mostly Grade 1-2</td>
+                                </tr>
+                                <tr>
+                                    <td>Fatigue</td>
+                                    <td>~25%</td>
+                                    <td>Rare</td>
+                                    <td>Manageable</td>
+                                </tr>
+                                <tr>
+                                    <td>ILD/Pneumonitis</td>
+                                    <td>0%</td>
+                                    <td>0%</td>
+                                    <td>Key differentiator vs T-DXd</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">Treatment-Related Deaths</div>
+                                <div class="metric-value">0</div>
+                                <div class="metric-detail">Across all studies</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Discontinuation Rate</div>
+                                <div class="metric-value"><2%</div>
+                                <div class="metric-detail">Due to TRAEs</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Grade ≥3 TRAEs</div>
+                                <div class="metric-value">~36.5%</div>
+                                <div class="metric-detail">In combination studies</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Febrile Neutropenia</div>
+                                <div class="metric-value"><5%</div>
+                                <div class="metric-detail">Rare occurrence</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Key Safety Differentiator:</strong> No cases of severe drug-induced liver injury have been reported – liver enzyme rises tended to be transient. Grade ≥3 gamma-GT elevation occurred in 13.2%. Only ~0.7% had severe neurotoxicity (Grade 4).
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Dose Modifications:</strong> Only 1 patient (<2%) discontinued due to TRAE. Only 1 patient required dose reduction (Grade 3 nausea). The dose of DV (2 mg/kg q2w) was set to balance efficacy and neuropathy risk.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Regulatory Status -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.4 Regulatory Status & Interactions</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="regulatory-flow">
+                            <div class="flow-node completed">
+                                <div class="flow-arrow">→</div>
+                                <strong>FDA BTD (UC)</strong>
+                                <p class="text-sm mt-1">Granted 2020</p>
+                                <p class="text-xs text-gray-500">Urothelial cancer</p>
+                            </div>
+                            <div class="flow-node completed">
+                                <div class="flow-arrow">→</div>
+                                <strong>NMPA Priority Review</strong>
+                                <p class="text-sm mt-1">2024</p>
+                                <p class="text-xs text-gray-500">Breast cancer</p>
+                            </div>
+                            <div class="flow-node completed">
+                                <div class="flow-arrow">→</div>
+                                <strong>Phase 3 Positive</strong>
+                                <p class="text-sm mt-1">RC48-C006 Met Primary</p>
+                                <p class="text-xs text-gray-500">Dec 2024</p>
+                            </div>
+                            <div class="flow-node completed">
+                                <div class="flow-arrow">→</div>
+                                <strong>NMPA Approval</strong>
+                                <p class="text-sm mt-1">May 9, 2025</p>
+                                <p class="text-xs text-gray-500">HER2+ BCLM</p>
+                            </div>
+                            <div class="flow-node active">
+                                <strong>Global Development</strong>
+                                <p class="text-sm mt-1">Pfizer Leading</p>
+                                <p class="text-xs text-gray-500">2025-2026</p>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>China (NMPA):</strong> Leveraging the Phase 3 results, RemeGen filed for approval in China in Oct 2024. The NMPA granted priority review and Breakthrough Therapy designation for this indication. Approval was granted on May 9, 2025 for "HER2-positive advanced breast cancer with liver metastasis, after trastuzumab and taxane." This label is tightly aligned to the trial population, ensuring on-label use matches evidence. It's the first ADC approved specifically for HER2+ breast cancer with liver mets globally.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>FDA (USA):</strong> Disitamab vedotin already has a relationship with FDA via urothelial cancer: FDA granted Breakthrough Therapy Designation (BTD) in 2020 for HER2+ metastatic urothelial carcinoma, along with IND clearance and Fast Track for that setting. However, no BTD yet in breast cancer – likely because no U.S. breast cancer trials have reported.
+                        </p>
+
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Regulatory Risk Considerations</h4>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-medium"></div>
+                                <div>
+                                    <strong>Comparator Issue:</strong> Phase 3 used an outdated control (lapatinib+capecitabine), risking FDA/EMA concern that DV wasn't tested against current SOC.
+                                </div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-low"></div>
+                                <div>
+                                    <strong>CMC Status:</strong> NDA acceptance indicates adequate CMC data. Vepdegestrant is a synthetic small molecule (PROTAC), larger than typical kinase inhibitors.
+                                </div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-medium"></div>
+                                <div>
+                                    <strong>Patient Population:</strong> Small trial (N=104) primarily in Chinese patients – questions of generalizability.
+                                </div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-low"></div>
+                                <div>
+                                    <strong>Companion Diagnostic:</strong> No new diagnostic needed beyond HER2 testing. In HER2-low, defining eligibility will rely on standard IHC 1+ or 2+ scoring.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reference-list">
+                            Sources: FDA Breakthrough Therapy Announcement | NMPA Approval Document | RemeGen SEC Filings
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scientific & IP Tab -->
+            <div id="scientific" class="tab-content">
+                <div class="section-title">2. Scientific & Intellectual Property Diligence</div>
+
+                <!-- Mechanism of Action -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.1 Mechanism of Action & Scientific Rationale</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Novel ADC Technology</h4>
+                            <p class="detail-text">
+                                Disitamab vedotin is an antibody-drug conjugate comprising a humanized anti-HER2 IgG1 monoclonal antibody conjugated to MMAE (a tubulin inhibitor) via a cleavable linker. The antibody (sometimes dubbed hertuzumab) binds a unique epitope on HER2 distinct from trastuzumab's binding site. It has higher affinity for low-HER2-expressing cells than trastuzumab, which is crucial for efficacy in HER2-"low" tumors.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Target</div>
+                                <div class="metric-value">HER2</div>
+                                <div class="metric-detail">Unique epitope</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Payload</div>
+                                <div class="metric-value">MMAE</div>
+                                <div class="metric-detail">Tubulin inhibitor</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Linker</div>
+                                <div class="metric-value">Val-Cit</div>
+                                <div class="metric-detail">Cleavable dipeptide</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">DAR</div>
+                                <div class="metric-value">~4</div>
+                                <div class="metric-detail">Drug-antibody ratio</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Mechanism Details:</strong> Upon HER2 binding, the ADC is internalized and the linker (a valine-citrulline dipeptide similar to that used in Adcetris) is cleaved intracellularly to release MMAE. MMAE induces cell death by disrupting microtubules. Additionally, DV can exert a bystander effect: MMAE can diffuse to kill neighboring tumor cells, important in heterogenous tumors where not every cell highly expresses HER2.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Scientific Validation:</strong> HER2 is a well-validated target in breast cancer; its role in driving tumor growth is established over decades. Uniquely, DV capitalizes on HER2 expression across a spectrum – even tumors with low levels can be targeted, expanding the reach beyond HER2-amplified cancers. This concept was later dramatically validated by trastuzumab deruxtecan in HER2-low breast cancer (DESTINY-Breast04).
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Preclinical Data:</strong> In xenograft models, disitamab vedotin showed potent antitumor activity against both HER2-high and HER2-low tumors. Notably, DV outperformed T-DM1 in certain HER2-low breast cancer models, likely due to its ability to kill HER2-negative bystander cells.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Differentiation Analysis -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.2 Scientific Differentiation & Competitive Edge</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <table class="trial-table">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Disitamab Vedotin</th>
+                                    <th>T-DXd (Enhertu)</th>
+                                    <th>T-DM1 (Kadcyla)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Payload</td>
+                                    <td>MMAE</td>
+                                    <td>DXd (topoisomerase I)</td>
+                                    <td>DM1 (maytansinoid)</td>
+                                </tr>
+                                <tr>
+                                    <td>ILD Risk</td>
+                                    <td>None observed</td>
+                                    <td>~10-15% (some fatal)</td>
+                                    <td>Low</td>
+                                </tr>
+                                <tr>
+                                    <td>Neuropathy</td>
+                                    <td>~45% (Grade 3: 6%)</td>
+                                    <td>Low</td>
+                                    <td>Moderate</td>
+                                </tr>
+                                <tr>
+                                    <td>HER2-low Activity</td>
+                                    <td>ORR ~30-33%</td>
+                                    <td>ORR ~52%</td>
+                                    <td>Limited</td>
+                                </tr>
+                                <tr>
+                                    <td>Bystander Effect</td>
+                                    <td>Strong (MMAE diffuses)</td>
+                                    <td>Very strong</td>
+                                    <td>Limited</td>
+                                </tr>
+                                <tr>
+                                    <td>Dosing</td>
+                                    <td>2 mg/kg Q2W</td>
+                                    <td>5.4 mg/kg Q3W</td>
+                                    <td>3.6 mg/kg Q3W</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p class="detail-text mt-4">
+                            <strong>Key Scientific Advantages:</strong> DV's early trials were among the first to show that HER2 "low" tumors respond to ADC therapy (ORR ~30% in HER2-low), reinforcing the drug's mechanistic rationale. Cross-resistance with trastuzumab or T-DM1 is not complete, since DV can work even after those agents – many Phase 1 patients had progressed on T-DM1 yet responded to DV.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Intellectual Property -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.3 Intellectual Property Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Patent Portfolio Overview</h4>
+                            <p class="detail-text">
+                                Disitamab vedotin's IP is jointly held by RemeGen and (through license) Seagen/Pfizer. According to Seagen's disclosures, there are eight key patents (U.S. and Europe) covering DV and related ADC technology, expiring between 2022 and 2034. RemeGen has publicized that RC48's invention patent was granted in China, U.S., EU, Japan, etc.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Core Patents</div>
+                                <div class="metric-value">8</div>
+                                <div class="metric-detail">US & Europe</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Patent Expiry</div>
+                                <div class="metric-value">2034</div>
+                                <div class="metric-detail">Base patents</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">With Extensions</div>
+                                <div class="metric-value">~2039</div>
+                                <div class="metric-detail">Potential PTE</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Global Coverage</div>
+                                <div class="metric-value">12+</div>
+                                <div class="metric-detail">Countries/regions</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Patent Components:</strong> The patents include: (1) the composition of matter on the DV antibody and its conjugate, (2) the linker-payload patents originally developed by Seagen (for the vedotin platform), and (3) method-of-use patents for DV in various HER2-expressing cancers.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Freedom to Operate:</strong> No blocking patents that would prevent DV's commercialization. HER2-targeting antibodies have long been patented (Genentech's Herceptin patents expired years ago). DV's antibody is novel enough not to infringe known sequences.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Seagen Partnership:</strong> DV combines the drug-linker technology originally developed by Seagen. By licensing DV to Seagen (now Pfizer), RemeGen ensured freedom to operate globally under those patents. The Daiichi Sankyo vs Seagen patent litigation does not involve DV directly.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Combination Potential -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.4 Combination Strategies & Future Development</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Combination Studies</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Immunotherapy Combinations:</strong> DV + anti-PD-1 (toripalimab or pembrolizumab) showed additive efficacy in early trials in urothelial cancer (ORR ~75%), hinting at immune activation. Preclinically, MMAE induces immunogenic cell death, potentially synergizing with immune checkpoint inhibitors.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Targeted Therapy Combinations:</strong> In breast cancer, combinations with CDK4/6 inhibitors for HR+ disease or with anti-VEGF agents are being explored. A Chinese Phase 2 reported better PFS with DV+antiangiogenic vs DV alone.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Safety in Combinations:</strong> DV's safety profile (no overlapping cardiotoxicity or ILD) makes it amenable to combos. Combining DV with endocrine therapy or checkpoint inhibitors did not significantly worsen toxicity in preliminary studies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commercial & Market Tab -->
+            <div id="commercial" class="tab-content">
+                <div class="section-title">3. Commercial & Market Diligence</div>
+
+                <!-- Market Opportunity -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.1 Epidemiology & Market Sizing</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Addressable Market Overview</h4>
+                            <p class="detail-text">
+                                Globally, breast cancer is the most common cancer in women, with ~2.3 million new cases annually. In major markets, annual incidence is ~268k in the US, ~500k in Europe (EU-5), and ~416k in China (2020 data).
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Global BC Incidence</div>
+                                <div class="metric-value">2.3M</div>
+                                <div class="metric-detail">Annual new cases</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">HER2+ Prevalence</div>
+                                <div class="metric-value">15-20%</div>
+                                <div class="metric-detail">Of all breast cancers</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">HER2-low Prevalence</div>
+                                <div class="metric-value">45-50%</div>
+                                <div class="metric-detail">Of "HER2-negative"</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Liver Mets in HER2+</div>
+                                <div class="metric-value">~45%</div>
+                                <div class="metric-detail">Target population</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Patient Flow Analysis:</strong> HER2-positive metastatic breast cancer (MBC): ~15-20% of breast cancers overexpress HER2. With improved survival, prevalence is growing. In the US, an estimated ~50,000 patients have HER2+ MBC at any time. Each year, perhaps 10-15k patients progress to second-line or beyond (where DV would be used).
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>HER2-low Opportunity:</strong> This newly recognized group (HER2 IHC1+ or 2+/ISH–) constitutes ~45-50% of "HER2-negative" breast cancers. Essentially, HER2-low is very large: possibly ~50% of all breast cancers, which in metastatic setting translates to ~30-40k MBC patients in the US alone.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Duration of Therapy:</strong> DV is being positioned in late-line metastatic disease initially. The duration of therapy in metastatic setting is until progression: in trials DV's median treatment duration was ~6-7 months for responders. Some patients stayed on >1 year.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Competitive Landscape -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.2 Competitive Landscape Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">HER2-Targeted Therapy Landscape</h4>
+                            
+                            <p class="detail-text">
+                                <strong>First-line HER2+:</strong> Standard is trastuzumab + pertuzumab + chemo (Cleopatra regimen), yielding median PFS ~18 months. DV is not positioned here currently.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Second-line HER2+:</strong> Enhertu (trastuzumab deruxtecan) is now the preferred agent based on DESTINY-Breast03, where it massively outperformed T-DM1 (PFS ~25 months vs 7 months). ORR ~79%, some complete responses.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Third-line HER2+:</strong> Options include Kadcyla (T-DM1) if not used prior, capecitabine-based chemo, tucatinib (HER2 TKI) + capecitabine + trastuzumab. Tucatinib triplet showed PFS ~7.6 months in 3rd line.
+                            </p>
+                        </div>
+
+                        <table class="trial-table mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Drug</th>
+                                    <th>Company</th>
+                                    <th>Setting</th>
+                                    <th>Key Efficacy</th>
+                                    <th>Key Safety Issue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>T-DXd (Enhertu)</td>
+                                    <td>Daiichi/AZ</td>
+                                    <td>2L HER2+</td>
+                                    <td>PFS ~25 mo, ORR 79%</td>
+                                    <td>ILD ~10-15%</td>
+                                </tr>
+                                <tr>
+                                    <td>T-DM1 (Kadcyla)</td>
+                                    <td>Roche</td>
+                                    <td>2-3L HER2+</td>
+                                    <td>PFS ~7 mo</td>
+                                    <td>Thrombocytopenia</td>
+                                </tr>
+                                <tr>
+                                    <td>Sacituzumab (Trodelvy)</td>
+                                    <td>Gilead</td>
+                                    <td>3L+ TNBC/HR+</td>
+                                    <td>PFS ~5-6 mo</td>
+                                    <td>Neutropenia, diarrhea</td>
+                                </tr>
+                                <tr>
+                                    <td>ARX788</td>
+                                    <td>Ambrx</td>
+                                    <td>3L HER2+ (Ph3)</td>
+                                    <td>PFS ~6.8 mo</td>
+                                    <td>Under evaluation</td>
+                                </tr>
+                                <tr>
+                                    <td>SYD985</td>
+                                    <td>Byondis</td>
+                                    <td>Late HER2+</td>
+                                    <td>PFS ~7 mo (TULIP)</td>
+                                    <td>Higher toxicity</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Competitive Advantages of DV</h4>
+                            <ul class="space-y-2">
+                                <li>• <strong>Safety differentiator:</strong> Enhertu's ILD (incidence ~10-15%, incl. fatal cases ~0.8%) scares some physicians. DV has no ILD signal.</li>
+                                <li>• <strong>Lower cost in China:</strong> DV's annual cost is ¥210k ($30k), whereas imported Enhertu costs several times more.</li>
+                                <li>• <strong>Liver metastasis indication:</strong> DV is specifically approved for HER2+ with liver mets in China – no other drug has that label.</li>
+                                <li>• <strong>Combination potential:</strong> DV is already being combined with PD-1 inhibitors in trials.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing & Reimbursement -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.3 Pricing & Reimbursement Strategy</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">China Annual Cost</div>
+                                <div class="metric-value">¥210k</div>
+                                <div class="metric-detail">~$30,000 USD</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">NRDL Coverage</div>
+                                <div class="metric-value">¥60k</div>
+                                <div class="metric-detail">Patient out-of-pocket</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Expected US Price</div>
+                                <div class="metric-value">$140-180k</div>
+                                <div class="metric-detail">Annual WAC (projected)</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">vs Enhertu</div>
+                                <div class="metric-value">15-20%</div>
+                                <div class="metric-detail">Potential discount</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Current ADC Pricing Benchmarks:</strong> Enhertu (trastuzumab deruxtecan): WAC in the U.S. is roughly $2,300 per 100mg vial. Annual cost ~$200k. Kadcyla (T-DM1): WAC about $94k/year in the US. Trodelvy: Around $16k per cycle, or $180k/year list in US.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Reimbursement Strategy:</strong> DV was added to China's NRDL within months of approval for gastric and bladder cancer, meaning RemeGen agreed to a steep discount for volume. Being on NRDL means Chinese patients pay ~¥60k out-of-pocket, vastly undercutting Enhertu.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>US/EU Positioning:</strong> Pfizer will likely price DV in line with other ADCs, perhaps slightly under Enhertu to incentivize use. If Enhertu is $150-200k/year, DV might be launched at ~$140k/year WAC in the US.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- KOL & Market Access -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.4 KOL Perspectives & Market Development</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Key Opinion Leader Views</h4>
+                            <p class="detail-text">
+                                KOLs in breast oncology are already aware of disitamab vedotin from conference presentations (SABCS 2024). Top breast cancer experts noted that DV is the first ADC to show benefit in HER2+ patients with heavy liver tumor burden. Prof. Jiayu Wang stated DV provides "clinically meaningful benefit… and a manageable safety profile" for HER2+ with liver mets.
+                            </p>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Chinese Market Execution:</strong> RemeGen's strategy in China included a sizable field force (180 oncology reps covering 374 hospitals) – this contributed to rapid uptake. DV has been approved for three indications in China (gastric, bladder, breast).
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Western Market Strategy:</strong> Western KOLs will likely want to see data in post-Enhertu patients. If Pfizer generates even a modest single-arm study showing ~25% ORR in patients who progressed on Enhertu, that would impress physicians that DV is a valuable sequential option.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Guideline Inclusion:</strong> NCCN Guidelines will incorporate DV quickly if approved. For HER2+ metastatic disease progressed on ≥2 HER2 regimens: options would include T-DM1 (if not given), fam-trastuzumab deruxtecan (if not given), disitamab vedotin, or tucatinib-based regimen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial & Strategic Tab -->
+            <div id="financial" class="tab-content">
+                <div class="section-title">4. Financial & Strategic Diligence</div>
+
+                <!-- RemeGen Financials -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.1 Company Financials (RemeGen & Pfizer)</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">RemeGen Market Cap</div>
+                                <div class="metric-value">HK$50B</div>
+                                <div class="metric-detail">~$6.5B USD</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">2024 Revenue</div>
+                                <div class="metric-value">RMB1.70B</div>
+                                <div class="metric-detail">61.9% YoY growth</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">R&D Expenses</div>
+                                <div class="metric-value">RMB1.54B</div>
+                                <div class="metric-detail">~$215M USD</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Cash Position</div>
+                                <div class="metric-value">RMB3.7B</div>
+                                <div class="metric-detail">Mid-2025 (incl. ST inv)</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>RemeGen Financial Health:</strong> The company's revenues for 2024 were RMB1.70 billion ($240M), a 61.9% increase from 2023. This was driven by robust sales of Telitacicept (RC18) and the ramp-up of DV (RC48) in China. RemeGen is not yet profitable, but losses are narrowing: net loss before tax in 2024 was RMB1.468 billion, slightly less than 2023.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Cash Runway:</strong> With a burn rate (operating cash outflow) of RMB1.18B in 2024, they had ~RMB3.7B in cash (including short-term investments) after financing and revenues. Analysts project RemeGen will reach positive operating cash flow by 2025 and even a small profit (RMB895M profit forecast for 2025).
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Stock Performance:</strong> RemeGen's stock price soared >600% in 2025, likely allowing capital raises. The stock surge suggests positive sentiment – they likely did place new H-shares in 2025 to refill coffers.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Partnership Economics -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.2 Partnership Economics (RemeGen-Seagen/Pfizer)</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                    <h4 class="font-semibold mb-2">2021 License Deal Terms</h4>
+                    <p class="detail-text">
+                        The 2021 license deal with Seagen was for $200M upfront and up to $2.4B in milestones, plus tiered royalties "from high single-digit to mid-teens" on ex-Asia sales. So far, RemeGen likely received the $200M upfront (in 2021, likely boosting that year's financials) and perhaps some early milestones.
+                    </p>
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Upfront Payment</div>
+                        <div class="metric-value">$200M</div>
+                        <div class="metric-detail">Received 2021</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Milestones</div>
+                        <div class="metric-value">$2.4B</div>
+                        <div class="metric-detail">Potential</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Royalty Range</div>
+                        <div class="metric-value">High-single to mid-teens</div>
+                        <div class="metric-detail">On ex-Asia sales</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Territory Split</div>
+                        <div class="metric-value">Asia vs Rest</div>
+                        <div class="metric-detail">RemeGen keeps Asia</div>
+                    </div>
+                </div>
+
+                <p class="detail-text mt-4">
+                    <strong>Milestone Structure:</strong> The big milestones (e.g., Phase 3 completion, first FDA approval, sales targets) are pending. If DV gets FDA approval, RemeGen stands to receive a regulatory milestone – possibly on the order of $100M+ judging by deal size. RemeGen will also get royalties on Pfizer's sales (perhaps ~10-15%).
+                </p>
+
+                <p class="detail-text">
+                    <strong>Revenue Split:</strong> RemeGen owes no royalties for China sales – it owns that market exclusively. This means RemeGen's China revenue is all theirs (minus standard COGS). For Pfizer, the economic burden is the development and commercialization cost outside Asia plus paying those milestones/royalties.
+                </p>
+
+                <p class="detail-text">
+                    <strong>Pfizer Strategic Commitment:</strong> Pfizer acquired Seagen for $43 billion in 2023, a bold bet on ADCs. Pfizer recently dropped some ADC programs (e.g., a B7-H4 ADC, with a $1B write-off), which raises the question of how much they prioritize DV. Notably, that write-off was for an internal Pfizer ADC that failed; DV's continuing development (with positive data) likely solidifies its place in Pfizer's pipeline.
+                </p>
+            </div>
+        </div>
+
+        <!-- Valuation Section -->
+        <div class="tab-container" style="margin-top: 24px;">
+            <div style="padding: 24px;">
+                <div class="section-title">4.3 Valuation & Exit Modeling</div>
+                
+                <div class="data-card">
+                    <h4 class="font-semibold mb-2">Risk-Adjusted NPV Analysis</h4>
+                    
+                    <p class="detail-text">
+                        <strong>Probability of Success (PoS):</strong> DV is through Phase 3 in its initial indication, so for China it's already approved (100% PoS realized there). For US/EU, PoS is high for at least some niche approval, perhaps ~70%. However, if aiming for a broader label (HER2-low), PoS is lower until more trials. Let's assume ~50% chance of a meaningful US/EU approval.
+                    </p>
+
+                    <p class="detail-text mt-2">
+                        <strong>Base Case Scenario:</strong>
+                        <br>• DV gets approved in US/EU for 3L HER2+ and post-T-DXd HER2-low by ~2026
+                        <br>• Peak global sales ~$1.2B in 2030
+                        <br>• Using 10% discount, NPV of cash flows ~$1.5B (for ex-China) and add China cash flows NPV $0.5B, total $2.0B
+                        <br>• Multiply by PoS (50%) = $1.0B rNPV to RemeGen
+                    </p>
+
+                    <p class="detail-text mt-2">
+                        <strong>Upside Case:</strong>
+                        <br>• DV gets broader use (2L HER2-low, some first-line combos), peak sales $2B
+                        <br>• NPV maybe $3B, PoS 30% (since it requires new trials success) => ~$0.9B rNPV
+                    </p>
+
+                    <p class="detail-text mt-2">
+                        <strong>Downside Case:</strong>
+                        <br>• Global approval is very limited or delayed – peak sales $300M
+                        <br>• NPV ~$400M, PoS perhaps 20% => ~$80M rNPV
+                    </p>
+                </div>
+
+                <div class="metric-grid mt-4">
+                    <div class="metric-card">
+                        <div class="metric-label">Base Case rNPV</div>
+                        <div class="metric-value">$1.0B</div>
+                        <div class="metric-detail">50% PoS</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">China Peak Sales</div>
+                        <div class="metric-value">$450M</div>
+                        <div class="metric-detail">RMB3.1B analyst est.</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Global Peak Sales</div>
+                        <div class="metric-value">$1.0-1.2B</div>
+                        <div class="metric-detail">Base case</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Expected IRR</div>
+                        <div class="metric-value">15-20%</div>
+                        <div class="metric-detail">For Blackstone</div>
+                    </div>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-2">Exit Strategy Options</h4>
+                    
+                    <p class="detail-text">
+                        <strong>IPO/Public Market:</strong> RemeGen is already public. Pfizer is obviously public. No need for IPO. However, an exit for an investor like Blackstone could be selling their RemeGen stake in the open market or selling the royalty stream to another party once DV is de-risked.
+                    </p>
+
+                    <p class="detail-text">
+                        <strong>Acquisition Potential:</strong> Pfizer could consider acquiring RemeGen or at least its remaining rights if DV becomes extremely important. Or another Big Pharma might target RemeGen for Telitacicept and get DV's China rights as bonus.
+                    </p>
+
+                    <p class="detail-text">
+                        <strong>Royalty Monetization:</strong> RemeGen's royalty is a steady cash flow. Blackstone could structure to get those flows. For example, HealthCare Royalty Partners did a deal with ADC Therapeutics for Zynlonta sales. Similarly, Blackstone could do a capped royalty deal on DV.
+                    </p>
+
+                    <p class="detail-text">
+                        <strong>Milestone Financing:</strong> Another strategy is to finance RemeGen's pipeline by advancing cash in exchange for part of Pfizer's milestone payments later. For instance, Blackstone might pay RemeGen $50M now, and when Pfizer pays the $100M FDA approval milestone, Blackstone takes $80M of it.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Operational & Legal Section -->
+        <div class="tab-container" style="margin-top: 24px;">
+            <div style="padding: 24px;">
+                <div class="section-title">5. Operational & Legal Diligence</div>
+                
+                <div class="subsection-title">5.1 Manufacturing & CMC</div>
+                
+                <div class="highlight-box">
+                    <h4 class="font-semibold mb-2">Manufacturing Overview</h4>
+                    <p class="detail-text">
+                        Disitamab vedotin is a complex biologic-plus-chemical product. RemeGen built manufacturing capabilities in Yantai, China, including an ADC conjugation facility. They have been supplying the Chinese market since 2021 for gastric and bladder indications, so commercial-scale manufacturing is already in place for China.
+                    </p>
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Production Capacity</div>
+                        <div class="metric-value">90,000L</div>
+                        <div class="metric-detail">Biologics capacity</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">DAR Consistency</div>
+                        <div class="metric-value">~4</div>
+                        <div class="metric-detail">Drug-antibody ratio</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Shelf Life</div>
+                        <div class="metric-value">24 months</div>
+                        <div class="metric-detail">Refrigerated storage</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Hospital Coverage</div>
+                        <div class="metric-value">374</div>
+                        <div class="metric-detail">In China</div>
+                    </div>
+                </div>
+
+                <p class="detail-text mt-4">
+                    <strong>Global Manufacturing Strategy:</strong> For global supply, Pfizer/Seagen will either: (1) Use RemeGen's facility under supervision (if it passes FDA inspection), or (2) Tech-transfer the production to one of Seagen's partner CMOs or their own manufacturing plant in the US.
+                </p>
+
+                <p class="detail-text">
+                    <strong>Supply Chain Components:</strong> The payload supply (MMAE) might come from a specific manufacturer – possibly a Seagen affiliate, since MMAE is proprietary. The antibody gene could be expressed in CHO cells; RemeGen likely has a cell bank.
+                </p>
+
+                <p class="detail-text">
+                    <strong>Quality Systems:</strong> RemeGen's Chief Medical Officer, He Ruyi, served at both US FDA and China NMPA for ~20 years, which means internally they have strong compliance expertise. That reduces risk of missteps in regulatory filings or trial conduct.
+                </p>
+
+                <div class="subsection-title">5.2 Legal & Compliance Status</div>
+
+                <div class="data-card">
+                    <h4 class="font-semibold mb-2">Regulatory Compliance</h4>
+                    <p class="detail-text">
+                        RemeGen and DV have not had any known regulatory compliance issues publicly. RemeGen's facilities presumably underwent Chinese inspections for GMP – no warning letters known. In the U.S., since DV hasn't been filed, there's no FDA compliance history for it yet.
+                    </p>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-2">Litigation Status</h4>
+                    <ul class="space-y-2">
+                        <li>• <strong>IP Litigation:</strong> None ongoing, low risk after licensing</li>
+                        <li>• <strong>Product Liability:</strong> DV hasn't had safety issues causing lawsuits (no deaths, etc.)</li>
+                        <li>• <strong>Securities Litigation:</strong> No current securities lawsuits known</li>
+                        <li>• <strong>Patent Challenges:</strong> No known patent litigations or opposition proceedings filed against DV</li>
+                    </ul>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-2">Partnership Obligations</h4>
+                    <p class="detail-text">
+                        The Seagen license: Since Seagen licensed from RemeGen, RemeGen doesn't owe milestones, it receives them. RemeGen will fund and operationalize trials attributable to its territory. So RemeGen bears cost for China/Asia parts of global trials.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Management & Team Section -->
+        <div class="tab-container" style="margin-top: 24px;">
+            <div style="padding: 24px;">
+                <div class="section-title">6. Management & Team Execution</div>
+                
+                <div class="data-card">
+                    <h4 class="font-semibold mb-2">Leadership Team</h4>
+                    
+                    <p class="detail-text">
+                        <strong>Dr. Jianmin Fang (CEO & Co-founder):</strong> A PhD biologist trained in Canada, with >20 years of biopharma R&D experience. He's the scientific visionary behind DV (inventor listed on its patents). Having a scientist-CEO can be great for innovation.
+                    </p>
+
+                    <p class="detail-text">
+                        <strong>Mr. Weidong Wang (Chairman/Co-founder):</strong> He previously built a successful pharma (Rongchang) in China, suggesting business acumen and government relations. Likely instrumental in NRDL negotiations.
+                    </p>
+
+                    <p class="detail-text">
+                        <strong>Dr. Ruyi He (CMO):</strong> Critical hire; ex-FDA medical officer and ex-CDE (China's FDA). His regulatory expertise likely helped secure Breakthrough designations and navigate trial design issues.
+                    </p>
+
+                    <p class="detail-text">
+                        <strong>Dr. Daotian Fu (President):</strong> With 28 years in US biotech leadership, he likely oversees global collaborations and perhaps manufacturing. This international experience on the team is a green flag.
+                    </p>
+                </div>
+
+                <div class="metric-grid mt-4">
+                    <div class="metric-card">
+                        <div class="metric-label">Team Size</div>
+                        <div class="metric-value">180</div>
+                        <div class="metric-detail">Oncology reps</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Hospital Coverage</div>
+                        <div class="metric-value">374</div>
+                        <div class="metric-detail">In China</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Approved Indications</div>
+                        <div class="metric-value">3</div>
+                        <div class="metric-detail">In China</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Pipeline Studies</div>
+                        <div class="metric-value">20+</div>
+                        <div class="metric-detail">Global trials</div>
+                    </div>
+                </div>
+
+                <p class="detail-text mt-4">
+                    <strong>Execution Track Record:</strong> So far, RemeGen's team has successfully brought two drugs from Phase 1 to approval in China (in multiple indications), managed a major global licensing deal (with Seagen) and partnership (with Lilly), and achieved reimbursement listings quickly (NRDL within the same year of approval for DV's first indications).
+                </p>
+
+                <p class="detail-text">
+                    <strong>Team Risks:</strong> Rapid expansion can stretch management bandwidth. Dr. Fang is key; if anything happened to him, would the science drive continue? They do have other scientific leaders, but losing a founder often impacts investor confidence.
+                </p>
+            </div>
+        </div>
+
+        <!-- Complete Trial Analysis Section -->
+        <div class="tab-container" style="margin-top: 24px;">
+            <div style="padding: 24px;">
+                <div class="section-title">7. Complete Trial Portfolio Analysis</div>
+                
+                <table class="trial-table">
+                    <thead>
+                        <tr>
+                            <th>Trial</th>
+                            <th>Phase</th>
+                            <th>N</th>
+                            <th>Population</th>
+                            <th>Key Results</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Phase 1/1b China</strong></td>
+                            <td>1/1b</td>
+                            <td>136</td>
+                            <td>HER2+ and HER2-low MBC</td>
+                            <td>ORR 42.9% (HER2+), 33.3% (HER2-low); mPFS 5.7mo/5.1mo</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RC48-C006 (NCT03500380)</strong></td>
+                            <td>3</td>
+                            <td>104</td>
+                            <td>HER2+ MBC with liver mets</td>
+                            <td>PFS 9.9 vs 4.9mo, HR 0.56, p=0.0143</td>
+                            <td>Approved China</td>
+                        </tr>
+                        <tr>
+                            <td>Phase 2 "Umbrella" China</td>
+                            <td>2</td>
+                            <td>~120</td>
+                            <td>Mixed HER2 status MBC</td>
+                            <td>Overall ORR 38.3%, mPFS 5.7mo</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>RC48 + Toripalimab (UC)</td>
+                            <td>1b/2</td>
+                            <td>43</td>
+                            <td>Metastatic urothelial</td>
+                            <td>ORR ~75%, mOS 33mo</td>
+                            <td>Ongoing</td>
+                        </tr>
+                        <tr>
+                            <td>RC48G001 (Global UC)</td>
+                            <td>2</td>
+                            <td>TBD</td>
+                            <td>HER2+ urothelial</td>
+                            <td>Includes US cohorts</td>
+                            <td>Recruiting</td>
+                        </tr>
+                        <tr>
+                            <td>HER2-low HR+ Combo</td>
+                            <td>2</td>
+                            <td>Planned</td>
+                            <td>HER2-low HR+ MBC</td>
+                            <td>DV + endocrine therapy</td>
+                            <td>Planning</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-2">Additional Indications in China</h4>
+                    <ul class="space-y-2">
+                        <li>• <strong>Gastric Cancer:</strong> First approval (2021), HER2-positive locally advanced or metastatic</li>
+                        <li>• <strong>Urothelial Cancer:</strong> Second approval (2022), HER2-positive locally advanced or metastatic</li>
+                        <li>• <strong>Breast Cancer:</strong> Third approval (2025), HER2+ with liver metastases</li>
+                        <li>• <strong>Cervical Cancer:</strong> Phase 2 data reported, potential fourth indication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Summary Section -->
+        <div class="tab-container" style="margin-top: 24px;">
+            <div style="padding: 24px;">
+                <div class="section-title">Investment Committee Summary</div>
+                
+                <div class="highlight-box">
+                    <h3 class="text-xl font-bold mb-4 text-gray-900">Executive Investment Thesis</h3>
+                    <p class="detail-text">
+                        Disitamab vedotin represents a compelling late-stage oncology investment with proven clinical benefit in an unmet population. As the first ADC globally approved specifically for HER2+ breast cancer with liver metastases, it addresses a clear need. The partnership with Pfizer mitigates regulatory and commercial execution risks ex-China, while RemeGen's strong execution in China validates the commercial model.
+                    </p>
+                </div>
+
+                <div class="metric-grid mt-6">
+                    <div class="metric-card">
+                        <div class="metric-label">Clinical Risk</div>
+                        <div class="metric-value" style="color: #28a745;">✓ Low</div>
+                        <div class="metric-detail">Phase 3 met primary, China approved</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Regulatory Risk</div>
+                        <div class="metric-value" style="color: #ffc107;">⚠ Medium</div>
+                        <div class="metric-detail">Comparator issue for FDA/EMA</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Commercial Risk</div>
+                        <div class="metric-value" style="color: #ffc107;">⚠ Medium</div>
+                        <div class="metric-detail">Competition from T-DXd</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Financial Upside</div>
+                        <div class="metric-value" style="color: #28a745;">✓ High</div>
+                        <div class="metric-detail">$1-2B peak sales potential</div>
+                    </div>
+                </div>
+
+                <div class="data-card mt-6">
+                    <h4 class="font-semibold mb-3">Key Investment Strengths</h4>
+                    <ul class="space-y-2">
+                        <li>✓ <strong>No ILD Signal:</strong> Key safety differentiator vs T-DXd (10-15% ILD rate)</li>
+                        <li>✓ <strong>Proven Efficacy:</strong> 44% risk reduction (HR 0.56) in Phase 3, doubled PFS to 9.9 months</li>
+                        <li>✓ <strong>HER2-low Activity:</strong> ORR ~30-33% in HER2-low, expanding addressable market</li>
+                        <li>✓ <strong>China Success:</strong> Already approved for 3 indications, NRDL listed, rapid uptake</li>
+                        <li>✓ <strong>Strong IP:</strong> Protection to 2034-2039 with composition-of-matter patents</li>
+                        <li>✓ <strong>Pfizer Partnership:</strong> $200M upfront + $2.4B milestones validates asset</li>
+                        <li>✓ <strong>Manufacturing Ready:</strong> Commercial-scale production already operational</li>
+                    </ul>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-3">Key Investment Risks</h4>
+                    <ul class="space-y-2">
+                        <li>⚠ <strong>Outdated Comparator:</strong> Phase 3 used lapatinib+cape, not current SOC</li>
+                        <li>⚠ <strong>T-DXd Competition:</strong> Superior efficacy in HER2+ and HER2-low</li>
+                        <li>⚠ <strong>Small Trial Size:</strong> N=104 in pivotal, all Chinese patients</li>
+                        <li>⚠ <strong>Neuropathy Risk:</strong> ~45% any grade, 6% Grade 3+ (MMAE effect)</li>
+                        <li>⚠ <strong>Patent Expiry:</strong> Base patents expire 2034, relatively short window</li>
+                    </ul>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-3">Financial Projections</h4>
+                    <table class="trial-table">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Peak Sales</th>
+                                <th>Probability</th>
+                                <th>rNPV</th>
+                                <th>IRR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Conservative</td>
+                                <td>$800M</td>
+                                <td>40%</td>
+                                <td>$0.8B</td>
+                                <td>15-18%</td>
+                            </tr>
+                            <tr style="background: #f0f7f6;">
+                                <td><strong>Base Case</strong></td>
+                                <td><strong>$1.2B</strong></td>
+                                <td><strong>50%</strong></td>
+                                <td><strong>$1.0B</strong></td>
+                                <td><strong>18-22%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Bull Case</td>
+                                <td>$2.0B</td>
+                                <td>30%</td>
+                                <td>$0.9B</td>
+                                <td>25-30%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box mt-6">
+                    <h4 class="font-semibold mb-2">Investment Recommendation</h4>
+                    <p class="detail-text">
+                        <strong>Rating: BUY with structured approach</strong>
+                        <br><br>
+                        Disitamab vedotin offers compelling risk-adjusted returns given its proven efficacy, differentiated safety profile (no ILD), and strong China execution. The Pfizer partnership de-risks global development while RemeGen's ~$6.5B valuation provides multiple entry points. Recommend investment via:
+                        <br><br>
+                        1. <strong>Royalty financing:</strong> Purchase portion of ex-China royalty stream (10-15% royalties on $1B+ sales)
+                        <br>2. <strong>Milestone monetization:</strong> Advance capital against future Pfizer milestone payments
+                        <br>3. <strong>Equity investment:</strong> Direct stake in RemeGen given multiple value drivers (DV + Telitacicept)
+                        <br><br>
+                        Key catalysts include FDA IND filing (2025-26), potential breakthrough designation for HER2-low, and continued China revenue ramp. Monitor T-DXd real-world ILD rates and any new HER2 ADC entrants. Exit likely via royalty sale or RemeGen appreciation as DV reaches peak sales (~2030).
+                    </p>
+                </div>
+
+                <div class="reference-list">
+                    Data compiled from: SABCS 2024 Presentations | RemeGen Corporate Filings | Seagen SEC Documents | 
+                    PubMed PMID: 38940019 | ClinicalTrials.gov | ADC Review | Annals of Oncology | PRNewswire | 
+                    BOCOM Securities Analysis | Investing.com | FiercePharma | Company Investor Relations
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Operational & Legal Tab -->
+<div id="operational" class="tab-content">
+    <div class="section-title">5. Operational & Legal Diligence</div>
+    
+    <!-- Manufacturing -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>5.1 Manufacturing & CMC (Chemistry, Manufacturing, Controls)</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content active">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">Manufacturing Scale & Readiness</h4>
+                <p class="detail-text">
+                    Disitamab vedotin is a complex biologic-plus-chemical product. RemeGen built manufacturing capabilities in Yantai, China, including an ADC conjugation facility. They have been supplying the Chinese market since 2021 for gastric and bladder indications, so commercial-scale manufacturing is already in place for China. RemeGen in filings noted a 90,000L biologics production capacity (for RC18, RC48 etc.) – an impressive scale.
+                </p>
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Production Capacity</div>
+                    <div class="metric-value">90,000L</div>
+                    <div class="metric-detail">Biologics capacity</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">DAR Consistency</div>
+                    <div class="metric-value">~4</div>
+                    <div class="metric-detail">MMAE per antibody</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Shelf Life</div>
+                    <div class="metric-value">24 months</div>
+                    <div class="metric-detail">Refrigerated storage</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Batch Consistency</div>
+                    <div class="metric-value">Validated</div>
+                    <div class="metric-detail">No recalls reported</div>
+                </div>
+            </div>
+
+            <p class="detail-text mt-4">
+                <strong>CMC Status:</strong> Key CMC elements for ADCs include the antibody production, the linker-payload synthesis, and the conjugation step (which yields a specific Drug-Antibody Ratio, DAR). DV uses MMAE, which Seagen produces or sources. The antibody is presumably produced in mammalian cell culture. For DV, batch size likely in the hundreds of liters can produce ample supply. 
+            </p>
+
+            <p class="detail-text">
+                <strong>Global Manufacturing Strategy:</strong> According to the license deal, Seagen leads global development and RemeGen operationalizes trials in its territory. For global supply, Pfizer/Seagen will either: Use RemeGen's facility under supervision (if it passes FDA inspection – possible given modern Chinese facilities can meet standards), or tech-transfer the production to one of Seagen's partner CMOs or their own manufacturing plant in the US.
+            </p>
+
+            <p class="detail-text">
+                <strong>Supply Chain:</strong> The payload supply (MMAE) might come from a specific manufacturer – possibly a Seagen affiliate. There's a dependency risk if only one plant makes MMAE, but Seagen likely has contingencies or stockpiles. Raw material risks include the linker (valine-citrulline-PABC) and MMAE are specialized.
+            </p>
+        </div>
+    </div>
+
+    <!-- Legal & Compliance -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>5.2 Legal, Compliance, and Other Operational Risks</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h4 class="font-semibold mb-2">Regulatory Compliance</h4>
+                <p class="detail-text">
+                    RemeGen and DV have not had any known regulatory compliance issues publicly. RemeGen's facilities presumably underwent Chinese inspections for GMP – no warning letters known. RemeGen's Chief Medical Officer, He Ruyi, served at both US FDA and China NMPA for ~20 years, which means internally they have strong compliance expertise.
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Litigation Status</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>IP Litigation:</strong> None ongoing. No known patent litigations or opposition proceedings have been filed against DV. RemeGen's collaboration structure has likely deterred competitors from IP challenges.</li>
+                    <li>• <strong>Product Liability:</strong> DV hasn't had safety issues causing lawsuits. No treatment-related deaths across studies.</li>
+                    <li>• <strong>Securities/Investor Litigation:</strong> RemeGen being public means any missteps could cause class actions. Given DV's success, that's not current. No current securities lawsuits known.</li>
+                    <li>• <strong>Compliance (FDA/EMA):</strong> As DV moves to global, ensure all data (especially Chinese trial data) is GCP-compliant and auditable.</li>
+                </ul>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Partner Obligations</h4>
+                <p class="detail-text">
+                    <strong>The Seagen License:</strong> Since Seagen licensed from RemeGen, RemeGen doesn't owe milestones, it receives them. However, RemeGen will fund and operationalize trials attributable to its territory. So RemeGen bears cost for China/Asia parts of global trials. No signs of partnership strain.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Other Partnerships:</strong> RemeGen has other partnerships (e.g., telitacicept with Lilly for ex-China). No conflict with DV. DV uses Seagen IP, which is confined to DV.
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Operational Red Flags & Mitigations</h4>
+                <div class="risk-item">
+                    <div class="risk-indicator risk-medium"></div>
+                    <div>
+                        <strong>Manufacturing scale-up for global demand:</strong> Might encounter hiccups or FDA compliance issues. Mitigation: Pfizer's CMC experts should lead global manufacturing strategy.
+                    </div>
+                </div>
+                <div class="risk-item">
+                    <div class="risk-indicator risk-low"></div>
+                    <div>
+                        <strong>Single-source dependencies:</strong> E.g., sole supplier of MMAE. Mitigation: Seagen likely already has backup suppliers in place.
+                    </div>
+                </div>
+                <div class="risk-item">
+                    <div class="risk-indicator risk-medium"></div>
+                    <div>
+                        <strong>Geopolitical risk:</strong> U.S.-China tensions could impair data sharing. Mitigation: Include U.S. sites in future DV trials to ensure FDA comfort.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Management & Team Tab -->
+<div id="management" class="tab-content">
+    <div class="section-title">6. Management & Team Execution</div>
+    
+    <!-- Leadership Experience -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>6.1 Leadership Experience</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content active">
+            <div class="data-card">
+                <h4 class="font-semibold mb-2">RemeGen Leadership Team</h4>
+                
+                <p class="detail-text">
+                    <strong>Dr. Jianmin Fang (CEO & Co-founder):</strong> A PhD biologist trained in Canada, with >20 years of biopharma R&D experience. He's the scientific visionary behind DV (inventor listed on its patents). Having a scientist-CEO can be great for innovation but one must ensure he's supported by strong commercial operators.
+                </p>
+
+                <p class="detail-text">
+                    <strong>Mr. Weidong Wang (Chairman/Co-founder):</strong> He previously built a successful pharma (Rongchang) in China, suggesting business acumen and government relations. Likely instrumental in NRDL negotiations.
+                </p>
+
+                <p class="detail-text">
+                    <strong>Dr. Ruyi He (CMO):</strong> Critical hire; ex-FDA medical officer and ex-CDE (China's FDA). His regulatory expertise likely helped secure Breakthrough designations and navigate trial design issues. He ensures clinical development rigor and compliance.
+                </p>
+
+                <p class="detail-text">
+                    <strong>Dr. Daotian Fu (President):</strong> With 28 years in US biotech leadership. He likely oversees global collaborations and perhaps manufacturing. This international experience on the team is a green flag – he understands Western quality and business practices.
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">Founded</div>
+                    <div class="metric-value">2008</div>
+                    <div class="metric-detail">17 years operating</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Products Approved</div>
+                    <div class="metric-value">2</div>
+                    <div class="metric-detail">Multiple indications</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Partnerships</div>
+                    <div class="metric-value">3 Major</div>
+                    <div class="metric-detail">Pfizer, Lilly, etc.</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Employee Count</div>
+                    <div class="metric-value">~1,000+</div>
+                    <div class="metric-detail">Growing rapidly</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Execution -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>6.2 Team Cohesion & Execution Track Record</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <p class="detail-text">
+                <strong>Execution Track Record:</strong> So far, RemeGen's team has successfully brought two drugs from Phase 1 to approval in China (in multiple indications), managed a major global licensing deal (with Seagen) and partnership (with Lilly), scaled up a commercial infrastructure and achieved reimbursement listings quickly (NRDL within the same year of approval), and maintained pipeline progression (presented 15 studies of DV at ASCO 2024).
+            </p>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Commercial Team Strength</h4>
+                <p class="detail-text">
+                    They assembled large salesforces for RC18 and RC48 in China – 180 oncology reps covering 374 hospitals. That's operational heavy-lifting to cover hundreds of hospitals. It seems they executed well, given the sales jump and broad hospital coverage.
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Potential Team Risks</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>Rapid expansion:</strong> Can stretch management bandwidth – concurrently handling regulatory filings, new trials, and product launches</li>
+                    <li>• <strong>Succession planning:</strong> Dr. Fang is key; losing a founder often impacts investor confidence</li>
+                    <li>• <strong>Integration with Pfizer:</strong> Communication delays or strategic disagreements possible</li>
+                    <li>• <strong>Global expansion:</strong> Team must effectively influence Pfizer to push DV's best chances</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Safety & Toxicology Tab -->
+<div id="safety" class="tab-content">
+    <div class="section-title">7. Comprehensive Safety & Toxicology Profile</div>
+    
+    <!-- Phase 1/2 Safety -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>7.1 Phase 1/2 Safety Data</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content active">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">Dose Escalation & Expansion Results</h4>
+                <p class="detail-text">
+                    No dose-limiting toxicities observed up to 2.5 mg/kg. Maximum tolerated dose not formally reached. Recommended Phase 2/3 dose: 2.0 mg/kg Q2W based on optimal balance of efficacy and tolerability.
+                </p>
+            </div>
+
+            <table class="ae-table">
+                <thead>
+                    <tr>
+                        <th>Adverse Event</th>
+                        <th>All Grades (%)</th>
+                        <th>Grade 3 (%)</th>
+                        <th>Grade 4 (%)</th>
+                        <th>Led to Discontinuation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Peripheral neuropathy</td>
+                        <td>45-50%</td>
+                        <td>5.9%</td>
+                        <td>0.7%</td>
+                        <td><2%</td>
+                    </tr>
+                    <tr>
+                        <td>Neutropenia</td>
+                        <td>50-55%</td>
+                        <td>17-19%</td>
+                        <td>Rare</td>
+                        <td>Managed with G-CSF</td>
+                    </tr>
+                    <tr>
+                        <td>AST elevation</td>
+                        <td>46%</td>
+                        <td><5%</td>
+                        <td>0</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>ALT elevation</td>
+                        <td>42%</td>
+                        <td><5%</td>
+                        <td>0</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Nausea</td>
+                        <td>30%</td>
+                        <td>One patient</td>
+                        <td>0</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Fatigue</td>
+                        <td>25%</td>
+                        <td>Rare</td>
+                        <td>0</td>
+                        <td>No</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="detail-text mt-4">
+                <strong>Key Safety Findings:</strong> Only 1 patient (<2%) discontinued due to TRAE. Only 1 patient required dose reduction (Grade 3 nausea). No Grade 4 treatment-related AEs except rare neutropenia. No treatment-related deaths. Febrile neutropenia was uncommon (<5%).
+            </p>
+        </div>
+    </div>
+
+    <!-- Comparative Safety -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>7.2 Comparative Safety vs Other HER2 ADCs</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">Key Safety Differentiator: No ILD Signal</h4>
+                <p class="detail-text">
+                    Disitamab vedotin has not shown the interstitial lung disease (ILD) signal that is associated with trastuzumab deruxtecan (T-DXd). In all Chinese trials of DV, no ILD or pneumonitis of grade ≥3 was reported. This is a major differentiator.
+                </p>
+            </div>
+
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Safety Parameter</th>
+                        <th>Disitamab Vedotin</th>
+                        <th>T-DXd (Enhertu)</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ILD/Pneumonitis</td>
+                        <td>0%</td>
+                        <td>10-15% (0.8% fatal)</td>
+                        <td>Major safety advantage</td>
+                    </tr>
+                    <tr>
+                        <td>Peripheral neuropathy</td>
+                        <td>45% (6% G3)</td>
+                        <td><5%</td>
+                        <td>MMAE class effect</td>
+                    </tr>
+                    <tr>
+                        <td>Neutropenia G3+</td>
+                        <td>17-19%</td>
+                        <td>~20%</td>
+                        <td>Comparable</td>
+                    </tr>
+                    <tr>
+                        <td>Nausea</td>
+                        <td>30%</td>
+                        <td>73%</td>
+                        <td>Better GI tolerability</td>
+                    </tr>
+                    <tr>
+                        <td>Alopecia</td>
+                        <td>Minimal</td>
+                        <td>~40%</td>
+                        <td>QoL advantage</td>
+                    </tr>
+                    <tr>
+                        <td>Cardiotoxicity</td>
+                        <td>Not reported</td>
+                        <td>Low</td>
+                        <td>No signal</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="detail-text mt-4">
+                <strong>Clinical Implications:</strong> The lack of ILD makes DV a safer alternative for patients with lung comorbidities or those who cannot risk pulmonary toxicity. The neuropathy is manageable with dose modifications and rarely leads to discontinuation.
+            </p>
+        </div>
+    </div>
+
+    <!-- Special Populations -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>7.3 Special Populations & Drug Interactions</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h4 class="font-semibold mb-2">Liver Metastases Population</h4>
+                <p class="detail-text">
+                    Despite patients having liver impairment risk (due to metastases), DV did not exhibit unexpected hepatotoxicity beyond mild transaminase rises. No cases of severe drug-induced liver injury have been reported. Grade ≥3 gamma-GT elevation occurred in 13.2%.
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Combination Safety</h4>
+                <p class="detail-text">
+                    <strong>With Immunotherapy:</strong> DV + anti-PD-1 (toripalimab) in urothelial cancer showed no significant worsening of toxicity. Grade ≥3 TRAEs ~36.5% in combination.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>With Targeted Therapy:</strong> Combinations with CDK4/6 inhibitors or anti-VEGF agents are being explored. Preliminary data suggest manageable safety profiles.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Complete Trial Analysis Tab -->
+<div id="trials" class="tab-content">
+    <div class="section-title">8. Complete Trial Portfolio Analysis</div>
+    
+    <div class="subsection-title">Comprehensive Clinical Development Program</div>
+    
+    <table class="trial-table">
+        <thead>
+            <tr>
+                <th>Trial</th>
+                <th>Phase</th>
+                <th>N</th>
+                <th>Population</th>
+                <th>Design</th>
+                <th>Key Results</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="background: #f0f7f6;">
+                <td><strong>RC48-C006</strong><br>(NCT03500380)</td>
+                <td><strong>3</strong></td>
+                <td><strong>104</strong></td>
+                <td><strong>HER2+ MBC with liver mets</strong></td>
+                <td>DV vs lapatinib+cape</td>
+                <td><strong>PFS 9.9 vs 4.9mo<br>HR 0.56, p=0.0143</strong></td>
+                <td><strong>APPROVED CHINA</strong></td>
+            </tr>
+            <tr>
+                <td>Phase 1/1b China</td>
+                <td>1/1b</td>
+                <td>136</td>
+                <td>HER2+ and HER2-low MBC</td>
+                <td>Dose escalation/expansion</td>
+                <td>ORR 42.9% (HER2+)<br>33.3% (HER2-low)</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td>Phase 2 Umbrella</td>
+                <td>2</td>
+                <td>~120</td>
+                <td>Mixed HER2 status</td>
+                <td>Single-arm observational</td>
+                <td>ORR 38.3%, mPFS 5.7mo</td>
+                <td>Completed</td>
+            </tr>
+            <tr>
+                <td>RC48 + Toripalimab</td>
+                <td>1b/2</td>
+                <td>43</td>
+                <td>Metastatic UC</td>
+                <td>Combination</td>
+                <td>ORR 75%, mOS 33mo</td>
+                <td>Ongoing</td>
+            </tr>
+            <tr>
+                <td>RC48G001</td>
+                <td>2</td>
+                <td>TBD</td>
+                <td>HER2+ UC (global)</td>
+                <td>Includes US cohorts</td>
+                <td>Enrolling</td>
+                <td>Recruiting</td>
+            </tr>
+            <tr>
+                <td>HER2-low Combo</td>
+                <td>2</td>
+                <td>Planned</td>
+                <td>HER2-low HR+ MBC</td>
+                <td>DV + endocrine</td>
+                <td>Planning</td>
+                <td>Planning</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="data-card mt-4">
+        <h4 class="font-semibold mb-2">Multi-Indication Development in China</h4>
+        <table class="trial-table">
+            <thead>
+                <tr>
+                    <th>Indication</th>
+                    <th>Approval Status</th>
+                    <th>Key Data</th>
+                    <th>NRDL Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Gastric Cancer</strong></td>
+                    <td>Approved 2021</td>
+                    <td>HER2+ locally advanced/metastatic</td>
+                    <td>Listed</td>
+                </tr>
+                <tr>
+                    <td><strong>Urothelial Cancer</strong></td>
+                    <td>Approved 2022</td>
+                    <td>HER2+ locally advanced/metastatic</td>
+                    <td>Listed</td>
+                </tr>
+                <tr>
+                    <td><strong>Breast Cancer</strong></td>
+                    <td>Approved May 2025</td>
+                    <td>HER2+ with liver metastases</td>
+                    <td>Pending</td>
+                </tr>
+                <tr>
+                    <td>Cervical Cancer</td>
+                    <td>Phase 2</td>
+                    <td>Data reported</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Lung Cancer</td>
+                    <td>Phase 2</td>
+                    <td>HER2-mutant NSCLC</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="subsection-title mt-4">Future Development Strategy</div>
+    
+    <div class="data-card">
+        <h4 class="font-semibold mb-2">Pfizer Global Development Plans</h4>
+        <ul class="space-y-2">
+            <li>• <strong>HER2-low breast cancer:</strong> Potential Phase 3 vs physician's choice in post-T-DXd setting</li>
+            <li>• <strong>Third-line HER2+ MBC:</strong> Single-arm study in Western patients post-T-DXd</li>
+            <li>• <strong>Combination strategies:</strong> DV + checkpoint inhibitors, DV + CDK4/6i for HR+</li>
+            <li>• <strong>Earlier lines:</strong> First-line combinations if differentiation established</li>
+            <li>• <strong>Companion diagnostic:</strong> No new test needed, standard HER2 IHC/FISH sufficient</li>
+        </ul>
+    </div>
+
+    <div class="reference-list">
+        Trial data compiled from: ClinicalTrials.gov | SABCS 2024 | ASCO 2024 | RemeGen Corporate Presentations | 
+        PubMed | Annals of Oncology | OncoLive | ADC Review
+    </div>
+</div>
+
+    <script>
+        // ============================================
+// COMPLETE SCRIPT FOR DISITAMAB VEDOTIN REPORT
+// ============================================
+
+// Tab switching function
+function showTab(tabName) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    const targetTab = document.getElementById(tabName);
+    if (targetTab) {
+        targetTab.classList.add('active');
+    }
+    
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+}
+
+// Toggle expandable sections
+function toggleSection(header) {
+    const content = header.nextElementSibling;
+    const arrow = header.querySelector('span:last-child');
+    
+    if (content.classList.contains('active')) {
+        content.classList.remove('active');
+        arrow.textContent = '▶';
+    } else {
+        content.classList.add('active');
+        arrow.textContent = '▼';
+    }
+}
+
+// Initialize all charts and functionality on page load
+window.addEventListener('DOMContentLoaded', function() {
+    
+    // ==========================================
+    // PFS COMPARISON CHART (Phase 3 Results)
+    // ==========================================
+    const pfsCtx = document.getElementById('pfsChart');
+    if (pfsCtx) {
+        new Chart(pfsCtx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['DV (RC48) Phase 3', 'Lapatinib+Cape', 'HER2+ Phase 1/2', 'HER2-low Phase 1/2'],
+                datasets: [{
+                    label: 'Median PFS (months)',
+                    data: [9.9, 4.9, 5.7, 5.1],
+                    backgroundColor: ['#0a6b5e', '#e3f2f0', '#0a6b5e', '#e3f2f0'],
+                    borderColor: '#0a6b5e',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'RC48-C006: Progression-Free Survival Results',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'Median PFS: ' + context.parsed.y + ' months';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 12,
+                        title: {
+                            display: true,
+                            text: 'Months'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // ==========================================
+    // SAFETY COMPARISON CHART
+    // ==========================================
+    const safetyCtx = document.getElementById('safetyComparisonChart');
+    if (safetyCtx) {
+        new Chart(safetyCtx.getContext('2d'), {
+            type: 'horizontalBar',
+            data: {
+                labels: ['AST Elevation', 'ALT Elevation', 'Neutropenia', 'Peripheral Neuropathy', 'Nausea', 'Fatigue', 'ILD/Pneumonitis'],
+                datasets: [{
+                    label: 'Disitamab Vedotin (%)',
+                    data: [46, 42, 50, 45, 30, 25, 0],
+                    backgroundColor: '#0a6b5e'
+                }, {
+                    label: 'T-DXd/Enhertu (%)',
+                    data: [15, 15, 20, 5, 35, 30, 12],
+                    backgroundColor: '#dc3545'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Adverse Event Comparison: RC48 vs T-DXd'
+                    },
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 60,
+                        title: {
+                            display: true,
+                            text: 'Incidence (%)'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // ==========================================
+    // SALES PROJECTION CHART
+    // ==========================================
+    const salesCtx = document.getElementById('salesProjectionChart');
+    if (salesCtx) {
+        new Chart(salesCtx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034'],
+                datasets: [{
+                    label: 'Base Case',
+                    data: [200, 400, 600, 800, 1000, 1200, 1100, 900, 700, 500],
+                    borderColor: '#0a6b5e',
+                    backgroundColor: 'rgba(10, 107, 94, 0.1)',
+                    tension: 0.3,
+                    borderWidth: 2
+                }, {
+                    label: 'Bull Case',
+                    data: [250, 500, 800, 1200, 1600, 2000, 1900, 1600, 1200, 800],
+                    borderColor: '#28a745',
+                    backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                    tension: 0.3,
+                    borderWidth: 2
+                }, {
+                    label: 'Conservative',
+                    data: [150, 300, 400, 500, 600, 800, 750, 600, 450, 300],
+                    borderColor: '#6c757d',
+                    backgroundColor: 'rgba(108, 117, 125, 0.1)',
+                    tension: 0.3,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Global Sales Projections ($ millions)',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Sales ($ millions)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Year'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // ==========================================
+    // MARKET SHARE CHART
+    // ==========================================
+    const marketCtx = document.getElementById('marketShareChart');
+    if (marketCtx) {
+        new Chart(marketCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['T-DXd (Enhertu)', 'T-DM1 (Kadcyla)', 'DV (RC48)', 'Trodelvy', 'Others/Chemo'],
+                datasets: [{
+                    data: [45, 15, 25, 10, 5],
+                    backgroundColor: [
+                        '#dc3545',
+                        '#ffc107',
+                        '#0a6b5e',
+                        '#17a2b8',
+                        '#6c757d'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Projected 2028 HER2+ ADC Market Share',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // ==========================================
+    // RISK ASSESSMENT RADAR CHART
+    // ==========================================
+    const riskCtx = document.getElementById('riskRadarChart');
+    if (riskCtx) {
+        new Chart(riskCtx.getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: ['Clinical', 'Regulatory', 'Commercial', 'Manufacturing', 'IP', 'Financial', 'Team'],
+                datasets: [{
+                    label: 'Disitamab Vedotin Risk Profile',
+                    data: [2, 3, 3, 2, 2, 2, 2],
+                    backgroundColor: 'rgba(10, 107, 94, 0.2)',
+                    borderColor: '#0a6b5e',
+                    pointBackgroundColor: '#0a6b5e',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#0a6b5e',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: {
+                            stepSize: 1
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Risk Assessment Profile (1=Low, 5=High)',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+
+    // ==========================================
+    // EFFICACY COMPARISON CHART
+    // ==========================================
+    const efficacyCtx = document.getElementById('efficacyComparisonChart');
+    if (efficacyCtx) {
+        new Chart(efficacyCtx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['ORR HER2+', 'ORR HER2-low', 'CBR HER2+', 'CBR HER2-low'],
+                datasets: [{
+                    label: 'Disitamab Vedotin',
+                    data: [42.9, 33.3, 65, 50],
+                    backgroundColor: '#0a6b5e'
+                }, {
+                    label: 'T-DXd',
+                    data: [79, 52, 85, 65],
+                    backgroundColor: '#dc3545'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Response Rate Comparison (%)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Response Rate (%)'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // ==========================================
+    // PATIENT POPULATION CHART
+    // ==========================================
+    const populationCtx = document.getElementById('populationChart');
+    if (populationCtx) {
+        new Chart(populationCtx.getContext('2d'), {
+            type: 'pie',
+            data: {
+                labels: ['HER2+ (15-20%)', 'HER2-low (45-50%)', 'HER2-negative (30-40%)'],
+                datasets: [{
+                    data: [17.5, 47.5, 35],
+                    backgroundColor: [
+                        '#0a6b5e',
+                        '#28a745',
+                        '#6c757d'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Breast Cancer HER2 Expression Distribution',
+                        font: {
+                            size: 16
+                        }
+                    },
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    }
+
+    // ==========================================
+    // SMOOTH SCROLLING
+    // ==========================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // ==========================================
+    // PRINT FUNCTIONALITY
+    // ==========================================
+    window.printReport = function() {
+        window.print();
+    };
+
+    // ==========================================
+    // EXPORT TO PDF BUTTON (placeholder)
+    // ==========================================
+    window.exportToPDF = function() {
+        alert('PDF export would be implemented with a library like jsPDF or server-side generation');
+    };
+
+});
+    </script>
+</body>
+</html>

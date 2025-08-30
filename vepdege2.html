@@ -1,0 +1,2454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vepdegestrant (ARV-471) - Complete Investment Analysis | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .nav-bar {
+            background: white;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .container {
+            margin-top: 56px;
+            padding: 32px 24px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tab-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            overflow: hidden;
+            margin-top: 24px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e3f2f0;
+            overflow-x: auto;
+            background: #fafffe;
+        }
+
+        .tab-btn {
+            padding: 14px 20px;
+            border: none;
+            background: none;
+            color: #6c757d;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #0a6b5e;
+            background: #f0f7f6;
+        }
+
+        .tab-btn.active {
+            color: #0a6b5e;
+            border-bottom-color: #0a6b5e;
+            background: white;
+        }
+
+        .tab-content {
+            padding: 24px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0a6b5e;
+            margin-bottom: 16px;
+        }
+
+        .subsection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .data-card {
+            background: #f8fffe;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .detail-text {
+            color: #424242;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0a6b5e;
+        }
+
+        .metric-detail {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        .expandable-section {
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .expandable-header {
+            background: #f0f7f6;
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #0a6b5e;
+            transition: background 0.2s;
+        }
+
+        .expandable-header:hover {
+            background: #e6f3f1;
+        }
+
+        .expandable-content {
+            padding: 16px;
+            display: none;
+            background: white;
+        }
+
+        .expandable-content.active {
+            display: block;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+            margin: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 12px;
+            top: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: #e3f2f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: #0a6b5e;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .trial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .trial-table th {
+            background: #f0f7f6;
+            padding: 12px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0a6b5e;
+            border-bottom: 2px solid #e3f2f0;
+        }
+
+        .trial-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f7f6;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .status-active { 
+            background: #d4f4ec;
+            color: #0a6b5e;
+        }
+
+        .status-completed { 
+            background: #e3f2f0;
+            color: #0a6b5e;
+        }
+
+        .status-recruiting { 
+            background: #cfe2ff;
+            color: #084298;
+        }
+
+        .link-btn {
+            color: #0a6b5e;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .link-btn:hover {
+            background: #f0f7f6;
+        }
+
+        .ae-table {
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .ae-table th {
+            background: #fff3cd;
+            padding: 10px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            color: #856404;
+        }
+
+        .ae-table td {
+            padding: 10px;
+            border-bottom: 1px solid #fff3cd;
+            font-size: 13px;
+        }
+
+        .reference-list {
+            font-size: 11px;
+            color: #6c757d;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e3f2f0;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .regulatory-flow {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .flow-node {
+            background: white;
+            border: 2px solid #0a6b5e;
+            border-radius: 8px;
+            padding: 16px;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-node.completed {
+            background: #d4f4ec;
+        }
+
+        .flow-node.active {
+            background: #cfe2ff;
+            border-color: #084298;
+        }
+
+        .flow-arrow {
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #0a6b5e;
+            font-size: 20px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7f6 0%, #e6f3f1 100%);
+            border-left: 4px solid #0a6b5e;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .risk-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .risk-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .risk-high { background: #dc3545; }
+        .risk-medium { background: #ffc107; }
+        .risk-low { background: #28a745; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <img src="leaf.png" alt="Leaf Intelligence" class="h-14 w-14 object-contain">
+                <div class="ml-3">
+                    <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Leaf Intelligence
+                    </span>
+                    <div class="text-xs text-gray-600 font-medium tracking-wide">AI Research Platform</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-tabs ml-8">
+            <a href="#" class="nav-tab">Companies</a>
+            <a href="#" class="nav-tab active">Pharmaceuticals Intelligence</a>
+            <a href="#" class="nav-tab">Reports</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <div class="bg-white rounded-lg p-6 shadow-sm mb-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Vepdegestrant (ARV-471)</h1>
+                    <p class="text-lg text-gray-600 mt-2">First-in-Class Oral PROTAC Estrogen Receptor Degrader</p>
+                    <div class="flex gap-4 mt-4">
+                        <span class="status-badge status-active">Phase 3</span>
+                        <span class="text-sm text-gray-600">Pfizer / Arvinas Partnership</span>
+                        <span class="text-sm text-gray-600">Target: ER+/HER2- Breast Cancer with ESR1 Mutations</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-sm text-gray-500">Regulatory Status</div>
+                    <div class="text-2xl font-bold text-green-600">NDA Accepted</div>
+                    <div class="text-sm text-gray-500">FDA Fast Track • Priority Review</div>
+                    <div class="text-sm text-gray-500">PDUFA: Q1 2026</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Container -->
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('clinical')">Clinical & Regulatory</button>
+                <button class="tab-btn" onclick="showTab('scientific')">Scientific & IP</button>
+                <button class="tab-btn" onclick="showTab('commercial')">Commercial & Market</button>
+                <button class="tab-btn" onclick="showTab('financial')">Financial & Strategic</button>
+                <button class="tab-btn" onclick="showTab('operational')">Operational & Legal</button>
+                <button class="tab-btn" onclick="showTab('management')">Management & Team</button>
+                <button class="tab-btn" onclick="showTab('safety')">Safety & Toxicology</button>
+                <button class="tab-btn" onclick="showTab('trials')">Complete Trial Analysis</button>
+            </div>
+
+            <!-- Clinical & Regulatory Tab -->
+            <div id="clinical" class="tab-content active">
+                <div class="section-title">1. Clinical & Regulatory Diligence</div>
+                
+                <!-- Trial Design & Endpoints -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.1 Trial Design & Endpoints</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">VERITAC-2 Phase 3 Design Overview</h4>
+                            <p class="detail-text">
+                                VERITAC-2 (NCT05654623) is a global randomized Phase 3 study enrolling 624 patients across 26 countries, comparing once-daily oral vepdegestrant (200mg) versus intramuscular fulvestrant (500mg) in ER+/HER2− advanced breast cancer after progression on a CDK4/6 inhibitor plus endocrine therapy.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Co-Primary Endpoints</div>
+                                <div class="metric-value">PFS</div>
+                                <div class="metric-detail">ESR1-mutant & ITT populations</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Randomization</div>
+                                <div class="metric-value">1:1</div>
+                                <div class="metric-detail">Stratified by ESR1 mutation status</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Comparator</div>
+                                <div class="metric-value">Fulvestrant</div>
+                                <div class="metric-detail">Standard-of-care SERD</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Blinding</div>
+                                <div class="metric-value">Open-label</div>
+                                <div class="metric-detail">BICR for PFS assessment</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Secondary Endpoints:</strong> Overall survival (OS), objective response rate (ORR), clinical benefit rate (CBR), duration of response (DoR), and patient-reported outcomes. The design reflects regulatory precedent from elacestrant (Orserdu), which targeted ESR1-mutant tumors for efficacy claims.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Geographic Distribution:</strong> Trial enrollment was well-balanced across North America, Europe, and Asia to support global regulatory filings. No major protocol amendments have been reported publicly, suggesting stable trial execution.
+                        </p>
+
+                        <div class="reference-list">
+                            Sources: <a href="https://clinicaltrials.gov/ct2/show/NCT05654623" target="_blank" class="link-btn">ClinicalTrials.gov</a> | 
+                            <a href="https://www.pfizer.com/news/press-release" target="_blank" class="link-btn">Pfizer Press Release</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Efficacy Results -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.2 Clinical Efficacy Results</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Primary Endpoint Achievement</h4>
+                            <p class="detail-text">
+                                In ESR1-mutant patients (43% of trial population), vepdegestrant achieved a statistically significant and clinically meaningful PFS improvement, reducing risk of progression by 43% versus fulvestrant.
+                            </p>
+                        </div>
+
+                        <canvas id="pfsChart" class="chart-container"></canvas>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">ESR1-mut Median PFS</div>
+                                <div class="metric-value">5.0 mo</div>
+                                <div class="metric-detail">vs 2.1 mo fulvestrant</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Hazard Ratio</div>
+                                <div class="metric-value">0.57</div>
+                                <div class="metric-detail">95% CI: 0.42-0.77, p<0.001</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">6-mo PFS Rate</div>
+                                <div class="metric-value">45.2%</div>
+                                <div class="metric-detail">vs 22.7% fulvestrant</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Clinical Benefit Rate</div>
+                                <div class="metric-value">42.1%</div>
+                                <div class="metric-detail">vs 20.2% (OR 2.88, p<0.001)</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>ITT Population Results:</strong> In the overall intent-to-treat population, vepdegestrant did not reach statistical significance - median PFS 3.7 vs 3.6 months (HR 0.83, 95% CI 0.68-1.02, p=0.07). This reflects that vepdegestrant's benefit is concentrated in tumors harboring ESR1 mutations, likely due to those mutations driving resistance to prior aromatase inhibitors.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Objective Response Rate:</strong> In ESR1-mutant patients, ORR was 18.6% with vepdegestrant versus 4.0% with fulvestrant (OR 5.45, p=0.001). Responses were durable with median duration not reached at data cutoff.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Overall Survival Data:</strong> OS data remain immature with less than 25% of events recorded. However, the observed efficacy on PFS and tumor response is compelling for this refractory population and parallels elacestrant's Phase 3 results (HR ~0.55, median PFS 3.8 vs 1.9 months in ESR1-mut patients).
+                        </p>
+
+                        <div class="reference-list">
+                            Sources: NEJM Publication | ASCO 2025 Late-Breaker Abstract | Pfizer/Arvinas Joint Announcement
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 to Phase 3 Transition -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.3 Phase 2 Data & Transition to Phase 3</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="detail-text">
+                            The VERITAC Phase 2 expansion provided strong rationale for Phase 3 advancement. In heavily pretreated ER+ breast cancer patients (median 3-4 prior lines), vepdegestrant monotherapy achieved clinical benefit rate ~47% in ESR1-mutant tumors and median PFS ~5.5 months in that subgroup.
+                        </p>
+
+                        <p class="detail-text">
+                            This signal is remarkably consistent with the Phase 3 ESR1-mutant PFS (5.0 months), indicating a reproducible effect size. Some patients in Phase 2 remained on drug ≥48 weeks. The Phase 2 also demonstrated substantial ER degradation and tumor marker reduction.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Interim Analyses:</strong> There was no early termination for futility or overwhelming efficacy. The readout was at the planned final PFS analysis (58% of PFS events in vepdegestrant arm), suggesting straightforward trial conduct. An earlier topline announcement in March 2025 noted the positive ESR1-mutant result, with data then presented at ASCO 2025 as a late-breaker and published in NEJM.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Safety Profile -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.4 Safety Profile Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Overall Safety Summary</h4>
+                            <p class="detail-text">
+                                Vepdegestrant was generally well-tolerated with a favorable safety profile relative to standard endocrine therapy. In VERITAC-2, 87% of patients on vepdegestrant experienced any treatment-emergent adverse event versus 81% on fulvestrant.
+                            </p>
+                        </div>
+
+                        <table class="ae-table">
+                            <thead>
+                                <tr>
+                                    <th>Adverse Event</th>
+                                    <th>Vepdegestrant (%)</th>
+                                    <th>Fulvestrant (%)</th>
+                                    <th>Clinical Significance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Fatigue</td>
+                                    <td>27%</td>
+                                    <td>16%</td>
+                                    <td>Mostly Grade 1-2</td>
+                                </tr>
+                                <tr>
+                                    <td>ALT/AST elevation</td>
+                                    <td>~14%</td>
+                                    <td>10%</td>
+                                    <td>Modest transaminase elevations</td>
+                                </tr>
+                                <tr>
+                                    <td>Nausea</td>
+                                    <td>13.5%</td>
+                                    <td>9%</td>
+                                    <td>Much lower than elacestrant (35%)</td>
+                                </tr>
+                                <tr>
+                                    <td>Anemia</td>
+                                    <td>12%</td>
+                                    <td>8%</td>
+                                    <td>Manageable</td>
+                                </tr>
+                                <tr>
+                                    <td>Neutropenia</td>
+                                    <td>12%</td>
+                                    <td>5%</td>
+                                    <td>Expected with mechanism</td>
+                                </tr>
+                                <tr>
+                                    <td>Vomiting</td>
+                                    <td>6.4%</td>
+                                    <td>-</td>
+                                    <td>Low incidence</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">Grade ≥3 TEAEs</div>
+                                <div class="metric-value">23.4%</div>
+                                <div class="metric-detail">vs 17.6% fulvestrant</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Serious AEs</div>
+                                <div class="metric-value">10%</div>
+                                <div class="metric-detail">vs 9% fulvestrant</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Discontinuation Rate</div>
+                                <div class="metric-value">3%</div>
+                                <div class="metric-detail">vs 1% fulvestrant</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Dose Reductions</div>
+                                <div class="metric-value"><5%</div>
+                                <div class="metric-detail">Excellent tolerability</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Key Safety Differentiator:</strong> The low GI toxicity (13.5% nausea) is a key differentiator versus elacestrant (35% nausea rate). This should improve patient quality of life and compliance. No treatment-related deaths occurred. Only ~8% had grade ≥3 treatment-related AEs on vepdegestrant.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Regulatory Status -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.5 Regulatory Status & Interactions</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="regulatory-flow">
+                            <div class="flow-node completed">
+                                <div class="flow-arrow">→</div>
+                                <strong>Fast Track</strong>
+                                <p class="text-sm mt-1">Granted Feb 2024</p>
+                                <p class="text-xs text-gray-500">Monotherapy ER+/HER2-</p>
+                            </div>
+                            <div class="flow-node completed">
+                                <div class="flow-arrow">→</div>
+                                <strong>End of Phase 2</strong>
+                                <p class="text-sm mt-1">FDA Meeting</p>
+                                <p class="text-xs text-gray-500">2023</p>
+                            </div>
+                            <div class="flow-node completed">
+                                <div class="flow-arrow">→</div>
+                                <strong>Phase 3 Positive</strong>
+                                <p class="text-sm mt-1">VERITAC-2 Met Primary</p>
+                                <p class="text-xs text-gray-500">March 2025</p>
+                            </div>
+                            <div class="flow-node active">
+                                <div class="flow-arrow">→</div>
+                                <strong>NDA Accepted</strong>
+                                <p class="text-sm mt-1">Priority Review</p>
+                                <p class="text-xs text-gray-500">2H 2025</p>
+                            </div>
+                            <div class="flow-node">
+                                <strong>PDUFA Date</strong>
+                                <p class="text-sm mt-1">FDA Decision</p>
+                                <p class="text-xs text-gray-500">Q1 2026 (Expected)</p>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            The FDA has accepted the New Drug Application for vepdegestrant for ER+/HER2− advanced breast cancer with ESR1 mutation after endocrine therapy. Fast Track designation was granted in February 2024. The NDA filing (submitted 2H 2025) was based on VERITAC-2 results, with PDUFA target action date expected in Q1 2026.
+                        </p>
+
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Regulatory Risk Considerations</h4>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-low"></div>
+                                <div>
+                                    <strong>Companion Diagnostic:</strong> ESR1 mutation testing required. FDA typically requires parallel approval or validated test. For elacestrant, Guardant360 CDx was approved for detecting ESR1 mutations.
+                                </div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-medium"></div>
+                                <div>
+                                    <strong>Label Scope:</strong> Likely restricted to ESR1-mutant patients who have progressed on AI+CDK4/6i. More restrictive labeling could narrow market.
+                                </div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-low"></div>
+                                <div>
+                                    <strong>Post-Marketing Requirements:</strong> Given immature OS data, FDA may require confirmatory survival data or real-world evidence follow-up.
+                                </div>
+                            </div>
+                            <div class="risk-item">
+                                <div class="risk-indicator risk-low"></div>
+                                <div>
+                                    <strong>Manufacturing (CMC):</strong> NDA acceptance indicates adequate CMC data. Vepdegestrant is a synthetic small molecule (PROTAC), larger than typical kinase inhibitors.
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>EMA & Other Agencies:</strong> The EMA's CHMP has historically required robust data in subsets. Given EMA recently recommended approval of elacestrant for ESR1-mut disease, it is likely to similarly accept vepdegestrant's data. Vepdegestrant's absolute PFS gain of ~3 months is larger than elacestrant's ~2 month gain, strengthening the case.
+                        </p>
+
+                        <div class="reference-list">
+                            Sources: FDA Fast Track Announcement | Arvinas SEC Filings | Pfizer Regulatory Updates
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scientific & IP Tab -->
+            <div id="scientific" class="tab-content">
+                <div class="section-title">2. Scientific & Intellectual Property Diligence</div>
+
+                <!-- Mechanism of Action -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.1 Mechanism of Action & Scientific Rationale</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">PROTAC Technology Innovation</h4>
+                            <p class="detail-text">
+                                Vepdegestrant (ARV-471) is a first-in-class oral PROTAC (Proteolysis-Targeting Chimera) targeting the estrogen receptor. It consists of an ER-binding ligand linked to an E3 ubiquitin ligase recruiter. By binding both, it tags the ER for destruction via the proteasome.
+                            </p>
+                        </div>
+
+                        <p class="detail-text">
+                            This mechanism leads to near-complete ERα protein degradation in preclinical models. Vepdegestrant degrades both wild-type ER and mutant ER (including ESR1 ligand-binding domain mutations that confer resistance to aromatase inhibitors and fulvestrant).
+                        </p>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">ER Degradation</div>
+                                <div class="metric-value">>90%</div>
+                                <div class="metric-detail">In tumor biopsies at 200mg</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Target</div>
+                                <div class="metric-value">ERα/ESR1</div>
+                                <div class="metric-detail">Including mutant forms</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">E3 Ligase</div>
+                                <div class="metric-value">Cereblon</div>
+                                <div class="metric-detail">Validated ligase target</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Molecular Weight</div>
+                                <div class="metric-value">>800 Da</div>
+                                <div class="metric-detail">Larger than typical SMIs</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Scientific Validation:</strong> ER is a well-known oncogenic driver in ~70% of breast cancers. Estrogen deprivation or receptor blockade improves survival in this disease. However, existing endocrine therapies have limitations - tumors acquire resistance often via ESR1 mutations that keep ER signaling active.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Advantages over Fulvestrant:</strong> Fulvestrant, a SERD, can degrade ER but has incomplete and variable degradation due to suboptimal PK and need for injections. Vepdegestrant's PROTAC approach achieves more potent and comprehensive ER knockdown inside tumor cells. Preclinical comparisons showed vepdegestrant causing greater tumor shrinkage than fulvestrant in ER-driven xenograft models, with additive efficacy when combined with CDK4/6 inhibitors.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Historic Achievement:</strong> Vepdegestrant is the first PROTAC ever to demonstrate improved outcomes in a Phase 3 trial, essentially validating targeted protein degradation in oncology. This novelty differentiates vepdegestrant from "me-too" SERDs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Differentiation from Other SERDs -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.2 Differentiation from Competitive Therapies</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <table class="trial-table">
+                            <thead>
+                                <tr>
+                                    <th>Drug</th>
+                                    <th>Company</th>
+                                    <th>Mechanism</th>
+                                    <th>PFS Benefit (ESR1-mut)</th>
+                                    <th>Key Differentiator</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Vepdegestrant</strong></td>
+                                    <td>Pfizer/Arvinas</td>
+                                    <td>PROTAC</td>
+                                    <td>5.0 vs 2.1 mo (2.9 mo gain)</td>
+                                    <td>Superior ER degradation, low nausea</td>
+                                </tr>
+                                <tr>
+                                    <td>Elacestrant</td>
+                                    <td>Menarini</td>
+                                    <td>Oral SERD</td>
+                                    <td>3.8 vs 1.9 mo (1.9 mo gain)</td>
+                                    <td>First approved, 35% nausea rate</td>
+                                </tr>
+                                <tr>
+                                    <td>Camizestrant</td>
+                                    <td>AstraZeneca</td>
+                                    <td>Oral SERD</td>
+                                    <td>~6.3 vs 2.2 mo (Ph2)</td>
+                                    <td>Phase 3 ongoing, bradycardia risk</td>
+                                </tr>
+                                <tr>
+                                    <td>Imlunestrant</td>
+                                    <td>Eli Lilly</td>
+                                    <td>Oral SERD</td>
+                                    <td>Program discontinued</td>
+                                    <td>Failed Phase 3</td>
+                                </tr>
+                                <tr>
+                                    <td>Amcenestrant</td>
+                                    <td>Sanofi</td>
+                                    <td>Oral SERD</td>
+                                    <td>Program terminated</td>
+                                    <td>Failed AMEERA-5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p class="detail-text mt-4">
+                            <strong>Key Scientific Differentiators:</strong> Biochemically, PROTACs can achieve >90% degradation of target protein in cells, whereas traditional SERDs often plateau at lower levels. Clinically, vepdegestrant's 5.0-month median PFS in ESR1-mut patients versus 2.1 with fulvestrant was a 2.9-month benefit - modestly superior to elacestrant's 1.9-month benefit.
+                        </p>
+
+                        <p class="detail-text">
+                            The success of vepdegestrant where others failed (Sanofi's amcenestrant, Lilly's imlunestrant both had Phase 3 failures) suggests achieving sufficient ER antagonism or degradation is challenging. Vepdegestrant's success implies a scientific edge through the PROTAC mechanism.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Combination Potential -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.3 Combination Biology & Future Development</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Combination Studies</h4>
+                            
+                            <p class="detail-text">
+                                <strong>CDK4/6 Inhibitor Combination:</strong> Phase 1b combination with palbociclib showed good efficacy (median PFS 13.9 months, CBR ~63%) but revealed pharmacokinetic interaction requiring dose adjustment. Vepdegestrant increased palbociclib exposure, possibly via metabolic interaction (CYP3A4).
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>mTOR Inhibitor Combination:</strong> Phase 1b TACTIVE-E trial combining vepdegestrant with everolimus was initiated to overcome PI3K/AKT-mediated resistance. This could open use in ESR1-mutated, PI3K-activated tumors.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Neoadjuvant Setting:</strong> Vepdegestrant is being tested in early breast cancer to determine if profound ER degradation can shrink tumors pre-surgery. This could position it for adjuvant or earlier-line usage eventually.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Drug-Drug Interactions</h4>
+                            <p class="detail-text">
+                                <strong>P-gp Substrate Interaction:</strong> Coadministration doubled dabigatran exposure and caused minor (~11%) rosuvastatin exposure increase in healthy volunteers. Vepdegestrant can clinically affect P-gp substrates, requiring label warnings and management strategies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intellectual Property -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.4 Intellectual Property Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Patent Portfolio Overview</h4>
+                            <p class="detail-text">
+                                Arvinas holds robust IP on vepdegestrant with issued composition-of-matter patents in the U.S. and key markets covering the molecule. Base patents (filed ~2018) will expire in 2033, not including potential extensions.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Patent Expiry</div>
+                                <div class="metric-value">2033</div>
+                                <div class="metric-detail">Base patents</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">With Extension</div>
+                                <div class="metric-value">~2038</div>
+                                <div class="metric-detail">Up to 5 years PTE</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Market Exclusivity</div>
+                                <div class="metric-value">10-13 years</div>
+                                <div class="metric-detail">Post-launch protection</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Yale License</div>
+                                <div class="metric-value">1-2%</div>
+                                <div class="metric-detail">Expected royalty</div>
+                            </div>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Trade Secret Litigation - Accutar Case</h4>
+                            <p class="detail-text">
+                                Arvinas is engaged in litigation with Accutar Biotechnology and former employee Dr. Qian over alleged trade secret theft related to ER degrader program. Arvinas claims the ex-employee took confidential information to Accutar in 2018. Discovery revealed hundreds of Arvinas' internal files on Accutar devices.
+                            </p>
+                            <p class="detail-text">
+                                Arvinas expanded its list of misappropriated trade secrets from 126 to 853 items after discovery. This suggests extensive proprietary know-how in PROTAC design. Accutar is developing AC682, an "AI-designed" oral SERD, potentially creating future competition.
+                            </p>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Freedom to Operate:</strong> Vepdegestrant is a novel chemical entity with no known blocking patents from competitors. Arvinas, as a PROTAC technology pioneer from Yale University research, has wide patent estate on the platform with defensive depth against rivals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commercial & Market Tab -->
+            <div id="commercial" class="tab-content">
+                <div class="section-title">3. Commercial & Market Diligence</div>
+
+                <!-- Market Opportunity -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.1 Target Population & Market Sizing</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Addressable Market Overview</h4>
+                            <p class="detail-text">
+                                Breast cancer represents ~2.3 million new cases annually globally, with ~320,000 new cases expected in the U.S. in 2025. Approximately 70% are ER+/HER2− (hormone receptor-positive), roughly 160-170k new ER+ cases per year in the U.S.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Global BC Incidence</div>
+                                <div class="metric-value">2.3M</div>
+                                <div class="metric-detail">Annual new cases</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">ER+ Prevalence</div>
+                                <div class="metric-value">70%</div>
+                                <div class="metric-detail">Of all breast cancers</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">ESR1 Mutation Rate</div>
+                                <div class="metric-value">40%</div>
+                                <div class="metric-detail">Post-CDK4/6i progression</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">U.S. Target Population</div>
+                                <div class="metric-value">~20k/year</div>
+                                <div class="metric-detail">2L ESR1-mut patients</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Patient Flow Analysis:</strong> Nearly all ER+ metastatic patients receive first-line endocrine therapy (usually AI + CDK4/6i). On progression, ~30% of early-stage patients eventually develop metastatic disease. ESR1 mutations arise under AI therapy in ~40% of patients by second line, driving resistance.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Global Opportunity:</strong> If ~50-60k ER+ metastatic patients in the U.S. are on first-line therapy and ~40% progress with ESR1 mutations, that's ~20k patients per year eligible for vepdegestrant in second line. Globally, the annual treatable population could be ~50k+ patients worldwide initially.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Line Expansion Opportunities:</strong>
+                            <br>• First-line metastatic: Replacing AI in combination with CDK4/6i (doubles target population)
+                            <br>• Adjuvant setting: Hundreds of thousands globally per year (requires demonstrating relapse prevention)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Competitive Landscape -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.2 Competitive Landscape Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Direct Competitors - Current Market</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Fulvestrant (Faslodex):</strong> Long-time standard SERD, now generic (cheap) but low efficacy post-CDK setting (median PFS ~1.8-2.2 months). Requires monthly intramuscular injections (two large injections). Vepdegestrant beat fulvestrant on PFS (5.0 vs 2.1 mo), offering clear improvement.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Elacestrant (Orserdu):</strong> Menarini's oral SERD, FDA-approved January 2023 for ER+/HER2− metastatic breast cancer with ESR1 mutation after 1-2 prior endocrine therapies. Direct benchmark for vepdegestrant.
+                                <br>• EMERALD trial: HR 0.55, median PFS 3.8 vs 1.9 months in ESR1-mut
+                                <br>• Major issue: 35% nausea rate, 3.4% discontinuation due to AEs
+                                <br>• Pricing: WAC $23,057/30×345mg; $7,686/30×86mg
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Camizestrant (AstraZeneca):</strong> Potent oral SERD in Phase 3 (SERENA trials)
+                                <br>• SERENA-2 Phase 2: HR 0.58, median PFS ~7.2 vs 3.7 mo at 75mg
+                                <br>• ESR1-mutant subset: PFS ~6.3 vs 2.2 mo (HR 0.33)
+                                <br>• Testing in first-line combo (SERENA-6) and second-line mono (SERENA-3)
+                                <br>• Potential 2026-27 launch if successful
+                                <br>• Safety concerns: bradycardia and ECG changes noted
+                            </p>
+                        </div>
+
+                        <table class="trial-table mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Treatment Class</th>
+                                    <th>Example</th>
+                                    <th>Setting</th>
+                                    <th>Competition Level</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PI3K Inhibitors</td>
+                                    <td>Alpelisib (Piqray)</td>
+                                    <td>PIK3CA-mutant (~40%)</td>
+                                    <td>Complementary</td>
+                                </tr>
+                                <tr>
+                                    <td>AKT Inhibitors</td>
+                                    <td>Capivasertib</td>
+                                    <td>AKT-altered tumors</td>
+                                    <td>Moderate</td>
+                                </tr>
+                                <tr>
+                                    <td>mTOR Inhibitors</td>
+                                    <td>Everolimus</td>
+                                    <td>With endocrine therapy</td>
+                                    <td>Low</td>
+                                </tr>
+                                <tr>
+                                    <td>ADCs</td>
+                                    <td>Sacituzumab govitecan</td>
+                                    <td>Third-line, post-chemo</td>
+                                    <td>Minimal</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Pricing & Reimbursement -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.3 Pricing & Reimbursement Strategy</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Expected U.S. Price</div>
+                                <div class="metric-value">$10-15k</div>
+                                <div class="metric-detail">Per month WAC</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Annual Cost</div>
+                                <div class="metric-value">$120-180k</div>
+                                <div class="metric-detail">Similar to CDK4/6i</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Gross-to-Net</div>
+                                <div class="metric-value">35-45%</div>
+                                <div class="metric-detail">Typical oncology discount</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Duration of Therapy</div>
+                                <div class="metric-value">6-9 mo</div>
+                                <div class="metric-detail">Average treatment</div>
+                            </div>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Payer Strategy Considerations</h4>
+                            
+                            <p class="detail-text">
+                                <strong>U.S. Payers:</strong> Will require confirmation of ESR1 mutation for reimbursement (automatic utilization management). May enforce step therapy requiring prior CDK4/6i + AI failure. Given significant PFS benefit, unlikely to require fulvestrant failure first for ESR1-mut patients.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Medicare/CMS:</strong> Most metastatic breast cancer patients are Medicare beneficiaries. Part D will cover on specialty tier. Protected from Medicare Price Negotiation for several years as new chemical entity.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Europe (NICE/G-BA):</strong> Will assess cost per QALY. Germany likely to see "added benefit for subgroup" allowing premium pricing. UK may require confidential discounts similar to elacestrant negotiations.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>ICER Review Risk:</strong> Elacestrant showed ICER of $366,000 per QALY (not cost-effective at standard thresholds). Vepdegestrant may face similar scrutiny but better tolerability could improve value assessment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commercial Execution -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.4 Commercial Execution & Market Share</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Pfizer Commercial Advantages</h4>
+                            <p class="detail-text">
+                                Pfizer's co-commercialization provides ready sales force detailing to oncologists. Existing footprint in breast cancer (Ibrance/palbociclib) creates synergy - same oncologists prescribing Ibrance in first-line are targets for vepdegestrant in second-line.
+                            </p>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Key Promotional Messages:</strong>
+                            <br>• Nearly double 6-month PFS rate versus fulvestrant (45% vs 23%)
+                            <br>• Proven in ESR1 mutations (precision oncology paradigm)
+                            <br>• Better patient experience: oral (no injections), lower nausea than competitors
+                            <br>• First successful PROTAC (innovation story)
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Guideline Inclusion:</strong> Anticipate rapid inclusion in NCCN Guidelines as Category 1 recommendation for ESR1-mutant ER+ disease. ESMO and national guidelines will likewise include given NEJM publication.
+                        </p>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Market Share Projections</h4>
+                            <p class="detail-text">
+                                <strong>Base Case:</strong> Peak sales ~$1-1.1B (Jefferies projection) assuming second-line use in major markets
+                                <br><strong>Bull Case:</strong> Up to $2B if first-line usage realized
+                                <br><strong>Conservative:</strong> $500M if limited to narrow ESR1-mut subset
+                            </p>
+                            
+                            <p class="detail-text mt-2">
+                                If approved late 2025/2026, vepdegestrant could capture significant share of ESR1-mutant patients. Despite elacestrant's 2-year head start, Pfizer's marketing muscle could overtake within 1-2 years. Peak year estimated around 2030.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial & Strategic Tab -->
+            <div id="financial" class="tab-content">
+                <div class="section-title">4. Financial & Strategic Diligence</div>
+
+                <!-- Arvinas Financials -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.1 Arvinas Company Financials</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Cash Position (Q2 2025)</div>
+                                <div class="metric-value">$861.2M</div>
+                                <div class="metric-detail">Cash & marketable securities</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Quarterly Burn</div>
+                                <div class="metric-value">$93.9M</div>
+                                <div class="metric-detail">R&D: $68.6M, G&A: $25.3M</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Cash Runway</div>
+                                <div class="metric-value">2H 2028</div>
+                                <div class="metric-detail">Post-restructuring</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Market Cap</div>
+                                <div class="metric-value">~$570M</div>
+                                <div class="metric-detail">Below cash value</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Recent Restructuring:</strong> May 1, 2025 - Arvinas announced pipeline reprioritization and 33% workforce reduction. Canceled two planned Phase 3 trials (first-line combo and second-line combo) to conserve cash and focus on core program. This significantly reduced burn rate and extended runway.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Market Valuation Disconnect:</strong> Stock price plunged 25% to ~$7.23/share after trial cancellations, giving market cap around $500-550M (below cash on hand). Enterprise value effectively negative, implying market skepticism despite positive Phase 3 data.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Partnership Economics -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.2 Pfizer Partnership Economics</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">July 2021 Collaboration Terms</h4>
+                            <p class="detail-text">
+                                Arvinas received $650 million upfront plus $350 million Pfizer equity investment at ~30% premium. Deal includes $400 million in regulatory milestones and $1.0 billion in commercial milestones.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">Profit Share</div>
+                                <div class="metric-value">50/50</div>
+                                <div class="metric-detail">Global cost & profit split</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Upfront Payment</div>
+                                <div class="metric-value">$650M</div>
+                                <div class="metric-detail">Received 2021</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Equity Investment</div>
+                                <div class="metric-value">$350M</div>
+                                <div class="metric-detail">At premium valuation</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Total Milestones</div>
+                                <div class="metric-value">$1.4B</div>
+                                <div class="metric-detail">Regulatory + commercial</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>2025 Update:</strong> Both parties publicly indicated they may rework the 50/50 structure post-VERITAC-2 due to smaller initial market versus early expectations. This represents a material valuation swing factor to monitor.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Revenue Recognition:</strong> Arvinas recognizes collaboration revenue equal to 50% of net profits. In Q4 2024, revenue jumped by $102M mainly from Pfizer ARV-471 collaboration accounting. Upon approval, Arvinas could receive $100-200M milestone payment (part of $400M regulatory pot).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Valuation Scenarios -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.3 Valuation & Return Scenarios</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Risk-Adjusted NPV Analysis</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Mid-Case Scenario:</strong>
+                                <br>• Peak global sales: $1.5B (~2030)
+                                <br>• Arvinas share: 50% of profits
+                                <br>• EBIT margin: 70% (conservative for small molecule)
+                                <br>• Annual profit to Arvinas at peak: ~$525M
+                                <br>• Patent protection to 2033-2038
+                                <br>• NPV (10% discount): $2-4 billion
+                                <br>• Risk-adjusted (90% PoS): $2-3 billion
+                            </p>
+
+                            <p class="detail-text mt-2">
+                                <strong>Conservative Scenario:</strong>
+                                <br>• Peak sales: $1B
+                                <br>• Arvinas profit share: ~$350M/year
+                                <br>• NPV: $1.5-2B
+                            </p>
+
+                            <p class="detail-text mt-2">
+                                <strong>Bull Scenario:</strong>
+                                <br>• Peak sales: $2B+ (with first-line expansion)
+                                <br>• Arvinas profit share: ~$700M/year
+                                <br>• NPV: $4-5B
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Investment Return Analysis</h4>
+                            
+                            <p class="detail-text">
+                                <strong>Current Opportunity:</strong> With Arvinas trading at ~$7/share ($500M valuation) and negative enterprise value, potential 4x return if drug captures $1B sales by 2030. Corresponds to IRR of ~25-30% over 5 years.
+                            </p>
+
+                            <p class="detail-text">
+                                <strong>Analyst Perspective:</strong> Trial cancellations represented ~40% of asset value per analysts, implying remaining program worth 60% of prior value. If Arvinas was $20/share before, 60% would be $12, yet stock fell to ~$7 (overshooting pessimism).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exit Strategies -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.4 Exit Strategies & Strategic Options</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Acquisition by Pfizer</h4>
+                            <p class="detail-text">
+                                Pfizer might acquire Arvinas to secure full ownership of vepdegestrant profits. Currently gets 50% of profits while doing 50% of work. Acquisition of $1-2B (premium to current $500M market cap) logical if drug succeeds. Likely timing: post-approval once sales ramp (1-3 years).
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-2">
+                            <h4 class="font-semibold mb-2">Royalty Monetization</h4>
+                            <p class="detail-text">
+                                Blackstone could structure royalty deal: pay ~$300M upfront for 5-10% of net sales from Arvinas' share. If sales hit $1B, yields $50M/year with decent IRR. Arvinas might consider to avoid equity dilution. Similar to Blackstone's Alnylam transaction.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-2">
+                            <h4 class="font-semibold mb-2">Public Market Exit</h4>
+                            <p class="detail-text">
+                                If not acquired, Arvinas transforms into commercial-stage company, potentially profitable by late decade on vepdegestrant revenues. Stock could re-rate on sales numbers with exit via public market if price appreciates.
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-2">
+                            <h4 class="font-semibold mb-2">Structured Investment Options</h4>
+                            <p class="detail-text">
+                                • Tranched investment: Initial tranche now, second upon FDA approval
+                                <br>• Convertible debt: Downside protection with upside via conversion
+                                <br>• Arvinas has no significant debt (near zero), allowing secured position
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operational & Legal Tab -->
+            <div id="operational" class="tab-content">
+                <div class="section-title">5. Operational & Legal Diligence</div>
+
+                <!-- Manufacturing -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>5.1 Manufacturing & CMC</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Manufacturing Overview</h4>
+                            <p class="detail-text">
+                                Vepdegestrant is a small molecule PROTAC (MW >800 Da) manufactured via chemical synthesis. NDA acceptance indicates FDA satisfaction with CMC modules. No manufacturing issues reported publicly.
+                            </p>
+                        </div>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">Molecule Type</div>
+                                <div class="metric-value">PROTAC</div>
+                                <div class="metric-detail">Bifunctional small molecule</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Manufacturing</div>
+                                <div class="metric-value">CMO-based</div>
+                                <div class="metric-detail">Contract manufacturers</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Formulation</div>
+                                <div class="metric-value">Oral tablet</div>
+                                <div class="metric-detail">200mg daily dose</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Shelf Life</div>
+                                <div class="metric-value">≥24 months</div>
+                                <div class="metric-detail">Expected at room temp</div>
+                            </div>
+                        </div>
+
+                        <p class="detail-text mt-4">
+                            <strong>Supply Chain Components:</strong>
+                            <br>• ER-ligand warhead synthesis
+                            <br>• Linker production
+                            <br>• E3 ligase binder (likely cereblon-targeting, thalidomide derivative)
+                            <br>• Coupling and final drug substance
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Scale-up Status:</strong> Phase 3 had 600+ patients, indicating multi-kilo batches produced reliably. Production for commercial demand (tens of kilograms API annually) within normal range for small molecules. Pfizer's involvement de-risks supply chain management.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>COGS Analysis:</strong> Likely COGS per patient per year is few thousand dollars. At >$100k price point, gross margin ~90%+. No evidence of high manufacturing costs despite PROTAC complexity.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Legal Issues -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>5.2 Legal Issues & Liabilities</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Accutar Trade Secret Litigation</h4>
+                            <p class="detail-text">
+                                <strong>Case Details:</strong> Arvinas v. Accutar Biotechnology and Dr. Qian (former employee)
+                                <br><strong>Filed:</strong> May 2022 in D. Del.
+                                <br><strong>Allegations:</strong> Ex-employee took confidential ER/AR degrader information to Accutar in 2018
+                                <br><strong>Discovery:</strong> Hundreds of Arvinas files found on Accutar devices
+                                <br><strong>Trade Secrets:</strong> Expanded from 126 to 853 items after discovery
+                                <br><strong>Impact:</strong> Accutar developing AC682 "AI-designed" oral SERD (potential future competition)
+                                <br><strong>Status:</strong> Ongoing, possible trial 2025 or settlement
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Shareholder Lawsuits</h4>
+                            <p class="detail-text">
+                                After May 2025 stock drop (trial cancellations), two law firms announced investigations:
+                                <br>• Pomerantz LLP: Investigating whether Arvinas misled investors
+                                <br>• Kirby McInerney: Similar investigation
+                                <br>• Focus: Whether risks were properly disclosed before trial cancellation
+                                <br>• Expected outcome: Likely settlement (insured), few million dollars
+                                <br>• Impact: Minimal operational/financial impact but highlights disclosure practices
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Contractual Obligations</h4>
+                            <p class="detail-text">
+                                <strong>Yale University License:</strong>
+                                <br>• Arvinas founded on Yale PROTAC patents
+                                <br>• Expected low single-digit royalties (1-2%) to Yale
+                                <br>• Some patents co-owned with Yale
+                                <br>• Milestone payments likely included
+                            </p>
+
+                            <p class="detail-text mt-2">
+                                <strong>Pfizer Partnership Terms:</strong>
+                                <br>• 50/50 global profit share (not royalty)
+                                <br>• Change-of-control provisions likely included
+                                <br>• Approval milestone expected ($100-200M from $400M regulatory pot)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regulatory Compliance -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>5.3 Quality & Regulatory Compliance</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="detail-text">
+                            <strong>Quality Systems:</strong> Arvinas has Quality System for clinical manufacturing and pharmacovigilance. No known compliance issues or FDA 483 observations. Pfizer's quality infrastructure will govern commercial operations.
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Regulatory Compliance Requirements:</strong>
+                            <br>• Pharmacovigilance and adverse event monitoring (Pfizer-led globally)
+                            <br>• Sunshine Act reporting (physician payments)
+                            <br>• Promotional practices compliance
+                            <br>• Medical affairs infrastructure
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>Environmental/Safety Considerations:</strong>
+                            <br>• PROTAC synthesis involves potent thalidomide analogs (teratogenic)
+                            <br>• Manufacturing must handle safely with appropriate containment
+                            <br>• Pfizer has extensive experience with high-potency compounds
+                        </p>
+
+                        <p class="detail-text">
+                            <strong>No Red Flags:</strong>
+                            <br>• No FDA warning letters
+                            <br>• No trial site 483s reported
+                            <br>• No data integrity issues
+                            <br>• No ethics violations
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Management & Team Tab -->
+            <div id="management" class="tab-content">
+                <div class="section-title">6. Management & Team Execution</div>
+
+                <!-- Leadership -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>6.1 Leadership Experience</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">CEO - John G. Houston, Ph.D.</h4>
+                            <p class="detail-text">
+                                • 30+ years pharma R&D experience
+                                <br>• 18 years at Bristol-Myers Squibb leading discovery teams
+                                <br>• Joined Arvinas 2017, became CEO
+                                <br>• Advanced multiple PROTACs to clinic
+                                <br>• Struck major partnerships (Pfizer, Genentech, Bayer)
+                                <br>• Named among top biotech CEOs in 2021
+                                <br>• Big pharma background provides network for deals
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Board & Scientific Advisors</h4>
+                            <p class="detail-text">
+                                • Board includes biotech investors and industry veterans
+                                <br>• Scientific Advisory Board includes Craig Crews (Yale, PROTAC inventor)
+                                <br>• Joint steering committees with Pfizer govern collaboration
+                                <br>• Decision to halt trials was joint Arvinas-Pfizer strategic pivot
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Pfizer Partnership Team</h4>
+                            <p class="detail-text">
+                                • Dr. Chris Boshoff (CMO of Pfizer Oncology) publicly lauded results
+                                <br>• Pfizer oncology has multiple approved drugs in breast cancer
+                                <br>• Experienced regulatory team with track record (palbociclib, etc.)
+                                <br>• Global commercial infrastructure in place
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Execution Track Record -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>6.2 Team Execution Strengths & Risks</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Execution Achievements</h4>
+                            <p class="detail-text">
+                                • Successfully completed 600-patient global Phase 3 trial in ~2 years
+                                <br>• Data quality high enough for NEJM publication
+                                <br>• Timely topline (March 2025) and full data (ASCO May 2025)
+                                <br>• Prompt NDA preparation and submission by mid-2025
+                                <br>• Pfizer partnership instilled discipline and regulatory muscle
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Organizational Changes</h4>
+                            <p class="detail-text">
+                                <strong>May 2025 Restructuring:</strong>
+                                <br>• 33% workforce reduction (~1/3 of staff)
+                                <br>• R&D reprioritization to focus on vepdegestrant
+                                <br>• Canceled two Phase 3 expansion trials
+                                <br>• Impact: Hurt morale but necessary for capital preservation
+                                <br>• Risk: Must retain key talent for regulatory/launch execution
+                                <br>• Mitigation: Pfizer can fill gaps if needed
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Commercial Readiness</h4>
+                            <p class="detail-text">
+                                <strong>Arvinas Limitations:</strong>
+                                <br>• No prior commercial drug launch experience
+                                <br>• Would need to build commercial infrastructure
+                                
+                                <br><br><strong>Pfizer Mitigation:</strong>
+                                <br>• Pfizer leads sales in most markets
+                                <br>• Arvinas may co-promote in U.S. (small specialty team)
+                                <br>• Arvinas focuses on medical affairs and KOL education
+                                <br>• Commercial risk effectively eliminated by partnership
+                            </p>
+                        </div>
+
+                        <div class="risk-item">
+                            <div class="risk-indicator risk-medium"></div>
+                            <div>
+                                <strong>Investor Relations:</strong> Pomerantz investigation suggests investors felt blindsided by trial cancellations. Communication could have been better. Blackstone would likely require board observer rights for early insight.
+                            </div>
+                        </div>
+
+                        <div class="risk-item mt-3">
+                            <div class="risk-indicator risk-low"></div>
+                            <div>
+                                <strong>Pipeline Focus:</strong> Other programs (AR degraders for prostate, neuro programs) explicitly deprioritized to favor vepdegestrant. Shows disciplined capital allocation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety & Toxicology Tab -->
+            <div id="safety" class="tab-content">
+                <div class="section-title">7. Comprehensive Safety & Toxicology Profile</div>
+
+                <!-- Phase 1 Safety -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.1 Phase 1/2 Safety Data (ARV-471-mBC-101)</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Dose Escalation Results</h4>
+                            <p class="detail-text">
+                                No dose-limiting toxicities observed up to 700mg daily (highest dose tested). Maximum tolerated dose not reached. Recommended Phase 2/3 dose: 200mg QD based on optimal ER degradation (89%) and tolerability.
+                            </p>
+                        </div>
+
+                        <table class="ae-table">
+                            <thead>
+                                <tr>
+                                    <th>Adverse Event</th>
+                                    <th>All Grades (%)</th>
+                                    <th>Grade 3 (%)</th>
+                                    <th>Grade 4 (%)</th>
+                                    <th>Led to Discontinuation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nausea</td>
+                                    <td>29%</td>
+                                    <td>One patient</td>
+                                    <td>0</td>
+                                    <td>No (dose reduction in 1)</td>
+                                </tr>
+                                <tr>
+                                    <td>Fatigue</td>
+                                    <td>20%</td>
+                                    <td>Rare</td>
+                                    <td>0</td>
+                                    <td>No</td>
+                                </tr>
+                                <tr>
+                                    <td>Vomiting</td>
+                                    <td>10%</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>No</td>
+                                </tr>
+                                <tr>
+                                    <td>Amylase/Lipase ↑</td>
+                                    <td>Few</td>
+                                    <td>Asymptomatic</td>
+                                    <td>0</td>
+                                    <td>No</td>
+                                </tr>
+                                <tr>
+                                    <td>QTc prolongation</td>
+                                    <td>Single patient</td>
+                                    <td>Transient</td>
+                                    <td>0</td>
+                                    <td>No</td>
+                                </tr>
+                                <tr>
+                                    <td>Venous embolism</td>
+                                    <td>1 patient</td>
+                                    <td>Post-biopsy</td>
+                                    <td>0</td>
+                                    <td>Yes (1 patient, <2%)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p class="detail-text mt-4">
+                            <strong>Key Safety Findings:</strong>
+                            <br>• Only 1 patient (<2%) discontinued due to TRAE
+                            <br>• Only 1 patient required dose reduction (Grade 3 nausea)
+                            <br>• No Grade 4 treatment-related AEs
+                            <br>• No liver function abnormalities or bradycardia (issues with other oral SERDs)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Phase 3 Safety -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.2 Phase 3 VERITAC-2 Comprehensive Safety Analysis</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <canvas id="safetyComparisonChart" class="chart-container"></canvas>
+
+                        <div class="metric-grid mt-4">
+                            <div class="metric-card">
+                                <div class="metric-label">Any TEAE</div>
+                                <div class="metric-value">87%</div>
+                                <div class="metric-detail">vs 81% fulvestrant</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Grade ≥3 TEAE</div>
+                                <div class="metric-value">23.4%</div>
+                                <div class="metric-detail">vs 17.6% fulvestrant</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Serious AEs</div>
+                                <div class="metric-value">10%</div>
+                                <div class="metric-detail">vs 9% fulvestrant</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Treatment Deaths</div>
+                                <div class="metric-value">0</div>
+                                <div class="metric-detail">No treatment-related deaths</div>
+                            </div>
+                        </div>
+
+                        <table class="ae-table mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Most Common TEAEs</th>
+                                    <th>Vepdegestrant</th>
+                                    <th>Fulvestrant</th>
+                                    <th>Difference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Fatigue</td>
+                                    <td>27%</td>
+                                    <td>16%</td>
+                                    <td>+11%</td>
+                                </tr>
+                                <tr>
+                                    <td>ALT elevation</td>
+                                    <td>14%</td>
+                                    <td>10%</td>
+                                    <td>+4%</td>
+                                </tr>
+                                <tr>
+                                    <td>AST elevation</td>
+                                    <td>14%</td>
+                                    <td>10%</td>
+                                    <td>+4%</td>
+                                </tr>
+                                <tr>
+                                    <td>Nausea</td>
+                                    <td>13.5%</td>
+                                    <td>9%</td>
+                                    <td>+4.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Anemia</td>
+                                    <td>12%</td>
+                                    <td>8%</td>
+                                    <td>+4%</td>
+                                </tr>
+                                <tr>
+                                    <td>Neutropenia</td>
+                                    <td>12%</td>
+                                    <td>5%</td>
+                                    <td>+7%</td>
+                                </tr>
+                                <tr>
+                                    <td>Arthralgia</td>
+                                    <td>11%</td>
+                                    <td>8%</td>
+                                    <td>+3%</td>
+                                </tr>
+                                <tr>
+                                    <td>Vomiting</td>
+                                    <td>6.4%</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Management of Adverse Events</h4>
+                            <p class="detail-text">
+                                • Discontinuation due to AEs: 3% vepdegestrant vs 1% fulvestrant
+                                <br>• Dose reductions required: <5% of patients
+                                <br>• Grade ≥3 treatment-related AEs: ~8%
+                                <br>• Most AEs were Grade 1-2 and manageable with supportive care
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparative Safety -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.3 Comparative Safety vs Other Oral SERDs</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="highlight-box">
+                            <h4 class="font-semibold mb-2">Key Safety Advantages</h4>
+                            <p class="detail-text">
+                                Vepdegestrant's 13.5% nausea rate is dramatically lower than elacestrant's 35% rate - a major differentiator for patient quality of life and compliance.
+                            </p>
+                        </div>
+
+                        <table class="trial-table">
+                            <thead>
+                                <tr>
+                                    <th>Safety Parameter</th>
+                                    <th>Vepdegestrant</th>
+                                    <th>Elacestrant (Orserdu)</th>
+                                    <th>Clinical Significance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nausea (any grade)</td>
+                                    <td>13.5%</td>
+                                    <td>35%</td>
+                                    <td>Major QoL advantage</td>
+                                </tr>
+                                <tr>
+                                    <td>Discontinuation for AEs</td>
+                                    <td>3%</td>
+                                    <td>3.4%</td>
+                                    <td>Comparable</td>
+                                </tr>
+                                <tr>
+                                    <td>Bradycardia</td>
+                                    <td>Not observed</td>
+                                    <td>Small risk, monitoring required</td>
+                                    <td>Safety advantage</td>
+                                </tr>
+                                <tr>
+                                    <td>Liver toxicity</td>
+                                    <td>Modest AST/ALT ↑</td>
+                                    <td>Similar</td>
+                                    <td>No significant issue</td>
+                                </tr>
+                                <tr>
+                                    <td>Food requirement</td>
+                                    <td>No</td>
+                                    <td>Must take with food</td>
+                                    <td>Convenience advantage</td>
+                                </tr>
+                                <tr>
+                                    <td>Cholesterol monitoring</td>
+                                    <td>Not required</td>
+                                    <td>Required per label</td>
+                                    <td>Less monitoring burden</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p class="detail-text mt-4">
+                            <strong>Advantages over Fulvestrant:</strong>
+                            <br>• Oral administration (no painful IM injections)
+                            <br>• No injection site reactions
+                            <br>• More convenient dosing schedule
+                            <br>• Better efficacy with manageable safety
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Special Populations -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>7.4 Special Populations & Drug Interactions</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-card">
+                            <h4 class="font-semibold mb-2">Drug-Drug Interactions</h4>
+                            <p class="detail-text">
+                                <strong>P-glycoprotein Interactions:</strong>
+                                <br>• Doubled dabigatran exposure (anticoagulant)
+                                <br>• Minor increase (~11%) in rosuvastatin exposure
+                                <br>• Clinical implication: Careful monitoring with P-gp substrates
+                                <br>• Label will include interaction warnings
+                            </p>
+
+                            <p class="detail-text mt-2">
+                                <strong>CYP3A4 Interactions:</strong>
+                                <br>• Increased palbociclib exposure when combined
+                                <br>• Required dose adjustment in combination trials
+                                <br>• May affect other CYP3A4 substrates
+                            </p>
+                        </div>
+
+                        <div class="data-card mt-4">
+                            <h4 class="font-semibold mb-2">Regional Safety Data</h4>
+                            <p class="detail-text">
+                                <strong>China Bridging Study (n=9):</strong>
+                                <br>• No new safety signals in Chinese patients
+                                <br>• Comparable drug levels and tolerability
+                                <br>• Supports global safety profile
+                            </p>
+
+                            <p class="detail-text mt-2">
+                                <strong>Japan PK Study:</strong>
+                                <br>• Similar findings to China study
+                                <br>• No ethnic differences in safety
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complete Trial Analysis Tab -->
+            <div id="trials" class="tab-content">
+                <div class="section-title">8. Complete Trial Portfolio Analysis</div>
+
+                <!-- Trial Timeline -->
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Phase 1 First-in-Human -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2019-2021</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Phase 1 First-in-Human (ARV-471-mBC-101)</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> Single-arm dose escalation, 30-700mg QD
+                                <br><strong>Population:</strong> Heavily pretreated ER+/HER2- MBC (median 4 prior lines, all had CDK4/6i)
+                                <br><strong>n=60:</strong> 47 evaluable for efficacy
+                                <br><strong>Primary Endpoints:</strong> MTD, safety, preliminary efficacy
+                            </p>
+                            <p class="detail-text mt-2">
+                                <strong>Key Results:</strong>
+                                <br>• No DLTs up to 700mg (MTD not reached)
+                                <br>• CBR: 40% (19/47 patients)
+                                <br>• ORR: 3 PRs in 38 patients with measurable disease
+                                <br>• 2 patients remained on treatment >18 months
+                                <br>• Common TRAEs: nausea (29%), fatigue (20%), vomiting (10%)
+                                <br>• RP2D selected: 200mg QD (89% ER degradation)
+                            </p>
+                            <div class="reference-list">
+                                Source: <a href="https://www.pfizer.com/news/press-release" target="_blank" class="link-btn">Pfizer/Arvinas Press Release</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 VERITAC -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2021-2023</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Phase 2 VERITAC Expansion</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> Single-arm expansion at 200mg QD
+                                <br><strong>Population:</strong> ER+/HER2- MBC after CDK4/6i (including ESR1-mut and WT)
+                                <br><strong>n=~100:</strong> Enriched for ESR1 mutations
+                                <br><strong>Primary Endpoints:</strong> ORR, CBR, safety
+                            </p>
+                            <p class="detail-text mt-2">
+                                <strong>Key Results:</strong>
+                                <br>• CBR: ~38% overall, ~50% in ESR1-mutant subset
+                                <br>• Median PFS: ~5.5 months in ESR1-mutant
+                                <br>• ORR: ~6% overall (heavily pretreated population)
+                                <br>• Some patients ≥48 weeks on treatment
+                                <br>• Confirmed activity enriched in ESR1-mutant tumors
+                                <br>• Favorable tolerability maintained
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 1b Combination -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2022-2024</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Phase 1b Palbociclib Combination</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> Vepdegestrant 200mg + Palbociclib 125mg
+                                <br><strong>Population:</strong> CDK4/6i-naïve and pretreated cohorts
+                                <br><strong>Primary:</strong> Safety, PK interaction, preliminary efficacy
+                            </p>
+                            <p class="detail-text mt-2">
+                                <strong>Key Results:</strong>
+                                <br>• Median PFS: 13.9 months (95% CI: 8.1-NR)
+                                <br>• CBR: ~63% in earlier updates
+                                <br>• ORR: ~59% in CDK4/6i-naïve patients
+                                <br>• PK interaction: Vepdegestrant increased palbociclib exposure
+                                <br>• Required dose adjustment strategy for future trials
+                                <br>• Combination deemed viable with dose optimization
+                            </p>
+                            <div class="reference-list">
+                                Note: First-line combination trial (VERITAC-3 precursor) was later canceled in May 2025 restructuring
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regional Bridging Studies -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023-2024</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Regional PK/Safety Bridging Studies</h4>
+                            
+                            <div class="data-card mt-2">
+                                <strong>China Bridging (NCT05732428):</strong>
+                                <br>• n=9 Chinese patients with ER+/HER2- MBC
+                                <br>• Single-arm, 200mg QD
+                                <br>• Confirmed similar PK exposure and ER degradation
+                                <br>• No new safety signals vs global population
+                                <br>• Supports China inclusion in global trials
+                                <br><a href="https://clinicaltrials.gov/ct2/show/NCT05732428" target="_blank" class="link-btn">View on ClinicalTrials.gov →</a>
+                            </div>
+                            
+                            <div class="data-card mt-2">
+                                <strong>Japan PK Study (NCT05463952):</strong>
+                                <br>• Small cohort for Japanese regulatory requirements
+                                <br>• Similar design to China study
+                                <br>• Completed with no new signals
+                                <br><a href="https://clinicaltrials.gov/ct2/show/NCT05463952" target="_blank" class="link-btn">View on ClinicalTrials.gov →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 VERITAC-2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot" style="background: #ffc107;"></div>
+                        <div class="timeline-date">2023-2025</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">🏆 Phase 3 VERITAC-2 (NCT05654623) - POSITIVE</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> Global randomized Phase 3, open-label with BICR
+                                <br><strong>Population:</strong> ER+/HER2- MBC after progression on CDK4/6i + ET
+                                <br><strong>n=624:</strong> 26 countries, stratified by ESR1 mutation status (43% ESR1-mut)
+                                <br><strong>Arms:</strong> Vepdegestrant 200mg QD vs Fulvestrant 500mg IM
+                                <br><strong>Co-Primary Endpoints:</strong> PFS in ESR1-mut and ITT populations
+                            </p>
+                            
+                            <div class="highlight-box mt-3">
+                                <h5 class="font-semibold">Primary Results - ESR1-Mutant Population:</h5>
+                                <p class="detail-text">
+                                    • Median PFS: 5.0 vs 2.1 months (HR 0.57, 95% CI: 0.42-0.77, p<0.001)
+                                    <br>• 6-month PFS rate: 45.2% vs 22.7%
+                                    <br>• CBR: 42.1% vs 20.2% (OR 2.88, p<0.001)
+                                    <br>• ORR: 18.6% vs 4.0% (OR 5.45, p=0.001)
+                                </p>
+                            </div>
+                            
+                            <p class="detail-text mt-2">
+                                <strong>ITT Population:</strong> Median PFS 3.7 vs 3.6 months (HR 0.83, p=0.07) - not significant
+                                <br><strong>Safety:</strong> Well-tolerated, 3% discontinuation for AEs
+                                <br><strong>Status:</strong> Met primary endpoint, data presented ASCO 2025, published NEJM
+                            </p>
+                            <div class="reference-list">
+                                <a href="https://clinicaltrials.gov/ct2/show/NCT05654623" target="_blank" class="link-btn">View on ClinicalTrials.gov →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ongoing/Future Trials -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot" style="background: #084298;"></div>
+                        <div class="timeline-date">2024-Ongoing</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Phase 3 VERITAC-3 (NCT05909397) - RECRUITING</h4>
+                            <p class="detail-text">
+                                <strong>Design:</strong> Open-label, randomized Phase 3
+                                <br><strong>Setting:</strong> First-line ER+/HER2- MBC (no prior systemic therapy for advanced disease)
+                                <br><strong>n=~500 planned:</strong> Global enrollment including China
+                                <br><strong>Arms:</strong> 
+                                <br>• Vepdegestrant 200mg + Palbociclib 125mg (3 weeks on/1 off)
+                                <br>• Letrozole 2.5mg + Palbociclib 125mg (control)
+                                <br><strong>Primary Endpoint:</strong> PFS by central review
+                            </p>
+                            <p class="detail-text mt-2">
+                                <strong>Rationale:</strong> Test if PROTAC ER degrader superior to AI in first-line with CDK4/6i
+                                <br><strong>Status:</strong> Actively recruiting
+                                <br><strong>Note:</strong> Originally planned additional first-line trial canceled in May 2025
+                            </p>
+                            <div class="reference-list">
+                                <a href="https://clinicaltrials.gov/ct2/show/NCT05909397" target="_blank" class="link-btn">View on ClinicalTrials.gov →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Canceled/Future Studies -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot" style="background: #dc3545;"></div>
+                        <div class="timeline-date">2025</div>
+                        <div class="timeline-content">
+                            <h4 class="font-semibold">Canceled/Deferred Trials (May 2025 Restructuring)</h4>
+                            <p class="detail-text">
+                                <strong>Canceled Studies:</strong>
+                                <br>• Additional first-line combination Phase 3
+                                <br>• Second-line combination expansion
+                                <br>• Reason: Capital preservation, focus on core indication
+                                <br>• Impact: Limited near-term expansion but preserves cash
+                            </p>
+                            <p class="detail-text mt-2">
+                                <strong>Future Potential Studies:</strong>
+                                <br>• TACTIVE-E: Vepdegestrant + Everolimus (mTOR inhibitor) - Phase 1b initiated
+                                <br>• Neoadjuvant early breast cancer study - planned
+                                <br>• Adjuvant setting - long-term opportunity
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comprehensive Trial Comparison Table -->
+                <div class="subsection-title">Complete Trial Data Summary</div>
+                <table class="trial-table">
+                    <thead>
+                        <tr>
+                            <th>Trial</th>
+                            <th>Phase</th>
+                            <th>N</th>
+                            <th>Population</th>
+                            <th>Primary Endpoint</th>
+                            <th>Key Results</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ARV-471-mBC-101</td>
+                            <td>1</td>
+                            <td>60</td>
+                            <td>Heavily pretreated</td>
+                            <td>MTD, Safety</td>
+                            <td>No DLTs, CBR 40%, RP2D 200mg</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>VERITAC Expansion</td>
+                            <td>2</td>
+                            <td>~100</td>
+                            <td>Post-CDK4/6i</td>
+                            <td>ORR, CBR</td>
+                            <td>CBR 50% ESR1-mut, PFS 5.5mo</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Palbociclib Combo</td>
+                            <td>1b</td>
+                            <td>~50</td>
+                            <td>Various lines</td>
+                            <td>Safety, PK</td>
+                            <td>PFS 13.9mo, PK interaction</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>China Bridging</td>
+                            <td>1b</td>
+                            <td>9</td>
+                            <td>Chinese pts</td>
+                            <td>PK, Safety</td>
+                            <td>Comparable to global</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Japan PK</td>
+                            <td>1</td>
+                            <td>Small</td>
+                            <td>Japanese pts</td>
+                            <td>PK, Safety</td>
+                            <td>No new signals</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                        </tr>
+                        <tr style="background: #f0f7f6;">
+                            <td><strong>VERITAC-2</strong></td>
+                            <td><strong>3</strong></td>
+                            <td><strong>624</strong></td>
+                            <td><strong>Post-CDK4/6i</strong></td>
+                            <td><strong>PFS (ESR1-mut)</strong></td>
+                            <td><strong>HR 0.57, p<0.001 ✓</strong></td>
+                            <td><span class="status-badge status-completed">POSITIVE</span></td>
+                        </tr>
+                        <tr>
+                            <td>VERITAC-3</td>
+                            <td>3</td>
+                            <td>500</td>
+                            <td>1st-line MBC</td>
+                            <td>PFS</td>
+                            <td>Pending</td>
+                            <td><span class="status-badge status-recruiting">Recruiting</span></td>
+                        </tr>
+                        <tr>
+                            <td>TACTIVE-E</td>
+                            <td>1b</td>
+                            <td>TBD</td>
+                            <td>With everolimus</td>
+                            <td>Safety</td>
+                            <td>Initiated</td>
+                            <td><span class="status-badge status-recruiting">Starting</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Investment Summary Section -->
+        <div class="tab-container mt-6">
+            <div class="section-title p-6">Investment Committee Summary</div>
+            <div class="p-6">
+                <div class="highlight-box">
+                    <h3 class="text-xl font-bold mb-4 text-gray-900">Executive Investment Thesis</h3>
+                    <p class="detail-text">
+                        Vepdegestrant represents a compelling late-stage oncology investment with multi-dimensional strengths and manageable risks. As the first PROTAC to demonstrate Phase 3 success, it validates a novel mechanism while addressing clear unmet need in ESR1-mutant breast cancer.
+                    </p>
+                </div>
+
+                <div class="metric-grid mt-6">
+                    <div class="metric-card">
+                        <div class="metric-label">Clinical Risk</div>
+                        <div class="metric-value text-green-600">✓ Low</div>
+                        <div class="metric-detail">Phase 3 met primary endpoint</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Regulatory Risk</div>
+                        <div class="metric-value text-green-600">✓ Low</div>
+                        <div class="metric-detail">NDA accepted, precedent exists</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Commercial Risk</div>
+                        <div class="metric-value text-yellow-600">⚠ Medium</div>
+                        <div class="metric-detail">Competition from elacestrant/camizestrant</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Financial Upside</div>
+                        <div class="metric-value text-green-600">✓ High</div>
+                        <div class="metric-detail">$1-2B peak sales potential</div>
+                    </div>
+                </div>
+
+                <div class="data-card mt-6">
+                    <h4 class="font-semibold mb-3">Key Investment Strengths</h4>
+                    <ul class="space-y-2">
+                        <li>✓ <strong>Strong Clinical Data:</strong> 43% risk reduction (HR 0.57) in ESR1-mutant population</li>
+                        <li>✓ <strong>Superior Tolerability:</strong> 13.5% nausea vs 35% for elacestrant</li>
+                        <li>✓ <strong>Novel Mechanism:</strong> First successful PROTAC validates platform</li>
+                        <li>✓ <strong>Strong IP:</strong> Protection to mid-2030s with composition-of-matter patents</li>
+                        <li>✓ <strong>Pfizer Partnership:</strong> 50/50 profit share with commercial expertise</li>
+                        <li>✓ <strong>Valuation Disconnect:</strong> Arvinas trading below cash value despite positive data</li>
+                    </ul>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-3">Key Investment Risks</h4>
+                    <ul class="space-y-2">
+                        <li>⚠ <strong>Limited Initial Market:</strong> ESR1-mutant subset only (~40% of 2L patients)</li>
+                        <li>⚠ <strong>Competition:</strong> Elacestrant on market, camizestrant coming 2026-27</li>
+                        <li>⚠ <strong>Expansion Trials Canceled:</strong> First-line opportunity delayed</li>
+                        <li>⚠ <strong>Payer Scrutiny:</strong> High cost may face reimbursement challenges</li>
+                        <li>⚠ <strong>Partnership Renegotiation:</strong> 50/50 split may be adjusted</li>
+                    </ul>
+                </div>
+
+                <div class="data-card mt-4">
+                    <h4 class="font-semibold mb-3">Financial Return Projections</h4>
+                    <table class="trial-table">
+                        <thead>
+                            <tr>
+                                <th>Scenario</th>
+                                <th>Peak Sales</th>
+                                <th>Arvinas Annual Profit</th>
+                                <th>NPV @ 10%</th>
+                                <th>IRR (5-year)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Conservative</td>
+                                <td>$1.0B</td>
+                                <td>$350M</td>
+                                <td>$1.5-2.0B</td>
+                                <td>20-25%</td>
+                            </tr>
+                            <tr style="background: #f0f7f6;">
+                                <td><strong>Base Case</strong></td>
+                                <td><strong>$1.5B</strong></td>
+                                <td><strong>$525M</strong></td>
+                                <td><strong>$2.0-3.0B</strong></td>
+                                <td><strong>25-30%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Bull Case</td>
+                                <td>$2.0B+</td>
+                                <td>$700M+</td>
+                                <td>$4.0-5.0B</td>
+                                <td>35-40%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box mt-6">
+                    <h4 class="font-semibold mb-2">Investment Recommendation</h4>
+                    <p class="detail-text">
+                        <strong>Rating: BUY with structured entry</strong>
+                        <br><br>
+                        Vepdegestrant offers compelling risk-adjusted returns given Arvinas' depressed valuation ($570M market cap vs $861M cash). The asset's rNPV of $2-3B far exceeds current enterprise value. Recommend structured investment via:
+                        <br><br>
+                        1. <strong>Convertible debt</strong> for downside protection
+                        <br>2. <strong>Tranched investment</strong> with milestones (FDA approval)
+                        <br>3. <strong>Royalty structure</strong> on Arvinas' 50% profit share
+                        <br><br>
+                        Exit likely via Pfizer acquisition (1-3 years) or public market re-rating upon commercial launch. Monitor camizestrant Phase 3 results and initial launch uptake versus elacestrant as key catalysts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching function
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Toggle expandable sections
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('span:last-child');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                arrow.textContent = '▶';
+            } else {
+                content.classList.add('active');
+                arrow.textContent = '▼';
+            }
+        }
+
+        // PFS Chart
+        const pfsCtx = document.getElementById('pfsChart');
+        if (pfsCtx) {
+            new Chart(pfsCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['ESR1-mut Vepdegestrant', 'ESR1-mut Fulvestrant', 'All-comer Vepdegestrant', 'All-comer Fulvestrant'],
+                    datasets: [{
+                        label: 'Median PFS (months)',
+                        data: [5.0, 2.1, 3.7, 3.6],
+                        backgroundColor: ['#0a6b5e', '#e3f2f0', '#0a6b5e', '#e3f2f0'],
+                        borderColor: '#0a6b5e',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'VERITAC-2: Progression-Free Survival Results'
+                        },
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Months'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Safety Comparison Chart
+        const safetyCtx = document.getElementById('safetyComparisonChart');
+        if (safetyCtx) {
+            new Chart(safetyCtx.getContext('2d'), {
+                type: 'horizontalBar',
+                data: {
+                    labels: ['Fatigue', 'ALT/AST Elevation', 'Nausea', 'Anemia', 'Neutropenia', 'Arthralgia'],
+                    datasets: [{
+                        label: 'Vepdegestrant (%)',
+                        data: [27, 14, 13.5, 12, 12, 11],
+                        backgroundColor: '#0a6b5e'
+                    }, {
+                        label: 'Fulvestrant (%)',
+                        data: [16, 10, 9, 8, 5, 8],
+                        backgroundColor: '#e3f2f0'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'VERITAC-2: Adverse Event Comparison'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 30,
+                            title: {
+                                display: true,
+                                text: 'Incidence (%)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

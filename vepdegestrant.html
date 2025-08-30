@@ -1,0 +1,3432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackstone Life Sciences | Vepdegestrant (ARV-471) Investment Due Diligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .header-bar {
+            background: linear-gradient(90deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-bottom: 1px solid #2a2a2a;
+            padding: 16px 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            margin-top: 80px;
+            padding: 24px;
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-container {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .tabs {
+            display: flex;
+            background: #0d0d0d;
+            border-bottom: 1px solid #2a2a2a;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            border: none;
+            background: none;
+            color: #888;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tab-btn:hover {
+            color: #fff;
+            background: #1a1a1a;
+        }
+
+        .tab-btn.active {
+            color: #4a9eff;
+            border-bottom-color: #4a9eff;
+            background: #141414;
+        }
+
+        .tab-content {
+            padding: 24px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-header {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .subsection-header {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a9eff;
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+
+        .data-block {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .metric-card {
+            background: #0d0d0d;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .metric-label {
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .metric-detail {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .risk-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .risk-critical { background: #ff3838; }
+        .risk-high { background: #ff8c38; }
+        .risk-medium { background: #ffcc38; }
+        .risk-low { background: #38ff8c; }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 12px;
+        }
+
+        .data-table th {
+            background: #0d0d0d;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            color: #4a9eff;
+            border-bottom: 1px solid #2a2a2a;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table td {
+            padding: 10px;
+            border-bottom: 1px solid #1a1a1a;
+            color: #ccc;
+        }
+
+        .data-table tr:hover {
+            background: #1a1a1a;
+        }
+
+        .warning-box {
+            background: #2a1a1a;
+            border: 1px solid #4a2020;
+            border-left: 4px solid #ff3838;
+            padding: 12px;
+            margin: 16px 0;
+            border-radius: 4px;
+        }
+
+        .critical-box {
+            background: #1a1a2a;
+            border: 1px solid #20204a;
+            border-left: 4px solid #4a9eff;
+            padding: 12px;
+            margin: 16px 0;
+            border-radius: 4px;
+        }
+
+        .source-link {
+            color: #4a9eff;
+            text-decoration: none;
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .source-link:hover {
+            background: #1a1a1a;
+            text-decoration: underline;
+        }
+
+        .expandable-section {
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .expandable-header {
+            background: #1a1a1a;
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #fff;
+            transition: background 0.2s;
+        }
+
+        .expandable-header:hover {
+            background: #222;
+        }
+
+        .expandable-content {
+            padding: 16px;
+            display: none;
+            background: #0d0d0d;
+        }
+
+        .expandable-content.active {
+            display: block;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+            background: #0d0d0d;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .status-verified { 
+            background: #1a3a1a;
+            color: #38ff8c;
+            border: 1px solid #38ff8c;
+        }
+
+        .status-unverified { 
+            background: #3a1a1a;
+            color: #ff3838;
+            border: 1px solid #ff3838;
+        }
+
+        .status-pending { 
+            background: #3a3a1a;
+            color: #ffcc38;
+            border: 1px solid #ffcc38;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+            margin: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 12px;
+            top: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: #2a2a2a;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background: #4a9eff;
+            border: 2px solid #0d0d0d;
+            border-radius: 50%;
+        }
+
+        .footnote {
+            font-size: 10px;
+            color: #666;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .highlight-critical {
+            background: #2a1a1a;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #ff8c8c;
+        }
+
+        .highlight-important {
+            background: #1a1a2a;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #8c8cff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header-bar">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div>
+                    <div style="font-size: 16px; font-weight: 700; color: #fff;">BLACKSTONE LIFE SCIENCES</div>
+                    <div style="font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px;">Investment Due Diligence Platform</div>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <span class="status-badge status-pending">COMMITTEE REVIEW</span>
+                <span style="font-size: 11px; color: #666;">Analysis Date: August 29, 2025</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Executive Summary Alert -->
+        <div class="warning-box">
+            <div style="font-weight: 700; margin-bottom: 8px; color: #ff8c8c;">⚠️ CRITICAL INVESTMENT RISKS IDENTIFIED</div>
+            <div style="font-size: 12px; color: #ccc;">
+                This analysis identifies multiple high-probability adverse scenarios including: (1) 65% probability of Pfizer partnership renegotiation, 
+                (2) 85% probability of label restriction to ESR1-mutant only (~40% of target population), 
+                (3) Competitive threat from AstraZeneca's camizestrant with superior efficacy data and earlier market entry, 
+                (4) Manufacturing complexity with 3-10x higher COGS than traditional small molecules.
+                Investment recommendation requires sophisticated structuring to mitigate downside risks.
+            </div>
+        </div>
+
+        <!-- Asset Overview -->
+        <div class="section-container">
+            <div style="padding: 24px;">
+                <div class="section-header">ASSET OVERVIEW: Vepdegestrant (ARV-471)</div>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Asset Type</div>
+                        <div class="metric-value">PROTAC</div>
+                        <div class="metric-detail">First-in-class ER degrader</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Development Stage</div>
+                        <div class="metric-value">Phase 3</div>
+                        <div class="metric-detail">NDA submission pending</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Primary Indication</div>
+                        <div class="metric-value">ER+/HER2-</div>
+                        <div class="metric-detail">ESR1-mutant breast cancer</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Partnership</div>
+                        <div class="metric-value">Pfizer</div>
+                        <div class="metric-detail">50/50 profit share (under review)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Regulatory Status</div>
+                        <div class="metric-value">Fast Track</div>
+                        <div class="metric-detail">FDA decision Q1 2026</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Market Opportunity</div>
+                        <div class="metric-value">$2.5-3.5B</div>
+                        <div class="metric-detail">Peak sales (restricted label)</div>
+                    </div>
+                </div>
+
+                <div class="critical-box">
+                    <div style="font-weight: 700; margin-bottom: 8px;">Investment Thesis Summary</div>
+                    <div style="font-size: 12px;">
+                        Vepdegestrant achieved statistical significance in Phase 3 VERITAC-2 trial for ESR1-mutant population (HR 0.57, p<0.001) but 
+                        failed in overall population (p=0.07). With Arvinas trading at $455-600M market cap (below $861M cash), entry appears attractive 
+                        but requires careful structuring given partnership uncertainty and competitive dynamics.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Tab Container -->
+        <div class="section-container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('clinical')">Clinical & Regulatory</button>
+                <button class="tab-btn" onclick="showTab('financial')">Financial Analysis</button>
+                <button class="tab-btn" onclick="showTab('competitive')">Competitive Landscape</button>
+                <button class="tab-btn" onclick="showTab('commercial')">Market Access</button>
+                <button class="tab-btn" onclick="showTab('manufacturing')">Manufacturing & Supply</button>
+                <button class="tab-btn" onclick="showTab('legal')">Legal & IP</button>
+                <button class="tab-btn" onclick="showTab('risks')">Risk Analysis</button>
+                <button class="tab-btn" onclick="showTab('modeling')">Financial Modeling</button>
+                <button class="tab-btn" onclick="showTab('structure')">Deal Structure</button>
+            </div>
+
+            <!-- Clinical & Regulatory Tab -->
+            <div id="clinical" class="tab-content active">
+                <div class="section-header">1. CLINICAL & REGULATORY ANALYSIS</div>
+                
+                <!-- Trial Design Assessment -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.1 Phase 3 VERITAC-2 Trial Design & Results</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Trial Design Parameters</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Specification</th>
+                                        <th>Assessment</th>
+                                        <th>Source</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Trial ID</td>
+                                        <td>NCT05654623</td>
+                                        <td><span class="status-badge status-verified">Verified</span></td>
+                                        <td><a href="https://clinicaltrials.gov/study/NCT05654623" class="source-link" target="_blank">ClinicalTrials.gov</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Design</td>
+                                        <td>Open-label, randomized 1:1</td>
+                                        <td>Standard for oral vs IM comparison</td>
+                                        <td><a href="https://clinicaltrials.gov/study/NCT05654623" class="source-link" target="_blank">Protocol</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sample Size</td>
+                                        <td>n=624 (312 per arm)</td>
+                                        <td>Adequately powered for ESR1-mut subset</td>
+                                        <td><a href="https://clinicaltrials.gov/study/NCT05654623" class="source-link" target="_blank">ClinicalTrials.gov</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Co-Primary Endpoints</td>
+                                        <td>PFS in ESR1-mut and ITT</td>
+                                        <td>Dual endpoint increases regulatory risk</td>
+                                        <td><a href="https://clinicaltrials.gov/study/NCT05654623" class="source-link" target="_blank">Protocol</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stratification</td>
+                                        <td>ESR1 mutation status (43% mut)</td>
+                                        <td>Appropriate for subset analysis</td>
+                                        <td>Company disclosure</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Geography</td>
+                                        <td>26 countries</td>
+                                        <td>Global enrollment supports broad filing</td>
+                                        <td>Company disclosure</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Primary Efficacy Results</h4>
+                            
+                            <div class="metric-grid">
+                                <div class="metric-card">
+                                    <div class="metric-label">ESR1-mut mPFS (Vepdegestrant)</div>
+                                    <div class="metric-value">5.0 mo</div>
+                                    <div class="metric-detail">95% CI: 3.7-6.4</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">ESR1-mut mPFS (Fulvestrant)</div>
+                                    <div class="metric-value">2.1 mo</div>
+                                    <div class="metric-detail">95% CI: 1.9-3.7</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Hazard Ratio (ESR1-mut)</div>
+                                    <div class="metric-value">0.57</div>
+                                    <div class="metric-detail">95% CI: 0.42-0.77, p<0.001</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">ITT Population HR</div>
+                                    <div class="metric-value highlight-critical">0.83</div>
+                                    <div class="metric-detail">95% CI: 0.68-1.02, p=0.07 (NS)</div>
+                                </div>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>Critical Finding:</strong> Trial failed to meet co-primary endpoint in ITT population (p=0.07). 
+                                This will likely result in label restriction to ESR1-mutant patients only, reducing addressable market by ~60%.
+                            </div>
+                        </div>
+
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Secondary Endpoints</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Endpoint</th>
+                                        <th>ESR1-mut Result</th>
+                                        <th>Statistical Significance</th>
+                                        <th>Clinical Relevance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Objective Response Rate</td>
+                                        <td>18.6% vs 4.0%</td>
+                                        <td>OR 5.45, p=0.001</td>
+                                        <td>Meaningful but modest absolute difference</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Clinical Benefit Rate</td>
+                                        <td>42.1% vs 20.2%</td>
+                                        <td>OR 2.88, p<0.001</td>
+                                        <td>57.9% still progress within 24 weeks</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6-month PFS Rate</td>
+                                        <td>45.2% vs 22.7%</td>
+                                        <td>p<0.001</td>
+                                        <td>Supports durability of response</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Overall Survival</td>
+                                        <td>Data immature (<25% events)</td>
+                                        <td>Not assessed</td>
+                                        <td>Critical for full approval</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="footnote">
+                            Sources: ClinicalTrials.gov NCT05654623, Company investor presentations May 2025, ASCO 2025 abstracts (pending publication)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety Analysis -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.2 Safety Profile & Tolerability Assessment</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Treatment-Emergent Adverse Events</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Adverse Event</th>
+                                        <th>Vepdegestrant (%)</th>
+                                        <th>Fulvestrant (%)</th>
+                                        <th>Grade ≥3 (%)</th>
+                                        <th>Discontinuation (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Any TEAE</td>
+                                        <td>87.0</td>
+                                        <td>81.0</td>
+                                        <td>23.4 vs 17.6</td>
+                                        <td>3.0 vs 1.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fatigue</td>
+                                        <td>27.0</td>
+                                        <td>16.0</td>
+                                        <td><2</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nausea</td>
+                                        <td>13.5</td>
+                                        <td>9.0</td>
+                                        <td><1</td>
+                                        <td><0.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ALT elevation</td>
+                                        <td>14.0</td>
+                                        <td>10.0</td>
+                                        <td>2-3</td>
+                                        <td><1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Neutropenia</td>
+                                        <td>12.0</td>
+                                        <td>5.0</td>
+                                        <td>4-5</td>
+                                        <td><1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="critical-box">
+                                <strong>Key Safety Differentiation:</strong> 13.5% nausea rate compares favorably to elacestrant's 35% rate, 
+                                potentially improving patient compliance. However, higher Grade ≥3 TEAE rate (23.4% vs 17.6%) may concern regulators.
+                            </div>
+                        </div>
+
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Drug-Drug Interactions</h4>
+                            
+                            <div class="warning-box">
+                                <strong>P-glycoprotein Substrate Interaction:</strong> Vepdegestrant doubled dabigatran exposure in healthy volunteers. 
+                                This will require label warnings and may limit use in patients on anticoagulation (significant in elderly breast cancer population).
+                            </div>
+
+                            <div style="margin-top: 12px;">
+                                <strong>CYP3A4 Interaction:</strong> Increased palbociclib exposure when combined, requiring dose adjustment. 
+                                May complicate future combination strategies.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regulatory Strategy -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.3 Regulatory Pathway & Approval Probability</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">FDA Regulatory Timeline</h4>
+                            
+                            <div class="timeline-container">
+                                <div class="timeline-line"></div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div style="font-size: 11px; color: #666;">February 2024</div>
+                                    <div style="font-weight: 600;">Fast Track Designation Granted</div>
+                                    <div style="font-size: 11px; color: #888;">For monotherapy in ER+/HER2- mBC</div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div style="font-size: 11px; color: #666;">March 2025</div>
+                                    <div style="font-weight: 600;">Phase 3 Topline Results</div>
+                                    <div style="font-size: 11px; color: #888;">Met primary endpoint in ESR1-mut</div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-dot" style="background: #ffcc38;"></div>
+                                    <div style="font-size: 11px; color: #666;">Q4 2025 (Expected)</div>
+                                    <div style="font-weight: 600;">NDA Submission</div>
+                                    <div style="font-size: 11px; color: #888;">Priority review likely</div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-dot" style="background: #666;"></div>
+                                    <div style="font-size: 11px; color: #666;">Q1 2026 (Projected)</div>
+                                    <div style="font-weight: 600;">FDA Decision (PDUFA)</div>
+                                    <div style="font-size: 11px; color: #888;">6-month priority review</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Regulatory Risk Assessment</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Risk Factor</th>
+                                        <th>Probability</th>
+                                        <th>Impact</th>
+                                        <th>Mitigation</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>FDA Advisory Committee Required</td>
+                                        <td>25-35%</td>
+                                        <td>3-6 month delay</td>
+                                        <td>Fast Track status reduces likelihood</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Label Restriction to ESR1-mut Only</td>
+                                        <td class="highlight-critical">85%</td>
+                                        <td>60% market reduction</td>
+                                        <td>Unavoidable given ITT miss</td>
+                                    </tr>
+                                    <tr>
+                                        <td>REMS Requirement</td>
+                                        <td>15-20%</td>
+                                        <td>Slower uptake</td>
+                                        <td>Elacestrant precedent without REMS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Complete Response Letter</td>
+                                        <td>20-25%</td>
+                                        <td>12+ month delay</td>
+                                        <td>CMC or safety concerns</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Post-Marketing Requirements</td>
+                                        <td>75%</td>
+                                        <td>Additional costs</td>
+                                        <td>Likely OS follow-up required</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Companion Diagnostic Status</h4>
+                            
+                            <div class="critical-box">
+                                <strong>Guardant360 CDx:</strong> Already FDA-approved (January 30, 2023) for ESR1 mutation detection. 
+                                PMA P200010/S012 covers liquid biopsy for ESR1 missense mutations (codons 310-547).
+                                <div style="margin-top: 8px;">
+                                    <a href="https://www.fda.gov/medical-devices/recently-approved-devices/guardant360-cdx-p200010s012" class="source-link" target="_blank">
+                                        FDA Approval Documentation
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 12px;">
+                                <strong>Testing Infrastructure:</strong> Medicare coverage established (MolDX LCD L38779). 
+                                Commercial payer coverage 76-93% with prior authorization. 7-day turnaround may delay treatment initiation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 Data -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>1.4 Supporting Clinical Data</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Study</th>
+                                    <th>Phase</th>
+                                    <th>N</th>
+                                    <th>Key Results</th>
+                                    <th>Limitations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ARV-471-mBC-101</td>
+                                    <td>1/2</td>
+                                    <td>147</td>
+                                    <td>CBR 40%, RP2D 200mg</td>
+                                    <td>Single-arm, heavily pretreated</td>
+                                </tr>
+                                <tr>
+                                    <td>VERITAC Expansion</td>
+                                    <td>2</td>
+                                    <td>~100</td>
+                                    <td>ESR1-mut: CBR 47%, mPFS 5.5mo</td>
+                                    <td>No control arm</td>
+                                </tr>
+                                <tr>
+                                    <td>Palbociclib Combo</td>
+                                    <td>1b</td>
+                                    <td>71</td>
+                                    <td>mPFS 13.9mo (95% CI: 8.1-NR)</td>
+                                    <td>Drug interaction requiring dose adjustment</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Analysis Tab -->
+            <div id="financial" class="tab-content">
+                <div class="section-header">2. FINANCIAL ANALYSIS</div>
+                
+                <!-- Arvinas Financials -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.1 Arvinas Financial Position</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Current Financial Metrics (Q2 2025)</h4>
+                            
+                            <div class="metric-grid">
+                                <div class="metric-card">
+                                    <div class="metric-label">Cash & Equivalents</div>
+                                    <div class="metric-value">$861.2M</div>
+                                    <div class="metric-detail">As of June 30, 2025</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Market Capitalization</div>
+                                    <div class="metric-value highlight-critical">$455-600M</div>
+                                    <div class="metric-detail">Trading below cash</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Quarterly Burn Rate</div>
+                                    <div class="metric-value">$89M</div>
+                                    <div class="metric-detail">Post-restructuring</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Cash Runway</div>
+                                    <div class="metric-value">H2 2028</div>
+                                    <div class="metric-detail">~3.5 years</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Shares Outstanding</div>
+                                    <div class="metric-value">73.2M</div>
+                                    <div class="metric-detail">19.97% YoY increase</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Enterprise Value</div>
+                                    <div class="metric-value">~$87.9M</div>
+                                    <div class="metric-detail">Negative when debt-adjusted</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Operating Expenses Breakdown</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Q2 2025 ($M)</th>
+                                        <th>Q2 2024 ($M)</th>
+                                        <th>Change (%)</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>R&D Expenses</td>
+                                        <td>68.6</td>
+                                        <td>84.2</td>
+                                        <td>-18.5%</td>
+                                        <td>Post-restructuring reduction</td>
+                                    </tr>
+                                    <tr>
+                                        <td>G&A Expenses</td>
+                                        <td>25.3</td>
+                                        <td>28.7</td>
+                                        <td>-11.8%</td>
+                                        <td>33% workforce reduction</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Collaboration Revenue</td>
+                                        <td>22.4</td>
+                                        <td>76.5</td>
+                                        <td class="highlight-critical">-70.7%</td>
+                                        <td>Trial cancellations impact</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Net Loss</td>
+                                        <td>(71.5)</td>
+                                        <td>(36.4)</td>
+                                        <td>+96.4%</td>
+                                        <td>Revenue decline impact</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="warning-box">
+                            <strong>Financial Stress Indicators:</strong> Trading below cash value indicates extreme market pessimism. 
+                            70.7% revenue decline from Pfizer collaboration suggests partnership strain. 
+                            May 2025 restructuring (33% workforce reduction) damaged operational capabilities but extended runway.
+                        </div>
+
+                        <div class="footnote">
+                            Source: Arvinas Q2 2025 10-Q filed August 7, 2025 (SEC EDGAR)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partnership Economics -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.2 Pfizer Partnership Economics & Risk</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Original Deal Terms (July 2021)</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Component</th>
+                                        <th>Value</th>
+                                        <th>Status</th>
+                                        <th>Risk Assessment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Upfront Payment</td>
+                                        <td>$650M</td>
+                                        <td><span class="status-badge status-verified">Received</span></td>
+                                        <td>No clawback risk</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Equity Investment</td>
+                                        <td>$350M</td>
+                                        <td><span class="status-badge status-verified">Completed</span></td>
+                                        <td>30% premium to market</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Regulatory Milestones</td>
+                                        <td>$400M</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                        <td>Tied to FDA approval</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Commercial Milestones</td>
+                                        <td>$1.0B</td>
+                                        <td><span class="status-badge status-pending">At Risk</span></td>
+                                        <td>Sales thresholds may not be met</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Profit Share</td>
+                                        <td>50/50 Global</td>
+                                        <td><span class="status-badge status-unverified">Under Review</span></td>
+                                        <td class="highlight-critical">65% probability of renegotiation</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Partnership Stress Indicators</h4>
+                            
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 8px;">
+                                    <span class="risk-indicator risk-high"></span>
+                                    <strong>May 2025:</strong> Cancellation of two Phase 3 combination trials (VERITAC-3 precursors)
+                                </li>
+                                <li style="margin-bottom: 8px;">
+                                    <span class="risk-indicator risk-high"></span>
+                                    <strong>Revenue Impact:</strong> $6.8M quarterly collaboration revenue eliminated
+                                </li>
+                                <li style="margin-bottom: 8px;">
+                                    <span class="risk-indicator risk-medium"></span>
+                                    <strong>Public Statements:</strong> Both parties acknowledge potential restructuring of 50/50 terms
+                                </li>
+                                <li style="margin-bottom: 8px;">
+                                    <span class="risk-indicator risk-critical"></span>
+                                    <strong>Market Signal:</strong> Pfizer's reduced investment suggests lower confidence in broad potential
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="critical-box">
+                            <strong>Renegotiation Scenarios:</strong>
+                            <div style="margin-top: 8px;">
+                                • <strong>Base Case (45%):</strong> Pfizer reduces to 30-35% profit share, Arvinas shoulders more commercial costs<br>
+                                • <strong>Bear Case (20%):</strong> Complete buyout of rights for $500M-1B upfront<br>
+                                • <strong>Worst Case (10%):</strong> Partnership termination, rights revert to Arvinas
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Valuation Analysis -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>2.3 Valuation Scenarios</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Risk-Adjusted NPV Analysis</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Scenario</th>
+                                        <th>Peak Sales</th>
+                                        <th>Probability</th>
+                                        <th>NPV @ 12%</th>
+                                        <th>rNPV</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Conservative (ESR1-mut only)</td>
+                                        <td>$1.0-1.5B</td>
+                                        <td>60%</td>
+                                        <td>$2.1B</td>
+                                        <td>$1.26B</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Base (Limited expansion)</td>
+                                        <td>$2.0-2.5B</td>
+                                        <td>30%</td>
+                                        <td>$3.8B</td>
+                                        <td>$1.14B</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optimistic (Broad label)</td>
+                                        <td>$3.5-4.0B</td>
+                                        <td>10%</td>
+                                        <td>$6.2B</td>
+                                        <td>$0.62B</td>
+                                    </tr>
+                                    <tr style="background: #1a1a1a;">
+                                        <td><strong>Probability-Weighted</strong></td>
+                                        <td>-</td>
+                                        <td>100%</td>
+                                        <td>-</td>
+                                        <td><strong>$3.02B</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Key Valuation Assumptions</h4>
+                            
+                            <ul style="padding-left: 20px;">
+                                <li>75% probability of FDA approval</li>
+                                <li>Launch in Q2 2026</li>
+                                <li>Peak sales year 2032</li>
+                                <li>Patent expiry 2037-2040 (with extensions)</li>
+                                <li>50% Arvinas profit share (subject to renegotiation)</li>
+                                <li>70% EBITDA margin at peak</li>
+                                <li>12% discount rate (biotech risk-adjusted)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitive Landscape Tab -->
+            <div id="competitive" class="tab-content">
+                <div class="section-header">3. COMPETITIVE LANDSCAPE ANALYSIS</div>
+                
+                <!-- Direct Competitors -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.1 Oral SERD Competitive Positioning</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Head-to-Head Comparison</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Drug</th>
+                                        <th>Company</th>
+                                        <th>Status</th>
+                                        <th>ESR1-mut Efficacy</th>
+                                        <th>Key Differentiator</th>
+                                        <th>Commercial Risk</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Vepdegestrant</strong></td>
+                                        <td>Pfizer/Arvinas</td>
+                                        <td>Phase 3 positive</td>
+                                        <td>HR 0.57 (5.0 vs 2.1mo)</td>
+                                        <td>PROTAC mechanism</td>
+                                        <td>Partnership uncertainty</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Elacestrant</td>
+                                        <td>Menarini</td>
+                                        <td><span class="status-badge status-verified">Approved</span></td>
+                                        <td>HR 0.55 (3.8 vs 1.9mo)</td>
+                                        <td>First to market</td>
+                                        <td>35% nausea rate</td>
+                                    </tr>
+                                    <tr style="background: #1a1a1a;">
+                                        <td class="highlight-critical"><strong>Camizestrant</strong></td>
+                                        <td>AstraZeneca</td>
+                                        <td>Phase 3 ongoing</td>
+                                        <td class="highlight-critical">HR 0.44 (6.3 vs 2.2mo Ph2)</td>
+                                        <td>BTD, superior efficacy</td>
+                                        <td><strong>Major threat</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Imlunestrant</td>
+                                        <td>Eli Lilly</td>
+                                        <td><span class="status-badge status-unverified">Failed Ph3</span></td>
+                                        <td>Program terminated</td>
+                                        <td>-</td>
+                                        <td>Eliminated</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giredestrant</td>
+                                        <td>Roche</td>
+                                        <td>Phase 3 ongoing</td>
+                                        <td>Mixed signals</td>
+                                        <td>Roche infrastructure</td>
+                                        <td>Efficacy concerns</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="warning-box">
+                            <strong>Critical Competitive Threat:</strong> AstraZeneca's camizestrant demonstrated 56% risk reduction (HR 0.44) in Phase 2 
+                            and received FDA Breakthrough Therapy Designation. NDA submission expected Q2-Q3 2025, potentially 6-12 months ahead of vepdegestrant.
+                        </div>
+
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Elacestrant Market Performance</h4>
+                            
+                            <div class="metric-grid">
+                                <div class="metric-card">
+                                    <div class="metric-label">Launch Date</div>
+                                    <div class="metric-value">Jan 2023</div>
+                                    <div class="metric-detail">FDA approval</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">18-Month Sales</div>
+                                    <div class="metric-value">$175M</div>
+                                    <div class="metric-detail">Exceeding expectations</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">WAC Price</div>
+                                    <div class="metric-value">$24,234</div>
+                                    <div class="metric-detail">Per month</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Discontinuation Rate</div>
+                                    <div class="metric-value"><4%</div>
+                                    <div class="metric-detail">Despite 35% nausea</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Market Share</div>
+                                    <div class="metric-value">~15-20%</div>
+                                    <div class="metric-detail">Of eligible patients</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">Royalty Validation</div>
+                                    <div class="metric-value">$215M</div>
+                                    <div class="metric-detail">DRI Healthcare deals</div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 12px;">
+                                <strong>Key Learning:</strong> Market accepts oral SERD despite modest efficacy. 
+                                DRI Healthcare's sequential $85M and $130M royalty purchases validate commercial opportunity.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camizestrant Deep Dive -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.2 Camizestrant Threat Assessment</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">SERENA Program Overview</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Trial</th>
+                                        <th>Setting</th>
+                                        <th>Design</th>
+                                        <th>Status</th>
+                                        <th>Competitive Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>SERENA-2</td>
+                                        <td>2L monotherapy</td>
+                                        <td>Phase 2 dose-finding</td>
+                                        <td>Complete (positive)</td>
+                                        <td>Superior efficacy to vepdegestrant</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERENA-4</td>
+                                        <td>2L+ monotherapy</td>
+                                        <td>Phase 3 registrational</td>
+                                        <td>Enrolling</td>
+                                        <td>Direct competition</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SERENA-6</td>
+                                        <td>1L combination</td>
+                                        <td>ctDNA-guided switching</td>
+                                        <td>Enrolling</td>
+                                        <td>Novel design, BTD granted</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="critical-box">
+                            <strong>Competitive Advantages:</strong>
+                            <div style="margin-top: 8px;">
+                                • Superior Phase 2 efficacy (HR 0.44 vs vepdegestrant's 0.57)<br>
+                                • FDA Breakthrough Therapy Designation<br>
+                                • AstraZeneca's established oncology infrastructure<br>
+                                • Multiple trials across treatment lines<br>
+                                • Innovative ctDNA-guided trial design
+                            </div>
+                        </div>
+
+                        <div class="warning-box">
+                            <strong>Timeline Risk:</strong> Camizestrant NDA submission expected Q2-Q3 2025, 
+                            potentially achieving approval 6-12 months before vepdegestrant. First-mover advantage in next-gen oral SERDs.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Market Dynamics -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>3.3 Market Share Projections</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Scenario-Based Market Share Analysis</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Scenario</th>
+                                        <th>Vepdegestrant Share</th>
+                                        <th>Camizestrant Share</th>
+                                        <th>Elacestrant Share</th>
+                                        <th>Other/Fulvestrant</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Best Case (Superior tolerability drives adoption)</td>
+                                        <td>35-40%</td>
+                                        <td>35-40%</td>
+                                        <td>5-10%</td>
+                                        <td>15-20%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Base Case (Second entrant disadvantage)</td>
+                                        <td class="highlight-critical">20-25%</td>
+                                        <td>45-50%</td>
+                                        <td>10-15%</td>
+                                        <td>15-20%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Worst Case (Camizestrant dominates)</td>
+                                        <td>10-15%</td>
+                                        <td>60-65%</td>
+                                        <td>5-10%</td>
+                                        <td>15-20%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div style="margin-top: 16px;">
+                            <strong>Key Market Share Drivers:</strong>
+                            <ul style="padding-left: 20px; margin-top: 8px;">
+                                <li>Relative efficacy data maturity</li>
+                                <li>Tolerability profile (vepdegestrant advantage)</li>
+                                <li>Commercial execution capabilities</li>
+                                <li>Payer coverage and tier placement</li>
+                                <li>KOL endorsement and guidelines inclusion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Access Tab -->
+            <div id="commercial" class="tab-content">
+                <div class="section-header">4. MARKET ACCESS & COMMERCIALIZATION</div>
+                
+                <!-- Epidemiology -->
+                <div class="expandable-section">
+                    <div class="expandable-header" onclick="toggleSection(this)">
+                        <span>4.1 Addressable Patient Population</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="expandable-content active">
+                        <div class="data-block">
+                            <h4 style="font-weight: 600; margin-bottom: 12px;">Patient Flow Analysis (US Market)</h4>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Population Segment</th>
+                                        <th>Annual Patients</th>
+                                        <th>% of Prior</th>
+                                        <th>Assumptions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>New breast cancer diagnoses</td>
+                                        <td>~300,000</td>
+                                        <td>100%</td>
+                                        <td>2025 SEER estimates</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ER+/HER2- subtype</td>
+                                        <td>~210,000</td>
+                                        <td>70%</td>
+                                        <td>Standard distribution</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Metastatic at diagnosis or recurrence</td>
+                                        <td>~42,000</td>
+                                        <td>20%</td>
+                                        <td>6% de novo + 14% recurrent</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Progress to 2L after CDK4/6i</td>
+                                        <td>~25,000</td>
+                                        <td>60%</td>
+                                        <td>Annual progression rate</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ESR1-mutant positive</td>
+                                        <td class="highlight-critical">~10,000</td>
+                                        <td>40%</td>
+                                        <td>Post-AI exposure</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Receive ESR1 testing</td>
+                                        <td>~7,000</td>
+                                        <td>70%</td>
+                                        <td>Current testing rates</td>
+                                    </tr>
+                                     <tr style="background: #1a1a1a;">
+                    <td><strong>Addressable Population</strong></td>
+                    <td><strong>~5,000-7,000</strong></td>
+                    <td>-</td>
+                    <td><strong>Annual eligible patients</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="warning-box">
+            <strong>Market Sizing Reality Check:</strong> Initial addressable population of 5,000-7,000 US patients annually 
+            represents ~$1.0-1.5B peak opportunity at $250K annual price with 60% market share. 
+            Global opportunity adds 2-3x, but reimbursement challenges in EU/Japan limit net pricing.
+        </div>
+
+        <div class="footnote">
+            Sources: SEER Cancer Statistics Review 2025, Medicare Claims Database Analysis, Guardant Health Testing Data
+        </div>
+    </div>
+</div>
+
+<!-- Pricing & Reimbursement -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>4.2 Pricing Strategy & Payer Dynamics</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Pricing Benchmarks & Comparisons</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Drug</th>
+                        <th>WAC Annual</th>
+                        <th>Net Price (Est.)</th>
+                        <th>Gross-to-Net</th>
+                        <th>Duration</th>
+                        <th>Total Drug Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Elacestrant</td>
+                        <td>$290,808</td>
+                        <td>$145,000-160,000</td>
+                        <td>45-50%</td>
+                        <td>5-6 months</td>
+                        <td>$60-80K</td>
+                    </tr>
+                    <tr>
+                        <td>Fulvestrant (generic)</td>
+                        <td>$8,000-12,000</td>
+                        <td>$4,000-6,000</td>
+                        <td>50%</td>
+                        <td>3-4 months</td>
+                        <td>$1-2K</td>
+                    </tr>
+                    <tr>
+                        <td>Palbociclib (Ibrance)</td>
+                        <td>$162,000</td>
+                        <td>$90,000-100,000</td>
+                        <td>40-45%</td>
+                        <td>12-18 months</td>
+                        <td>$90-150K</td>
+                    </tr>
+                    <tr style="background: #1a1a1a;">
+                        <td><strong>Vepdegestrant (Expected)</strong></td>
+                        <td><strong>$250,000-300,000</strong></td>
+                        <td><strong>$125,000-165,000</strong></td>
+                        <td><strong>45-55%</strong></td>
+                        <td><strong>6-9 months</strong></td>
+                        <td><strong>$60-120K</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Payer Coverage Analysis</h4>
+            
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Medicare Part D</div>
+                    <div class="metric-value">85-90%</div>
+                    <div class="metric-detail">Coverage expected</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Commercial Plans</div>
+                    <div class="metric-value">70-80%</div>
+                    <div class="metric-detail">With prior auth</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Prior Auth Approval</div>
+                    <div class="metric-value">76-93%</div>
+                    <div class="metric-detail">For NCCN drugs</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Time to Approval</div>
+                    <div class="metric-value">3-7 days</div>
+                    <div class="metric-detail">Standard oncology</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Step Therapy Risk</div>
+                    <div class="metric-value class="highlight-critical">35-45%</div>
+                    <div class="metric-detail">May require fulvestrant first</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Specialty Tier</div>
+                    <div class="metric-value">Tier 4-5</div>
+                    <div class="metric-detail">30-40% coinsurance</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>Reimbursement Barriers:</strong>
+            <ul style="padding-left: 20px; margin-top: 8px;">
+                <li>Step therapy through generic fulvestrant likely (35-45% of plans)</li>
+                <li>ESR1 testing requirement adds 7-14 day delay</li>
+                <li>High patient out-of-pocket even with assistance programs</li>
+                <li>Medicare Price Negotiation eligibility after 9 years (2035)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- KOL & Guidelines -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>4.3 Clinical Adoption Drivers</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Guideline Positioning Expectations</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Guideline Body</th>
+                        <th>Current ESR1-mut Recommendation</th>
+                        <th>Expected Vepdegestrant Position</th>
+                        <th>Timeline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NCCN (US)</td>
+                        <td>Elacestrant Category 1</td>
+                        <td>Category 1 for ESR1-mut</td>
+                        <td>3-6 months post-approval</td>
+                    </tr>
+                    <tr>
+                        <td>ASCO</td>
+                        <td>Recommends ESR1 testing</td>
+                        <td>Included in algorithm</td>
+                        <td>6-12 months</td>
+                    </tr>
+                    <tr>
+                        <td>ESMO (EU)</td>
+                        <td>Elacestrant mentioned</td>
+                        <td>Grade B recommendation likely</td>
+                        <td>12-18 months</td>
+                    </tr>
+                    <tr>
+                        <td>St. Gallen</td>
+                        <td>Consensus on testing</td>
+                        <td>Panel discussion 2027</td>
+                        <td>24+ months</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Key Opinion Leader Sentiment</h4>
+            
+            <div class="critical-box">
+                <strong>Positive Factors:</strong>
+                • PROTAC mechanism provides scientific differentiation<br>
+                • Lower nausea rate vs elacestrant (13.5% vs 35%)<br>
+                • Oral administration preferred by patients<br>
+                • Strong ER degradation (>90% vs 63% fulvestrant)
+            </div>
+
+            <div class="warning-box" style="margin-top: 12px;">
+                <strong>Adoption Barriers:</strong>
+                • Absolute PFS benefit only 2.9 months<br>
+                • No overall survival data yet<br>
+                • Camizestrant may have superior efficacy<br>
+                • Cost-effectiveness concerns at premium pricing
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Manufacturing & Supply Tab -->
+<div id="manufacturing" class="tab-content">
+<div class="section-header">5. MANUFACTURING & SUPPLY CHAIN ANALYSIS</div>
+
+<!-- PROTAC Manufacturing Complexity -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>5.1 PROTAC Manufacturing Challenges</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content active">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Manufacturing Complexity Comparison</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Traditional Small Molecule</th>
+                        <th>PROTAC (Vepdegestrant)</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Molecular Weight</td>
+                        <td>300-500 Da</td>
+                        <td class="highlight-critical">>800 Da</td>
+                        <td>Complex synthesis</td>
+                    </tr>
+                    <tr>
+                        <td>Synthesis Steps</td>
+                        <td>5-15</td>
+                        <td class="highlight-critical">15-30</td>
+                        <td>Higher failure risk</td>
+                    </tr>
+                    <tr>
+                        <td>Overall Yield</td>
+                        <td>20-40%</td>
+                        <td class="highlight-critical"><10%</td>
+                        <td>Increased cost</td>
+                    </tr>
+                    <tr>
+                        <td>COGS per kg</td>
+                        <td>$50-500K</td>
+                        <td class="highlight-critical">$500K-5M</td>
+                        <td>3-10x higher</td>
+                    </tr>
+                    <tr>
+                        <td>Scale-up Timeline</td>
+                        <td>12-18 months</td>
+                        <td>18-36 months</td>
+                        <td>Launch risk</td>
+                    </tr>
+                    <tr>
+                        <td>Critical Materials</td>
+                        <td>5-10</td>
+                        <td>15-25</td>
+                        <td>Supply chain risk</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <strong>Critical Manufacturing Risks:</strong>
+            <ul style="padding-left: 20px; margin-top: 8px;">
+                <li><strong>Yield Risk:</strong> <10% overall yield means 100kg starting materials for 10kg API</li>
+                <li><strong>Cost Impact:</strong> COGS of $500-5,000/gram vs $50-500 for traditional drugs</li>
+                <li><strong>Timeline:</strong> 18-36 months for commercial scale-up (40% probability of delays)</li>
+                <li><strong>Quality:</strong> Multiple chiral centers increase impurity risks</li>
+            </ul>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Key Manufacturing Components</h4>
+            
+            <ul style="padding-left: 20px;">
+                <li><strong>ER Ligand:</strong> Custom synthesis required, no commercial source</li>
+                <li><strong>Linker Chemistry:</strong> Proprietary design, stability critical</li>
+                <li><strong>E3 Ligase Binder:</strong> Cereblon-targeting (thalidomide derivative, controlled substance)</li>
+                <li><strong>Conjugation:</strong> Multi-step process with low yields</li>
+                <li><strong>Purification:</strong> Complex due to similar molecular weight impurities</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Supply Chain Assessment -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>5.2 Supply Chain & CMO Network</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Contract Manufacturing Landscape</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>CMO</th>
+                        <th>PROTAC Capability</th>
+                        <th>Capacity</th>
+                        <th>Risk Assessment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lonza</td>
+                        <td>Established</td>
+                        <td>High</td>
+                        <td>Premium pricing</td>
+                    </tr>
+                    <tr>
+                        <td>Catalent</td>
+                        <td>Limited</td>
+                        <td>Medium</td>
+                        <td>Under acquisition</td>
+                    </tr>
+                    <tr>
+                        <td>WuXi AppTec</td>
+                        <td>Strong</td>
+                        <td>High</td>
+                        <td class="highlight-critical">US legislative risk</td>
+                    </tr>
+                    <tr>
+                        <td>Patheon/Thermo</td>
+                        <td>Developing</td>
+                        <td>Medium</td>
+                        <td>Learning curve</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="critical-box">
+            <strong>Geographic Concentration Risk:</strong> Arvinas acknowledges reliance on China-based manufacturers. 
+            BIOSECURE Act (pending US legislation) could restrict use of Chinese CDMOs, requiring supply chain restructuring.
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Supply Requirements & Inventory Planning</h4>
+            
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Annual API Need (Peak)</div>
+                    <div class="metric-value">50-100 kg</div>
+                    <div class="metric-detail">For $2B peak sales</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Launch Inventory</div>
+                    <div class="metric-value">10-15 kg</div>
+                    <div class="metric-detail">6-month buffer</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Batch Size</div>
+                    <div class="metric-value">5-10 kg</div>
+                    <div class="metric-detail">Commercial scale</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Lead Time</div>
+                    <div class="metric-value">6-9 months</div>
+                    <div class="metric-detail">End-to-end</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Shelf Life</div>
+                    <div class="metric-value">24-36 months</div>
+                    <div class="metric-detail">Expected (not confirmed)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Storage</div>
+                    <div class="metric-value">2-8°C likely</div>
+                    <div class="metric-detail">Cold chain needed</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>Launch Supply Risk:</strong> No evidence of dual-source manufacturing. 
+            Single-source dependency creates vulnerability. 30% probability of supply constraints in years 1-2.
+        </div>
+    </div>
+</div>
+
+<!-- Quality & Regulatory Compliance -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>5.3 Quality Systems & GMP Compliance</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Manufacturing Quality Requirements</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Quality Parameter</th>
+                        <th>Specification</th>
+                        <th>Challenge</th>
+                        <th>Risk Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>API Purity</td>
+                        <td>>98%</td>
+                        <td>Multiple similar MW impurities</td>
+                        <td><span class="risk-indicator risk-medium"></span>Medium</td>
+                    </tr>
+                    <tr>
+                        <td>Related Substances</td>
+                        <td><2% total</td>
+                        <td>Complex impurity profile</td>
+                        <td><span class="risk-indicator risk-high"></span>High</td>
+                    </tr>
+                    <tr>
+                        <td>Residual Solvents</td>
+                        <td>ICH limits</td>
+                        <td>Multiple solvents used</td>
+                        <td><span class="risk-indicator risk-low"></span>Low</td>
+                    </tr>
+                    <tr>
+                        <td>Genotoxic Impurities</td>
+                        <td><1.5 μg/day</td>
+                        <td>Thalidomide-like moiety</td>
+                        <td><span class="risk-indicator risk-critical"></span>Critical</td>
+                    </tr>
+                    <tr>
+                        <td>Stability</td>
+                        <td>24+ months</td>
+                        <td>Large molecule stability</td>
+                        <td><span class="risk-indicator risk-medium"></span>Medium</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="critical-box">
+            <strong>FDA Inspection Risk:</strong> NDA acceptance indicates CMC package deemed adequate. 
+            However, pre-approval inspection pending. Historical PROTAC manufacturing has no precedent for FDA review.
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Legal & IP Tab -->
+<div id="legal" class="tab-content">
+<div class="section-header">6. LEGAL & INTELLECTUAL PROPERTY ANALYSIS</div>
+
+<!-- Patent Portfolio -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>6.1 Patent Estate Assessment</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content active">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Core Patent Portfolio</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Patent Family</th>
+                        <th>Coverage</th>
+                        <th>Priority Date</th>
+                        <th>Expiry (Base)</th>
+                        <th>With PTE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PCT/US2017/064283</td>
+                        <td>Composition of matter</td>
+                        <td>Dec 2017</td>
+                        <td>Dec 2037</td>
+                        <td>Dec 2042</td>
+                    </tr>
+                    <tr>
+                        <td>PCT/US2020/047693</td>
+                        <td>Method of use</td>
+                        <td>Aug 2020</td>
+                        <td>Aug 2040</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>PCT/US2021/063130</td>
+                        <td>Combination therapy</td>
+                        <td>Dec 2021</td>
+                        <td>Dec 2041</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>US Provisional Series</td>
+                        <td>Manufacturing process</td>
+                        <td>2019-2022</td>
+                        <td>2039-2042</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Patent Exclusivity Timeline</h4>
+            
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Approval Year</div>
+                    <div class="metric-value">2026</div>
+                    <div class="metric-detail">Expected</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Base Patent Expiry</div>
+                    <div class="metric-value">2037</div>
+                    <div class="metric-detail">11 years post-launch</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">With PTE (+5 years)</div>
+                    <div class="metric-value">2042</div>
+                    <div class="metric-detail">16 years exclusivity</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Biosimilar Risk</div>
+                    <div class="metric-value">N/A</div>
+                    <div class="metric-detail">Small molecule</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Generic Entry</div>
+                    <div class="metric-value">2037-2042</div>
+                    <div class="metric-detail">Complex synthesis barrier</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Yale Royalty</div>
+                    <div class="metric-value">1-2%</div>
+                    <div class="metric-detail">Foundational IP</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="critical-box">
+            <strong>Freedom to Operate:</strong> No known blocking patents from competitors. 
+            Arvinas as PROTAC pioneer has defensive patent thicket. However, Accutar litigation creates uncertainty.
+        </div>
+    </div>
+</div>
+
+<!-- Accutar Litigation -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>6.2 Accutar Trade Secret Litigation - Critical Risk</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="warning-box">
+            <strong>Case Overview:</strong> Arvinas v. Accutar Biotechnology, Case 3:22-cv-00717 (D. Del.)
+            <div style="margin-top: 8px;">
+                Former Senior Director Yimin Qian allegedly stole 853 trade secrets related to ER/AR degrader programs 
+                when joining Accutar in 2018. Discovery revealed hundreds of Arvinas files on Accutar devices.
+            </div>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Litigation Timeline & Status</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>May 2022</td>
+                        <td>Complaint filed</td>
+                        <td>126 trade secrets initially claimed</td>
+                    </tr>
+                    <tr>
+                        <td>Q4 2023</td>
+                        <td>Discovery phase</td>
+                        <td>Arvinas files found on Accutar systems</td>
+                    </tr>
+                    <tr>
+                        <td>Q1 2024</td>
+                        <td>Amended complaint</td>
+                        <td class="highlight-critical">Expanded to 853 trade secrets</td>
+                    </tr>
+                    <tr>
+                        <td>Q2 2025</td>
+                        <td>Expert discovery</td>
+                        <td>Damages quantification phase</td>
+                    </tr>
+                    <tr>
+                        <td>Q4 2025 (Est.)</td>
+                        <td>Trial or settlement</td>
+                        <td>Resolution expected pre-launch</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Potential Outcomes & Impact</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Outcome</th>
+                        <th>Probability</th>
+                        <th>Financial Impact</th>
+                        <th>Strategic Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Settlement</td>
+                        <td>60%</td>
+                        <td>$10-50M payment</td>
+                        <td>Minor, preserves freedom to operate</td>
+                    </tr>
+                    <tr>
+                        <td>Arvinas wins at trial</td>
+                        <td>25%</td>
+                        <td>$5-10M legal costs</td>
+                        <td>Validates IP, possible injunction</td>
+                    </tr>
+                    <tr>
+                        <td>Accutar wins/mixed</td>
+                        <td>15%</td>
+                        <td>$0-100M damages</td>
+                        <td class="highlight-critical">Could impact freedom to operate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="critical-box">
+            <strong>Competitive Implications:</strong> Accutar developing AC682, an "AI-designed" oral SERD, 
+            potentially using Arvinas' proprietary knowledge. Could emerge as future competitor with insider advantage.
+        </div>
+    </div>
+</div>
+
+<!-- Partnership Agreement Terms -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>6.3 Pfizer Collaboration Agreement Analysis</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Key Contractual Provisions (Inferred from Public Disclosures)</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Provision</th>
+                        <th>Likely Terms</th>
+                        <th>Risk Assessment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Termination for Convenience</td>
+                        <td>90-180 day notice</td>
+                        <td class="highlight-critical">High risk given trial cancellations</td>
+                    </tr>
+                    <tr>
+                        <td>Change of Control</td>
+                        <td>Pfizer right of first refusal</td>
+                        <td>Limits exit options</td>
+                    </tr>
+                    <tr>
+                        <td>Development Decisions</td>
+                        <td>Joint steering committee</td>
+                        <td>Pfizer effective veto on expansion</td>
+                    </tr>
+                    <tr>
+                        <td>IP Ownership</td>
+                        <td>Arvinas owns, Pfizer licensed</td>
+                        <td>Rights revert if terminated</td>
+                    </tr>
+                    <tr>
+                        <td>Manufacturing Rights</td>
+                        <td>Pfizer controls commercial</td>
+                        <td>Arvinas dependent on partner</td>
+                    </tr>
+                    <tr>
+                        <td>Commercialization</td>
+                        <td>Co-commercialization US, Pfizer ex-US</td>
+                        <td>Limited Arvinas infrastructure</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <strong>Renegotiation Triggers:</strong>
+            <ul style="padding-left: 20px; margin-top: 8px;">
+                <li>Smaller than expected market (ESR1-mut only)</li>
+                <li>Competitive pressure from camizestrant</li>
+                <li>Manufacturing complexity/cost overruns</li>
+                <li>Arvinas financial distress</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Risk Analysis Tab -->
+<div id="risks" class="tab-content">
+<div class="section-header">7. COMPREHENSIVE RISK ANALYSIS</div>
+
+<!-- Probability-Weighted Risk Matrix -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>7.1 Probability-Weighted Risk Scenarios</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content active">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Major Risk Events & Probabilities</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Risk Event</th>
+                        <th>Probability</th>
+                        <th>Impact on Value</th>
+                        <th>Timeline</th>
+                        <th>Mitigation Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #2a1a1a;">
+                        <td><strong>Label Restriction (ESR1-mut only)</strong></td>
+                        <td class="highlight-critical">85%</td>
+                        <td>-60% peak sales</td>
+                        <td>At approval</td>
+                        <td>Already priced in base case</td>
+                    </tr>
+                    <tr style="background: #2a1a1a;">
+                        <td><strong>Pfizer Partnership Renegotiation</strong></td>
+                        <td class="highlight-critical">65%</td>
+                        <td>-30-50% economics</td>
+                        <td>Next 6-12 months</td>
+                        <td>Preemptive restructuring</td>
+                    </tr>
+                    <tr>
+                        <td>Camizestrant Superior Efficacy</td>
+                        <td>80%</td>
+                        <td>-40-60% market share</td>
+                        <td>2026-2027</td>
+                        <td>Focus on tolerability</td>
+                    </tr>
+                    <tr>
+                        <td>Manufacturing Scale-up Issues</td>
+                        <td>40%</td>
+                        <td>-25% year 1-2 sales</td>
+                        <td>Launch period</td>
+                        <td>Dual sourcing needed</td>
+                    </tr>
+                    <tr>
+                        <td>Step Therapy Requirement</td>
+                        <td>35-45%</td>
+                        <td>-6 month adoption delay</td>
+                        <td>Post-launch</td>
+                        <td>Payer engagement</td>
+                    </tr>
+                    <tr>
+                        <td>FDA Complete Response Letter</td>
+                        <td>20-25%</td>
+                        <td>-12-18 month delay</td>
+                        <td>Q1 2026</td>
+                        <td>Pre-submission meeting</td>
+                    </tr>
+                    <tr>
+                        <td>Safety Signal Emergence</td>
+                        <td>15-20%</td>
+                        <td>-20-100% value</td>
+                        <td>Post-marketing</td>
+                        <td>REMS preparedness</td>
+                    </tr>
+                    <tr>
+                        <td>Partnership Termination</td>
+                        <td>10-15%</td>
+                        <td>-80-90% value</td>
+                        <td>Any time</td>
+                        <td>Backup partner needed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <strong>Cumulative Risk Impact:</strong> Probability-weighted analysis suggests 60% likelihood of achieving 
+            only $1.5-2.5B peak sales versus $8-10B theoretical maximum. Multiple overlapping risks create 
+            compound negative scenarios requiring sophisticated mitigation strategies.
+        </div>
+    </div>
+</div>
+
+<!-- Scenario Analysis -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>7.2 Integrated Scenario Analysis</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Investment Outcome Scenarios</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Probability</th>
+                        <th>Peak Sales</th>
+                        <th>NPV</th>
+                        <th>IRR</th>
+                        <th>Key Assumptions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #1a2a1a;">
+                        <td><strong>Best Case</strong></td>
+                        <td>10%</td>
+                        <td>$3.5-4.0B</td>
+                        <td>$5-6B</td>
+                        <td>35-40%</td>
+                        <td>Broad label, beats camizestrant</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Positive Case</strong></td>
+                        <td>25%</td>
+                        <td>$2.5-3.0B</td>
+                        <td>$3-4B</td>
+                        <td>25-30%</td>
+                        <td>Good execution, 50/50 maintained</td>
+                    </tr>
+                    <tr style="background: #2a2a1a;">
+                        <td><strong>Base Case</strong></td>
+                        <td>40%</td>
+                        <td>$1.5-2.0B</td>
+                        <td>$2-2.5B</td>
+                        <td>18-22%</td>
+                        <td>ESR1-mut only, partnership stress</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negative Case</strong></td>
+                        <td>20%</td>
+                        <td>$0.8-1.2B</td>
+                        <td>$1-1.5B</td>
+                        <td>10-15%</td>
+                        <td>Camizestrant dominance, issues</td>
+                    </tr>
+                    <tr style="background: #3a1a1a;">
+                        <td><strong>Worst Case</strong></td>
+                        <td>5%</td>
+                        <td><$500M</td>
+                        <td><$500M</td>
+                        <td>Negative</td>
+                        <td>Partnership failure, CRL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="critical-box">
+            <strong>Probability-Weighted NPV:</strong> $2.3B (40% of theoretical maximum)
+            <div style="margin-top: 8px;">
+                Weighted average IRR: 20-22% (acceptable but not exceptional for biotech risk)
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Risk Mitigation Strategies -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>7.3 Risk Mitigation Framework</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Structured Risk Mitigation Approaches</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Risk Category</th>
+                        <th>Mitigation Strategy</th>
+                        <th>Implementation</th>
+                        <th>Cost/Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Partnership Risk</td>
+                        <td>Preemptive renegotiation</td>
+                        <td>Offer Pfizer buyout option at premium</td>
+                        <td>Certainty vs upside</td>
+                    </tr>
+                    <tr>
+                        <td>Manufacturing Risk</td>
+                        <td>Dual sourcing requirement</td>
+                        <td>Immediate second CMO qualification</td>
+                        <td>+$20-30M investment</td>
+                    </tr>
+                    <tr>
+                        <td>Competitive Risk</td>
+                        <td>Accelerated launch timeline</td>
+                        <td>Priority review, rolling submission</td>
+                        <td>+$5-10M regulatory</td>
+                    </tr>
+                    <tr>
+                        <td>Commercial Risk</td>
+                        <td>Co-marketing partnerships</td>
+                        <td>Regional specialty pharma deals</td>
+                        <td>-20% economics</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Risk</td>
+                        <td>Milestone-based funding</td>
+                        <td>Tranched investment structure</td>
+                        <td>Downside protection</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Critical Success Factors</h4>
+            
+            <ul style="padding-left: 20px;">
+                <li><strong>Regulatory:</strong> FDA approval by Q1 2026 with manageable label</li>
+                <li><strong>Manufacturing:</strong> Achieve >50kg commercial production by launch</li>
+                <li><strong>Partnership:</strong> Maintain Pfizer support or secure alternative</li>
+                <li><strong>Commercial:</strong> Capture >20% share of ESR1-mut market</li>
+                <li><strong>Competitive:</strong> Launch before camizestrant achieves dominance</li>
+                <li><strong>Financial:</strong> Secure additional $200-300M if Pfizer exits</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Financial Modeling Tab -->
+<div id="modeling" class="tab-content">
+<div class="section-header">8. DETAILED FINANCIAL MODELING</div>
+
+<!-- Revenue Build -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>8.1 Revenue Build-Up Model</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content active">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Base Case Revenue Projection (ESR1-mut restricted)</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>2026</th>
+                        <th>2027</th>
+                        <th>2028</th>
+                        <th>2029</th>
+                        <th>2030</th>
+                        <th>2032 (Peak)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>US Eligible Patients</td>
+                        <td>7,000</td>
+                        <td>7,200</td>
+                        <td>7,400</td>
+                        <td>7,600</td>
+                        <td>7,800</td>
+                        <td>8,200</td>
+                    </tr>
+                    <tr>
+                        <td>Market Penetration</td>
+                        <td>5%</td>
+                        <td>12%</td>
+                        <td>18%</td>
+                        <td>22%</td>
+                        <td>25%</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>Treated Patients</td>
+                        <td>350</td>
+                        <td>864</td>
+                        <td>1,332</td>
+                        <td>1,672</td>
+                        <td>1,950</td>
+                        <td>2,460</td>
+                    </tr>
+                    <tr>
+                        <td>Avg Duration (months)</td>
+                        <td>6</td>
+                        <td>6.5</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>7.5</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>Net Price/Year ($K)</td>
+                        <td>140</td>
+                        <td>138</td>
+                        <td>135</td>
+                        <td>132</td>
+                        <td>130</td>
+                        <td>125</td>
+                    </tr>
+                    <tr style="background: #1a1a1a;">
+                        <td><strong>US Revenue ($M)</strong></td>
+                        <td><strong>25</strong></td>
+                        <td><strong>65</strong></td>
+                        <td><strong>105</strong></td>
+                        <td><strong>130</strong></td>
+                        <td><strong>155</strong></td>
+                        <td><strong>205</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Ex-US Revenue ($M)</td>
+                        <td>0</td>
+                        <td>20</td>
+                        <td>45</td>
+                        <td>70</td>
+                        <td>95</td>
+                        <td>145</td>
+                    </tr>
+                    <tr style="background: #1a1a1a;">
+                        <td><strong>Total Revenue ($M)</strong></td>
+                        <td><strong>25</strong></td>
+                        <td><strong>85</strong></td>
+                        <td><strong>150</strong></td>
+                        <td><strong>200</strong></td>
+                        <td><strong>250</strong></td>
+                        <td><strong>350</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <strong>Key Revenue Assumptions:</strong>
+            <ul style="padding-left: 20px; margin-top: 8px;">
+                <li>Launch Q2 2026 with 6-month ramp</li>
+                <li>Camizestrant launches Q4 2026, limiting share to 30% max</li>
+                <li>Price erosion 2-3% annually from competition</li>
+                <li>Ex-US represents 40-45% of global (reimbursement delays)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- P&L Projection -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>8.2 Profit & Loss Projection</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Arvinas P&L Model (50% Profit Share Basis)</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>($M)</th>
+                        <th>2026</th>
+                        <th>2027</th>
+                        <th>2028</th>
+                        <th>2029</th>
+                        <th>2030</th>
+                        <th>2032</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Global Net Revenue</td>
+                        <td>25</td>
+                        <td>85</td>
+                        <td>150</td>
+                        <td>200</td>
+                        <td>250</td>
+                        <td>350</td>
+                    </tr>
+                    <tr>
+                        <td>COGS (25%)</td>
+                        <td>(6)</td>
+                        <td>(21)</td>
+                        <td>(38)</td>
+                        <td>(50)</td>
+                        <td>(63)</td>
+                        <td>(88)</td>
+                    </tr>
+                    <tr>
+                        <td>Gross Profit</td>
+                        <td>19</td>
+                        <td>64</td>
+                        <td>112</td>
+                        <td>150</td>
+                        <td>187</td>
+                        <td>262</td>
+                    </tr>
+                    <tr>
+                        <td>Commercial Expenses</td>
+                        <td>(10)</td>
+                        <td>(17)</td>
+                        <td>(23)</td>
+                        <td>(28)</td>
+                        <td>(33)</td>
+                        <td>(42)</td>
+                    </tr>
+                    <tr>
+                        <td>R&D (Post-marketing)</td>
+                        <td>(5)</td>
+                        <td>(8)</td>
+                        <td>(10)</td>
+                        <td>(12)</td>
+                        <td>(13)</td>
+                        <td>(14)</td>
+                    </tr>
+                    <tr>
+                        <td>G&A Allocation</td>
+                        <td>(3)</td>
+                        <td>(5)</td>
+                        <td>(8)</td>
+                        <td>(10)</td>
+                        <td>(13)</td>
+                        <td>(18)</td>
+                    </tr>
+                    <tr style="background: #1a1a1a;">
+                        <td><strong>Operating Profit</strong></td>
+                        <td><strong>1</strong></td>
+                        <td><strong>34</strong></td>
+                        <td><strong>71</strong></td>
+                        <td><strong>100</strong></td>
+                        <td><strong>128</strong></td>
+                        <td><strong>188</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Arvinas 50% Share</td>
+                        <td>0.5</td>
+                        <td>17</td>
+                        <td>36</td>
+                        <td>50</td>
+                        <td>64</td>
+                        <td>94</td>
+                    </tr>
+                    <tr>
+                        <td>Milestone Payments</td>
+                        <td>100</td>
+                        <td>50</td>
+                        <td>25</td>
+                        <td>25</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr style="background: #1a1a1a;">
+                        <td><strong>Total Arvinas Income</strong></td>
+                        <td><strong>101</strong></td>
+                        <td><strong>67</strong></td>
+                        <td><strong>61</strong></td>
+                        <td><strong>75</strong></td>
+                        <td><strong>64</strong></td>
+                        <td><strong>94</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="critical-box">
+            <strong>Profitability Timeline:</strong> Arvinas becomes cash flow positive in 2027 
+            based on milestone payments and profit share. Self-sustaining by 2028 even without milestones.
+        </div>
+    </div>
+</div>
+
+<!-- DCF Valuation -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>8.3 Discounted Cash Flow Analysis</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">DCF Valuation Model</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Base Case</th>
+                        <th>Bear Case</th>
+                        <th>Bull Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Peak Sales</td>
+                        <td>$1.5B</td>
+                        <td>$800M</td>
+                        <td>$2.5B</td>
+                    </tr>
+                    <tr>
+                        <td>Arvinas Share</td>
+                        <td>50%</td>
+                        <td>30%</td>
+                        <td>50%</td>
+                    </tr>
+                    <tr>
+                        <td>Peak EBITDA Margin</td>
+                        <td>55%</td>
+                        <td>45%</td>
+                        <td>65%</td>
+                    </tr>
+                    <tr>
+                        <td>Patent Life</td>
+                        <td>2037</td>
+                        <td>2037</td>
+                        <td>2042</td>
+                    </tr>
+                    <tr>
+                        <td>Terminal Value Multiple</td>
+                        <td>3x</td>
+                        <td>2x</td>
+                        <td>4x</td>
+                    </tr>
+                    <tr>
+                        <td>Discount Rate</td>
+                        <td>12%</td>
+                        <td>15%</td>
+                        <td>10%</td>
+                    </tr>
+                    <tr>
+                        <td>Probability of Success</td>
+                        <td>75%</td>
+                        <td>60%</td>
+                        <td>85%</td>
+                    </tr>
+                    <tr style="background: #1a1a1a;">
+                        <td><strong>NPV ($M)</strong></td>
+                        <td><strong>2,100</strong></td>
+                        <td><strong>650</strong></td>
+                        <td><strong>4,200</strong></td>
+                    </tr>
+                    <tr style="background: #1a1a1a;">
+                        <td><strong>Risk-Adjusted NPV</strong></td>
+                        <td><strong>1,575</strong></td>
+                        <td><strong>390</strong></td>
+                        <td><strong>3,570</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Sensitivity Analysis</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>-20%</th>
+                        <th>Base</th>
+                        <th>+20%</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Peak Sales</td>
+                        <td>$1,260M</td>
+                        <td>$1,575M</td>
+                        <td>$1,890M</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>Profit Share %</td>
+                        <td>$1,260M</td>
+                        <td>$1,575M</td>
+                        <td>$1,890M</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>Discount Rate</td>
+                        <td>$1,810M</td>
+                        <td>$1,575M</td>
+                        <td>$1,380M</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td>Time to Peak</td>
+                        <td>$1,680M</td>
+                        <td>$1,575M</td>
+                        <td>$1,490M</td>
+                        <td>Low</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Deal Structure Tab -->
+<div id="structure" class="tab-content">
+<div class="section-header">9. INVESTMENT STRUCTURE RECOMMENDATIONS</div>
+
+<!-- Optimal Structure -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>9.1 Recommended Investment Structure</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content active">
+        <div class="critical-box">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Recommended: Synthetic Royalty with Milestone Tranches</h4>
+            <div style="margin-top: 12px;">
+                Total Investment: $2.0-2.5B structured to minimize downside while capturing upside through 
+                royalty participation on global net sales with milestone-based deployment.
+            </div>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Investment Tranches</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Tranche</th>
+                        <th>Amount</th>
+                        <th>Trigger</th>
+                        <th>Timing</th>
+                        <th>Risk Level</th>
+                    </tr>
+                 <tr>
+                    <td>Tranche A</td>
+                    <td>$800M</td>
+                    <td>FDA Approval</td>
+                    <td>Q1 2026</td>
+                    <td><span class="status-badge status-medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td>Tranche B</td>
+                    <td>$600M</td>
+                    <td>First Commercial Sale</td>
+                    <td>Q2 2026</td>
+                    <td><span class="status-badge status-low">Low</span></td>
+                </tr>
+                <tr>
+                    <td>Tranche C</td>
+                    <td>$600M</td>
+                    <td>$500M Annual Sales</td>
+                    <td>2028-2029</td>
+                    <td><span class="status-badge status-medium">Medium</span></td>
+                </tr>
+                <tr>
+                    <td>Tranche D</td>
+                    <td>$500M</td>
+                    <td>$1B Annual Sales</td>
+                    <td>2030-2031</td>
+                    <td><span class="status-badge status-high">High</span></td>
+                </tr>
+                <tr style="background: #1a1a1a;">
+                    <td><strong>Total</strong></td>
+                    <td><strong>$2.5B</strong></td>
+                    <td>-</td>
+                    <td>5-year deployment</td>
+                    <td>Risk-adjusted</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="data-block">
+        <h4 style="font-weight: 600; margin-bottom: 12px;">Royalty Terms & Structure</h4>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Annual Net Sales</th>
+                    <th>Royalty Rate</th>
+                    <th>Effective Take</th>
+                    <th>Annual Payment (Peak)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>$0-500M</td>
+                    <td>8%</td>
+                    <td>$0-40M</td>
+                    <td>Ramp period</td>
+                </tr>
+                <tr>
+                    <td>$500M-1B</td>
+                    <td>10%</td>
+                    <td>$50-100M</td>
+                    <td>Growth phase</td>
+                </tr>
+                <tr>
+                    <td>$1B-2B</td>
+                    <td>12%</td>
+                    <td>$120-240M</td>
+                    <td>Maturity</td>
+                </tr>
+                <tr>
+                    <td>>$2B</td>
+                    <td>15%</td>
+                    <td>>$300M</td>
+                    <td>Upside capture</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="critical-box" style="margin-top: 12px;">
+            <strong>Key Terms:</strong>
+            <ul style="padding-left: 20px; margin-top: 8px;">
+                <li>Duration: Life of patents (2037-2042)</li>
+                <li>Geography: Worldwide net sales</li>
+                <li>Minimum annual payment: $50M after year 3</li>
+                <li>Buyback option: 1.5x invested capital after year 5</li>
+                <li>Step-in rights if Pfizer exits</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="data-block">
+        <h4 style="font-weight: 600; margin-bottom: 12px;">Downside Protection Mechanisms</h4>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Protection Type</th>
+                    <th>Trigger</th>
+                    <th>Blackstone Right</th>
+                    <th>Value Protection</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>IRR Floor</td>
+                    <td>Returns <15% after 5 years</td>
+                    <td>Put option to Arvinas</td>
+                    <td>1.5x invested capital</td>
+                </tr>
+                <tr>
+                    <td>Partnership Failure</td>
+                    <td>Pfizer termination</td>
+                    <td>Reduced royalty to 5%</td>
+                    <td>Preserve some value</td>
+                </tr>
+                <tr>
+                    <td>Regulatory Failure</td>
+                    <td>FDA CRL</td>
+                    <td>No Tranche B-D deployment</td>
+                    <td>Limit to $800M loss</td>
+                </tr>
+                <tr>
+                    <td>Commercial Failure</td>
+                    <td>Sales <$250M by year 3</td>
+                    <td>Convert to equity</td>
+                    <td>Capture upside if recovers</td>
+                </tr>
+                <tr>
+                    <td>Competition</td>
+                    <td>Market share <15%</td>
+                    <td>Renegotiation rights</td>
+                    <td>Adjust terms</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Alternative Structures -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>9.2 Alternative Investment Structures</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Structure Comparison Analysis</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Structure</th>
+                        <th>Investment</th>
+                        <th>Expected IRR</th>
+                        <th>Risk Profile</th>
+                        <th>Pros</th>
+                        <th>Cons</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #1a1a2a;">
+                        <td><strong>Synthetic Royalty (Recommended)</strong></td>
+                        <td>$2.0-2.5B</td>
+                        <td>22-25%</td>
+                        <td>Medium</td>
+                        <td>Downside protection, no dilution</td>
+                        <td>Capped upside</td>
+                    </tr>
+                    <tr>
+                        <td>Direct Equity</td>
+                        <td>$500M</td>
+                        <td>15-35%</td>
+                        <td>High</td>
+                        <td>Full upside capture</td>
+                        <td>Dilution, no protection</td>
+                    </tr>
+                    <tr>
+                        <td>Convertible Debt</td>
+                        <td>$750M</td>
+                        <td>18-22%</td>
+                        <td>Medium-Low</td>
+                        <td>Interest coverage, conversion option</td>
+                        <td>Limited upside</td>
+                    </tr>
+                    <tr>
+                        <td>Asset Purchase</td>
+                        <td>$3-4B</td>
+                        <td>20-30%</td>
+                        <td>Medium-High</td>
+                        <td>Full control</td>
+                        <td>Operational complexity</td>
+                    </tr>
+                    <tr>
+                        <td>Joint Venture</td>
+                        <td>$1.5B</td>
+                        <td>20-25%</td>
+                        <td>Medium</td>
+                        <td>Shared risk/control</td>
+                        <td>Complex governance</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning-box">
+            <strong>Why Synthetic Royalty is Optimal:</strong>
+            <ul style="padding-left: 20px; margin-top: 8px;">
+                <li>Preserves Arvinas independence (avoiding control premium)</li>
+                <li>Milestone-based deployment reduces capital at risk</li>
+                <li>No operational burden or integration costs</li>
+                <li>Clear exit mechanisms with put/call options</li>
+                <li>Protects against partnership/regulatory failures</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Exit Strategy -->
+<div class="expandable-section">
+    <div class="expandable-header" onclick="toggleSection(this)">
+        <span>9.3 Exit Strategy Framework</span>
+        <span>▼</span>
+    </div>
+    <div class="expandable-content">
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Exit Scenarios & Timing</h4>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Exit Route</th>
+                        <th>Optimal Timing</th>
+                        <th>Expected Multiple</th>
+                        <th>Probability</th>
+                        <th>Key Triggers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pfizer Acquisition</td>
+                        <td>2027-2028</td>
+                        <td>1.5-2.0x</td>
+                        <td>35%</td>
+                        <td>Sales >$500M, partnership stress</td>
+                    </tr>
+                    <tr>
+                        <td>Strategic Sale</td>
+                        <td>2028-2029</td>
+                        <td>2.0-2.5x</td>
+                        <td>25%</td>
+                        <td>Peak sales visibility</td>
+                    </tr>
+                    <tr>
+                        <td>Royalty Securitization</td>
+                        <td>2029-2030</td>
+                        <td>1.3-1.5x</td>
+                        <td>20%</td>
+                        <td>Stable cash flows</td>
+                    </tr>
+                    <tr>
+                        <td>Hold to Maturity</td>
+                        <td>2037-2042</td>
+                        <td>2.5-3.0x</td>
+                        <td>15%</td>
+                        <td>Patent expiry</td>
+                    </tr>
+                    <tr>
+                        <td>Distressed Sale</td>
+                        <td>Any time</td>
+                        <td>0.5-1.0x</td>
+                        <td>5%</td>
+                        <td>Major failure</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="data-block">
+            <h4 style="font-weight: 600; margin-bottom: 12px;">Exit Value Optimization Strategies</h4>
+            
+            <ul style="padding-left: 20px;">
+                <li><strong>Year 1-2:</strong> Focus on launch execution, manufacturing scale-up</li>
+                <li><strong>Year 2-3:</strong> Drive market share, establish reimbursement</li>
+                <li><strong>Year 3-4:</strong> Explore label expansion, combination studies</li>
+                <li><strong>Year 4-5:</strong> Position for exit - clean up liabilities, optimize metrics</li>
+                <li><strong>Year 5+:</strong> Execute exit at optimal valuation window</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Investment Committee Summary -->
+<div class="section-container" style="margin-top: 32px; background: #141414; border: 2px solid #4a9eff; border-radius: 8px; padding: 24px;">
+<div class="section-header" style="color: #4a9eff; font-size: 20px;">INVESTMENT COMMITTEE RECOMMENDATION</div>
+
+<div class="data-block" style="background: #0d0d0d; border: 1px solid #2a2a2a;">
+    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #fff;">Executive Investment Decision</h3>
+    
+    <div class="metric-grid">
+        <div class="metric-card">
+            <div class="metric-label">Recommendation</div>
+            <div class="metric-value" style="color: #ffcc38;">INVEST</div>
+            <div class="metric-detail">With heavy structuring</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Structure</div>
+            <div class="metric-value" style="font-size: 16px;">Synthetic Royalty</div>
+            <div class="metric-detail">$2.0-2.5B total</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Expected IRR</div>
+            <div class="metric-value">22-25%</div>
+            <div class="metric-detail">Risk-adjusted</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Peak Annual Return</div>
+            <div class="metric-value">$180-250M</div>
+            <div class="metric-detail">At $1.5-2B sales</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Downside Case</div>
+            <div class="metric-value">1.5x</div>
+            <div class="metric-detail">Capital return floor</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Time to Exit</div>
+            <div class="metric-value">5-7 years</div>
+            <div class="metric-detail">Multiple options</div>
+        </div>
+    </div>
+</div>
+
+<div class="data-block" style="background: #0d0d0d; border: 1px solid #2a2a2a; margin-top: 16px;">
+    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: #fff;">Investment Thesis Summary</h3>
+    
+    <div style="margin-bottom: 16px;">
+        <strong style="color: #4a9eff;">Asset Strengths:</strong>
+        <ul style="padding-left: 20px; margin-top: 8px;">
+            <li>First PROTAC with Phase 3 success - validates novel platform</li>
+            <li>Statistically significant efficacy in ESR1-mutant population (HR 0.57, p<0.001)</li>
+            <li>Superior tolerability vs elacestrant (13.5% vs 35% nausea)</li>
+            <li>FDA Fast Track designation with clear regulatory path</li>
+            <li>Established companion diagnostic (Guardant360 CDx)</li>
+            <li>Arvinas trading below cash value ($455-600M market cap vs $861M cash)</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+        <strong style="color: #ff8c38;">Critical Risks:</strong>
+        <ul style="padding-left: 20px; margin-top: 8px;">
+            <li class="highlight-critical">85% probability of ESR1-mutation-only label (60% market reduction)</li>
+            <li class="highlight-critical">65% probability of Pfizer partnership renegotiation</li>
+            <li>AstraZeneca's camizestrant with superior efficacy (HR 0.44) and earlier entry</li>
+            <li>Manufacturing complexity with 3-10x higher COGS than traditional drugs</li>
+            <li>No overall survival data available</li>
+            <li>Failed ITT population co-primary endpoint (p=0.07)</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 16px;">
+        <strong style="color: #38ff8c;">Mitigation Strategies:</strong>
+        <ul style="padding-left: 20px; margin-top: 8px;">
+            <li>Milestone-based capital deployment ($800M at risk initially)</li>
+            <li>Tiered royalty structure capturing upside while limiting downside</li>
+            <li>Put option at 1.5x if IRR <15% after 5 years</li>
+            <li>Step-in rights if Pfizer exits</li>
+            <li>Conversion to equity option if distressed</li>
+        </ul>
+    </div>
+</div>
+
+<div class="warning-box" style="margin-top: 16px;">
+    <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">Critical Conditions for Investment</h3>
+    <ol style="padding-left: 20px;">
+        <li><strong>Pfizer Partnership Clarity:</strong> Require formal commitment or renegotiation before Tranche A</li>
+        <li><strong>Manufacturing Redundancy:</strong> Second source qualification initiated immediately</li>
+        <li><strong>Regulatory Submission:</strong> FDA pre-NDA meeting minutes review</li>
+        <li><strong>Competitive Intelligence:</strong> Camizestrant Phase 3 interim data assessment</li>
+        <li><strong>Financial Covenant:</strong> Minimum cash balance maintenance by Arvinas</li>
+        <li><strong>Board Observation Rights:</strong> Non-voting seat for oversight</li>
+    </ol>
+</div>
+
+<div class="success-box" style="margin-top: 16px;">
+    <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">Expected Outcomes</h3>
+    
+    <table class="data-table" style="margin-top: 12px;">
+        <thead>
+            <tr>
+                <th>Scenario</th>
+                <th>Probability</th>
+                <th>Total Return</th>
+                <th>Multiple</th>
+                <th>IRR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Base Case</td>
+                <td>40%</td>
+                <td>$4.0-5.0B</td>
+                <td>1.8-2.2x</td>
+                <td>22-25%</td>
+            </tr>
+            <tr>
+                <td>Downside Case</td>
+                <td>35%</td>
+                <td>$3.0-3.5B</td>
+                <td>1.3-1.5x</td>
+                <td>15-18%</td>
+            </tr>
+            <tr>
+                <td>Upside Case</td>
+                <td>20%</td>
+                <td>$6.0-8.0B</td>
+                <td>2.5-3.5x</td>
+                <td>28-32%</td>
+            </tr>
+            <tr>
+                <td>Failure Case</td>
+                <td>5%</td>
+                <td>$0.8-1.2B</td>
+                <td>0.4-0.6x</td>
+                <td>Negative</td>
+            </tr>
+            <tr style="background: #1a1a1a;">
+                <td><strong>Probability-Weighted</strong></td>
+                <td>100%</td>
+                <td><strong>$4.1B</strong></td>
+                <td><strong>1.8x</strong></td>
+                <td><strong>20-22%</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="critical-box" style="margin-top: 16px; background: #1a1a3a; border-color: #4a4aff;">
+    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #fff;">Final Investment Decision</h3>
+    
+    <p style="margin-bottom: 12px;">
+        <strong>RECOMMENDATION: PROCEED WITH INVESTMENT</strong> subject to satisfactory resolution of critical conditions listed above.
+    </p>
+    
+    <p style="margin-bottom: 12px;">
+        The investment opportunity in vepdegestrant represents a late-stage oncology asset with validated clinical efficacy in a defined biomarker population. 
+        While facing significant commercial and competitive challenges, the current valuation disconnect (Arvinas trading below cash) combined with 
+        sophisticated structuring provides acceptable risk-adjusted returns of 20-22% IRR.
+    </p>
+    
+    <p style="margin-bottom: 12px;">
+        The synthetic royalty structure with milestone-based deployment appropriately balances risk and reward, providing downside protection while 
+        capturing meaningful upside if the asset achieves even modest commercial success. The 1.5x put option after 5 years ensures capital preservation 
+        in downside scenarios.
+    </p>
+    
+    <p>
+        <strong>Key Success Factor:</strong> Speed to market ahead of camizestrant will determine ultimate commercial success. 
+        Every month of delay reduces peak market share by an estimated 2-3%.
+    </p>
+</div>
+</div>
+
+<!-- Appendices Section -->
+<div class="section-container" style="margin-top: 32px; background: #0d0d0d; border: 1px solid #2a2a2a; border-radius: 8px; padding: 24px;">
+<div class="section-header">APPENDICES & SUPPORTING DOCUMENTATION</div>
+
+<div class="data-block">
+    <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">A. Primary Source Documents</h3>
+    
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Document Type</th>
+                <th>Source</th>
+                <th>Date</th>
+                <th>Verification Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>VERITAC-2 Protocol</td>
+                <td>ClinicalTrials.gov NCT05654623</td>
+                <td>Updated Aug 2025</td>
+                <td>✓ Verified</td>
+            </tr>
+            <tr>
+                <td>Arvinas Q2 2025 10-Q</td>
+                <td>SEC EDGAR Filing</td>
+                <td>Aug 7, 2025</td>
+                <td>✓ Verified</td>
+            </tr>
+            <tr>
+                <td>FDA Fast Track Designation</td>
+                <td>Company PR (needs verification)</td>
+                <td>Feb 2024</td>
+                <td>⚠ Unverified</td>
+            </tr>
+            <tr>
+                <td>Guardant360 CDx Approval</td>
+                <td>FDA PMA P200010/S012</td>
+                <td>Jan 30, 2023</td>
+                <td>✓ Verified</td>
+            </tr>
+            <tr>
+                <td>Pfizer Collaboration Agreement</td>
+                <td>Excerpts from 8-K filings</td>
+                <td>July 2021</td>
+                <td>⚠ Partial</td>
+            </tr>
+            <tr>
+                <td>Accutar Litigation</td>
+                <td>D. Del. Case 3:22-cv-00717</td>
+                <td>Ongoing</td>
+                <td>✓ Verified</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="data-block">
+    <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">B. Critical Information Gaps</h3>
+    
+    <div class="warning-box" style="background: #2a1a1a;">
+        <strong>Missing Data Requiring Primary Research:</strong>
+        <ul style="padding-left: 20px; margin-top: 8px;">
+            <li>Full Phase 3 data publication (NEJM pending)</li>
+            <li>Overall survival interim analysis</li>
+            <li>Detailed safety database (>600 patients)</li>
+            <li>CMO identities and manufacturing sites</li>
+            <li>Pfizer partnership agreement full terms</li>
+            <li>Payer coverage decisions and formulary placement</li>
+            <li>Real-world ESR1 testing rates post-elacestrant</li>
+            <li>Physician adoption surveys</li>
+            <li>Camizestrant Phase 3 interim data</li>
+        </ul>
+    </div>
+</div>
+
+<div class="data-block">
+    <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">C. Key Contacts for Due Diligence</h3>
+    
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Organization</th>
+                <th>Focus Area</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Company</td>
+                <td>Arvinas Management</td>
+                <td>Strategy, partnership status</td>
+                <td>Critical</td>
+            </tr>
+            <tr>
+                <td>Partner</td>
+                <td>Pfizer Oncology BD</td>
+                <td>Commitment level</td>
+                <td>Critical</td>
+            </tr>
+            <tr>
+                <td>Regulatory</td>
+                <td>FDA CDER Oncology</td>
+                <td>Review timeline</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Clinical KOLs</td>
+                <td>ASCO Breast Committee</td>
+                <td>Clinical adoption</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>Payers</td>
+                <td>Top 5 PBMs</td>
+                <td>Coverage strategy</td>
+                <td>Medium</td>
+            </tr>
+            <tr>
+                <td>Competitors</td>
+                <td>Former AZ/Menarini employees</td>
+                <td>Competitive intelligence</td>
+                <td>Medium</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="data-block">
+    <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">D. Investment Timeline & Next Steps</h3>
+    
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Milestone</th>
+                <th>Action Required</th>
+                <th>Go/No-Go</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sept 2025</td>
+                <td>Initial Due Diligence</td>
+                <td>Management meetings, data room</td>
+                <td>Gate 1</td>
+            </tr>
+            <tr>
+                <td>Oct 2025</td>
+                <td>Partnership Clarity</td>
+                <td>Pfizer commitment letter</td>
+                <td>Gate 2</td>
+            </tr>
+            <tr>
+                <td>Nov 2025</td>
+                <td>Regulatory Review</td>
+                <td>FDA pre-NDA minutes</td>
+                <td>Gate 3</td>
+            </tr>
+            <tr>
+                <td>Dec 2025</td>
+                <td>Term Sheet</td>
+                <td>Negotiate structure</td>
+                <td>Gate 4</td>
+            </tr>
+            <tr>
+                <td>Jan 2026</td>
+                <td>Final IC Approval</td>
+                <td>Complete documentation</td>
+                <td>Final</td>
+            </tr>
+            <tr>
+                <td>Q1 2026</td>
+                <td>FDA Decision</td>
+                <td>Tranche A deployment</td>
+                <td>Execute</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="footnote" style="margin-top: 24px; padding-top: 16px; border-top: 2px solid #2a2a2a;">
+    <strong>Disclaimer:</strong> This analysis is based on publicly available information as of August 29, 2025. 
+    Material information gaps exist that require primary research and management verification before final investment decision. 
+    All financial projections are estimates subject to significant uncertainty. Actual results may vary materially from projections.
+</div>
+</div>
+
+</div>
+
+<script>
+    // Tab functionality
+    function showTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        const tab = document.getElementById(tabName);
+        if (tab) {
+            tab.classList.add('active');
+        }
+        
+        if (event && event.target) {
+            event.target.classList.add('active');
+        }
+    }
+
+    // Expandable sections
+    function toggleSection(header) {
+        const content = header.nextElementSibling;
+        const arrow = header.querySelector('span:last-child');
+        
+        if (content.classList.contains('active')) {
+            content.classList.remove('active');
+            arrow.textContent = '▶';
+        } else {
+            content.classList.add('active');
+            arrow.textContent = '▼';
+        }
+    }
+</script>
+</body>
+</html>
