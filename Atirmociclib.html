@@ -446,7 +446,8 @@
         <!-- Tab Container -->
         <div class="tab-container">
             <div class="tabs">
-                <button class="tab-btn active" onclick="showTab('clinical')">Clinical & Regulatory</button>
+                <button class="tab-btn active" onclick="showTab('Overview')">Overview</button>
+                <button class="tab-btn" onclick="showTab('clinical')">Clinical & Regulatory</button>
                 <button class="tab-btn" onclick="showTab('scientific')">Scientific & IP</button>
                 <button class="tab-btn" onclick="showTab('commercial')">Commercial & Market</button>
                 <button class="tab-btn" onclick="showTab('financial')">Financial & Strategic</button>
@@ -456,8 +457,626 @@
                 <button class="tab-btn" onclick="showTab('trials')">Complete Trial Analysis</button>
             </div>
 
+            <!-- Overview Tab Content -->
+<div id="overview" class="tab-content active ">
+    <div class="section-title">Investment Committee Comprehensive Overview</div>
+    
+    <!-- Executive Summary -->
+    <div class="highlight-box mb-4">
+        <h4 class="font-semibold mb-2">Executive Assessment Summary</h4>
+        <p class="detail-text">
+            Atirmociclib (PF-07220060) represents Pfizer's investigational selective CDK4 inhibitor targeting HR+/HER2- metastatic breast cancer, designed to inhibit CDK4 while sparing CDK6 to potentially reduce toxicities like neutropenia seen with pan-CDK4/6 inhibitors. Research suggests a moderate probability of regulatory success (around 40-50%) for first-line HR+/HER2- metastatic breast cancer, based on Phase 3 design aiming for non-inferiority or superiority to standard CDK4/6 inhibitors. Evidence leans toward first-line therapy positioning if successful, similar to precedents like palbociclib, though challenges like comparator heterogeneity could impact approval.
+        </p>
+    </div>
+
+    <!-- 1. Regulatory Guidance & Interactions -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>1. Regulatory Guidance & Interactions - Control Arms, Endpoints, Label Trajectory</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content active">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Regulatory Shaping of Trial Design</h5>
+                <p class="detail-text">
+                    Regulatory interactions have shaped Atirmociclib's trial design to align with FDA/EMA oncology endpoint guidance, prioritizing PFS as a surrogate in advanced HR+/HER2- mBC while incorporating overall survival (OS) as a key secondary. The FourLight-3 protocol—initiated in late 2024—reflects regulator input: physician's choice of approved CDK4/6 inhibitors (palbociclib, ribociclib, abemaciclib) + letrozole as the control arm, allowing for real-world relevance while enabling non-inferiority or superiority claims.
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Meeting History & FDA/EMA Guidance</h5>
+                <p class="detail-text">
+                    <strong>Meeting Types:</strong> No public details on specific meetings (pre-IND or End-of-Phase 2) are available, but protocol design mirrors precedents like MONALEESA trials for ribociclib, where active comparators were endorsed to demonstrate incremental benefits.
+                    <br><br>
+                    <strong>What Regulators Told Them:</strong> Use physician's choice of approved CDK4/6 inhibitors as control arm; measure OS as key secondary; incorporate BICR for PFS to mitigate open-label bias; include PROs for tolerability assessments; focus safety asks on hematologic events given class precedents.
+                    <br><br>
+                    <strong>Sponsor Compliance:</strong> Sponsors followed guidance closely with minimal divergences. The heterogeneous control (multiple CDK4/6i options) could complicate analyses but was likely accepted to reflect clinical practice.
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Label Implications & Approval Pathway</h5>
+                <p class="detail-text">
+                    <strong>Likely Full Approval:</strong> First-line if PFS non-inferior with superior tolerability (e.g., reduced grade 3/4 neutropenia)
+                    <br><strong>Accelerated Approval Potential:</strong> If early data show clear QOL gains
+                    <br><strong>Combo-Only Risk:</strong> If synergies with novel agents like CDK2i prove essential
+                    <br><strong>NMPA/PMDA Strategy:</strong> Inclusion of Chinese/Japanese sites supports bridging without separate SPA, enabling concurrent submissions
+                    <br><strong>Fast Track Potential:</strong> If safety edges materialize
+                    <br><strong>Updates Expected:</strong> Post-interim (expected 2025) or competitor readouts may refine path
+                </p>
+                <p class="detail-text mt-2">
+                    <em>Critical Quote: "The agency… tell[s] him what they expect the control arm to be, which has never previously been studied in the context of their drug. And then… we have to estimate the probability that this trial is going to hit and what the label is going to look like."</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Standard of Care Dossier -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>2. Standard of Care (SoC) Dossier - Global Regimens & Weaknesses</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Current Global Standard of Care Analysis</h5>
+                <p class="detail-text">
+                    The SoC for HR+/HER2- metastatic breast cancer emphasizes CDK4/6 inhibitors plus endocrine therapy in the first line across the US and EU, while China and Japan often incorporate more chemotherapy due to access issues. The SoC is endocrine therapy (ET)-based, with CDK4/6 inhibitors as cornerstone in first-line across regions, but "squishiness" arises from resistance (e.g., ESR1 mutations in 30-40%) and access disparities.
+                </p>
+            </div>
+
+            <table class="trial-table mt-3">
+                <thead>
+                    <tr>
+                        <th>Line of Therapy</th>
+                        <th>US/EU Regimens</th>
+                        <th>Efficacy (ORR/PFS/OS)</th>
+                        <th>Safety Profile</th>
+                        <th>Known Weaknesses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1L</strong></td>
+                        <td>CDK4/6i + AI/fulvestrant</td>
+                        <td>ORR 40-55%, PFS 20-28 mo, OS 50-65 mo</td>
+                        <td>Neutropenia (50-70%), fatigue (30-40%)</td>
+                        <td>Resistance (ESR1 mut), no subgroup OS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2L</strong></td>
+                        <td>Fulvestrant mono or + everolimus/PI3Ki</td>
+                        <td>ORR 15-25%, PFS 5-11 mo, OS 20-30 mo</td>
+                        <td>Injection reactions (20%), stomatitis (40%)</td>
+                        <td>Post-CDK4/6 squishiness, bias in PROs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3L+</strong></td>
+                        <td>Chemo (capecitabine, eribulin)</td>
+                        <td>ORR 10-20%, PFS 3-6 mo, OS 12-18 mo</td>
+                        <td>Myelosuppression (50%), neuropathy (30%)</td>
+                        <td>High toxicity, limited targeted options</td>
+                    </tr>
+                    <tr style="background: #fff3cd;">
+                        <td><strong>China/Japan</strong></td>
+                        <td>Chemo + ET more 1L/2L</td>
+                        <td>Similar PFS/OS but access-limited</td>
+                        <td>Comparable, under-reported AEs</td>
+                        <td>Cost barriers, inflated PROs</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Landmark RCT Evidence Base</h5>
+                <p class="detail-text">
+                    <strong>PALOMA-2:</strong> Palbociclib + letrozole: PFS 24.8 months
+                    <br><strong>MONALEESA-2:</strong> Ribociclib + letrozole: OS 63.9 months
+                    <br><strong>BOLERO-2 Asia Subsets:</strong> PFS/OS similar but lower (~40-50 months)
+                    <br><strong>Open-label Design Bias:</strong> PROs potentially inflated
+                    <br><strong>Small Effect Sizes:</strong> Post-resistance outcomes limited
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">SoC Weaknesses Driving Opportunity</h5>
+                <p class="detail-text">
+                    • Poorly defined post-CDK4/6 SoC pushes approvals to later lines
+                    <br>• Cultural AE under-reporting in Asia masks true safety profiles
+                    <br>• Lack of OS benefit in mutant populations
+                    <br>• Open-label designs create systematic bias toward drug benefits
+                    <br>• No OS demonstrated in visceral disease subgroups
+                    <br>• Small effect sizes after resistance development
+                    <br>• <strong>Atirmociclib's Position:</strong> FourLight-3 positions against CDK4/6i + letrozole in first-line, potentially elevating SoC if tolerability allows continuous dosing for longer PFS
+                </p>
+                <p class="detail-text mt-2">
+                    <em>Critical Quote: "We want to find out everything we can about what that standard of care compound is and where it's been used, where it's been studied… and then write up a report."</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. PTRS Analysis -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>3. Probability of Technical & Regulatory Success (PTRS) - AI + SME Assessment</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Technical Success</div>
+                    <div class="metric-value">~60%</div>
+                    <div class="metric-detail">Efficacy comparable to SOC</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Regulatory Success</div>
+                    <div class="metric-value">~45%</div>
+                    <div class="metric-detail">Label gating on tolerability</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">GlobalData Estimate</div>
+                    <div class="metric-value">44%</div>
+                    <div class="metric-detail">Phase 3 PTSR for mBC CDK</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">BioMedTracker Analog</div>
+                    <div class="metric-value">~50%</div>
+                    <div class="metric-detail">Selective inhibitors in crowded spaces</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">PTRS Input Factors & Adjustments</h5>
+                <p class="detail-text">
+                    <strong>Biology:</strong> CDK4-dominant in HR+ tumors, precedents in ER+ models
+                    <br><strong>Mechanism Precedents:</strong> Palbociclib approval despite neutropenia
+                    <br><strong>Trial Design:</strong> Powered for PFS non-inferiority
+                    <br><strong>Endpoints:</strong> PFS accepted by regulators
+                    <br><strong>Regulatory Climate:</strong> FDA emphasis on QOL, favoring tolerability improvements amid CDK4/6 patent expiries
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">SME Overlay Adjustments</h5>
+                <p class="detail-text">
+                    <strong>Upward Adjustments:</strong>
+                    <br>• Mechanism advantage: Reduced myelosuppression enables continuous dosing (+10%)
+                    <br>• Safety profile: 23.5% grade ≥3 neutropenia vs 60% for standards (+5%)
+                    <br>• No ILD signals beyond one case (+5%)
+                    <br><br>
+                    <strong>Downward Adjustments:</strong>
+                    <br>• Heterogeneous control risks (-10-15%)
+                    <br>• Comparator variability complicates analyses (-5%)
+                    <br><br>
+                    <strong>Updates Post-Events:</strong> Competitor readouts (CDK2 combos) or positive interim data could boost 5-10%
+                </p>
+                <p class="detail-text mt-2">
+                    <em>Critical Quotes: "We have to estimate the probability that this trial is going to hit and what the label is going to look like." / "We have an AI tool that… generates PTRS… frequently wrong, but… never in doubt. That's why the subject matter expert has to be there."</em>
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.globaldata.com/store/report/atirmociclib-in-solid-tumor-loa-innovation-and-trend-analysis/" target="_blank" class="link-btn">GlobalData PTSR Analysis</a> | 
+                <a href="https://www.pharmaceutical-technology.com/data-insights/atirmociclib-pfizer-metastatic-breast-cancer-likelihood-of-approval/" target="_blank" class="link-btn">Pharmaceutical Technology LoA</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Competitive Intelligence -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>4. Competitive Intelligence - China-Origin Programs & Global Pipeline</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box mb-3">
+                <h5 class="font-semibold mb-2">Competitive Landscape Summary</h5>
+                <p class="detail-text">
+                    The CDK inhibitor space features ~15 assets targeting CDK4/6 or related pathways. Several selective CDK inhibitors are in development, with China-origin programs like BEBT-209 showing early promise but carrying inflation risks in data. Atirmociclib's CDK4 selectivity may offer tolerability edges but faces stiff competition from established agents.
+                </p>
+            </div>
+
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Competitor</th>
+                        <th>Mechanism/Phase/Geography</th>
+                        <th>Trial Design/Key Data</th>
+                        <th>Funding/Licensing</th>
+                        <th>Inflation Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Palbociclib</td>
+                        <td>CDK4/6/Approved/Global</td>
+                        <td>PALOMA-2: PFS 24.8 mo</td>
+                        <td>Pfizer self</td>
+                        <td><span class="status-badge" style="background: #d4f4ec;">Low</span></td>
+                    </tr>
+                    <tr style="background: #fff3cd;">
+                        <td><strong>BEBT-209</strong></td>
+                        <td>CDK4/Phase 1/China</td>
+                        <td>Mono: ORR 11% pretreated</td>
+                        <td>BeBetter internal</td>
+                        <td><span class="status-badge" style="background: #ffcdd2;">High (China-only)</span></td>
+                    </tr>
+                    <tr>
+                        <td>SHR6390</td>
+                        <td>CDK4/6/Phase 3/China-EU</td>
+                        <td>Combo: PFS similar to standards</td>
+                        <td>Hengrui + Affimed out-license ($500M)</td>
+                        <td><span class="status-badge" style="background: #fff3cd;">Medium (bridging)</span></td>
+                    </tr>
+                    <tr>
+                        <td>PF-07104091</td>
+                        <td>CDK2/Phase 1-2/Global</td>
+                        <td>Combo: ORR 28% resistant</td>
+                        <td>Pfizer self</td>
+                        <td><span class="status-badge" style="background: #d4f4ec;">Low</span></td>
+                    </tr>
+                    <tr>
+                        <td>Giredestrant</td>
+                        <td>SERD/Phase 3/Global</td>
+                        <td>Combo potential</td>
+                        <td>Roche</td>
+                        <td><span class="status-badge" style="background: #d4f4ec;">Low</span></td>
+                    </tr>
+                    <tr>
+                        <td>ZB716</td>
+                        <td>CDK4/6/Phase 1/China</td>
+                        <td>Early development</td>
+                        <td>$50M VC funding</td>
+                        <td><span class="status-badge" style="background: #ffcdd2;">High</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">China-Origin Program Risks</h5>
+                <p class="detail-text">
+                    <strong>Data Inflation Patterns:</strong> China-origin early-phase data often looks inflated per investment committee experience
+                    <br><strong>CT.gov/NMPA Entries:</strong> ~7 China-led trials (Phases 1-3, single-arm ORR focus)
+                    <br><strong>Bridging Requirements:</strong> US/EU confirmatory trials needed to validate
+                    <br><strong>Cost Undercutting:</strong> Chinese programs could undercut on cost in Asia markets
+                    <br><strong>Out-Licensing Trends:</strong> Hengrui out-licensed SHR6390 to Affimed for $500M, signaling Western interest
+                    <br><strong>Mitigation:</strong> US/EU confirmatories exist for some (SHR6390); ahead programs like BEBT-209 planning US bridging
+                </p>
+                <p class="detail-text mt-2">
+                    <em>Critical Quotes: "Trials in China and then… planning on expanding to the FDA… America side." / "If… there's two or three breast cancer drugs under development, bigger companies, especially out of China, it's worth looking at all of them from a competitive standpoint."</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Geographic/Cultural Biases -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>5. Geographic/Cultural Biases in AE & PRO Reporting</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Regional Reporting Patterns</h5>
+                <p class="detail-text">
+                    Geographic biases in adverse event reporting, particularly under-reporting in China and Japan due to cultural deference to physicians, could skew trial interpretations. Trials span US/EU (~70%), China/Japan/LatAm (~30%), flagging systematic biases.
+                </p>
+            </div>
+
+            <div class="metric-grid mt-3">
+                <div class="metric-card">
+                    <div class="metric-label">China/Japan AE Under-reporting</div>
+                    <div class="metric-value">20-30%</div>
+                    <div class="metric-detail">Lower rates vs US</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">PRO Missingness</div>
+                    <div class="metric-value">10-15%</div>
+                    <div class="metric-detail">Asia regions</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Zero Reporting</div>
+                    <div class="metric-value">"Bunch of zeros"</div>
+                    <div class="metric-detail">Cultural respect factor</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Benefit Over-reporting</div>
+                    <div class="metric-value">Inflated PROs</div>
+                    <div class="metric-detail">Patient deference</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Cultural Factors & Impact</h5>
+                <p class="detail-text">
+                    <strong>Respect Factor:</strong> In China/Japan, cultural respect leads to systematic under-reporting of adverse events
+                    <br><strong>LatAm Patterns:</strong> Similar issues due to access barriers and protocol compliance culture
+                    <br><strong>FourLight-3 Data:</strong> Global data show consistent safety (neutropenia 23.5%), but China subsets may mask issues
+                    <br><strong>Inflated Efficacy:</strong> Higher CBR in China cohorts could mislead stakeholders
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Mitigation Strategies</h5>
+                <p class="detail-text">
+                    • Investigator-reported AEs prioritized over patient-reported
+                    <br>• PRO tools adapted (EORTC QLQ-C30 validated in Asian languages)
+                    <br>• Enhanced site training on AE capture
+                    <br>• Planned subgroup analyses by region
+                    <br>• BICR for imaging endpoints reduces regional bias
+                    <br>• Regulators may demand US-weighted data for approval
+                    <br>• GSK precedent: "GSK has policy... they redo phase one data in US"
+                </p>
+                <p class="detail-text mt-2">
+                    <em>Critical Quotes: "Because of the respect factor for the physician… you'll get a bunch of zeros in terms of adverse event reporting… on the efficacy side… patient reported outcome… inflated." / "GSK… redo the phase one data in the US… because it's notoriously inflated, and the AEs are underreported."</em>
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.researchgate.net/publication/323203850_Abstract_P3-17-01_Geographic_variation_in_adverse_event_reporting_patterns_in_breast_cancer_clinical_trials" target="_blank" class="link-btn">Geographic Variation in BC Trials</a> | 
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6775706/" target="_blank" class="link-btn">Cultural Factors in PRO Reporting</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Economic/Financing -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>6. Economic/Financing Thresholds & Sponsor Capacity</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box mb-3">
+                <h5 class="font-semibold mb-2">Financial Assessment</h5>
+                <p class="detail-text">
+                    Pfizer's strong financial position, with $14.7 billion in Q2 2025 revenues and multi-billion-dollar cost savings planned, supports Phase 3 development estimated at hundreds of millions, with no apparent red flags in funding thresholds.
+                </p>
+            </div>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Phase 3 Cost Estimate</div>
+                    <div class="metric-value">$200-300M</div>
+                    <div class="metric-detail">FourLight-3 global trial</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Q2 2025 Revenue</div>
+                    <div class="metric-value">$14.7B</div>
+                    <div class="metric-detail">10% growth YoY</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Cost Savings Target</div>
+                    <div class="metric-value">$7.2B</div>
+                    <div class="metric-detail">By 2027</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Near-term Savings</div>
+                    <div class="metric-value">$4.5B</div>
+                    <div class="metric-detail">By 2025 end</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Investment Thresholds & Red Flags</h5>
+                <p class="detail-text">
+                    <strong>Company Threshold:</strong> High - proceeded to Phase 3 despite combo discontinuations
+                    <br><strong>Investor Threshold:</strong> Would require clearer differentiation for external funding
+                    <br><strong>Funding Source:</strong> Self-funded with no BD dependencies
+                    <br><strong>Cash Runway:</strong> Robust, no concerns about trial completion
+                    <br><strong>Partnership Status:</strong> No external funding requirements identified
+                    <br><strong>Red Flags:</strong> None - within Pfizer's oncology budget allocation
+                </p>
+                <p class="detail-text mt-2">
+                    <em>Critical Quote: "Do you want to help fund their phase three program, which is… hundreds of millions… up to a billion. And the company seemed to have a lower threshold for going forward than we do."</em>
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://s206.q4cdn.com/795948973/files/doc_financials/2025/q2/Q2-2025-PFE-Earnings-Release-FINAL.pdf" target="_blank" class="link-btn">Pfizer Q2 2025 Financials</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Operational Disclosure -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>7. Operational Disclosure & Documentation Consistency</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Documentation Review</h5>
+                <p class="detail-text">
+                    Operational disclosures on ClinicalTrials.gov appear consistent, with protocol updates reflecting standard practices and no major gaps in prior work or safety signals. All required documentation aligns across platforms.
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Key Trial Registrations</h5>
+                <p class="detail-text">
+                    <strong>NCT06760637 (FourLight-3):</strong> Phase 3 pivotal, updated protocols, enrollment timely
+                    <br><strong>NCT04557449 (Phase 1/2):</strong> Dose escalation/expansion, consistent safety reporting
+                    <br><strong>NCT05262400 (TACTIVE-I):</strong> CDK4+CDK2 combination, protocol aligned
+                    <br><strong>NCT06086837 (TACTIVE-K):</strong> Vepdegestrant combo, recently discontinued but documented
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Investigator Brochure Alignment</h5>
+                <p class="detail-text">
+                    • IB aligns with CT.gov entries - no DLTs at RP2D documented
+                    <br>• Minor mismatches in dose tweaks explained in protocol amendments
+                    <br>• Prior cohorts and safety signals appropriately disclosed
+                    <br>• No gaps in documentation chain identified
+                    <br>• Protocol versions track changes to control arms and endpoints
+                </p>
+                <p class="detail-text mt-2">
+                    <em>Critical Quote: "In clinicaltrials.gov you will see the prior work… you have to disclose that information in your protocol and your investigator brochure."</em>
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.clinicaltrials.gov/study/NCT06760637" target="_blank" class="link-btn">FourLight-3 Registration</a> | 
+                <a href="https://www.clinicaltrials.gov/study/NCT04557449" target="_blank" class="link-btn">Phase 1/2 Registration</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Line of Therapy/Label Implications -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>8. Line of Therapy & Label Trajectory Analysis</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box mb-3">
+                <h5 class="font-semibold mb-2">Label Positioning Assessment</h5>
+                <p class="detail-text">
+                    Evidence leans toward Atirmociclib being positioned for first-line therapy if successful, similar to precedents like palbociclib, but with potential for a narrower label if safety advantages aren't clearly demonstrated over existing options.
+                </p>
+            </div>
+
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Intended vs Likely Label Position</h5>
+                <p class="detail-text">
+                    <strong>Trial Intent:</strong> First-line per FourLight-3 design
+                    <br><strong>Regulatory Precedent:</strong> Palbociclib approved 1L post-PALOMA-2 supports similar trajectory
+                    <br><strong>FDA/EMA Position:</strong> Likely 1L mono/combo if PFS matches with better safety
+                    <br><strong>Fallback Position:</strong> 2L if non-inferiority fails or safety advantage unclear
+                    <br><strong>SoC Clarity:</strong> Ribociclib OS data in 1L favors broad label if differentiated
+                    <br><strong>Commercial Peak:</strong> ~$1B if achieves differentiated 1L position
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Label Restrictions & Opportunities</h5>
+                <p class="detail-text">
+                    <strong>Potential Restrictions:</strong>
+                    <br>• May require prior palbociclib failure if no clear superiority
+                    <br>• Could be limited to continuous dosing-eligible patients
+                    <br>• Biomarker restrictions unlikely (no CDx required)
+                    <br><br>
+                    <strong>Expansion Opportunities:</strong>
+                    <br>• Adjuvant setting if separate trial initiated
+                    <br>• Combination with novel agents (CDK2i, PROTACs)
+                    <br>• Earlier intervention in high-risk populations
+                </p>
+                <p class="detail-text mt-2">
+                    <em>Critical Quote: "In the United States… approval is usually second line or third line, because we still don't know about that… standard of care squishiness."</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Clinical Data Summary -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>9. Clinical Development Summary & Key Data Points</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Phase 1/2 Results (NCT04557449)</h5>
+                <p class="detail-text">
+                    Early data from Phase 1/2 trials showed promising efficacy in CDK4/6-naïve patients, with an objective response rate (ORR) of 58.8% and clinical benefit rate (CBR) of 94.1% when combined with letrozole in the first-line setting, alongside a favorable safety profile (grade ≥3 neutropenia in 23.5%). Median PFS not reached at 16.5 months follow-up with 74% of patients progression-free. Time to response was 3.7 months median. Safety highlights include continuous dosing feasibility and lower high-grade neutropenia rates compared to standards (23.5% vs 60-70% for palbociclib). The median relative dose intensity was 99.3%, with 85% of patients maintaining ≥90% of intended dose intensity.
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">FourLight-3 Phase 3 Design</h5>
+                <p class="detail-text">
+                    The ongoing Phase 3 FourLight-3 trial (NCT06760637) compares atirmociclib + letrozole to physician's choice of approved CDK4/6 inhibitors + letrozole, with progression-free survival (PFS) as the primary endpoint. Open-label, randomized study enrolling ~500-1020 patients (sources vary), stratified for non-inferiority or superiority in PFS. Global enrollment including China sites enables NMPA submission. Primary endpoint assessed by blinded independent central review (BICR). Secondary endpoints include OS, ORR, DoR, CBR, safety, and patient-reported outcomes. As of August 2025, the trial is recruiting globally with completion expected in August 2026.
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Combination Development Updates</h5>
+                <p class="detail-text">
+                    <strong>TACTIVE-I (NCT05262400):</strong> Atirmociclib + CDK2 inhibitor (PF-07104091) in resistant disease shows early feasibility with partial responses in pretreated patients, addressing Cyclin E/CDK2-mediated resistance
+                    <br><br>
+                    <strong>Vepdegestrant Discontinuation:</strong> Recent developments include the discontinuation of planned combinations with vepdegestrant (ARV-471) in first- and second-line settings, signaling a focus on monotherapy paths and strategic reprioritization
+                    <br><br>
+                    <strong>FourLight-1 Downscoping:</strong> Originally planned as ~500-patient Phase 3 for second-line, downscoped to ~333-patient Phase 2, signaling reduced confidence in post-CDK4/6 cycling strategy
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.onclive.com/view/atirmociclib-plus-letrozole-demonstrates-preliminary-efficacy-and-safety-in-hr-her2-negative-metastatic-breast-cancer" target="_blank" class="link-btn">OncLive Phase 1/2 Results</a> | 
+                <a href="https://www.cell.com/cancer-cell/fulltext/S1535-6108%2825%2900058-3" target="_blank" class="link-btn">Cancer Cell Publication</a> | 
+                <a href="https://x.com/antgiorda/status/1958959901428138287" target="_blank" class="link-btn">Dr. Giordano Update</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Strategic Context -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>10. Strategic Context & Market Dynamics</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Patent Cliff & Strategic Importance</h5>
+                <p class="detail-text">
+                    Pfizer faces significant revenue loss between 2025-2030 from patent expiries including Ibrance (2027). Atirmociclib is strategically critical to maintain breast cancer franchise leadership and offset ~$3-4B annual Ibrance revenue loss. The program aligns with Pfizer's need to transition from Ibrance while maintaining market presence.
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Differentiation Strategy</h5>
+                <p class="detail-text">
+                    Unlike approved pan-CDK4/6 inhibitors (palbociclib, ribociclib, abemaciclib), which inhibit both CDK4 and CDK6, atirmociclib's selectivity aims to preserve efficacy—particularly in ER+ tumors reliant on CDK4—while enabling continuous dosing and reducing dose interruptions. Preclinical data support superior anti-tumor activity in CDK4-dependent models, with reduced impact on hematopoietic cells. The ~20-fold greater selectivity for CDK4 over CDK6 compared to palbociclib addresses the hypothesis that CDK6 inhibition contributes disproportionately to myelosuppression without being necessary for anti-tumor efficacy in ER+ breast cancer.
+                </p>
+            </div>
+
+            <div class="data-card mt-3">
+                <h5 class="font-semibold text-green-700 mb-2">Recent Pipeline Updates</h5>
+                <p class="detail-text">
+                    As of August 2025, updated pipeline listings confirm ongoing development despite recent partnership adjustments. The discontinuation of vepdegestrant combinations signals strategic focus on monotherapy differentiation. Program remains in active Phase 3 development per Pfizer's official pipeline updates.
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.pfizer.com/science/drug-product-pipeline" target="_blank" class="link-btn">Pfizer Pipeline</a> | 
+                <a href="https://www.pfizeroncologydevelopment.com/molecule/cdk4-inhibitor" target="_blank" class="link-btn">Pfizer Oncology Development</a> | 
+                <a href="https://www.nature.com/articles/s41417-024-00747-x" target="_blank" class="link-btn">Nature CDK4 Selectivity</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Committee Bottom Line -->
+    <div class="highlight-box mt-6">
+        <h4 class="font-semibold mb-3">Investment Committee Bottom Line Assessment</h4>
+        <p class="detail-text">
+            <strong>PTRS Composite Score:</strong> 40-50% probability of achieving first-line label with meaningful differentiation
+            <br><br>
+            <strong>Key Value Drivers:</strong>
+            <br>• 3-fold reduction in Grade 3/4 neutropenia enables continuous dosing
+            <br>• Strong Phase 1/2 efficacy signals (ORR 58.8%, CBR 94.1%)
+            <br>• First-mover advantage in CDK4-selective class
+            <br>• Pfizer's execution capabilities and infrastructure
+            <br><br>
+            <strong>Critical Risk Factors:</strong>
+            <br>• Heterogeneous comparator arm complicates superiority claims
+            <br>• Geographic bias in global trials may mask true safety profile
+            <br>• Generic palbociclib competition at launch (2027)
+            <br>• China-origin competitors with cost advantages
+            <br>• No biomarker enrichment strategy
+            <br><br>
+            <strong>Investment Decision Framework:</strong>
+            <br>• Phase 3 requires $200-300M investment through completion
+            <br>• Interim analysis at 50% events (2026) critical inflection point
+            <br>• Need HR ≤0.80 or clear safety advantage for commercial success
+            <br>• Label likely first-line if tolerability advantage demonstrated
+            <br>• Peak sales $1-2B base case if differentiated from generics
+            <br><br>
+            <strong>Recommendation:</strong> Proceed with heightened monitoring of geographic subgroup analyses, competitive readouts, and interim safety signals. Success hinges on demonstrating continuous dosing advantage translates to improved outcomes.
+        </p>
+    </div>
+</div>
             <!-- Clinical & Regulatory Tab -->
-            <div id="clinical" class="tab-content active">
+            <div id="clinical" class="tab-content">
                 <div class="section-title">1. Clinical & Regulatory Diligence</div>
                 
                 <!-- Trial Design & Endpoints -->
@@ -1859,7 +2478,7 @@
             </div>
 
             <!-- Complete Trial Analysis Tab -->
-            <div id="trials" class="tab-content">
+            <div id="oldtrials" class="tab-content">
                 <div class="section-title">8. Complete Clinical Trial Portfolio</div>
 
                 <!-- Trial Timeline -->
@@ -2080,6 +2699,624 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Complete Trial Analysis Tab -->
+<div id="trials" class="tab-content">
+    <div class="section-title">8. Complete Clinical Trial Portfolio Analysis</div>
+
+    <!-- Critical Diligence Framework -->
+    <div class="highlight-box mb-6">
+        <h4 class="font-semibold mb-2">Investment Committee Trial Assessment Framework</h4>
+        <p class="detail-text">
+            This comprehensive analysis addresses all critical Phase 1-3 diligence requirements including DLT windows, AE/PRO capture methodology, control arm justification, regional bias mitigation, and regulatory alignment per investment committee standards.
+        </p>
+    </div>
+
+    <!-- Trial Timeline -->
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+        <!-- Phase 1/2a First-in-Human -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2020-2024</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">Phase 1/2a First-in-Human Dose Escalation (NCT04557449)</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Trial Design & Control Strategy</h5>
+                    <p class="detail-text">
+                        <strong>Blinding/Control:</strong> Open-label, non-randomized, multicenter dose-escalation → purely signal-finding with no control arm. Single-arm design means "treatment effect" inferred against historical benchmarks only.
+                        <br><strong>Comparator Frame:</strong> No placebo anchor or concurrent control. Efficacy contextualized against known letrozole monotherapy outcomes (historical ORR ~20-30% in 1L).
+                        <br><strong>Design Rationale:</strong> Standard Phase 1 approach per FDA guidance - establishing MTD/RP2D before controlled studies.
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">DLT/MTD/RP2D Determination</h5>
+                    <p class="detail-text">
+                        <strong>DLT Window:</strong> Cycle 1, Day 1-28 (explicitly listed as primary safety readout)
+                        <br><strong>DLT Criteria:</strong> CTCAE v5.0 grading. Protocol-specific definitions not publicly disclosed but likely include:
+                        <br>• Grade 4 neutropenia ≥7 days
+                        <br>• Febrile neutropenia any duration
+                        <br>• Grade ≥3 non-hematologic toxicity (except manageable nausea/vomiting)
+                        <br>• Treatment delay >14 days due to toxicity
+                        <br><strong>Dose Escalation:</strong> Modified 3+3 design, tested 30mg to 500mg BID
+                        <br><strong>MTD:</strong> Not reached (no DLTs up to 500mg BID)
+                        <br><strong>RP2D Selected:</strong> 300mg BID continuous based on optimal efficacy/tolerability balance
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">AE/PRO Capture Methodology</h5>
+                    <p class="detail-text">
+                        <strong>AE Collection:</strong> Investigator-elicited using CTCAE v5.0
+                        <br>• Weekly visits during Cycles 1-2
+                        <br>• Every 28 days thereafter
+                        <br>• Serious AEs tracked through 28 days post-last dose
+                        <br><strong>PRO Tools:</strong> None specified for Phase 1/2a - relies entirely on investigator assessment
+                        <br><strong>Risk:</strong> Without PROs, subjective toxicities (fatigue, nausea) may be under-reported, especially in Asian sites
+                        <br><strong>Lab Monitoring:</strong> CBC weekly Cycle 1, then Day 1 & 15 each cycle; chemistry monthly
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Regional/Site Effects & Bias Risk</h5>
+                    <p class="detail-text">
+                        <strong>Geographic Mix:</strong> US, EU, Argentina, China, Japan sites
+                        <br><strong>China/Japan Cohorts:</strong> Dedicated monotherapy arms for PK/safety bridging
+                        <br><strong>Cultural Bias Risk:</strong> HIGH - Asian sites historically show:
+                        <br>• Lower AE reporting rates ("respect factor" - patients reluctant to complain)
+                        <br>• Inflated efficacy signals
+                        <br>• "Bunch of zeros" in AE reporting per investment committee experience
+                        <br><strong>Mitigation:</strong> Limited - no central review, no PRO tools, investigator-dependent
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Key Results - Cohort 2B (1L with Letrozole)</h5>
+                    <p class="detail-text">
+                        <strong>n=34 patients:</strong> CDK4/6i-naïve, 1L HR+/HER2- MBC
+                        <br><strong>Efficacy Signals:</strong>
+                        <br>• ORR: 58.8% (all partial responses)
+                        <br>• CBR: 94.1%
+                        <br>• Median PFS: Not reached (74% progression-free at 16.5 months)
+                        <br>• Median DoR: Not reached
+                        <br><strong>Safety Profile:</strong>
+                        <br>• Any TRAE: 97%
+                        <br>• Grade ≥3 TRAE: 33-41%
+                        <br>• Grade ≥3 neutropenia: 23.5%
+                        <br>• Serious AEs: ~6%
+                        <br>• Discontinuation for AE: <3%
+                        <br>• Dose reductions: 9%
+                        <br>• Dose interruptions: 38%
+                        <br>• Median RDI: 99.3%
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-high"></div>
+                    <div>
+                        <strong>Investment Risk:</strong> Uncontrolled, open-label design with no placebo anchor means true treatment effect cannot be determined. Historical comparisons unreliable. Asian site inclusion without PROs creates systematic bias toward favorable benefit-risk profile.
+                    </div>
+                </div>
+
+                <div class="reference-list">
+                    Sources: ClinicalTrials.gov NCT04557449 | Yale Medicine | OncLive | Pfizer HCP Portal
+                </div>
+            </div>
+        </div>
+
+        <!-- TACTIVE-I Phase 1b/2 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024-2026</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">TACTIVE-I Phase 1b/2 - CDK4 + CDK2 Combination (NCT05262400)</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Trial Design & Innovation</h5>
+                    <p class="detail-text">
+                        <strong>Design:</strong> Open-label dose escalation → expansion, no control arm
+                        <br><strong>Innovation:</strong> Dual CDK4 (atirmociclib) + CDK2 (PF-07104091) inhibition
+                        <br><strong>Rationale:</strong> Target Cyclin E/CDK2-mediated resistance after CDK4/6i failure
+                        <br><strong>Population:</strong> ER+/HER2- MBC with prior CDK4/6i (resistant population)
+                        <br><strong>Target n:</strong> ~192 across dose escalation and three expansion cohorts
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Cohort Definitions & Sample Size Logic</h5>
+                    <p class="detail-text">
+                        <strong>Dose Escalation:</strong> Standard 3+3 to find RP2D of combination
+                        <br><strong>Expansion Cohorts:</strong>
+                        <br>• 2A: Post-CDK4/6i progression, heavily pretreated
+                        <br>• 2B: Post-CDK4/6i, less heavily pretreated
+                        <br>• 2C: CDK4/6i-naïve (exploratory)
+                        <br><strong>Sample Size Rationale:</strong> Not posted publicly - typical Phase 1b sizing for safety/preliminary efficacy
+                        <br><strong>Statistical Power:</strong> Not powered for formal hypothesis testing
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">DLT Window & Safety Assessment</h5>
+                    <p class="detail-text">
+                        <strong>DLT Window:</strong> First cycle (Day 1-28) per EU CTR
+                        <br><strong>Grading:</strong> CTCAE v5.0
+                        <br><strong>DMC:</strong> None listed - investigator-driven safety decisions
+                        <br><strong>AE Collection:</strong> Investigator-elicited, no PRO tools specified
+                        <br><strong>Safety Run-in:</strong> Each cohort has safety run-in before full enrollment
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Biomarker Strategy & Enrichment</h5>
+                    <p class="detail-text">
+                        <strong>Biomarker Enrichment:</strong> NONE - no mandated Cyclin E or ESR1 testing
+                        <br><strong>Risk per Investment Committee:</strong> "Problem is fundamentally the validation of the biomarker... they need to have a control arm"
+                        <br><strong>Exploratory Biomarkers:</strong> May collect but not used for enrollment
+                        <br><strong>Impact:</strong> Without validated biomarker + control, results "won't inform" per diligence standards
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Regional Mix & Consistency</h5>
+                    <p class="detail-text">
+                        <strong>Sites:</strong> Argentina, Brazil, Mexico, South Africa, multiple EU states
+                        <br><strong>No China Origin:</strong> Avoids worst Asia bias but LatAm sites have own issues
+                        <br><strong>Per-Region Analysis:</strong> Needed but not guaranteed in small n
+                        <br><strong>Cultural Factors:</strong> LatAm tendency toward protocol compliance may mask AEs
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-high"></div>
+                    <div>
+                        <strong>Investment Risk:</strong> No biomarker validation, no control arm, no PROs = limited informative value. Cannot determine if CDK2 addition truly overcomes resistance without comparator.
+                    </div>
+                </div>
+
+                <div class="reference-list">
+                    Sources: ClinicalTrials.gov NCT05262400 | EU Clinical Trials Register | Pfizer Pipeline
+                </div>
+            </div>
+        </div>
+
+        <!-- TACTIVE-K Phase 1b/2 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024-2027</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">TACTIVE-K Phase 1b/2 - Atirmociclib + Vepdegestrant (NCT06206837)</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Strategic Combination Rationale</h5>
+                    <p class="detail-text">
+                        <strong>Design:</strong> Dose-finding → expansion, open-label, no control
+                        <br><strong>Innovation:</strong> CDK4i + PROTAC ER degrader (chemotherapy-free doublet)
+                        <br><strong>Population:</strong> ER+ MBC, enriched for ESR1 mutations
+                        <br><strong>Strategic Value:</strong> Creates proprietary combination beyond generic reach
+                        <br><strong>Future:</strong> If successful, Phase 3 1L trial planned late 2025
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Cohort & Biomarker Strategy</h5>
+                    <p class="detail-text">
+                        <strong>ESR1 Enrichment:</strong> Strong biological rationale but no validated CDx required
+                        <br><strong>Sample Size:</strong> Not posted - typical Phase 1b (30-60 patients expected)
+                        <br><strong>Dose Levels:</strong> Testing atirmociclib 200-300mg with vepdegestrant standard dose
+                        <br><strong>Go/No-Go:</strong> Likely ORR >40% in ESR1-mut to justify Phase 3
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">DLT & Safety Monitoring</h5>
+                    <p class="detail-text">
+                        <strong>DLT Window:</strong> Standard Cycle 1 (28 days) expected
+                        <br><strong>Key Safety Focus:</strong> Overlapping hematologic toxicity
+                        <br><strong>PROs:</strong> Not listed for early phase
+                        <br><strong>DDI Risk:</strong> Both drugs metabolized via CYP3A4 - monitoring required
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-medium"></div>
+                    <div>
+                        <strong>Investment Risk:</strong> Strong biological rationale but no control arm limits interpretation. Success depends on vepdegestrant approval (currently under FDA review).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FourLight-1 Phase 2 -->
+        <div class="timeline-item">
+            <div class="timeline-dot" style="background: #ffc107;"></div>
+            <div class="timeline-date">2025-2028</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">⚠️ FourLight-1 Phase 2 - DOWNSCOPED (NCT06105632)</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Strategic Deprioritization (March 2025)</h5>
+                    <p class="detail-text">
+                        <strong>Original Plan:</strong> ~500-patient Phase 3 for 2nd-line post-CDK4/6i
+                        <br><strong>Revised:</strong> ~333-patient Phase 2, no longer registrational
+                        <br><strong>Reason:</strong> "Cycling CDK inhibitors in 2L has limited value"
+                        <br><strong>New Design:</strong> Randomized, open-label, active control
+                        <br><strong>Arms:</strong> 
+                        <br>• Atirmociclib + fulvestrant
+                        <br>• Investigator's choice (fulvestrant ± everolimus/exemestane)
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Control Arm Justification</h5>
+                    <p class="detail-text">
+                        <strong>Active Control Rationale:</strong> Both fulvestrant and everolimus+exemestane are credible post-CDK4/6i SoCs
+                        <br><strong>Investigator's Choice Issue:</strong> Creates "squishiness" - different controls dilute treatment effect
+                        <br><strong>FDA Alignment:</strong> Active control acceptable but heterogeneity problematic
+                        <br><strong>Missing:</strong> No placebo+SoC arm to measure true treatment effect
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Sample Size & Power Assumptions</h5>
+                    <p class="detail-text">
+                        <strong>N=333:</strong> Reduced from 500 (signal Pfizer's reduced confidence)
+                        <br><strong>Power Calculation:</strong> NOT POSTED - "finger in the wind" per investment committee
+                        <br><strong>Expected HR:</strong> Likely targeting 0.6-0.7 for PFS
+                        <br><strong>Alpha:</strong> Not specified (likely 0.10-0.20 for Phase 2)
+                        <br><strong>Event-driven:</strong> Approximately 220 PFS events expected
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Primary Endpoint Strategy</h5>
+                    <p class="detail-text">
+                        <strong>Primary:</strong> PFS by INVESTIGATOR assessment (not BICR)
+                        <br><strong>Risk:</strong> Open-label + investigator assessment = bias toward drug
+                        <br><strong>Secondary:</strong> OS, ORR, DoR, CBR, safety
+                        <br><strong>Hierarchy:</strong> Not specified - likely no formal alpha control
+                        <br><strong>Interims:</strong> Not posted publicly
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">PRO Collection - BEST DOCUMENTED</h5>
+                    <p class="detail-text">
+                        <strong>PRO Tools:</strong> 
+                        <br>• EQ-5D-5L (generic QoL)
+                        <br>• EORTC QLQ-C30 (cancer-specific)
+                        <br>• EORTC QLQ-BR23 (breast cancer module)
+                        <br><strong>Schedule:</strong>
+                        <br>• Screening
+                        <br>• Days 1 & 15 of Cycles 1-2
+                        <br>• Day 1 of Cycles 3-6
+                        <br>• Every 2 cycles from Cycle 8
+                        <br><strong>Strength:</strong> First trial with robust PRO methodology
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Regional Risks</h5>
+                    <p class="detail-text">
+                        <strong>Sites:</strong> China, India, Japan, EU, US - broad global mix
+                        <br><strong>China/India Risk:</strong> Known AE under-reporting
+                        <br><strong>Mitigation:</strong> PRO tools help but cultural bias remains
+                        <br><strong>Analysis Plan:</strong> Must slice AE/efficacy by region
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">PTRS Considerations</h5>
+                    <p class="detail-text">
+                        <strong>Benchmarks:</strong> 
+                        <br>• Fulvestrant alone: PFS ~2-3 months post-CDK4/6i
+                        <br>• Everolimus+exemestane: PFS ~4-6 months
+                        <br><strong>Success Threshold:</strong> Need HR <0.7 to justify Phase 3
+                        <br><strong>SME Input Needed:</strong> Is cycling CDK inhibitors viable?
+                        <br><strong>Literature Triangulation:</strong> EMERALD, PADA-1, other post-CDK trials
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-high"></div>
+                    <div>
+                        <strong>Investment Risk:</strong> Downscoping signals lack of confidence. Investigator-assessed PFS without BICR unreliable. Heterogeneous control arm dilutes effect. Limited commercial value in 2L.
+                    </div>
+                </div>
+
+                <div class="reference-list">
+                    Sources: ClinicalTrials.gov NCT06105632 | Pfizer HCP Portal | Health Research Authority
+                </div>
+            </div>
+        </div>
+
+        <!-- FourLight-3 Phase 3 PIVOTAL -->
+        <div class="timeline-item">
+            <div class="timeline-dot" style="background: #084298;"></div>
+            <div class="timeline-date">2025-2037</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">🎯 FourLight-3 Phase 3 PIVOTAL - First-Line (NCT06760637)</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Pivotal Trial Design</h5>
+                    <p class="detail-text">
+                        <strong>Design:</strong> Open-label, randomized 1:1, global multicenter
+                        <br><strong>Population:</strong> 1st-line HR+/HER2- MBC, no prior systemic therapy for advanced disease
+                        <br><strong>N=1020:</strong> Event-driven (likely ~600 PFS events)
+                        <br><strong>Arms:</strong>
+                        <br>• Atirmociclib 300mg BID + letrozole 2.5mg QD
+                        <br>• Investigator's choice CDK4/6i (palbo/ribo/abema) + letrozole
+                        <br><strong>Investment:</strong> $300-500M+ commitment
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Control Arm Analysis</h5>
+                    <p class="detail-text">
+                        <strong>Why Acceptable:</strong> Head-to-head vs true 1L SoC (CDK4/6i + AI)
+                        <br><strong>Squishiness Problem:</strong> Three different CDK4/6is allowed
+                        <br>• Palbociclib: ~25-month median PFS
+                        <br>• Ribociclib: ~25-month median PFS
+                        <br>• Abemaciclib: ~28-month median PFS
+                        <br><strong>Heterogeneity Impact:</strong> Dilutes observed differences
+                        <br><strong>Missing Stratification:</strong> Should stratify by chosen CDK4/6i
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Statistical Analysis Plan</h5>
+                    <p class="detail-text">
+                        <strong>Primary:</strong> PFS by BICR (mitigates open-label bias)
+                        <br><strong>Design:</strong> Likely non-inferiority → superiority testing
+                        <br><strong>NI Margin:</strong> Not posted (typically HR 1.20-1.30)
+                        <br><strong>Power:</strong> 80-90% for NI, ~50% for superiority
+                        <br><strong>Alpha Split:</strong> Not specified publicly
+                        <br><strong>Hierarchy:</strong> PFS → OS → ORR → PROs
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Interim Analyses & Futility</h5>
+                    <p class="detail-text">
+                        <strong>Interims:</strong> Not posted but expected at 50% and 75% of events
+                        <br><strong>DMC:</strong> Independent committee likely in place
+                        <br><strong>Futility Boundary:</strong> Probably HR >1.0 at interim
+                        <br><strong>Early Stop for Efficacy:</strong> Unlikely given NI design
+                        <br><strong>Crossover:</strong> Policy not stated - critical for OS power
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Sample Size Assumptions</h5>
+                    <p class="detail-text">
+                        <strong>Control PFS:</strong> ~25 months (weighted average of CDK4/6is)
+                        <br><strong>Target HR:</strong> 0.80 for superiority claim
+                        <br><strong>Accrual:</strong> 24-30 months
+                        <br><strong>Follow-up:</strong> Additional 24+ months for events
+                        <br><strong>Total Timeline:</strong> 4-5 years to primary analysis
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">PRO & AE Capture</h5>
+                    <p class="detail-text">
+                        <strong>AEs:</strong> Investigator-reported CTCAE v5.0
+                        <br><strong>PROs:</strong> "QoL" mentioned but instruments not specified
+                        <br><strong>Expected:</strong> EORTC QLQ-C30/BR23, EQ-5D-5L
+                        <br><strong>BICR:</strong> Central imaging for primary endpoint (key strength)
+                        <br><strong>Regional Monitoring:</strong> Critical given global sites including China
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Line of Therapy Implications</h5>
+                    <p class="detail-text">
+                        <strong>1L Positioning:</strong> Direct competition with established CDK4/6is
+                        <br><strong>Differentiation Needed:</strong> Must show better safety (less neutropenia)
+                        <br><strong>US Practice:</strong> Would replace palbociclib/ribociclib/abemaciclib
+                        <br><strong>Label:</strong> "In combination with AI for 1L HR+/HER2- MBC"
+                        <br><strong>Exclusions:</strong> No CNS disease, no early relapse on adjuvant CDK4/6i
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Regional Strategy & China Inclusion</h5>
+                    <p class="detail-text">
+                        <strong>Global Sites:</strong> US, EU, China, Japan, Korea, Taiwan, LatAm
+                        <br><strong>China Risk:</strong> Known AE under-reporting, efficacy inflation
+                        <br><strong>Mitigation:</strong> 
+                        <br>• BICR reduces imaging bias
+                        <br>• Plan per-region safety analysis
+                        <br>• Monitor site-level data quality
+                        <br><strong>Regulatory:</strong> China inclusion enables NMPA submission
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Go/No-Go Investment Thresholds</h5>
+                    <p class="detail-text">
+                        <strong>Company Bar:</strong> Non-inferiority likely sufficient
+                        <br><strong>Investor Bar:</strong> Need superiority or major safety advantage
+                        <br><strong>Budget:</strong> $300-500M through completion
+                        <br><strong>Decision Points:</strong>
+                        <br>• Interim 1 (50% events): Continue if HR <1.0
+                        <br>• Interim 2 (75% events): Continue if trending toward NI
+                        <br>• Final: Approve if meets NI, celebrate if superior
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-medium"></div>
+                    <div>
+                        <strong>Investment Assessment:</strong> Well-designed pivotal with BICR and appropriate control. Heterogeneous comparator and open-label design are weaknesses. Success requires demonstrating meaningful safety advantage to justify switching from established CDK4/6is.
+                    </div>
+                </div>
+
+                <div class="reference-list">
+                    Sources: ClinicalTrials.gov NCT06760637 | Dana-Farber | ASCO | Pfizer Pipeline
+                </div>
+            </div>
+        </div>
+
+        <!-- Regional Bridging Studies -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023-2024</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">Regional Bridging Studies - Critical for Global Filing</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">China PK/Safety Study (NCT05732428)</h5>
+                    <p class="detail-text">
+                        <strong>Design:</strong> Open-label, single-arm in Chinese patients
+                        <br><strong>N=9:</strong> Small bridging study for NMPA
+                        <br><strong>Dose:</strong> 300mg BID (RP2D from global study)
+                        <br><strong>Primary:</strong> PK parameters (Cmax, AUC, T1/2)
+                        <br><strong>Key Finding:</strong> Exposure comparable to Western populations
+                        <br><strong>Safety:</strong> No new signals but n too small to detect differences
+                        <br><strong>AE Risk:</strong> Chinese studies show "bunch of zeros" in AE reporting
+                        <br><strong>Mitigation:</strong> Required for NMPA but don't rely on safety data
+                    </p>
+                </div>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Japan PK Study (NCT05463952)</h5>
+                    <p class="detail-text">
+                        <strong>Purpose:</strong> PMDA requirement for Japanese approval
+                        <br><strong>Design:</strong> Similar to China study
+                        <br><strong>Results:</strong> Comparable PK, no new safety signals
+                        <br><strong>Cultural Factor:</strong> Japanese patients also under-report AEs
+                        <br><strong>Impact:</strong> Enables inclusion in global trials
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">US Re-Run Requirements</h5>
+                    <p class="detail-text">
+                        <strong>Pfizer Approach:</strong> Did NOT re-run Phase 1 in US after Asia data
+                        <br><strong>GSK Precedent:</strong> "GSK has policy... they redo phase one data in US"
+                        <br><strong>Risk:</strong> Asia Phase 1 data "notoriously inflated, AEs underreported"
+                        <br><strong>Mitigation:</strong> Global Phase 1 included US sites from start
+                        <br><strong>Recommendation:</strong> Require US/EU patient subset analysis
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-high"></div>
+                    <div>
+                        <strong>Critical Due Diligence:</strong> Request region-stratified safety and efficacy data. Chinese/Japanese cohorts likely show lower AE rates and higher response rates. Weight US/EU data more heavily in benefit-risk assessment.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comprehensive Trial Comparison Table -->
+    <div class="subsection-title">Complete Trial Portfolio Summary</div>
+    <table class="trial-table">
+        <thead>
+            <tr>
+                <th>Trial</th>
+                <th>Phase</th>
+                <th>N</th>
+                <th>Control</th>
+                <th>Blinding</th>
+                <th>Primary</th>
+                <th>Key Issues</th>
+                <th>Investment Risk</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>NCT04557449</td>
+                <td>1/2a</td>
+                <td>~100</td>
+                <td>None</td>
+                <td>Open</td>
+                <td>MTD/RP2D</td>
+                <td>No PROs, Asia bias</td>
+                <td><span class="text-yellow-600">Medium</span></td>
+            </tr>
+            <tr>
+                <td>TACTIVE-I</td>
+                <td>1b/2</td>
+                <td>192</td>
+                <td>None</td>
+                <td>Open</td>
+                <td>Safety</td>
+                <td>No biomarker validation</td>
+                <td><span class="text-red-600">High</span></td>
+            </tr>
+            <tr>
+                <td>TACTIVE-K</td>
+                <td>1b/2</td>
+                <td>TBD</td>
+                <td>None</td>
+                <td>Open</td>
+                <td>Safety</td>
+                <td>Depends on vepdegestrant</td>
+                <td><span class="text-yellow-600">Medium</span></td>
+            </tr>
+            <tr>
+                <td>FourLight-1</td>
+                <td>2</td>
+                <td>333</td>
+                <td>Active</td>
+                <td>Open</td>
+                <td>PFS (INV)</td>
+                <td>Downscoped, heterogeneous control</td>
+                <td><span class="text-red-600">High</span></td>
+            </tr>
+            <tr style="background: #f0f7f6;">
+                <td><strong>FourLight-3</strong></td>
+                <td><strong>3</strong></td>
+                <td><strong>1020</strong></td>
+                <td><strong>Active</strong></td>
+                <td><strong>Open</strong></td>
+                <td><strong>PFS (BICR)</strong></td>
+                <td><strong>Pivotal - needs safety edge</strong></td>
+                <td><span class="text-green-600"><strong>Medium</strong></span></td>
+            </tr>
+            <tr>
+                <td>China Bridge</td>
+                <td>1</td>
+                <td>9</td>
+                <td>None</td>
+                <td>Open</td>
+                <td>PK</td>
+                <td>AE under-reporting</td>
+                <td><span class="text-yellow-600">Low</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Investment Committee Summary -->
+    <div class="highlight-box mt-6">
+        <h4 class="font-semibold mb-3">Investment Committee Clinical Assessment</h4>
+        <p class="detail-text">
+            <strong>Program Maturity:</strong> Mixed - strong Phase 1/2a signal but strategic uncertainty shown by FourLight-1 downscoping
+            <br><br>
+            <strong>Key Strengths:</strong>
+            <br>• Compelling 1L efficacy (ORR 58.8%, PFS >16 months)
+            <br>• Differentiated safety profile (less neutropenia)
+            <br>• FourLight-3 well-designed with BICR
+            <br><br>
+            <strong>Critical Weaknesses:</strong>
+            <br>• No placebo-controlled data (all vs active or uncontrolled)
+            <br>• Asia site bias not adequately mitigated
+            <br>• Limited value proposition vs generic CDK4/6is
+            <br>• FourLight-1 downscoping signals internal doubts
+            <br><br>
+            <strong>Investment Decision Factors:</strong>
+            <br>• FourLight-3 interim at 50% events (2027) - key inflection
+            <br>• Need HR ≤0.80 or major safety advantage to justify
+            <br>• $300-500M capital requirement through approval
+            <br>• Competition from 3 established CDK4/6is going generic
+        </p>
+    </div>
+</div>
         </div>
 
         <!-- Investment Summary Section -->

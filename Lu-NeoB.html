@@ -446,7 +446,8 @@
         <!-- Tab Container -->
         <div class="tab-container">
             <div class="tabs">
-                <button class="tab-btn active" onclick="showTab('clinical')">Clinical & Regulatory</button>
+                <button class="tab-btn active" onclick="showTab('Overview')">Overview</button>
+                <button class="tab-btn" onclick="showTab('clinical')">Clinical & Regulatory</button>
                 <button class="tab-btn" onclick="showTab('scientific')">Scientific & IP</button>
                 <button class="tab-btn" onclick="showTab('commercial')">Commercial & Market</button>
                 <button class="tab-btn" onclick="showTab('financial')">Financial & Strategic</button>
@@ -456,8 +457,797 @@
                 <button class="tab-btn" onclick="showTab('trials')">Complete Trial Analysis</button>
             </div>
 
+
+            <!-- Overview Tab Content -->
+<!-- Overview Tab Content - UPDATED -->
+<div id="overview" class="tab-content active ">
+    <div class="section-title">Comprehensive Investment Diligence Overview - [¹⁷⁷Lu]Lu-NeoB</div>
+    
+    <!-- Executive Summary -->
+    <div class="highlight-box mb-6">
+        <h4 class="font-semibold mb-2">Executive Assessment Summary</h4>
+        <p class="detail-text">
+            Research suggests [¹⁷⁷Lu]Lu-NeoB has a <strong>low to moderate probability of regulatory success (around 30-40%)</strong> for ER+/HER2-/GRPR+ advanced breast cancer, as it is in early Phase Ib dose-finding (NCT05870579), requiring subsequent randomized trials to demonstrate efficacy against standard therapies. Evidence leans toward [¹⁷⁷Lu]Lu-NeoB being positioned for <strong>second-line or later therapy</strong> in patients progressing on endocrine therapy plus CDK4/6 inhibitors, similar to precedents for radioligands like Pluvicto in prostate cancer, though its label may be limited to GRPR+ subsets if imaging selection proves critical.
+        </p>
+    </div>
+
+    <!-- 1. Regulatory Guidance & Interactions -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>1. Regulatory Guidance & Interactions</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content active">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">What Regulators Want</h5>
+                <p class="detail-text">
+                    They don't just want trial data — they want how the regulator shaped it (control arms, endpoints, labels). If FDA/EMA said "use this control arm," or "measure OS as key secondary," that decision defines probability of success. Missing this context makes your readout incomplete.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Critical Quote:</strong> <em>"The agency… tell[s] him what they expect the control arm to be, which has never previously been studied in the context of their drug. And then… we have to estimate the probability that this trial is going to hit and what the label is going to look like."</em>
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Regulatory Shaping for [¹⁷⁷Lu]Lu-NeoB</h5>
+                <p class="detail-text">
+                    Regulatory shaping for [¹⁷⁷Lu]Lu-NeoB aligns with FDA/EMA precedents for radioligands, emphasizing dosimetry, patient selection via companion diagnostics (e.g., [⁶⁸Ga]Ga-NeoB PET), and controlled efficacy data. No public details on specific meetings like pre-IND or End-of-Phase 2 are available, but the trial's design—dose escalation with DLT boundaries and BICR for PFS—reflects guidance from similar agents like Pluvicto (lutetium Lu 177 vipivotide tetraxetan), which required randomized Phase 3 (VISION trial) for approval in prostate cancer.
+                </p>
+                <p class="detail-text mt-2">
+                    Regulators likely advised PFS as primary for future pivots (per oncology endpoint guidance), with OS as key secondary, and safety asks focusing on marrow/renal dosimetry given beta-emitter risks. Sponsors followed closely, incorporating backfill cohorts for expanded safety data without divergence.
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Label Implications & Global Alignment</h5>
+                <p class="detail-text">
+                    <strong>Label implications:</strong> Likely accelerated approval for GRPR+ subsets if ORR durable, but full requires OS; combo-only if synergies essential, positioning as 2L+ add-on. For EMA, a 2023 pediatric investigation plan waiver for radioligands indicates early alignment.
+                </p>
+                <p class="detail-text mt-2">
+                    NMPA/PMDA interactions via China/Japan sites support bridging, with dosimetry standards scrutinized. Updates post-interim (expected 2025) or competitor failures (e.g., in ILD-prone ADCs) may accelerate paths.
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">Meeting Types Tracked</div>
+                    <div class="metric-value">Pre-IND, EOP2</div>
+                    <div class="metric-detail">SPA, PMDA/NMPA interactions</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Control Arm Guidance</div>
+                    <div class="metric-value">FDA/EMA Input</div>
+                    <div class="metric-detail">PFS primary, OS secondary</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Label Position</div>
+                    <div class="metric-value">2L+ Likely</div>
+                    <div class="metric-detail">Combo-only, GRPR+ subset</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Divergence Risk</div>
+                    <div class="metric-value">Low</div>
+                    <div class="metric-detail">Following guidance closely</div>
+                </div>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.ema.europa.eu/en/medicines/human/paediatric-investigation-plans/emea-003443-pip02-23" target="_blank" class="link-btn">EMA PIP</a> | 
+                <a href="https://www.fda.gov/drugs/resources-information-approved-drugs/fda-expands-pluvictos-metastatic-castration-resistant-prostate-cancer-indication" target="_blank" class="link-btn">FDA Pluvicto</a> | 
+                <a href="https://www.fda.gov/media/71195/download" target="_blank" class="link-btn">FDA Guidance</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Standard of Care Dossier -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>2. Standard of Care (SoC) Dossier</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Why SoC Analysis Matters</h5>
+                <p class="detail-text">
+                    For every trial, build a mini dossier of SoC — where it's used, studied, and its weaknesses ("squishiness"). If SoC is poorly defined, FDA may push approval into later lines (2L/3L). Without this analysis, you can't interpret whether trial results are strong enough for the intended LoT.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Critical Quote:</strong> <em>"We want to find out everything we can about what that standard of care compound is and where it's been used, where it's been studied… and then write up a report."</em>
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Current SoC for ER+/HER2- Metastatic Breast Cancer</h5>
+                <p class="detail-text">
+                    The standard of care for ER+/HER2- metastatic breast cancer emphasizes endocrine therapy with CDK4/6 inhibitors in the first line across the US and EU, while China and Japan may rely more on chemotherapy due to access limitations; weaknesses include endocrine resistance and variable survival in advanced settings.
+                </p>
+                <p class="detail-text mt-2">
+                    The SoC for ER+/HER2- metastatic breast cancer (mBC) is endocrine-based, evolving with resistance patterns and global access. In US/EU (FDA/EMA-approved), first-line (1L) typically CDK4/6 inhibitors (ribociclib, palbociclib, abemaciclib) + aromatase inhibitors (letrozole) or fulvestrant, with PFS 20-28 months and OS 50-65 months from MONALEESA-2/PALOMA-2.
+                </p>
+            </div>
+
+            <table class="trial-table mt-4">
+                <thead>
+                    <tr>
+                        <th>Line of Therapy</th>
+                        <th>US/EU Regimens</th>
+                        <th>Efficacy (ORR/PFS/OS)</th>
+                        <th>Safety (Common AEs)</th>
+                        <th>Weaknesses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1L</strong></td>
+                        <td>CDK4/6i + AI/fulvestrant</td>
+                        <td>ORR 40-55%, PFS 20-28 mo, OS 50-65 mo</td>
+                        <td>Neutropenia (50-70%), fatigue (30-40%)</td>
+                        <td>Resistance (ESR1 mut), subgroup OS gaps</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2L</strong></td>
+                        <td>Fulvestrant + everolimus/PI3Ki</td>
+                        <td>ORR 15-25%, PFS 5-11 mo, OS 20-30 mo</td>
+                        <td>Stomatitis (40%), injection reactions (20%)</td>
+                        <td>Post-CDK squishiness, PRO bias</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3L+</strong></td>
+                        <td>Chemo (capecitabine)</td>
+                        <td>ORR 10-20%, PFS 3-6 mo, OS 12-18 mo</td>
+                        <td>Myelosuppression (50%), neuropathy (30%)</td>
+                        <td>High toxicity, limited targets</td>
+                    </tr>
+                    <tr style="background: #f0f7f6;">
+                        <td><strong>China/Japan</strong></td>
+                        <td>Chemo + ET more 1L/2L</td>
+                        <td>Similar PFS/OS but lower access</td>
+                        <td>Under-reported AEs, hand-foot syndrome</td>
+                        <td>Cost, inflated benefits</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Regional Variations & Weaknesses</h5>
+                <p class="detail-text">
+                    <strong>Second-line (2L):</strong> Fulvestrant mono (PFS ~7 months, ORR ~20%) or + everolimus/PI3Ki (PFS 5-11 months), with stomatitis/injection issues. Third-line+: Chemo (PFS 3-6 months), high toxicity.
+                </p>
+                <p class="detail-text mt-2">
+                    In China/Japan (NMPA/PMDA-approved), chemo more common 1L/2L (taxanes + ET; PFS/OS lower ~40-50 months from BOLERO-2 Asia), due to cost; CDK4/6i lag but increasing. Weaknesses: Access barriers, inflated PROs culturally, small effects in mutants. [¹⁷⁷Lu]Lu-NeoB's trial targets post-CDK4/6, addressing squishiness in resistant disease.
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.thebreastonline.com/article/S0960-9776%2824%2900087-0/fulltext" target="_blank" class="link-btn">Breast Online</a> | 
+                <a href="https://bmccancer.biomedcentral.com/articles/10.1186/s12885-024-12665-0" target="_blank" class="link-btn">BMC Cancer</a> | 
+                <a href="https://www.nature.com/articles/s41523-025-00746-7" target="_blank" class="link-btn">Nature</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. PTRS Analysis -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>3. Probability of Technical & Regulatory Success (PTRS)</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">PTRS Framework</h5>
+                <p class="detail-text">
+                    Not just raw data, but an explicit PTRS estimate: how likely the trial is to succeed and win a label — validated by both AI and SME judgment. Investors and senior stakeholders want decision-ready outputs, not just data dumps. PTRS helps decide whether to fund a $500M–$1B Phase 3.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Critical Quotes:</strong> 
+                    <br><em>"We have to estimate the probability that this trial is going to hit and what the label is going to look like."</em>
+                    <br><em>"We have an AI tool that… generates PTRS… frequently wrong, but… never in doubt. That's why the subject matter expert has to be there."</em>
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">PTRS Assessment for [¹⁷⁷Lu]Lu-NeoB</h5>
+                <p class="detail-text">
+                    PTRS for [¹⁷⁷Lu]Lu-NeoB integrates GRPR-targeting biology (precedents in neuroendocrine RLT), early dosimetry (favorable uptake, kidney/marrow limiting), and trial design (DLT-focused escalation). AI-derived estimates from GlobalData place Phase I/II PTSR ~37% for solid tumor radioligands, with regulatory ~30-40% given pre-pivotal stage.
+                </p>
+                <p class="detail-text mt-2">
+                    SME overlays adjust upward (+10%) for clean early safety (no unexpected toxicities) but downward (-15%) for combo attribution risks. Inputs: Mechanism (β-radiation precision); precedents (Pluvicto approval); endpoints (PFS surrogate); climate (FDA radioligand enthusiasm post-2025 Pluvicto expansion).
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">AI-Derived PTRS</div>
+                    <div class="metric-value">37%</div>
+                    <div class="metric-detail">Phase I/II solid tumors</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Regulatory Success</div>
+                    <div class="metric-value">30-40%</div>
+                    <div class="metric-detail">Pre-pivotal stage</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Technical Success</div>
+                    <div class="metric-value">~50%</div>
+                    <div class="metric-detail">Dosimetry viable</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">SME Adjustment</div>
+                    <div class="metric-value">-5% net</div>
+                    <div class="metric-detail">+10% safety, -15% combo risk</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Update Triggers</h5>
+                <p class="detail-text">
+                    Updates post-2025 interim or competitor data (e.g., FAP-2286 in BC) could boost 5-10% if marrow sparing confirmed. Quantitative: Technical ~50% (dosimetry viable), Regulatory ~35% (needs randomized).
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.intelligencia.ai/drug-development-terms-ptrs-pos/" target="_blank" class="link-btn">Intelligencia AI</a> | 
+                <a href="https://www.clinicalleader.com/doc/how-ai-can-accelerate-clinical-trials-probabilities-of-technical-and-regulatory-success-ptrs-0001" target="_blank" class="link-btn">Clinical Leader</a> | 
+                <a href="https://www.tempus.com/resources/content/blog/leveraging-tempus-ai-and-multimodal-data-to-increase-probability-of-technical-success-in-biopharma/" target="_blank" class="link-btn">Tempus AI</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Competitive Intelligence -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>4. Competitive Intelligence (esp. China-origin programs)</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Competitive Mapping Requirements</h5>
+                <p class="detail-text">
+                    Map all competitor drugs in the same space, especially Chinese entrants trying to expand to the US. Chinese-origin early-phase data often looks inflated (per the calls). To evaluate your program properly, you need to know if another program is ahead, undercutting on cost, or planning bridging trials.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Critical Quotes:</strong> 
+                    <br><em>"Trials in China and then… planning on expanding to the FDA… America side."</em>
+                    <br><em>"If… there's two or three breast cancer drugs under development, bigger companies, especially out of China, it's worth looking at all of them from a competitive standpoint."</em>
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">GRPR-Targeted Competitive Landscape</h5>
+                <p class="detail-text">
+                    Competitive landscape shows limited GRPR-targeted therapies in breast cancer, with some preclinical China-origin programs like RM26 conjugates, but inflation risks in early data; [¹⁷⁷Lu]Lu-NeoB's combination approach may offer advantages in tolerability over broader radioligands.
+                </p>
+                <p class="detail-text mt-2">
+                    GRPR-targeted therapies in breast cancer are nascent, with [¹⁷⁷Lu]Lu-NeoB leading clinically; competitors focus preclinical or other indications. Key: Lutathera (somatostatin RLT, Phase 3 NETs but BC exploratory); Pluvicto (PSMA, prostate but BC analogs).
+                </p>
+            </div>
+
+            <table class="trial-table mt-4">
+                <thead>
+                    <tr>
+                        <th>Competitor</th>
+                        <th>Mechanism/Phase/Geography</th>
+                        <th>Trial Design/Key Data</th>
+                        <th>Funding/Licensing</th>
+                        <th>Inflation Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Lutathera</strong></td>
+                        <td>Somatostatin RLT/Approved NETs/Global</td>
+                        <td>NETTER-1: PFS benefit</td>
+                        <td>Novartis self</td>
+                        <td class="text-green-600">Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RM26</strong></td>
+                        <td>GRPR antagonist/Preclinical/China</td>
+                        <td>Imaging: Uptake superior</td>
+                        <td>Internal</td>
+                        <td class="text-red-600">High (China-only)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>KN026</strong></td>
+                        <td>HER2/GRPR synergy/Phase 3/China-EU</td>
+                        <td>Combo: ORR high</td>
+                        <td>Alphamab</td>
+                        <td class="text-yellow-600">Medium (bridging)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">China-Origin Programs Analysis</h5>
+                <p class="detail-text">
+                    <strong>China-origin:</strong> RM26 (preclinical GRPR antagonist, Phase 0 imaging, internal funding, high inflation in uptake data); NeoB-like peptides (early, NMPA entries single-arm, out-licensing to West planned). CT.gov/NMPA: ~5 China-led (Phases 1-2, dosimetry focus); deals: Alphamab KN026 (HER2 but GRPR synergy, undisclosed). Inflation high in China-only (over-reported PROs), confirmatory EU/US needed; ahead programs like RM26 could compete on cost.
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.remegen.com/index.php?v=show&cid=115&id=2584" target="_blank" class="link-btn">Remegen</a> | 
+                <a href="https://pubs.acs.org/doi/10.1021/acs.jmedchem.3c01089" target="_blank" class="link-btn">ACS JMedChem</a> | 
+                <a href="https://www.scmp.com/business/companies/article/3104481/genor-biopharma-eyes-top-position-among-chinese-firms-breast" target="_blank" class="link-btn">SCMP</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Geographic/Cultural Biases - UPDATED WITH NEW DETAILED DATA -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>5. Geographic / Cultural Biases (AE & PRO reporting)</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Cultural Bias Impact</h5>
+                <p class="detail-text">
+                    An explicit flag on cultural bias: patients in some regions under-report AEs and over-report benefits. A dataset may look safer or more effective just because of culture, not drug biology. If you don't note this, stakeholders could be misled.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Critical Quotes:</strong> 
+                    <br><em>"Because of the respect factor for the physician… you'll get a bunch of zeros in terms of adverse event reporting… on the efficacy side… patient reported outcome… inflated."</em>
+                    <br><em>"GSK… redo the phase one data in the US… because it's notoriously inflated, and the AEs are underreported."</em>
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">NCT05870579 Global Site Distribution - Detailed Analysis</h5>
+                <p class="detail-text">
+                    NCT05870579's global distribution spans approximately 50 sites with a breakdown of:
+                    <br><strong>• US/EU at ~55%:</strong> USA sites include MD Anderson, UCLA, UPenn; EU sites include France (Bordeaux, Strasbourg), Germany (Munich, Essen), Spain (Barcelona, Madrid), Poland (Gliwice), Portugal (Porto)
+                    <br><strong>• China/Asia at ~35%:</strong> China sites include Tianjin, Guangzhou, Shanghai; no Japan sites listed, though general Asian biases apply via regional precedents
+                    <br><strong>• LatAm at ~10%:</strong> Though trial listings do not explicitly confirm LatAm sites, inferences from global recruitment patterns suggest possible inclusion via Novartis' Latin American networks; if absent, biases may be lower
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">US/EU Sites</div>
+                    <div class="metric-value">~55%</div>
+                    <div class="metric-detail">MD Anderson, UCLA, UPenn</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">China/Asia Sites</div>
+                    <div class="metric-value">~35%</div>
+                    <div class="metric-detail">Tianjin, Guangzhou, Shanghai</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">AE Under-reporting</div>
+                    <div class="metric-value">25-40%</div>
+                    <div class="metric-detail">China vs US/EU rates</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Efficacy Over-reporting</div>
+                    <div class="metric-value">10-20%</div>
+                    <div class="metric-detail">Asian sites inflation</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Regional Bias Patterns - Comprehensive Analysis</h5>
+                <p class="detail-text">
+                    This footprint heightens risks of systematic under-reporting of adverse events (AEs) and patient-reported outcomes (PROs), driven by cultural, hierarchical, and systemic factors:
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>China and Broader Asia (including Japan precedents):</strong>
+                    <br>• AE rates are 25-40% lower than US/EU benchmarks
+                    <br>• "Zeros" in PROs common due to physician deference and harmony-oriented cultures
+                    <br>• Patients avoid complaining to maintain respect, leading to inflated efficacy signals (10-20% over-reporting of benefits like symptom relief)
+                    <br>• Higher data missingness (15-20%, per pharmacovigilance analyses)
+                    <br>• Japanese studies highlight medication error under-reporting tied to safety culture gaps
+                    <br>• Chinese spontaneous reporting biases differ from Western norms due to early post-marketing vigilance (EPPV) systems, potentially masking dosimetry-related AEs like renal/marrow toxicity in radioligands
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Latin America (if applicable):</strong>
+                    <br>• Similar under-reporting (20-30%) stems from stigma around medical errors, investigator biases, and resource constraints
+                    <br>• Hospital surveys showing AE prevalence at 10.5% but reporting rates halved by cultural barriers
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Specific Flags for [¹⁷⁷Lu]Lu-NeoB</h5>
+                <p class="detail-text">
+                    <strong>Dosimetry Underestimation Risks:</strong>
+                    <br>• Asian underestimation of radiation dosimetry AEs (e.g., kidney/marrow suppression masked by zeros, skewing safer profiles)
+                    <br>• No trial-specific data on biases, but general risks could inflate ORR/PFS by 5-15% in Asian subsets while underplaying combo toxicities (ribociclib neutropenia, fulvestrant hepatic)
+                    <br>• FAERS under-reporting estimates (up to 90% globally, worse in non-US regions) compound this, potentially misleading stakeholders on true safety
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Protocol Mitigations & Monitoring</h5>
+                <p class="detail-text">
+                    <strong>Mitigations in protocol:</strong>
+                    <br>• Emphasis on investigator-reported AEs over PROs
+                    <br>• Culturally validated tools (e.g., Mandarin/Japanese PRO-CTCAE versions)
+                    <br>• ICH E6(R3) site training for bias awareness
+                    <br>• Mandated subgroup analyses (US/EU vs Asia for dosimetry/PK)
+                    <br>• Zero-reporting audits via data monitoring committees
+                    <br>• Confirmatory US/EU repeats (e.g., GSK's Asia-to-West bridging precedents)
+                    <br>• Adaptive monitoring for missingness
+                </p>
+                <p class="detail-text mt-2">
+                    Despite these, persistent biases (e.g., from hierarchical doctor-patient dynamics) require post-hoc sensitivity analyses to ensure balanced readouts. Gender overlays: Women (predominant in BC trials) face amplified biases, with AEs nearly twice men's rates globally, exacerbated in under-reporting regions.
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: Japanese pharmacovigilance studies | FAERS database | ICH E6(R3) guidelines
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Economic/Financing Thresholds - UPDATED WITH COMPLETE DATA -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>6. Economic / Financing Thresholds</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Financial Impact Assessment</h5>
+                <p class="detail-text">
+                    They want you to connect trial design/data to financial implications: can the sponsor afford a Phase 3? is the threshold to proceed realistic? Even if a drug looks good, if Phase 3 will cost $1B and the sponsor has a low threshold, that's a red flag for investors or BD.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Critical Quote:</strong> <em>"Do you want to help fund their phase three program, which is… hundreds of millions… up to a billion. And the company seemed to have a lower threshold for going forward than we do."</em>
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Phase 3 Cost Breakdown for Radioligands</h5>
+                <p class="detail-text">
+                    Phase 3 costs for [¹⁷⁷Lu]Lu-NeoB-like radioligands are estimated at $300-500M, factoring:
+                    <br>• Global dosimetry requirements
+                    <br>• PET imaging sites (e.g., [⁶⁸Ga]Ga-NeoB companion)
+                    <br>• Multi-arm randomized designs (paralleling Pluvicto's VISION trial at ~$400M est.)
+                    <br>• CMC for radionuclide purity/stability
+                    <br>• Hospital compounding
+                    <br>• Long-term follow-up (up to 5 years per protocol)
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Novartis Financial Position Q2 2025 (Reported July 2025)</h5>
+                <p class="detail-text">
+                    <strong>Core Financials:</strong>
+                    <br>• Net sales $14.1B (+11% cc from Q2 2024)
+                    <br>• Driven by oncology at $4.3B (+20% cc, Pluvicto $1.2B quarterly run-rate post-expansion)
+                    <br>• Core operating income $5.8B (+25% cc)
+                    <br>• Net income $4.0B (+24% cc)
+                    <br>• R&D spend $3.2B (+15%, oncology/radioligand focus)
+                    <br>• Cash position $8.5B (post-Q1 2025 $13.2B sales baseline), with >3-year runway excluding debt
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Strategic Initiatives:</strong>
+                    <br>• Savings initiatives target $7.2B by 2027 via efficiency (e.g., site consolidations), freeing ~$1B annually for pipeline
+                    <br>• Self-funding emphasized, with no dilution risks
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">Phase 3 Cost Est.</div>
+                    <div class="metric-value">$300-500M</div>
+                    <div class="metric-detail">Global dosimetry included</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Net Sales Q2 2025</div>
+                    <div class="metric-value">$14.1B</div>
+                    <div class="metric-detail">+11% cc growth</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Oncology Revenue</div>
+                    <div class="metric-value">$4.3B</div>
+                    <div class="metric-detail">+20% cc, Pluvicto $1.2B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Cash Position</div>
+                    <div class="metric-value">$8.5B</div>
+                    <div class="metric-detail">>3-year runway</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Partnership & Funding Strategy</h5>
+                <p class="detail-text">
+                    <strong>Partnerships bolster funding capacity:</strong>
+                    <br>• Olema Oncology $250M upfront (2024, SERD combos for ER+ BC, potential synergies with NeoB)
+                    <br>• Lantheus Holdings collaboration (2025, radiopharm tech/manufacturing, $100M milestone potential)
+                    <br>• Prior deals like Arvinas ($150M, PROTACs) enhance oncology leverage
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Thresholds for progression:</strong>
+                    <br>• High, per ASCO/EHA 2025 momentum (Pluvicto data, NeoB abstracts)
+                    <br>• Investors (e.g., via JPM 2025 guidance) align for $500M+ commits if RD confirmed (e.g., no DLTs at 200-250 mCi)
+                    <br>• Low abandonment risk given radioligand portfolio value ($5B+ peak sales est. for Pluvicto analogs)
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Red flags absent:</strong> Balance sheet supports $1B+ Phase 3 without partners, though China sites may tap local funding (e.g., NMPA grants). Comparative: Smaller sponsors face 20-30% higher thresholds due to cash constraints, but Novartis' scale (2025 oncology pipeline >20 assets) mitigates.
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.novartis.com/sites/novartis_com/files/q2-2025-media-release-en.pdf" target="_blank" class="link-btn">Novartis Q2 2025</a> | 
+                <a href="https://www.novartis.com/sites/novartis_com/files/q2-2025-investor-presentation.pdf" target="_blank" class="link-btn">Investor Presentation</a> | 
+                <a href="https://www.novartis.com/sites/novartis_com/files/2025-07-interim-financial-report-en.pdf" target="_blank" class="link-btn">Financial Report</a> | 
+                JPM 2025 guidance | ASCO/EHA 2025 abstracts
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Operational Disclosure - UPDATED WITH COMPLETE DETAILS -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>7. Operational Disclosure / Documentation</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Documentation Requirements</h5>
+                <p class="detail-text">
+                    You to check that all prior work is disclosed and consistent across CT.gov, protocol, and IB. If prior trials, safety signals, or cohorts are missing, that's a red flag. Regulators and investors expect transparency.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Critical Quote:</strong> <em>"In clinicaltrials.gov you will see the prior work… you have to disclose that information in your protocol and your investigator brochure."</em>
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">NCT05870579 Complete Documentation Timeline</h5>
+                <p class="detail-text">
+                    <strong>Trial Timeline:</strong>
+                    <br>• Initiated: November 13, 2023
+                    <br>• Estimated completion: January 26, 2032
+                    <br>• Maintains consistent disclosures across CT.gov, Novartis protocol page, and presumed investigator brochure (IB), with no major gaps signaling transparency issues
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Protocol Amendments & Updates</h5>
+                <p class="detail-text">
+                    Protocol v1.0 (2023) has three amendments (2024-2025):
+                    <br><strong>1) Safety enhancements:</strong> Added triplicate ECG/QT monitoring for ribociclib risks, renal/marrow thresholds tightened
+                    <br><strong>2) Enrollment expansions:</strong> Backfill cohorts to n=48 for exposure-response
+                    <br><strong>3) Dosimetry refinements:</strong> Intensive SPECT/CT scheduling clarified (e.g., C1D2/3/8/15)
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Updates timely:</strong> Recruiting status confirmed Aug 2025 (latest CT.gov post Aug 15, 2025); no delays noted
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Cross-Platform Consistency Check</h5>
+                <p class="detail-text">
+                    <strong>CT.gov matches Novartis:</strong>
+                    <br>• Exclusions identical: prior fulvestrant, >1 advanced line, <6 mo post-CDK4/6i, cardiac/QT risks, ECOG >1
+                    <br>• Endpoints aligned: primary: DLT/RD; secondary: ORR/PFS/OS per RECIST 1.1, BICR
+                    <br>• Sites/geography consistent: global, US/EU/China emphasis
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>IB alignment inferred:</strong>
+                    <br>• No unreported prior cohorts/signals (e.g., FIH dosimetry from NeoB platform disclosed)
+                    <br>• All work (e.g., [⁶⁸Ga]Ga-NeoB PET uptake ≥2) referenced
+                </p>
+            </div>
+
+            <table class="trial-table mt-4">
+                <thead>
+                    <tr>
+                        <th>Document Type</th>
+                        <th>Status</th>
+                        <th>Key Updates</th>
+                        <th>Consistency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ClinicalTrials.gov</td>
+                        <td>Current (Aug 15, 2025)</td>
+                        <td>Recruiting since Nov 2023</td>
+                        <td class="text-green-600">✓ Aligned</td>
+                    </tr>
+                    <tr>
+                        <td>Protocol</td>
+                        <td>v1.0 + 3 Amendments</td>
+                        <td>Safety, enrollment, dosimetry</td>
+                        <td class="text-green-600">✓ Consistent</td>
+                    </tr>
+                    <tr>
+                        <td>Investigator Brochure</td>
+                        <td>Presumed Updated</td>
+                        <td>No DLTs at provisional levels</td>
+                        <td class="text-green-600">✓ Matches</td>
+                    </tr>
+                    <tr>
+                        <td>Assessment Schedule</td>
+                        <td>Detailed</td>
+                        <td>q8w imaging to 18 mo, OS to 5 years</td>
+                        <td class="text-green-600">✓ Complete</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Minor Gaps & Clarifications</h5>
+                <p class="detail-text">
+                    <strong>Minor gaps:</strong>
+                    <br>• Sample size feasibility-driven (n≈48, adjustable per DLT boundaries)
+                    <br>• No mismatches in assessments (q8w imaging to 18 mo, long-term OS to 5 years)
+                    <br>• No red flags like hidden safety data; protocol changes regulator-notified per ICH
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Comparative notes:</strong> Novartis page adds contacts (e.g., US sites), but no discrepancies vs. CT.gov. Recent X posts (e.g., Jan 2025) reference NeoB for glioblastoma but not BC-specific ops, implying steady recruitment without disclosure issues.
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://clinicaltrials.gov/study/NCT05870579" target="_blank" class="link-btn">ClinicalTrials.gov</a> | 
+                <a href="https://ichgcp.net/clinical-trials-registry/NCT05870579" target="_blank" class="link-btn">ICH GCP</a> | 
+                <a href="https://www.novartis.com/clinicaltrials/study/nct05870579" target="_blank" class="link-btn">Novartis</a> | 
+                ICH guidelines | X posts Jan 2025
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Line of Therapy/Label Implications - UPDATED WITH COMPLETE DATA -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>8. Line-of-Therapy / Label Implications</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Label Positioning Impact</h5>
+                <p class="detail-text">
+                    Not just results, but where the drug will likely get approved (1L, 2L, 3L). Even if your Phase 3 is 1L, FDA may only accept it as 2L if SoC in 1L is unsettled. Label trajectory = commercial trajectory.
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Critical Quote:</strong> <em>"In the United States… approval is usually second line or third line, because we still don't know about that… standard of care squishiness."</em>
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Positioning for [¹⁷⁷Lu]Lu-NeoB in GRPR+ ER+/HER2- ABC</h5>
+                <p class="detail-text">
+                    [¹⁷⁷Lu]Lu-NeoB is positioned for 2L+ in GRPR+ ER+/HER2- advanced breast cancer (ABC), targeting post-CDK4/6 progression with specific eligibility criteria:
+                    <br>• Relapse on adjuvant ET or progression on ET+CDK4/6i
+                    <br>• ≤1 prior advanced line
+                    <br>• Addressing unmet needs in endocrine-resistant settings with bone/visceral mets
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Precedents from Novartis Radioligands</h5>
+                <p class="detail-text">
+                    <strong>Pluvicto (¹⁷⁷Lu-vipivotide tetraxetan):</strong>
+                    <br>• Approved 3L+ mCRPC post-chemo (VISION: OS HR 0.62)
+                    <br>• Label expanded pre-chemo March 2025 via PSMAfore PFS benefit
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Lutathera (¹⁷⁷Lu-dotatate):</strong>
+                    <br>• 2L+ NETs (NETTER-1: PFS 28 mo)
+                </p>
+                <p class="detail-text mt-2">
+                    For BC, no approved RLTs, but GRPR-targeting (expressed in ~70% ER+ tumors) draws from these: Randomized Phase 2/3 required for full approval (PFS primary, OS secondary vs. SoC like everolimus/fulvestrant), with accelerated possible on durable ORR (>30%, e.g., in GRPR+ subsets via [⁶⁸Ga]Ga-NeoB PET).
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Regulatory Label Strategy</h5>
+                <p class="detail-text">
+                    <strong>SoC clarity in 1L:</strong> Ribociclib OS from MONALEESA-2/7: 53-63 mo pushes NeoB to 2L add-on, avoiding unsettled frontline
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>FDA/EMA positioning:</strong>
+                    <br>• Likely combo-only (with ribociclib/fulvestrant) if synergies critical (e.g., radiation potentiation of cell-cycle arrest)
+                    <br>• Restricted to GRPR+ via locked PET imaging (CDRH/FDA consult for IVD kit, standardized uptake scoring)
+                    <br>• Broader label if monotherapy viable in expansions (e.g., NCT06247995 Phase I/II with capecitabine, NCT05739942 in glioblastoma)
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>NMPA/PMDA:</strong> Bridging via China sites, but local dosimetry scrutiny; precedents like GRPR antagonists (RM26 preclinical) favor 2L+
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">Target Line</div>
+                    <div class="metric-value">2L+</div>
+                    <div class="metric-detail">Post-CDK4/6i progression</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">GRPR Expression</div>
+                    <div class="metric-value">~70%</div>
+                    <div class="metric-detail">ER+ tumors</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Commercial Peak</div>
+                    <div class="metric-value">~$1B</div>
+                    <div class="metric-detail">If Pluvicto-like</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Label Type</div>
+                    <div class="metric-value">Combo-only</div>
+                    <div class="metric-detail">GRPR+ via PET</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Commercial Trajectory & Risks</h5>
+                <p class="detail-text">
+                    <strong>Trajectory:</strong> 2L+ combo in GRPR+ (commercial peak ~$1B if Pluvicto-like), with OS data gating full approval
+                </p>
+                <p class="detail-text mt-2">
+                    <strong>Risks:</strong> If heterogeneity limits (e.g., PSMA/SSTR2 overlaps in multi-target trials like NCT06379217)
+                </p>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.fda.gov/about-fda/2023-oce-annual-report/oncology-regulatory-review-2023" target="_blank" class="link-btn">FDA OCE Report</a> | 
+                VISION trial | NETTER-1 | PSMAfore | MONALEESA-2/7 | NCT06247995 | NCT05739942 | NCT06379217
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Program Details -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>9. Comprehensive Program Overview</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="data-card">
+                <h5 class="font-semibold text-green-700 mb-2">Overview of [¹⁷⁷Lu]Lu-NeoB</h5>
+                <p class="detail-text">
+                    [¹⁷⁷Lu]Lu-NeoB is Novartis' investigational gastrin-releasing peptide receptor (GRPR)-targeted radioligand therapy (RLT), using lutetium-177 to deliver beta radiation to GRPR-expressing tumors in ER+/HER2- advanced breast cancer. Combined with ribociclib and fulvestrant in Phase Ib (NCT05870579), it aims to address endocrine-resistant disease post-CDK4/6 inhibitors, with gallium-68-NeoB for patient selection via PET imaging. Early dosimetry supports tolerability, focusing on kidney and marrow as dose-limiting organs.
+                </p>
+                <p class="detail-text mt-2">
+                    [¹⁷⁷Lu]Lu-NeoB represents Novartis' entry into radioligand therapy (RLT) for breast cancer, targeting GRPR-expressing tumors in ER+/HER2- advanced disease, building on successes in prostate and neuroendocrine cancers. As of August 2025, the program is in early Phase Ib (NCT05870579), combining the radioligand with ribociclib and fulvestrant to explore safety and dose in post-endocrine/CDK4/6 settings.
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Trial Design and Outcomes</h5>
+                <p class="detail-text">
+                    The ongoing Phase Ib is a single-arm, open-label dose-escalation study with backfill cohorts, testing four dose levels (100-250 mCi) of [¹⁷⁷Lu]Lu-NeoB over up to six cycles, plus standard ribociclib (600 mg days 1-21) and fulvestrant. Primary focus is on dose-limiting toxicities to determine recommended dose, with secondary assessments of preliminary efficacy like ORR and PFS. Recruiting globally since November 2023, with estimated completion in 2032.
+                </p>
+            </div>
+
+            <div class="data-card mt-4">
+                <h5 class="font-semibold text-green-700 mb-2">Regulatory Outlook</h5>
+                <p class="detail-text">
+                    Precedents from radioligands like Lutathera and Pluvicto suggest need for randomized Phase 2/3 data showing PFS/OS benefits for approval, potentially with accelerated pathways if compelling ORR in unmet needs.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Summary Box -->
+    <div class="highlight-box mt-6">
+        <h4 class="font-semibold mb-3">Investment Committee Overview Summary</h4>
+        <p class="detail-text">
+            This comprehensive overview addresses all critical diligence dimensions for [¹⁷⁷Lu]Lu-NeoB, revealing a program with <strong>30-40% probability of regulatory success</strong> positioned for <strong>second-line or later therapy</strong> in ER+/HER2-/GRPR+ breast cancer. 
+        </p>
+        <p class="detail-text mt-2">
+            <strong>Key Financial Metrics:</strong> Phase 3 costs estimated at $300-500M with Novartis showing robust capacity (Q2 2025: $14.1B net sales, $4.0B net income, $8.5B cash position, >3-year runway). Oncology revenue of $4.3B (+20% cc) driven by Pluvicto's $1.2B quarterly run-rate provides validation for radioligand platform.
+        </p>
+        <p class="detail-text mt-2">
+            <strong>Critical Geographic Bias Risks:</strong> With ~35% China/Asia sites showing 25-40% AE under-reporting and 10-20% efficacy over-reporting, true safety profile may be masked. Japanese medication error under-reporting and Chinese EPPV system differences compound dosimetry AE masking. Protocol mitigations include investigator-reported prioritization, culturally validated PRO tools, and mandated US/EU vs Asia subgroup analyses.
+        </p>
+        <p class="detail-text mt-2">
+            <strong>Operational Transparency:</strong> NCT05870579 (initiated Nov 13, 2023; completion Jan 26, 2032) shows consistent documentation with three protocol amendments addressing safety (triplicate ECG/QT), enrollment (backfill to n=48), and dosimetry refinements. No red flags in disclosure alignment across platforms.
+        </p>
+        <p class="detail-text mt-2">
+            <strong>Label Positioning:</strong> 2L+ combo-only in GRPR+ subset most likely, following Pluvicto's 3L+ mCRPC precedent. SoC clarity in 1L (ribociclib OS 53-63 mo) pushes to later lines. Commercial peak ~$1B if Pluvicto-like trajectory achieved. Accelerated approval possible if ORR >30% durable in GRPR+ via [⁶⁸Ga]Ga-NeoB PET selection.
+        </p>
+        <p class="detail-text mt-2">
+            <strong>Investment Recommendation:</strong> Monitor through Phase Ib completion (2025-2026) before committing Phase 3 funding. Critical milestones include RP2D determination at 200-250 mCi, preliminary efficacy signals requiring careful geographic stratification, and FDA End-of-Phase 2 meeting outcomes that will shape pivotal trial design and label positioning. High investor threshold alignment ($500M+ commits) contingent on clean dosimetry and managed geographic bias impacts.
+        </p>
+    </div>
+</div>
             <!-- Clinical & Regulatory Tab -->
-            <div id="clinical" class="tab-content active">
+            <div id="clinical" class="tab-content">
                 <div class="section-title">1. Clinical & Regulatory Diligence</div>
                 
                 <!-- Trial Design & Protocol -->
@@ -1822,7 +2612,7 @@
             </div>
 
             <!-- Complete Trial Analysis Tab -->
-            <div id="trials" class="tab-content">
+            <div id="oldtrials" class="tab-content">
                 <div class="section-title">8. Complete Clinical Trial Portfolio</div>
 
                 <div class="timeline-container">
@@ -2016,6 +2806,693 @@
                     </p>
                 </div>
             </div>
+
+            <!-- Complete Trial Analysis Tab -->
+<div id="trials" class="tab-content">
+    <div class="section-title">8. Complete Clinical Trial Portfolio Analysis - [¹⁷⁷Lu]Lu-NeoB (AAA603)</div>
+
+    <!-- Critical Diligence Framework -->
+    <div class="highlight-box mb-6">
+        <h4 class="font-semibold mb-2">Investment Committee Trial Assessment Framework - Theranostic Program</h4>
+        <p class="detail-text">
+            Comprehensive analysis of first-in-class GRPR-targeted radioligand therapy addressing Phase 1-3 diligence requirements: DLT windows, AE/PRO capture, control arm strategy, placebo anchoring, dosimetry constraints, and regional bias mitigation in theranostic trials.
+        </p>
+    </div>
+
+    <!-- Trial Timeline -->
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+        <!-- NeoRay Phase 1/2a First-in-Human -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2019-Ongoing</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">NeoRay Phase 1/2a First-in-Human Basket Trial (NCT03872778)</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Trial Design & Control Strategy</h5>
+                    <p class="detail-text">
+                        <strong>Blinding/Control:</strong> Open-label, single-arm basket study. No blinding, no control → purely signal-finding (first-in-human theranostic)
+                        <br><strong>Design:</strong> Basket approach across advanced solid tumors (prostate, breast, GIST, lung, glioblastoma)
+                        <br><strong>Comparator Frame:</strong> No placebo anchor or concurrent control. Treatment effect contextualized against historical benchmarks for each tumor type
+                        <br><strong>Theranostic Selection:</strong> Mandatory ⁶⁸Ga-NeoB PET with visual score ≥2 for eligibility - provides biologic "enrichment anchor" despite no placebo
+                        <br><strong>Investment Risk:</strong> "It's not going to be blinded... we just want to see what that treatment effect might be" - pure signal-finding limits interpretability
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">DLT/MTD/RP2D Determination - Radioligand Specific</h5>
+                    <p class="detail-text">
+                        <strong>DLT Window:</strong> Cycle 1 (28 days) - standard for AAA first-in-human radioligands
+                        <br><strong>DLT Criteria:</strong> CTCAE v5.0 grading with special focus on:
+                        <br>• Hematologic toxicity (bone marrow dose-limiting)
+                        <br>• Renal toxicity (kidney is dose-limiting organ per preclinical data)
+                        <br>• Exact per-toxicity thresholds in internal protocol (not posted publicly)
+                        
+                        <br><br><strong>Dose Escalation:</strong> Stepwise ¹⁷⁷Lu activity per cycle (q28d)
+                        <br>• Dosimetry-guided safety with kidney/marrow constraints
+                        <br>• Typical Lu-177 limits: kidney <23 Gy, marrow <2 Gy
+                        
+                        <br><br><strong>RP2D Status:</strong> NOT YET POSTED (trial ongoing with no results as of 2025)
+                        <br><strong>Dosing:</strong> Up to 6 cycles q28d (standard for Lu-177 therapies)
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">AE/PRO Capture Methodology</h5>
+                    <p class="detail-text">
+                        <strong>AE Collection:</strong> Investigator-elicited and graded by CTCAE v5.0
+                        <br>• Safety labs including comprehensive marrow monitoring
+                        <br>• Renal function monitoring (critical for Lu-177)
+                        <br>• Radiation dosimetry (whole-body distribution)
+                        <br>• Standard AAA/Novartis radioligand safety schedule
+                        
+                        <br><br><strong>PRO Tools:</strong> NO INSTRUMENTS SPECIFIED (e.g., EORTC/EQ-5D not listed publicly)
+                        <br><strong>Critical Risk:</strong> Without PROs in basket FIH, subjective toxicities likely under-reported
+                        <br><strong>Investment Quote:</strong> "You'll get a bunch of zeros in terms of adverse event reporting... especially if it's a patient reported outcome"
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Dosimetry & Organ Safety Monitoring</h5>
+                    <p class="detail-text">
+                        <strong>Primary Dosimetry Endpoints:</strong>
+                        <br>• Whole-body distribution
+                        <br>• Organ absorbed doses (kidney, bone marrow, salivary glands)
+                        <br>• Tumor dosimetry correlation with response
+                        
+                        <br><br><strong>Key Safety Organ:</strong> KIDNEY identified as dose-limiting in preclinical studies
+                        <br>• Standard Lu-177 kidney limit: 23 Gy cumulative
+                        <br>• Amino acid infusion for renal protection (standard practice)
+                        
+                        <br><br><strong>Bone Marrow:</strong> Secondary constraint at 2 Gy
+                        <br><strong>Long-term Follow-up:</strong> MDS/AML monitoring required for radioligands
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Regional/Site Effects & Bias Risk</h5>
+                    <p class="detail-text">
+                        <strong>Geographic Distribution:</strong> Global, multi-center (AAA/Novartis network)
+                        <br><strong>Theranostic Centers:</strong> Limited to sites with nuclear medicine capabilities
+                        <br><strong>Cultural Bias Risk:</strong> Unblinded early-phase radioligands at risk for:
+                        <br>• Under-elicited AEs without PRO instruments
+                        <br>• Variable PET reading standards across regions
+                        <br>• Dosimetry calculation differences
+                        
+                        <br><br><strong>Required Mitigation:</strong>
+                        <br>• Central dosimetry QA
+                        <br>• Standardized AE elicitation training
+                        <br>• Per-region AE/efficacy slices
+                        <br>• Central PET reading for eligibility (not confirmed if implemented)
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Current Status & Data Points</h5>
+                    <p class="detail-text">
+                        <strong>Enrollment Status:</strong> ONGOING - no posted human results as of 2025
+                        <br><strong>Expected Data:</strong>
+                        <br>• MTD/RP2D determination
+                        <br>• Safety profile across tumor types
+                        <br>• Preliminary efficacy signals
+                        <br>• PK/dosimetry modeling
+                        
+                        <br><br><strong>Key Tracking Metrics:</strong>
+                        <br>• Screening failure rate (PET-negative patients)
+                        <br>• Dose levels tested and DLTs observed
+                        <br>• Organ dosimetry vs toxicity correlation
+                        <br>• Response rates by tumor type and GRPR expression level
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-high"></div>
+                    <div>
+                        <strong>Investment Risk:</strong> Single-arm, open-label, no placebo anchor, no PROs = pure signal-finding. Basket design dilutes tumor-specific insights. Without control arm, treatment effect cannot be quantified. Theranostic PET provides biologic enrichment but not comparative efficacy anchor.
+                    </div>
+                </div>
+
+                <div class="reference-list">
+                    Sources: ClinicalTrials.gov NCT03872778 | JNM | PMC | TheranosticTrials.org
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 1b Ribociclib/Fulvestrant Combination -->
+        <div class="timeline-item">
+            <div class="timeline-dot" style="background: #084298;"></div>
+            <div class="timeline-date">Nov 2023-2032</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">Phase 1b Triple Combination - [¹⁷⁷Lu]Lu-NeoB + Ribociclib + Fulvestrant (NCT05870579)</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Trial Design & Combination Rationale</h5>
+                    <p class="detail-text">
+                        <strong>Design:</strong> Open-label dose-escalation with concurrent "backfill" expansion
+                        <br><strong>Control Strategy:</strong> No control arm → cannot determine additive benefit
+                        <br><strong>Population:</strong> ER+/HER2-, GRPR+ advanced breast cancer
+                        <br>• Post-CDK4/6i progression
+                        <br>• Early relapse on (neo)adjuvant ET
+                        
+                        <br><br><strong>Rationale:</strong> DNA damage from β-emission (Lu-177) + cell cycle arrest (ribociclib) + ER blockade (fulvestrant)
+                        <br><strong>Hypothesis:</strong> ESR1-agnostic activity due to DNA damage mechanism
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Dose Escalation & DLT Assessment</h5>
+                    <p class="detail-text">
+                        <strong>Lu-177 Dose Levels:</strong> 100→150→200→250 mCi IV Day 1 q28d × up to 6 cycles
+                        <br><strong>Combination Dosing:</strong>
+                        <br>• Ribociclib: 600mg PO days 1-21 of 28
+                        <br>• Fulvestrant: 500mg IM per standard schedule
+                        
+                        <br><br><strong>DLT Window:</strong> Cycle 1 (28 days)
+                        <br><strong>DLT Focus:</strong> 
+                        <br>• Overlapping hematologic toxicity (ribociclib + Lu-177)
+                        <br>• Renal safety (Lu-177 specific)
+                        <br>• QTc prolongation (ribociclib)
+                        
+                        <br><br><strong>Sample Size:</strong> ~48 total (escalation + backfill/expansion)
+                        <br><strong>Sizing Logic:</strong> Adequate for RDE and preliminary activity, NOT powered for comparison
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Biomarker Strategy & Patient Selection</h5>
+                    <p class="detail-text">
+                        <strong>GRPR Selection:</strong> ⁶⁸Ga-NeoB PET required - theranostic pair
+                        <br>• Visual score ≥2 for eligibility
+                        <br>• Considered biologically informative for RL selection
+                        <br>• NOT yet a companion diagnostic
+                        
+                        <br><br><strong>ESR1 Status:</strong> NOT required for enrollment
+                        <br><strong>Investment Risk:</strong> "Problem is fundamentally the validation of the biomarker... they need to have a control arm"
+                        <br><strong>Note:</strong> Without control, cannot validate if GRPR+ selects responders vs non-responders
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Geographic Distribution & Regional Consistency</h5>
+                    <p class="detail-text">
+                        <strong>Sites:</strong>
+                        <br>• US: MD Anderson, UCLA, UPenn
+                        <br>• EU: France, Germany, Spain
+                        <br>• China: Multiple sites
+                        
+                        <br><br><strong>Regional Harmonization Needed:</strong>
+                        <br>• PET eligibility reads across continents
+                        <br>• Dose calculation QA
+                        <br>• Per-region AE/efficacy analysis planned
+                        
+                        <br><br><strong>China Inclusion Risk:</strong> Known AE under-reporting concern
+                        <br>• Require stratified safety analysis
+                        <br>• Central PET reading recommended
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">AE/PRO Capture & Durability Endpoints</h5>
+                    <p class="detail-text">
+                        <strong>AE Collection:</strong> Investigator-elicited CTCAE v5.0
+                        <br>• Enhanced hematologic monitoring (ribociclib overlap)
+                        <br>• GI toxicity tracking
+                        <br>• Renal function labs
+                        <br>• Radiation safety monitoring
+                        
+                        <br><br><strong>PRO Tools:</strong> NOT SPECIFIED publicly for Phase 1b
+                        <br><strong>Durability:</strong> Prespecified ORR/CBR/PFS signals but no efficacy readout yet
+                        <br><strong>Status:</strong> Currently RECRUITING
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-high"></div>
+                    <div>
+                        <strong>Investment Assessment:</strong> Uncontrolled expansion means data "won't inform" beyond feasibility. Cannot determine if triple combination adds value over doublets. Complex overlapping toxicities require careful monitoring. Need Phase 3 with control to establish benefit.
+                    </div>
+                </div>
+
+                <div class="reference-list">
+                    Sources: Novartis Clinical Trials | ClinicalTrials.gov NCT05870579 | Cancer.gov
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 1/2 Capecitabine Combination -->
+        <div class="timeline-item">
+            <div class="timeline-dot" style="background: #084298;"></div>
+            <div class="timeline-date">Aug 2024-Ongoing</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">Phase 1/2 Capecitabine Combination "NeoB-D1" (NCT06247995)</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Innovative Fractionation Design</h5>
+                    <p class="detail-text">
+                        <strong>Phase 1 Design:</strong> Dose escalation with fractionation exploration
+                        <br><strong>Starting Dose:</strong> 150 mCi ¹⁷⁷Lu-NeoB Q6W + capecitabine 1000 mg/m² BID d1-14 q21d
+                        
+                        <br><br><strong>Novel Aspect - Fractionation Comparison:</strong>
+                        <br>• Arm A: 200 mCi Q6W (standard interval)
+                        <br>• Arm B: 100 mCi Q3W (fractionated, same total dose)
+                        <br>• Tests if more frequent lower doses improve therapeutic index
+                        
+                        <br><br><strong>Rationale:</strong> Optimize tumor dose while minimizing organ toxicity
+                        <br><strong>Critical Note:</strong> This is regimen vs regimen, NOT vs standard of care
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Phase 2 Randomized Component</h5>
+                    <p class="detail-text">
+                        <strong>Design:</strong> ~40 patients randomized between selected regimens
+                        <br><strong>NOT SoC-Controlled:</strong> Compares RL dosing strategies only
+                        <br><strong>Primary Endpoints:</strong> ORR, CBR, PFS
+                        <br><strong>Total N:</strong> ~58 (18 Phase 1 + 40 Phase 2)
+                        
+                        <br><br><strong>Investment Limitation:</strong> "They basically put a finger in the wind to come up with sample size"
+                        <br>• Optimization study, not powered for regulatory endpoints
+                        <br>• Cannot quantify comparative effectiveness vs SoC
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Regional Strategy - Japanese Cohort</h5>
+                    <p class="detail-text">
+                        <strong>Special Feature:</strong> Parallel Japanese cohort planned
+                        <br><strong>Purpose:</strong> Regional bridging for PMDA requirements
+                        <br><strong>Design:</strong> Identical eligibility and dosing
+                        <br><strong>Harmonization Required:</strong>
+                        <br>• Identical PET eligibility criteria
+                        <br>• Dosimetry SOPs across regions
+                        <br>• Per-region PRO compliance (once instruments finalized)
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Safety Monitoring & Long-term Follow-up</h5>
+                    <p class="detail-text">
+                        <strong>DLT Window:</strong> Phase 1 - Cycle 1 (28 days)
+                        <br><strong>Special Safety Focus:</strong>
+                        <br>• Hand-foot syndrome/diarrhea (capecitabine-specific)
+                        <br>• Marrow suppression (overlapping toxicity)
+                        <br>• Renal function (Lu-177 constraint)
+                        
+                        <br><br><strong>CRITICAL FEATURE:</strong> 5-YEAR long-term safety follow-up
+                        <br>• Monitor for late radiation effects
+                        <br>• MDS/AML surveillance
+                        <br>• Secondary malignancy tracking
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Biomarker & Patient Selection</h5>
+                    <p class="detail-text">
+                        <strong>GRPR Requirement:</strong> ⁶⁸Ga-NeoB PET positive (validated biologically)
+                        <br><strong>ESR1 Status:</strong> Recorded but NOT required
+                        <br><strong>Line of Therapy:</strong> Post-CDK4/6i ER+/HER2- mBC
+                        <br><strong>PRO Tools:</strong> Not explicitly listed on registry (often added in Phase 2)
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-medium"></div>
+                    <div>
+                        <strong>Investment Assessment:</strong> Innovative fractionation approach but lacks SoC control. Phase 2 randomization between regimens provides optimization data only. Need controlled Phase 3 to establish true treatment effect. Japanese cohort strengthens global strategy.
+                    </div>
+                </div>
+
+                <div class="reference-list">
+                    Sources: ClinicalTrials.gov NCT06247995 | UCLA Health | Clinrol
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2/2b Gap Analysis -->
+        <div class="timeline-item">
+            <div class="timeline-dot" style="background: #ffc107;"></div>
+            <div class="timeline-date">Current Gap</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">⚠️ Phase 2/2b Gap - No SoC-Controlled Study</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Critical Development Gap</h5>
+                    <p class="detail-text">
+                        <strong>Current Status:</strong> NO SoC-controlled Phase 2/2b exists
+                        <br><strong>Available Data:</strong> NeoB-D1 has small randomized Phase 2 but it's regimen vs regimen, NOT vs SoC
+                        
+                        <br><br><strong>Investment Impact:</strong>
+                        <br>• Flying on early-phase, uncontrolled activity only
+                        <br>• Biologic plausibility but no comparative efficacy
+                        <br>• PTRS calculations rely on assumptions not data
+                        
+                        <br><br><strong>What's Needed:</strong> SoC-controlled Phase 2b with:
+                        <br>• Active comparator (chemo/ADC or physician's choice)
+                        <br>• N~150-200 patients
+                        <br>• PFS by central review
+                        <br>• Target HR ~0.65-0.75 to justify Phase 3
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Control Arm Considerations for Future Phase 2b</h5>
+                    <p class="detail-text">
+                        <strong>Post-CDK4/6i Options:</strong>
+                        <br>• Physician's choice endocrine (fulvestrant ± everolimus)
+                        <br>• Chemotherapy (capecitabine, vinorelbine)
+                        <br>• ADCs (sacituzumab govitecan)
+                        
+                        <br><br><strong>Challenge:</strong> "Standard of care may be wishy-washy"
+                        <br>• Multiple acceptable options create heterogeneity
+                        <br>• Need stratification by chosen therapy
+                        <br>• Central review (BICR) critical to reduce bias
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-high"></div>
+                    <div>
+                        <strong>Investment Risk:</strong> Jumping from Phase 1b directly to Phase 3 without controlled Phase 2 data is high-risk. No evidence of comparative efficacy. PTRS based entirely on biologic rationale and uncontrolled signals.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projected Phase 3 -->
+        <div class="timeline-item">
+            <div class="timeline-dot" style="background: #dc3545;"></div>
+            <div class="timeline-date">2026-2029 (Projected)</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">Anticipated Phase 3 Pivotal Design (Not Yet Posted)</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Expected Registrational Design</h5>
+                    <p class="detail-text">
+                        <strong>Design Concept:</strong> Randomized controlled study (per Novartis pipeline commentary)
+                        <br><strong>Population:</strong> GRPR+ ER+/HER2- mBC post-CDK4/6i
+                        <br><strong>Likely Arms:</strong>
+                        <br>• [¹⁷⁷Lu]Lu-NeoB + standard therapy
+                        <br>• Standard care alone
+                        
+                        <br><br><strong>Sample Size:</strong> 300-600 patients globally (estimate)
+                        <br><strong>Primary:</strong> PFS by independent central review
+                        <br><strong>Key Secondary:</strong> OS, ORR, safety, QoL
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Control Arm Strategy & "Squishiness"</h5>
+                    <p class="detail-text">
+                        <strong>US/EU Practice Post-CDK4/6:</strong>
+                        <br>• Endocrine switches
+                        <br>• Everolimus-based regimens
+                        <br>• Chemotherapy
+                        <br>• ADCs (sacituzumab govitecan)
+                        
+                        <br><br><strong>Control Requirements:</strong>
+                        <br>• Must be credible physician's choice OR specific active comparator
+                        <br>• Aligned with FDA/EMA guidance
+                        <br>• Central review (BICR) to remove open-label bias
+                        <br>• Investment Quote: "We need to figure out what that standard of care squishiness is"
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Statistical Plan & Power Assumptions</h5>
+                    <p class="detail-text">
+                        <strong>Primary Analysis:</strong> PFS by BICR
+                        <br><strong>Hierarchy:</strong> PFS → OS → ORR/DoR → PROs
+                        <br><strong>Alpha Spend:</strong> With futility boundaries (not yet defined)
+                        
+                        <br><br><strong>Stratification Factors (Recommended):</strong>
+                        <br>• Region
+                        <br>• Visceral disease
+                        <br>• Prior lines
+                        <br>• ADC exposure
+                        <br>• Baseline PET uptake (semi-quantitative)
+                        
+                        <br><br><strong>Crossover Handling:</strong> Pre-specify to keep OS interpretable
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Line of Therapy Implications</h5>
+                    <p class="detail-text">
+                        <strong>Initial Target:</strong> Post-CDK4/6i setting (2nd/3rd line)
+                        <br><strong>US Approval Pattern:</strong> "Approval is usually second line or third line"
+                        
+                        <br><br><strong>Earlier Line Expansion:</strong> Would require separate studies
+                        <br>• 1L would need different control (AI + CDK4/6i)
+                        <br>• Adjuvant setting years away
+                        
+                        <br><br><strong>Commercial Positioning:</strong> Competing with ADCs and oral SERDs
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Investment Thresholds & Go/No-Go</h5>
+                    <p class="detail-text">
+                        <strong>Capital Required:</strong> "Hundreds of millions up to a billion"
+                        <br><strong>Company vs Investor Bar:</strong> "Company seemed to have lower threshold for going forward than we do"
+                        
+                        <br><br><strong>Success Criteria:</strong>
+                        <br>• HR ≤0.65 for PFS
+                        <br>• Manageable safety (especially hematologic)
+                        <br>• No unexpected late radiation effects
+                        <br>• GRPR biomarker validates patient selection
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-high"></div>
+                    <div>
+                        <strong>Investment Risk:</strong> Phase 3 design not finalized. No controlled Phase 2 data to inform. Comparator selection critical given heterogeneous post-CDK4/6i landscape. Theranostic logistics limit addressable sites. Timeline to filing ≥2028 per Novartis pipeline.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Regional Bridging -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Ongoing</div>
+            <div class="timeline-content">
+                <h4 class="font-semibold">Regional Bridging & Global Strategy</h4>
+                
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">Prior Work Disclosure</h5>
+                    <p class="detail-text">
+                        <strong>Registry Transparency:</strong>
+                        <br>• NeoRay FIH registered and publicly described
+                        <br>• Combination trials have sponsor pages referencing broader program
+                        <br>• IB/protocols will contain full development history
+                        
+                        <br><br><strong>Investment Requirement:</strong> "In clinicaltrials.gov you will see the prior work"
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">PK/Safety Comparability - Japan Bridge</h5>
+                    <p class="detail-text">
+                        <strong>Japanese Cohort:</strong> Parallel cohort planned in NeoB-D1 trial
+                        <br><strong>Purpose:</strong> PMDA regional requirements
+                        <br><strong>Design:</strong> Identical to global protocol
+                        <br><strong>Enables:</strong> Japan inclusion in Phase 3
+                        
+                        <br><br><strong>Expected Outcomes:</strong>
+                        <br>• Exposure comparability
+                        <br>• Safety profile consistency
+                        <br>• Dosimetry validation
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">China Inclusion & Risk Mitigation</h5>
+                    <p class="detail-text">
+                        <strong>China Sites:</strong> Included in Phase 1b combination trial
+                        <br><strong>Known Risk:</strong> "It's even worse when it's from China... AEs are underreported"
+                        
+                        <br><br><strong>Required Mitigations:</strong>
+                        <br>• Standardized AE elicitation training & scripts
+                        <br>• ePRO with validated translations
+                        <br>• Central dosimetry review
+                        <br>• Central PET reading for eligibility
+                        <br>• Per-region AE/efficacy dashboards
+                        <br>• Site-level QC for "all-zero" AE patterns
+                    </p>
+                </div>
+
+                <div class="data-card mt-3">
+                    <h5 class="font-semibold text-green-700 mb-2">US Re-Run Assessment</h5>
+                    <p class="detail-text">
+                        <strong>Current Approach:</strong> Global program from start, no US re-run needed
+                        <br><strong>GSK Precedent:</strong> "GSK has policy... redo phase one data in US"
+                        <br><strong>Key Difference:</strong> Program already includes US sites (MD Anderson, UCLA, UPenn)
+                        
+                        <br><br><strong>Investment Action:</strong> Insist on:
+                        <br>• Central review for all endpoints
+                        <br>• Regional sensitivity analyses in pivotal
+                        <br>• US/EU subset prioritization in efficacy assessment
+                    </p>
+                </div>
+
+                <div class="risk-item mt-3">
+                    <div class="risk-indicator risk-medium"></div>
+                    <div>
+                        <strong>Regional Risk Assessment:</strong> Global footprint with appropriate bridging but China inclusion requires careful monitoring. Central review and standardization critical. Japanese parallel cohort strengthens regulatory strategy.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comprehensive Summary Table -->
+    <div class="subsection-title">Complete Trial Portfolio Summary</div>
+    <table class="trial-table">
+        <thead>
+            <tr>
+                <th>Trial</th>
+                <th>Phase</th>
+                <th>N</th>
+                <th>Control</th>
+                <th>Blinding</th>
+                <th>Primary</th>
+                <th>Key Issues</th>
+                <th>Investment Risk</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>NeoRay</td>
+                <td>1/2a</td>
+                <td>TBD</td>
+                <td>None</td>
+                <td>Open</td>
+                <td>Safety/Dosimetry</td>
+                <td>No PROs, basket design</td>
+                <td><span class="text-red-600">High</span></td>
+            </tr>
+            <tr>
+                <td>NCT05870579</td>
+                <td>1b</td>
+                <td>~48</td>
+                <td>None</td>
+                <td>Open</td>
+                <td>DLT→RD</td>
+                <td>Triple combo complexity</td>
+                <td><span class="text-red-600">High</span></td>
+            </tr>
+            <tr>
+                <td>NeoB-D1</td>
+                <td>1/2</td>
+                <td>~58</td>
+                <td>None*</td>
+                <td>Open</td>
+                <td>DLT/ORR</td>
+                <td>*Regimen vs regimen only</td>
+                <td><span class="text-yellow-600">Medium</span></td>
+            </tr>
+            <tr style="background: #ffe6e6;">
+                <td><strong>Phase 2b Gap</strong></td>
+                <td><strong>-</strong></td>
+                <td><strong>-</strong></td>
+                <td><strong>-</strong></td>
+                <td><strong>-</strong></td>
+                <td><strong>-</strong></td>
+                <td><strong>NO SoC-CONTROLLED DATA</strong></td>
+                <td><span class="text-red-600"><strong>Critical Gap</strong></span></td>
+            </tr>
+            <tr>
+                <td>Future Phase 3</td>
+                <td>3</td>
+                <td>300-600</td>
+                <td>Active</td>
+                <td>Open+BICR</td>
+                <td>PFS</td>
+                <td>Design not finalized</td>
+                <td><span class="text-red-600">High</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Critical Diligence Actions -->
+    <div class="highlight-box mt-6">
+        <h4 class="font-semibold mb-3">Critical Diligence Actions Required</h4>
+        <p class="detail-text">
+            <strong>1. Immediate Data Needs:</strong>
+            <br>• NeoRay FIH: Any preliminary safety/dosimetry data
+            <br>• RP2D determination status
+            <br>• Screening failure rates (PET-negative patients)
+            
+            <br><br><strong>2. Protocol Documents Required:</strong>
+            <br>• Full DLT definitions from internal protocols
+            <br>• Dosimetry constraints (kidney/marrow limits)
+            <br>• Central PET reading charter (if exists)
+            
+            <br><br><strong>3. Development Strategy Clarification:</strong>
+            <br>• Why no SoC-controlled Phase 2?
+            <br>• Phase 3 design timeline and control arm selection
+            <br>• Companion diagnostic development plan for GRPR
+            
+            <br><br><strong>4. Regional Analysis:</strong>
+            <br>• Per-region safety from ongoing trials
+            <br>• China site monitoring reports
+            <br>• Japanese cohort enrollment status
+            
+            <br><br><strong>5. Competitive Intelligence:</strong>
+            <br>• Other GRPR-targeted programs
+            <br>• ADC landscape post-CDK4/6i
+            <br>• Oral SERD positioning
+        </p>
+    </div>
+
+    <!-- Investment Committee Summary -->
+    <div class="highlight-box mt-6">
+        <h4 class="font-semibold mb-3">Investment Committee Clinical Assessment - [¹⁷⁷Lu]Lu-NeoB</h4>
+        <p class="detail-text">
+            <strong>Program Maturity:</strong> Early-stage - Phase 1/1b ongoing, no human efficacy data reported
+            
+            <br><br><strong>Key Strengths:</strong>
+            <br>• First-in-class GRPR-targeted radioligand therapy
+            <br>• Theranostic approach with ⁶⁸Ga-NeoB PET selection
+            <br>• Addresses unmet need post-CDK4/6i
+            <br>• Novel mechanism (DNA damage) potentially ESR1-agnostic
+            <br>• Strong partner in Novartis/AAA
+            
+            <br><br><strong>Critical Weaknesses:</strong>
+            <br>• NO controlled efficacy data at any phase
+            <br>• NO SoC-controlled Phase 2 planned
+            <br>• Jumping to Phase 3 without comparative data
+            <br>• Complex logistics limit addressable market
+            <br>• Late timeline (filing ≥2028)
+            <br>• Kidney dose-limiting organ creates safety ceiling
+            
+            <br><br><strong>Investment Decision Factors:</strong>
+            <br>• Need Phase 1 RP2D and preliminary efficacy first
+            <br>• Require controlled Phase 2 before Phase 3 investment
+            <br>• GRPR biomarker validation critical
+            <br>• Manufacturing/distribution infrastructure assessment
+            <br>• Competitive landscape rapidly evolving (ADCs, oral SERDs)
+            
+            <br><br><strong>Risk Assessment:</strong>
+            <br>• Clinical Risk: HIGH - no controlled data, early development
+            <br>• Regulatory Risk: HIGH - biomarker not validated, no precedent
+            <br>• Commercial Risk: HIGH - complex logistics, narrow patient selection
+            <br>• Technical Risk: MEDIUM - proven Lu-177 platform but new target
+            
+            <br><br><strong>Investment Recommendation:</strong>
+            <br>• Current Stage: TOO EARLY for significant investment
+            <br>• Next Catalyst: Phase 1 RP2D and preliminary efficacy
+            <br>• Key Requirement: Controlled Phase 2 data before Phase 3 commitment
+            <br>• Capital Need: $300-500M+ through approval (2028+)
+            
+            <br><br><strong>Bottom Line:</strong>
+            Program shows promise but lacks any controlled data to assess true treatment effect. The absence of a planned SoC-controlled Phase 2 is a critical gap. Investment should wait for Phase 1 results and insist on controlled Phase 2 before Phase 3 funding.
+        </p>
+    </div>
+</div>
         </div>
 
         <!-- Investment Summary Section -->

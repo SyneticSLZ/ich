@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug Analysis Comparison Tool | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .nav-bar {
+            background: white;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .main-container {
+            margin-top: 56px;
+            height: calc(100vh - 56px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .control-panel {
+            background: white;
+            padding: 16px 24px;
+            border-bottom: 2px solid #e3f2f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .comparison-container {
+            flex: 1;
+            display: flex;
+            gap: 8px;
+            padding: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-pane {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .pane-header {
+            background: linear-gradient(135deg, #f0f7f6 0%, #e6f3f1 100%);
+            padding: 12px 16px;
+            border-bottom: 2px solid #0a6b5e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pane-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0a6b5e;
+        }
+
+        .pane-content {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .select-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .select-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #6c757d;
+        }
+
+        .custom-select {
+            padding: 8px 12px;
+            border: 1px solid #e3f2f0;
+            border-radius: 6px;
+            background: white;
+            color: #333;
+            font-size: 13px;
+            cursor: pointer;
+            min-width: 200px;
+            transition: all 0.2s;
+        }
+
+        .custom-select:hover {
+            border-color: #0a6b5e;
+            box-shadow: 0 2px 4px rgba(10, 107, 94, 0.1);
+        }
+
+        .custom-select:focus {
+            outline: none;
+            border-color: #0a6b5e;
+            box-shadow: 0 0 0 3px rgba(10, 107, 94, 0.1);
+        }
+
+        .section-tree {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 6px;
+            padding: 8px;
+            margin-top: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .section-tree.active {
+            display: block;
+        }
+
+        .tree-item {
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 13px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .tree-item:hover {
+            background: #f0f7f6;
+            color: #0a6b5e;
+        }
+
+        .tree-item.selected {
+            background: #0a6b5e;
+            color: white;
+        }
+
+        .sync-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .sync-btn {
+            padding: 8px 16px;
+            background: #0a6b5e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sync-btn:hover {
+            background: #085a4f;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(10, 107, 94, 0.2);
+        }
+
+        .sync-btn.active {
+            background: #28a745;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e3f2f0;
+            border-top-color: #0a6b5e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #28a745;
+            display: inline-block;
+            margin-left: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .tree-category {
+            font-weight: 600;
+            color: #0a6b5e;
+            padding: 8px 12px;
+            background: #f0f7f6;
+            margin: 4px 0;
+            border-radius: 4px;
+        }
+
+        .tree-subcategory {
+            padding-left: 24px;
+        }
+
+        .comparison-mode-toggle {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: #f0f7f6;
+            padding: 4px;
+            border-radius: 6px;
+        }
+
+        .mode-btn {
+            padding: 6px 12px;
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mode-btn.active {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .highlight-differences {
+            background: #fff3cd !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="flex items-center justify-between w-full">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Leaf Intelligence
+                    </span>
+                    <div class="text-xs text-gray-600 font-medium tracking-wide ml-2">Comparison Tool</div>
+                </div>
+            </div>
+            <div class="sync-controls">
+                <button class="sync-btn" onclick="toggleSyncScroll()">
+                    🔗 Sync Scrolling
+                </button>
+                <div class="comparison-mode-toggle">
+                    <button class="mode-btn active" onclick="setComparisonMode('side-by-side')">Side by Side</button>
+                    <button class="mode-btn" onclick="setComparisonMode('overlay')">Overlay</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="flex justify-between items-center">
+                <div class="select-group">
+                    <span class="select-label">Left Panel:</span>
+                    <select class="custom-select" id="leftPageSelect" onchange="loadPage('left')">
+                        <option value="">Select a document...</option>
+                        <option value="Disitamab.html">Disitamab Vedotin (RC48)</option>
+                        <option value="vepdege2.html">Vepdegestrant (ARV-471)</option>
+                        <option value="Atirmociclib.html">Drug 3 Analysis</option>
+                        <option value="Lu-NeoB.html">Drug 4 Analysis</option>
+                        <option value="imlunestrant.html">Drug 5 Analysis</option>
+                    </select>
+                    <select class="custom-select" id="leftSectionSelect" onchange="navigateToSection('left')" disabled>
+                        <option value="">Select section...</option>
+                    </select>
+                </div>
+
+                <div class="select-group">
+                    <span class="select-label">Right Panel:</span>
+                    <select class="custom-select" id="rightPageSelect" onchange="loadPage('right')">
+                        <option value="">Select a document...</option>
+                        <option value="Disitamab.html">Disitamab Vedotin (RC48)</option>
+                        <option value="vepdege2.html">Vepdegestrant (ARV-471)</option>
+                        <option value="Atirmociclib.html">Drug 3 Analysis</option>
+                        <option value="Lu-NeoB.html">Drug 4 Analysis</option>
+                                           <option value="imlunestrant.html">Drug 5 Analysis</option>
+                    </select>
+                    <select class="custom-select" id="rightSectionSelect" onchange="navigateToSection('right')" disabled>
+                        <option value="">Select section...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Container -->
+        <div class="comparison-container">
+            <!-- Left Pane -->
+            <div class="comparison-pane">
+                <div class="pane-header">
+                    <span class="pane-title" id="leftPaneTitle">No Document Loaded</span>
+                    <span class="status-indicator" id="leftStatus" style="display:none;"></span>
+                </div>
+                <div class="pane-content">
+                    <div class="loading-overlay" id="leftLoading">
+                        <div class="loading-spinner"></div>
+                    </div>
+                    <iframe id="leftFrame" class="iframe-container" style="display:none;"></iframe>
+                </div>
+            </div>
+
+            <!-- Right Pane -->
+            <div class="comparison-pane">
+                <div class="pane-header">
+                    <span class="pane-title" id="rightPaneTitle">No Document Loaded</span>
+                    <span class="status-indicator" id="rightStatus" style="display:none;"></span>
+                </div>
+                <div class="pane-content">
+                    <div class="loading-overlay" id="rightLoading">
+                        <div class="loading-spinner"></div>
+                    </div>
+                    <iframe id="rightFrame" class="iframe-container" style="display:none;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration for available sections in the standard document structure
+        const STANDARD_SECTIONS = [
+            // Group 1: Overview & Executive
+            { id: 'overview', label: 'Overview', category: 'Executive' },
+            
+            // Group 2: Clinical & Regulatory
+            { id: 'clinical', label: 'Clinical & Regulatory', category: 'Clinical' },
+            { id: 'safety', label: 'Safety & Toxicology', category: 'Clinical' },
+            { id: 'trials', label: 'Complete Trial Analysis', category: 'Clinical' },
+            
+            // Group 3: Scientific
+            { id: 'scientific', label: 'Scientific & IP', category: 'Scientific' },
+            
+            // Group 4: Commercial
+            { id: 'commercial', label: 'Commercial & Market', category: 'Commercial' },
+            { id: 'financial', label: 'Financial & Strategic', category: 'Commercial' },
+            
+            // Group 5: Operational
+            { id: 'operational', label: 'Operational & Legal', category: 'Operational' },
+            { id: 'management', label: 'Management & Team', category: 'Operational' },
+        ];
+
+        let syncScroll = false;
+        let comparisonMode = 'side-by-side';
+
+        // Load a page into specified pane
+        function loadPage(pane) {
+            const selectElement = document.getElementById(`${pane}PageSelect`);
+            const pageUrl = selectElement.value;
+            
+            if (!pageUrl) return;
+            
+            const frame = document.getElementById(`${pane}Frame`);
+            const loading = document.getElementById(`${pane}Loading`);
+            const status = document.getElementById(`${pane}Status`);
+            const title = document.getElementById(`${pane}PaneTitle`);
+            const sectionSelect = document.getElementById(`${pane}SectionSelect`);
+            
+            // Show loading
+            loading.style.display = 'flex';
+            frame.style.display = 'none';
+            status.style.display = 'none';
+            
+            // Update title
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            title.textContent = selectedOption.text;
+            
+            // Load the page
+            frame.src = pageUrl;
+            
+            frame.onload = function() {
+                // Hide loading
+                loading.style.display = 'none';
+                frame.style.display = 'block';
+                status.style.display = 'inline-block';
+                
+                // Enable section selector
+                sectionSelect.disabled = false;
+                populateSectionSelector(pane);
+                
+                // Setup sync scrolling if enabled
+                if (syncScroll) {
+                    setupSyncScroll();
+                }
+                
+                // Hide navigation and non-content elements in iframe
+                try {
+                    const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+                    
+                    // Hide nav and tabs
+                    const style = iframeDoc.createElement('style');
+                    style.textContent = `
+                        .nav-bar { display: none !important; }
+                        .tabs { display: none !important; }
+                        .container { margin-top: 0 !important; padding-top: 20px !important; }
+                        .tab-container { box-shadow: none !important; margin-top: 0 !important; }
+                        .tab-content { display: block !important; }
+                        body { padding-top: 0 !important; }
+                    `;
+                    iframeDoc.head.appendChild(style);
+                    
+                    // Make all tab contents visible for navigation
+                    const tabContents = iframeDoc.querySelectorAll('.tab-content');
+                    tabContents.forEach(tab => {
+                        tab.style.display = 'block';
+                        tab.style.marginBottom = '40px';
+                    });
+                } catch(e) {
+                    console.log('Cannot modify iframe content - cross-origin');
+                }
+            };
+        }
+
+        // Populate section selector
+        function populateSectionSelector(pane) {
+            const sectionSelect = document.getElementById(`${pane}SectionSelect`);
+            sectionSelect.innerHTML = '<option value="">Jump to section...</option>';
+            
+            let currentCategory = '';
+            STANDARD_SECTIONS.forEach(section => {
+                if (section.category !== currentCategory) {
+                    currentCategory = section.category;
+                    const optgroup = document.createElement('optgroup');
+                    optgroup.label = currentCategory;
+                    sectionSelect.appendChild(optgroup);
+                }
+                
+                const option = document.createElement('option');
+                option.value = section.id;
+                option.textContent = section.label;
+                sectionSelect.lastElementChild.appendChild(option);
+            });
+        }
+
+        // Navigate to specific section
+        function navigateToSection(pane) {
+            const sectionSelect = document.getElementById(`${pane}SectionSelect`);
+            const sectionId = sectionSelect.value;
+            
+            if (!sectionId) return;
+            
+            const frame = document.getElementById(`${pane}Frame`);
+            
+            try {
+                const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+                const targetElement = iframeDoc.getElementById(sectionId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Highlight the section briefly
+                    targetElement.style.transition = 'background 0.3s';
+                    targetElement.style.background = '#fff3cd';
+                    setTimeout(() => {
+                        targetElement.style.background = '';
+                    }, 2000);
+                }
+            } catch(e) {
+                // If cross-origin, try using hash navigation
+                const currentSrc = frame.src;
+                const baseUrl = currentSrc.split('#')[0];
+                frame.src = baseUrl + '#' + sectionId;
+            }
+        }
+
+        // Toggle synchronized scrolling
+        function toggleSyncScroll() {
+            syncScroll = !syncScroll;
+            const btn = event.target;
+            
+            if (syncScroll) {
+                btn.classList.add('active');
+                btn.textContent = '🔗 Sync ON';
+                setupSyncScroll();
+            } else {
+                btn.classList.remove('active');
+                btn.textContent = '🔗 Sync OFF';
+                removeSyncScroll();
+            }
+        }
+
+        // Setup synchronized scrolling
+        function setupSyncScroll() {
+            const leftFrame = document.getElementById('leftFrame');
+            const rightFrame = document.getElementById('rightFrame');
+            
+            try {
+                const leftDoc = leftFrame.contentDocument || leftFrame.contentWindow.document;
+                const rightDoc = rightFrame.contentDocument || rightFrame.contentWindow.document;
+                
+                const leftScrollable = leftDoc.documentElement || leftDoc.body;
+                const rightScrollable = rightDoc.documentElement || rightDoc.body;
+                
+                let syncing = false;
+                
+                leftFrame.contentWindow.addEventListener('scroll', function() {
+                    if (!syncing && syncScroll) {
+                        syncing = true;
+                        const scrollPercent = leftFrame.contentWindow.scrollY / 
+                            (leftScrollable.scrollHeight - leftFrame.contentWindow.innerHeight);
+                        rightFrame.contentWindow.scrollTo(0, 
+                            scrollPercent * (rightScrollable.scrollHeight - rightFrame.contentWindow.innerHeight));
+                        setTimeout(() => syncing = false, 10);
+                    }
+                });
+                
+                rightFrame.contentWindow.addEventListener('scroll', function() {
+                    if (!syncing && syncScroll) {
+                        syncing = true;
+                        const scrollPercent = rightFrame.contentWindow.scrollY / 
+                            (rightScrollable.scrollHeight - rightFrame.contentWindow.innerHeight);
+                        leftFrame.contentWindow.scrollTo(0, 
+                            scrollPercent * (leftScrollable.scrollHeight - leftFrame.contentWindow.innerHeight));
+                        setTimeout(() => syncing = false, 10);
+                    }
+                });
+            } catch(e) {
+                console.log('Cannot setup sync scroll - cross-origin');
+            }
+        }
+
+        // Remove synchronized scrolling
+        function removeSyncScroll() {
+            // Event listeners will check syncScroll flag
+        }
+
+        // Set comparison mode
+        function setComparisonMode(mode) {
+            comparisonMode = mode;
+            
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            if (mode === 'overlay') {
+                // Implement overlay mode if needed
+                alert('Overlay mode coming soon - will highlight differences between sections');
+            }
+        }
+
+        // Quick preset comparisons
+        function loadPresetComparison(preset) {
+            switch(preset) {
+                case 'clinical':
+                    document.getElementById('leftPageSelect').value = 'disitamab-vedotin.html';
+                    document.getElementById('rightPageSelect').value = 'vepdegestrant.html';
+                    loadPage('left');
+                    loadPage('right');
+                    setTimeout(() => {
+                        document.getElementById('leftSectionSelect').value = 'clinical';
+                        document.getElementById('rightSectionSelect').value = 'clinical';
+                        navigateToSection('left');
+                        navigateToSection('right');
+                    }, 2000);
+                    break;
+            }
+        }
+
+        // Initialize with empty frames
+        window.onload = function() {
+            // Set initial state
+            document.getElementById('leftLoading').style.display = 'none';
+            document.getElementById('rightLoading').style.display = 'none';
+        };
+    </script>
+</body>
+</html>

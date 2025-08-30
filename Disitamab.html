@@ -446,7 +446,8 @@
         <!-- Tab Container -->
         <div class="tab-container">
             <div class="tabs">
-                <button class="tab-btn active" onclick="showTab('clinical')">Clinical & Regulatory</button>
+                <button class="tab-btn active" onclick="showTab('Overview')">Overview</button>
+                <button class="tab-btn" onclick="showTab('clinical')">Clinical & Regulatory</button>
                 <button class="tab-btn" onclick="showTab('scientific')">Scientific & IP</button>
                 <button class="tab-btn" onclick="showTab('commercial')">Commercial & Market</button>
                 <button class="tab-btn" onclick="showTab('financial')">Financial & Strategic</button>
@@ -456,8 +457,524 @@
                 <button class="tab-btn" onclick="showTab('trials')">Complete Trial Analysis</button>
             </div>
 
+
+            <!-- Overview Tab (add this to your tabs section) -->
+<button class="tab-btn" onclick="showTab('overview')">Overview</button>
+
+<!-- Overview Tab Content (add this with other tab contents) -->
+<div id="overview" class="tab-content active">
+    <div class="section-title">Executive Overview: Complete Diligence Assessment</div>
+    
+    <!-- Executive Summary -->
+    <div class="highlight-box">
+        <h3 class="text-xl font-bold mb-4 text-gray-900">Investment Committee Executive Brief</h3>
+        <p class="detail-text">
+            Disitamab vedotin (RC48, Aidixi®) represents a HER2-targeted antibody-drug conjugate with moderate probability of global regulatory success (40-50%) for HER2-positive metastatic breast cancer with liver metastases, based on its narrow Chinese approval and the need for new trials against current standards like trastuzumab deruxtecan. The asset demonstrates a favorable safety profile with low ILD risk that could differentiate it in later lines, positioning it for third-line or later therapy globally, similar to precedents like trastuzumab deruxtecan in post-trastuzumab settings, with potential for a biomarker-defined label in HER2-low populations if additional data support broader use.
+        </p>
+    </div>
+
+    <!-- 1. Regulatory Guidance & Interactions -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>1. Regulatory Guidance & Interactions</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content active">
+            <div class="data-card">
+                <h4 class="font-semibold mb-2">Complete Regulatory Interaction History</h4>
+                <p class="detail-text">
+                    Regulatory interactions for Disitamab vedotin have emphasized targeted indications and robust endpoints, with NMPA granting Breakthrough Therapy Designation and priority review leading to its May 2025 approval based on RC48-C006 (NCT03500380), where lapatinib + capecitabine was selected as control per Chinese guidelines for later-line HER2-positive mBC.
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">NMPA Interactions</div>
+                    <div class="metric-value">BTD + Priority</div>
+                    <div class="metric-detail">Approved May 2025</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">FDA Status</div>
+                    <div class="metric-value">BTD (UC)</div>
+                    <div class="metric-detail">2020 designation</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">EMA Interactions</div>
+                    <div class="metric-value">PIP Filed</div>
+                    <div class="metric-detail">2025 pediatric plan</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Control Arm</div>
+                    <div class="metric-value">Regulator-Guided</div>
+                    <div class="metric-detail">Lapatinib+cape per NMPA</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Regulatory Guidance Details</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>Meeting History:</strong> No specific pre-IND or End-of-Phase 2 meeting dates are public, but FDA's 2020 Breakthrough Therapy for urothelial cancer implies similar consultations for breast, with potential SPA for global Phase 3</li>
+                    <li>• <strong>Endpoint Hierarchy:</strong> Regulators advised PFS as primary (met with HR 0.56, P=0.0143) and OS as key secondary (immature but trending HR 0.56), plus safety monitoring for neuropathy</li>
+                    <li>• <strong>Sponsor Compliance:</strong> Sponsors followed closely, without noted divergences, enabling conditional approval in China</li>
+                    <li>• <strong>Label Implications:</strong> For EMA/FDA, implications include accelerated pathways for unmet niches like post-T-DXd failure, likely monotherapy in 3L+, with full approval requiring OS confirmation</li>
+                    <li>• <strong>Combo Strategy:</strong> Combo-only if synergies with PD-1 inhibitors prove essential in ongoing trials</li>
+                    <li>• <strong>Updates:</strong> Updates post-2024 SABCS interim and competitor ILD concerns may refine labels toward safer alternatives</li>
+                </ul>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.ema.europa.eu/en/medicines/human/paediatric-investigation-plans/emea-003443-pip02-23" target="_blank" class="link-btn">EMA PIP</a> | 
+                <a href="https://www.oncozine.com/disitamab-vedotin-receives-fda-breakthrough-therapy-designation-for-treatment-of-urothelial-cancer/" target="_blank" class="link-btn">FDA BTD</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Standard of Care Dossier -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>2. Standard of Care (SoC) Dossier</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">Global SoC Context</h4>
+                <p class="detail-text">
+                    The standard of care for HER2-positive metastatic breast cancer emphasizes dual HER2 blockade plus chemotherapy in the first line across the US and EU, while China and Japan may incorporate more oral regimens due to access; weaknesses include rapid resistance and variable survival benefits in visceral disease. The SoC for HER2-positive mBC is HER2-directed therapy escalating by line, with global variations in access and preferences.
+                </p>
+            </div>
+
+            <table class="trial-table mt-4">
+                <thead>
+                    <tr>
+                        <th>Line of Therapy</th>
+                        <th>US/EU Regimens</th>
+                        <th>Efficacy (ORR/PFS/OS)</th>
+                        <th>Safety</th>
+                        <th>Weaknesses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1L</strong></td>
+                        <td>THP (Approved)</td>
+                        <td>ORR 80%, PFS 18-24mo, OS 57mo</td>
+                        <td>Neutropenia 50%, neuropathy 20%</td>
+                        <td>Resistance, no mutant OS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2L</strong></td>
+                        <td>T-DXd (Approved)</td>
+                        <td>ORR 79%, PFS 28mo, OS benefit</td>
+                        <td>ILD 10-15%, nausea 70%</td>
+                        <td>Pulmonary toxicity, bias in open-label</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3L+</strong></td>
+                        <td>T-DM1/tucatinib (Approved)</td>
+                        <td>ORR 40-50%, PFS 7-9mo, OS 30mo</td>
+                        <td>Thrombocytopenia 20%, diarrhea 40%</td>
+                        <td>Cumulative toxicity, limited options</td>
+                    </tr>
+                    <tr>
+                        <td><strong>China/Japan</strong></td>
+                        <td>Lapatinib/cape common 2L/3L</td>
+                        <td>Similar PFS/OS but access-limited</td>
+                        <td>Hand-foot syndrome 30%, under-reported AEs</td>
+                        <td>Cost, inflated PROs</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Regional SoC Details</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>US/EU (FDA/EMA-approved):</strong> First-line is THP (trastuzumab + pertuzumab + taxane, PFS ~18-24 months, OS ~57 months from PERUSE/PERTAIN); second-line T-DXd (PFS ~28 months, OS benefit in DESTINY-Breast03); third-line T-DM1 or tucatinib combos (PFS ~7-9 months)</li>
+                    <li>• <strong>Liver Metastases:</strong> For liver metastases, T-DXd is favored for visceral control (ORR ~79%)</li>
+                    <li>• <strong>Efficacy Landmarks:</strong> T-DXd ORR 79%, PFS 28 months; safety includes ILD (10-15%)</li>
+                    <li>• <strong>China (NMPA-approved):</strong> Similar but more lapatinib/capecitabine in later lines (PFS ~5 months)</li>
+                    <li>• <strong>Japan (PMDA):</strong> Emphasizes oral regimens like tucatinib (PFS ~7 months in HER2CLIMB)</li>
+                    <li>• <strong>Global Weaknesses:</strong> Cost barriers in Asia, small effects in mutants, under-reported AEs culturally</li>
+                    <li>• <strong>DV Positioning:</strong> Disitamab vedotin's niche in liver mets addresses squishiness post-taxane/trastuzumab</li>
+                </ul>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://daiichisankyo.us/press-releases/-/article/enhertu-plus-pertuzumab-granted-breakthrough-therapy-designation-in-the-us-as-first-line-therapy-for-patients-with-her2-positive-metastatic-breast-cancer" target="_blank" class="link-btn">DESTINY Updates</a> | 
+                <a href="https://www.astrazeneca-us.com/media/press-releases/2025/ENHERTU-fam-trastuzumab-deruxtecan-nxki-plus-pertuzumab-demonstrated-highly-statistically-significant-and-clinically-meaningful-improvement-in-progression-free-survival-THP-as-1st-line-therapy-for-patients-with-HER2-positive-metastatic-breast-cancer.html" target="_blank" class="link-btn">THP Data</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Probability of Technical & Regulatory Success -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>3. Probability of Technical & Regulatory Success (PTRS)</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">PTRS Assessment</h4>
+                <p class="detail-text">
+                    Research suggests Disitamab vedotin has a moderate probability of global regulatory success (around 40-50%) for HER2-positive metastatic breast cancer with liver metastases, based on its narrow Chinese approval and the need for new trials against current standards like trastuzumab deruxtecan, though its favorable safety profile (low ILD risk) could differentiate it in later lines.
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">Overall PTRS</div>
+                    <div class="metric-value">40-50%</div>
+                    <div class="metric-detail">Global regulatory success</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Phase II PTSR</div>
+                    <div class="metric-value">~37%</div>
+                    <div class="metric-detail">GlobalData solid tumors</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">LoA HER2+ mBC</div>
+                    <div class="metric-value">40-50%</div>
+                    <div class="metric-detail">Given China approval</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">AI Score</div>
+                    <div class="metric-value">45%</div>
+                    <div class="metric-detail">Regulatory probability</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">PTRS Components & Adjustments</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>Base Assessment:</strong> PTRS for Disitamab vedotin draws from its HER2-targeting mechanism (precedents like T-DXd), strong Phase 3 PFS (HR 0.56), and favorable regulatory climate for ADCs amid unmet needs in visceral disease</li>
+                    <li>• <strong>Benchmark Data:</strong> GlobalData estimates Phase II PTSR ~37% for solid tumors; BioMedTracker analogs ~45% for ADCs in crowded spaces</li>
+                    <li>• <strong>SME Overlays:</strong> Adjust upward (+10-15%) for clean safety (no ILD vs competitors) and downward (-5-10%) for older control arm</li>
+                    <li>• <strong>Biology Input:</strong> Bystander effect in HER2-low populations</li>
+                    <li>• <strong>Design Input:</strong> Randomized but niche indication</li>
+                    <li>• <strong>Endpoint Input:</strong> PFS surrogate accepted by regulators</li>
+                    <li>• <strong>Climate Input:</strong> BTD precedent established</li>
+                    <li>• <strong>Recent Updates:</strong> Updates post-2025 NMPA and SABCS boost ~10%, with AI scores at 45% regulatory</li>
+                </ul>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.pharmaceutical-technology.com/data-insights/disitamab-vedotin-pfizer-solid-tumor-likelihood-of-approval/" target="_blank" class="link-btn">GlobalData Analysis</a> | 
+                <a href="https://www.intelligencia.ai/data-backed-probability-of-technical-and-regulatory-success-heres-how-ai-supports-critical-decisions-in-drug-development/" target="_blank" class="link-btn">AI PTRS Models</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Competitive Intelligence -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>4. Competitive Intelligence (esp. China-origin programs)</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">Competitive Landscape Summary</h4>
+                <p class="detail-text">
+                    Competitive landscape includes several China-origin HER2 ADCs like Alphamab's KN026 in Phase 3, with inflation risks in early data; Disitamab vedotin's MMAE payload offers a potential edge in safety over deruxtecan-based rivals but faces challenges in differentiating efficacy. The HER2 ADC space features ~15 assets, with Disitamab vedotin differentiated by low ILD but higher neuropathy.
+                </p>
+            </div>
+
+            <table class="trial-table mt-4">
+                <thead>
+                    <tr>
+                        <th>Competitor</th>
+                        <th>Mechanism/Phase/Geography</th>
+                        <th>Trial Design/Key Data</th>
+                        <th>Funding/Licensing</th>
+                        <th>Inflation Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>T-DXd</strong></td>
+                        <td>HER2/Approved/Global</td>
+                        <td>DESTINY: PFS 28mo</td>
+                        <td>Daiichi/AZ</td>
+                        <td>Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>KN026</strong></td>
+                        <td>Biparatopic HER2/Phase 3/China</td>
+                        <td>Combo: ORR superior preclinical</td>
+                        <td>Alphamab internal</td>
+                        <td>High (China-only)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HLX22</strong></td>
+                        <td>HER2/Phase 3/China-EU</td>
+                        <td>Mono: Safety focus</td>
+                        <td>Henlius + GeneQuantum</td>
+                        <td>Medium (bridging)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anbenitamab</strong></td>
+                        <td>HER2/Phase 3/China</td>
+                        <td>Potential US bridging</td>
+                        <td>CSPC</td>
+                        <td>High</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">China-Origin Program Details</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>Key Competitors:</strong> T-DXd (Phase 3 global, geography broad); T-DM1 (approved)</li>
+                    <li>• <strong>Alphamab's KN026:</strong> Biparatopic HER2, Phase 3 China, funding internal, out-licensing to West planned, high inflation in early ORR data</li>
+                    <li>• <strong>Henlius' HLX22:</strong> Phase 3, licensed from GeneQuantum, confirmatory EU trials</li>
+                    <li>• <strong>CSPC's Anbenitamab:</strong> Phase 3 China, potential US bridging</li>
+                    <li>• <strong>CT.gov/NMPA Registry:</strong> ~10 China-led (Phases 1-3, single-arm designs)</li>
+                    <li>• <strong>Deals:</strong> Henlius $undisclosed for HLX22</li>
+                    <li>• <strong>Inflation Risk:</strong> High in China-only (over-reported PROs), mitigated by global confirmatories</li>
+                    <li>• <strong>Competitive Threat:</strong> Ahead programs like KN026 could undercut costs</li>
+                </ul>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.prnewswire.com/apac/news-releases/alphamab-oncology-reports-2025-interim-results-and-business-highlights-302541640.html" target="_blank" class="link-btn">Alphamab Updates</a> | 
+                <a href="https://www.henlius.com/en/NewsDetails-5387-26.html" target="_blank" class="link-btn">Henlius Pipeline</a> | 
+                <a href="https://clinicaltrials.gov/study/NCT04879361" target="_blank" class="link-btn">ClinicalTrials.gov</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Geographic/Cultural Biases -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>5. Geographic / Cultural Biases (AE & PRO reporting)</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">Bias Assessment</h4>
+                <p class="detail-text">
+                    Geographic biases in adverse event reporting, such as under-reporting in China due to cultural factors, could affect trial interpretations, though no major issues noted in Disitamab vedotin studies; mitigations like global enrollment are planned for ex-China development.
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">Asia Enrollment</div>
+                    <div class="metric-value">~100%</div>
+                    <div class="metric-detail">RC48-C006 trial</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">AE Under-reporting</div>
+                    <div class="metric-value">20-30%</div>
+                    <div class="metric-detail">Lower vs US</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">PRO Inflation</div>
+                    <div class="metric-value">Noted</div>
+                    <div class="metric-detail">Physician respect factor</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Missingness Rate</div>
+                    <div class="metric-value">10-15%</div>
+                    <div class="metric-detail">High in China trials</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Bias Details & Mitigation</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>Trial Composition:</strong> Chinese trials (e.g., RC48-C006) involve ~100% Asia enrollment</li>
+                    <li>• <strong>Under-reporting Pattern:</strong> Flagging under-reporting of AEs (20-30% lower vs US, zeros in PROs due to physician respect) and over-reported benefits</li>
+                    <li>• <strong>Data Quality:</strong> Missingness high (10-15%); investigator-reported prioritized over PRO</li>
+                    <li>• <strong>Mitigation Strategy:</strong> US repeat in bridging (Pfizer plans), adapted tools, training</li>
+                    <li>• <strong>Efficacy Impact:</strong> Inflated efficacy in China (ORR 38% may adjust lower globally)</li>
+                    <li>• <strong>DV-Specific Assessment:</strong> No major DV-specific bias, but general Asian under-reporting noted</li>
+                </ul>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10417093/" target="_blank" class="link-btn">Geographic Bias Analysis</a> | 
+                <a href="https://x.com/Matsuda_PhDPhD/status/1922870508678414748" target="_blank" class="link-btn">Cultural Factors in Reporting</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Economic/Financing Thresholds -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>6. Economic / Financing Thresholds</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">Financial Assessment</h4>
+                <p class="detail-text">
+                    RemeGen's partnerships, including with Pfizer for ex-China rights, bolster financing with upfront payments extending cash runway into 2026, supporting Phase 3 costs estimated at hundreds of millions without apparent progression thresholds concerns.
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">Phase 3 Cost</div>
+                    <div class="metric-value">$200-300M</div>
+                    <div class="metric-detail">Estimated range</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Cash Runway</div>
+                    <div class="metric-value">2026</div>
+                    <div class="metric-detail">Post-partnerships</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Vor Bio Deal</div>
+                    <div class="metric-value">$125M</div>
+                    <div class="metric-detail">Upfront for telitacicept</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Threshold Status</div>
+                    <div class="metric-value">Aligned</div>
+                    <div class="metric-detail">Proceeded post-approval</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Financing Details</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>Phase 3 Costs:</strong> ~$200-300M, covered by RemeGen's revenue growth (strong H1 2025 from products)</li>
+                    <li>• <strong>Partnership Support:</strong> Vor Bio ($125M upfront for telitacicept, extending runway to 2026)</li>
+                    <li>• <strong>Balance Sheet:</strong> Cash positive post-deals</li>
+                    <li>• <strong>Pfizer Funding:</strong> Pfizer funds ex-China (Seagen acquisition)</li>
+                    <li>• <strong>Threshold Alignment:</strong> Thresholds aligned (proceeded post-China approval)</li>
+                    <li>• <strong>Funding Structure:</strong> Self/partnered funding, no red flags</li>
+                </ul>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.msn.com/en-us/money/savingandinvesting/remegen-co-ltd-reports-strong-revenue-growth-and-key-product-approvals-in-2025/ar-AA1L29Xa" target="_blank" class="link-btn">RemeGen Financials</a> | 
+                <a href="https://www.bioworld.com/articles/721838-after-axing-95-workforce-vor-bets-4b-on-remegens-telitacicept" target="_blank" class="link-btn">Vor Bio Deal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Operational Disclosure -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>7. Operational Disclosure / Documentation</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">Documentation Status</h4>
+                <p class="detail-text">
+                    Operational disclosures on ClinicalTrials.gov for key trials appear consistent, with protocol updates reflecting standard amendments and no evident gaps in safety or design reporting.
+                </p>
+            </div>
+
+            <div class="data-card">
+                <h4 class="font-semibold mb-2">Disclosure Details</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>NCT03500380 Entries:</strong> Consistent from Protocol v1.0 (2018) to amendments for enrollment/safety, updates timely</li>
+                    <li>• <strong>IB Alignment:</strong> IB aligns (no DLTs at 2mg/kg); no gaps in cohorts/signals</li>
+                    <li>• <strong>Minor Mismatches:</strong> Sample size variations explained by feasibility</li>
+                    <li>• <strong>Safety Reporting:</strong> No undisclosed safety signals</li>
+                    <li>• <strong>Design Changes:</strong> Standard protocol amendments documented</li>
+                </ul>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://clinicaltrials.gov/study/NCT03500380" target="_blank" class="link-btn">NCT03500380</a> | 
+                <a href="https://www.clinicaltrials.gov/study/NCT05904964" target="_blank" class="link-btn">Trial Registry</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. Line-of-Therapy / Label Implications -->
+    <div class="expandable-section">
+        <div class="expandable-header" onclick="toggleSection(this)">
+            <span>8. Line-of-Therapy / Label Implications</span>
+            <span>▼</span>
+        </div>
+        <div class="expandable-content">
+            <div class="highlight-box">
+                <h4 class="font-semibold mb-2">Positioning Assessment</h4>
+                <p class="detail-text">
+                    Evidence leans toward Disitamab vedotin being positioned for third-line or later therapy globally, similar to precedents like trastuzumab deruxtecan in post-trastuzumab settings, but with potential for a biomarker-defined label in HER2-low populations if additional data support broader use.
+                </p>
+            </div>
+
+            <div class="metric-grid mt-4">
+                <div class="metric-card">
+                    <div class="metric-label">China Label</div>
+                    <div class="metric-value">3L+</div>
+                    <div class="metric-detail">Post-trastuzumab/taxane</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">FDA Likely</div>
+                    <div class="metric-value">3L</div>
+                    <div class="metric-detail">Post-T-DXd HER2+</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">EMA Positioning</div>
+                    <div class="metric-value">2L HER2-low</div>
+                    <div class="metric-detail">If data supports</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">SoC Clarity</div>
+                    <div class="metric-value">Clear 1L</div>
+                    <div class="metric-detail">THP OS data solid</div>
+                </div>
+            </div>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Label Strategy Details</h4>
+                <ul class="space-y-2">
+                    <li>• <strong>Intended Line:</strong> 3L+ per China trial design</li>
+                    <li>• <strong>Precedents:</strong> T-DXd 2L post-PERTAIN supports if vs modern SoC</li>
+                    <li>• <strong>FDA/EMA Likely:</strong> 3L post-T-DXd in HER2+ or 2L HER2-low</li>
+                    <li>• <strong>SoC Clarity:</strong> 1L (THP OS data) favors later lines</li>
+                    <li>• <strong>Combo Potential:</strong> Combo-only if PD-1 synergies key</li>
+                    <li>• <strong>Biomarker Strategy:</strong> Potential for biomarker-defined label in HER2-low populations</li>
+                </ul>
+            </div>
+
+            <div class="reference-list">
+                Sources: <a href="https://www.bcrf.org/blog/asco-2025-metastatic-breast-cancer-updates/" target="_blank" class="link-btn">ASCO 2025 Updates</a> | 
+                <a href="https://www.remegen.com/" target="_blank" class="link-btn">RemeGen Pipeline</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Summary -->
+    <div class="data-card mt-6">
+        <h3 class="text-xl font-bold mb-4">Investment Committee Decision Points</h3>
+        
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-label">Global PTRS</div>
+                <div class="metric-value" style="color: #ffc107;">40-50%</div>
+                <div class="metric-detail">Moderate probability</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Line Position</div>
+                <div class="metric-value">3L+</div>
+                <div class="metric-detail">Post-T-DXd likely</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Safety Edge</div>
+                <div class="metric-value" style="color: #28a745;">No ILD</div>
+                <div class="metric-detail">vs T-DXd 10-15%</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Financial Health</div>
+                <div class="metric-value" style="color: #28a745;">2026</div>
+                <div class="metric-detail">Cash runway secured</div>
+            </div>
+        </div>
+
+        <p class="detail-text mt-4">
+            <strong>Key Investment Thesis:</strong> Disitamab vedotin offers a differentiated safety profile in a crowded HER2 ADC space, with established China approval providing validation. The moderate PTRS reflects the need for new trials against modern controls, but the absence of ILD toxicity creates a clear positioning opportunity in patients who cannot tolerate T-DXd. With Pfizer's backing for global development and RemeGen's strong China execution, the asset presents a balanced risk-reward profile for late-stage oncology investment.
+        </p>
+    </div>
+</div>
             <!-- Clinical & Regulatory Tab -->
-            <div id="clinical" class="tab-content active">
+            <div id="clinical" class="tab-content">
                 <div class="section-title">1. Clinical & Regulatory Diligence</div>
                 
                 <!-- Trial Design & Protocol -->
