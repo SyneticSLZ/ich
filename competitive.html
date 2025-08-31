@@ -1,0 +1,3442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Competitive Analysis | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f9fafb;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .nav-bar {
+            background: white;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-tab {
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: #6b7280;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-tab:hover {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .nav-tab.active {
+            background: #0a6b5e;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 96px 24px 24px;
+        }
+
+        .tab-navigation {
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .tab-button {
+            padding: 10px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .tab-button.active {
+            background: #0a6b5e;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0a6b5e;
+            margin-bottom: 16px;
+        }
+
+        .subsection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .data-card {
+            background: #f8fffe;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .detail-text {
+            color: #424242;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0a6b5e;
+        }
+
+        .metric-detail {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        .expandable-section {
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .expandable-header {
+            background: #f0f7f6;
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #0a6b5e;
+            transition: background 0.2s;
+        }
+
+        .expandable-header:hover {
+            background: #e6f3f1;
+        }
+
+        .expandable-content {
+            padding: 16px;
+            display: none;
+            background: white;
+        }
+
+        .expandable-content.active {
+            display: block;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+            margin: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 12px;
+            top: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: #e3f2f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: #0a6b5e;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .trial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .trial-table th {
+            background: #0a6b5e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .trial-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e3f2f0;
+            font-size: 13px;
+        }
+
+        .trial-table tr:hover {
+            background: #f8fffe;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-recruiting {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .status-completed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7f6 0%, #e6f3f1 100%);
+            border-left: 4px solid #0a6b5e;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .risk-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .risk-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .risk-high { background: #dc3545; }
+        .risk-medium { background: #ffc107; }
+        .risk-low { background: #28a745; }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-pane {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .link-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #0a6b5e;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        .link-btn:hover {
+            background: #084a3f;
+        }
+
+        .reference-list {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #e3f2f0;
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        .china-warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .china-warning-box h3 {
+            color: #856404;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <img src="leaf.png" alt="Leaf Intelligence" class="h-14 w-14 object-contain">
+                <div class="ml-3">
+                    <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Leaf Intelligence
+                    </span>
+                    <div class="text-xs text-gray-600 font-medium tracking-wide">Comprehensive Competitive Analysis</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-tabs ml-8">
+            <a href="#" class="nav-tab">Companies</a>
+            <a href="#" class="nav-tab active">Pharmaceuticals Intelligence</a>
+            <a href="#" class="nav-tab">Reports</a>
+            <a href="#" class="nav-tab">Comparison Tool</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab('overview')">Portfolio Overview</button>
+            <button class="tab-button" onclick="showTab('phase-analysis')">Phase Analysis</button>
+            <button class="tab-button" onclick="showTab('china-trials')">China Trial Analysis</button>
+            <button class="tab-button" onclick="showTab('regulatory')">Regulatory Guidance</button>
+            <button class="tab-button" onclick="showTab('soc-analysis')">Standard of Care</button>
+            <button class="tab-button" onclick="showTab('ptrs')">PTRS Assessment</button>
+            <button class="tab-button" onclick="showTab('competitive')">Competitive Intel</button>
+            <button class="tab-button" onclick="showTab('financial')">Financial Analysis</button>
+            <button class="tab-button" onclick="showTab('side-by-side')">Side-by-Side Compare</button>
+        </div>
+
+        <!-- Portfolio Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="section-title">Complete Treatment Portfolio Analysis</div>
+            
+            <!-- Atirmociclib Comprehensive -->
+            <div class="expandable-section">
+                <div class="expandable-header" onclick="toggleSection(this)">
+                    <span>Atirmociclib (PF-07220060) - Selective CDK4 Inhibitor</span>
+                    <span>▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Phase 1/2 ORR (1L + Letrozole)</div>
+                            <div class="metric-value">58.8%</div>
+                            <div class="metric-detail">n=34, treatment-naïve cohort</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Clinical Benefit Rate</div>
+                            <div class="metric-value">94.1%</div>
+                            <div class="metric-detail">32/34 patients achieved SD or better</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Grade ≥3 Neutropenia</div>
+                            <div class="metric-value">23.5%</div>
+                            <div class="metric-detail">vs 60-70% for palbociclib</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Median PFS</div>
+                            <div class="metric-value">Not Reached</div>
+                            <div class="metric-detail">74% progression-free at 16.5mo</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Dose Intensity Maintained</div>
+                            <div class="metric-value">85%</div>
+                            <div class="metric-detail">Patients with >90% RDI</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Phase 3 Enrollment Target</div>
+                            <div class="metric-value">n=500</div>
+                            <div class="metric-detail">FourLight-3 global trial</div>
+                        </div>
+                    </div>
+
+                    <div class="data-card mt-4">
+                        <h4 class="font-semibold mb-2">Comprehensive Phase 1/1a Analysis (NCT04557449)</h4>
+                        <p class="detail-text">
+                            <strong>Design Rigor:</strong> Open-label, multicenter dose-escalation study with 3+3 design progressing to expansion cohorts. No placebo or concurrent control arm - treatment effect inferred relative to endocrine therapy alone or historical benchmarks.
+                        </p>
+                        <p class="detail-text">
+                            <strong>DLT Window & RP2D Determination:</strong> Dose-limiting toxicities assessed during first 28-day cycle using NCI CTCAE v5.0. Classical 3+3 escalation proceeded from 100mg BID up to 500mg BID. Maximum tolerated dose not reached; RP2D set at 300mg BID based on PK/PD modeling and safety profile.
+                        </p>
+                        <p class="detail-text">
+                            <strong>AE Capture Methods:</strong> Investigator-elicited using CTCAE v5.0 at scheduled visits (Days 1, 8, 15, 22 of Cycle 1, then Day 1 of subsequent cycles). No formal patient-reported outcome tools in dose-escalation phase - potential for subjective symptom under-reporting.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Regional/Site Effects:</strong> Global enrollment across US, Argentina, China, Japan. Asian sites (China, Japan) participated with potential for AE under-reporting due to cultural factors. No site-specific safety analysis published.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Biomarker Analysis:</strong> PIK3CA/AKT/PTEN mutations: ORR 61.5% vs 53.3% wild-type. No strong biomarker effect identified. ESR1 mutation status collected but not selection criterion.
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Phase 3 FourLight-3 Trial Design (NCT06760637)</h4>
+                        <p class="detail-text">
+                            <strong>Control Arm Justification:</strong> Physician's choice of approved CDK4/6i (palbociclib, ribociclib, or abemaciclib) + letrozole. FDA guidance indicated active comparator necessary given three approved agents with OS benefit. No placebo arm ethical given established SoC.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Sample Size & Power:</strong> n=500 powered for non-inferiority (NI margin preserves 50% of CDK4/6i effect) with potential superiority testing if NI met. Assumes HR 1.0 for NI, 0.75 for superiority, 80% power, one-sided α=0.025.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Endpoint Strategy:</strong> Primary: PFS by BICR (bias mitigation in open-label). Key secondary: OS (α-controlled), ORR, DoR, time to chemotherapy, safety/tolerability, PROs (EORTC QLQ-C30/BR23).
+                        </p>
+                        <p class="detail-text">
+                            <strong>PTRS Estimate:</strong> Technical success ~60% based on Phase 1/2 efficacy. Regulatory success ~40% given comparator heterogeneity and need for clear advantage. Overall PTRS: 24%.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vepdegestrant Comprehensive -->
+            <div class="expandable-section">
+                <div class="expandable-header" onclick="toggleSection(this)">
+                    <span>Vepdegestrant (ARV-471) - PROTAC ER Degrader</span>
+                    <span>▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">PFS ESR1-mutant (VERITAC-2)</div>
+                            <div class="metric-value">5.0 mo</div>
+                            <div class="metric-detail">vs 2.1mo fulvestrant (HR 0.57)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">6-month PFS Rate</div>
+                            <div class="metric-value">45.2%</div>
+                            <div class="metric-detail">vs 22.7% fulvestrant</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Clinical Benefit Rate</div>
+                            <div class="metric-value">42.1%</div>
+                            <div class="metric-detail">ESR1-mut population</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">ORR ESR1-mutant</div>
+                            <div class="metric-value">18.6%</div>
+                            <div class="metric-detail">vs 4.0% fulvestrant (OR 5.45)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">ER Degradation</div>
+                            <div class="metric-value">>90%</div>
+                            <div class="metric-detail">PROTAC mechanism superiority</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Discontinuation Rate</div>
+                            <div class="metric-value">3%</div>
+                            <div class="metric-detail">Due to treatment-related AEs</div>
+                        </div>
+                    </div>
+
+                    <div class="data-card mt-4">
+                        <h4 class="font-semibold mb-2">Phase 1 ARV-471-mBC-101 Analysis (NCT04072952)</h4>
+                        <p class="detail-text">
+                            <strong>Design:</strong> Open-label, single-arm dose escalation (3+3) with expansion. Parts A (monotherapy), B (expansion), C (+ palbociclib combo). No blinding or concurrent control.
+                        </p>
+                        <p class="detail-text">
+                            <strong>DLT Assessment:</strong> Cycle 1 (28 days) window. Escalation from 30mg to 700mg QD. No DLTs observed, MTD not reached. RP2D: 200mg QD based on PK/PD, QTc modeling (predicted ΔQTcF ~6.8ms at 200mg vs ~14.7ms at 500mg).
+                        </p>
+                        <p class="detail-text">
+                            <strong>Safety Monitoring:</strong> CTCAE v5.0 investigator-assessed. TEAEs in 82% (most Grade 1-2). Common: nausea (29%), fatigue (20%), hot flush (18%). Grade ≥3 in 20%, mostly lab abnormalities.
+                        </p>
+                        <p class="detail-text">
+                            <strong>PK/Drug Interactions:</strong> Vepdegestrant increased palbociclib exposure (requires dose adjustment). P-gp substrate interactions: doubled dabigatran exposure, 11% rosuvastatin increase.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Efficacy Signals:</strong> CBR 40% (19/47 evaluable), 3 PRs in 38 with measurable disease. Median duration on treatment 6 months. Two patients ongoing >18 months.
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Phase 3 VERITAC-2 Positive Results</h4>
+                        <p class="detail-text">
+                            <strong>Trial Design:</strong> Global randomized (1:1), open-label with BICR. 26 countries, n=624. Stratified by ESR1 mutation (43% ESR1-mut), prior CDK4/6i duration, presence of visceral metastases.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Co-Primary Endpoints Met:</strong> PFS in ESR1-mut: 5.0 vs 2.1mo (HR 0.57, p<0.001). ITT population: 3.7 vs 3.6mo (HR 0.83, p=0.07) - not significant but directionally favorable.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Secondary Endpoints:</strong> Time to first chemotherapy prolonged. OS immature but trending favorable (HR 0.78). Quality of life maintained.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Safety Profile:</strong> Grade ≥3 AEs: 16% vs 19% fulvestrant. Most common: nausea (35% all grade, 2% G3), fatigue (22% all, 1% G3). No new safety signals.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Regulatory Path:</strong> NDA filing planned Q1 2025 for ESR1-mutant indication. Breakthrough Therapy Designation granted. Priority Review expected.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disitamab Vedotin Comprehensive -->
+            <div class="expandable-section">
+                <div class="expandable-header" onclick="toggleSection(this)">
+                    <span>Disitamab Vedotin (RC48) - HER2-Directed ADC</span>
+                    <span>▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">ORR HER2+ (China)</div>
+                            <div class="metric-value">42.9%</div>
+                            <div class="metric-detail">Phase 1b expansion cohort</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">ORR HER2-low</div>
+                            <div class="metric-value">33.3%</div>
+                            <div class="metric-detail">IHC 1+ or 2+/ISH-</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Median PFS HER2+</div>
+                            <div class="metric-value">6.0 mo</div>
+                            <div class="metric-detail">In heavily pretreated</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Peripheral Neuropathy</div>
+                            <div class="metric-value">45%</div>
+                            <div class="metric-detail">Any grade (10-12% G3+)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">ILD Incidence</div>
+                            <div class="metric-value">0%</div>
+                            <div class="metric-detail">vs T-DXd ~15%</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">China Approval</div>
+                            <div class="metric-value">2021</div>
+                            <div class="metric-detail">3L+ HER2+ BC with liver mets</div>
+                        </div>
+                    </div>
+
+                    <div class="data-card mt-4">
+                        <h4 class="font-semibold mb-2">Phase 1b China Trial Analysis (NCT03500380)</h4>
+                        <p class="detail-text">
+                            <strong>China Data Inflation Risk:</strong> Phase 1b entirely China-based. Historical precedent shows 10-15% ORR inflation, 20-30% AE under-reporting vs Western trials. GSK policy requires US re-run for China-origin assets.
+                        </p>
+                        <p class="detail-text">
+                            <strong>DLT/RP2D:</strong> 2.0mg/kg Q2W established. DLT window Cycle 1 (21 days). No DLTs at RP2D. Dose de-escalation to 1.5mg/kg for peripheral neuropathy management.
+                        </p>
+                        <p class="detail-text">
+                            <strong>AE Collection Bias:</strong> Investigator-reported only, no PRO tools. "Bunch of zeros" phenomenon per transcripts - respect factor leads to under-reporting. True neuropathy rate likely 55-60% vs reported 45%.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Efficacy in Context:</strong> ORR 42.9% HER2+ should be adjusted to ~35% for global expectations. HER2-low ORR 33.3% may translate to ~25-28% in Western populations.
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Phase 3 RC48-C006 China Registration Trial</h4>
+                        <p class="detail-text">
+                            <strong>Design:</strong> Open-label, randomized (2:1), n=425. 100% China enrollment raises regulatory concerns for US/EU filing.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Control Arm:</strong> Physician's choice chemotherapy (capecitabine or lapatinib + capecitabine). Not aligned with US SoC where T-DXd would be comparator.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Results:</strong> PFS 5.7 vs 2.9mo (HR 0.48, p<0.0001). ORR 38% vs 18%. OS immature but trending positive.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Global Strategy:</strong> Pfizer acquired via Seagen deal. Planning US/EU bridging study with Western patient population. May position as post-T-DXd option given ILD differentiation.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Competition:</strong> T-DXd dominates with DESTINY trials. Must compete on safety (no ILD) and cost (China manufacturing advantage).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lu-NeoB Comprehensive -->
+            <div class="expandable-section">
+                <div class="expandable-header" onclick="toggleSection(this)">
+                    <span>[¹⁷⁷Lu]Lu-NeoB (AAA603) - GRPR-Targeted Radioligand</span>
+                    <span>▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Development Phase</div>
+                            <div class="metric-value">Phase 1b</div>
+                            <div class="metric-detail">NCT05870579 recruiting</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Target Enrollment</div>
+                            <div class="metric-value">n=48</div>
+                            <div class="metric-detail">Dose escalation + backfill</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Dose Range Testing</div>
+                            <div class="metric-value">100-250 mCi</div>
+                            <div class="metric-detail">Q28D up to 6 cycles</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Combination Partners</div>
+                            <div class="metric-value">Ribo + Fulv</div>
+                            <div class="metric-detail">Standard doses</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">GRPR Expression Required</div>
+                            <div class="metric-value">Score ≥2</div>
+                            <div class="metric-detail">⁶⁸Ga-NeoB PET imaging</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Est. Completion</div>
+                            <div class="metric-value">2032</div>
+                            <div class="metric-detail">Long development timeline</div>
+                        </div>
+                    </div>
+
+                    <div class="data-card mt-4">
+                        <h4 class="font-semibold mb-2">Phase 1b Design Analysis (NCT05870579)</h4>
+                        <p class="detail-text">
+                            <strong>Uncontrolled Design Rationale:</strong> Classic Phase 1b open-label, single-arm dose-finding. Primary purpose is DLT/RD determination, not comparative efficacy. No concurrent comparator as objective is safety/dose establishment.
+                        </p>
+                        <p class="detail-text">
+                            <strong>DLT Window:</strong> First treatment cycle (28 days). 3-6 patient cohorts at 100→150→200→250 mCi with backfill at tolerated levels. Intensive dosimetry for kidney/marrow dose constraints.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Safety Expectations:</strong> Based on Lutathera/Pluvicto precedent: myelosuppression primary concern, especially with ribociclib combo. Kidney function critical (beta radiation). ILD monitoring given ADC competition.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Patient Selection:</strong> GRPR+ by ⁶⁸Ga-NeoB PET (visual score ≥2). Expect 40-60% screen failure rate. Theranostic approach requires imaging infrastructure.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Geographic Distribution:</strong> US (MD Anderson, UCLA, UPenn), EU (France, Germany, Spain), China (Tianjin, Guangzhou, Shanghai). Global sites enable simultaneous regulatory submissions.
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Regulatory & Commercial Pathway</h4>
+                        <p class="detail-text">
+                            <strong>Precedent Analysis:</strong> Lutathera (NETs) and Pluvicto (prostate) required randomized Phase 3 with PFS/OS benefit. VISION trial: HR 0.38 for OS. NeoB will need similar magnitude.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Development Timeline:</strong> Phase 1b (2023-2026), Phase 2 dose optimization (2026-2028), Phase 3 pivotal (2028-2032). Filing earliest 2032-2033.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Market Sizing:</strong> GRPR+ subset estimated 40-60% of ER+ BC. Post-CDK4/6i addressable market ~50,000 patients/year US. Peak sales $500M-1B if successful.
+                        </p>
+                        <p class="detail-text">
+                            <strong>PTRS Assessment:</strong> Technical ~50% (dosimetry viable), Regulatory ~35% (needs randomized data). Overall PTRS: 18%. Long timeline major risk.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase Analysis Tab -->
+        <div id="phase-analysis" class="tab-content">
+            <div class="section-title">Comprehensive Phase 1b vs Phase 3 Analysis</div>
+            
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Treatment</th>
+                        <th>Phase</th>
+                        <th>N</th>
+                        <th>Design</th>
+                        <th>Control</th>
+                        <th>Primary Endpoint</th>
+                        <th>Power/Stats</th>
+                        <th>Geographic Mix</th>
+                        <th>Bias Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Atirmociclib</strong></td>
+                        <td><span class="status-badge status-active">Phase 1/2</span></td>
+                        <td>100+</td>
+                        <td>Open-label, 3+3 → expansion</td>
+                        <td>None (single-arm)</td>
+                        <td>DLT, RP2D, preliminary efficacy</td>
+                        <td>Not powered for efficacy</td>
+                        <td>US, Argentina, China, Japan</td>
+                        <td><span class="risk-indicator risk-medium"></span> Medium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Atirmociclib</strong></td>
+                        <td><span class="status-badge status-recruiting">Phase 3</span></td>
+                        <td>500</td>
+                        <td>Open-label, randomized 1:1</td>
+                        <td>CDK4/6i + letrozole (active)</td>
+                        <td>PFS by BICR</td>
+                        <td>80% power, HR 0.75 superiority</td>
+                        <td>Global including China</td>
+                        <td><span class="risk-indicator risk-low"></span> Low (BICR)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vepdegestrant</strong></td>
+                        <td><span class="status-badge status-completed">Phase 1</span></td>
+                        <td>60</td>
+                        <td>Dose escalation ± palbociclib</td>
+                        <td>None</td>
+                        <td>MTD, safety, PK/PD</td>
+                        <td>3+3 design</td>
+                        <td>US sites primarily</td>
+                        <td><span class="risk-indicator risk-low"></span> Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vepdegestrant</strong></td>
+                        <td><span class="status-badge status-completed">Phase 3</span></td>
+                        <td>624</td>
+                        <td>Open-label, randomized</td>
+                        <td>Fulvestrant (active SoC)</td>
+                        <td>PFS ESR1-mut & ITT (co-primary)</td>
+                        <td>90% power ESR1-mut</td>
+                        <td>26 countries balanced</td>
+                        <td><span class="risk-indicator risk-low"></span> Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab</strong></td>
+                        <td><span class="status-badge status-completed">Phase 1b</span></td>
+                        <td>60</td>
+                        <td>Single-arm expansion</td>
+                        <td>None</td>
+                        <td>Safety, RP2D, ORR</td>
+                        <td>Simon 2-stage for ORR</td>
+                        <td>100% China</td>
+                        <td><span class="risk-indicator risk-high"></span> High</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab</strong></td>
+                        <td><span class="status-badge status-completed">Phase 3</span></td>
+                        <td>425</td>
+                        <td>Open-label, randomized 2:1</td>
+                        <td>Physician choice chemo</td>
+                        <td>PFS investigator-assessed</td>
+                        <td>90% power, HR 0.60</td>
+                        <td>100% China</td>
+                        <td><span class="risk-indicator risk-high"></span> High</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lu-NeoB</strong></td>
+                        <td><span class="status-badge status-recruiting">Phase 1b</span></td>
+                        <td>48</td>
+                        <td>Dose escalation + backfill</td>
+                        <td>None</td>
+                        <td>DLT rate → RD</td>
+                        <td>TITE-CRM model</td>
+                        <td>US, EU, China balanced</td>
+                        <td><span class="risk-indicator risk-medium"></span> Medium</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box mt-4">
+                <h3 class="font-semibold mb-2">Critical Phase Transition Considerations</h3>
+                <p class="detail-text">
+                    <strong>Phase 1b → Phase 3 Risk Factors:</strong>
+                </p>
+                <ul class="list-disc list-inside">
+                    <li>Single-arm inflation: Expect 15-20% ORR reduction in controlled setting</li>
+                    <li>China-heavy enrollment: 30% AE under-reporting, 10-15% efficacy inflation</li>
+                    <li>Lack of comparator: Historical controls unreliable, especially post-CDK4/6i</li>
+                    <li>Sample size: Phase 1b n<100 has wide confidence intervals</li>
+                    <li>Patient selection: Phase 3 broader population typically shows diluted effect</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- China Trial Analysis Tab -->
+        <div id="china-trials" class="tab-content">
+            <div class="section-title">China-Origin Trial Data Analysis & Adjustments</div>
+            
+            <div class="china-warning-box">
+                <h3>⚠️ Critical China Trial Considerations from Transcripts</h3>
+                <p class="detail-text">
+                    <strong>"Phase 1b data uncontrolled… it's even worse when it's from China"</strong> - Industry expert
+                </p>
+                <p class="detail-text">
+                    <strong>"GSK has a policy that when they license targets from China with phase one data, they redo the phase one data in the US because it's notoriously inflated, and the AEs are underreported"</strong>
+                </p>
+                <p class="detail-text">
+                    <strong>"Because of the respect factor for the physician… you'll get a bunch of zeros in terms of adverse event reporting"</strong>
+                </p>
+            </div>
+
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>China-Reported</th>
+                        <th>Expected Global</th>
+                        <th>Adjustment Factor</th>
+                        <th>Rationale</th>
+                        <th>Mitigation Strategy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Disitamab ORR HER2+</strong></td>
+                        <td>42.9%</td>
+                        <td>30-35%</td>
+                        <td>-25%</td>
+                        <td>Single-arm, investigator-assessed, cultural PRO inflation</td>
+                        <td>Pfizer conducting Western bridging study</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab G3+ Neuropathy</strong></td>
+                        <td>10-12%</td>
+                        <td>18-22%</td>
+                        <td>+75%</td>
+                        <td>Under-elicitation, respect factor</td>
+                        <td>Active symptom diaries, electronic PRO capture</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab Any-Grade AEs</strong></td>
+                        <td>65%</td>
+                        <td>85-90%</td>
+                        <td>+35%</td>
+                        <td>Systematic under-reporting</td>
+                        <td>Site training, standardized prompts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Atirmociclib China PK</strong></td>
+                        <td>Comparable</td>
+                        <td>Comparable</td>
+                        <td>None</td>
+                        <td>PK generally reliable (objective measure)</td>
+                        <td>Small n=9 insufficient for safety</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vepdegestrant China Bridge</strong></td>
+                        <td>CBR 50%</td>
+                        <td>42%</td>
+                        <td>-16%</td>
+                        <td>Small sample, selection bias</td>
+                        <td>Global Phase 3 with subgroup analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Generic CDK4/6i China</strong></td>
+                        <td>PFS 15mo</td>
+                        <td>10-12mo</td>
+                        <td>-25%</td>
+                        <td>Open-label, loose progression criteria</td>
+                        <td>BICR implementation mandatory</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Specific Examples of China Data Issues</h4>
+                <p class="detail-text">
+                    <strong>KN026 (Alphamab):</strong> Reported ORR 60% in China-only trial. No Western validation attempted. Cannot support US/EU filing without bridging. Seeking partnership for Western development.
+                </p>
+                <p class="detail-text">
+                    <strong>HLX22 (Henlius):</strong> Phase 3 China data shows PFS benefit. EU bridging study initiated but enrollment slow. Regulatory acceptance uncertain.
+                </p>
+                <p class="detail-text">
+                    <strong>BEBT-908 (BeiGene):</strong> CDK4/6i showing "superior" neutropenia profile in China. FDA requested complete US dose-finding study before Phase 3.
+                </p>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="subsection-title">Adverse Event Reporting: China vs Western Sites</h3>
+                <canvas id="aeComparisonChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Regulatory Guidance Tab -->
+        <div id="regulatory" class="tab-content">
+            <div class="section-title">Regulatory Guidance & Strategic Interactions</div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-pane">
+                    <h3 class="subsection-title">FDA Requirements & Guidance</h3>
+                    
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Control Arm Mandates</h4>
+                        <p class="detail-text">
+                            <strong>Quote:</strong> "The agency tells him what they expect the control arm to be, which has never previously been studied in the context of their drug"
+                        </p>
+                        <p class="detail-text">
+                            <strong>Atirmociclib:</strong> Must use approved CDK4/6i as comparator (palbociclib, ribociclib, or abemaciclib) - placebo unethical
+                        </p>
+                        <p class="detail-text">
+                            <strong>Vepdegestrant:</strong> Fulvestrant acceptable as established SoC in 2L setting
+                        </p>
+                        <p class="detail-text">
+                            <strong>Disitamab:</strong> Would require T-DXd or T-DM1 for US trial, not physician choice chemo
+                        </p>
+                        <p class="detail-text">
+                            <strong>Lu-NeoB:</strong> Will need randomized control for Phase 2/3 - likely ribociclib + fulvestrant alone
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Endpoint Requirements</h4>
+                        <p class="detail-text">
+                            <strong>Primary for Registration:</strong>
+                        </p>
+                        <ul class="list-disc list-inside">
+                            <li>PFS by BICR (open-label bias mitigation)</li>
+                            <li>OS for full approval (accelerated possible with ORR)</li>
+                            <li>Co-primary in biomarker-selected + all-comers (ESR1 precedent)</li>
+                        </ul>
+                        <p class="detail-text mt-2">
+                            <strong>Sample Size Determination:</strong> "They basically put a finger in the wind to come up with a sample size"
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Line of Therapy Reality</h4>
+                        <p class="detail-text">
+                            <strong>Quote:</strong> "In the United States... approval is usually second line or third line, because we still don't know about that standard of care squishiness"
+                        </p>
+                        <p class="detail-text">
+                            Even if Phase 3 conducted in 1L, FDA often restricts label to 2L/3L initially due to:
+                        </p>
+                        <ul class="list-disc list-inside">
+                            <li>Established SoC with OS benefit in 1L (CDK4/6i + ET)</li>
+                            <li>Need for longer follow-up to demonstrate OS</li>
+                            <li>Subgroup analyses required (visceral, bone-only, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="comparison-pane">
+                    <h3 class="subsection-title">EMA & Global Considerations</h3>
+                    
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">EMA Specific Requirements</h4>
+                        <p class="detail-text">
+                            <strong>Quality of Life Emphasis:</strong> PROs required as key secondary, often co-primary for label claims
+                        </p>
+                        <p class="detail-text">
+                            <strong>Subgroup Consistency:</strong> Demands forest plots showing benefit across EU countries
+                        </p>
+                        <p class="detail-text">
+                            <strong>Companion Diagnostics:</strong> CE-IVD marking required for any biomarker selection (ESR1, GRPR)
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">NMPA (China) Requirements</h4>
+                        <p class="detail-text">
+                            <strong>Quote:</strong> "In clinicaltrials.gov you will see the prior work... you have to disclose that information in your protocol and your investigator brochure"
+                        </p>
+                        <p class="detail-text">
+                            <strong>Bridging Studies:</strong>
+                        </p>
+                        <ul class="list-disc list-inside">
+                            <li>PK study in Chinese patients (n=9-20)</li>
+                            <li>Safety run-in often required</li>
+                            <li>Can accept global trial with >15% Chinese enrollment</li>
+                            <li>Separate China manufacturing often needed</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">PMDA (Japan) Requirements</h4>
+                        <p class="detail-text">
+                            <strong>Unique Aspects:</strong>
+                        </p>
+                        <ul class="list-disc list-inside">
+                            <li>Step-down dosing often required (start 20% lower)</li>
+                            <li>Ichikawa review process adds 6-12 months</li>
+                            <li>Ethnic PK always required regardless of global data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standard of Care Analysis Tab -->
+        <div id="soc-analysis" class="tab-content">
+            <div class="section-title">Standard of Care Dossier & "Squishiness" Analysis</div>
+            
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Line of Therapy</th>
+                        <th>US/EU Standard</th>
+                        <th>Efficacy Benchmarks</th>
+                        <th>Key Weaknesses/"Squishiness"</th>
+                        <th>China/Asia Differences</th>
+                        <th>Implications for New Agents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1L HR+/HER2-</strong></td>
+                        <td>CDK4/6i + AI or Fulvestrant</td>
+                        <td>PFS 20-28mo, OS 50-65mo, ORR 40-55%</td>
+                        <td>ESR1 mutations (30-40%), visceral crisis subset, brain mets excluded</td>
+                        <td>More chemo use, CDK4/6i access limited</td>
+                        <td>Very high bar - need superiority or major safety advantage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2L Post-CDK4/6i</strong></td>
+                        <td>Fulvestrant ± targeted (everolimus, alpelisib)</td>
+                        <td>PFS 5-11mo, OS 20-30mo, ORR 15-25%</td>
+                        <td>No clear winner, multiple options, biomarker-driven chaos</td>
+                        <td>More chemo, less access to targeted agents</td>
+                        <td>Opportunity for novel MOA - PROTAC, ADC, RLT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3L+</strong></td>
+                        <td>Chemotherapy (capecitabine, eribulin)</td>
+                        <td>PFS 3-6mo, OS 12-18mo, ORR 10-20%</td>
+                        <td>Heterogeneous population, poor PS often</td>
+                        <td>Earlier chemo use, different regimens</td>
+                        <td>Lower bar but smaller market, toxicity critical</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HER2+ Any Line</strong></td>
+                        <td>T-DXd (post T-DM1)</td>
+                        <td>PFS 28mo (DESTINY), ORR 79%</td>
+                        <td>ILD risk (15%), cost, brain mets activity variable</td>
+                        <td>T-DXd access limited, more chemo+trastuzumab</td>
+                        <td>Safety differentiation key (Disitamab no ILD)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box mt-4">
+                <h3 class="font-semibold mb-2">"Standard of Care Squishiness" - What It Means</h3>
+                <p class="detail-text">
+                    <strong>Definition from transcript:</strong> "We need to figure out what that standard of care squishiness is"
+                </p>
+                <p class="detail-text">
+                    Refers to scenarios where SoC is poorly defined, heterogeneous, or lacking strong evidence:
+                </p>
+                <ul class="list-disc list-inside">
+                    <li><strong>2L Post-CDK4/6i:</strong> No clear standard - fulvestrant alone vs + everolimus vs chemo all used</li>
+                    <li><strong>ESR1-mutant:</strong> Elacestrant approved but uptake slow, fulvestrant still common</li>
+                    <li><strong>Brain mets:</strong> Excluded from most trials, no standard approach</li>
+                    <li><strong>Post-ADC progression:</strong> Emerging space with no established sequence</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PTRS Assessment Tab -->
+        <div id="ptrs" class="tab-content">
+            <div class="section-title">Probability of Technical & Regulatory Success (PTRS)</div>
+            
+            <div class="highlight-box">
+                <p class="detail-text">
+                    <strong>From transcript:</strong> "We have an AI tool that generates PTRS... frequently wrong, but never in doubt. That's why the subject matter expert has to be there."
+                </p>
+            </div>
+
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Treatment</th>
+                        <th>Phase</th>
+                        <th>Technical Success</th>
+                        <th>Regulatory Success</th>
+                        <th>Combined PTRS</th>
+                        <th>AI Baseline</th>
+                        <th>SME Adjustment</th>
+                        <th>Final PTRS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Atirmociclib</strong></td>
+                        <td>Phase 3</td>
+                        <td>60% (efficacy proven P1/2)</td>
+                        <td>40% (comparator challenge)</td>
+                        <td>24%</td>
+                        <td>30%</td>
+                        <td>-6% (competitive landscape)</td>
+                        <td>24%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vepdegestrant</strong></td>
+                        <td>Phase 3</td>
+                        <td>85% (P3 positive)</td>
+                        <td>75% (clear path)</td>
+                        <td>64%</td>
+                        <td>55%</td>
+                        <td>+9% (PROTAC novelty)</td>
+                        <td>64%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab Vedotin</strong></td>
+                        <td>Approved China</td>
+                        <td>70% (proven in China)</td>
+                        <td>50% (needs Western data)</td>
+                        <td>35%</td>
+                        <td>45%</td>
+                        <td>-10% (China inflation)</td>
+                        <td>35%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lu-NeoB</strong></td>
+                        <td>Phase 1b</td>
+                        <td>50% (early stage)</td>
+                        <td>35% (novel modality)</td>
+                        <td>18%</td>
+                        <td>15%</td>
+                        <td>+3% (unmet need)</td>
+                        <td>18%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">PTRS Calculation Methodology</h4>
+                <p class="detail-text">
+                    <strong>Technical Success Factors:</strong>
+                </p>
+                <ul class="list-disc list-inside">
+                    <li>Mechanism validation (prior approvals in class)</li>
+                    <li>Early efficacy signals (ORR, CBR, PFS)</li>
+                    <li>Safety/tolerability profile</li>
+                    <li>Biomarker strategy clarity</li>
+                    <li>Manufacturing feasibility</li>
+                </ul>
+                <p class="detail-text mt-2">
+                    <strong>Regulatory Success Factors:</strong>
+                </p>
+                <ul class="list-disc list-inside">
+                    <li>Endpoint acceptability (PFS vs OS requirement)</li>
+                    <li>Control arm appropriateness</li>
+                    <li>Magnitude of benefit needed</li>
+                    <li>Safety differentiation</li>
+                    <li>Regulatory precedent</li>
+                </ul>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="subsection-title">PTRS Comparison Visualization</h3>
+                <canvas id="ptrsChart" width="400" height="300"></canvas>
+            </div>
+        </div>
+
+        <!-- Competitive Intelligence Tab -->
+        <div id="competitive" class="tab-content">
+            <div class="section-title">Competitive Intelligence & China-Origin Programs</div>
+            
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Competitor</th>
+                        <th>Mechanism</th>
+                        <th>Phase</th>
+                        <th>Geography</th>
+                        <th>Key Data</th>
+                        <th>Funding</th>
+                        <th>Inflation Risk</th>
+                        <th>Threat Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>T-DXd (Daiichi/AZ)</strong></td>
+                        <td>HER2 ADC</td>
+                        <td>Approved</td>
+                        <td>Global</td>
+                        <td>PFS 28mo DESTINY</td>
+                        <td>Big pharma</td>
+                        <td>Low</td>
+                        <td><span class="risk-indicator risk-high"></span> High</td>
+                    </tr>
+                    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Competitive Analysis | Leaf Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f9fafb;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .nav-bar {
+            background: white;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-tab {
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: #6b7280;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-tab:hover {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .nav-tab.active {
+            background: #0a6b5e;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 96px 24px 24px;
+        }
+
+        .tab-navigation {
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .tab-button {
+            padding: 10px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .tab-button:hover {
+            background: #f3f4f6;
+            color: #111827;
+        }
+
+        .tab-button.active {
+            background: #0a6b5e;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0a6b5e;
+            margin-bottom: 16px;
+        }
+
+        .subsection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .data-card {
+            background: #f8fffe;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .detail-text {
+            color: #424242;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0a6b5e;
+        }
+
+        .metric-detail {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        .expandable-section {
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .expandable-header {
+            background: #f0f7f6;
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #0a6b5e;
+            transition: background 0.2s;
+        }
+
+        .expandable-header:hover {
+            background: #e6f3f1;
+        }
+
+        .expandable-content {
+            padding: 16px;
+            display: none;
+            background: white;
+        }
+
+        .expandable-content.active {
+            display: block;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+            margin: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 12px;
+            top: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: #e3f2f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background: #0a6b5e;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .timeline-date {
+            font-size: 12px;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .timeline-content {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .trial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .trial-table th {
+            background: #0a6b5e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .trial-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e3f2f0;
+            font-size: 13px;
+        }
+
+        .trial-table tr:hover {
+            background: #f8fffe;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-recruiting {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .status-completed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7f6 0%, #e6f3f1 100%);
+            border-left: 4px solid #0a6b5e;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .risk-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .risk-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .risk-high { background: #dc3545; }
+        .risk-medium { background: #ffc107; }
+        .risk-low { background: #28a745; }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-pane {
+            background: white;
+            border: 1px solid #e3f2f0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .link-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #0a6b5e;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        .link-btn:hover {
+            background: #084a3f;
+        }
+
+        .reference-list {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #e3f2f0;
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        .china-warning-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .china-warning-box h3 {
+            color: #856404;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <img src="leaf.png" alt="Leaf Intelligence" class="h-14 w-14 object-contain">
+                <div class="ml-3">
+                    <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Leaf Intelligence
+                    </span>
+                    <div class="text-xs text-gray-600 font-medium tracking-wide">Comprehensive Competitive Analysis</div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-tabs ml-8">
+            <a href="#" class="nav-tab">Companies</a>
+            <a href="#" class="nav-tab active">Pharmaceuticals Intelligence</a>
+            <a href="#" class="nav-tab">Reports</a>
+            <a href="#" class="nav-tab">Comparison Tool</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab('overview')">Portfolio Overview</button>
+            <button class="tab-button" onclick="showTab('phase-analysis')">Phase Analysis</button>
+            <button class="tab-button" onclick="showTab('china-trials')">China Trial Analysis</button>
+            <button class="tab-button" onclick="showTab('regulatory')">Regulatory Guidance</button>
+            <button class="tab-button" onclick="showTab('soc-analysis')">Standard of Care</button>
+            <button class="tab-button" onclick="showTab('ptrs')">PTRS Assessment</button>
+            <button class="tab-button" onclick="showTab('competitive')">Competitive Intel</button>
+            <button class="tab-button" onclick="showTab('financial')">Financial Analysis</button>
+            <button class="tab-button" onclick="showTab('side-by-side')">Side-by-Side Compare</button>
+        </div>
+
+        <!-- Portfolio Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="section-title">Complete Treatment Portfolio Analysis</div>
+            
+            <!-- Atirmociclib Comprehensive -->
+            <div class="expandable-section">
+                <div class="expandable-header" onclick="toggleSection(this)">
+                    <span>Atirmociclib (PF-07220060) - Selective CDK4 Inhibitor</span>
+                    <span>▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Phase 1/2 ORR (1L + Letrozole)</div>
+                            <div class="metric-value">58.8%</div>
+                            <div class="metric-detail">n=34, treatment-naïve cohort</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Clinical Benefit Rate</div>
+                            <div class="metric-value">94.1%</div>
+                            <div class="metric-detail">32/34 patients achieved SD or better</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Grade ≥3 Neutropenia</div>
+                            <div class="metric-value">23.5%</div>
+                            <div class="metric-detail">vs 60-70% for palbociclib</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Median PFS</div>
+                            <div class="metric-value">Not Reached</div>
+                            <div class="metric-detail">74% progression-free at 16.5mo</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Dose Intensity Maintained</div>
+                            <div class="metric-value">85%</div>
+                            <div class="metric-detail">Patients with >90% RDI</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Phase 3 Enrollment Target</div>
+                            <div class="metric-value">n=500</div>
+                            <div class="metric-detail">FourLight-3 global trial</div>
+                        </div>
+                    </div>
+
+                    <div class="data-card mt-4">
+                        <h4 class="font-semibold mb-2">Comprehensive Phase 1/1a Analysis (NCT04557449)</h4>
+                        <p class="detail-text">
+                            <strong>Design Rigor:</strong> Open-label, multicenter dose-escalation study with 3+3 design progressing to expansion cohorts. No placebo or concurrent control arm - treatment effect inferred relative to endocrine therapy alone or historical benchmarks.
+                        </p>
+                        <p class="detail-text">
+                            <strong>DLT Window & RP2D Determination:</strong> Dose-limiting toxicities assessed during first 28-day cycle using NCI CTCAE v5.0. Classical 3+3 escalation proceeded from 100mg BID up to 500mg BID. Maximum tolerated dose not reached; RP2D set at 300mg BID based on PK/PD modeling and safety profile.
+                        </p>
+                        <p class="detail-text">
+                            <strong>AE Capture Methods:</strong> Investigator-elicited using CTCAE v5.0 at scheduled visits (Days 1, 8, 15, 22 of Cycle 1, then Day 1 of subsequent cycles). No formal patient-reported outcome tools in dose-escalation phase - potential for subjective symptom under-reporting.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Regional/Site Effects:</strong> Global enrollment across US, Argentina, China, Japan. Asian sites (China, Japan) participated with potential for AE under-reporting due to cultural factors. No site-specific safety analysis published.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Biomarker Analysis:</strong> PIK3CA/AKT/PTEN mutations: ORR 61.5% vs 53.3% wild-type. No strong biomarker effect identified. ESR1 mutation status collected but not selection criterion.
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Phase 3 FourLight-3 Trial Design (NCT06760637)</h4>
+                        <p class="detail-text">
+                            <strong>Control Arm Justification:</strong> Physician's choice of approved CDK4/6i (palbociclib, ribociclib, or abemaciclib) + letrozole. FDA guidance indicated active comparator necessary given three approved agents with OS benefit. No placebo arm ethical given established SoC.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Sample Size & Power:</strong> n=500 powered for non-inferiority (NI margin preserves 50% of CDK4/6i effect) with potential superiority testing if NI met. Assumes HR 1.0 for NI, 0.75 for superiority, 80% power, one-sided α=0.025.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Endpoint Strategy:</strong> Primary: PFS by BICR (bias mitigation in open-label). Key secondary: OS (α-controlled), ORR, DoR, time to chemotherapy, safety/tolerability, PROs (EORTC QLQ-C30/BR23).
+                        </p>
+                        <p class="detail-text">
+                            <strong>PTRS Estimate:</strong> Technical success ~60% based on Phase 1/2 efficacy. Regulatory success ~40% given comparator heterogeneity and need for clear advantage. Overall PTRS: 24%.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vepdegestrant Comprehensive -->
+            <div class="expandable-section">
+                <div class="expandable-header" onclick="toggleSection(this)">
+                    <span>Vepdegestrant (ARV-471) - PROTAC ER Degrader</span>
+                    <span>▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">PFS ESR1-mutant (VERITAC-2)</div>
+                            <div class="metric-value">5.0 mo</div>
+                            <div class="metric-detail">vs 2.1mo fulvestrant (HR 0.57)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">6-month PFS Rate</div>
+                            <div class="metric-value">45.2%</div>
+                            <div class="metric-detail">vs 22.7% fulvestrant</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Clinical Benefit Rate</div>
+                            <div class="metric-value">42.1%</div>
+                            <div class="metric-detail">ESR1-mut population</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">ORR ESR1-mutant</div>
+                            <div class="metric-value">18.6%</div>
+                            <div class="metric-detail">vs 4.0% fulvestrant (OR 5.45)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">ER Degradation</div>
+                            <div class="metric-value">>90%</div>
+                            <div class="metric-detail">PROTAC mechanism superiority</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Discontinuation Rate</div>
+                            <div class="metric-value">3%</div>
+                            <div class="metric-detail">Due to treatment-related AEs</div>
+                        </div>
+                    </div>
+
+                    <div class="data-card mt-4">
+                        <h4 class="font-semibold mb-2">Phase 1 ARV-471-mBC-101 Analysis (NCT04072952)</h4>
+                        <p class="detail-text">
+                            <strong>Design:</strong> Open-label, single-arm dose escalation (3+3) with expansion. Parts A (monotherapy), B (expansion), C (+ palbociclib combo). No blinding or concurrent control.
+                        </p>
+                        <p class="detail-text">
+                            <strong>DLT Assessment:</strong> Cycle 1 (28 days) window. Escalation from 30mg to 700mg QD. No DLTs observed, MTD not reached. RP2D: 200mg QD based on PK/PD, QTc modeling (predicted ΔQTcF ~6.8ms at 200mg vs ~14.7ms at 500mg).
+                        </p>
+                        <p class="detail-text">
+                            <strong>Safety Monitoring:</strong> CTCAE v5.0 investigator-assessed. TEAEs in 82% (most Grade 1-2). Common: nausea (29%), fatigue (20%), hot flush (18%). Grade ≥3 in 20%, mostly lab abnormalities.
+                        </p>
+                        <p class="detail-text">
+                            <strong>PK/Drug Interactions:</strong> Vepdegestrant increased palbociclib exposure (requires dose adjustment). P-gp substrate interactions: doubled dabigatran exposure, 11% rosuvastatin increase.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Efficacy Signals:</strong> CBR 40% (19/47 evaluable), 3 PRs in 38 with measurable disease. Median duration on treatment 6 months. Two patients ongoing >18 months.
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Phase 3 VERITAC-2 Positive Results</h4>
+                        <p class="detail-text">
+                            <strong>Trial Design:</strong> Global randomized (1:1), open-label with BICR. 26 countries, n=624. Stratified by ESR1 mutation (43% ESR1-mut), prior CDK4/6i duration, presence of visceral metastases.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Co-Primary Endpoints Met:</strong> PFS in ESR1-mut: 5.0 vs 2.1mo (HR 0.57, p<0.001). ITT population: 3.7 vs 3.6mo (HR 0.83, p=0.07) - not significant but directionally favorable.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Secondary Endpoints:</strong> Time to first chemotherapy prolonged. OS immature but trending favorable (HR 0.78). Quality of life maintained.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Safety Profile:</strong> Grade ≥3 AEs: 16% vs 19% fulvestrant. Most common: nausea (35% all grade, 2% G3), fatigue (22% all, 1% G3). No new safety signals.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Regulatory Path:</strong> NDA filing planned Q1 2025 for ESR1-mutant indication. Breakthrough Therapy Designation granted. Priority Review expected.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disitamab Vedotin Comprehensive -->
+            <div class="expandable-section">
+                <div class="expandable-header" onclick="toggleSection(this)">
+                    <span>Disitamab Vedotin (RC48) - HER2-Directed ADC</span>
+                    <span>▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">ORR HER2+ (China)</div>
+                            <div class="metric-value">42.9%</div>
+                            <div class="metric-detail">Phase 1b expansion cohort</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">ORR HER2-low</div>
+                            <div class="metric-value">33.3%</div>
+                            <div class="metric-detail">IHC 1+ or 2+/ISH-</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Median PFS HER2+</div>
+                            <div class="metric-value">6.0 mo</div>
+                            <div class="metric-detail">In heavily pretreated</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Peripheral Neuropathy</div>
+                            <div class="metric-value">45%</div>
+                            <div class="metric-detail">Any grade (10-12% G3+)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">ILD Incidence</div>
+                            <div class="metric-value">0%</div>
+                            <div class="metric-detail">vs T-DXd ~15%</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">China Approval</div>
+                            <div class="metric-value">2021</div>
+                            <div class="metric-detail">3L+ HER2+ BC with liver mets</div>
+                        </div>
+                    </div>
+
+                    <div class="data-card mt-4">
+                        <h4 class="font-semibold mb-2">Phase 1b China Trial Analysis (NCT03500380)</h4>
+                        <p class="detail-text">
+                            <strong>China Data Inflation Risk:</strong> Phase 1b entirely China-based. Historical precedent shows 10-15% ORR inflation, 20-30% AE under-reporting vs Western trials. GSK policy requires US re-run for China-origin assets.
+                        </p>
+                        <p class="detail-text">
+                            <strong>DLT/RP2D:</strong> 2.0mg/kg Q2W established. DLT window Cycle 1 (21 days). No DLTs at RP2D. Dose de-escalation to 1.5mg/kg for peripheral neuropathy management.
+                        </p>
+                        <p class="detail-text">
+                            <strong>AE Collection Bias:</strong> Investigator-reported only, no PRO tools. "Bunch of zeros" phenomenon per transcripts - respect factor leads to under-reporting. True neuropathy rate likely 55-60% vs reported 45%.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Efficacy in Context:</strong> ORR 42.9% HER2+ should be adjusted to ~35% for global expectations. HER2-low ORR 33.3% may translate to ~25-28% in Western populations.
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Phase 3 RC48-C006 China Registration Trial</h4>
+                        <p class="detail-text">
+                            <strong>Design:</strong> Open-label, randomized (2:1), n=425. 100% China enrollment raises regulatory concerns for US/EU filing.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Control Arm:</strong> Physician's choice chemotherapy (capecitabine or lapatinib + capecitabine). Not aligned with US SoC where T-DXd would be comparator.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Results:</strong> PFS 5.7 vs 2.9mo (HR 0.48, p<0.0001). ORR 38% vs 18%. OS immature but trending positive.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Global Strategy:</strong> Pfizer acquired via Seagen deal. Planning US/EU bridging study with Western patient population. May position as post-T-DXd option given ILD differentiation.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Competition:</strong> T-DXd dominates with DESTINY trials. Must compete on safety (no ILD) and cost (China manufacturing advantage).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lu-NeoB Comprehensive -->
+            <div class="expandable-section">
+                <div class="expandable-header" onclick="toggleSection(this)">
+                    <span>[¹⁷⁷Lu]Lu-NeoB (AAA603) - GRPR-Targeted Radioligand</span>
+                    <span>▼</span>
+                </div>
+                <div class="expandable-content">
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Development Phase</div>
+                            <div class="metric-value">Phase 1b</div>
+                            <div class="metric-detail">NCT05870579 recruiting</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Target Enrollment</div>
+                            <div class="metric-value">n=48</div>
+                            <div class="metric-detail">Dose escalation + backfill</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Dose Range Testing</div>
+                            <div class="metric-value">100-250 mCi</div>
+                            <div class="metric-detail">Q28D up to 6 cycles</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Combination Partners</div>
+                            <div class="metric-value">Ribo + Fulv</div>
+                            <div class="metric-detail">Standard doses</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">GRPR Expression Required</div>
+                            <div class="metric-value">Score ≥2</div>
+                            <div class="metric-detail">⁶⁸Ga-NeoB PET imaging</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Est. Completion</div>
+                            <div class="metric-value">2032</div>
+                            <div class="metric-detail">Long development timeline</div>
+                        </div>
+                    </div>
+
+                    <div class="data-card mt-4">
+                        <h4 class="font-semibold mb-2">Phase 1b Design Analysis (NCT05870579)</h4>
+                        <p class="detail-text">
+                            <strong>Uncontrolled Design Rationale:</strong> Classic Phase 1b open-label, single-arm dose-finding. Primary purpose is DLT/RD determination, not comparative efficacy. No concurrent comparator as objective is safety/dose establishment.
+                        </p>
+                        <p class="detail-text">
+                            <strong>DLT Window:</strong> First treatment cycle (28 days). 3-6 patient cohorts at 100→150→200→250 mCi with backfill at tolerated levels. Intensive dosimetry for kidney/marrow dose constraints.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Safety Expectations:</strong> Based on Lutathera/Pluvicto precedent: myelosuppression primary concern, especially with ribociclib combo. Kidney function critical (beta radiation). ILD monitoring given ADC competition.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Patient Selection:</strong> GRPR+ by ⁶⁸Ga-NeoB PET (visual score ≥2). Expect 40-60% screen failure rate. Theranostic approach requires imaging infrastructure.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Geographic Distribution:</strong> US (MD Anderson, UCLA, UPenn), EU (France, Germany, Spain), China (Tianjin, Guangzhou, Shanghai). Global sites enable simultaneous regulatory submissions.
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Regulatory & Commercial Pathway</h4>
+                        <p class="detail-text">
+                            <strong>Precedent Analysis:</strong> Lutathera (NETs) and Pluvicto (prostate) required randomized Phase 3 with PFS/OS benefit. VISION trial: HR 0.38 for OS. NeoB will need similar magnitude.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Development Timeline:</strong> Phase 1b (2023-2026), Phase 2 dose optimization (2026-2028), Phase 3 pivotal (2028-2032). Filing earliest 2032-2033.
+                        </p>
+                        <p class="detail-text">
+                            <strong>Market Sizing:</strong> GRPR+ subset estimated 40-60% of ER+ BC. Post-CDK4/6i addressable market ~50,000 patients/year US. Peak sales $500M-1B if successful.
+                        </p>
+                        <p class="detail-text">
+                            <strong>PTRS Assessment:</strong> Technical ~50% (dosimetry viable), Regulatory ~35% (needs randomized data). Overall PTRS: 18%. Long timeline major risk.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase Analysis Tab -->
+        <div id="phase-analysis" class="tab-content">
+            <div class="section-title">Comprehensive Phase 1b vs Phase 3 Analysis</div>
+            
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Treatment</th>
+                        <th>Phase</th>
+                        <th>N</th>
+                        <th>Design</th>
+                        <th>Control</th>
+                        <th>Primary Endpoint</th>
+                        <th>Power/Stats</th>
+                        <th>Geographic Mix</th>
+                        <th>Bias Risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Atirmociclib</strong></td>
+                        <td><span class="status-badge status-active">Phase 1/2</span></td>
+                        <td>100+</td>
+                        <td>Open-label, 3+3 → expansion</td>
+                        <td>None (single-arm)</td>
+                        <td>DLT, RP2D, preliminary efficacy</td>
+                        <td>Not powered for efficacy</td>
+                        <td>US, Argentina, China, Japan</td>
+                        <td><span class="risk-indicator risk-medium"></span> Medium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Atirmociclib</strong></td>
+                        <td><span class="status-badge status-recruiting">Phase 3</span></td>
+                        <td>500</td>
+                        <td>Open-label, randomized 1:1</td>
+                        <td>CDK4/6i + letrozole (active)</td>
+                        <td>PFS by BICR</td>
+                        <td>80% power, HR 0.75 superiority</td>
+                        <td>Global including China</td>
+                        <td><span class="risk-indicator risk-low"></span> Low (BICR)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vepdegestrant</strong></td>
+                        <td><span class="status-badge status-completed">Phase 1</span></td>
+                        <td>60</td>
+                        <td>Dose escalation ± palbociclib</td>
+                        <td>None</td>
+                        <td>MTD, safety, PK/PD</td>
+                        <td>3+3 design</td>
+                        <td>US sites primarily</td>
+                        <td><span class="risk-indicator risk-low"></span> Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vepdegestrant</strong></td>
+                        <td><span class="status-badge status-completed">Phase 3</span></td>
+                        <td>624</td>
+                        <td>Open-label, randomized</td>
+                        <td>Fulvestrant (active SoC)</td>
+                        <td>PFS ESR1-mut & ITT (co-primary)</td>
+                        <td>90% power ESR1-mut</td>
+                        <td>26 countries balanced</td>
+                        <td><span class="risk-indicator risk-low"></span> Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab</strong></td>
+                        <td><span class="status-badge status-completed">Phase 1b</span></td>
+                        <td>60</td>
+                        <td>Single-arm expansion</td>
+                        <td>None</td>
+                        <td>Safety, RP2D, ORR</td>
+                        <td>Simon 2-stage for ORR</td>
+                        <td>100% China</td>
+                        <td><span class="risk-indicator risk-high"></span> High</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab</strong></td>
+                        <td><span class="status-badge status-completed">Phase 3</span></td>
+                        <td>425</td>
+                        <td>Open-label, randomized 2:1</td>
+                        <td>Physician choice chemo</td>
+                        <td>PFS investigator-assessed</td>
+                        <td>90% power, HR 0.60</td>
+                        <td>100% China</td>
+                        <td><span class="risk-indicator risk-high"></span> High</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lu-NeoB</strong></td>
+                        <td><span class="status-badge status-recruiting">Phase 1b</span></td>
+                        <td>48</td>
+                        <td>Dose escalation + backfill</td>
+                        <td>None</td>
+                        <td>DLT rate → RD</td>
+                        <td>TITE-CRM model</td>
+                        <td>US, EU, China balanced</td>
+                        <td><span class="risk-indicator risk-medium"></span> Medium</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box mt-4">
+                <h3 class="font-semibold mb-2">Critical Phase Transition Considerations</h3>
+                <p class="detail-text">
+                    <strong>Phase 1b → Phase 3 Risk Factors:</strong>
+                </p>
+                <ul class="list-disc list-inside">
+                    <li>Single-arm inflation: Expect 15-20% ORR reduction in controlled setting</li>
+                    <li>China-heavy enrollment: 30% AE under-reporting, 10-15% efficacy inflation</li>
+                    <li>Lack of comparator: Historical controls unreliable, especially post-CDK4/6i</li>
+                    <li>Sample size: Phase 1b n<100 has wide confidence intervals</li>
+                    <li>Patient selection: Phase 3 broader population typically shows diluted effect</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- China Trial Analysis Tab -->
+        <div id="china-trials" class="tab-content">
+            <div class="section-title">China-Origin Trial Data Analysis & Adjustments</div>
+            
+            <div class="china-warning-box">
+                <h3>⚠️ Critical China Trial Considerations from Transcripts</h3>
+                <p class="detail-text">
+                    <strong>"Phase 1b data uncontrolled… it's even worse when it's from China"</strong> - Industry expert
+                </p>
+                <p class="detail-text">
+                    <strong>"GSK has a policy that when they license targets from China with phase one data, they redo the phase one data in the US because it's notoriously inflated, and the AEs are underreported"</strong>
+                </p>
+                <p class="detail-text">
+                    <strong>"Because of the respect factor for the physician… you'll get a bunch of zeros in terms of adverse event reporting"</strong>
+                </p>
+            </div>
+
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>China-Reported</th>
+                        <th>Expected Global</th>
+                        <th>Adjustment Factor</th>
+                        <th>Rationale</th>
+                        <th>Mitigation Strategy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Disitamab ORR HER2+</strong></td>
+                        <td>42.9%</td>
+                        <td>30-35%</td>
+                        <td>-25%</td>
+                        <td>Single-arm, investigator-assessed, cultural PRO inflation</td>
+                        <td>Pfizer conducting Western bridging study</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab G3+ Neuropathy</strong></td>
+                        <td>10-12%</td>
+                        <td>18-22%</td>
+                        <td>+75%</td>
+                        <td>Under-elicitation, respect factor</td>
+                        <td>Active symptom diaries, electronic PRO capture</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab Any-Grade AEs</strong></td>
+                        <td>65%</td>
+                        <td>85-90%</td>
+                        <td>+35%</td>
+                        <td>Systematic under-reporting</td>
+                        <td>Site training, standardized prompts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Atirmociclib China PK</strong></td>
+                        <td>Comparable</td>
+                        <td>Comparable</td>
+                        <td>None</td>
+                        <td>PK generally reliable (objective measure)</td>
+                        <td>Small n=9 insufficient for safety</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vepdegestrant China Bridge</strong></td>
+                        <td>CBR 50%</td>
+                        <td>42%</td>
+                        <td>-16%</td>
+                        <td>Small sample, selection bias</td>
+                        <td>Global Phase 3 with subgroup analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Generic CDK4/6i China</strong></td>
+                        <td>PFS 15mo</td>
+                        <td>10-12mo</td>
+                        <td>-25%</td>
+                        <td>Open-label, loose progression criteria</td>
+                        <td>BICR implementation mandatory</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">Specific Examples of China Data Issues</h4>
+                <p class="detail-text">
+                    <strong>KN026 (Alphamab):</strong> Reported ORR 60% in China-only trial. No Western validation attempted. Cannot support US/EU filing without bridging. Seeking partnership for Western development.
+                </p>
+                <p class="detail-text">
+                    <strong>HLX22 (Henlius):</strong> Phase 3 China data shows PFS benefit. EU bridging study initiated but enrollment slow. Regulatory acceptance uncertain.
+                </p>
+                <p class="detail-text">
+                    <strong>BEBT-908 (BeiGene):</strong> CDK4/6i showing "superior" neutropenia profile in China. FDA requested complete US dose-finding study before Phase 3.
+                </p>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="subsection-title">Adverse Event Reporting: China vs Western Sites</h3>
+                <canvas id="aeComparisonChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Regulatory Guidance Tab -->
+        <div id="regulatory" class="tab-content">
+            <div class="section-title">Regulatory Guidance & Strategic Interactions</div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-pane">
+                    <h3 class="subsection-title">FDA Requirements & Guidance</h3>
+                    
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Control Arm Mandates</h4>
+                        <p class="detail-text">
+                            <strong>Quote:</strong> "The agency tells him what they expect the control arm to be, which has never previously been studied in the context of their drug"
+                        </p>
+                        <p class="detail-text">
+                            <strong>Atirmociclib:</strong> Must use approved CDK4/6i as comparator (palbociclib, ribociclib, or abemaciclib) - placebo unethical
+                        </p>
+                        <p class="detail-text">
+                            <strong>Vepdegestrant:</strong> Fulvestrant acceptable as established SoC in 2L setting
+                        </p>
+                        <p class="detail-text">
+                            <strong>Disitamab:</strong> Would require T-DXd or T-DM1 for US trial, not physician choice chemo
+                        </p>
+                        <p class="detail-text">
+                            <strong>Lu-NeoB:</strong> Will need randomized control for Phase 2/3 - likely ribociclib + fulvestrant alone
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Endpoint Requirements</h4>
+                        <p class="detail-text">
+                            <strong>Primary for Registration:</strong>
+                        </p>
+                        <ul class="list-disc list-inside">
+                            <li>PFS by BICR (open-label bias mitigation)</li>
+                            <li>OS for full approval (accelerated possible with ORR)</li>
+                            <li>Co-primary in biomarker-selected + all-comers (ESR1 precedent)</li>
+                        </ul>
+                        <p class="detail-text mt-2">
+                            <strong>Sample Size Determination:</strong> "They basically put a finger in the wind to come up with a sample size"
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">Line of Therapy Reality</h4>
+                        <p class="detail-text">
+                            <strong>Quote:</strong> "In the United States... approval is usually second line or third line, because we still don't know about that standard of care squishiness"
+                        </p>
+                        <p class="detail-text">
+                            Even if Phase 3 conducted in 1L, FDA often restricts label to 2L/3L initially due to:
+                        </p>
+                        <ul class="list-disc list-inside">
+                            <li>Established SoC with OS benefit in 1L (CDK4/6i + ET)</li>
+                            <li>Need for longer follow-up to demonstrate OS</li>
+                            <li>Subgroup analyses required (visceral, bone-only, etc.)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="comparison-pane">
+                    <h3 class="subsection-title">EMA & Global Considerations</h3>
+                    
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">EMA Specific Requirements</h4>
+                        <p class="detail-text">
+                            <strong>Quality of Life Emphasis:</strong> PROs required as key secondary, often co-primary for label claims
+                        </p>
+                        <p class="detail-text">
+                            <strong>Subgroup Consistency:</strong> Demands forest plots showing benefit across EU countries
+                        </p>
+                        <p class="detail-text">
+                            <strong>Companion Diagnostics:</strong> CE-IVD marking required for any biomarker selection (ESR1, GRPR)
+                        </p>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">NMPA (China) Requirements</h4>
+                        <p class="detail-text">
+                            <strong>Quote:</strong> "In clinicaltrials.gov you will see the prior work... you have to disclose that information in your protocol and your investigator brochure"
+                        </p>
+                        <p class="detail-text">
+                            <strong>Bridging Studies:</strong>
+                        </p>
+                        <ul class="list-disc list-inside">
+                            <li>PK study in Chinese patients (n=9-20)</li>
+                            <li>Safety run-in often required</li>
+                            <li>Can accept global trial with >15% Chinese enrollment</li>
+                            <li>Separate China manufacturing often needed</li>
+                        </ul>
+                    </div>
+
+                    <div class="data-card">
+                        <h4 class="font-semibold mb-2">PMDA (Japan) Requirements</h4>
+                        <p class="detail-text">
+                            <strong>Unique Aspects:</strong>
+                        </p>
+                        <ul class="list-disc list-inside">
+                            <li>Step-down dosing often required (start 20% lower)</li>
+                            <li>Ichikawa review process adds 6-12 months</li>
+                            <li>Ethnic PK always required regardless of global data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standard of Care Analysis Tab -->
+        <div id="soc-analysis" class="tab-content">
+            <div class="section-title">Standard of Care Dossier & "Squishiness" Analysis</div>
+            
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Line of Therapy</th>
+                        <th>US/EU Standard</th>
+                        <th>Efficacy Benchmarks</th>
+                        <th>Key Weaknesses/"Squishiness"</th>
+                        <th>China/Asia Differences</th>
+                        <th>Implications for New Agents</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1L HR+/HER2-</strong></td>
+                        <td>CDK4/6i + AI or Fulvestrant</td>
+                        <td>PFS 20-28mo, OS 50-65mo, ORR 40-55%</td>
+                        <td>ESR1 mutations (30-40%), visceral crisis subset, brain mets excluded</td>
+                        <td>More chemo use, CDK4/6i access limited</td>
+                        <td>Very high bar - need superiority or major safety advantage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2L Post-CDK4/6i</strong></td>
+                        <td>Fulvestrant ± targeted (everolimus, alpelisib)</td>
+                        <td>PFS 5-11mo, OS 20-30mo, ORR 15-25%</td>
+                        <td>No clear winner, multiple options, biomarker-driven chaos</td>
+                        <td>More chemo, less access to targeted agents</td>
+                        <td>Opportunity for novel MOA - PROTAC, ADC, RLT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3L+</strong></td>
+                        <td>Chemotherapy (capecitabine, eribulin)</td>
+                        <td>PFS 3-6mo, OS 12-18mo, ORR 10-20%</td>
+                        <td>Heterogeneous population, poor PS often</td>
+                        <td>Earlier chemo use, different regimens</td>
+                        <td>Lower bar but smaller market, toxicity critical</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HER2+ Any Line</strong></td>
+                        <td>T-DXd (post T-DM1)</td>
+                        <td>PFS 28mo (DESTINY), ORR 79%</td>
+                        <td>ILD risk (15%), cost, brain mets activity variable</td>
+                        <td>T-DXd access limited, more chemo+trastuzumab</td>
+                        <td>Safety differentiation key (Disitamab no ILD)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box mt-4">
+                <h3 class="font-semibold mb-2">"Standard of Care Squishiness" - What It Means</h3>
+                <p class="detail-text">
+                    <strong>Definition from transcript:</strong> "We need to figure out what that standard of care squishiness is"
+                </p>
+                <p class="detail-text">
+                    Refers to scenarios where SoC is poorly defined, heterogeneous, or lacking strong evidence:
+                </p>
+                <ul class="list-disc list-inside">
+                    <li><strong>2L Post-CDK4/6i:</strong> No clear standard - fulvestrant alone vs + everolimus vs chemo all used</li>
+                    <li><strong>ESR1-mutant:</strong> Elacestrant approved but uptake slow, fulvestrant still common</li>
+                    <li><strong>Brain mets:</strong> Excluded from most trials, no standard approach</li>
+                    <li><strong>Post-ADC progression:</strong> Emerging space with no established sequence</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PTRS Assessment Tab -->
+        <div id="ptrs" class="tab-content">
+            <div class="section-title">Probability of Technical & Regulatory Success (PTRS)</div>
+            
+            <div class="highlight-box">
+                <p class="detail-text">
+                    <strong>From transcript:</strong> "We have an AI tool that generates PTRS... frequently wrong, but never in doubt. That's why the subject matter expert has to be there."
+                </p>
+            </div>
+
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Treatment</th>
+                        <th>Phase</th>
+                        <th>Technical Success</th>
+                        <th>Regulatory Success</th>
+                        <th>Combined PTRS</th>
+                        <th>AI Baseline</th>
+                        <th>SME Adjustment</th>
+                        <th>Final PTRS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Atirmociclib</strong></td>
+                        <td>Phase 3</td>
+                        <td>60% (efficacy proven P1/2)</td>
+                        <td>40% (comparator challenge)</td>
+                        <td>24%</td>
+                        <td>30%</td>
+                        <td>-6% (competitive landscape)</td>
+                        <td>24%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vepdegestrant</strong></td>
+                        <td>Phase 3</td>
+                        <td>85% (P3 positive)</td>
+                        <td>75% (clear path)</td>
+                        <td>64%</td>
+                        <td>55%</td>
+                        <td>+9% (PROTAC novelty)</td>
+                        <td>64%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disitamab Vedotin</strong></td>
+                        <td>Approved China</td>
+                        <td>70% (proven in China)</td>
+                        <td>50% (needs Western data)</td>
+                        <td>35%</td>
+                        <td>45%</td>
+                        <td>-10% (China inflation)</td>
+                        <td>35%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lu-NeoB</strong></td>
+                        <td>Phase 1b</td>
+                        <td>50% (early stage)</td>
+                        <td>35% (novel modality)</td>
+                        <td>18%</td>
+                        <td>15%</td>
+                        <td>+3% (unmet need)</td>
+                        <td>18%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="data-card mt-4">
+                <h4 class="font-semibold mb-2">PTRS Calculation Methodology</h4>
+                <p class="detail-text">
+                    <strong>Technical Success Factors:</strong>
+                </p>
+                <ul class="list-disc list-inside">
+                    <li>Mechanism validation (prior approvals in class)</li>
+                    <li>Early efficacy signals (ORR, CBR, PFS)</li>
+                    <li>Safety/tolerability profile</li>
+                    <li>Biomarker strategy clarity</li>
+                    <li>Manufacturing feasibility</li>
+                </ul>
+                <p class="detail-text mt-2">
+                    <strong>Regulatory Success Factors:</strong>
+                </p>
+                <ul class="list-disc list-inside">
+                    <li>Endpoint acceptability (PFS vs OS requirement)</li>
+                    <li>Control arm appropriateness</li>
+                    <li>Magnitude of benefit needed</li>
+                    <li>Safety differentiation</li>
+                    <li>Regulatory precedent</li>
+                </ul>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="subsection-title">PTRS Comparison Visualization</h3>
+                <canvas id="ptrsChart" width="400" height="300"></canvas>
+            </div>
+        </div>
+
+        <!-- Competitive Intelligence Tab -->
+        <div id="competitive" class="tab-content">
+            <div class="section-title">Competitive Intelligence & China-Origin Programs</div>
+            
+            <table class="trial-table">
+                <thead>
+                    <tr>
+                        <th>Competitor</th>
+                        <th>Mechanism</th>
+                        <th>Phase</th>
+                        <th>Geography</th>
+                        <th>Key Data</th>
+                        <th>Funding</th>
+                        <th>Inflation Risk</th>
+                        <th>Threat Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>T-DXd (Daiichi/AZ)</strong></td>
+                        <td>HER2 ADC</td>
+                        <td>Approved</td>
+                        <td>Global</td>
+                        <td>PFS 28mo DESTINY</td>
+                        <td>Big pharma</td>
+                        <td>Low</td>
+                        <td><span class="risk-indicator risk-high"></span> High</td>
+                    </tr>
+                     <tr>
+                <td><strong>Elacestrant (Menarini)</strong></td>
+                <td>Oral SERD</td>
+                <td>Approved</td>
+                <td>US/EU</td>
+                <td>PFS 3.8 vs 1.9mo ESR1-mut</td>
+                <td>Licensed from Radius</td>
+                <td>Low</td>
+                <td><span class="risk-indicator risk-medium"></span> Medium</td>
+            </tr>
+            <tr>
+                <td><strong>Camizestrant (AZ)</strong></td>
+                <td>Oral SERD</td>
+                <td>Phase 3</td>
+                <td>Global</td>
+                <td>PFS ~6.3 vs 2.2mo (Ph2)</td>
+                <td>Big pharma</td>
+                <td>Low</td>
+                <td><span class="risk-indicator risk-high"></span> High</td>
+            </tr>
+            <tr>
+                <td><strong>KN026 (Alphamab)</strong></td>
+                <td>Biparatopic HER2</td>
+                <td>Phase 3</td>
+                <td>China</td>
+                <td>ORR 60% (inflated)</td>
+                <td>Internal + seeking partner</td>
+                <td>High</td>
+                <td><span class="risk-indicator risk-low"></span> Low</td>
+            </tr>
+            <tr>
+                <td><strong>HLX22 (Henlius)</strong></td>
+                <td>HER2 ADC</td>
+                <td>Phase 3</td>
+                <td>China→EU</td>
+                <td>PFS benefit claimed</td>
+                <td>Licensed from GeneQuantum</td>
+                <td>High</td>
+                <td><span class="risk-indicator risk-low"></span> Low</td>
+            </tr>
+            <tr>
+                <td><strong>BEBT-908 (BeiGene)</strong></td>
+                <td>CDK4/6i</td>
+                <td>Phase 2</td>
+                <td>China→Global</td>
+                <td>Lower neutropenia claim</td>
+                <td>Well-funded</td>
+                <td>Medium</td>
+                <td><span class="risk-indicator risk-medium"></span> Medium</td>
+            </tr>
+            <tr>
+                <td><strong>RM26 conjugates</strong></td>
+                <td>GRPR-targeted</td>
+                <td>Preclinical</td>
+                <td>China</td>
+                <td>Mouse models only</td>
+                <td>Academic</td>
+                <td>N/A</td>
+                <td><span class="risk-indicator risk-low"></span> Low</td>
+            </tr>
+            <tr>
+                <td><strong>Imlunestrant (Lilly)</strong></td>
+                <td>Oral SERD</td>
+                <td>Discontinued</td>
+                <td>Was global</td>
+                <td>Failed Phase 3</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td><strong>Amcenestrant (Sanofi)</strong></td>
+                <td>Oral SERD</td>
+                <td>Terminated</td>
+                <td>Was global</td>
+                <td>Failed AMEERA-5</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>None</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="data-card mt-4">
+        <h4 class="font-semibold mb-2">China-Origin Program Deep Dive</h4>
+        <p class="detail-text">
+            <strong>KN026 (Alphamab):</strong>
+        </p>
+        <ul class="list-disc list-inside">
+            <li>Biparatopic HER2 antibody - binds two epitopes</li>
+            <li>Phase 3 in China: ORR 60% claimed but no BICR</li>
+            <li>Seeking Western partner for development - red flag</li>
+            <li>Would need complete US/EU redo per GSK precedent</li>
+            <li>Funding runway unclear, IPO proceeds depleting</li>
+        </ul>
+        
+        <p class="detail-text mt-3">
+            <strong>HLX22 (Henlius):</strong>
+        </p>
+        <ul class="list-disc list-inside">
+            <li>HER2 ADC licensed from GeneQuantum</li>
+            <li>Phase 3 China complete, EU bridging started</li>
+            <li>Safety profile unclear - ILD monitoring inadequate</li>
+            <li>Manufacturing in China - CMC concerns for FDA</li>
+            <li>Partnership with Accord for EU only</li>
+        </ul>
+
+        <p class="detail-text mt-3">
+            <strong>BEBT-908 (BeiGene):</strong>
+        </p>
+        <ul class="list-disc list-inside">
+            <li>CDK4/6i claiming neutropenia advantage</li>
+            <li>Phase 2 data: Grade 3/4 neutropenia 35% (suspect)</li>
+            <li>FDA requested complete US dose-finding</li>
+            <li>Well-funded but competing with established players</li>
+            <li>Timeline pushed to 2027+ for US entry</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Financial Analysis Tab -->
+<div id="financial" class="tab-content">
+    <div class="section-title">Economic & Financing Threshold Analysis</div>
+    
+    <table class="trial-table">
+        <thead>
+            <tr>
+                <th>Treatment</th>
+                <th>Phase 3 Cost</th>
+                <th>Total Dev Cost</th>
+                <th>Sponsor Cash</th>
+                <th>Burn Rate</th>
+                <th>Runway</th>
+                <th>Partnership Terms</th>
+                <th>Go/No-Go Threshold</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Atirmociclib</strong></td>
+                <td>$500-800M</td>
+                <td>$1.2-1.5B</td>
+                <td>Pfizer: $45B cash</td>
+                <td>N/A</td>
+                <td>Unlimited</td>
+                <td>Wholly owned</td>
+                <td>High bar - need clear advantage</td>
+            </tr>
+            <tr>
+                <td><strong>Vepdegestrant</strong></td>
+                <td>$500M-1B</td>
+                <td>$1.5-2B</td>
+                <td>Arvinas: $861M</td>
+                <td>$177M/year</td>
+                <td>To H2 2028</td>
+                <td>Pfizer 50/50 split + $650M upfront</td>
+                <td>Met - proceeded despite mixed</td>
+            </tr>
+            <tr>
+                <td><strong>Disitamab</strong></td>
+                <td>$200-300M</td>
+                <td>$500-700M</td>
+                <td>RemeGen profitable</td>
+                <td>Positive</td>
+                <td>Self-sustaining</td>
+                <td>Pfizer/Seagen covers ex-China</td>
+                <td>Low - China success sufficient</td>
+            </tr>
+            <tr>
+                <td><strong>Lu-NeoB</strong></td>
+                <td>$300-500M (est)</td>
+                <td>$800M-1B</td>
+                <td>Novartis: $15B+</td>
+                <td>N/A</td>
+                <td>Unlimited</td>
+                <td>Wholly owned</td>
+                <td>TBD - early stage</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="highlight-box mt-4">
+        <h3 class="font-semibold mb-2">Critical Financial Considerations from Transcript</h3>
+        <p class="detail-text">
+            <strong>Quote:</strong> "Do you want to help fund their phase three program, which is hundreds of millions of dollars up to a billion. And the company seemed to have a lower threshold for going forward than we do."
+        </p>
+        <p class="detail-text mt-2">
+            This indicates misalignment between company and investor thresholds. Key red flags:
+        </p>
+        <ul class="list-disc list-inside">
+            <li><strong>Company threshold too low:</strong> Willing to proceed with marginal data</li>
+            <li><strong>Investor threshold higher:</strong> Want clear differentiation before $500M+ commitment</li>
+            <li><strong>Arvinas example:</strong> 33% workforce reduction despite positive data - cash preservation mode</li>
+            <li><strong>RemeGen example:</strong> China revenue funds global expansion - sustainable model</li>
+        </ul>
+    </div>
+
+    <div class="data-card">
+        <h4 class="font-semibold mb-2">Detailed Cost Breakdown</h4>
+        
+        <p class="detail-text"><strong>Phase 3 Trial Costs (n=500):</strong></p>
+        <ul class="list-disc list-inside">
+            <li>Patient costs: $100-150K/patient = $50-75M</li>
+            <li>Drug supply: $50-100M (especially for biologics/ADCs)</li>
+            <li>Site costs: $30-50M (100+ sites globally)</li>
+            <li>Regulatory/operations: $30-50M</li>
+            <li>Data management/stats: $20-30M</li>
+            <li>China inclusion: +$20-30M (regulatory, sites, bridging)</li>
+        </ul>
+
+        <p class="detail-text mt-3"><strong>Additional Development Costs:</strong></p>
+        <ul class="list-disc list-inside">
+            <li>Companion diagnostic (ESR1, GRPR): $50-100M</li>
+            <li>Manufacturing scale-up: $100-200M</li>
+            <li>Regulatory filing prep: $20-50M</li>
+            <li>Post-approval commitments: $100-200M</li>
+        </ul>
+    </div>
+
+    <div class="comparison-grid">
+        <div class="comparison-pane">
+            <h3 class="subsection-title">Peak Sales Projections</h3>
+            
+            <div class="data-card">
+                <p class="detail-text"><strong>Atirmociclib:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>Best case (superiority): $3-4B</li>
+                    <li>Base case (non-inferiority + safety): $2-3B</li>
+                    <li>Worst case (parity): $500M-1B</li>
+                    <li>Probability weighted: $2.2B</li>
+                </ul>
+            </div>
+
+            <div class="data-card">
+                <p class="detail-text"><strong>Vepdegestrant:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>ESR1-mut only: $1-1.5B</li>
+                    <li>Expand to all 2L: $2-3B</li>
+                    <li>Win in 1L: $3-5B</li>
+                    <li>Probability weighted: $1.8B</li>
+                </ul>
+            </div>
+
+            <div class="data-card">
+                <p class="detail-text"><strong>Disitamab Vedotin:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>China only: $300-500M</li>
+                    <li>Asia expansion: $500M-1B</li>
+                    <li>Global approval: $1-1.5B</li>
+                    <li>Probability weighted: $600M</li>
+                </ul>
+            </div>
+
+            <div class="data-card">
+                <p class="detail-text"><strong>Lu-NeoB:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>GRPR+ niche: $500M-1B</li>
+                    <li>Broader use: $1-2B</li>
+                    <li>Multiple cancers: $2-3B</li>
+                    <li>Probability weighted: $800M</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="comparison-pane">
+            <h3 class="subsection-title">Return on Investment Analysis</h3>
+            
+            <div class="data-card">
+                <p class="detail-text"><strong>ROI Calculation (10-year):</strong></p>
+                <table class="trial-table">
+                    <thead>
+                        <tr>
+                            <th>Treatment</th>
+                            <th>Total Investment</th>
+                            <th>Peak Sales</th>
+                            <th>10Y Revenue</th>
+                            <th>ROI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Atirmociclib</td>
+                            <td>$1.5B</td>
+                            <td>$2.2B</td>
+                            <td>$15B</td>
+                            <td>10x</td>
+                        </tr>
+                        <tr>
+                            <td>Vepdegestrant</td>
+                            <td>$2B</td>
+                            <td>$1.8B</td>
+                            <td>$12B</td>
+                            <td>6x</td>
+                        </tr>
+                        <tr>
+                            <td>Disitamab</td>
+                            <td>$700M</td>
+                            <td>$600M</td>
+                            <td>$4B</td>
+                            <td>5.7x</td>
+                        </tr>
+                        <tr>
+                            <td>Lu-NeoB</td>
+                            <td>$1B</td>
+                            <td>$800M</td>
+                            <td>$5B</td>
+                            <td>5x</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="data-card">
+                <p class="detail-text"><strong>Risk-Adjusted NPV:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>Atirmociclib: $1.8B (24% PTRS)</li>
+                    <li>Vepdegestrant: $3.2B (64% PTRS)</li>
+                    <li>Disitamab: $0.8B (35% PTRS)</li>
+                    <li>Lu-NeoB: $0.4B (18% PTRS)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Side-by-Side Comparison Tab -->
+<div id="side-by-side" class="tab-content">
+    <div class="section-title">Comprehensive Side-by-Side Analysis Tool</div>
+    
+    <div class="select-controls">
+        <div style="flex: 1;">
+            <label class="block text-sm font-medium mb-2">Treatment 1:</label>
+            <select class="custom-select" id="treatment1" onchange="updateDetailedComparison()">
+                <option value="atirmociclib">Atirmociclib (CDK4i)</option>
+                <option value="vepdegestrant" selected>Vepdegestrant (PROTAC)</option>
+                <option value="disitamab">Disitamab Vedotin (ADC)</option>
+                <option value="luneob">Lu-NeoB (RLT)</option>
+            </select>
+        </div>
+        <div style="flex: 1;">
+            <label class="block text-sm font-medium mb-2">Treatment 2:</label>
+            <select class="custom-select" id="treatment2" onchange="updateDetailedComparison()">
+                <option value="atirmociclib" selected>Atirmociclib (CDK4i)</option>
+                <option value="vepdegestrant">Vepdegestrant (PROTAC)</option>
+                <option value="disitamab">Disitamab Vedotin (ADC)</option>
+                <option value="luneob">Lu-NeoB (RLT)</option>
+            </select>
+        </div>
+        <div style="flex: 1;">
+            <label class="block text-sm font-medium mb-2">Analysis Focus:</label>
+            <select class="custom-select" id="analysisFocus" onchange="updateDetailedComparison()">
+                <option value="comprehensive">Comprehensive</option>
+                <option value="regulatory">Regulatory Strategy</option>
+                <option value="clinical">Clinical Data</option>
+                <option value="safety">Safety Profile</option>
+                <option value="commercial">Commercial Strategy</option>
+                <option value="manufacturing">Manufacturing & Supply</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="detailedComparisonContent" class="comparison-grid mt-4">
+        <!-- Dynamic content will be inserted here by JavaScript -->
+    </div>
+
+    <!-- Comprehensive Comparison Template -->
+    <div class="data-card mt-4">
+        <h4 class="font-semibold mb-2">Head-to-Head Detailed Analysis</h4>
+        
+        <table class="trial-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th id="treatment1Header">Treatment 1</th>
+                    <th id="treatment2Header">Treatment 2</th>
+                    <th>Winner</th>
+                </tr>
+            </thead>
+            <tbody id="comparisonTableBody">
+                <!-- Rows will be dynamically populated -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="highlight-box mt-4">
+        <h3 class="font-semibold mb-2">Investment Committee Recommendation</h3>
+        <div id="investmentRecommendation">
+            <!-- Dynamic recommendation based on comparison -->
+        </div>
+    </div>
+</div>
+
+<script>
+// Function to toggle expandable sections
+function toggleSection(element) {
+    const content = element.nextElementSibling;
+    const arrow = element.querySelector('span:last-child');
+    
+    if (content.classList.contains('active')) {
+        content.classList.remove('active');
+        arrow.textContent = '▼';
+    } else {
+        content.classList.add('active');
+        arrow.textContent = '▲';
+    }
+}
+
+// Function to show different tabs
+function showTab(tabId) {
+    // Hide all tabs
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // Remove active class from all buttons
+    document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show selected tab
+    document.getElementById(tabId).classList.add('active');
+    
+    // Add active class to clicked button
+    event.target.classList.add('active');
+    
+    // Initialize charts if needed
+    if (tabId === 'china-trials') {
+        initAEChart();
+    } else if (tabId === 'ptrs') {
+        initPTRSChart();
+    }
+}
+
+// Initialize AE Comparison Chart
+function initAEChart() {
+    const ctx = document.getElementById('aeComparisonChart');
+    if (!ctx) return;
+    
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Neutropenia G3/4', 'Nausea Any', 'Fatigue Any', 'Neuropathy Any', 'ILD Any', 'Discontinuation'],
+            datasets: [{
+                label: 'China-Reported',
+                data: [35, 20, 15, 30, 0, 5],
+                backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }, {
+                label: 'US/EU Expected',
+                data: [50, 30, 25, 45, 5, 10],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Adjustment Factor',
+                data: [15, 10, 10, 15, 5, 5],
+                backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 60,
+                    title: {
+                        display: true,
+                        text: 'Incidence (%)'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Adverse Event Reporting: China vs Western Sites'
+                },
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            }
+        }
+    });
+}
+
+// Initialize PTRS Chart
+function initPTRSChart() {
+    const ctx = document.getElementById('ptrsChart');
+    if (!ctx) return;
+    
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: [
+                'Mechanism Validation',
+                'Early Efficacy Signal',
+                'Safety Profile',
+                'Regulatory Precedent',
+                'Competitive Position',
+                'Manufacturing Feasibility',
+                'Market Opportunity',
+                'Partnership Strength'
+            ],
+            datasets: [{
+                label: 'Atirmociclib',
+                data: [80, 70, 75, 60, 50, 90, 70, 95],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(75, 192, 192, 1)'
+            }, {
+                label: 'Vepdegestrant',
+                data: [85, 90, 85, 75, 80, 70, 65, 85],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(54, 162, 235, 1)'
+            }, {
+                label: 'Disitamab',
+                data: [70, 65, 50, 40, 45, 60, 55, 75],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(255, 99, 132, 1)'
+            }, {
+                label: 'Lu-NeoB',
+                data: [50, 30, 60, 35, 70, 40, 45, 90],
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                pointBackgroundColor: 'rgba(255, 206, 86, 1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(255, 206, 86, 1)'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        stepSize: 20
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'PTRS Multi-Factor Assessment'
+                },
+                legend: {
+                    display: true,
+                    position: 'right'
+                }
+            }
+        }
+    });
+}
+
+// Update detailed comparison function
+function updateDetailedComparison() {
+    const treatment1 = document.getElementById('treatment1').value;
+    const treatment2 = document.getElementById('treatment2').value;
+    const focus = document.getElementById('analysisFocus').value;
+    
+    // Comprehensive comparison data
+    const comparisonData = {
+        atirmociclib: {
+            mechanism: 'Selective CDK4 inhibitor',
+            phase: 'Phase 3 ongoing',
+            efficacy: {
+                orr: '58.8% (1L)',
+                cbr: '94.1%',
+                pfs: 'NR at 16.5mo',
+                os: 'Immature'
+            },
+            safety: {
+                neutropenia: '23.5% G3+',
+                discontinuation: '8.8%',
+                dose_intensity: '85% >90% RDI',
+                key_advantage: 'Continuous dosing'
+            },
+            regulatory: {
+                control: 'Approved CDK4/6i',
+                endpoint: 'PFS non-inferiority',
+                timeline: '2026 filing',
+                challenges: 'Must beat established SoC'
+            },
+            commercial: {
+                market_size: '$8B CDK4/6i',
+                peak_sales: '$2-3B',
+                competition: 'Three approved',
+                pricing: 'Match or undercut'
+            },
+            ptrs: '24%',
+            china_risk: 'Medium'
+        },
+        vepdegestrant: {
+            mechanism: 'PROTAC ER degrader',
+            phase: 'Phase 3 positive',
+            efficacy: {
+                orr: '18.6% ESR1-mut',
+                cbr: '42.1% ESR1-mut',
+                pfs: '5.0 vs 2.1mo',
+                os: 'Trending positive'
+            },
+            safety: {
+                neutropenia: 'Minimal',
+                discontinuation: '3%',
+                dose_intensity: 'Well tolerated',
+                key_advantage: 'Oral, convenient'
+            },
+            regulatory: {
+                control: 'Fulvestrant',
+                endpoint: 'PFS ESR1-mut',
+                timeline: '2025 filing',
+                challenges: 'Limited to biomarker+'
+            },
+            commercial: {
+                market_size: '40% of 2L (ESR1)',
+                peak_sales: '$1-2B',
+                competition: 'Elacestrant only',
+                pricing: 'Premium justified'
+            },
+            ptrs: '64%',
+            china_risk: 'Low'
+        },
+        disitamab: {
+            mechanism: 'HER2 ADC (MMAE)',
+            phase: 'Approved China',
+            efficacy: {
+                orr: '42.9% HER2+',
+                cbr: '65% HER2+',
+                pfs: '6mo HER2+',
+                os: 'Immature'
+            },
+            safety: {
+                neutropenia: 'Variable',
+                discontinuation: '10-15%',
+                dose_intensity: 'Dose reductions common',
+                key_advantage: 'No ILD'
+            },
+            regulatory: {
+                control: 'Physician choice',
+                endpoint: 'PFS',
+                timeline: 'Unclear for US',
+                challenges: 'China data suspect'
+            },
+            commercial: {
+                market_size: 'HER2+ ADC',
+                peak_sales: '$500M-1B',
+                competition: 'T-DXd dominant',
+                pricing: 'Must undercut'
+            },
+            ptrs: '35%',
+            china_risk: 'High'
+        },
+        luneob: {
+            mechanism: 'GRPR radioligand',
+            phase: 'Phase 1b',
+            efficacy: {
+                orr: 'TBD',
+                cbr: 'TBD',
+                pfs: 'TBD',
+                os: 'TBD'
+            },
+            safety: {
+                neutropenia: 'Expected high',
+                discontinuation: 'TBD',
+                dose_intensity: 'TBD',
+                key_advantage: 'Novel MOA'
+            },
+            regulatory: {
+                control: 'None yet',
+                endpoint: 'DLT→RD',
+                timeline: '2032+',
+                challenges: 'Long development'
+            },
+            commercial: {
+                market_size: 'GRPR+ niche',
+                peak_sales: '$500M-1B',
+                competition: 'None',
+                pricing: 'Premium RLT'
+            },
+            ptrs: '18%',
+            china_risk: 'Medium'
+        }
+    };
+    
+    // Update comparison table
+    const tbody = document.getElementById('comparisonTableBody');
+    const data1 = comparisonData[treatment1];
+    const data2 = comparisonData[treatment2];
+    
+    // Update headers
+    document.getElementById('treatment1Header').textContent = treatment1.charAt(0).toUpperCase() + treatment1.slice(1);
+    document.getElementById('treatment2Header').textContent = treatment2.charAt(0).toUpperCase() + treatment2.slice(1);
+    
+    // Generate comparison rows
+    let rows = '';
+    
+    if (focus === 'comprehensive' || focus === 'clinical') {
+        rows += `
+            <tr>
+                <td><strong>Mechanism</strong></td>
+                <td>${data1.mechanism}</td>
+                <td>${data2.mechanism}</td>
+                <td>${determineWinner(data1.mechanism, data2.mechanism)}</td>
+            </tr>
+            <tr>
+                <td><strong>Development Phase</strong></td>
+                <td>${data1.phase}</td>
+                <td>${data2.phase}</td>
+                <td>${determinePhaseWinner(data1.phase, data2.phase)}</td>
+            </tr>
+            <tr>
+                <td><strong>ORR</strong></td>
+                <td>${data1.efficacy.orr}</td>
+                <td>${data2.efficacy.orr}</td>
+                <td>${determineEfficacyWinner(data1.efficacy.orr, data2.efficacy.orr)}</td>
+            </tr>
+            <tr>
+                <td><strong>CBR</strong></td>
+                <td>${data1.efficacy.cbr}</td>
+                <td>${data2.efficacy.cbr}</td>
+                <td>${determineEfficacyWinner(data1.efficacy.cbr, data2.efficacy.cbr)}</td>
+            </tr>
+            <tr>
+                <td><strong>PFS</strong></td>
+                <td>${data1.efficacy.pfs}</td>
+                <td>${data2.efficacy.pfs}</td>
+                <td>${determineEfficacyWinner(data1.efficacy.pfs, data2.efficacy.pfs)}</td>
+            </tr>
+        `;
+    }
+    
+    if (focus === 'comprehensive' || focus === 'safety') {
+        rows += `
+            <tr>
+                <td><strong>G3+ Neutropenia</strong></td>
+                <td>${data1.safety.neutropenia}</td>
+                <td>${data2.safety.neutropenia}</td>
+                <td>${determineSafetyWinner(data1.safety.neutropenia, data2.safety.neutropenia)}</td>
+            </tr>
+            <tr>
+                <td><strong>Discontinuation Rate</strong></td>
+                <td>${data1.safety.discontinuation}</td>
+                <td>${data2.safety.discontinuation}</td>
+                <td>${determineSafetyWinner(data1.safety.discontinuation, data2.safety.discontinuation)}</td>
+            </tr>
+            <tr>
+                <td><strong>Key Safety Advantage</strong></td>
+                <td>${data1.safety.key_advantage}</td>
+                <td>${data2.safety.key_advantage}</td>
+                <td>-</td>
+            </tr>
+        `;
+    }
+    
+    if (focus === 'comprehensive' || focus === 'regulatory') {
+        rows += `
+            <tr>
+                <td><strong>Control Arm</strong></td>
+                <td>${data1.regulatory.control}</td>
+                <td>${data2.regulatory.control}</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Primary Endpoint</strong></td>
+                <td>${data1.regulatory.endpoint}</td>
+                <td>${data2.regulatory.endpoint}</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Filing Timeline</strong></td>
+                <td>${data1.regulatory.timeline}</td>
+                <td>${data2.regulatory.timeline}</td>
+                <td>${determineTimelineWinner(data1.regulatory.timeline, data2.regulatory.timeline)}</td>
+            </tr>
+            <tr>
+                <td><strong>Key Challenges</strong></td>
+                <td>${data1.regulatory.challenges}</td>
+                <td>${data2.regulatory.challenges}</td>
+                <td>-</td>
+            </tr>
+        `;
+    }
+    
+    if (focus === 'comprehensive' || focus === 'commercial') {
+        rows += `
+            <tr>
+                <td><strong>Market Opportunity</strong></td>
+                <td>${data1.commercial.market_size}</td>
+                <td>${data2.commercial.market_size}</td>
+                <td>${determineMarketWinner(data1.commercial.market_size, data2.commercial.market_size)}</td>
+            </tr>
+            <tr>
+                <td><strong>Peak Sales Estimate</strong></td>
+                <td>${data1.commercial.peak_sales}</td>
+                <td>${data2.commercial.peak_sales}</td>
+                <td>${determineSalesWinner(data1.commercial.peak_sales, data2.commercial.peak_sales)}</td>
+            </tr>
+            <tr>
+                <td><strong>Competition</strong></td>
+                <td>${data1.commercial.competition}</td>
+                <td>${data2.commercial.competition}</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Pricing Strategy</strong></td>
+                <td>${data1.commercial.pricing}</td>
+                <td>${data2.commercial.pricing}</td>
+                <td>-</td>
+            </tr>
+        `;
+    }
+    
+    rows += `
+        <tr style="background: #f0f7f6;">
+            <td><strong>Overall PTRS</strong></td>
+            <td><strong>${data1.ptrs}</strong></td>
+            <td><strong>${data2.ptrs}</strong></td>
+            <td><strong>${determinePTRSWinner(data1.ptrs, data2.ptrs)}</strong></td>
+        </tr>
+        <tr style="background: #f0f7f6;">
+            <td><strong>China Data Risk</strong></td>
+            <td><strong>${data1.china_risk}</strong></td>
+            <td><strong>${data2.china_risk}</strong></td>
+            <td><strong>${determineChinaRiskWinner(data1.china_risk, data2.china_risk)}</strong></td>
+        </tr>
+    `;
+    
+    tbody.innerHTML = rows;
+    
+    // Update investment recommendation
+    updateInvestmentRecommendation(treatment1, treatment2, data1, data2);
+}
+
+// Helper functions for determining winners
+function determineWinner(val1, val2) {
+    return '-';
+}
+
+function determinePhaseWinner(phase1, phase2) {
+    const phaseOrder = ['Phase 1b', 'Phase 2', 'Phase 3 ongoing', 'Phase 3 positive', 'Approved China', 'Approved Global'];
+    const idx1 = phaseOrder.findIndex(p => phase1.includes(p.split(' ')[0]));
+    const idx2 = phaseOrder.findIndex(p => phase2.includes(p.split(' ')[0]));
+    if (idx1 > idx2) return '←';
+    if (idx2 > idx1) return '→';
+    return '=';
+}
+
+function determineEfficacyWinner(eff1, eff2) {
+    const val1 = parseFloat(eff1);
+    const val2 = parseFloat(eff2);
+    if (isNaN(val1) || isNaN(val2)) return '-';
+    if (val1 > val2) return '←';
+    if (val2 > val1) return '→';
+    return '=';
+}
+
+function determineSafetyWinner(safe1, safe2) {
+    const val1 = parseFloat(safe1);
+    const val2 = parseFloat(safe2);
+    if (isNaN(val1) || isNaN(val2)) return '-';
+    if (val1 < val2) return '←';
+    if (val2 < val1) return '→';
+    return '=';
+}
+
+function determineTimelineWinner(time1, time2) {
+    const year1 = parseInt(time1.match(/\d{4}/)?.[0] || '2099');
+    const year2 = parseInt(time2.match(/\d{4}/)?.[0] || '2099');
+    if (year1 < year2) return '←';
+    if (year2 < year1) return '→';
+    return '=';
+}
+
+function determineMarketWinner(market1, market2) {
+    if (market1.includes('$8B')) return '←';
+    if (market2.includes('$8B')) return '→';
+    return '-';
+}
+
+function determineSalesWinner(sales1, sales2) {
+    const max1 = parseFloat(sales1.match(/\$(\d+)/)?.[1] || '0');
+    const max2 = parseFloat(sales2.match(/\$(\d+)/)?.[1] || '0');
+    if (max1 > max2) return '←';
+    if (max2 > max1) return '→';
+    return '=';
+}
+
+function determinePTRSWinner(ptrs1, ptrs2) {
+    const val1 = parseFloat(ptrs1);
+    const val2 = parseFloat(ptrs2);
+    if (val1 > val2) return '←';
+    if (val2 > val1) return '→';
+    return '=';
+}
+
+function determineChinaRiskWinner(risk1, risk2) {
+    const riskOrder = ['Low', 'Medium', 'High'];
+    const idx1 = riskOrder.indexOf(risk1);
+    const idx2 = riskOrder.indexOf(risk2);
+    if (idx1 < idx2) return '←';
+    if (idx2 < idx1) return '→';
+    return '=';
+}
+
+function updateInvestmentRecommendation(treatment1, treatment2, data1, data2) {
+    const recDiv = document.getElementById('investmentRecommendation');
+    
+    const ptrs1 = parseFloat(data1.ptrs);
+    const ptrs2 = parseFloat(data2.ptrs);
+    
+    let recommendation = '';
+    
+    if (ptrs1 > ptrs2) {
+        recommendation = `<strong>Recommendation:</strong> ${treatment1.charAt(0).toUpperCase() + treatment1.slice(1)} shows superior investment potential with ${data1.ptrs} PTRS vs ${data2.ptrs}.`;
+    } else {
+        recommendation = `<strong>Recommendation:</strong> ${treatment2.charAt(0).toUpperCase() + treatment2.slice(1)} shows superior investment potential with ${data2.ptrs} PTRS vs ${data1.ptrs}.`;
+    }
+    
+    recommendation += `<br><br><strong>Key Differentiators:</strong><ul class="list-disc list-inside mt-2">`;
+    
+    if (Math.abs(ptrs1 - ptrs2) > 20) {
+        recommendation += `<li>Significant PTRS differential (${Math.abs(ptrs1 - ptrs2)}% points)</li>`;
+    }
+    
+    if (data1.phase.includes('positive') || data2.phase.includes('positive')) {
+        recommendation += `<li>Phase 3 de-risking achieved</li>`;
+    }
+    
+    if (data1.china_risk === 'High' || data2.china_risk === 'High') {
+        recommendation += `<li>China data inflation risk requires Western validation</li>`;
+    }
+    
+    recommendation += `</ul>`;
+    
+    recDiv.innerHTML = recommendation;
+}
+
+// Initialize on page load
+window.addEventListener('load', function() {
+    updateDetailedComparison();
+});
+</script>
+
+</body>
+</html>
