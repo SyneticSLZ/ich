@@ -5,7 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vepdegestrant (ARV-471) - Complete Investment Analysis | Leaf Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Axios for API requests -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+<!-- <link rel="icon" type="image/svg+xml" href="favicon.svg"> -->
+<!-- Fallback for browsers that don't support SVG favicons -->
+<!-- <link rel="alternate icon" href="favicon.ico"> -->
+<!-- Apple Touch Icon for iOS devices -->
+<!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+<!-- Web App Manifest -->
+<!-- <link rel="manifest" href="manifest.json"> -->
+
+<!-- Standard favicon for modern browsers -->
+<link rel="icon" type="image/x-icon" href="./favicon/favicon.ico">
+
+<!-- PNG favicons for different sizes -->
+<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+
+<!-- Apple Touch Icons for iOS devices -->
+<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+
+<!-- Android Chrome icons -->
+<link rel="icon" type="image/png" sizes="192x192" href="./favicon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./favicon/android-chrome-512x512.png">
+
+<!-- Web App Manifest -->
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Fallback for older browsers -->
+<link rel="shortcut icon" href="./favicon/favicon.ico">
+
     <style>
         * {
             margin: 0;
@@ -397,26 +436,218 @@
         .risk-high { background: #dc3545; }
         .risk-medium { background: #ffc107; }
         .risk-low { background: #28a745; }
+
+       /* Replace the navigation styles (lines ~445-609) with this updated version */
+
+/* Custom animations and effects */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.nav-bar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+/* Animated gradient background line */
+.nav-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        #0a6b5e,
+        #085a4f,
+        #0a6b5e,
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+.nav-tab {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: #6b7280;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.nav-tab:hover {
+    color: #0a6b5e;
+    background: linear-gradient(135deg, 
+        rgba(10, 107, 94, 0.08),
+        rgba(8, 90, 79, 0.05)
+    );
+    transform: translateY(-1px);
+}
+
+.nav-tab.active {
+    color: #fff;
+    background: linear-gradient(135deg, #0a6b5e, #085a4f);
+    box-shadow: 0 4px 15px -3px rgba(10, 107, 94, 0.4);
+}
+
+.nav-tab svg {
+    transition: all 0.3s ease;
+}
+
+.nav-tab:hover svg {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.nav-tab.active svg {
+    filter: brightness(1.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+.logo-container {
+    animation: float 4s ease-in-out infinite;
+}
+
+.glow-effect {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient text animation on hover */
+.brand-text {
+    background-size: 200% 200%;
+    transition: all 0.3s ease;
+}
+
+.brand-container:hover .brand-text {
+    background-position: 100% 0;
+    filter: brightness(1.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 1024px) {
+    .nav-tabs {
+        gap: 0.25rem;
+    }
+    
+    .nav-tab {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .nav-tab svg {
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+    
+    .brand-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 0.75rem 1rem;
+    }
+    
+    .nav-tabs {
+        display: none;
+    }
+    
+    .nav-tab {
+        width: 100%;
+        justify-content: center;
+    }
+}
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="nav-bar">
-        <div class="flex items-center space-x-3">
-            <div class="flex items-center">
-                <img src="leaf.png" alt="Leaf Intelligence" class="h-14 w-14 object-contain">
-                <div class="ml-3">
-                    <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        Leaf Intelligence
-                    </span>
-                    <div class="text-xs text-gray-600 font-medium tracking-wide">AI Research Platform</div>
+     <nav class="nav-bar" style="height: auto; min-height: 80px;">
+        <div class="w-full px-8 py-4">
+            <div class="flex items-center justify-between gap-8">
+                <!-- Logo and Brand - Fixed width to prevent squashing -->
+                <div class="brand-container flex items-center gap-4 cursor-pointer group flex-shrink-0" onclick="location.href='/blackstone.html'">
+                    <div class="logo-container relative">
+                        <!-- Using your existing logo -->
+                        <img src="leaf.png" alt="Leaf Intelligence" class="h-12 w-12 object-contain relative z-10 transition-transform duration-300 group-hover:scale-110">
+                        
+                        <!-- Enhanced glow effect with multiple layers -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-400 opacity-30 blur-xl rounded-full glow-effect"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-300 to-cyan-300 opacity-20 blur-2xl rounded-full scale-150"></div>
+                    </div>
+                    
+                    <div class="flex flex-col">
+                        <span class="brand-text text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent whitespace-nowrap">
+                            Leaf Intelligence
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1">
+                                <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                                <span class="text-xs text-gray-600 font-medium">AI Research Platform</span>
+                            </div>
+                            <span class="text-xs bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-2 py-0.5 rounded-full font-semibold">BETA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Tabs - Center aligned with proper spacing -->
+                <div class="nav-tabs flex items-center gap-2 flex-grow justify-center">
+                    <a href="/blackstone.html" class="nav-tab active">
+                        <i data-lucide="building-2" class="w-4 h-4"></i>
+                        <span>Companies</span>
+                    </a>
+                    <a href="/competitive.html" class="nav-tab">
+                       <i data-lucide="beaker" class="w-4 h-4"></i>
+                        <span>Pharma Intelligence</span>
+                    </a>
+                    <a href="/comparison.html" class="nav-tab">
+                        <i data-lucide="git-compare" class="w-4 h-4"></i>
+                        <span>Side-By-Side</span>
+                    </a>
+                </div>
+                
+                <!-- Right side actions - Fixed width -->
+                <div class="flex items-center gap-2 flex-shrink-0">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-600"></i>
+                    </button>
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors relative">
+                        <i data-lucide="bell" class="w-4 h-4 text-gray-600"></i>
+                        <span class="absolute top-1 right-1 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                    </button>
+                    <div class="w-px h-6 bg-gray-200"></div>
+                    <!-- <button class="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-lg font-medium text-sm hover:shadow-lg transition-all hover:scale-105">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span>Upgrade</span>
+                    </button> -->
                 </div>
             </div>
-        </div>
-        <div class="nav-tabs ml-8">
-            <a href="#" class="nav-tab">Companies</a>
-            <a href="#" class="nav-tab active">Pharmaceuticals Intelligence</a>
-            <a href="#" class="nav-tab">Reports</a>
         </div>
     </nav>
 
@@ -1084,6 +1315,151 @@
 </div>
             <!-- Clinical & Regulatory Tab -->
             <div id="clinical" class="tab-content ">
+<!-- COMPACT VISUAL SUMMARY SECTION -->
+<div class="subsection-title">Regulatory & Clinical Overview</div>
+
+<!-- Side by Side Container -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+    
+    <!-- LEFT: Regulatory Timeline -->
+    <div class="data-card">
+        <h5 class="font-semibold text-green-700 mb-3" style="font-size: 14px;">Regulatory Pathway</h5>
+        
+        <!-- Compact Timeline -->
+        <div style="position: relative; padding-left: 24px;">
+            <!-- Vertical Line -->
+            <div style="position: absolute; left: 6px; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(180deg, #667eea 0%, #28a745 50%, #ffc107 100%);"></div>
+            
+            <!-- Timeline Points -->
+            <div style="margin-bottom: 12px;">
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #667eea; border-radius: 50%; border: 2px solid white;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">Feb 2024</div>
+                <div style="font-size: 12px; color: #424242;"><strong>Fast Track</strong> • ER+/HER2-</div>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #667eea; border-radius: 50%; border: 2px solid white;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">2023</div>
+                <div style="font-size: 12px; color: #424242;"><strong>End Phase 2</strong> • FDA aligned</div>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #28a745; border-radius: 50%; border: 2px solid white;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">Mar 2025</div>
+                <div style="font-size: 12px; color: #424242;"><strong>Phase 3 Success</strong> ✓</div>
+                <div style="font-size: 11px; color: #28a745; margin-left: 0;">HR 0.57, p<0.001</div>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #667eea; border-radius: 50%; border: 2px solid white;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">2H 2025</div>
+                <div style="font-size: 12px; color: #424242;"><strong>NDA Accepted</strong> • Priority</div>
+            </div>
+            
+            <div>
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #ffc107; border-radius: 50%; border: 2px solid white; animation: pulse 2s infinite;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">Q1 2026</div>
+                <div style="font-size: 12px; color: #424242;"><strong>PDUFA Date</strong></div>
+                <div style="font-size: 11px; color: #ffc107;">FDA Decision Expected</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- RIGHT: Trial Portfolio -->
+    <div class="data-card">
+        <h5 class="font-semibold text-green-700 mb-3" style="font-size: 14px;">Clinical Development</h5>
+        
+        <!-- Compact Trial Cards -->
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+            
+            <!-- Phase 1/2 -->
+            <div style="display: flex; align-items: center; padding: 8px; background: #f8fffe; border-radius: 6px; border: 1px solid #e3f2f0;">
+                <div style="flex-shrink: 0; width: 40px; height: 40px; background: #f0f7f6; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <span style="font-size: 10px; font-weight: 700; color: #0a6b5e;">Ph 1/2</span>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 12px; font-weight: 600; color: #333;">Early Development</div>
+                    <div style="font-size: 11px; color: #6c757d;">n=160 • CBR 40% • RP2D 200mg</div>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <span style="font-size: 10px; padding: 2px 6px; background: #e3f2f0; color: #0a6b5e; border-radius: 4px; font-weight: 600;">✓</span>
+                </div>
+            </div>
+            
+            <!-- VERITAC-2 (Highlighted) -->
+            <div style="display: flex; align-items: center; padding: 8px; background: #d4f4ec; border-radius: 6px; border: 1px solid #28a745;">
+                <div style="flex-shrink: 0; width: 40px; height: 40px; background: #28a745; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <span style="font-size: 10px; font-weight: 700; color: white;">Ph 3</span>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 12px; font-weight: 600; color: #333;">VERITAC-2</div>
+                    <div style="font-size: 11px; color: #28a745; font-weight: 600;">n=624 • ESR1-mut: 5.0 vs 2.1mo</div>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <span style="font-size: 10px; padding: 2px 6px; background: #28a745; color: white; border-radius: 4px; font-weight: 600;">POSITIVE</span>
+                </div>
+            </div>
+            
+            <!-- VERITAC-3 -->
+            <div style="display: flex; align-items: center; padding: 8px; background: #f8fffe; border-radius: 6px; border: 1px solid #667eea;">
+                <div style="flex-shrink: 0; width: 40px; height: 40px; background: #f0f4ff; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <span style="font-size: 10px; font-weight: 700; color: #667eea;">Ph 3</span>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 12px; font-weight: 600; color: #333;">VERITAC-3</div>
+                    <div style="font-size: 11px; color: #6c757d;">n=500 • 1st-line + Palbo</div>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <span style="font-size: 10px; padding: 2px 6px; background: #667eea; color: white; border-radius: 4px; font-weight: 600;">ACTIVE</span>
+                </div>
+            </div>
+            
+            <!-- Regional -->
+            <div style="display: flex; align-items: center; padding: 8px; background: #f8fffe; border-radius: 6px; border: 1px solid #e3f2f0;">
+                <div style="flex-shrink: 0; width: 40px; height: 40px; background: #f0f7f6; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <span style="font-size: 10px; font-weight: 700; color: #0a6b5e;">Regional</span>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 12px; font-weight: 600; color: #333;">Asia Bridging</div>
+                    <div style="font-size: 11px; color: #6c757d;">China + Japan • PK confirmed</div>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <span style="font-size: 10px; padding: 2px 6px; background: #e3f2f0; color: #0a6b5e; border-radius: 4px; font-weight: 600;">✓</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Key Highlights Bar -->
+<div class="highlight-box" style="padding: 12px 16px;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center;">
+        <div>
+            <div style="font-size: 20px; font-weight: 700; color: #28a745;">43%</div>
+            <div style="font-size: 11px; color: #6c757d;">Risk Reduction</div>
+        </div>
+        <div>
+            <div style="font-size: 20px; font-weight: 700; color: #0a6b5e;">1,300+</div>
+            <div style="font-size: 11px; color: #6c757d;">Patients</div>
+        </div>
+        <div>
+            <div style="font-size: 20px; font-weight: 700; color: #667eea;">26</div>
+            <div style="font-size: 11px; color: #6c757d;">Countries</div>
+        </div>
+        <div>
+            <div style="font-size: 20px; font-weight: 700; color: #ffc107;">Q1 2026</div>
+            <div style="font-size: 11px; color: #6c757d;">Approval</div>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(255, 193, 7, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+}
+</style>
                 <div class="section-title">1. Clinical & Regulatory Diligence</div>
                 
                 <!-- Trial Design & Endpoints -->
@@ -1963,44 +2339,7 @@
                     </div>
                 </div>
 
-                <!-- Exit Strategies -->
-                <div class="expandable-section">
-                    <div class="expandable-header" onclick="toggleSection(this)">
-                        <span>4.4 Exit Strategies & Strategic Options</span>
-                        <span>▼</span>
-                    </div>
-                    <div class="expandable-content">
-                        <div class="data-card">
-                            <h4 class="font-semibold mb-2">Acquisition by Pfizer</h4>
-                            <p class="detail-text">
-                                Pfizer might acquire Arvinas to secure full ownership of vepdegestrant profits. Currently gets 50% of profits while doing 50% of work. Acquisition of $1-2B (premium to current $500M market cap) logical if drug succeeds. Likely timing: post-approval once sales ramp (1-3 years).
-                            </p>
-                        </div>
-
-                        <div class="data-card mt-2">
-                            <h4 class="font-semibold mb-2">Royalty Monetization</h4>
-                            <p class="detail-text">
-                                Blackstone could structure royalty deal: pay ~$300M upfront for 5-10% of net sales from Arvinas' share. If sales hit $1B, yields $50M/year with decent IRR. Arvinas might consider to avoid equity dilution. Similar to Blackstone's Alnylam transaction.
-                            </p>
-                        </div>
-
-                        <div class="data-card mt-2">
-                            <h4 class="font-semibold mb-2">Public Market Exit</h4>
-                            <p class="detail-text">
-                                If not acquired, Arvinas transforms into commercial-stage company, potentially profitable by late decade on vepdegestrant revenues. Stock could re-rate on sales numbers with exit via public market if price appreciates.
-                            </p>
-                        </div>
-
-                        <div class="data-card mt-2">
-                            <h4 class="font-semibold mb-2">Structured Investment Options</h4>
-                            <p class="detail-text">
-                                • Tranched investment: Initial tranche now, second upon FDA approval
-                                <br>• Convertible debt: Downside protection with upside via conversion
-                                <br>• Arvinas has no significant debt (near zero), allowing secured position
-                            </p>
-                        </div>
-                    </div>
-                </div>
+          
             </div>
 
             <!-- Operational & Legal Tab -->
@@ -3693,6 +4032,7 @@
     </div>
 
     <script>
+         
         // Tab switching function
         function showTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(tab => {
@@ -3737,6 +4077,7 @@
                     }]
                 },
                 options: {
+                         indexAxis: 'y',  // <- ADD THIS for horizontal bars
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: {
@@ -3765,7 +4106,7 @@
         const safetyCtx = document.getElementById('safetyComparisonChart');
         if (safetyCtx) {
             new Chart(safetyCtx.getContext('2d'), {
-                type: 'horizontalBar',
+                type: 'bar',
                 data: {
                     labels: ['Fatigue', 'ALT/AST Elevation', 'Nausea', 'Anemia', 'Neutropenia', 'Arthralgia'],
                     datasets: [{
@@ -3779,6 +4120,7 @@
                     }]
                 },
                 options: {
+                         indexAxis: 'y',  // <- ADD THIS for horizontal bars
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: {
@@ -3800,6 +4142,9 @@
                 }
             });
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
     </script>
 </body>
 </html>

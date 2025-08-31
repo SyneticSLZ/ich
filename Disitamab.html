@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disitamab Vedotin (RC48) - Complete Investment Analysis | Leaf Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
@@ -402,19 +403,356 @@
         .risk-high { background: #dc3545; }
         .risk-medium { background: #ffc107; }
         .risk-low { background: #28a745; }
+
+            /* Custom animations and effects */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animated gradient background */
+        .nav-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent,
+                #10b981,
+                #06b6d4,
+                #8b5cf6,
+                transparent
+            );
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .nav-tab {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: #6b7280;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0.625rem;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+        
+        .nav-tab:hover {
+            color: #1f2937;
+            background: linear-gradient(135deg, 
+                rgba(16, 185, 129, 0.05),
+                rgba(6, 182, 212, 0.05)
+            );
+            transform: translateY(-1px);
+        }
+        
+        .nav-tab.active {
+            color: #fff;
+            background: linear-gradient(135deg, #10b981, #06b6d4);
+            box-shadow: 0 4px 15px -3px rgba(16, 185, 129, 0.3);
+        }
+        
+        .nav-tab svg {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab:hover svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .nav-tab.active svg {
+            filter: brightness(1.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .logo-container {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .glow-effect {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        /* Gradient text animation on hover */
+        .brand-text {
+            background-size: 200% 200%;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-container:hover .brand-text {
+            background-position: 100% 0;
+            filter: brightness(1.1);
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 1024px) {
+            .nav-tabs {
+                gap: 0.25rem;
+            }
+            
+            .nav-tab {
+                padding: 0.4rem 0.75rem;
+                font-size: 0.8rem;
+            }
+            
+            .nav-tab svg {
+                width: 0.875rem;
+                height: 0.875rem;
+            }
+            
+            .brand-text {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-bar {
+                padding: 0.75rem 1rem;
+            }
+            
+            .nav-tabs {
+                display: none; /* Hide on mobile to prevent squashing */
+            }
+            
+            .nav-tab {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+/* Replace the navigation styles (lines ~445-609) with this updated version */
+
+/* Custom animations and effects */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.nav-bar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+/* Animated gradient background line */
+.nav-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        #0a6b5e,
+        #085a4f,
+        #0a6b5e,
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+.nav-tab {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: #6b7280;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.nav-tab:hover {
+    color: #0a6b5e;
+    background: linear-gradient(135deg, 
+        rgba(10, 107, 94, 0.08),
+        rgba(8, 90, 79, 0.05)
+    );
+    transform: translateY(-1px);
+}
+
+.nav-tab.active {
+    color: #fff;
+    background: linear-gradient(135deg, #0a6b5e, #085a4f);
+    box-shadow: 0 4px 15px -3px rgba(10, 107, 94, 0.4);
+}
+
+.nav-tab svg {
+    transition: all 0.3s ease;
+}
+
+.nav-tab:hover svg {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.nav-tab.active svg {
+    filter: brightness(1.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+.logo-container {
+    animation: float 4s ease-in-out infinite;
+}
+
+.glow-effect {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient text animation on hover */
+.brand-text {
+    background-size: 200% 200%;
+    transition: all 0.3s ease;
+}
+
+.brand-container:hover .brand-text {
+    background-position: 100% 0;
+    filter: brightness(1.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 1024px) {
+    .nav-tabs {
+        gap: 0.25rem;
+    }
+    
+    .nav-tab {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .nav-tab svg {
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+    
+    .brand-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 0.75rem 1rem;
+    }
+    
+    .nav-tabs {
+        display: none;
+    }
+    
+    .nav-tab {
+        width: 100%;
+        justify-content: center;
+    }
+}
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="nav-bar">
-        <div class="flex items-center space-x-3">
-            <div class="flex items-center">
-                <img src="leaf.png" alt="Leaf Intelligence" class="h-14 w-14 object-contain">
-                <div class="ml-3">
-                    <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        Leaf Intelligence
-                    </span>
-                    <div class="text-xs text-gray-600 font-medium tracking-wide">AI Research Platform</div>
+       <nav class="nav-bar" style="height: auto; min-height: 80px;">
+        <div class="w-full px-8 py-4">
+            <div class="flex items-center justify-between gap-8">
+                <!-- Logo and Brand - Fixed width to prevent squashing -->
+                <div class="brand-container flex items-center gap-4 cursor-pointer group flex-shrink-0" onclick="location.href='/blackstone.html'">
+                    <div class="logo-container relative">
+                        <!-- Using your existing logo -->
+                        <img src="leaf.png" alt="Leaf Intelligence" class="h-12 w-12 object-contain relative z-10 transition-transform duration-300 group-hover:scale-110">
+                        
+                        <!-- Enhanced glow effect with multiple layers -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-400 opacity-30 blur-xl rounded-full glow-effect"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-300 to-cyan-300 opacity-20 blur-2xl rounded-full scale-150"></div>
+                    </div>
+                    
+                    <div class="flex flex-col">
+                        <span class="brand-text text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent whitespace-nowrap">
+                            Leaf Intelligence
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1">
+                                <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                                <span class="text-xs text-gray-600 font-medium">AI Research Platform</span>
+                            </div>
+                            <span class="text-xs bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-2 py-0.5 rounded-full font-semibold">BETA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Tabs - Center aligned with proper spacing -->
+                <div class="nav-tabs flex items-center gap-2 flex-grow justify-center">
+                    <a href="/blackstone.html" class="nav-tab active">
+                        <i data-lucide="building-2" class="w-4 h-4"></i>
+                        <span>Companies</span>
+                    </a>
+                    <a href="/competitive.html" class="nav-tab">
+                       <i data-lucide="beaker" class="w-4 h-4"></i>
+                        <span>Pharma Intelligence</span>
+                    </a>
+                    <a href="/comparison.html" class="nav-tab">
+                        <i data-lucide="git-compare" class="w-4 h-4"></i>
+                        <span>Side-By-Side</span>
+                    </a>
+                </div>
+                
+                <!-- Right side actions - Fixed width -->
+                <div class="flex items-center gap-2 flex-shrink-0">
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-600"></i>
+                    </button>
+                    <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors relative">
+                        <i data-lucide="bell" class="w-4 h-4 text-gray-600"></i>
+                        <span class="absolute top-1 right-1 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                    </button>
+                    <div class="w-px h-6 bg-gray-200"></div>
+                    <!-- <button class="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-lg font-medium text-sm hover:shadow-lg transition-all hover:scale-105">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span>Upgrade</span>
+                    </button> -->
                 </div>
             </div>
         </div>
@@ -446,7 +784,7 @@
         <!-- Tab Container -->
         <div class="tab-container">
             <div class="tabs">
-                <button class="tab-btn active" onclick="showTab('Overview')">Overview</button>
+                <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
                 <button class="tab-btn" onclick="showTab('clinical')">Clinical & Regulatory</button>
                 <button class="tab-btn" onclick="showTab('scientific')">Scientific & IP</button>
                 <button class="tab-btn" onclick="showTab('commercial')">Commercial & Market</button>
@@ -458,8 +796,7 @@
             </div>
 
 
-            <!-- Overview Tab (add this to your tabs section) -->
-<button class="tab-btn" onclick="showTab('overview')">Overview</button>
+
 
 <!-- Overview Tab Content (add this with other tab contents) -->
 <div id="overview" class="tab-content active">
@@ -975,6 +1312,137 @@
 </div>
             <!-- Clinical & Regulatory Tab -->
             <div id="clinical" class="tab-content">
+                <!-- DISITAMAB VEDOTIN (RC48) VISUAL SUMMARY -->
+<div class="subsection-title">Regulatory & Clinical Overview - Disitamab Vedotin</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+    
+    <!-- LEFT: Regulatory Timeline -->
+    <div class="data-card">
+        <h5 class="font-semibold text-green-700 mb-3" style="font-size: 14px;">Regulatory Pathway</h5>
+        
+        <div style="position: relative; padding-left: 24px;">
+            <div style="position: absolute; left: 6px; top: 20px; bottom: 20px; width: 2px; background: linear-gradient(180deg, #667eea 0%, #28a745 60%, #ffc107 100%);"></div>
+            
+            <div style="margin-bottom: 12px;">
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #667eea; border-radius: 50%; border: 2px solid white;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">2020</div>
+                <div style="font-size: 12px; color: #424242;"><strong>FDA BTD</strong> • Urothelial</div>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #667eea; border-radius: 50%; border: 2px solid white;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">2024</div>
+                <div style="font-size: 12px; color: #424242;"><strong>NMPA Priority</strong> • Breast</div>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #28a745; border-radius: 50%; border: 2px solid white;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">Dec 2024</div>
+                <div style="font-size: 12px; color: #424242;"><strong>Phase 3 Success</strong> ✓</div>
+                <div style="font-size: 11px; color: #28a745; margin-left: 0;">HR 0.56, p=0.014</div>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #28a745; border-radius: 50%; border: 2px solid white;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">May 2025</div>
+                <div style="font-size: 12px; color: #424242;"><strong>NMPA Approved</strong></div>
+                <div style="font-size: 11px; color: #28a745;">HER2+ w/ liver mets</div>
+            </div>
+            
+            <div>
+                <div style="position: absolute; left: 2px; width: 10px; height: 10px; background: #ffc107; border-radius: 50%; border: 2px solid white; animation: pulse 2s infinite;"></div>
+                <div style="font-size: 11px; color: #6c757d; font-weight: 600;">2026-2027</div>
+                <div style="font-size: 12px; color: #424242;"><strong>FDA/EMA Filing</strong></div>
+                <div style="font-size: 11px; color: #ffc107;">Global trials needed</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- RIGHT: Trial Portfolio -->
+    <div class="data-card">
+        <h5 class="font-semibold text-green-700 mb-3" style="font-size: 14px;">Clinical Development</h5>
+        
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+            
+            <div style="display: flex; align-items: center; padding: 8px; background: #f8fffe; border-radius: 6px; border: 1px solid #e3f2f0;">
+                <div style="flex-shrink: 0; width: 40px; height: 40px; background: #f0f7f6; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <span style="font-size: 10px; font-weight: 700; color: #0a6b5e;">Ph 1/2</span>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 12px; font-weight: 600; color: #333;">China Studies</div>
+                    <div style="font-size: 11px; color: #6c757d;">Multiple • ORR 43% HER2+</div>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <span style="font-size: 10px; padding: 2px 6px; background: #e3f2f0; color: #0a6b5e; border-radius: 4px; font-weight: 600;">✓</span>
+                </div>
+            </div>
+            
+            <div style="display: flex; align-items: center; padding: 8px; background: #d4f4ec; border-radius: 6px; border: 1px solid #28a745;">
+                <div style="flex-shrink: 0; width: 40px; height: 40px; background: #28a745; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <span style="font-size: 10px; font-weight: 700; color: white;">Ph 3</span>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 12px; font-weight: 600; color: #333;">RC48-C006</div>
+                    <div style="font-size: 11px; color: #28a745; font-weight: 600;">n=104 • PFS 9.9 vs 4.9mo</div>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <span style="font-size: 10px; padding: 2px 6px; background: #28a745; color: white; border-radius: 4px; font-weight: 600;">APPROVED</span>
+                </div>
+            </div>
+            
+            <div style="display: flex; align-items: center; padding: 8px; background: #f8fffe; border-radius: 6px; border: 1px solid #667eea;">
+                <div style="flex-shrink: 0; width: 40px; height: 40px; background: #f0f4ff; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <span style="font-size: 10px; font-weight: 700; color: #667eea;">Global</span>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 12px; font-weight: 600; color: #333;">Pfizer Studies</div>
+                    <div style="font-size: 11px; color: #6c757d;">Post-T-DXd • HER2-low</div>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <span style="font-size: 10px; padding: 2px 6px; background: #667eea; color: white; border-radius: 4px; font-weight: 600;">PLANNED</span>
+                </div>
+            </div>
+            
+            <div style="display: flex; align-items: center; padding: 8px; background: #f8fffe; border-radius: 6px; border: 1px solid #e3f2f0;">
+                <div style="flex-shrink: 0; width: 40px; height: 40px; background: #f0f7f6; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                    <span style="font-size: 10px; font-weight: 700; color: #0a6b5e;">Combo</span>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 12px; font-weight: 600; color: #333;">PD-1 Studies</div>
+                    <div style="font-size: 11px; color: #6c757d;">+ Toripalimab ongoing</div>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <span style="font-size: 10px; padding: 2px 6px; background: #ffc107; color: #333; border-radius: 4px; font-weight: 600;">ACTIVE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="highlight-box" style="padding: 12px 16px;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center;">
+        <div>
+            <div style="font-size: 20px; font-weight: 700; color: #28a745;">2X</div>
+            <div style="font-size: 11px; color: #6c757d;">PFS Benefit</div>
+        </div>
+        <div>
+            <div style="font-size: 20px; font-weight: 700; color: #0a6b5e;">No ILD</div>
+            <div style="font-size: 11px; color: #6c757d;">vs T-DXd 10-15%</div>
+        </div>
+        <div>
+            <div style="font-size: 20px; font-weight: 700; color: #667eea;">3</div>
+            <div style="font-size: 11px; color: #6c757d;">Indications</div>
+        </div>
+        <div>
+            <div style="font-size: 20px; font-weight: 700; color: #ffc107;">40-50%</div>
+            <div style="font-size: 11px; color: #6c757d;">Global PTRS</div>
+        </div>
+    </div>
+</div>
+
+<div style="height: 30px;"></div>
+
                 <div class="section-title">1. Clinical & Regulatory Diligence</div>
                 
                 <!-- Trial Design & Protocol -->
@@ -2849,7 +3317,7 @@ window.addEventListener('DOMContentLoaded', function() {
     const safetyCtx = document.getElementById('safetyComparisonChart');
     if (safetyCtx) {
         new Chart(safetyCtx.getContext('2d'), {
-            type: 'horizontalBar',
+            type: 'bar',
             data: {
                 labels: ['AST Elevation', 'ALT Elevation', 'Neutropenia', 'Peripheral Neuropathy', 'Nausea', 'Fatigue', 'ILD/Pneumonitis'],
                 datasets: [{
@@ -2863,6 +3331,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 }]
             },
             options: {
+                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: true,
                 plugins: {
@@ -3176,6 +3645,10 @@ window.addEventListener('DOMContentLoaded', function() {
     };
 
 });
+
+   document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+        });
     </script>
 </body>
 </html>
